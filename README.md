@@ -1,18 +1,33 @@
-# OpenCore
+Welcome to the Dortania home page, this site will serve as your starting place for you hackintosh journey.
 
-[Dortania's Desktop Guide](https://dortania.github.io/OpenCore-Desktop-Guide/)
+# Hardware Support
 
-[1Revenger1's Vanilla Laptop Guide](https://1revenger1.gitbook.io/laptop-guide/)
+Before you can get started on your hackintosh journey, you're gonna need to check *if* you can even run macOS and what may stand in your way:
 
-[Dortania's Vanilla Laptop Guide (in progress)](https://hackintosh-guides.github.io/vanilla-laptop-guide/)
+* [GPU Buyers Guide](https://dortania.github.io/GPU-Buyers-Guide)
+   * Check if your GPU is support and what version of macOS you can run
+* [Wireless Buyers Guide](https://dortania.github.io/Wireless-Buyers-Guide/)
+  * Check if your Wifi card is supported
+* [Anti-Hackintosh Buyers Guide](https://dortania.github.io/Anti-Hackintosh-Buyers-Guide)
+  * Overall guide on what to avoid and what pitfalls your hardware may hit
+
+
+# Installation Guides
+
+Now that you know your hardware is supported, it's time to to finally setup your hackintosh, we have 2 main guides currently avalible to help you on this journey
+
+* [OpenCore Desktop Guide](https://dortania.github.io/OpenCore-Desktop-Guide/)
+  * The main OpenCore guide
+* [OpenCore Laptop Guide](https://1revenger1.gitbook.io/laptop-guide/)
+  * Companion guide for those installing with laptops
 
 # Extras 
 
-[Dortania's GPU Buyers Guide](https://dortania.github.io/GPU-Buyers-Guide)
-
-[Dortania's Wireless Buyers Guide](https://dortania.github.io/Wireless-Buyers-Guide/)
-
-[Dortania's Anti-Hackintosh Buyers Guide](https://dortania.github.io/Anti-Hackintosh-Buyers-Guide)
+* [WhateverGreen's Framebuffer Patching](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
+  * Deep dive into how to setup your iGPU
+  * Russian Manual can be found [here](https://www.applelife.ru/threads/intel-hd-graphics-3000-4000-4400-4600-5000-5500-5600-520-530-630.1289648/)
+* [OpenCore's Offical Configuration PDF](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf)
+  * For those who want to go deeper into OpenCore
 
 # Legacy Guides (Clover)
 
@@ -21,3 +36,14 @@
 [Dortania's Vanilla Laptop Guide](https://dortania.github.io/laptop-guide/)
 
 [midi1996's Internet Install Guide](https://midi1996.github.io/hackintosh-internet-install-gitbook/)
+
+
+# Communities and Forums
+
+* [r/hackintosh](https://www.reddit.com/r/hackintosh/)
+   * Subreddit for all things hackintosh
+* [Offical r/hackintosh Discord](https://discord.gg/Wxam8aH)
+   * A discord for all things hackintosh
+   * Mainly specialising in Intel hardware
+* [AMD OSX's Discord](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+   * Discord specialising in AMD hardware
