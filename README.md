@@ -6,9 +6,18 @@
 
 [midi1996's Internet Install Guide](https://midi1996.github.io/hackintosh-internet-install-gitbook/)
 
-[hackintosh-guides's Vanilla Laptop Guide (in progress)](https://hackintosh-guides.github.io/vanilla-laptop-guide/)
+[Dortania's Vanilla Laptop Guide (in progress)](https://hackintosh-guides.github.io/vanilla-laptop-guide/)
 
 # OpenCore
-[khronokernel's Vanilla Desktop Guide](https://khronokernel-2.gitbook.io/opencore-vanilla-desktop-guide/)
+
+[Dortania's Desktop Guide](https://dortania.github.io/OpenCore-Desktop-Guide/)
 
 [1Revenger1's Vanilla Laptop Guide](https://1revenger1.gitbook.io/laptop-guide/)
+
+# Extras 
+
+[Dortania's GPU Buyers Guide](https://dortania.github.io/GPU-Buyers-Guide)
+
+[Dortania's Wireless Buyers Guide](https://dortania.github.io/Wireless-Buyers-Guide/)
+
+[Dortania's Anti-Hackintosh Buyers Guide](https://dortania.github.io/Anti-Hackintosh-Buyers-Guide)
