@@ -4,11 +4,11 @@ Welcome to the Dortania home page, this site will serve as your starting place f
 
 Before you can get started on your hackintosh journey, you're gonna need to check *if* you can even run macOS and what may stand in your way:
 
-* [GPU Buyers Guide](https://dortania.github.io/GPU-Buyers-Guide)
+* [GPU Buyers Guide](https://gpu.dortania.ml/)
    * Check if your GPU is support and what version of macOS you can run
-* [Wireless Buyers Guide](https://dortania.github.io/Wireless-Buyers-Guide/)
+* [Wireless Buyers Guide](https://wifi.dortania.ml/)
   * Check if your Wifi card is supported
-* [Anti-Hackintosh Buyers Guide](https://dortania.github.io/Anti-Hackintosh-Buyers-Guide)
+* [Anti-Hackintosh Buyers Guide](https://hardware.dortania.ml/)
   * Overall guide on what to avoid and what pitfalls your hardware may hit
 
 
@@ -16,7 +16,7 @@ Before you can get started on your hackintosh journey, you're gonna need to chec
 
 Now that you know your hardware is supported, it's time to to finally setup your hackintosh, we have 2 main guides currently avalible to help you on this journey
 
-* [OpenCore Desktop Guide](https://dortania.github.io/OpenCore-Desktop-Guide/)
+* [OpenCore Desktop Guide](https://desktop.dortania.ml/)
   * The main OpenCore guide
 * [OpenCore Laptop Guide](https://1revenger1.gitbook.io/laptop-guide/)
   * Companion guide for those installing with laptops
@@ -31,11 +31,10 @@ Now that you know your hardware is supported, it's time to to finally setup your
 
 # Legacy Guides (Clover)
 
-[CorpNewt's Vanilla Desktop Guide](https://hackintosh.gitbook.io/-r-hackintosh-vanilla-desktop-guide/)
+Legacy guides no longer being maintained
 
-[Dortania's Vanilla Laptop Guide](https://dortania.github.io/laptop-guide/)
-
-[midi1996's Internet Install Guide](https://midi1996.github.io/hackintosh-internet-install-gitbook/)
+* [CorpNewt's Vanilla Desktop Guide](https://hackintosh.gitbook.io/-r-hackintosh-vanilla-desktop-guide/)
+* [midi1996's Internet Install Guide](https://midi1996.github.io/hackintosh-internet-install-gitbook/)
 
 
 # Communities and Forums
