@@ -1,4 +1,4 @@
-Welcome to the Dortania home page, this site will serve as a starting place for your hackintosh journey.
+Welcome to the Dortania home page. This site will serve as a starting place for your hackintosh journey.
 
 # Hardware Support
 
