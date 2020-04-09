@@ -3,9 +3,6 @@ layout: page
 title: Getting Started
 permalink: /about/
 ---
-
-Welcome to the Dortania home page. This site will serve as a starting place for your macOS journey.
-
 # Hardware Support
 
 Before you can get started on your journey, you're gonna need to check *if* you can even run macOS and what may stand in your way:
