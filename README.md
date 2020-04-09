@@ -1,14 +1,14 @@
-Welcome to the Dortania home page. This site will serve as a starting place for your hackintosh journey.
+Welcome to the Dortania home page. This site will serve as a starting place for your macOS journey.
 
 # Hardware Support
 
-Before you can get started on your hackintosh journey, you're gonna need to check *if* you can even run macOS and what may stand in your way:
+Before you can get started on your journey, you're gonna need to check *if* you can even run macOS and what may stand in your way:
 
 * [GPU Buyers Guide](https://gpu.dortania.ml/)
    * Check if your GPU is support and what version of macOS you can run
 * [Wireless Buyers Guide](https://wifi.dortania.ml/)
   * Check if your Wifi card is supported
-* [Anti-Hackintosh Buyers Guide](https://hardware.dortania.ml/)
+* [Anti-Hardware Buyers Guide](https://hardware.dortania.ml/)
   * Overall guide on what to avoid and what pitfalls your hardware may hit
 
 # Installation Guides
@@ -24,7 +24,6 @@ Now that you know your hardware is supported, it's time to to finally setup your
 
 * [WhateverGreen's Framebuffer Patching](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
   * Deep dive into how to setup your iGPU
-  * Russian Manual can be found [here](https://www.applelife.ru/threads/intel-hd-graphics-3000-4000-4400-4600-5000-5500-5600-520-530-630.1289648/)
 * [OpenCore's Official Configuration PDF](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf)
   * For those who want to go deeper into OpenCore
 
