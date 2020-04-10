@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Getting Started
-permalink: /about/
+permalink: /getting-started/
 ---
 # Hardware Support
 
