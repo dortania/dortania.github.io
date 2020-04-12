@@ -16,7 +16,7 @@ Before you can get started on your journey, you're gonna need to check *if* you 
 
 # Installation Guides
 
-Now that you know your hardware is supported, it's time to to finally setup your hackintosh, we have 2 main guides currently avalible to help you on this journey
+Now that you know your hardware is supported, it's time to to finally setup your hackintosh, we have 2 main guides currently available to help you on this journey
 
 * [OpenCore Desktop Guide](https://desktop.dortania.ml/)
   * The main OpenCore guide
