@@ -12,7 +12,7 @@ Before you can get started on your journey, you will need to check *if* you can 
 * [Wireless Buyers Guide](https://wifi.dortania.ml/)
   * Check if your Wi-Fi card is supported.
 * [Anti-Hardware Buyers Guide](https://hardware.dortania.ml/)
-  * Overall guide on what to avoid and what pitfalls your hardware may hit
+  * Overall guide on what to avoid and what pitfalls your hardware may hit.
 
 # Installation Guides
 
