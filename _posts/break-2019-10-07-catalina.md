@@ -39,7 +39,7 @@ categories: Hackintosh updates
 
  There are none, stop asking. There will be no support for non-Kepler GPUs in Catalina, let it go man. It's not healthy to keep a toxic relationship going, it's best for the both of you.
 
- If you need a new GPU, please refer to the new [GPU Buyers Guide](https://dortanian.github.io/GPU-Buyers-Guide/) and the [Disable your unsupported GPU Guide](https://khronokernel-4.gitbook.io/disable-unsupported-gpus/)
+ If you need a new GPU, please refer to the new [GPU Buyers Guide](https://dortania.github.io/GPU-Buyers-Guide/) and the [Disable your unsupported GPU Guide](https://khronokernel-4.gitbook.io/disable-unsupported-gpus/)
 
  # What has changed on the surface
 
@@ -55,7 +55,7 @@ categories: Hackintosh updates
 
  * A GPU supporting H.265/HEVC encoding, Skylake+ iGPUs or Polaris/Vega dGPUs
  * An iPad with an A8X CPU
- * A [supported wireless card(mainly bluetooth matters)](https://dortanian.github.io/Wireless-Buyers-Guide/) or Lighting cable(Sidecar can operate both wirelessly and wired)
+ * A [supported wireless card(mainly bluetooth matters)](https://dortania.github.io/Wireless-Buyers-Guide/) or Lighting cable(Sidecar can operate both wirelessly and wired)
  * A SMBIOS supporting Sidecar
  * Both machines on the same Apple ID
 
@@ -136,7 +136,7 @@ categories: Hackintosh updates
 
  **Apple Watch Authentication**
 
- Pretty straight forward, macOS will allow you to replace your password with your Apple Watch in more places. Do keep in mind this requires a [supported wireless card](https://dortanian.github.io/Wireless-Buyers-Guide/).
+ Pretty straight forward, macOS will allow you to replace your password with your Apple Watch in more places. Do keep in mind this requires a [supported wireless card](https://dortania.github.io/Wireless-Buyers-Guide/).
 
 # What's new under the hood
 
@@ -164,7 +164,7 @@ categories: Hackintosh updates
 
  Well for those running older Atheros cards may have a rude wake up call, reinjecting the old AirportAtheros40.kext seems to fail on many systems. A partial solution is to actually port the entire IO80211 framework but this is not ideal for many reasons...
 
- Only good solution is looking for a new card: [Wireless Buyers Guide](https://dortanian.github.io/Wireless-Buyers-Guide/).
+ Only good solution is looking for a new card: [Wireless Buyers Guide](https://dortania.github.io/Wireless-Buyers-Guide/).
 
  **Removal of MacPro4,1/5,1 and the death of Dual Socket Systems**
 
@@ -211,7 +211,7 @@ categories: Hackintosh updates
 
  * [Fixing ECs for macOS Catalina](https://khronokernel.github.io/EC-fix-guide/)
 
- This is also covered in the [OpenCore Vanilla Guide](https://dortanian.github.io/OpenCore-Desktop-Guide/) already
+ This is also covered in the [OpenCore Vanilla Guide](https://dortania.github.io/OpenCore-Desktop-Guide/) already
 
  Sources:
 
@@ -253,7 +253,7 @@ categories: Hackintosh updates
 
  For those who are wanting a Vanilla Desktop Guide for OpenCore are in luck!:
 
- * [OpenCore Vanilla Desktop Guide](https://dortanian.github.io/OpenCore-Desktop-Guide/)
+ * [OpenCore Vanilla Desktop Guide](https://dortania.github.io/OpenCore-Desktop-Guide/)
 
  Please note that we're currently in beta but hoping to be in 1.0.0 release by the end of the month.
 
@@ -286,7 +286,7 @@ categories: Hackintosh updates
 
  **Where's the Navi support?**
 
- As of 10.15.2, both the 5700 series and 5500 series are now compatible with macOS. Please see the [GPU Buyers Guide](https://dortanian.github.io/GPU-Buyers-Guide/) for more info
+ As of 10.15.2, both the 5700 series and 5500 series are now compatible with macOS. Please see the [GPU Buyers Guide](https://dortania.github.io/GPU-Buyers-Guide/) for more info
 
  **Chrome being dumb again**
 
