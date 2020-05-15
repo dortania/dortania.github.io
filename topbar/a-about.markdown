@@ -20,7 +20,7 @@ Now that you know your hardware is supported, it's time to finally proceed to se
 
 * [OpenCore Desktop Guide](https://dortania.github.io/OpenCore-Desktop-Guide/)
   * Primary OpenCore guide.
-* [OpenCore Laptop Guide](https://1revenger1.gitbook.io/laptop-guide/)
+* [OpenCore Laptop Guide](https://dortania.github.io/vanilla-laptop-guide/)
   * Companion OpenCore guide for laptops.
 
 # Extras 

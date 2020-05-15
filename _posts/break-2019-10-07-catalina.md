@@ -55,7 +55,7 @@ categories: Hackintosh updates
 
  * A GPU supporting H.265/HEVC encoding, Skylake+ iGPUs or Polaris/Vega dGPUs
  * An iPad with an A8X CPU
- * A [supported wireless card(mainly bluetooth matters)](https://dortania.github.io/Wireless-Buyers-Guide/) or Lighting cable(Sidecar can operate both wirelessly and wired)
+ * A [supported wireless card(mainly Bluetooth matters)](https://dortania.github.io/Wireless-Buyers-Guide/) or Lighting cable(Sidecar can operate both wirelessly and wired)
  * A SMBIOS supporting Sidecar
  * Both machines on the same Apple ID
 
@@ -96,7 +96,7 @@ categories: Hackintosh updates
 
  Mac Mini:
 
- * MacMini8,1
+ * Macmini8,1
 
  iMac:
 
@@ -182,7 +182,7 @@ categories: Hackintosh updates
 
  **Support for Catalyst based apps**
 
- Get ready for a flood of iOS apps on the AppStore cause now everyone's a Mac developer! There's no real hardware requirement besides natively supported hardware, that means users who have been patching their GPU drivers from High Sierra may have issues running Metal based applications.
+ Get ready for a flood of iOS apps on the App Store cause now everyone's a Mac developer! There's no real hardware requirement besides natively supported hardware, that means users who have been patching their GPU drivers from High Sierra may have issues running Metal based applications.
 
  **Removal of the OpenGL fallback UI renderer**
 
