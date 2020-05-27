@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "macOS <insert name> has been revealed!""
-date:   2020-06-22 8:00:00
+title:  "macOS <insert name> has been revealed!"
+date:   2020-06-22 9:00:00 -0600
 categories: Hackintosh updates
 ---
 
