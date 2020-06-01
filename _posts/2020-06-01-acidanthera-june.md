@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Acidanthera Updates: June 2020"
-date:   2020-06-01 15:00:00
+date:   2020-06-01 15:00:00 -0700
 categories: Hackintosh updates
 ---
 
