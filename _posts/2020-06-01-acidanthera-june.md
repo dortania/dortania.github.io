@@ -5,6 +5,8 @@ date:   2020-06-01 15:00:00 -0700
 categories: Hackintosh updates
 ---
 
+# A message from vit9696
+
 The previous release we published in May was an important step forward in stabilisation of all our products and an anniversary for OpenCore. This release marks the end of the long-lasting repository reorganisation period for all our UEFI products and delivers some very important features to ease your life.
 
 Firstly, the debugging. While troubleshooting is not something you need often, when you do, it is crucial to have proper instruments. An iPhone camera is by all means a great debugging tool, but it is even greater when you do not have to use it. In the latest OpenCore version in addition to EfiBoot debug logging we implemented macOS kernel panic decoding and saving right onto ESP volume. After enabling this in the configuration you will automatically get text representation of all saved macOS kernel panics right after rebooting, which you can later symbolicate with the included `kpdescribe` utility if necessary.
@@ -21,7 +23,7 @@ In the end I would like to express my sincere gratitude to Acidanthera and WWHC 
 
 — Vit
 
-# Changlogs
+# Changelogs
 
 #### [OpenCore 0.5.9](https://github.com/acidanthera/OpenCorePkg/releases)
 
@@ -120,7 +122,7 @@ In the end I would like to express my sincere gratitude to Acidanthera and WWHC 
 * Upgraded to VoodooInput 1.0.6
 * Added logo + print scr hotkey to disable trackpad
 
-# Guide updates
+# Guide Updates
 
 While not made by Acidanthera, both the OpenCore Desktop and Laptop Guides have been updated with 0.5.9 support. And the desktop guide getting early Comet Lake-S support:
 
