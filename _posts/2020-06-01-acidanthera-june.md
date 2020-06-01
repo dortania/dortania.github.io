@@ -23,7 +23,7 @@ In the end I would like to express my sincere gratitude to Acidanthera and WWHC 
 
 # Changlogs
 
-#### OpenCore 0.5.9
+#### [OpenCore 0.5.9](https://github.com/acidanthera/OpenCorePkg/releases)
 
 * Added full HiDPI support in OpenCanopy
 * Improved OpenCanopy font rendering by using CoreText
@@ -69,7 +69,7 @@ In the end I would like to express my sincere gratitude to Acidanthera and WWHC 
 * Added `SysReport` option for DEBUG builds to dump system info
 * Fixed crashes on some AMD firmwares when performing keyboard input
 
-#### AppleALC 1.5.0
+#### [AppleALC 1.5.0](https://github.com/acidanthera/AppleALC/releases)
 
 * Update ALC283 layout-id 88 by xiaoleGun
 * Fixed accidental reading of `alc-layout-id` on non-Apple firmwares
@@ -82,40 +82,40 @@ In the end I would like to express my sincere gratitude to Acidanthera and WWHC 
 * Added ALC256 layout-id 19 for Matebook X Pro 2019 by Durian-Life
 * Added ALC256 layout-id 76 (4CH) for Matebook X Pro 2019 by Durian-Life
 
-#### VirtualSMC 1.1.4
+#### [VirtualSMC 1.1.4](https://github.com/acidanthera/VirtualSMC/releases)
  
  * Fixed incorrect revision reporting on T2 models (e.g. Macmini8,1)
 
-#### RTCMemoryFixup 1.0.6
+#### [RTCMemoryFixup 1.0.6](https://github.com/acidanthera/RTCMemoryFixup/releases)
 
 * Fix reading of key rtc-blacklist from NVRAM (only 4 bytes could be read)
 * rtcfx_exclude can be combined with rtc-blacklist
 
-#### IntelMausi 1.0.3
+#### [IntelMausi 1.0.3](https://github.com/acidanthera/IntelMausi/releases)
 
 * Merged changes from 2.5.1d1
 
-#### dmidecode 3.2c
+#### [dmidecode 3.2c](https://github.com/acidanthera/dmidecode/releases)
 
 * Update to 5b3c8e99 with SMBIOS 3.2 improvements
 
-#### WhateverGreen 1.4.0
+#### [WhateverGreen 1.4.0](https://github.com/acidanthera/WhateverGreen/releases)
 
 * Added 0x3EA6, 0x8A53, 0x9BC4, 0x9BC5, 0x9BC8 IGPU device-id
 * Fixed `framebuffer-conX-alldata` patching regression
 * Added `disable-hdmi-patches` device property alias to `-igfxnohdmi`
 
-#### Lilu 1.4.5
+#### [Lilu 1.4.5](https://github.com/acidanthera/Lilu/releases)
 
 * Fixed newer CPU generation detection
 * Added failsafe versions of CML framebuffers
 
-#### VoodooInput 1.0.6
+#### [VoodooInput 1.0.6](https://github.com/acidanthera/VoodooInput/releases)
 
 * Reduced memory consumption and CPU usage
 * Fixed dragging issues on some touchpads
 
-#### VoodooPS2 2.1.5
+#### [VoodooPS2 2.1.5](https://github.com/acidanthera/VoodooPS2/releases)
 
 * Upgraded to VoodooInput 1.0.6
 * Added logo + print scr hotkey to disable trackpad
