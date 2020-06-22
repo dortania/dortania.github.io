@@ -9,7 +9,7 @@ So today at WWDC Apple unveiled the next version of macOS, macOS 10.16 Big Sur!
 
 ## The major thing on your mind
 
-ARM Macs have been dropped.
+ARM Macs are official.
 
 ## Prerequisites:
 
