@@ -1,11 +1,15 @@
 ---
 layout: post
-title:  "macOS <insert name> has been revealed!"
+title:  "macOS Big Sur has been revealed!"
 date:   2020-06-22 9:00:00 -0600
 categories: Hackintosh updates
 ---
 
-So today at WWDC Apple unveiled the next version of macOS, macOS 10.16 <insert name>!
+So today at WWDC Apple unveiled the next version of macOS, macOS 10.16 Big Sur!
+
+## The major thing on your mind
+
+ARM Macs have been dropped.
 
 ## Prerequisites:
 
