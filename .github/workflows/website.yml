@@ -10,7 +10,7 @@ defaults:
 jobs:
   build:
     name: Build
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Build Files
         uses: actions/checkout@v2
@@ -26,4 +26,3 @@ jobs:
           BRANCH: master
           FOLDER: .
           BASE_BRANCH: master
-          CLEAN: true
