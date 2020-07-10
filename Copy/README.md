@@ -3,7 +3,7 @@ layout: page
 title: OpenCore HTML Docs
 permalink: /docs/
 ---
-## For commit COMMIT_HASH (master)
+## For commit [COMMIT_HASH](https://github.com/acidanthera/OpenCorePkg/tree/COMMIT_HASH_FULL) (master)
 
 Note: if this commit does not match up with the latest commit on master, wait roughly an hour and check again
 
@@ -19,7 +19,7 @@ Note: if this commit does not match up with the latest commit on master, wait ro
 <br>
 [Errata (original PDF)](https://github.com/acidanthera/OpenCorePkg/blob/COMMIT_HASH_FULL/Docs/Errata/Errata.pdf)
 
-## For release RELEASE_NAME
+## For release [RELEASE_NAME](https://github.com/acidanthera/OpenCorePkg/tree/RELEASE_NAME)
 
 [Configuration](release/Configuration.html)
 <br>
