@@ -1,0 +1,29 @@
+name: Copy Website Files
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+defaults:
+  run:
+    shell: bash --login -ieo pipefail {0}
+jobs:
+  build:
+    name: Build
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Build Files
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
+          persist-credentials: false
+      - name: Remove .github Folder
+        run: rm -r .github
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: .
+          BASE_BRANCH: gh-pages
+          CLEAN: true
