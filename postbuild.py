@@ -1,7 +1,7 @@
 import re, subprocess, datetime, sys
 from pathlib import Path
 
-for directory in ["master", "release"]:
+for directory in ["latest", "release"]:
     configuration_path = Path("Deploy/" + directory + "/Configuration.html")
     differences_path = Path("Deploy/" + directory + "/Differences.html")
     errata_path = Path("Deploy/" + directory + "/Errata.html")
@@ -45,10 +45,10 @@ for directory in ["master", "release"]:
 index = Path("Deploy/index.html").read_text()
 
 # Add commit hash, release name, and date to index
-commit_hash = subprocess.run("git rev-parse HEAD".split(), capture_output=True, cwd=Path("master")).stdout.decode()
+commit_hash = subprocess.run("git rev-parse HEAD".split(), capture_output=True, cwd=Path("latest")).stdout.decode()
 # For debugging
 print(commit_hash)
-print("\n".join(subprocess.run("git log".split(), capture_output=True, cwd=Path("master")).stdout.decode().split("\n")[:20]))
+print("\n".join(subprocess.run("git log".split(), capture_output=True, cwd=Path("latest")).stdout.decode().split("\n")[:20]))
 index = index.replace("COMMIT_HASH", commit_hash[:8])
 index = index.replace("COMMIT_HASH_FULL", commit_hash)
 index = index.replace("RELEASE_NAME", sys.argv[1])
