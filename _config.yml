@@ -8,7 +8,7 @@ theme: minima
 header_pages:
   - topbar/a-about.markdown
   - topbar/b-troubleshooting.markdown
-  - topbar/c-legacy-guides-markdown
+  - topbar/c-legacy-guides.markdown
   - topbar/d-forums.markdown
 plugins:
   - jekyll-feed
