@@ -26,7 +26,7 @@ jobs:
           fetch-depth: '0'
           persist-credentials: false
           repository: acidanthera/OpenCorePkg
-          path: master
+          path: latest
       - name: Get Latest OpenCorePkg Release
         uses: oprypin/find-latest-tag@v1
         with:
@@ -61,16 +61,16 @@ jobs:
         run: eval "$(/usr/libexec/path_helper)"
       - name: Build Master Configuration
         run: |
-          cd master/Docs
+          cd latest/Docs
           ./BuildDocs.tool
           make4ht Configuration.tex
       - name: Build Master Differences
         run: |
-          cd master/Docs/Differences
+          cd latest/Docs/Differences
           make4ht Differences.tex
       - name: Build Master Errata
         run: |
-          cd master/Docs/Errata
+          cd latest/Docs/Errata
           make4ht Errata.tex
       - name: Build Release Configuration
         run: |
@@ -90,10 +90,10 @@ jobs:
           fi
       - name: Copy Files
         run: |
-          mkdir -p Deploy/master Deploy/release
-          cp -R master/Docs/*.css master/Docs/*.html master/Docs/*.png master/Docs/Differences/*.css master/Docs/Differences/*.html master/Docs/Differences/*.png master/Docs/Errata/*.css master/Docs/Errata/*.html master/Docs/Errata/*.png master/Docs/Logos Deploy/master/ || true
+          mkdir -p Deploy/latest Deploy/release
+          cp -R latest/Docs/*.css latest/Docs/*.html latest/Docs/*.png latest/Docs/Differences/*.css latest/Docs/Differences/*.html latest/Docs/Differences/*.png latest/Docs/Errata/*.css latest/Docs/Errata/*.html latest/Docs/Errata/*.png latest/Docs/Logos Deploy/latest/ || true
           cp -R release/Docs/*.css release/Docs/*.html release/Docs/*.png release/Docs/Differences/*.css release/Docs/Differences/*.html release/Docs/Differences/*.png release/Docs/Errata/*.css release/Docs/Errata/*.html release/Docs/Errata/*.png release/Docs/Logos Deploy/release/ || true
-          cp Copy/Differences.css Deploy/master/
+          cp Copy/Differences.css Deploy/latest/
           cp Copy/Differences.css Deploy/release/
           cp Copy/index.html Deploy/
           echo
