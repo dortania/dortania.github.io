@@ -14,8 +14,6 @@ jobs:
         with:
           fetch-depth: '0'
           persist-credentials: false
-      - name: Remove .github Folder
-        run: rm -r .github
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
