@@ -2,7 +2,7 @@ name: Copy Website Files
 on:
   push:
     branches:
-      - master
+      - blog
   workflow_dispatch:
 defaults:
   run:
