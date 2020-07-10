@@ -4,9 +4,6 @@ on:
     branches:
       - blog
   workflow_dispatch:
-defaults:
-  run:
-    shell: bash --login -ieo pipefail {0}
 jobs:
   build:
     name: Build
