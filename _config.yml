@@ -6,6 +6,9 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: dortania
 theme: minima
 header_pages:
-  - topbar/*
+  - topbar/a-about.markdown
+  - topbar/b-troubleshooting.markdown
+  - topbar/c-legacy-guides-markdown
+  - topbar/d-forums.markdown
 plugins:
   - jekyll-feed
