@@ -104,8 +104,8 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
+          BRANCH: master
           FOLDER: Deploy
           TARGET_FOLDER: docs
-          BASE_BRANCH: gh-pages
+          BASE_BRANCH: master
           CLEAN: true
