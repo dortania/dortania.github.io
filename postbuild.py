@@ -10,6 +10,13 @@ for directory in ["latest", "release"]:
     differences = differences_path.read_text()
     errata = errata_path.read_text() if errata_path.exists() else "" # Errata not in 0.5.9 yet
 
+    # Strip table garbage
+    table = [re.compile(r'<tr style="[\w \d\-:;]*" id="TBL-\d+-\d+-">(<td style="[\w \d\-:;]*" id="TBL-\d+-\d+-\d+" class="td\d\d">\s*<\/td>)+\s*<\/tr>'),
+                re.compile(r'<tr style="[\w \d\-:;]*" id="TBL-\d+-\d+-">(<td colspan="2" style="[\w \d\-:;]*" id="TBL-\d+-\d+-\d+" class="td\d\d">\s*<span class="cmidrule">.*?<\/span>\s*<\/td>)+\s*<\/tr>'),
+                re.compile(r'<td class="align-(even|label)">\s*<\/td>')]
+    for i in table:
+        configuration = i.sub("", configuration)
+
     # Fix font-family stuff
     font_family = re.compile(r'font-family="(.*?)" font-size="(.*?)"')
     font_family_replacement = 'class="\\1-\\2"'
@@ -31,6 +38,11 @@ for directory in ["latest", "release"]:
     # Fix title
     configuration = configuration.replace("<title></title>", "<title>Configuration</title>")
     errata = errata.replace("<title></title>", "<title>Errata</title>")
+
+    # Add custom CSS
+    configuration = configuration.replace("</head>", """<link rel="stylesheet" type="text/css" href="../main.css" /></head>""")
+    errata = errata.replace("</head>", """<link rel="stylesheet" type="text/css" href="../main.css" /></head>""")
+    differences = differences.replace("</head>", """<link rel="stylesheet" type="text/css" href="../main.css" /></head>""")
 
     # Fix logo
     errata = errata.replace("../Logos/Logo-.png", "Logos/Logo-.png")
