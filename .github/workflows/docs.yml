@@ -95,7 +95,7 @@ jobs:
           cp -R release/Docs/*.css release/Docs/*.html release/Docs/*.png release/Docs/Differences/*.css release/Docs/Differences/*.html release/Docs/Differences/*.png release/Docs/Errata/*.css release/Docs/Errata/*.html release/Docs/Errata/*.png release/Docs/Logos Deploy/release/ || true
           cp Copy/Differences.css Deploy/latest/
           cp Copy/Differences.css Deploy/release/
-          cp Copy/README.md Deploy/
+          cp Copy/README.md Copy/main.css Deploy/
           echo
           ls Deploy
       - name: Post Build
