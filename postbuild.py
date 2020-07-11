@@ -45,7 +45,7 @@ for directory in ["latest", "release"]:
 index = Path("Deploy/README.md").read_text()
 
 # Add commit hash, release name, and date to index
-commit_hash = subprocess.run("git rev-parse HEAD".split(), capture_output=True, cwd=Path("latest")).stdout.decode()
+commit_hash = subprocess.run("git rev-parse HEAD".split(), capture_output=True, cwd=Path("latest")).stdout.decode().strip()
 index = index.replace("COMMIT_HASH_FULL", commit_hash)
 index = index.replace("COMMIT_HASH", commit_hash[:8])
 index = index.replace("RELEASE_NAME", sys.argv[1])
