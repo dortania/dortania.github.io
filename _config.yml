@@ -10,5 +10,6 @@ header_pages:
   - topbar/b-troubleshooting.markdown
   - topbar/c-legacy-guides.markdown
   - topbar/d-forums.markdown
+  - docs/README.md
 plugins:
   - jekyll-feed
