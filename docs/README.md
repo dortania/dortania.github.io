@@ -33,7 +33,7 @@ Note: if this commit does not match up with the latest commit on master, wait ro
 <br>
 [Errata (original PDF)](https://github.com/acidanthera/OpenCorePkg/blob/0.5.9/Docs/Errata/Errata.pdf)
 
-### Documentation compiled at 2020-07-12 08:14:46.782872+00:00
+### Documentation compiled at 2020-07-12 08:42:28.024613+00:00
 
 ## Known Issues
 
