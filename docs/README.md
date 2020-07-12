@@ -3,7 +3,7 @@ layout: page
 title: OpenCore HTML Docs
 permalink: /docs/
 ---
-## For commit [56949bcd](https://github.com/acidanthera/OpenCorePkg/tree/56949bcd560be1dd7cd0ccdc80cae742882703b7) (master)
+## For commit [37de1377](https://github.com/acidanthera/OpenCorePkg/tree/37de13770619c290c2cb482a8340aeff4002b0d6) (master)
 
 Note: if this commit does not match up with the latest commit on master, wait roughly an hour and check again
 
@@ -13,11 +13,11 @@ Note: if this commit does not match up with the latest commit on master, wait ro
 <br>
 [Errata](latest/Errata.html)
 
-[Configuration (original PDF)](https://github.com/acidanthera/OpenCorePkg/blob/56949bcd560be1dd7cd0ccdc80cae742882703b7/Docs/Configuration.pdf)
+[Configuration (original PDF)](https://github.com/acidanthera/OpenCorePkg/blob/37de13770619c290c2cb482a8340aeff4002b0d6/Docs/Configuration.pdf)
 <br>
-[Differences (original PDF)](https://github.com/acidanthera/OpenCorePkg/blob/56949bcd560be1dd7cd0ccdc80cae742882703b7/Docs/Differences/Differences.pdf)
+[Differences (original PDF)](https://github.com/acidanthera/OpenCorePkg/blob/37de13770619c290c2cb482a8340aeff4002b0d6/Docs/Differences/Differences.pdf)
 <br>
-[Errata (original PDF)](https://github.com/acidanthera/OpenCorePkg/blob/56949bcd560be1dd7cd0ccdc80cae742882703b7/Docs/Errata/Errata.pdf)
+[Errata (original PDF)](https://github.com/acidanthera/OpenCorePkg/blob/37de13770619c290c2cb482a8340aeff4002b0d6/Docs/Errata/Errata.pdf)
 
 ## For release [0.5.9](https://github.com/acidanthera/OpenCorePkg/tree/0.5.9)
 
@@ -33,7 +33,7 @@ Note: if this commit does not match up with the latest commit on master, wait ro
 <br>
 [Errata (original PDF)](https://github.com/acidanthera/OpenCorePkg/blob/0.5.9/Docs/Errata/Errata.pdf)
 
-### Documentation compiled at 2020-07-12 15:42:46.401840+00:00
+### Documentation compiled at 2020-07-12 16:44:28.098543+00:00
 
 ## Known Issues
 
