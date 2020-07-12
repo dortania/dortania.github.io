@@ -992,13 +992,16 @@ class="td11"><!--l. 4521--><p class="noindent" >Check CFG Lock (MSR 0xE2 write p
 <!--l. 4526--><p class="noindent" >OpenCanopy is a graphical OpenCore user interface that runs in External PickerMode and relies on <a 
 href="https://github.com/acidanthera/OpenCorePkg" >OpenCorePkg</a>
 OcBootManagementLib similar to the builtin text interface.
-</p><!--l. 4531--><p class="noindent" >OpenCanopy requires graphical resources located in Resources directory to run. Sample resources (fonts and images) can be
-found in <a 
-href="https://github.com/acidanthera/OcBinaryData" >OcBinaryData repository</a>.
-</p><!--l. 4535--><p class="noindent" >OpenCanopy provides full support for PickerAttributes and offers a configurable builtin icon set. The default chosen icon set
+</p><!--l. 4531--><p class="noindent" >OpenCanopy requires graphical resources located in Resources directory to run. Sample resources (fonts and images) can
+be found in <a 
+href="https://github.com/acidanthera/OcBinaryData" >OcBinaryData repository</a>. <span class="uwave">You can find customised icons over the internet (e.g. </span><a 
+href="https://github.com/blackosx/OpenCanopyIcons" >here</a> <span class="uwave">or </span><a 
+href="https://applelife.ru/threads/kastomizacija-opencanopy.2945020/" >there</a><span class="uwave">).
+</span>
+</p><!--l. 4537--><p class="noindent" >OpenCanopy provides full support for PickerAttributes and offers a configurable builtin icon set. The default chosen icon set
 depends on the DefaultBackgroundColor variable value. For Light Gray Old icon set will be used, for other colours — the one
 without a prefix.
-</p><!--l. 4540--><p class="noindent" >Predefined icons are put to \EFI\OC\Resources\Image directory. Full list of supported icons (in .icns format) is provided
+</p><!--l. 4542--><p class="noindent" >Predefined icons are put to \EFI\OC\Resources\Image directory. Full list of supported icons (in .icns format) is provided
 below. Missing optional icons will use the closest available icon. External entries will use Ext-prefixed icon if available (e.g.
 OldExtHardDrive.icns).
 </p>
@@ -1040,11 +1043,11 @@ class="newline" />Type: plist dict<br
 class="newline" />Failsafe: None<br 
 class="newline" />Description: Configure audio backend support described in <a 
 href="#x1-650008">Audio Properties</a> section below.
-     <!--l. 4628--><p class="noindent" >Audio support provides a way for upstream protocols to interact with the selected hardware and audio resources.
+     <!--l. 4630--><p class="noindent" >Audio support provides a way for upstream protocols to interact with the selected hardware and audio resources.
      All audio resources should reside in \EFI\OC\Resources\Audio directory. Currently the only supported audio
      file format is WAVE PCM. While it is driver-dependent which audio stream format is supported, most common
      audio cards support 16-bit signed stereo audio at 44100 or 48000 Hz.
-     </p><!--l. 4635--><p class="noindent" >Audio file path is determined by audio type, audio localisation, and audio path. Each filename looks as follows:
+     </p><!--l. 4637--><p class="noindent" >Audio file path is determined by audio type, audio localisation, and audio path. Each filename looks as follows:
      [audio type]_[audio localisation]_[audio path].wav. For unlocalised files filename does not include the
      language code and looks as follows: [audio type]_[audio path].wav.
 </p>
@@ -1060,7 +1063,7 @@ href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/Proto
 href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/Protocol/AppleVoiceOver.h" >APPLE_VOICE_OVER_AUDIO_FILE definition</a>. For OpenCore audio paths refer to <a 
 href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Acidanthera/Protocol/OcAudio.h" >OC_VOICE_OVER_AUDIO_FILE
          definition</a>. The only exception is OpenCore boot chime file, which is OCEFIAudio_VoiceOver_Boot.wav.</li></ul>
-     <!--l. 4656--><p class="noindent" >Audio localisation is determined separately for macOS bootloader and OpenCore. For macOS bootloader it is set in
+     <!--l. 4658--><p class="noindent" >Audio localisation is determined separately for macOS bootloader and OpenCore. For macOS bootloader it is set in
      preferences.efires archive in systemLanguage.utf8 file and is controlled by the operating system. For
      OpenCore the value of prev-lang:kbd variable is used. When native audio localisation of a particular file is
      missing, English language (en) localisation is used. Sample audio files can be found in <a 
@@ -1074,10 +1077,10 @@ class="newline" />Failsafe: false<br
 class="newline" />Description: Perform UEFI controller connection after driver loading.
                                                                                                   
                                                                                                   
-     <!--l. 4670--><p class="noindent" >This option is useful for loading drivers following UEFI driver model as they may not start by themselves. Examples of
+     <!--l. 4672--><p class="noindent" >This option is useful for loading drivers following UEFI driver model as they may not start by themselves. Examples of
      such drivers are filesystem or audio drivers. While effective, this option may not be necessary for drivers performing
      automatic connection, and may slightly slowdown the boot.
-     </p><!--l. 4675--><p class="noindent" >Note: Some firmwares, made by Apple in particular, only connect the boot drive to speedup the boot process. Enable this
+     </p><!--l. 4677--><p class="noindent" >Note: Some firmwares, made by Apple in particular, only connect the boot drive to speedup the boot process. Enable this
      option to be able to see all the boot options when having multiple drives.
      </p></li>
      <li 
@@ -1085,7 +1088,7 @@ class="newline" />Description: Perform UEFI controller connection after driver l
 class="newline" />Type: plist array<br 
 class="newline" />Failsafe: None<br 
 class="newline" />Description: Load selected drivers from OC/Drivers directory.
-     <!--l. 4686--><p class="noindent" >Designed to be filled with string filenames meant to be loaded as UEFI drivers.
+     <!--l. 4688--><p class="noindent" >Designed to be filled with string filenames meant to be loaded as UEFI drivers.
      </p></li>
      <li 
   class="enumerate" id="x1-63010x5">Input<br 
@@ -1106,7 +1109,7 @@ class="newline" />Failsafe: None<br
 class="newline" />Description: Force builtin versions of select protocols described in <a 
 href="#x1-6800011">ProtocolOverrides Properties</a> section
      below.
-     <!--l. 4710--><p class="noindent" >Note: all protocol instances are installed prior to driver loading.
+     <!--l. 4712--><p class="noindent" >Note: all protocol instances are installed prior to driver loading.
      </p></li>
      <li 
   class="enumerate" id="x1-63016x8">Quirks<br 
@@ -1133,7 +1136,7 @@ class="newline" />Description: Designed to be filled with plist dict values, de
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Load embedded APFS drivers from APFS containers.
-     <!--l. 4740--><p class="noindent" >APFS EFI driver is bundled in all bootable APFS containers. This option performs loading of signed APFS
+     <!--l. 4742--><p class="noindent" >APFS EFI driver is bundled in all bootable APFS containers. This option performs loading of signed APFS
      drivers with respect to ScanPolicy. See more details in “EFI Jumpstart” section of <a 
 href="https://developer.apple.com/support/apple-file-system/Apple-File-System-Reference.pdf" >Apple File System Reference</a>.
                                                                                                   
@@ -1144,7 +1147,7 @@ href="https://developer.apple.com/support/apple-file-system/Apple-File-System-Re
 class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
 class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">false</span><br 
 class="newline" /><span class="uwave">Description</span><span class="uwave">: Perform full device connection during APFS loading. </span>
-     <!--l. 4757--><p class="noindent" ><span class="uwave">Instead  of  partition  handle  connection  normally  used  for  APFS  driver  loading  every  handle  is  connected
+     <!--l. 4759--><p class="noindent" ><span class="uwave">Instead  of  partition  handle  connection  normally  used  for  APFS  driver  loading  every  handle  is  connected
      recursively. This may take more time than usual but can be the only way to access APFS partitions on some
      firmwares like those found on older HP laptops. </span>
      </p></li>
@@ -1153,14 +1156,14 @@ class="newline" /><span class="uwave">Description</span><span class="uwave">: Pe
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Hide verbose output from APFS driver.
-     <!--l. 4765--><p class="noindent" >APFS verbose output can be useful for debugging.
+     <!--l. 4767--><p class="noindent" >APFS verbose output can be useful for debugging.
      </p></li>
      <li 
   class="enumerate" id="x1-64008x4">JumpstartHotPlug<br 
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Load APFS drivers for newly connected devices.
-     <!--l. 4773--><p class="noindent" >Performs APFS driver loading not only at OpenCore startup but also during boot picker. This permits APFS
+     <!--l. 4775--><p class="noindent" >Performs APFS driver loading not only at OpenCore startup but also during boot picker. This permits APFS
      USB hot plug. Disable if not required.
      </p></li>
      <li 
@@ -1168,7 +1171,7 @@ class="newline" />Description: Load APFS drivers for newly connected devices.
 class="newline" />Type: plist integer<br 
 class="newline" />Failsafe: 0<br 
 class="newline" />Description: Minimal allowed APFS driver date.
-     <!--l. 4783--><p class="noindent" >APFS driver date connects APFS driver with the calendar release date. Older versions of APFS drivers may
+     <!--l. 4785--><p class="noindent" >APFS driver date connects APFS driver with the calendar release date. Older versions of APFS drivers may
      contain unpatched vulnerabilities, which can be used to inflict harm on your computer. This option permits
      restricting APFS drivers to only recent releases.
 </p>
@@ -1187,7 +1190,7 @@ href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Acidanthera
 class="newline" />Type: plist integer<br 
 class="newline" />Failsafe: 0<br 
 class="newline" />Description: Minimal allowed APFS driver version.
-     <!--l. 4806--><p class="noindent" >APFS driver version connects APFS driver with the macOS release. APFS drivers from older macOS
+     <!--l. 4808--><p class="noindent" >APFS driver version connects APFS driver with the macOS release. APFS drivers from older macOS
      releases will become unsupported and thus may contain unpatched vulnerabilities, which can be used to
      inflict harm on your computer. This option permits restricting APFS drivers to only modern macOS
      versions.
@@ -1215,12 +1218,12 @@ href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Acidanthera
 class="newline" />Type: plist integer<br 
 class="newline" />Failsafe: 0<br 
 class="newline" />Description: Codec address on the specified audio controller for audio support.
-     <!--l. 4838--><p class="noindent" >Normally this contains first audio codec address on the builtin analog audio controller (HDEF). Audio codec
+     <!--l. 4840--><p class="noindent" >Normally this contains first audio codec address on the builtin analog audio controller (HDEF). Audio codec
      addresses, e.g. 2, can be found in the debug log (marked in bold-italic):
-     </p><!--l. 4841--><p class="noindent" >OCAU: 1/3 PciRoot(0x0)/Pci(0x1,0x0)/Pci(0x0,0x1)/VenMsg(&#x003C;redacted&#x003E;,00000000) (4 outputs)<br 
+     </p><!--l. 4843--><p class="noindent" >OCAU: 1/3 PciRoot(0x0)/Pci(0x1,0x0)/Pci(0x0,0x1)/VenMsg(&#x003C;redacted&#x003E;,00000000) (4 outputs)<br 
 class="newline" />OCAU: 2/3 PciRoot(0x0)/Pci(0x3,0x0)/VenMsg(&#x003C;redacted&#x003E;,00000000) (1 outputs)<br 
 class="newline" />OCAU: 3/3 PciRoot(0x0)/Pci(0x1B,0x0)/VenMsg(&#x003C;redacted&#x003E;,02000000) (7 outputs)
-     </p><!--l. 4845--><p class="noindent" >As an alternative this value can be obtained from IOHDACodecDevice class in I/O Registry containing it in
+     </p><!--l. 4847--><p class="noindent" >As an alternative this value can be obtained from IOHDACodecDevice class in I/O Registry containing it in
      IOHDACodecAddress field.
      </p></li>
      <li 
@@ -1228,12 +1231,12 @@ class="newline" />OCAU: 3/3 PciRoot(0x0)/Pci(0x1B,0x0)/VenMsg(&#x003C;redacted&#
 class="newline" />Type: plist string<br 
 class="newline" />Failsafe: empty string<br 
 class="newline" />Description: Device path of the specified audio controller for audio support.
-     <!--l. 4854--><p class="noindent" >Normally this contains builtin analog audio controller (HDEF) device path, e.g. PciRoot(0x0)/Pci(0x1b,0x0).
+     <!--l. 4856--><p class="noindent" >Normally this contains builtin analog audio controller (HDEF) device path, e.g. PciRoot(0x0)/Pci(0x1b,0x0).
      The list of recognised audio controllers can be found in the debug log (marked in bold-italic):
-     </p><!--l. 4858--><p class="noindent" >OCAU: 1/3 PciRoot(0x0)/Pci(0x1,0x0)/Pci(0x0,0x1)/VenMsg(&#x003C;redacted&#x003E;,00000000) (4 outputs)<br 
+     </p><!--l. 4860--><p class="noindent" >OCAU: 1/3 PciRoot(0x0)/Pci(0x1,0x0)/Pci(0x0,0x1)/VenMsg(&#x003C;redacted&#x003E;,00000000) (4 outputs)<br 
 class="newline" />OCAU: 2/3 PciRoot(0x0)/Pci(0x3,0x0)/VenMsg(&#x003C;redacted&#x003E;,00000000) (1 outputs)<br 
 class="newline" />OCAU: 3/3 PciRoot(0x0)/Pci(0x1B,0x0)/VenMsg(&#x003C;redacted&#x003E;,02000000) (7 outputs)
-     </p><!--l. 4862--><p class="noindent" >As an alternative gfxutil -f HDEF command can be used in macOS. Specifying empty device path will result
+     </p><!--l. 4864--><p class="noindent" >As an alternative gfxutil -f HDEF command can be used in macOS. Specifying empty device path will result
      in the first available audio controller to be used.
      </p></li>
      <li 
@@ -1241,19 +1244,19 @@ class="newline" />OCAU: 3/3 PciRoot(0x0)/Pci(0x1B,0x0)/VenMsg(&#x003C;redacted&#
 class="newline" />Type: plist integer<br 
 class="newline" />Failsafe: 0<br 
 class="newline" />Description: Index of the output port of the specified codec starting from 0.
-     <!--l. 4871--><p class="noindent" >Normally this contains the index of the green out of the builtin analog audio controller (HDEF). The number of
+     <!--l. 4873--><p class="noindent" >Normally this contains the index of the green out of the builtin analog audio controller (HDEF). The number of
      output nodes (N) in the debug log (marked in bold-italic):
-     </p><!--l. 4874--><p class="noindent" >OCAU: 1/3 PciRoot(0x0)/Pci(0x1,0x0)/Pci(0x0,0x1)/VenMsg(&#x003C;redacted&#x003E;,00000000) (4 outputs)<br 
+     </p><!--l. 4876--><p class="noindent" >OCAU: 1/3 PciRoot(0x0)/Pci(0x1,0x0)/Pci(0x0,0x1)/VenMsg(&#x003C;redacted&#x003E;,00000000) (4 outputs)<br 
 class="newline" />OCAU: 2/3 PciRoot(0x0)/Pci(0x3,0x0)/VenMsg(&#x003C;redacted&#x003E;,00000000) (1 outputs)<br 
 class="newline" />OCAU: 3/3 PciRoot(0x0)/Pci(0x1B,0x0)/VenMsg(&#x003C;redacted&#x003E;,02000000) (7 outputs)
-     </p><!--l. 4878--><p class="noindent" >The quickest way to find the right port is to bruteforce the values from 0 to N - 1.
+     </p><!--l. 4880--><p class="noindent" >The quickest way to find the right port is to bruteforce the values from 0 to N - 1.
      </p></li>
      <li 
   class="enumerate" id="x1-65008x4">AudioSupport<br 
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Activate audio support by connecting to a backend driver.
-     <!--l. 4886--><p class="noindent" >Enabling this setting routes audio playback from builtin protocols to a dedicated audio port (AudioOut) of the
+     <!--l. 4888--><p class="noindent" >Enabling this setting routes audio playback from builtin protocols to a dedicated audio port (AudioOut) of the
                                                                                                   
                                                                                                   
      
