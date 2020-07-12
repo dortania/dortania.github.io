@@ -1,19 +1,20 @@
 ---
 layout: page
-title: OpenCore HTML Docs
+title: Documentation
+page_title: OpenCore Documentation
 permalink: /docs/
 ---
 Note: these files are automatically generated and are unofficial versions of Acidanthera documents (although they should be the same word for word). The official Acidanthera documents (found in the OpenCorePkg repository) are the authoritative documentation for OpenCore.
 
-## For commit [37de1377](https://github.com/acidanthera/OpenCorePkg/tree/37de13770619c290c2cb482a8340aeff4002b0d6) (master)
+## For commit [bbcd4ac2](https://github.com/acidanthera/OpenCorePkg/tree/bbcd4ac2e0cec1cc20c8a92eca718be5c540175d) (master)
 
 If the commit does not match up with the latest commit in master branch, wait for about an hour and check again.
 
-[Configuration](latest/Configuration.html) ([original PDF](https://github.com/acidanthera/OpenCorePkg/blob/37de13770619c290c2cb482a8340aeff4002b0d6/Docs/Configuration.pdf))
+[Configuration](latest/Configuration.html) ([original PDF](https://github.com/acidanthera/OpenCorePkg/blob/bbcd4ac2e0cec1cc20c8a92eca718be5c540175d/Docs/Configuration.pdf))
 <br>
-[Differences](latest/Differences.html) ([original PDF](https://github.com/acidanthera/OpenCorePkg/blob/37de13770619c290c2cb482a8340aeff4002b0d6/Docs/Differences/Differences.pdf))
+[Differences](latest/Differences.html) ([original PDF](https://github.com/acidanthera/OpenCorePkg/blob/bbcd4ac2e0cec1cc20c8a92eca718be5c540175d/Docs/Differences/Differences.pdf))
 <br>
-[Errata](latest/Errata.html) ([original PDF](https://github.com/acidanthera/OpenCorePkg/blob/37de13770619c290c2cb482a8340aeff4002b0d6/Docs/Errata/Errata.pdf))
+[Errata](latest/Errata.html) ([original PDF](https://github.com/acidanthera/OpenCorePkg/blob/bbcd4ac2e0cec1cc20c8a92eca718be5c540175d/Docs/Errata/Errata.pdf))
 
 ## For release [0.5.9](https://github.com/acidanthera/OpenCorePkg/tree/0.5.9)
 
@@ -21,13 +22,11 @@ If the commit does not match up with the latest commit in master branch, wait fo
 <br>
 [Differences](release/Differences.html) ([original PDF](https://github.com/acidanthera/OpenCorePkg/blob/0.5.9/Docs/Differences/Differences.pdf))
 
-#### Documentation compiled at 2020-07-12 18:00:45 (UTC)
+#### Documentation compiled at 2020-07-12 20:05:09 (UTC)
 
 ## Known Issues
 
 * Directory Structure SVG does not work (relevant section is removed to remove error)
-
-* ~~Logo is missing~~ Fixed
 
 * Links in Differences turn into `??` if the referenced content is not in the file
 
