@@ -1,6 +1,7 @@
 ---
 layout: page
-title: OpenCore HTML Docs
+title: Documentation
+page_title: OpenCore Documentation
 permalink: /docs/
 ---
 Note: these files are automatically generated and are unofficial versions of Acidanthera documents (although they should be the same word for word). The official Acidanthera documents (found in the OpenCorePkg repository) are the authoritative documentation for OpenCore.
@@ -26,8 +27,6 @@ If the commit does not match up with the latest commit in master branch, wait fo
 ## Known Issues
 
 * Directory Structure SVG does not work (relevant section is removed to remove error)
-
-* ~~Logo is missing~~ Fixed
 
 * Links in Differences turn into `??` if the referenced content is not in the file
 
