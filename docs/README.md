@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: custom-title-page
 title: Documentation
 page_title: OpenCore Documentation
 permalink: /docs/
@@ -22,7 +22,7 @@ If the commit does not match up with the latest commit in master branch, wait fo
 <br>
 [Differences](release/Differences.html) ([original PDF](https://github.com/acidanthera/OpenCorePkg/blob/0.5.9/Docs/Differences/Differences.pdf))
 
-#### Documentation compiled at 2020-07-12 20:05:09 (UTC)
+#### Documentation compiled at 2020-07-12 20:07:06 (UTC)
 
 ## Known Issues
 
