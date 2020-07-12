@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: custom-title-page
 title: Documentation
 page_title: OpenCore Documentation
 permalink: /docs/
