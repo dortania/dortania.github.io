@@ -61,7 +61,7 @@ commit_hash = subprocess.run("git rev-parse HEAD".split(), capture_output=True, 
 index = index.replace("COMMIT_HASH_FULL", commit_hash)
 index = index.replace("COMMIT_HASH", commit_hash[:8])
 index = index.replace("RELEASE_NAME", sys.argv[1])
-index = index.replace("COMPILE_TIME", str(datetime.datetime.now(tz=datetime.timezone.utc)))
+index = index.replace("COMPILE_TIME", datetime.datetime.now(tz=datetime.timezone.utc).strftime("%Y-%m-%d %X (%Z)"))
 
 # Write back to file
 Path("Deploy/README.md").write_text(index)
