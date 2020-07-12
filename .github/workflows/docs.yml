@@ -81,13 +81,6 @@ jobs:
         run: |
           cd release/Docs/Differences
           make4ht Differences.tex
-      - name: Build Release Errata
-        # Errata not in 0.5.9 yet, ignore failure
-        run: |
-          if [ -d "release/Docs/Errata" ]; then
-          cd release/Docs/Errata
-          make4ht Errata.tex
-          fi
       - name: Copy Files
         run: |
           mkdir -p Deploy/latest Deploy/release
