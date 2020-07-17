@@ -126,7 +126,7 @@ In the end I would like to express my sincere gratitude to Acidanthera and WWHC 
 
 While not made by Acidanthera, both the OpenCore Desktop and Laptop Guides have been updated with 0.5.9 support. And the desktop guide getting early Comet Lake-S support:
 
-* [OpenCore Desktop Guide](https://dortania.github.io/OpenCore-Desktop-Guide/)
-* [OpenCore Laptop guide](https://dortania.github.io/vanilla-laptop-guide/)
+* [OpenCore Desktop Guide](https://dortania.github.io/OpenCore-Install-Guide/)
+* [OpenCore Laptop guide](https://dortania.github.io/OpenCore-Install-Guide/)
 
 — Khronokernel
