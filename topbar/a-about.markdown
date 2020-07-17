@@ -18,13 +18,13 @@ Before you can get started on your journey, you will need to check *if* you can 
 
 Now that you know your hardware is supported, it's time to finally proceed to setting up macOS. Currently we have two main guides available for help with this journey:
 
-* [OpenCore Desktop Guide](https://dortania.github.io/OpenCore-Install-Guide/)
-  * Primary OpenCore guide.
-* [OpenCore Laptop Guide](https://dortania.github.io/OpenCore-Install-Guide/)
-  * Companion OpenCore guide for laptops.
+* [OpenCore Install Guide](https://dortania.github.io/OpenCore-Install-Guide/)
+  * Primary OpenCore guide, supports both laptops and desktops
 
 # Extras 
 
+* [OpenCore Post-Install](https://dortania.github.io/OpenCore-Post-Install/)
+  * Guide for once you have OpenCore installed, and want to put the finishing touches.
 * [WhateverGreen's Framebuffer Patching](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
   * Deep dive into how to setup your iGPU.
 * [OpenCore's Official Configuration PDF](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf)
