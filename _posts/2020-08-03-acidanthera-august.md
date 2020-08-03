@@ -5,9 +5,20 @@ date:   2020-08-03 15:00:00 -0700
 categories: Hackintosh updates
 ---
 
+* [A message from vit9696](#a-message-from-vit9696)
+* [Changelogs](#changelogs)
+* [Dortania Updates](#dortania-updates)
+* [Guide Updates](#guide-updates)
+
 # A message from vit9696
 
-{insert inspirational speech}
+Nice to meet you this summer again. By skipping a month we hoped to push in a small vacation for our team members, yet, with Big Sur as it was, there was no room for it to happen. While these two months were very bright for the new changes, they also helped us to assess the previous release and reconsider some processes.
+
+Our greatest achievement in June is that we discovered no issues in OpenCore 0.5.9 requiring to stay on a previous release. To make issue handling even more transparent, from now on we will publish the [OpenCore Errata document](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Errata/Errata.pdf) containing notable issues and their workarounds. Thanks to Dortania Team and @dhinakg in particular this and several other documents are now available in [HTML format](https://dortania.github.io/docs) as well. And that is not all, with Dortania we have also launched a [community tracker](https://github.com/dortania/bugtracker/issues) to unify non-Acidanthera issues and a [regression-testing cellar](https://dortania.github.io/builds) containing binary pre-release versions of Acidanthera products on per-commit basis since Spring.
+
+Let us get back to macOS 11. Big Sur is a big change, maybe not as big to do a major version increase, but it contains numerous under the hood changes that are yet to evolve. With this release we literally had to reimplement the kext injection from the ground. It is an entirely new state of the art piece of code we are very proud about with @Download-Fritz. As a consequence of this change, Lilu and its whole plugin system got a very serious rewrite as well. Lilu became noticeably more performant and flexible, though not all its APIs are available at the moment in 11.0. For example, one of such APIs, the userspace patcher, needs a rewrite, which we do not have the resources for at the moment. Today a number of our products received basic compatibility updates to support Big Sur, and today macOS Big Sur remains being an early beta and a part of a transitioning period. Please do not rush with it if your environment is important for you.
+
+Extending our speech about the compatibility, we would like to say one important thing. We care. When we welcome the new Mac users that no longer can receive the updates. When we invest resources into OpenDuetPkg with @Goldfish64 to improve the support of older BIOS systems. When we implement the missing pieces of an advanced battery management driver and enable FAN configuration with @lvs1974. When we redo the Intel GPU reintegration with @07151129. When we implement [macOS native integration of Intel Wireless](https://github.com/usr-sse2/Black80211-Catalina) into [itwlm](https://github.com/OpenIntelWireless/itlwm) with @usr-sse2. We continue to interact with the community and accept patches from the outside, and we are looking forward to doing more fun stuff.
 
 — Vit
 
@@ -152,6 +163,14 @@ since class AirPortBrcm4360 is unsupported.
 #### [BrcmPatchRAM 2.5.4](https://github.com/acidanthera/BrcmPatchRAM)
 
 * Added inject BCM2070 - BCM943224HMB, BCM943225HMB Combo
+
+# Dortania Updates
+
+With great efforts from one of our members, DhinakG, we're proud to announce Dortania's build site:
+
+* https://dortania.github.io/builds/
+
+What this site is meant is to be an easy to access list of all of Acidanthera's kexts and tools with the newest commits being built and posted here. Currently it's still in beta and would love for people to contribute via [PRs](https://github.com/dortania/build-repo), and there's plans to expand past Acidanthera-only tools.
 
 # Guide Updates
 
