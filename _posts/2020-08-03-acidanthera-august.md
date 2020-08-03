@@ -147,7 +147,7 @@ since class AirPortBrcm4360 is unsupported.
 
 Some of you may have noticed since our last update that the site has gone through a redesign and rewriting. The laptop guide has been merged and the post-install guide becoming a dedicated site.
 
-We've also added a basic guide on macOS 11, big Sur installs however we won't be providing proper support till official release
+We've also added a basic guide on macOS 11 (Big Sur) installs however we won't be providing proper support til official release.
 
 * [OpenCore Install Guide](https://dortania.github.io/OpenCore-Install-Guide/)
 * [OpenCore Post-Install](https://dortania.github.io/OpenCore-Post-Install/)
