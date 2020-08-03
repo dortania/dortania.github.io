@@ -145,7 +145,7 @@ since class AirPortBrcm4360 is unsupported.
 
 # Guide Updates
 
-Some of you may have noticed since our last update that the site has gone through a redesign and rewriting. The laptop guide has been merged and the post-install guide becoming a dedicated site.
+Some of you may have noticed since our last update that the site has gone through a redesign and rewrite. The laptop guide has been merged into the desktop guide to create a unified install guide and post-install has been separated to a dedicated site.
 
 We've also added a basic guide on macOS 11 (Big Sur) installs however we won't be providing proper support til official release.
 
