@@ -1,0 +1,232 @@
+---
+layout: default
+---
+<article class="post">
+
+    <header class="post-header">
+        <h1 class="post-title">{{ page.title | escape }}</h1>
+    </header>
+
+    <div class="post-content">
+        {{ content }}
+        <div class="container">
+            <select name="product" id="product">
+                <option value="initial">Select a product...</option>
+            </select>
+            <select name="version" id="version">
+                <option value="initial">Select version...</option>
+            </select>
+            <select name="sha" id="sha">
+                <option value="initial">Select commit...</option>
+            </select>
+            <input type="checkbox" name="viewall" id="viewall" checked>View all
+            <br>
+            <div class="info" style="white-space: pre-line"></div>
+            <table class="viewcontainer"></table>
+        </div>
+    </div>
+
+    <style>
+        tr>td {
+            text-align: center;
+        }
+
+        table th,
+        table td {
+            padding: 3px 10px;
+        }
+
+        .msg-column {
+            text-align: left;
+            max-width: 35vh;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+
+    <script>
+        $.getJSON("https://raw.githubusercontent.com/dortania/build-repo/builds/config.json", function (data) {
+            const converter = new showdown.Converter()
+            Object.keys(data).filter(key => !key.startsWith("_")).forEach(key => $("#product")[0].add(new Option(key, key)))
+            var handleViewContainer = function () {
+                $(".viewcontainer").empty();
+                if (!($("#viewall").is(":checked")) || !($("#sha").val() == "initial")) {
+                    return;
+                }
+                if ($("#product").val() == "initial") {
+                    $(".viewcontainer").text("You must select a product to view all builds.");
+                    return;
+                }
+                if ($("#version").val() == "initial") {
+                    // List versions + shas.
+                    let versions = []
+                    data[$("#product").val()]["versions"].forEach((element, index) => {
+                        if (versions.findIndex(x => x == element.version) === -1) {
+                            versions.push(element.version);
+                        }
+                    });
+                    versions.forEach(version => {
+                        let thead = $("<th>");
+                        thead.attr("colspan", 4);
+                        thead.append("<strong>" + version + "</strong>")
+                        $(".viewcontainer").append(thead);
+                        let shas = []
+                        data[$("#product").val()]["versions"].forEach((v, index) => {
+                            if (v.version == version) {
+                                shas.push([v, index]);
+                            }
+                        });
+                        shas.forEach((element, index) => {
+                            let container_p = $("<tr>")
+                            let entry = element[0]
+                            let hash_link = $("<a>")
+                            hash_link.attr("href", entry.commit.url);
+                            hash_link.text(entry.commit.sha.substring(0, 7));
+                            container_p.append($("<td>").append($("<code>").append(hash_link)))
+
+                            let message_text = $("<td>")
+                            message_text.attr("class", "msg-column")
+                            message_text.text(entry.commit.message.split("\n")[0])
+                            container_p.append(message_text)
+
+                            if (entry.links.debug) {
+                                container_p.append(" ");
+                                let debug_link = $("<a>");
+                                debug_link.attr("href", entry.links.debug);
+                                debug_link.text("DEBUG");
+                                container_p.append($("<td>").append(debug_link));
+                            }
+                            if (entry.links.release) {
+                                container_p.append(" ");
+                                let release_link = $("<a>");
+                                release_link.attr("href", entry.links.release);
+                                release_link.text("RELEASE");
+                                container_p.append($("<td>").append(release_link));
+                            }
+                            $(".viewcontainer").append(container_p)
+                        })
+                    })
+                } else {
+                    // Just shas.
+                    let shas = []
+                    data[$("#product").val()]["versions"].forEach((element, index) => {
+                        if (element.version == $("#version").val()) {
+                            shas.push([element, index]);
+                        }
+                    });
+                    shas.forEach((element, index) => {
+                        let container_p = $("<tr>")
+                        let entry = element[0]
+                        let hash_link = $("<a>")
+                        hash_link.attr("href", entry.commit.url);
+                        hash_link.text(entry.commit.sha.substring(0, 7));
+                        container_p.append($("<td>").append($("<code>").append(hash_link)))
+
+                        let message_text = $("<td>")
+                        message_text.attr("class", "msg-column")
+                        message_text.text(entry.commit.message.split("\n")[0])
+                        container_p.append(message_text)
+
+                        if (entry.links.debug) {
+                            container_p.append(" ");
+                            let debug_link = $("<a>");
+                            debug_link.attr("href", entry.links.debug);
+                            debug_link.text("DEBUG");
+                            container_p.append($("<td>").append(debug_link));
+                        }
+                        if (entry.links.release) {
+                            container_p.append(" ");
+                            let release_link = $("<a>");
+                            release_link.attr("href", entry.links.release);
+                            release_link.text("RELEASE");
+                            container_p.append($("<td>").append(release_link));
+                        }
+                        $(".viewcontainer").append(container_p)
+                    })
+                }
+
+            }
+            var resetInfo = function () {
+                console.log("resetInfo");
+                $(".info").empty()
+                if ($("#product").val() == "initial" || $("#version").val() == "initial" || $("#sha").val() == "initial") {
+                    handleViewContainer();
+                    return;
+                }
+                let entry = data[$("#product").val()]["versions"][$("#sha").val()]
+                $(".info").html(converter.makeHtml(entry["release"]["description"]))
+                $(".info").append("<p><strong>Download Links:</strong></p>")
+                if (entry.links.debug) {
+                    let debug_link = $("<a>");
+                    debug_link.attr("href", entry.links.debug);
+                    debug_link.text("Download Debug");
+                    $(".info").append($("<p>").append(debug_link))
+                }
+                if (entry.links.release) {
+                    let release_link = $("<a>");
+                    release_link.attr("href", entry.links.release);
+                    release_link.text("Download Release");
+                    $(".info").append($("<p>").append(release_link))
+                }
+                if (entry.extras) {
+                    Object.keys(entry.extras).forEach(key => {
+                        let extra_link = $("<a>");
+                        extra_link.attr("href", entry.extras[key]);
+                        extra_link.text("Download " + key);
+                        $(".info").append($("<p>").append(extra_link))
+                    })
+                }
+                let gh_release_link = $("<a>");
+                gh_release_link.attr("href", entry.release.url);
+                gh_release_link.text("View on GitHub Releases");
+                $(".info").append("<br>");
+                $(".info").append(gh_release_link)
+                handleViewContainer();
+                //$(".info").text()
+            }
+            var resetSha = function () {
+                console.log("resetSha");
+                $("#sha")[0].options.length = 0;
+                $("#sha")[0].add(new Option("Select commit...", "initial", true, true));
+                if ($("#product").val() == "initial" || $("#version").val() == "initial") {
+                    resetInfo();
+                    return;
+                }
+                let shas = []
+                data[$("#product").val()]["versions"].forEach((element, index) => {
+                    if (element.version == $("#version").val()) {
+                        shas.push([element, index]);
+                    }
+                });
+                shas.forEach((element, index) => $("#sha")[0].add(new Option(element[0].commit.sha + (index == 0 ? " (latest)" : ""), element[1])))
+                resetInfo();
+            }
+            var resetVersion = function () {
+                console.log("resetVersion");
+                $("#version")[0].options.length = 0;
+                $("#version")[0].add(new Option("Select version...", "initial", true, true));
+                if ($("#product").val() == "initial") {
+                    resetSha();
+                    return;
+                }
+                let versions = []
+                data[$("#product").val()]["versions"].forEach((element, index) => {
+                    if (versions.findIndex(x => x == element.version) === -1) {
+                        versions.push(element.version);
+                    }
+                });
+                versions.forEach((element, index) => {
+                    $("#version")[0].add(new Option(element, element));
+                })
+                resetSha();
+            }
+            $("#product").change(resetVersion)
+            $("#version").change(resetSha)
+            $("#sha").change(resetInfo)
+            $("#viewall").change(handleViewContainer)
+        })
+    </script>
+</article>
