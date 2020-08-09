@@ -167,22 +167,33 @@ class="newline" />Failsafe: false<br
 class="newline" />Description: Allow CTRL+Enter and CTRL+Index handling to set the default boot option in boot picker.
      </li>
      <li 
-  class="enumerate" id="x1-43006x3">AuthRestart<br 
+  class="enumerate" id="x1-43006x3"><span class="uwave">ApECID</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist integer</span><span class="uwave">, 64 bit</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">0</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Apple Enclave Identifier. </span>
+     <!--l. 2993--><p class="noindent" ><span class="uwave">Setting this value to any (random) non-zero 64-bit integer will allow using personalised Apple Secure Boot
+     identifiers. This value set and </span><span class="uwave">SecureBootModel</span><span class="uwave">valid and not </span><span class="uwave">Disabled</span><span class="uwave">is equivalent to to ahieve </span><a 
+href="https://support.apple.com/en-us/HT208330" >Full Security</a>
+     <span class="uwave">of Apple Secure Boot. </span>
+     </p><!--l. 2998--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: You will have to reinstall the operating system or use the recovery after setting this value to non-zero. </span>
+     </p></li>
+     <li 
+  class="enumerate" id="x1-43008x4">AuthRestart<br 
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Enable VirtualSMC-compatible authenticated restart.
-     <!--l. 2990--><p class="noindent" >Authenticated restart is a way to reboot FileVault 2 enabled macOS without entering the password. To perform
+     <!--l. 3008--><p class="noindent" >Authenticated restart is a way to reboot FileVault 2 enabled macOS without entering the password. To perform
      authenticated restart one can use a dedicated terminal command: sudo fdesetup authrestart. It is also used
      when installing operating system updates.
-     </p><!--l. 2995--><p class="noindent" >VirtualSMC performs authenticated restart by saving disk encryption key split in NVRAM and RTC, which
+     </p><!--l. 3013--><p class="noindent" >VirtualSMC performs authenticated restart by saving disk encryption key split in NVRAM and RTC, which
      despite being removed as soon as OpenCore starts, may be considered a security risk and thus is optional.
      </p></li>
      <li 
-  class="enumerate" id="x1-43008x4">BootProtect<br 
+  class="enumerate" id="x1-43010x5">BootProtect<br 
 class="newline" />Type: plist string<br 
 class="newline" />Failsafe: None<br 
 class="newline" />Description: Attempt to provide bootloader persistence.
-     <!--l. 3005--><p class="noindent" >Valid values:
+     <!--l. 3023--><p class="noindent" >Valid values:
 </p>
          <ul class="itemize1">
          <li class="itemize">None — do nothing.
@@ -190,21 +201,23 @@ class="newline" />Description: Attempt to provide bootloader persistence.
          <li class="itemize">Bootstrap — create or update top-priority \EFI\OC\Bootstrap\Bootstrap.efi boot option (Boot9696)
          in UEFI variable storage at bootloader startup. For this option to work RequestBootVarRouting is required
          to be enabled.</li></ul>
-     <!--l. 3016--><p class="noindent" >This option provides integration with third-party operating system installation and upgrade at the times they overwrite
+     <!--l. 3034--><p class="noindent" >This option provides integration with third-party operating system installation and upgrade at the times they overwrite
+                                                                                                  
+                                                                                                  
      \EFI\BOOT\BOOTx64.efi file. By creating a custom option in Bootstrap mode this file path becomes no longer used for
      bootstraping OpenCore.
-     </p><!--l. 3021--><p class="noindent" >Note 1: Some firmewares may have broken NVRAM, no boot option support, or various other incompatibilities of any
+     </p><!--l. 3039--><p class="noindent" >Note 1: Some firmewares may have broken NVRAM, no boot option support, or various other incompatibilities of any
      kind. While unlikely, the use of this option may even cause boot failure. Use at your own risk on boards known to be
      compatible.
-     </p><!--l. 3025--><p class="noindent" >Note 2: Be warned that while NVRAM reset executed from OpenCore should not erase the boot option created in
+     </p><!--l. 3043--><p class="noindent" >Note 2: Be warned that while NVRAM reset executed from OpenCore should not erase the boot option created in
      Bootstrap, executing NVRAM reset prior to loading OpenCore will remove it.
      </p></li>
      <li 
-  class="enumerate" id="x1-43010x5"><span class="uwave">DmgLoading</span><br 
+  class="enumerate" id="x1-43012x6"><span class="uwave">DmgLoading</span><br 
 class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist string</span><br 
 class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">Signed</span><br 
 class="newline" /><span class="uwave">Description</span><span class="uwave">: Attempt to provide bootloader persistence. </span>
-     <!--l. 3037--><p class="noindent" ><span class="uwave">Valid values: </span>
+     <!--l. 3054--><p class="noindent" ><span class="uwave">Valid values: </span>
 </p>
          <ul class="itemize1">
          <li class="itemize"><span class="uwave">Disabled</span> <span class="uwave">— loading DMG images will fail. </span>
@@ -214,7 +227,7 @@ class="newline" /><span class="uwave">Description</span><span class="uwave">: At
          <li class="itemize"><span class="uwave">Any</span> <span class="uwave">— any DMG images will mount as normal filesystems. </span></li></ul>
      </li>
      <li 
-  class="enumerate" id="x1-43012x6">ExposeSensitiveData<br 
+  class="enumerate" id="x1-43014x7">ExposeSensitiveData<br 
 class="newline" />Type: plist integer<br 
 class="newline" />Failsafe: 0x6<br 
 class="newline" />Description: Sensitive data exposure bitmask (sum) to operating system.
@@ -226,32 +239,206 @@ class="newline" />Description: Sensitive data exposure bitmask (sum) to operatin
          <li class="itemize">0x04 — Expose OpenCore version in boot picker menu title.
          </li>
          <li class="itemize">0x08 — Expose OEM information as a set of UEFI variables.</li></ul>
-     <!--l. 3061--><p class="noindent" >Exposed booter path points to OpenCore.efi or its booter depending on the load order. To obtain booter path use the
-     following command in macOS: </p><!--l. 3063-->
+     <!--l. 3077--><p class="noindent" >Exposed booter path points to OpenCore.efi or its booter depending on the load order. To obtain booter path use the
+     following command in macOS: </p><!--l. 3079-->
 <a 
- id="x1-430116"></a>
+ id="x1-430137"></a>
      <div class="lstlisting" id="listing-8"><span class="label"><a 
- id="x1-43013r1"></a></span>nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:boot-path
+ id="x1-43015r1"></a></span>nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:boot-path
      
      </div>
-     <!--l. 3067--><p class="noindent" >To use booter path for mounting booter volume use the following command in macOS: </p><!--l. 3068-->
+     <!--l. 3083--><p class="noindent" >To use booter path for mounting booter volume use the following command in macOS: </p><!--l. 3084-->
      <div class="lstlisting" id="listing-9"><span class="label"><a 
- id="x1-43014r1"></a></span>u=$(nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:boot-path | sed &#x0027;s/.*GPT,\([^,]*\),.*/\1/&#x0027;); \ <br /><span class="label"><a 
- id="x1-43015r2"></a></span>  if [ &#x0022;$u&#x0022; != &#x0022;&#x0022; ]; then sudo diskutil mount $u ; fi
+ id="x1-43016r1"></a></span>u=$(nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:boot-path | sed &#x0027;s/.*GPT,\([^,]*\),.*/\1/&#x0027;); \ <br /><span class="label"><a 
+ id="x1-43017r2"></a></span>  if [ &#x0022;$u&#x0022; != &#x0022;&#x0022; ]; then sudo diskutil mount $u ; fi
      
      </div>
-     <!--l. 3073--><p class="noindent" >To obtain OpenCore version use the following command in macOS: </p><!--l. 3074-->
+     <!--l. 3089--><p class="noindent" >To obtain OpenCore version use the following command in macOS: </p><!--l. 3090-->
      <div class="lstlisting" id="listing-10"><span class="label"><a 
- id="x1-43016r1"></a></span>nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:opencore-version
+ id="x1-43018r1"></a></span>nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:opencore-version
      
-     </div>
-     <!--l. 3078--><p class="noindent" >To obtain OEM information use the following commands in macOS: </p><!--l. 3079-->
-     <div class="lstlisting" id="listing-11"><span class="label"><a 
- id="x1-43017r1"></a></span>nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:oem-product # SMBIOS Type1 ProductName <br /><span class="label"><a 
- id="x1-43018r2"></a></span>nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:oem-vendor  # SMBIOS Type2 Manufacturer <br /><span class="label"><a 
- id="x1-43019r3"></a></span>nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:oem-board   # SMBIOS Type2 ProductName
-     
-     </div>
+                                                                                                  
+                                                                                                  
+         </li>
+         <li class="itemize">0x00080000 (bit 19) — OC_SCAN_ALLOW_DEVICE_NVME, allow scanning NVMe devices.
+         </li>
+         <li class="itemize">0x00100000 (bit 20) — OC_SCAN_ALLOW_DEVICE_ATAPI, allow scanning CD/DVD devices.
+         </li>
+         <li class="itemize">0x00200000 (bit 21) — OC_SCAN_ALLOW_DEVICE_USB, allow scanning USB devices.
+         </li>
+         <li class="itemize">0x00400000 (bit 22) — OC_SCAN_ALLOW_DEVICE_FIREWIRE, allow scanning FireWire devices.
+         </li>
+         <li class="itemize">0x00800000 (bit 23) — OC_SCAN_ALLOW_DEVICE_SDCARD, allow scanning card reader devices.
+         </li>
+         <li class="itemize">0x01000000 (bit 24) — OC_SCAN_ALLOW_DEVICE_PCI, allow scanning devices directly connected to PCI bus
+         (e.g. VIRTIO).</li></ul>
+     <!--l. 3247--><p class="noindent" >Note: Given the above description, 0xF0103 value is expected to allow scanning of SATA, SAS, SCSI, and NVMe
+     devices with APFS file system, and prevent scanning of any devices with HFS or FAT32 file systems in
+     addition to not scanning APFS file systems on USB, CD, and FireWire drives. The combination reads as:
+     </p>
+         <ul class="itemize1">
+         <li class="itemize">OC_SCAN_FILE_SYSTEM_LOCK
+         </li>
+         <li class="itemize">OC_SCAN_DEVICE_LOCK
+         </li>
+         <li class="itemize">OC_SCAN_ALLOW_FS_APFS
+         </li>
+         <li class="itemize">OC_SCAN_ALLOW_DEVICE_SATA
+         </li>
+         <li class="itemize">OC_SCAN_ALLOW_DEVICE_SASEX
+         </li>
+         <li class="itemize">OC_SCAN_ALLOW_DEVICE_SCSI
+         </li>
+         <li class="itemize">OC_SCAN_ALLOW_DEVICE_NVME</li></ul>
+     </li>
+     <li 
+  class="enumerate" id="x1-43035x11"><span class="uwave">SecureBootModel</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist string</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">Default</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Apple Secure Boot hardware model. </span>
+     <!--l. 3273--><p class="noindent" ><span class="uwave">Defines Apple Secure Boot hardware model and policy. Specifying this value defines which operating systems will be
+     bootable. Operating systems shipped before the specified model was released will not boot. Valid values:
+     </span>
+</p>
+         <ul class="itemize1">
+         <li class="itemize"><span class="uwave">Default</span> <span class="uwave">— Recent available model, currently set to </span><span class="uwave">j215</span><span class="uwave">. </span>
+         </li>
+         <li class="itemize"><span class="uwave">Disabled</span> <span class="uwave">— No model, Secure Boot will be disabled. </span>
+         </li>
+         <li class="itemize"><span class="uwave">j137</span> <span class="uwave">— </span><span class="uwave">iMacPro1,1</span>
+         </li>
+         <li class="itemize"><span class="uwave">j680</span> <span class="uwave">— </span><span class="uwave">MacBookPro15,1</span>
+         </li>
+         <li class="itemize"><span class="uwave">j132</span> <span class="uwave">— </span><span class="uwave">MacBookPro15,2</span>
+         </li>
+         <li class="itemize"><span class="uwave">j140k</span> <span class="uwave">— </span><span class="uwave">MacBookAir8,1</span>
+         </li>
+         <li class="itemize"><span class="uwave">j140a</span> <span class="uwave">— </span><span class="uwave">MacBookAir8,2</span>
+         </li>
+                                                                                                  
+                                                                                                  
+         <li class="itemize"><span class="uwave">j174</span> <span class="uwave">— </span><span class="uwave">Macmini8,1</span>
+         </li>
+         <li class="itemize"><span class="uwave">j160</span> <span class="uwave">— </span><span class="uwave">MacPro7,1</span>
+         </li>
+         <li class="itemize"><span class="uwave">j780</span> <span class="uwave">— </span><span class="uwave">MacBookPro15,3</span>
+         </li>
+         <li class="itemize"><span class="uwave">j213</span> <span class="uwave">— </span><span class="uwave">MacBookPro15,4</span>
+         </li>
+         <li class="itemize"><span class="uwave">j152f</span> <span class="uwave">— </span><span class="uwave">MacBookPro16,1</span>
+         </li>
+         <li class="itemize"><span class="uwave">j214k</span> <span class="uwave">— </span><span class="uwave">MacBookPro16,2</span>
+         </li>
+         <li class="itemize"><span class="uwave">j230k</span> <span class="uwave">— </span><span class="uwave">MacBookAir9,1</span>
+         </li>
+         <li class="itemize"><span class="uwave">j223</span> <span class="uwave">— </span><span class="uwave">MacBookPro16,3</span>
+         </li>
+         <li class="itemize"><span class="uwave">j215</span> <span class="uwave">— </span><span class="uwave">MacBookPro16,4</span>
+         </li>
+         <li class="itemize"><span class="uwave">j185</span> <span class="uwave">— </span><span class="uwave">iMac20,1 (?)</span>
+         </li>
+         <li class="itemize"><span class="uwave">j185f</span> <span class="uwave">— </span><span class="uwave">iMac20,2 (?)</span></li></ul>
+     <!--l. 3297--><p class="noindent" ><span class="uwave">PlatformInfo</span> <span class="uwave">and </span><span class="uwave">SecureBootModel</span> <span class="uwave">are independent, allowing to enabling Apple Secure Boot with any SMBIOS.
+     Setting </span><span class="uwave">SecureBootModel</span> <span class="uwave">to any valid value but </span><span class="uwave">Disabled</span> <span class="uwave">is equivalent to </span><a 
+href="https://support.apple.com/en-us/HT208330" >Medium Security</a> <span class="uwave">of Apple Secure Boot. To
+     achieve </span><span class="uwave">Full Security</span> <span class="uwave">one will need to also specify </span><span class="uwave">ApECID</span> <span class="uwave">value. </span>
+     </p><!--l. 3305--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: </span><span class="uwave">Default</span> <span class="uwave">value will increase with time to support the latest major release operating system. It is not recommended
+     to use </span><span class="uwave">ApECID</span> <span class="uwave">and </span><span class="uwave">Default</span> <span class="uwave">value together. </span>
+</p>
+     </li></ol>
+<a 
+ id="x1-43036r46"></a>
+<h4 class="subsectionHead"><span class="titlemark">8.6   </span> <a 
+ id="x1-440006"></a>Entry Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-44002x1">Arguments<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty string<br 
+class="newline" />Description: Arbitrary ASCII string used as boot arguments (load options) of the specified entry.
+     </li>
+     <li 
+  class="enumerate" id="x1-44004x2">Auxiliary<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: This entry will not be listed by default when HideAuxiliary is set to true.
+     </li>
+     <li 
+  class="enumerate" id="x1-44006x3">Comment<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty string<br 
+class="newline" />Description: Arbitrary ASCII string used to provide human readable reference for the entry. It is implementation
+     defined whether this value is used.
+     </li>
+     <li 
+  class="enumerate" id="x1-44008x4">Enabled<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: This entry will not be listed unless set to true.
+     </li>
+                                                                                                  
+                                                                                                  
+     <li 
+  class="enumerate" id="x1-68010x5">AppleFramebufferInfo<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Reinstalls Apple Framebuffer Info protocol with a builtin version. This may be used to override
+     framebuffer information on VMs or legacy Macs to improve compatibility with legacy EfiBoot like the one in
+     macOS 10.4.
+     </li>
+     <li 
+  class="enumerate" id="x1-68012x6">AppleImageConversion<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Reinstalls Apple Image Conversion protocol with a builtin version.
+     </li>
+     <li 
+  class="enumerate" id="x1-68014x7"><span class="uwave">AppleImg4Verification</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">false</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Reinstalls Apple IMG4 Verification protocol with a builtin version. This protocol is used to verify
+     </span><span class="uwave">im4m</span> <span class="uwave">manifest files used by Apple Secure Boot. </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-68016x8">AppleKeyMap<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Reinstalls Apple Key Map protocols with builtin versions.
+     </li>
+     <li 
+  class="enumerate" id="x1-68018x9">AppleRtcRam<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Reinstalls Apple RTC RAM protocol with builtin version.
+     <!--l. 5473--><p class="noindent" >Note: Builtin version of Apple RTC RAM protocol may filter out I/O attempts to select RTC memory addresses.
+     The list of addresses can be specified in 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:rtc-blacklist variable as
+     a data array<span class="uwave">. </span>
+     </p></li>
+     <li 
+  class="enumerate" id="x1-68020x10"><span class="uwave">AppleSecureBoot</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">false</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Reinstalls Apple Secure Boot protocol with a builtin version</span>.
+     </li>
+     <li 
+  class="enumerate" id="x1-68022x11">AppleSmcIo<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Reinstalls Apple SMC I/O protocol with a builtin version.
+     <!--l. 5493--><p class="noindent" >This protocol replaces legacy VirtualSmc UEFI driver, and is compatible with any SMC kernel extension.
+     However, in case FakeSMC kernel extension is used, manual NVRAM key variable addition may be needed.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-68024x12">AppleUserInterfaceTheme<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Reinstalls Apple User Interface Theme protocol with a builtin version.
+     </li>
+     <li 
+  class="enumerate" id="x1-68026x13">DataHub<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Reinstalls Data Hub protocol with a builtin version. This will delete all previous properties if the
                                                                                                   
 
 
