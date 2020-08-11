@@ -8,8 +8,8 @@ theme: minima
 header_pages:
   - topbar/a-about.markdown
   - topbar/b-troubleshooting.markdown
-  - topbar/c-legacy-guides.markdown
   - topbar/d-forums.markdown
   - docs/README.md
+  - topbar/e-builds.markdown
 plugins:
   - jekyll-feed
