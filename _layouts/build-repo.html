@@ -2,24 +2,6 @@
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
   {%- include head.html -%}
-  <style>
-    tr>td {
-        text-align: center;
-    }
-
-    table th,
-    table td {
-        padding: 3px 10px;
-    }
-
-    .msg-column {
-        text-align: left;
-        max-width: 35vh;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-</style>
 
   <body>
 
@@ -27,7 +9,7 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <div class="container">
+        <div class="builds_container">
             <select name="product" id="product">
                 <option value="initial">Select a product...</option>
             </select>
@@ -40,7 +22,7 @@
             <input type="checkbox" name="viewall" id="viewall" checked>View all
             <br>
             <div class="info" style="white-space: pre-line"></div>
-            <table class="viewcontainer"></table>
+            <table class="builds_viewcontainer"></table>
         </div>
       </div>
     </main>
@@ -65,7 +47,7 @@
             })
             Object.keys(per_category).forEach(key => $("#product").append(per_category[key]))
             var handleViewContainer = function () {
-                $(".viewcontainer").empty();
+                $(".builds_viewcontainer").empty();
                 parameters.set("viewall", $("#viewall")[0].checked)
                 console.log("updated")
                 window.history.replaceState("object or string", "Title", window.location.pathname.split(/[?#]/)[0] + "?" + parameters.toString());
@@ -73,7 +55,7 @@
                     return;
                 }
                 if ($("#product").val() == "initial") {
-                    $(".viewcontainer").text("You must select a product to view all builds.");
+                    $(".builds_viewcontainer").text("You must select a product to view all builds.");
                     return;
                 }
                 if ($("#version").val() == "initial") {
@@ -88,7 +70,7 @@
                         let thead = $("<th>");
                         thead.attr("colspan", 4);
                         thead.append("<strong>" + version + "</strong>")
-                        $(".viewcontainer").append(thead);
+                        $(".builds_viewcontainer").append(thead);
                         let shas = []
                         data[$("#product").val()]["versions"].forEach((v, index) => {
                             if (v.version == version) {
@@ -122,7 +104,7 @@
                                 release_link.text("RELEASE");
                                 container_p.append($("<td>").append(release_link));
                             }
-                            $(".viewcontainer").append(container_p)
+                            $(".builds_viewcontainer").append(container_p)
                         })
                     })
                 } else {
@@ -160,7 +142,7 @@
                             release_link.text("RELEASE");
                             container_p.append($("<td>").append(release_link));
                         }
-                        $(".viewcontainer").append(container_p)
+                        $(".builds_viewcontainer").append(container_p)
                     })
                 }
 
