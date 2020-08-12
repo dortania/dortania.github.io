@@ -1,9 +1,35 @@
 ---
 layout: default
 ---
-<article class="post">
-    <div class="post-content">
-        {{ content }}
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  {%- include head.html -%}
+  <style>
+    tr>td {
+        text-align: center;
+    }
+
+    table th,
+    table td {
+        padding: 3px 10px;
+    }
+
+    .msg-column {
+        text-align: left;
+        max-width: 35vh;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>
+
+  <body>
+
+    {%- include header.html -%}
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
         <div class="container">
             <select name="product" id="product">
                 <option value="initial">Select a product...</option>
@@ -19,26 +45,10 @@ layout: default
             <div class="info" style="white-space: pre-line"></div>
             <table class="viewcontainer"></table>
         </div>
-    </div>
+      </div>
+    </main>
 
-    <style>
-        tr>td {
-            text-align: center;
-        }
-
-        table th,
-        table td {
-            padding: 3px 10px;
-        }
-
-        .msg-column {
-            text-align: left;
-            max-width: 35vh;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-    </style>
+    {%- include footer.html -%}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
 
@@ -268,4 +278,6 @@ layout: default
             
         })
     </script>
-</article>
+  </body>
+
+</html>
