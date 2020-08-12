@@ -1,0 +1,32 @@
+---
+---
+@import "minima";
+
+.builds_container td {
+    text-align: center;
+}
+
+.builds_container table th,
+.builds_container table td {
+    padding: 3px 10px;
+}
+
+td.msg-column {
+    text-align: left;
+    max-width: 35vh;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.not_found_container {
+    margin: 10px auto;
+    max-width: 600px;
+    text-align: center;
+}
+.not_found_container h1 {
+    margin: 30px 0;
+    font-size: 4em;
+    line-height: 1;
+    letter-spacing: -1px;
+}
