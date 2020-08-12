@@ -44,10 +44,24 @@ layout: default
 
     <script>
         $.getJSON("https://raw.githubusercontent.com/dortania/build-repo/builds/config.json", function (data) {
+            var parameters = new URLSearchParams(window.location.search);
             const converter = new showdown.Converter()
-            Object.keys(data).filter(key => !key.startsWith("_")).forEach(key => $("#product")[0].add(new Option(key, key)))
+
+            let per_category = {}
+            Object.keys(data).filter(key => !key.startsWith("_")).forEach(key => {
+                console.log(data[key]["type"])
+                if (per_category[data[key]["type"]] == undefined) {
+                    per_category[data[key]["type"]] = $("<optgroup>")
+                    per_category[data[key]["type"]].attr("label", data[key]["type"])
+                }
+                per_category[data[key]["type"]].append(new Option(key, key))
+            })
+            Object.keys(per_category).forEach(key => $("#product").append(per_category[key]))
             var handleViewContainer = function () {
                 $(".viewcontainer").empty();
+                parameters.set("viewall", $("#viewall")[0].checked)
+                console.log("updated")
+                window.history.replaceState("object or string", "Title", window.location.pathname.split(/[?#]/)[0] + "?" + parameters.toString());
                 if (!($("#viewall").is(":checked")) || !($("#sha").val() == "initial")) {
                     return;
                 }
@@ -148,6 +162,7 @@ layout: default
                 console.log("resetInfo");
                 $(".info").empty()
                 if ($("#product").val() == "initial" || $("#version").val() == "initial" || $("#sha").val() == "initial") {
+                    parameters.delete("sha");
                     handleViewContainer();
                     return;
                 }
@@ -179,6 +194,7 @@ layout: default
                 gh_release_link.text("View on GitHub Releases");
                 $(".info").append("<br>");
                 $(".info").append(gh_release_link)
+                parameters.set("sha", $("#sha").find(":selected").text().split(" ")[0])
                 handleViewContainer();
                 //$(".info").text()
             }
@@ -187,6 +203,7 @@ layout: default
                 $("#sha")[0].options.length = 0;
                 $("#sha")[0].add(new Option("Select commit...", "initial", true, true));
                 if ($("#product").val() == "initial" || $("#version").val() == "initial") {
+                    parameters.delete("version")
                     resetInfo();
                     return;
                 }
@@ -197,6 +214,7 @@ layout: default
                     }
                 });
                 shas.forEach((element, index) => $("#sha")[0].add(new Option(element[0].commit.sha + (index == 0 ? " (latest)" : ""), element[1])))
+                parameters.set("version", $("#version").val())
                 resetInfo();
             }
             var resetVersion = function () {
@@ -204,6 +222,7 @@ layout: default
                 $("#version")[0].options.length = 0;
                 $("#version")[0].add(new Option("Select version...", "initial", true, true));
                 if ($("#product").val() == "initial") {
+                    parameters.delete("product")
                     resetSha();
                     return;
                 }
@@ -216,12 +235,37 @@ layout: default
                 versions.forEach((element, index) => {
                     $("#version")[0].add(new Option(element, element));
                 })
+                parameters.set("product", $("#product").val())
                 resetSha();
             }
             $("#product").change(resetVersion)
             $("#version").change(resetSha)
             $("#sha").change(resetInfo)
             $("#viewall").change(handleViewContainer)
+            let handleParameter = function(value, key) {
+                if (key == "viewall") {
+                    $("#viewall")[0].checked = (value == "true")
+                } else  if (key == "sha") {
+                    Array.from($("#sha")[0].children).forEach(element => {
+                        console.log(element.innerText)
+                        if (element.innerText.includes(value)) {
+                            console.log("yup")
+                            $("#sha").val(element.value).change()
+                            console.log("done")
+                        } else {
+                            console.log("nope")
+                        }
+                    })
+                } else {
+                    console.log(key);
+                    //$("#" + key).val(value).change()
+                $("#" + key).val(value).change()
+                }
+            }
+            parameters.forEach((value, key) => {
+                setTimeout(function() {handleParameter(value, key)}, 100)
+            });
+            
         })
     </script>
 </article>
