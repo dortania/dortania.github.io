@@ -2121,7 +2121,7 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Number of found
   class="enumerate" id="x1-37002x1"><tspan class="ec-lmtt-10">AppleCpuPmCfgLock</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-10">plist</tspan><tspan class="ec-lmtt-10"> boolean</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: <tspan class="ec-lmtt-10">false</tspan><br 
-class="newline" /><tspan class="ec-lmbx-10">Requirement</tspan>: FIXME<br 
+class="newline" /><tspan class="ec-lmbx-10">Requirement</tspan>: 10.6 (64-bit)<br 
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>:                 Disables                 <tspan class="ec-lmtt-10">PKG_CST_CONFIG_CONTROL           </tspan>(<tspan class="ec-lmtt-10">0xE2</tspan>)                 MSR
      modification in AppleIntelCPUPowerManagement.kext, commonly causing early kernel panic, when it is locked
      from writing.
@@ -2287,7 +2287,7 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Disables kernel
   class="enumerate" id="x1-37042x14"><tspan class="ec-lmtt-10">ThirdPartyDrives</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-10">plist</tspan><tspan class="ec-lmtt-10"> boolean</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: <tspan class="ec-lmtt-10">false</tspan><br 
-class="newline" /><tspan class="ec-lmbx-10">Requirement</tspan>: 10.6 (not required for older)<br 
+class="newline" /><tspan class="ec-lmbx-10">Requirement</tspan>: 10.6 (64-bit, not required for older)<br 
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Apply vendor patches to IOAHCIBlockStorage.kext to enable native features for third-party drives, such
      as TRIM on SSDs or hibernation support on 10.15 and newer.
      <!--l. 2227--><p class="noindent" ><tspan class="ec-lmri-10">Note</tspan>: This option may be avoided on user preference. NVMe SSDs are compatible without the change. For AHCI SSDs
@@ -2299,7 +2299,7 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Apply vendor pa
   class="enumerate" id="x1-37044x15"><tspan class="ec-lmtt-10">XhciPortLimit</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-10">plist</tspan><tspan class="ec-lmtt-10"> boolean</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: <tspan class="ec-lmtt-10">false</tspan><br 
-class="newline" /><tspan class="ec-lmbx-10">Requirement</tspan>: FIXME<br 
+class="newline" /><tspan class="ec-lmbx-10">Requirement</tspan>: 10.11 (not required for older)<br 
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Patch various kexts (AppleUSBXHCI.kext, AppleUSBXHCIPCI.kext, IOUSBHostFamily.kext) to remove
      USB port count limit of 15 ports.
      <!--l. 2241--><p class="noindent" ><tspan class="ec-lmri-10">Note</tspan>: This option should be avoided whenever possible. USB port limit is imposed by the amount of used bits in
