@@ -26,42 +26,38 @@ width="160" height="160"  />
 <div class="tableofcontents">
 <span class="sectionToc" >1 <a 
 href="#x1-20001" id="QQ2-1-3">Introduction</a></span>
-<br /> <span class="subsectionToc" >1.1 <a 
-href="#x1-30001" id="QQ2-1-4">Generic Terms</a></span>
 <br /><span class="sectionToc" >4 <a 
 href="#x1-140004" id="QQ2-1-17">ACPI</a></span>
 <br /> <span class="subsectionToc" >4.1 <a 
 href="#x1-150001" id="QQ2-1-18">Introduction</a></span>
 <br /> <span class="subsectionToc" >4.2 <a 
 href="#x1-160002" id="QQ2-1-19">Properties</a></span>
+<br /> <span class="subsectionToc" >7.3 <a 
+href="#x1-330003" id="QQ2-1-36">Add Properties</a></span>
+<br /> <span class="subsectionToc" >7.4 <a 
+href="#x1-340004" id="QQ2-1-37">Block Properties</a></span>
+<br /> <span class="subsectionToc" >7.5 <a 
+href="#x1-350005" id="QQ2-1-38">Emulate Properties</a></span>
+<br /> <span class="subsectionToc" >7.6 <a 
+href="#x1-360006" id="QQ2-1-39">Patch Properties</a></span>
 <br /> <span class="subsectionToc" >7.7 <a 
 href="#x1-370007" id="QQ2-1-40">Quirks Properties</a></span>
-<br /><span class="sectionToc" >8 <a 
-href="#x1-380008" id="QQ2-1-41">Misc</a></span>
-<br /> <span class="subsectionToc" >8.1 <a 
-href="#x1-390001" id="QQ2-1-42">Introduction</a></span>
+<br /> <span class="subsectionToc" >7.8 <a 
+href="#x1-380008" id="QQ2-1-41">Scheme Properties</a></span>
 <br /> <span class="subsectionToc" >8.3 <a 
-href="#x1-410003" id="QQ2-1-44">Boot Properties</a></span>
-<br /> <span class="subsectionToc" >8.4 <a 
-href="#x1-420004" id="QQ2-1-45">Debug Properties</a></span>
+href="#x1-420003" id="QQ2-1-45">Boot Properties</a></span>
 <br /> <span class="subsectionToc" >8.5 <a 
-href="#x1-430005" id="QQ2-1-46">Security Properties</a></span>
-<br /> <span class="subsectionToc" >8.6 <a 
-href="#x1-440006" id="QQ2-1-47">Entry Properties</a></span>
+href="#x1-440005" id="QQ2-1-47">Security Properties</a></span>
 <br /> <span class="subsectionToc" >9.2 <a 
-href="#x1-470002" id="QQ2-1-50">Properties</a></span>
+href="#x1-480002" id="QQ2-1-51">Properties</a></span>
 <br /> <span class="subsectionToc" >9.3 <a 
-href="#x1-480003" id="QQ2-1-51">Mandatory Variables</a></span>
+href="#x1-490003" id="QQ2-1-52">Mandatory Variables</a></span>
 <br /> <span class="subsectionToc" >9.4 <a 
-href="#x1-490004" id="QQ2-1-52">Recommended Variables</a></span>
-<br /><span class="sectionToc" >10 <a 
-href="#x1-5100010" id="QQ2-1-54">PlatformInfo</a></span>
-<br /> <span class="subsectionToc" >10.1 <a 
-href="#x1-520001" id="QQ2-1-55">Properties</a></span>
+href="#x1-500004" id="QQ2-1-53">Recommended Variables</a></span>
 <br /> <span class="subsectionToc" >11.3 <a 
-href="#x1-600003" id="QQ2-1-63">Tools and Applications</a></span>
+href="#x1-610003" id="QQ2-1-64">Tools and Applications</a></span>
 <br /> <span class="subsectionToc" >11.5 <a 
-href="#x1-620005" id="QQ2-1-66">OpenRuntime</a></span>
+href="#x1-630005" id="QQ2-1-67">OpenRuntime</a></span>
 </div>
 <a 
  id="x1-1001r1"></a>
@@ -93,6 +89,9 @@ href="https://github.com/acidanthera/bugtracker" >Acidanthera Bugtracker</a>.
 <a 
  id="x1-2001r1"></a>
 </p>
+<h4 class="subsectionHead"><span class="titlemark">1.1   </span> <a 
+ id="x1-30001"></a>Generic Terms</h4>
+     <ul class="itemize1">
                                                                                                   
                                                                                                   
      DEBUG_WARN for all other human visible errors, RELEASE builds included.</li></ul>
@@ -168,10 +167,95 @@ class="newline" />Failsafe: Empty<br
 class="newline" />Description: Remove selected tables from ACPI stack.
                                                                                                   
                                                                                                   
+     <!--l. 1793--><p class="noindent" >Designed to be filled with plist dictionary values, describing each patch. See <a 
+href="#x1-360006">Patch Properties</a> section below.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-32010x5">Quirks<br 
+class="newline" />Type: plist dict<br 
+class="newline" />Description: Apply individual kernel and driver quirks described in <a 
+href="#x1-370007">Quirks Properties</a> section below.
+     </li>
+     <li 
+  class="enumerate" id="x1-32012x6"><span class="uwave">Scheme</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist dict</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Define kernelspace operation mode via parameters described in </span><a 
+href="#x1-380008">Scheme Properties</a> <span class="uwave">section below.
+     </span>
+     </li></ol>
+<a 
+ id="x1-32013r35"></a>
+<h4 class="subsectionHead"><span class="titlemark">7.3   </span> <a 
+ id="x1-330003"></a>Add Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-33002x1"><span class="uwave">Arch</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist string</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">Any</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Kext architecture (</span><span class="uwave">Any</span><span class="uwave">, </span><span class="uwave">i386</span><span class="uwave">, </span><span class="uwave">x86_64</span><span class="uwave">). </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-33004x2">BundlePath<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty string<br 
+class="newline" />Description: Kext bundle path (e.g. Lilu.kext or MyKext.kext/Contents/PlugIns/MySubKext.kext).
+     </li>
+     <li 
+  class="enumerate" id="x1-33006x3">Comment<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty string<br 
+class="newline" />Description: Arbitrary ASCII string used to provide human readable reference for the entry. It is implementation
+     defined whether this value is used.
+     </li>
+     <li 
+  class="enumerate" id="x1-33008x4">Enabled<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: This kernel driver will not be added unless set to true.
+     </li>
+     <li 
+  class="enumerate" id="x1-33010x5">ExecutablePath<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty string<br 
+class="newline" />Description: Kext executable path relative to bundle (e.g. Contents/MacOS/Lilu).
+     </li>
+     <li 
+  class="enumerate" id="x1-33012x6">MaxKernel<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty string<br 
+class="newline" />Description: Adds kernel driver on specified macOS version or older.
+     <!--l. 1857--><p class="noindent" ><a 
+ id="kernmatch"></a>Kernel version can be obtained with uname -r command, and should look like 3 numbers separated by dots,
+     for example 18.7.0 is the kernel version for 10.14.6. Kernel version interpretation is implemented as
+     follows:
+                                                                                                  
+                                                                                                  
      
      
      
      
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+         
+         
+         
+         
       
      
      
@@ -220,6 +304,8 @@ class="newline" />Description: Remove selected tables from ACPI stack.
      
       
      
+                                                                                                  
+                                                                                                  
      
      
       
@@ -252,6 +338,15 @@ class="newline" />Description: Remove selected tables from ACPI stack.
      
       
      
+     
+      
+     
+     
+      
+     
+      
+      
+     
       
       
       
@@ -260,77 +355,7 @@ class="newline" />Description: Remove selected tables from ACPI stack.
       
       
      
-             
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-                                               
-      
-     
-     
-      
-     
-                                     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-     
-      
-         
-      
-        
-      
-     
-        
-      
-     
-     
-      
-        
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-                                  
+                                                                                                                                                                    
       
      
      
