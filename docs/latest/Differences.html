@@ -24,9 +24,7 @@ width="160" height="160"  />
 <h3 class="likesectionHead"><a 
  id="x1-1000"></a>Contents</h3>
 <div class="tableofcontents">
-<span class="sectionToc" >1 <a 
-href="#x1-20001" id="QQ2-1-3">Introduction</a></span>
-<br /> <span class="subsectionToc" >2.3 <a 
+ <span class="subsectionToc" >2.3 <a 
 href="#x1-70003" id="QQ2-1-8">Configuration Structure</a></span>
 <br /> <span class="subsectionToc" >3.3 <a 
 href="#x1-110003" id="QQ2-1-12">Contribution</a></span>
@@ -80,21 +78,25 @@ href="#x1-640005" id="QQ2-1-68">OpenRuntime</a></span>
 href="#x1-7300012" id="QQ2-1-77">Troubleshooting</a></span>
 <br /> <span class="subsectionToc" >12.1 <a 
 href="#x1-740001" id="QQ2-1-78">Legacy Apple OS</a></span>
+<br />  <span class="subsubsectionToc" >12.1.1 <a 
+href="#x1-750001" id="QQ2-1-79">macOS 10.8 and 10.9</a></span>
+<br />  <span class="subsubsectionToc" >12.1.2 <a 
+href="#x1-760002" id="QQ2-1-80">macOS 10.7</a></span>
+<br />  <span class="subsubsectionToc" >12.1.3 <a 
+href="#x1-770003" id="QQ2-1-81">macOS 10.6</a></span>
 <br /> <span class="subsectionToc" >12.2 <a 
-href="#x1-750002" id="QQ2-1-79">UEFI Secure Boot</a></span>
+href="#x1-780002" id="QQ2-1-82">UEFI Secure Boot</a></span>
 <br /> <span class="subsectionToc" >12.3 <a 
-href="#x1-760003" id="QQ2-1-80">Windows support</a></span>
+href="#x1-790003" id="QQ2-1-83">Windows support</a></span>
 </div>
 <a 
  id="x1-1001r1"></a>
-<h3 class="sectionHead"><span class="titlemark">1   </span> <a 
- id="x1-20001"></a>Introduction</h3>
-<!--l. 175--><p class="noindent" >This document provides information on <a 
-href="https://github.com/acidanthera/OpenCorePkg" >OpenCore</a> user configuration file format used to setup the correct functioning
-of macOS operating system. It is to be read as the official clarification of expected OpenCore behaviour. All
-deviations, if found in published OpenCore releases, shall be considered documentation or implementation bugs,
                                                                                                   
                                                                                                   
+read follow the rules of invalid value and optional value.
+</p><!--l. 340--><p class="noindent" >OC config has size, nesting, and key amount limitations. OC config size does not exceed 16 MBs. OC config has no more
+than 8 nesting levels. OC config has up to 16384 XML nodes (i.e. one plist dictionary item is counted as a pair of nodes)
+within each plist object.
 </p><!--l. 347--><p class="noindent" >Reading malformed OC config file leads to undefined behaviour. Examples of malformed OC config cover at least the
 following cases:
 </p>
@@ -178,12 +180,6 @@ href="#x1-140004">ACPI</a>
      <li class="itemize">??
      </li>
      <li class="itemize">??
-     </li>
-     <li class="itemize"><a 
-href="#x1-300007">Kernel</a>
-     </li>
-     <li class="itemize"><a 
-href="#x1-400008">Misc</a>
                                                                                                   
                                                                                                   
 document.
@@ -1886,7 +1882,7 @@ href="https://support.apple.com/en-us/HT208330" >Medium Security</a> <span class
   class="enumerate" id="x1-45047x6"><span class="uwave">Since </span><span class="uwave">Default</span> <span class="uwave">value will increase with time to support the latest major release operating system, it is not
          recommended to use </span><span class="uwave">ApECID</span> <span class="uwave">and </span><span class="uwave">Default</span> <span class="uwave">value together. </span></li></ol>
      <!--l. 3697--><p class="noindent" ><span class="uwave">For more details on how to configure Apple Secure Boot with UEFI Secure Boot refer to </span><a 
-href="#x1-750002">UEFI Secure Boot</a> <span class="uwave">section.
+href="#x1-780002">UEFI Secure Boot</a> <span class="uwave">section.
      </span>
 </p>
      </li></ol>
@@ -2341,5 +2337,5 @@ class="newline" />Description: Sets console output screen resolution.
      
                                                                                                   
                                                                                                   
-     </body>
+            </body>
 </html>
