@@ -26,16 +26,20 @@ width="160" height="160"  />
 <div class="tableofcontents">
 <span class="sectionToc" >1 <a 
 href="#x1-20001" id="QQ2-1-3">Introduction</a></span>
-<br /> <span class="subsectionToc" >3.2 <a 
-href="#x1-100002" id="QQ2-1-11">Installation and Upgrade</a></span>
 <br /> <span class="subsectionToc" >3.3 <a 
 href="#x1-110003" id="QQ2-1-12">Contribution</a></span>
+<br /> <span class="subsectionToc" >3.4 <a 
+href="#x1-120004" id="QQ2-1-15">Coding conventions</a></span>
+<br /> <span class="subsectionToc" >3.5 <a 
+href="#x1-130005" id="QQ2-1-16">Debugging</a></span>
 <br /><span class="sectionToc" >4 <a 
 href="#x1-140004" id="QQ2-1-17">ACPI</a></span>
-<br /> <span class="subsectionToc" >4.1 <a 
-href="#x1-150001" id="QQ2-1-18">Introduction</a></span>
-<br /> <span class="subsectionToc" >4.2 <a 
-href="#x1-160002" id="QQ2-1-19">Properties</a></span>
+<br /><span class="sectionToc" >7 <a 
+href="#x1-300007" id="QQ2-1-33">Kernel</a></span>
+<br /> <span class="subsectionToc" >7.1 <a 
+href="#x1-310001" id="QQ2-1-34">Introduction</a></span>
+<br /> <span class="subsectionToc" >7.2 <a 
+href="#x1-320002" id="QQ2-1-35">Properties</a></span>
 <br /> <span class="subsectionToc" >7.3 <a 
 href="#x1-330003" id="QQ2-1-36">Add Properties</a></span>
 <br /> <span class="subsectionToc" >7.4 <a 
@@ -58,8 +62,6 @@ href="#x1-410002" id="QQ2-1-44">Properties</a></span>
 href="#x1-420003" id="QQ2-1-45">Boot Properties</a></span>
 <br /> <span class="subsectionToc" >8.4 <a 
 href="#x1-430004" id="QQ2-1-46">Debug Properties</a></span>
-<br /> <span class="subsectionToc" >8.5 <a 
-href="#x1-440005" id="QQ2-1-47">Security Properties</a></span>
 <br /> <span class="subsectionToc" >8.6 <a 
 href="#x1-450006" id="QQ2-1-48">Entry Properties</a></span>
 <br /> <span class="subsectionToc" >9.3 <a 
@@ -88,12 +90,6 @@ board support package (BSP). The intended audience of the document are programme
 basic understanding of macOS internals and UEFI functioning. For these reasons this document is available
 exclusively in English, and all other sources or translations of this document are unofficial and may contain
 errors.
-</p><!--l. 192--><p class="noindent" >Third-party articles, utilities, books, and alike may be more useful for a wider audience as they could provide guide-like
-material. However, they are prone to their authors’ preferences, tastes, this document misinterpretation, and essential
-obsolescence. In case you use these sources, for example, <a 
-href="https://dortania.github.io" >Dortania</a>’s <a 
-href="https://dortania.github.io/OpenCore-Install-Guide" >OpenCore Install Guide</a> and <a 
-href="https://dortania.github.io/getting-started" >related material</a>, please ensure
                                                                                                   
                                                                                                   
 </p><!--l. 624--><p class="noindent" >OC config, just like any property lists can be edited with any stock textual editor (e.g. nano, vim), but specialised software
@@ -507,6 +503,10 @@ class="newline" />Description: Adds kernel driver on specified macOS version or 
      
       
      
+     
+      
+     
+      
       
       
      
@@ -518,11 +518,15 @@ class="newline" />Description: Adds kernel driver on specified macOS version or 
       
       
      
-                                                                                                                                                                    
-      
-     
      
       
      
-             </body>
+     
+      
+     
+     
+                
+      
+     
+                                                                                                                                                                          </body>
 </html>
