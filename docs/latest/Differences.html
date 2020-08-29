@@ -1661,7 +1661,8 @@ class="newline" />Description: Attempt to provide bootloader persistence.
      Bootstrap, executing NVRAM reset prior to loading OpenCore will remove it.
      </p></li>
      <li 
-  class="enumerate" id="x1-45012x6"><span class="uwave">DmgLoading</span><br 
+  class="enumerate" id="x1-45012x6"><a 
+ id="x1-450116"></a> <span class="uwave">DmgLoading</span><br 
 class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist string</span><br 
 class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">Signed</span><br 
 class="newline" /><span class="uwave">Description</span><span class="uwave">: Define Disk Image (DMG) loading policy used for macOS Recovery. </span>
@@ -1729,7 +1730,8 @@ class="newline" />Description: EDK II debug level bitmask (sum) causing CPU to h
      HaltLevel. Possible values match DisplayLevel values.
      </li>
      <li 
-  class="enumerate" id="x1-45025x9">Vault<br 
+  class="enumerate" id="x1-45025x9"><a 
+ id="x1-450249"></a> Vault<br 
 class="newline" />Type: plist string<br 
 class="newline" />Failsafe: Secure<br 
 class="newline" />Description: Enables vaulting mechanism in OpenCore.
@@ -1748,70 +1750,6 @@ class="newline" />Description: Enables vaulting mechanism in OpenCore.
      To create this file automatically use <a 
 href="https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/CreateVault" >create_vault.sh</a> script. Regardless of the underlying filesystem, path name and
      case must match between config.plist and vault.plist.
-                                                                                                  
-                                                                                                  
-     </p><!--l. 3502--><p class="noindent" >vault.sig file should contain a raw 256 byte RSA-2048 signature from SHA-256 hash of vault.plist. The signature is
-     verified against the public key embedded into OpenCore.efi. To embed the public key you should do either of the
-     following:
-</p>
-         <ul class="itemize1">
-         <li class="itemize">Provide public key during the OpenCore.efi compilation in <a 
-href="https://github.com/acidanthera/OpenCorePkg/blob/master/Platform/OpenCore/OpenCoreVault.c" >OpenCoreVault.c</a> file.
-         </li>
-         <li class="itemize">Binary patch OpenCore.efi replacing zeroes with the public key between =BEGIN OC VAULT= and ==END
-         OC VAULT== ASCII markers.</li></ul>
-     <!--l. 3515--><p class="noindent" >RSA public key 520 byte format description can be found in Chromium OS documentation. To convert public key from
-     X.509 certificate or from PEM file use <a 
-href="https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/CreateVault" >RsaTool</a>.
-     </p><!--l. 3520--><p class="noindent" >The complete set of commands to:
-</p>
-         <ul class="itemize1">
-         <li class="itemize">Create vault.plist.
-         </li>
-         <li class="itemize">Create a new RSA key (always do this to avoid loading old configuration).
-         </li>
-         <li class="itemize">Embed RSA key into OpenCore.efi.
-         </li>
-         <li class="itemize">Create vault.sig.</li></ul>
-     <!--l. 3530--><p class="noindent" >Can look as follows: </p><!--l. 3531-->
-<a 
- id="x1-450249"></a>
-     <div class="lstlisting" id="listing-12"><span class="label"><a 
- id="x1-45026r1"></a></span>cd /Volumes/EFI/EFI/OC <br /><span class="label"><a 
- id="x1-45027r2"></a></span>/path/to/create_vault.sh . <br /><span class="label"><a 
- id="x1-45028r3"></a></span>/path/to/RsaTool -sign vault.plist vault.sig vault.pub <br /><span class="label"><a 
- id="x1-45029r4"></a></span>off=$(($(strings -a -t d OpenCore.efi | grep &#x0022;=BEGIN OC VAULT=&#x0022; | cut -f1 -d&#x0027; &#x0027;)+16)) <br /><span class="label"><a 
- id="x1-45030r5"></a></span>dd of=OpenCore.efi if=vault.pub bs=1 seek=$off count=528 conv=notrunc <br /><span class="label"><a 
- id="x1-45031r6"></a></span>rm vault.pub
-     
-     </div>
-     <!--l. 3540--><p class="noindent" >Note 1: While it may appear obvious, but you have to use an external method to verify OpenCore.efi and
-     BOOTx64.efi for secure boot path. For this you are recommended to at least enable UEFI SecureBoot
-     with a custom certificate, and sign OpenCore.efi and BOOTx64.efi with your custom key. More details
-     on customising secure boot on modern firmwares can be found in <a 
-href="https://habr.com/post/273497/" >Taming UEFI SecureBoot</a> paper (in
-     Russian).
-     </p><!--l. 3548--><p class="noindent" >Note 2: vault.plist and vault.sig are used regardless of this option when vault.plist is present or public key is
-     embedded into OpenCore.efi. Setting this option will only ensure configuration sanity, and abort the boot process
-     otherwise.
-     </p></li>
-     <li 
-  class="enumerate" id="x1-45033x10">ScanPolicy<br 
-class="newline" />Type: plist integer, 32 bit<br 
-class="newline" />Failsafe: 0x10F0103<br 
-class="newline" />Description: Define operating system detection policy.
-     <!--l. 3559--><p class="noindent" >This value allows to prevent scanning (and booting) from untrusted source based on a bitmask (sum) of select flags. As it
-     is not possible to reliably detect every file system or device type, this feature cannot be fully relied upon in open
-     environments, and the additional measures are to be applied.
-     </p><!--l. 3565--><p class="noindent" >Third party drivers may introduce additional security (and performance) measures following the provided scan policy.
-     Scan policy is exposed in scan-policy variable of 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102 GUID for UEFI Boot
-     Services only.
-</p>
-         <ul class="itemize1">
-         <li class="itemize">0x00000001 (bit 0) — OC_SCAN_FILE_SYSTEM_LOCK, restricts scanning to only known file systems defined
-         as a part of this policy. File system drivers may not be aware of this policy, and to avoid mounting of
-         undesired file systems it is best not to load its driver. This bit does not affect dmg mounting, which may
-         have any file system. Known file systems are prefixed with OC_SCAN_ALLOW_FS_.
                                                                                                   
                                                                                                   
          </li>
@@ -1868,7 +1806,8 @@ class="newline" />Description: Define operating system detection policy.
          <li class="itemize">OC_SCAN_ALLOW_DEVICE_NVME</li></ul>
      </li>
      <li 
-  class="enumerate" id="x1-45035x11"><span class="uwave">SecureBootModel</span><br 
+  class="enumerate" id="x1-45035x11"><a 
+ id="x1-4503411"></a> <span class="uwave">SecureBootModel</span><br 
 class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist string</span><br 
 class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">Default</span><br 
 class="newline" /><span class="uwave">Description</span><span class="uwave">: Apple Secure Boot hardware model. </span>
