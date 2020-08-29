@@ -58,14 +58,10 @@ href="#x1-390008" id="QQ2-1-42">Misc</a></span>
 href="#x1-400001" id="QQ2-1-43">Introduction</a></span>
 <br /> <span class="subsectionToc" >8.2 <a 
 href="#x1-410002" id="QQ2-1-44">Properties</a></span>
-<br /> <span class="subsectionToc" >8.3 <a 
-href="#x1-420003" id="QQ2-1-45">Boot Properties</a></span>
 <br /> <span class="subsectionToc" >8.4 <a 
 href="#x1-430004" id="QQ2-1-46">Debug Properties</a></span>
 <br /> <span class="subsectionToc" >8.6 <a 
 href="#x1-450006" id="QQ2-1-48">Entry Properties</a></span>
-<br /> <span class="subsectionToc" >9.3 <a 
-href="#x1-490003" id="QQ2-1-52">Mandatory Variables</a></span>
 <br /> <span class="subsectionToc" >10.1 <a 
 href="#x1-530001" id="QQ2-1-56">Properties</a></span>
 <br /> <span class="subsectionToc" >11.3 <a 
@@ -90,6 +86,13 @@ board support package (BSP). The intended audience of the document are programme
 basic understanding of macOS internals and UEFI functioning. For these reasons this document is available
 exclusively in English, and all other sources or translations of this document are unofficial and may contain
 errors.
+</p><!--l. 192--><p class="noindent" >Third-party articles, utilities, books, and alike may be more useful for a wider audience as they could provide guide-like
+material. However, they are prone to their authors’ preferences, tastes, this document misinterpretation, and essential
+obsolescence. In case you use these sources, for example, <a 
+href="https://dortania.github.io" >Dortania</a>’s <a 
+href="https://dortania.github.io/OpenCore-Install-Guide" >OpenCore Install Guide</a> and <a 
+href="https://dortania.github.io/getting-started" >related material</a>, please ensure
+to follow this document for every made decision and judge its consequences.
                                                                                                   
                                                                                                   
 </p><!--l. 624--><p class="noindent" >OC config, just like any property lists can be edited with any stock textual editor (e.g. nano, vim), but specialised software
@@ -257,7 +260,7 @@ href="https://github.com/acidanthera/bugtracker/issues/483" >acidanthera/bugtrac
      <li class="itemize">Use DEBUG_ERROR to print critical human visible messages that may potentially halt the boot process, and
      DEBUG_WARN for all other human visible errors, RELEASE builds included.</li></ul>
 <!--l. 830--><p class="noindent" >When trying to find the problematic change it is useful to rely on <a 
-href="https://git-scm.com/docs/git-bisect" >git-bisect</a> functionality. <span class="uwave">There also are some unnoficial
+href="https://git-scm.com/docs/git-bisect" >git-bisect</a> functionality. <span class="uwave">There also are some unofficial
 resources that provide per-commit binary builds of OpenCore, like </span><a 
 href="https://dortania.github.io/builds" >Dortania</a><span class="uwave">. </span>
 <a 
@@ -500,7 +503,7 @@ class="newline" />Description: Adds kernel driver on specified macOS version or 
      
       
      
-     
+            
       
      
      
@@ -522,11 +525,5 @@ class="newline" />Description: Adds kernel driver on specified macOS version or 
       
      
      
-      
-     
-     
-                
-      
-     
-                                                                                                                                                                          </body>
+                                                                                                                                                                                        </body>
 </html>
