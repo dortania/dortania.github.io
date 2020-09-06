@@ -898,25 +898,25 @@ class="newline" />Description: Disables IOMapper support in XNU (VT-d), which ma
      which does not break VT-d support in other systems in case they need it.
      </p></li>
      <li 
-  class="enumerate" id="x1-38028x7">DisableRtcChecksum<br 
-class="newline" />Type: plist boolean<br 
-class="newline" />Failsafe: false<br 
-class="newline" /><span class="uwave">Requirement</span><span class="uwave">: 10.6 (64-bit)</span><br 
-class="newline" />Description: Disables primary checksum (0x58-0x59) writing in AppleRTC.
-     <!--l. 2384--><p class="noindent" >Note 1: This option will not protect other areas from being overwritten, see <a 
-href="https://github.com/acidanthera/RTCMemoryFixup" >RTCMemoryFixup</a> kernel extension if this is
-     desired.
-     </p><!--l. 2388--><p class="noindent" >Note 2: This option will not protect areas from being overwritten at firmware stage (e.g. macOS bootloader), see
-     AppleRtc protocol description if this is desired.
-     </p></li>
-     <li 
-  class="enumerate" id="x1-38030x8"><span class="uwave">DisableLinkeditJettison</span><br 
+  class="enumerate" id="x1-38028x7"><span class="uwave">DisableLinkeditJettison</span><br 
 class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
 class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">false</span><br 
 class="newline" /><span class="uwave">Requirement</span><span class="uwave">: 11.0</span><br 
 class="newline" /><span class="uwave">Description</span><span class="uwave">: Disables </span><span class="uwave">__LINKEDIT</span> <span class="uwave">jettison code. </span>
-     <!--l. 2400--><p class="noindent" ><span class="uwave">This option lets </span><span class="uwave">Lilu.kext</span> <span class="uwave">and possibly some others function in macOS Big Sur with best performance without
+     <!--l. 2384--><p class="noindent" ><span class="uwave">This option lets </span><span class="uwave">Lilu.kext</span> <span class="uwave">and possibly some others function in macOS Big Sur with best performance without
      </span><span class="uwave">keepsyms=1</span> <span class="uwave">boot argument. </span>
+     </p></li>
+     <li 
+  class="enumerate" id="x1-38030x8">DisableRtcChecksum<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" /><span class="uwave">Requirement</span><span class="uwave">: 10.6 (64-bit)</span><br 
+class="newline" />Description: Disables primary checksum (0x58-0x59) writing in AppleRTC.
+     <!--l. 2397--><p class="noindent" >Note 1: This option will not protect other areas from being overwritten, see <a 
+href="https://github.com/acidanthera/RTCMemoryFixup" >RTCMemoryFixup</a> kernel extension if this is
+     desired.
+     </p><!--l. 2401--><p class="noindent" >Note 2: This option will not protect areas from being overwritten at firmware stage (e.g. macOS bootloader), see
+     AppleRtc protocol description if this is desired.
      </p></li>
      <li 
   class="enumerate" id="x1-38032x9">DummyPowerManagement<br 
