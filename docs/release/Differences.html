@@ -9,14 +9,14 @@
 <link rel="stylesheet" type="text/css" href="../main.css" /></head><body 
 ><div class="center" 
 >
-<!--l. 137--><p class="noindent" >
-</p><!--l. 144--><p class="noindent" > <img 
+<!--l. 142--><p class="noindent" >
+</p><!--l. 149--><p class="noindent" > <img 
 src="Logos/Logo-.png" alt="PIC"  
 width="160" height="160"  />
-</p><!--l. 148--><p class="noindent" >OpenCore
-</p><!--l. 152--><p class="noindent" >Reference Manual (<span class="sout">0.5.9</span><span class="uwave">0.6.0</span>)
-</p><!--l. 156--><p class="noindent" >[2020.09.07]
-</p><!--l. 164--><p class="noindent" >Copyright ©2018-2020 vit9696
+</p><!--l. 153--><p class="noindent" >OpenCore
+</p><!--l. 157--><p class="noindent" >Reference Manual (0.6<span class="sout">.0</span><span class="uwave">.1</span>)
+</p><!--l. 161--><p class="noindent" >[2020.09.07]
+</p><!--l. 169--><p class="noindent" >Copyright ©2018-2020 vit9696
 </p>
 </div>
                                                                                                   
@@ -26,107 +26,178 @@ width="160" height="160"  />
 <div class="tableofcontents">
 <span class="sectionToc" >1 <a 
 href="#x1-20001" id="QQ2-1-3">Introduction</a></span>
-<br /> <span class="subsectionToc" >1.1 <a 
-href="#x1-30001" id="QQ2-1-4">Generic Terms</a></span>
-<br /><span class="sectionToc" >3 <a 
-href="#x1-80003" id="QQ2-1-9">Setup</a></span>
-<br /> <span class="subsectionToc" >3.1 <a 
-href="#x1-90001" id="QQ2-1-10">Directory Structure</a></span>
+<br /> <span class="subsectionToc" >2.3 <a 
+href="#x1-70003" id="QQ2-1-8">Configuration Structure</a></span>
 <br /> <span class="subsectionToc" >3.3 <a 
 href="#x1-110003" id="QQ2-1-12">Contribution</a></span>
 <br /> <span class="subsectionToc" >3.4 <a 
 href="#x1-120004" id="QQ2-1-15">Coding conventions</a></span>
-<br /> <span class="subsectionToc" >4.6 <a 
-href="#x1-200006" id="QQ2-1-23">Quirks Properties</a></span>
-<br /><span class="sectionToc" >6 <a 
-href="#x1-260006" id="QQ2-1-29">DeviceProperties</a></span>
-<br /> <span class="subsectionToc" >6.1 <a 
-href="#x1-270001" id="QQ2-1-30">Introduction</a></span>
-<br /> <span class="subsectionToc" >6.2 <a 
-href="#x1-280002" id="QQ2-1-31">Properties</a></span>
-<br /> <span class="subsectionToc" >6.3 <a 
-href="#x1-290003" id="QQ2-1-32">Common Properties</a></span>
+<br /> <span class="subsectionToc" >3.5 <a 
+href="#x1-130005" id="QQ2-1-16">Debugging</a></span>
+<br /><span class="sectionToc" >4 <a 
+href="#x1-140004" id="QQ2-1-17">ACPI</a></span>
 <br /><span class="sectionToc" >7 <a 
 href="#x1-300007" id="QQ2-1-33">Kernel</a></span>
 <br /> <span class="subsectionToc" >7.1 <a 
 href="#x1-310001" id="QQ2-1-34">Introduction</a></span>
 <br /> <span class="subsectionToc" >7.2 <a 
 href="#x1-320002" id="QQ2-1-35">Properties</a></span>
+<br /> <span class="subsectionToc" >7.3 <a 
+href="#x1-330003" id="QQ2-1-36">Add Properties</a></span>
+<br /> <span class="subsectionToc" >7.4 <a 
+href="#x1-340004" id="QQ2-1-37">Block Properties</a></span>
+<br /> <span class="subsectionToc" >7.5 <a 
+href="#x1-350005" id="QQ2-1-38">Emulate Properties</a></span>
+<br /> <span class="subsectionToc" >7.6 <a 
+href="#x1-360006" id="QQ2-1-39">Force Properties</a></span>
+<br /> <span class="subsectionToc" >7.7 <a 
+href="#x1-370007" id="QQ2-1-40">Patch Properties</a></span>
+<br /> <span class="subsectionToc" >7.8 <a 
+href="#x1-380008" id="QQ2-1-41">Quirks Properties</a></span>
+<br /> <span class="subsectionToc" >7.9 <a 
+href="#x1-390009" id="QQ2-1-42">Scheme Properties</a></span>
+<br /><span class="sectionToc" >8 <a 
+href="#x1-400008" id="QQ2-1-43">Misc</a></span>
+<br /> <span class="subsectionToc" >8.1 <a 
+href="#x1-410001" id="QQ2-1-44">Introduction</a></span>
 <br /> <span class="subsectionToc" >8.3 <a 
-href="#x1-410003" id="QQ2-1-44">Boot Properties</a></span>
+href="#x1-430003" id="QQ2-1-46">Boot Properties</a></span>
+<br /> <span class="subsectionToc" >8.4 <a 
+href="#x1-440004" id="QQ2-1-47">Debug Properties</a></span>
 <br /> <span class="subsectionToc" >8.5 <a 
-href="#x1-430005" id="QQ2-1-46">Security Properties</a></span>
-<br /><span class="sectionToc" >10 <a 
-href="#x1-5100010" id="QQ2-1-54">PlatformInfo</a></span>
-<br /> <span class="subsectionToc" >11.4 <a 
-href="#x1-610004" id="QQ2-1-65">OpenCanopy</a></span>
-<br /> <span class="subsectionToc" >11.6 <a 
-href="#x1-630006" id="QQ2-1-67">Properties</a></span>
-<br /> <span class="subsectionToc" >11.7 <a 
-href="#x1-640007" id="QQ2-1-68">APFS Properties</a></span>
-<br /> <span class="subsectionToc" >11.8 <a 
-href="#x1-650008" id="QQ2-1-69">Audio Properties</a></span>
-<br /> <span class="subsectionToc" >11.11 <a 
-href="#x1-6800011" id="QQ2-1-72">ProtocolOverrides Properties</a></span>
-<br /> <span class="subsectionToc" >11.12 <a 
-href="#x1-6900012" id="QQ2-1-73">Quirks Properties</a></span>
+href="#x1-450005" id="QQ2-1-48">Security Properties</a></span>
+<br /> <span class="subsectionToc" >8.6 <a 
+href="#x1-460006" id="QQ2-1-49">Entry Properties</a></span>
+<br /> <span class="subsectionToc" >9.3 <a 
+href="#x1-500003" id="QQ2-1-53">Mandatory Variables</a></span>
+<br /> <span class="subsectionToc" >9.4 <a 
+href="#x1-510004" id="QQ2-1-54">Recommended Variables</a></span>
+<br /> <span class="subsectionToc" >10.1 <a 
+href="#x1-540001" id="QQ2-1-57">Properties</a></span>
+<br /> <span class="subsectionToc" >10.2 <a 
+href="#x1-550002" id="QQ2-1-58">Generic Properties</a></span>
+<br /> <span class="subsectionToc" >11.3 <a 
+href="#x1-620003" id="QQ2-1-65">Tools and Applications</a></span>
+<br /> <span class="subsectionToc" >11.5 <a 
+href="#x1-640005" id="QQ2-1-68">OpenRuntime</a></span>
+<br /><span class="sectionToc" >12 <a 
+href="#x1-7300012" id="QQ2-1-77">Troubleshooting</a></span>
+<br /> <span class="subsectionToc" >12.1 <a 
+href="#x1-740001" id="QQ2-1-78">Legacy Apple OS</a></span>
 <br /> <span class="subsectionToc" >12.2 <a 
-href="#x1-730002" id="QQ2-1-78">Debugging</a></span>
-<br /> <span class="subsectionToc" >12.3 <a 
-href="#x1-740003" id="QQ2-1-79">Tips and Tricks</a></span>
+href="#x1-780002" id="QQ2-1-82">UEFI Secure Boot</a></span>
 </div>
 <a 
  id="x1-1001r1"></a>
 <h3 class="sectionHead"><span class="titlemark">1   </span> <a 
  id="x1-20001"></a>Introduction</h3>
-<!--l. 173--><p class="noindent" >This document provides information on <a 
-href="https://github.com/acidanthera/OpenCorePkg" >OpenCore</a> user configuration file format used to setup the correct functioning of
-macOS operating system. It is to be read as the official clarification of expected OpenCore behaviour. All deviations, if
-found in published OpenCore releases, shall be considered documentation or implementation bugs, and are
-requested to be reported through <a 
-href="https://github.com/acidanthera/bugtracker" >Acidanthera Bugtracker</a>. <span class="uwave">Errata sheet is available in </span><a 
-href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Errata/Errata.pdf" >OpenCorePkg repository</a><span class="uwave">.
-</span>
-</p><!--l. 184--><p class="noindent" >This document is structured as a specification, and is not meant to provide a step by step algorithm for configuring end-user
-board support package (BSP). The intended audience of the document are programmers and engineers with
-basic understanding of macOS internals and UEFI functioning. For these reasons this document is available
-exclusively in English, and all other sources or translations of this document are unofficial and may contain
-errors.
+<!--l. 178--><p class="noindent" >This document provides information on <a 
+href="https://github.com/acidanthera/OpenCorePkg" >OpenCore</a> user configuration file format used to setup the correct functioning
+of macOS operating system. It is to be read as the official clarification of expected OpenCore behaviour. All
                                                                                                   
                                                                                                   
-     </li>
-     <li class="itemize">??</li></ul>
-<!--l. 433--><p class="noindent" >It is possible to perform basic validation of the configuration by using <span class="sout">ConfigValidity</span><span class="uwave">ocvalidate</span> utility. Please note, that
-<span class="sout">ConfigValidity</span><span class="uwave">ocvalidate</span> must match the used OpenCore release and may not be able to detect all configuration flaws
-present in the file.
-</p><!--l. 438--><p class="noindent" >Note: Currently most properties try to have defined values even if not specified in the configuration for safety reasons. This
-behaviour should not be relied upon, and all fields must be properly specified in the configuration.
-<a 
- id="x1-7001r5"></a>
+within each plist object.
+</p><!--l. 350--><p class="noindent" >Reading malformed OC config file leads to undefined behaviour. Examples of malformed OC config cover at least the
+following cases:
 </p>
-<h3 class="sectionHead"><span class="titlemark">3   </span> <a 
- id="x1-80003"></a>Setup</h3>
-<a 
- id="x1-8001r8"></a>
-<h4 class="subsectionHead"><span class="titlemark">3.1   </span> <a 
- id="x1-90001"></a>Directory Structure</h4>
+     <ul class="itemize1">
+     <li class="itemize">files non-conformant to plist DTD
+     </li>
+     <li class="itemize">files with unsupported or non-conformant plist objects found in this document
+     </li>
+     <li class="itemize">files violating size, nesting, and key amount limitations</li></ul>
+<!--l. 365--><p class="noindent" >It is recommended but not required to abort loading malformed OC config and continue as if no OC config was present. For
+forward compatibility it is recommended but not required for the implementation to warn about the use of
+invalid values. Recommended practice of interpreting invalid values is to conform to the following convention where
+applicable:
+</p><!--l. 376--><p class="noindent" ><span class="sout">Type </span></p>
 <div class="center" 
 >
-<!--l. 446--><p class="noindent" >
+<!--l. 376--><p class="noindent" >
+</p>
+<div class="tabular"> <table id="TBL-1" class="tabular" 
+ 
+><colgroup id="TBL-1-1g"><col 
+id="TBL-1-1" /></colgroup><colgroup id="TBL-1-2g"><col 
+id="TBL-1-2" /></colgroup><tr 
+class="hline"><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-1-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-1-1"  
+class="td11"><span class="uwave">Type</span>            </td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-1-2"  
+class="td11"><span class="sout">Value</span><span class="uwave">Value</span>                            </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-2-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-2-1"  
+class="td11">plist string  </td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-2-2"  
+class="td11">Empty string (&#x003C;string&#x003E;&#x003C;/string&#x003E;)</td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-3-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-3-1"  
+class="td11">plist data    </td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-3-2"  
+class="td11">Empty data (&#x003C;data&#x003E;&#x003C;/data&#x003E;)        </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-4-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-4-1"  
+class="td11">plist integer </td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-4-2"  
+class="td11">0 (&#x003C;integer&#x003E;0&#x003C;/integer&#x003E;)           </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-5-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-5-1"  
+class="td11">plist boolean </td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-5-2"  
+class="td11">False (&#x003C;false/&#x003E;)                         </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-6-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-6-1"  
+class="td11">plist tristate</td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-6-2"  
+class="td11">False (&#x003C;false/&#x003E;)                         </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-7-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-7-1"  
+class="td11">              </td>
+</tr></table></div></div>
+<a 
+ id="x1-6001r7"></a>
+<h4 class="subsectionHead"><span class="titlemark">2.3   </span> <a 
+ id="x1-70003"></a>Configuration Structure</h4>
+<!--l. 418--><p class="noindent" >OC config is separated into following sections, which are described in separate sections of this document. By default it is tried
+to not enable anything and optionally provide kill switches with Enable property for plist dict entries. In general the
+configuration is written idiomatically to group similar actions in subsections:
+</p>
+     <ul class="itemize1">
+     <li class="itemize">Add provides support for data addition. Existing data will not be overridden, and needs to be handled separately
+     with Delete if necessary.
+     </li>
+     <li class="itemize">Delete provides support for data removal.
+     </li>
+     <li class="itemize">Patch provides support for data modification.
+     </li>
+     <li class="itemize">Quirks provides support for specific hacks.</li></ul>
+<!--l. 438--><p class="noindent" >Root configuration entries consist of the following:
+</p>
+     <ul class="itemize1">
+     <li class="itemize"><a 
+href="#x1-140004">ACPI</a>
+     </li>
+     <li class="itemize">??
+     </li>
+     <li class="itemize">??
+     </li>
+     <li class="itemize"><a 
+href="#x1-300007">Kernel</a>
+     </li>
                                                                                                   
                                                                                                   
-Properties</a> section of this document.
-</p><!--l. 625--><p class="noindent" >OC config, just like any property lists can be edited with any stock textual editor (e.g. nano, vim), but specialised software
+document.
+</p><!--l. 652--><p class="noindent" >OC config, just like any property lists can be edited with any stock textual editor (e.g. nano, vim), but specialised software
 may provide better experience. On macOS the preferred GUI application is <a 
 href="https://developer.apple.com/xcode" >Xcode</a>. For a lightweight cross-platform and
 open-source alternative <a 
 href="https://github.com/corpnewt/ProperTree" >ProperTree</a> editor can be utilised.
-</p><!--l. 633--><p class="noindent" >For BIOS booting a third-party UEFI environment provider will have to be used. OpenDuetPkg is one of the known UEFI
+</p><!--l. 660--><p class="noindent" >For BIOS booting a third-party UEFI environment provider will have to be used. OpenDuetPkg is one of the known UEFI
 environment providers for legacy systems. To run OpenCore on such a legacy system you can install OpenDuetPkg with a
 dedicated tool — BootInstall (bundled with OpenCore). <a 
 href="https://github.com/corpnewt/gibMacOS" >Third-party utilities</a> can be used to perform this on systems different
 from macOS.
-</p><!--l. 640--><p class="noindent" >For upgrade purposes refer to Differences.pdf document, providing the information about the changes affecting the
+</p><!--l. 667--><p class="noindent" >For upgrade purposes refer to Differences.pdf document, providing the information about the changes affecting the
 configuration compared to the previous release, and Changelog.md document, containing the list of modifications across all
 published updates.
 <a 
@@ -134,162 +205,1211 @@ published updates.
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.3   </span> <a 
  id="x1-110003"></a>Contribution</h4>
-<!--l. 647--><p class="noindent" >OpenCore can be compiled as an ordinary <a 
+<!--l. 674--><p class="noindent" >OpenCore can be compiled as an ordinary <a 
 href="https://github.com/tianocore/tianocore.github.io/wiki/EDK-II" >EDK II</a> package. Since <a 
 href="https://github.com/tianocore/tianocore.github.io/wiki/UDK" >UDK</a> development was abandoned by TianoCore, OpenCore
 requires the use of <a 
 href="https://github.com/tianocore/tianocore.github.io/wiki/EDK-II#stable-tags" >EDK II Stable</a>. Currently supported EDK II release is hosted in <a 
 href="https://github.com/acidanthera/audk" >acidanthera/audk</a>. The required patches for
 the package are present in Patches directory.
-</p><!--l. 656--><p class="noindent" >The only officially supported toolchain is XCODE5. Other toolchains might work, but are neither supported, nor recommended.
+</p><!--l. 683--><p class="noindent" >The only officially supported toolchain is XCODE5. Other toolchains might work, but are neither supported, nor recommended.
 Contribution of clean patches is welcome. Please do follow <a 
 href="https://github.com/tianocore/tianocore.github.io/wiki/Code-Style-C" >EDK II C Codestyle</a>.
-</p><!--l. 661--><p class="noindent" >To compile with XCODE5, besides <a 
+</p><!--l. 688--><p class="noindent" >To compile with XCODE5, besides <a 
 href="https://developer.apple.com/xcode" >Xcode</a>, one should also install <a 
 href="https://www.nasm.us" >NASM</a> and <a 
 href="https://github.com/acidanthera/ocbuild/tree/master/external" >MTOC</a>. The latest Xcode version is recommended
 for use despite the toolchain name. Example command sequence may look as follows:
 </p>
-<!--l. 668-->
+<!--l. 695-->
 <a 
  id="x1-11001r1"></a>
 <a 
  id="x1-11002"></a>
 <div class="lstlisting" id="listing-1"><span class="label"><a 
- id="x1-11003r1"></a></span><span class="sout">git</span><span class="sout"> </span><span class="sout">clone</span><span class="sout"> </span><span class="sout">https</span><span class="sout">://</span><span class="sout">github</span><span class="sout">.</span><span class="sout">com</span><span class="sout">/</span><span class="sout">acidanthera</span><span class="sout">/</span><span class="sout">audk</span><span class="sout"> </span><span class="sout">UDK</span> <br /><span class="label"><a 
- id="x1-11004r2"></a></span><span class="uwave">git</span><span class="uwave"> </span><span class="uwave">clone</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">-</span><span class="uwave">recursive</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">-</span><span class="uwave">depth</span><span class="uwave">=1</span><span class="uwave"> </span><span class="uwave">https</span><span class="uwave">://</span><span class="uwave">github</span><span class="uwave">.</span><span class="uwave">com</span><span class="uwave">/</span><span class="uwave">acidanthera</span><span class="uwave">/</span><span class="uwave">audk</span><span class="uwave"> </span><span class="uwave">UDK</span> <br /><span class="label"><a 
+ id="x1-11003r1"></a></span><span class="sout">git</span><span class="sout"> </span><span class="sout">clone</span><span class="sout"> </span><span class="sout">-</span><span class="sout">-</span><span class="sout">recursive</span><span class="sout"> </span><span class="sout">-</span><span class="sout">-</span><span class="sout">depth</span><span class="sout">=1</span><span class="sout"> </span><span class="sout">https</span><span class="sout">://</span><span class="sout">github</span><span class="sout">.</span><span class="sout">com</span><span class="sout">/</span><span class="sout">acidanthera</span><span class="sout">/</span><span class="sout">audk</span><span class="sout"> </span><span class="sout">UDK</span> <br /><span class="label"><a 
+ id="x1-11004r2"></a></span><span class="uwave">git</span><span class="uwave"> </span><span class="uwave">clone</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">-</span><span class="uwave">depth</span><span class="uwave">=1</span><span class="uwave"> </span><span class="uwave">https</span><span class="uwave">://</span><span class="uwave">github</span><span class="uwave">.</span><span class="uwave">com</span><span class="uwave">/</span><span class="uwave">acidanthera</span><span class="uwave">/</span><span class="uwave">audk</span><span class="uwave"> </span><span class="uwave">UDK</span> <br /><span class="label"><a 
  id="x1-11005r3"></a></span>cd UDK <br /><span class="label"><a 
- id="x1-11006r4"></a></span>git clone https://github.com/acidanthera/OpenCorePkg <br /><span class="label"><a 
- id="x1-11007r5"></a></span>source edksetup.sh <br /><span class="label"><a 
- id="x1-11008r6"></a></span>make -C BaseTools <br /><span class="label"><a 
- id="x1-11009r7"></a></span>build -a X64 -b RELEASE -t XCODE5 -p OpenCorePkg/OpenCorePkg.dsc
+ id="x1-11006r4"></a></span><span class="sout">git</span><span class="sout"> </span><span class="sout">clone</span><span class="sout"> </span><span class="sout">https</span><span class="sout">://</span><span class="sout">github</span><span class="sout">.</span><span class="sout">com</span><span class="sout">/</span><span class="sout">acidanthera</span><span class="sout">/</span><span class="sout">OpenCorePkg</span> <br /><span class="label"><a 
+ id="x1-11007r5"></a></span><span class="uwave">git</span><span class="uwave"> </span><span class="uwave">submodule</span><span class="uwave"> </span><span class="uwave">update</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">-</span><span class="uwave">init</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">-</span><span class="uwave">recommend</span><span class="uwave">-</span><span class="uwave">shallow</span> <br /><span class="label"><a 
+ id="x1-11008r6"></a></span><span class="uwave">git</span><span class="uwave"> </span><span class="uwave">clone</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">-</span><span class="uwave">depth</span><span class="uwave">=1</span><span class="uwave"> </span><span class="uwave">https</span><span class="uwave">://</span><span class="uwave">github</span><span class="uwave">.</span><span class="uwave">com</span><span class="uwave">/</span><span class="uwave">acidanthera</span><span class="uwave">/</span><span class="uwave">OpenCorePkg</span> <br /><span class="label"><a 
+ id="x1-11009r7"></a></span>source edksetup.sh <br /><span class="label"><a 
+ id="x1-11010r8"></a></span>make -C BaseTools <br /><span class="label"><a 
+ id="x1-11011r9"></a></span>build -a X64 -b RELEASE -t XCODE5 -p OpenCorePkg/OpenCorePkg.dsc
 <figcaption class="caption" ><span class="id">Listing 1:</span><span  
 class="content">Compilation Commands</span></figcaption><!--tex4ht:label?: x1-11001r -->
 </div>
-<!--l. 679--><p class="noindent" >For IDE usage Xcode projects are available in the root of the repositories. Another approach could be <a 
+<!--l. 708--><p class="noindent" >For IDE usage Xcode projects are available in the root of the repositories. Another approach could be <a 
 href="https://www.sublimetext.com" >Sublime Text</a> with
 <a 
 href="https://niosus.github.io/EasyClangComplete" >EasyClangComplete</a> plugin. Add .clang_complete file with similar content to your UDK root:
 </p>
-<!--l. 684-->
+<!--l. 713-->
 <a 
- id="x1-11010r2"></a>
+ id="x1-11012r2"></a>
 <a 
- id="x1-11011"></a>
+ id="x1-11013"></a>
 <div class="lstlisting" id="listing-2"><span class="label"><a 
- id="x1-11012r1"></a></span>-I/UefiPackages/MdePkg <br /><span class="label"><a 
- id="x1-11013r2"></a></span>-I/UefiPackages/MdePkg/Include <br /><span class="label"><a 
- id="x1-11014r3"></a></span>-I/UefiPackages/MdePkg/Include/X64 <br /><span class="label"><a 
- id="x1-11015r4"></a></span>-I/UefiPackages/MdeModulePkg <br /><span class="label"><a 
- id="x1-11016r5"></a></span>-I/UefiPackages/MdeModulePkg/Include <br /><span class="label"><a 
- id="x1-11017r6"></a></span>-I/UefiPackages/MdeModulePkg/Include/X64 <br /><span class="label"><a 
- id="x1-11018r7"></a></span>-I/UefiPackages/OpenCorePkg/Include/AMI <br /><span class="label"><a 
- id="x1-11019r8"></a></span>-I/UefiPackages/OpenCorePkg/Include/Acidanthera <br /><span class="label"><a 
- id="x1-11020r9"></a></span>-I/UefiPackages/OpenCorePkg/Include/Apple <br /><span class="label"><a 
- id="x1-11021r10"></a></span>-I/UefiPackages/OpenCorePkg/Include/Apple/X64 <br /><span class="label"><a 
- id="x1-11022r11"></a></span>-I/UefiPackages/OpenCorePkg/Include/Duet <br /><span class="label"><a 
- id="x1-11023r12"></a></span>-I/UefiPackages/OpenCorePkg/Include/Generic <br /><span class="label"><a 
- id="x1-11024r13"></a></span>-I/UefiPackages/OpenCorePkg/Include/Intel <br /><span class="label"><a 
- id="x1-11025r14"></a></span>-I/UefiPackages/OpenCorePkg/Include/Microsoft <br /><span class="label"><a 
- id="x1-11026r15"></a></span>-I/UefiPackages/OpenCorePkg/Include/VMware <br /><span class="label"><a 
- id="x1-11027r16"></a></span>-I/UefiPackages/OvmfPkg/Include <br /><span class="label"><a 
- id="x1-11028r17"></a></span>-I/UefiPackages/UefiCpuPkg/Include <br /><span class="label"><a 
- id="x1-11029r18"></a></span>-IInclude <br /><span class="label"><a 
- id="x1-11030r19"></a></span>-include <br /><span class="label"><a 
- id="x1-11031r20"></a></span>/UefiPackages/MdePkg/Include/Uefi.h <br /><span class="label"><a 
- id="x1-11032r21"></a></span>-fshort-wchar <br /><span class="label"><a 
- id="x1-11033r22"></a></span>-Wall <br /><span class="label"><a 
- id="x1-11034r23"></a></span>-Wextra <br /><span class="label"><a 
- id="x1-11035r24"></a></span>-Wno-unused-parameter <br /><span class="label"><a 
- id="x1-11036r25"></a></span>-Wno-missing-braces <br /><span class="label"><a 
- id="x1-11037r26"></a></span>-Wno-missing-field-initializers <br /><span class="label"><a 
- id="x1-11038r27"></a></span>-Wno-tautological-compare <br /><span class="label"><a 
- id="x1-11039r28"></a></span>-Wno-sign-compare <br /><span class="label"><a 
- id="x1-11040r29"></a></span>-Wno-varargs <br /><span class="label"><a 
- id="x1-11041r30"></a></span>-Wno-unused-const-variable <br /><span class="label"><a 
- id="x1-11042r31"></a></span>-DOC_TARGET_NOOPT=1 <br /><span class="label"><a 
- id="x1-11043r32"></a></span>-DNO_MSABI_VA_FUNCS=1
+ id="x1-11014r1"></a></span>-I/UefiPackages/MdePkg <br /><span class="label"><a 
+ id="x1-11015r2"></a></span>-I/UefiPackages/MdePkg/Include <br /><span class="label"><a 
+ id="x1-11016r3"></a></span>-I/UefiPackages/MdePkg/Include/X64 <br /><span class="label"><a 
+ id="x1-11017r4"></a></span>-I/UefiPackages/MdeModulePkg <br /><span class="label"><a 
+ id="x1-11018r5"></a></span>-I/UefiPackages/MdeModulePkg/Include <br /><span class="label"><a 
+ id="x1-11019r6"></a></span>-I/UefiPackages/MdeModulePkg/Include/X64 <br /><span class="label"><a 
+ id="x1-11020r7"></a></span>-I/UefiPackages/OpenCorePkg/Include/AMI <br /><span class="label"><a 
+ id="x1-11021r8"></a></span>-I/UefiPackages/OpenCorePkg/Include/Acidanthera <br /><span class="label"><a 
+ id="x1-11022r9"></a></span>-I/UefiPackages/OpenCorePkg/Include/Apple <br /><span class="label"><a 
+ id="x1-11023r10"></a></span>-I/UefiPackages/OpenCorePkg/Include/Apple/X64 <br /><span class="label"><a 
+ id="x1-11024r11"></a></span>-I/UefiPackages/OpenCorePkg/Include/Duet <br /><span class="label"><a 
+ id="x1-11025r12"></a></span>-I/UefiPackages/OpenCorePkg/Include/Generic <br /><span class="label"><a 
+ id="x1-11026r13"></a></span>-I/UefiPackages/OpenCorePkg/Include/Intel <br /><span class="label"><a 
+ id="x1-11027r14"></a></span>-I/UefiPackages/OpenCorePkg/Include/Microsoft <br /><span class="label"><a 
+ id="x1-11028r15"></a></span>-I/UefiPackages/OpenCorePkg/Include/VMware <br /><span class="label"><a 
+ id="x1-11029r16"></a></span>-I/UefiPackages/OvmfPkg/Include <br /><span class="label"><a 
+ id="x1-11030r17"></a></span>-I/UefiPackages/UefiCpuPkg/Include <br /><span class="label"><a 
+ id="x1-11031r18"></a></span>-IInclude <br /><span class="label"><a 
+ id="x1-11032r19"></a></span>-include <br /><span class="label"><a 
+ id="x1-11033r20"></a></span>/UefiPackages/MdePkg/Include/Uefi.h <br /><span class="label"><a 
+ id="x1-11034r21"></a></span>-fshort-wchar <br /><span class="label"><a 
+ id="x1-11035r22"></a></span>-Wall <br /><span class="label"><a 
+ id="x1-11036r23"></a></span>-Wextra <br /><span class="label"><a 
+ id="x1-11037r24"></a></span>-Wno-unused-parameter <br /><span class="label"><a 
+ id="x1-11038r25"></a></span>-Wno-missing-braces <br /><span class="label"><a 
+ id="x1-11039r26"></a></span>-Wno-missing-field-initializers <br /><span class="label"><a 
+ id="x1-11040r27"></a></span>-Wno-tautological-compare <br /><span class="label"><a 
+ id="x1-11041r28"></a></span>-Wno-sign-compare <br /><span class="label"><a 
+ id="x1-11042r29"></a></span>-Wno-varargs <br /><span class="label"><a 
+ id="x1-11043r30"></a></span>-Wno-unused-const-variable <br /><span class="label"><a 
+ id="x1-11044r31"></a></span>-DOC_TARGET_NOOPT=1 <br /><span class="label"><a 
+ id="x1-11045r32"></a></span>-DNO_MSABI_VA_FUNCS=1
 <figcaption class="caption" ><span class="id">Listing 2:</span><span  
-class="content">ECC Configuration</span></figcaption><!--tex4ht:label?: x1-11010r -->
+class="content">ECC Configuration</span></figcaption><!--tex4ht:label?: x1-11012r -->
 </div>
-<!--l. 719--><p class="noindent" >Warning: Tool developers modifying config.plist or any other OpenCore files must ensure that their tool checks for
-opencore-version NVRAM variable (see ?? section below) and warn the user if the version listed is unsupported or
-prerelease. OpenCore configuration may change across the releases and the tool shall ensure that it carefully follows this
-document. Failure to do so may result in this tool to be considered as malware and blocked with all possible
+<!--l. 748--><p class="noindent" >Warning: Tool developers modifying config.plist or any other OpenCore files must ensure that their tool checks for
+opencore-version NVRAM variable (see <a 
+href="#x1-440004">Debug Properties</a> section below) and warn the user if the version listed is
+unsupported or prerelease. OpenCore configuration may change across the releases and the tool shall ensure that it carefully
+follows this document. Failure to do so may result in this tool to be considered as malware and blocked with all possible
 means.
 <a 
- id="x1-11044r12"></a>
+ id="x1-11046r12"></a>
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.4   </span> <a 
  id="x1-120004"></a>Coding conventions</h4>
-<!--l. 729--><p class="noindent" >Just like any other project we have conventions that we follow during the development. All third-party contributors are highly
+<!--l. 758--><p class="noindent" >Just like any other project we have conventions that we follow during the development. All third-party contributors are highly
                                                                                                   
                                                                                                   
-     laptop, the original method can be replaced with a dummy name by patching _Q11 with XQ11.</li></ul>
-<!--l. 1138--><p class="noindent" >Tianocore <a 
-href="https://github.com/acidanthera/audk/blob/master/MdePkg/Include/IndustryStandard/AcpiAml.h" >AcpiAml.h</a> source file may help understanding ACPI opcodes.
-</p><!--l. 1141--><p class="noindent" >Note: Patches of different Find and Replace lengths are unsupported as they may corrupt ACPI tables and make you system
-unstable due to area relocation. If you need such changes you may <span class="sout">utilities </span><span class="uwave">utilise </span>“proxy” patching or NOP the remaining
-area.
+     <li class="itemize">Do not use goto keyword. Prefer early return, break, or continue after failing to pass error checking instead
+     of nesting conditionals.
+     </li>
+     <li class="itemize">Use EFIAPI, force UEFI calling convention, only in protocols, external callbacks between modules, and functions
+     with variadic arguments.
+     </li>
+     <li class="itemize">Provide inline documentation to every added function, at least describing its inputs, outputs, precondition,
+     postcondition, and giving a brief description.
+     </li>
+     <li class="itemize">Do not use RETURN_STATUS. Assume EFI_STATUS to be a matching superset that is to be always used when
+     BOOLEAN is not enough.
+     </li>
+     <li class="itemize">Security violations should halt the system or cause a forced reboot.</li></ul>
+<!--l. 823--><p class="noindent" >Codestyle. The codebase follows <a 
+href="https://github.com/tianocore/tianocore.github.io/wiki/Code-Style-C" >EDK II codestyle</a> with few changes and clarifications. </p>
+     <ul class="itemize1">
+     <li class="itemize">Write inline documentation for the functions and variables only once: in headers, where a header prototype is
+     available, and inline for static variables and functions.
+     </li>
+     <li class="itemize">Use line length of 120 characters or less, preferably 100 characters.
+     </li>
+     <li class="itemize">Use spaces after casts, e.g. (VOID *)(UINTN) Variable.
+     </li>
+     <li class="itemize">Use SPDX license headers as shown in <a 
+href="https://github.com/acidanthera/bugtracker/issues/483" >acidanthera/bugtracker#483</a>.</li></ul>
 <a 
- id="x1-19025r22"></a>
+ id="x1-12001r15"></a>
+<h4 class="subsectionHead"><span class="titlemark">3.5   </span> <a 
+ id="x1-130005"></a>Debugging</h4>
+<!--l. 838--><p class="noindent" >The codebase incorporates EDK II debugging and few custom features to improve the experience. </p>
+     <ul class="itemize1">
+     <li class="itemize">Use module prefixes, 2-5 letters followed by a colon (:), for debug messages. For OpenCorePkg use OC:, for
+     libraries and drivers use their own unique prefixes.
+     </li>
+     <li class="itemize">Do not use dots (.) in the end of debug messages and separate EFI_STATUS, printed by %r, with a hyphen (e.g.
+     OCRAM: Allocation of %u bytes failed - %r\n).
+     </li>
+     <li class="itemize">Use DEBUG_CODE_BEGIN () and DEBUG_CODE_END () constructions to guard debug checks that may potentially
+     reduce the performance of release builds and are otherwise unnecessary.
+     </li>
+     <li class="itemize">Use DEBUG macro to print debug messages during normal functioning, and RUNTIME_DEBUG for debugging after
+     EXIT_BOOT_SERVICES.
+     </li>
+     <li class="itemize">Use DEBUG_VERBOSE debug level to leave debug messages for future debugging of the code, which are currently
+     not necessary. By default DEBUG_VERBOSE messages are ignored even in DEBUG builds.
+     </li>
+     <li class="itemize">Use DEBUG_INFO debug level for all non critical messages (including errors) and DEBUG_BULK_INFO for extensive
+     messages that should not appear in NVRAM log that is heavily limited in size. These messages are ignored in
+     RELEASE builds.
+     </li>
+     <li class="itemize">Use DEBUG_ERROR to print critical human visible messages that may potentially halt the boot process, and
+     DEBUG_WARN for all other human visible errors, RELEASE builds included.</li></ul>
+<!--l. 858--><p class="noindent" >When trying to find the problematic change it is useful to rely on <a 
+href="https://git-scm.com/docs/git-bisect" >git-bisect</a> functionality. <span class="uwave">There also are some unofficial
+resources that provide per-commit binary builds of OpenCore, like </span><a 
+href="https://dortania.github.io/builds" >Dortania</a><span class="uwave">. </span>
+<a 
+ id="x1-13001r9"></a>
 </p>
-<h4 class="subsectionHead"><span class="titlemark">4.6   </span> <a 
- id="x1-200006"></a>Quirks Properties</h4>
+<h3 class="sectionHead"><span class="titlemark">4   </span> <a 
+ id="x1-140004"></a>ACPI</h3>
+<a 
+ id="x1-14001r16"></a>
+                                                                                                  
+                                                                                                  
+     
+     
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+                                                                                                  
+                                                                                                  
+     </li>
+     <li class="itemize"> APL,snb-platform-id
+     Intel GPU framebuffer identifier used for framebuffer selection on Sandy Bridge. Has 4 byte data type.
+     </li>
+     <li class="itemize">layout-id
+     Audio layout used for AppleHDA layout selection. Has 4 byte data type.</li></ul>
+<a 
+ id="x1-29001r29"></a>
+<h3 class="sectionHead"><span class="titlemark">7   </span> <a 
+ id="x1-300007"></a>Kernel</h3>
+<a 
+ id="x1-30001r32"></a>
+<h4 class="subsectionHead"><span class="titlemark">7.1   </span> <a 
+ id="x1-310001"></a>Introduction</h4>
+<!--l. 1780--><p class="noindent" >This section allows to apply different kinds of kernelspace modifications on Apple Kernel (<a 
+href="https://opensource.apple.com/source/xnu" >XNU</a>). The modifications currently
+provide driver (kext) injection, kernel and driver patching, and driver blocking.
+<a 
+ id="x1-31001r34"></a>
+</p>
+<h4 class="subsectionHead"><span class="titlemark">7.2   </span> <a 
+ id="x1-320002"></a>Properties</h4>
      <ol  class="enumerate1" >
      <li 
-  class="enumerate" id="x1-20002x1">FadtEnableReset<br 
-class="newline" />Type: plist boolean<br 
-class="newline" />Failsafe: false<br 
-class="newline" />Description: Provide reset register and flag in FADT table to enable reboot and shutdown.
-     <!--l. 1157--><p class="noindent" >Mainly required on legacy hardware and few laptops. Can also fix power-button shortcuts. Not recommended
-     unless required.
+  class="enumerate" id="x1-32002x1">Add<br 
+class="newline" />Type: plist array<br 
+class="newline" />Failsafe: Empty<br 
+class="newline" />Description: Load selected kernel drivers from OC/Kexts directory.
+     <!--l. 1794--><p class="noindent" >Designed to be filled with plist dict values, describing each driver. See <a 
+href="#x1-330003">Add Properties</a> section below. Kernel
+     driver load order follows the item order in the array, thus the dependencies should be written prior to their
+     consumers.
+     </p><!--l. 1799--><p class="noindent" >To track the dependency order one can inspect the OSBundleLibraries key in the Info.plist of the kext. Any
+     kext mentioned in the OSBundleLibraries of the other kext must be precede this kext.
+     </p><!--l. 1803--><p class="noindent" >Note: Kexts may have inner kexts (Plug-Ins) in their bundle. Each inner kext must be added separately.
      </p></li>
      <li 
-  class="enumerate" id="x1-20004x2">NormalizeHeaders<br 
-class="newline" />Type: plist boolean<br 
-class="newline" />Failsafe: false<br 
-class="newline" />Description:  Cleanup  ACPI  header  fields  to  workaround  macOS  ACPI  implementation  bug  causing  boot
-     crashes. Reference: <a 
-href="https://alextjam.es/debugging-appleacpiplatform/" >Debugging AppleACPIPlatform on 10.13</a> by Alex James aka theracermaster. The issue is
-     fixed in macOS Mojave (10.14).
+  class="enumerate" id="x1-32004x2">Block<br 
+class="newline" />Type: plist array<br 
+class="newline" />Failsafe: Empty<br 
+class="newline" />Description: Remove selected kernel drivers from prelinked kernel.
+     <!--l. 1812--><p class="noindent" >Designed to be filled with plist dictionary values, describing each blocked driver. See <a 
+href="#x1-340004">Block Properties</a> section
+     below.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-32006x3">Emulate<br 
+class="newline" />Type: plist dict<br 
+class="newline" />Description: Emulate select hardware in kernelspace via parameters described in <a 
+href="#x1-350005">Emulate Properties</a> section
+     below.
      </li>
      <li 
-  class="enumerate" id="x1-20006x3">RebaseRegions<br 
-class="newline" />Type: plist boolean<br 
-class="newline" />Failsafe: false<br 
-class="newline" />Description: Attempt to heuristically relocate ACPI memory regions. Not recommended.
-     <!--l. 1177--><p class="noindent" >ACPI   tables   are   often   generated   dynamically   by   underlying   firmware   implementation.   Among   the
-     position-independent  code,  ACPI  tables  may  contain  physical  addresses  of  MMIO  areas  used  for  device
-     configuration,  usually  grouped  in  regions  (e.g.  OperationRegion).  Changing  firmware  settings  or  hardware
-     configuration, upgrading or patching the firmware inevitably leads to changes in dynamically generated ACPI
-     code, which sometimes lead to the shift of the addresses in aforementioned OperationRegion constructions.
-     </p><!--l. 1187--><p class="noindent" >For this reason it is very dangerous to apply any kind of modifications to ACPI tables. The most reasonable
-     approach is to make as few as possible changes to ACPI and try to not replace any tables, especially DSDT.
-     When this is not possible, then at least attempt to ensure that custom DSDT is based on the most recent DSDT
-     or remove writes and reads for the affected areas.
-     </p><!--l. 1194--><p class="noindent" >When nothing else helps this option could be tried to avoid stalls at PCI Configuration Begin phase of macOS
-     booting by attempting to fix the ACPI addresses. It does not do magic, and only works with most common cases.
-     Do not use unless absolutely required.
+  class="enumerate" id="x1-32008x4"><span class="uwave">Force</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist array</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: Empty</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Load kernel drivers from system volume if they are not cached. </span>
+     <!--l. 1828--><p class="noindent" ><span class="uwave">Designed to be filled with </span><span class="uwave">plist dict</span> <span class="uwave">values, describing each driver. See </span><a 
+href="#x1-360006">Force Properties</a> <span class="uwave">section below. This
+     section resolves the problem of injecting drivers that depend on other drivers, which are not cached otherwise.
+     The issue normally affects older operating systems, where various dependency kexts, like </span><span class="uwave">IOAudioFamily</span> <span class="uwave">or
+     </span><span class="uwave">IONetworkingFamily</span> <span class="uwave">may not be present in the kernel cache by default. Kernel driver load order follows the
+     item order in the array, thus the dependencies should be written prior to their consumers. </span><span class="uwave">Force</span> <span class="uwave">happens before
+     </span><span class="uwave">Add</span><span class="uwave">. </span>
+     </p><!--l. 1839--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: The signature of the “forced” kernel drivers is not checked anyhow, making the use of this feature extremely
+                                                                                                  
+                                                                                                  
+     dangerous and undesired for secure boot. This feature may not work on encrypted partitions in newer operating
+     systems. </span>
      </p></li>
      <li 
-  class="enumerate" id="x1-20008x4">ResetHwSig<br 
-class="newline" />Type: plist boolean<br 
-class="newline" />Failsafe: false<br 
-class="newline" />Description: Reset FACS table HardwareSignature value to 0.
-     <!--l. 1206--><p class="noindent" >This works around firmwares that fail to maintain hardware signature across the reboots and cause issues with
-     waking from hibernation.
+  class="enumerate" id="x1-32010x5">Patch<br 
+class="newline" />Type: plist array<br 
+class="newline" />Failsafe: Empty<br 
+class="newline" />Description: Perform binary patches in kernel and drivers prior to driver addition and removal.
+     <!--l. 1851--><p class="noindent" >Designed to be filled with plist dictionary values, describing each patch. See <a 
+href="#x1-370007">Patch Properties</a> section below.
      </p></li>
      <li 
-  class="enumerate" id="x1-20010x5">ResetLogoStatus<br 
+  class="enumerate" id="x1-32012x6">Quirks<br 
+class="newline" />Type: plist dict<br 
+class="newline" />Description: Apply individual kernel and driver quirks described in <a 
+href="#x1-380008">Quirks Properties</a> section below.
+     </li>
+     <li 
+  class="enumerate" id="x1-32014x7"><span class="uwave">Scheme</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist dict</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Define kernelspace operation mode via parameters described in </span><a 
+href="#x1-390009">Scheme Properties</a> <span class="uwave">section below.
+     </span>
+     </li></ol>
+<a 
+ id="x1-32015r35"></a>
+<h4 class="subsectionHead"><span class="titlemark">7.3   </span> <a 
+ id="x1-330003"></a>Add Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-33002x1"><span class="uwave">Arch</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist string</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">Any</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Kext architecture (</span><span class="uwave">Any</span><span class="uwave">, </span><span class="uwave">i386</span><span class="uwave">, </span><span class="uwave">x86_64</span><span class="uwave">). </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-33004x2">BundlePath<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty string<br 
+class="newline" />Description: Kext bundle path (e.g. Lilu.kext or MyKext.kext/Contents/PlugIns/MySubKext.kext).
+     </li>
+     <li 
+  class="enumerate" id="x1-33006x3">Comment<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty string<br 
+class="newline" />Description: Arbitrary ASCII string used to provide human readable reference for the entry. It is implementation
+     defined whether this value is used.
+     </li>
+     <li 
+  class="enumerate" id="x1-33008x4">Enabled<br 
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
-class="newline" />Description: Reset BGRT table Displayed status field to false.
+class="newline" />Description: This kernel driver will not be added unless set to true.
+     </li>
+     <li 
+  class="enumerate" id="x1-33010x5">ExecutablePath<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty string<br 
+class="newline" />Description: Kext executable path relative to bundle (e.g. Contents/MacOS/Lilu).
+     </li>
+     <li 
+  class="enumerate" id="x1-33012x6">MaxKernel<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty string<br 
+class="newline" />Description: Adds kernel driver on specified macOS version or older.
+                                                                                                  
+                                                                                                  
+     </p></li>
+     <li 
+  class="enumerate" id="x1-33014x7">MinKernel<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty string<br 
+class="newline" />Description: Adds kernel driver on specified macOS version or newer.
+     <!--l. 1958--><p class="noindent" >Note: Refer to <a 
+href="#kernmatch">Add MaxKernel description</a> for matching logic.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-33016x8">PlistPath<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty string<br 
+class="newline" />Description: Kext Info.plist path relative to bundle (e.g. Contents/Info.plist).
+     </li></ol>
+<a 
+ id="x1-33017r36"></a>
+<h4 class="subsectionHead"><span class="titlemark">7.4   </span> <a 
+ id="x1-340004"></a>Block Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-34002x1"><span class="uwave">Arch</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist string</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">Any</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Kext block architecture (</span><span class="uwave">Any</span><span class="uwave">, </span><span class="uwave">i386</span><span class="uwave">, </span><span class="uwave">x86_64</span><span class="uwave">). </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-34004x2">Comment<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty string<br 
+class="newline" />Description: Arbitrary ASCII string used to provide human readable reference for the entry. It is implementation
+     defined whether this value is used.
+     </li>
+     <li 
+  class="enumerate" id="x1-34006x3">Enabled<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: This kernel driver will not be blocked unless set to true.
+     </li>
+     <li 
+  class="enumerate" id="x1-34008x4">Identifier<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty string<br 
+class="newline" />Description: Kext bundle identifier (e.g. com.apple.driver.AppleTyMCEDriver).
+     </li>
+     <li 
+  class="enumerate" id="x1-34010x5">MaxKernel<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty string<br 
+class="newline" />Description: Blocks kernel driver on specified macOS version or older.
+     <!--l. 2007--><p class="noindent" >Note: Refer to <a 
+href="#kernmatch">Add MaxKernel description</a> for matching logic.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-34012x6">MinKernel<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty string<br 
+class="newline" />Description: Blocks kernel driver on specified macOS version or newer.
+     <!--l. 2015--><p class="noindent" >Note: Refer to <a 
+href="#kernmatch">Add MaxKernel description</a> for matching logic.
+</p>
+     </li></ol>
+<a 
+ id="x1-34013r37"></a>
+                                                                                                  
+                                                                                                  
+<h4 class="subsectionHead"><span class="titlemark">7.5   </span> <a 
+ id="x1-350005"></a>Emulate Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-35002x1">Cpuid1Data<br 
+class="newline" />Type: plist data, 16 bytes<br 
+class="newline" />Failsafe: All zero<br 
+class="newline" />Description: Sequence of EAX, EBX, ECX, EDX values to replace CPUID (1) call in XNU kernel.
+     <!--l. 2029--><p class="noindent" >This property serves for two needs:
+</p>
+         <ul class="itemize1">
+         <li class="itemize">Enabling support of an unsupported CPU model.
+         </li>
+         <li class="itemize">Enabling XCPM support for an unsupported CPU variant.</li></ul>
+     <!--l. 2037--><p class="noindent" >Normally it is only the value of EAX that needs to be taken care of, since it represents the full CPUID. The remaining
+     bytes are to be left as zeroes. Byte order is Little Endian, so for example, C3 06 03 00 stands for CPUID 0x0306C3
+     (Haswell).
+     </p><!--l. 2042--><p class="noindent" >For XCPM support it is recommended to use the following combinations.
+</p>
+         <ul class="itemize1">
+         <li class="itemize">Haswell-E (0x0306F2) to Haswell (0x0306C3):<br 
+class="newline" />Cpuid1Data: C3 06 03 00 00 00 00 00 00 00 00 00 00 00 00 00<br 
+class="newline" />Cpuid1Mask: FF FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00
+         </li>
+         <li class="itemize">Broadwell-E (0x0406F1) to Broadwell (0x0306D4):<br 
+class="newline" />Cpuid1Data: D4 06 03 00 00 00 00 00 00 00 00 00 00 00 00 00<br 
+class="newline" />Cpuid1Mask: FF FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00</li></ul>
+     <!--l. 2054--><p class="noindent" >Keep in mind, that the following configurations are unsupported (at least out of the box):
+</p>
+         <ul class="itemize1">
+         <li class="itemize">Consumer Ivy Bridge (0x0306A9) as Apple disabled XCPM for Ivy Bridge and recommends legacy power
+         management for these CPUs. You will need to manually patch _xcpm_bootstrap to force XCPM on these
+         CPUs instead of using this option.
+         </li>
+         <li class="itemize">Low-end CPUs (e.g. Haswell+ Pentium) as they are not supported properly by macOS. Legacy hacks for
+         older models can be found in the Special NOTES section of <a 
+href="https://github.com/acidanthera/bugtracker/issues/365" >acidanthera/bugtracker#365</a>.</li></ul>
+     </li>
+     <li 
+  class="enumerate" id="x1-35004x2">Cpuid1Mask<br 
+class="newline" />Type: plist data, 16 bytes<br 
+class="newline" />Failsafe: All zero<br 
+class="newline" />Description: Bit mask of active bits in Cpuid1Data.
+     <!--l. 2072--><p class="noindent" >When each Cpuid1Mask bit is set to 0, the original CPU bit is used, otherwise set bits take the value of
+     Cpuid1Data.
+</p>
+     </li></ol>
+<a 
+ id="x1-35005r38"></a>
+<h4 class="subsectionHead"><span class="titlemark">7.6   </span> <a 
+ id="x1-360006"></a><span class="uwave">Force Properties</span></h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-36002x1"><span class="uwave">Arch</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist string</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">Any</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Kext architecture (</span><span class="uwave">Any</span><span class="uwave">, </span><span class="uwave">i386</span><span class="uwave">, </span><span class="uwave">x86_64</span><span class="uwave">). </span>
+                                                                                                  
+                                                                                                  
+     </li>
+     <li 
+  class="enumerate" id="x1-36004x2"><span class="uwave">BundlePath</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist string</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: Empty string</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Kext bundle path (e.g. </span><span class="uwave">System\Library \Extensions \IONetworkingFamily.kext</span><span class="uwave">). </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-36006x3"><span class="uwave">Comment</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist string</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: Empty string</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Arbitrary ASCII string used to provide human readable reference for the entry. It is implementation
+     defined whether this value is used. </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-36008x4"><span class="uwave">Enabled</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">false</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: This kernel driver will not be added when not present unless set to </span><span class="uwave">true</span><span class="uwave">. </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-36010x5"><span class="uwave">ExecutablePath</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist string</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: Empty string</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Kext executable path relative to bundle (e.g. </span><span class="uwave">Contents/MacOS/IONetworkingFamily</span><span class="uwave">). </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-36012x6"><span class="uwave">Identifier</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist string</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: Empty string</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">:       Kext       identifier       to       perform       presence       checking       before       adding
+     (e.g. </span><span class="uwave">com.apple.iokit.IONetworkingFamily</span><span class="uwave">). Only drivers which identifiers are not be found in the cache will
+     be added. </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-36014x7"><span class="uwave">MaxKernel</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist string</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: Empty string</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Adds kernel driver on specified macOS version or older. </span>
+     <!--l. 2136--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: Refer to </span><a 
+href="#kernmatch">Add Add MaxKernel description</a> <span class="uwave">for matching logic. </span>
+     </p></li>
+     <li 
+  class="enumerate" id="x1-36016x8"><span class="uwave">MinKernel</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist string</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: Empty string</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Adds kernel driver on specified macOS version or newer. </span>
+     <!--l. 2146--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: Refer to </span><a 
+href="#kernmatch">Add Add MaxKernel description</a> <span class="uwave">for matching logic. </span>
+     </p></li>
+     <li 
+  class="enumerate" id="x1-36018x9"><span class="uwave">PlistPath</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist string</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: Empty string</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Kext </span><span class="uwave">Info.plist</span> <span class="uwave">path relative to bundle (e.g. </span><span class="uwave">Contents/Info.plist</span><span class="uwave">). </span>
+     </li></ol>
+<a 
+ id="x1-36019r39"></a>
+<h4 class="subsectionHead"><span class="titlemark">7.7   </span> <a 
+ id="x1-370007"></a>Patch Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-37002x1"><span class="uwave">Arch</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist string</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">Any</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Kext patch architecture (</span><span class="uwave">Any</span><span class="uwave">, </span><span class="uwave">i386</span><span class="uwave">, </span><span class="uwave">x86_64</span><span class="uwave">). </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-37004x2">Base<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty string<br 
+class="newline" />Description: Selects symbol-matched base for patch lookup (or immediate replacement) by obtaining the address
+     of provided symbol name. Can be set to empty string to be ignored.
+     </li>
+     <li 
+  class="enumerate" id="x1-37006x3">Comment<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty string<br 
+class="newline" />Description: Arbitrary ASCII string used to provide human readable reference for the entry. It is implementation
+     defined whether this value is used.
+     </li>
+     <li 
+  class="enumerate" id="x1-37008x4">Count<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Number of patch occurrences to apply. 0 applies the patch to all occurrences found.
+     </li>
+     <li 
+  class="enumerate" id="x1-37010x5">Enabled<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: This kernel patch will not be used unless set to true.
+     </li>
+     <li 
+  class="enumerate" id="x1-37012x6">Find<br 
+class="newline" />Type: plist data<br 
+class="newline" />Failsafe: Empty data<br 
+class="newline" />Description: Data to find. Can be set to empty for immediate replacement at Base. Must equal to Replace in
+     size otherwise.
+     </li>
+     <li 
+  class="enumerate" id="x1-37014x7">Identifier<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty string<br 
+class="newline" />Description: Kext bundle identifier (e.g. com.apple.driver.AppleHDA) or kernel for kernel patch.
+     </li>
+     <li 
+  class="enumerate" id="x1-37016x8">Limit<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Maximum number of bytes to search for. Can be set to 0 to look through the whole kext or kernel.
+     </li>
+     <li 
+  class="enumerate" id="x1-37018x9">Mask<br 
+class="newline" />Type: plist data<br 
+class="newline" />Failsafe: Empty data<br 
+class="newline" />Description: Data bitwise mask used during find comparison. Allows fuzzy search by ignoring not masked (set
+     to zero) bits. Can be set to empty data to be ignored. Must equal to Replace in size otherwise.
+     </li>
+     <li 
+  class="enumerate" id="x1-37020x10">MaxKernel<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty string<br 
+class="newline" />Description: Patches data on specified macOS version or older.
+     <!--l. 2237--><p class="noindent" >Note: Refer to <a 
+href="#kernmatch">Add MaxKernel description</a> for matching logic.
+                                                                                                  
+                                                                                                  
+     </p></li>
+     <li 
+  class="enumerate" id="x1-37022x11">MinKernel<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty string<br 
+class="newline" />Description: Patches data on specified macOS version or newer.
+     <!--l. 2245--><p class="noindent" >Note: Refer to <a 
+href="#kernmatch">Add MaxKernel description</a> for matching logic.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-37024x12">Replace<br 
+class="newline" />Type: plist data<br 
+class="newline" />Failsafe: Empty data<br 
+class="newline" />Description: Replacement data of one or more bytes.
+     </li>
+     <li 
+  class="enumerate" id="x1-37026x13">ReplaceMask<br 
+class="newline" />Type: plist data<br 
+class="newline" />Failsafe: Empty data<br 
+class="newline" />Description: Data bitwise mask used during replacement. Allows fuzzy replacement by updating masked (set
+     to non-zero) bits. Can be set to empty data to be ignored. Must equal to Replace in size otherwise.
+     </li>
+     <li 
+  class="enumerate" id="x1-37028x14">Skip<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Number of found occurrences to be skipped before replacement is done.
+     </li></ol>
+<a 
+ id="x1-37029r40"></a>
+<h4 class="subsectionHead"><span class="titlemark">7.8   </span> <a 
+ id="x1-380008"></a>Quirks Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-38002x1">AppleCpuPmCfgLock<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" /><span class="uwave">Requirement</span><span class="uwave">: 10.6 (64-bit)</span><br 
+class="newline" />Description:                 Disables                 PKG_CST_CONFIG_CONTROL           (0xE2)                 MSR
+     modification in AppleIntelCPUPowerManagement.kext, commonly causing early kernel panic, when it is locked
+     from writing.
+     <!--l. 2284--><p class="noindent" >Certain  firmwares  lock  PKG_CST_CONFIG_CONTROL MSR  register.  To  check  its  state  one  can  use  bundled
+     VerifyMsrE2 tool. Select firmwares have this register locked on some cores only.
+     </p><!--l. 2288--><p class="noindent" >As modern firmwares provide CFG Lock setting, which allows configuring PKG_CST_CONFIG_CONTROL MSR register
+     lock, this option should be avoided whenever possible. For several APTIO firmwares not displaying CFG Lock
+     setting in the GUI it is possible to access the option directly:
+         </p><ol  class="enumerate2" >
+         <li 
+  class="enumerate" id="x1-38004x1">Download <a 
+href="https://github.com/LongSoft/UEFITool/releases" >UEFITool</a> and <a 
+href="https://github.com/LongSoft/Universal-IFR-Extractor/releases" >IFR-Extractor</a>.
+         </li>
+         <li 
+  class="enumerate" id="x1-38006x2">Open your firmware image in UEFITool and find CFG Lock unicode string. If it is not present, your firmware
+         may not have this option and you should stop.
+         </li>
+         <li 
+  class="enumerate" id="x1-38008x3">Extract the Setup.bin PE32 Image Section (the one UEFITool found) through Extract Body menu option.
+         </li>
+         <li 
+  class="enumerate" id="x1-38010x4">Run IFR-Extractor on the extracted file (e.g. ./ifrextract Setup.bin Setup.txt).
+         </li>
+         <li 
+  class="enumerate" id="x1-38012x5">Find CFG Lock, VarStoreInfo (VarOffset/VarName): in Setup.txt and remember the offset right after
+         it (e.g. 0x123).
+         </li>
+         <li 
+  class="enumerate" id="x1-38014x6">Download and run <a 
+href="http://brains.by/posts/bootx64.7z" >Modified GRUB Shell</a> compiled by <a 
+href="https://geektimes.com/post/258090" >brainsucker</a> or use <a 
+href="https://github.com/datasone/grub-mod-setup_var" >a newer version</a> by <a 
+href="https://github.com/datasone" >datasone</a>.
+                                                                                                  
+                                                                                                  
+         </li>
+         <li 
+  class="enumerate" id="x1-38016x7">Enter setup_var 0x123 0x00 command, where 0x123 should be replaced by your actual offset, and reboot.</li></ol>
+     <!--l. 2312--><p class="noindent" ><span class="sout">WARNING</span><span class="uwave">Warning</span>: Variable offsets are unique not only to each motherboard but even to its firmware version. Never
+     ever try to use an offset without checking.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-38018x2">AppleXcpmCfgLock<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" /><span class="uwave">Requirement</span><span class="uwave">: 10.8 (not required for older)</span><br 
+class="newline" />Description: Disables PKG_CST_CONFIG_CONTROL (0xE2) MSR modification in XNU kernel, commonly causing early
+     kernel panic, when it is locked from writing (XCPM power management).
+     <!--l. 2324--><p class="noindent" >Note: This option should be avoided whenever possible. See AppleCpuPmCfgLock description for more
+     details.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-38020x3">AppleXcpmExtraMsrs<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" /><span class="uwave">Requirement</span><span class="uwave">: 10.8 (not required for older)</span><br 
+class="newline" />Description: Disables multiple MSR access critical for select CPUs, which have no native XCPM support.
+     <!--l. 2335--><p class="noindent" >This is normally used in conjunction with Emulate section on Haswell-E, Broadwell-E, Skylake-SP, and similar CPUs.
+     More details on the XCPM patches are outlined in <a 
+href="https://github.com/acidanthera/bugtracker/issues/365" >acidanthera/bugtracker#365</a>.
+     </p><!--l. 2339--><p class="noindent" >Note: Additional not provided patches will be required for Ivy Bridge or Pentium CPUs. It is recommended to use
+     AppleIntelCpuPowerManagement.kext for the former.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-38022x4">AppleXcpmForceBoost<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" /><span class="uwave">Requirement</span><span class="uwave">: 10.8 (not required for older)</span><br 
+class="newline" />Description: Forces maximum performance in XCPM mode.
+     <!--l. 2349--><p class="noindent" >This patch writes 0xFF00 to MSR_IA32_PERF_CONTROL (0x199), effectively setting maximum multiplier for all the
+     time.
+     </p><!--l. 2352--><p class="noindent" >Note: While this may increase the performance, this patch is strongly discouraged on all systems but those
+     explicitly dedicated to scientific or media calculations. In general only certain Xeon models benefit from the
+     patch.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-38024x5">CustomSMBIOSGuid<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" /><span class="uwave">Requirement</span><span class="uwave">: 10.6 (64-bit)</span><br 
+class="newline" />Description: Performs GUID patching for UpdateSMBIOSMode Custom mode. Usually relevant for Dell
+     laptops.
+     </li>
+     <li 
+  class="enumerate" id="x1-38026x6">DisableIoMapper<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" /><span class="uwave">Requirement</span><span class="uwave">: 10.8 (not required for older)</span><br 
+class="newline" />Description: Disables IOMapper support in XNU (VT-d), which may conflict with the firmware implementation.
+     <!--l. 2372--><p class="noindent" >Note: This option is a preferred alternative to deleting DMAR ACPI table and disabling VT-d in firmware preferences,
+     which does not break VT-d support in other systems in case they need it.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-38028x7"><span class="uwave">DisableLinkeditJettison</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">false</span><br 
+class="newline" /><span class="uwave">Requirement</span><span class="uwave">: 11.0</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Disables </span><span class="uwave">__LINKEDIT</span> <span class="uwave">jettison code. </span>
+     <!--l. 2384--><p class="noindent" ><span class="uwave">This option lets </span><span class="uwave">Lilu.kext</span> <span class="uwave">and possibly some others function in macOS Big Sur with best performance without
+     </span><span class="uwave">keepsyms=1</span> <span class="uwave">boot argument. </span>
+     </p></li>
+     <li 
+  class="enumerate" id="x1-38030x8">DisableRtcChecksum<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" /><span class="uwave">Requirement</span><span class="uwave">: 10.6 (64-bit)</span><br 
+class="newline" />Description: Disables primary checksum (0x58-0x59) writing in AppleRTC.
+     <!--l. 2397--><p class="noindent" >Note 1: This option will not protect other areas from being overwritten, see <a 
+href="https://github.com/acidanthera/RTCMemoryFixup" >RTCMemoryFixup</a> kernel extension if this is
+     desired.
+     </p><!--l. 2401--><p class="noindent" >Note 2: This option will not protect areas from being overwritten at firmware stage (e.g. macOS bootloader), see
+     AppleRtc protocol description if this is desired.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-38032x9">DummyPowerManagement<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" /><span class="uwave">Requirement</span><span class="uwave">: 10.6 (64-bit)</span><br 
+class="newline" />Description: Disables AppleIntelCpuPowerManagement.
+     <!--l. 2412--><p class="noindent" >Note: This option is a preferred alternative to NullCpuPowerManagement.kext for CPUs without native power
+     management driver in macOS.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-38034x10">ExternalDiskIcons<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" /><span class="uwave">Requirement</span><span class="uwave">: 10.6 (64-bit)</span><br 
+class="newline" />Description: Apply icon type patches to AppleAHCIPort.kext to force internal disk icons for all AHCI
+     disks.
+     <!--l. 2424--><p class="noindent" >Note: This option should be avoided whenever possible. Modern firmwares usually have compatible AHCI
+     controllers.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-38036x11">IncreasePciBarSize<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" /><span class="uwave">Requirement</span><span class="uwave">: 10.10</span><br 
+class="newline" />Description: Increases 32-bit PCI bar size in IOPCIFamily from 1 to 4 GBs.
+     <!--l. 2434--><p class="noindent" >Note: This option should be avoided whenever possible. In general the necessity of this option means misconfigured or
+     broken firmware.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-38038x12">LapicKernelPanic<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" /><span class="uwave">Requirement</span><span class="uwave">: 10.6 (64-bit)</span><br 
+class="newline" />Description: Disables kernel panic on LAPIC interrupts.
+     </li>
+     <li 
+  class="enumerate" id="x1-38040x13">PanicNoKextDump<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" /><span class="uwave">Requirement</span><span class="uwave">: 10.13 (not required for older)</span><br 
+class="newline" />Description: Prevent kernel from printing kext dump in the panic log preventing from observing panic details. Affects
+     10.13 and above.
+     </li>
+     <li 
+  class="enumerate" id="x1-38042x14">PowerTimeoutKernelPanic<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" /><span class="uwave">Requirement</span><span class="uwave">: 10.15 (not required for older)</span><br 
+class="newline" />Description: Disables kernel panic on setPowerState timeout.
+     <!--l. 2459--><p class="noindent" >An additional security measure was added to macOS Catalina (10.15) causing kernel panic on power change timeout for
+     Apple drivers. Sometimes it may cause issues on misconfigured hardware, notably digital audio, which sometimes fails to
+     wake up. For debug kernels setpowerstate_panic=0 boot argument should be used, which is otherwise equivalent to this
+     quirk.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-38044x15">ThirdPartyDrives<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" /><span class="uwave">Requirement</span><span class="uwave">: 10.6 (64-bit, not required for older)</span><br 
+class="newline" />Description: Apply vendor patches to IOAHCIBlockStorage.kext to enable native features for third-party drives, such
+     as TRIM on SSDs or hibernation support on 10.15 and newer.
+     <!--l. 2474--><p class="noindent" >Note: This option may be avoided on user preference. NVMe SSDs are compatible without the change. For AHCI SSDs
+     on modern macOS version there is a dedicated built-in utility called trimforce. Starting from 10.15
+     this utility creates EnableTRIM variable in APPLE_BOOT_VARIABLE_GUID namespace with 01 00 00 00
+     value.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-38046x16">XhciPortLimit<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" /><span class="uwave">Requirement</span><span class="uwave">: 10.11 (not required for older)</span><br 
+class="newline" />Description: Patch various kexts (AppleUSBXHCI.kext, AppleUSBXHCIPCI.kext, IOUSBHostFamily.kext) to remove
+     USB port count limit of 15 ports.
+     <!--l. 2488--><p class="noindent" >Note: This option should be avoided whenever possible. USB port limit is imposed by the amount of used bits in
+     locationID format and there is no possible way to workaround this without heavy OS modification. The only
+     valid solution is to limit the amount of used ports to 15 (discarding some). More details can be found on
+     <a 
+href="https://applelife.ru/posts/550233" >AppleLife.ru</a>.
+</p>
+     </li></ol>
+<a 
+ id="x1-38047r41"></a>
+<h4 class="subsectionHead"><span class="titlemark">7.9   </span> <a 
+ id="x1-390009"></a><span class="uwave">Scheme Properties</span></h4>
+<!--l. 2500--><p class="noindent" ><span class="uwave">These properties are particularly relevant for older macOS operating systems. For more details on how to install and
+troubleshoot such macOS installation refer to </span><a 
+href="#x1-740001">Legacy Apple OS</a><span class="uwave">. </span>
+     </p><ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-39002x1"><span class="uwave">FuzzyMatch</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">false</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Use </span><span class="uwave">kernelcache</span> <span class="uwave">with different checksums when available. </span>
+     <!--l. 2512--><p class="noindent" ><span class="uwave">On macOS 10.6 and earlier </span><span class="uwave">kernelcache</span> <span class="uwave">filename has a checksum, which essentially is </span><span class="uwave">adler32</span> <span class="uwave">from SMBIOS
+     product name and EfiBoot device path. On certain firmwares EfiBoot device path differs between UEFI and
+     macOS due to ACPI or hardware specifics, rendering </span><span class="uwave">kernelcache</span> <span class="uwave">checksum as always different. </span>
+     </p><!--l. 2518--><p class="noindent" ><span class="uwave">This setting allows matching the latest </span><span class="uwave">kernelcache</span> <span class="uwave">with a suitable architecture when the </span><span class="uwave">kernelcache</span> <span class="uwave">without
+     suffix is unavailable, improving macOS 10.6 boot performance on several platforms. </span>
+                                                                                                  
+                                                                                                  
+     </p></li>
+     <li 
+  class="enumerate" id="x1-39004x2"><span class="uwave">KernelArch</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist string</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">Auto</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Prefer specified kernel architecture (</span><span class="uwave">Auto</span><span class="uwave">, </span><span class="uwave">i386</span><span class="uwave">, </span><span class="uwave">i386-user32</span><span class="uwave">, </span><span class="uwave">x86_64</span><span class="uwave">) when available. </span>
+     <!--l. 2532--><p class="noindent" ><span class="uwave">On macOS 10.7 and earlier XNU kernel can boot with architectures different from the usual </span><span class="uwave">x86_64</span><span class="uwave">. This setting
+     will use the specified architecture to boot macOS when it is supported by the macOS and the configuration: </span>
+</p>
+         <ul class="itemize1">
+         <li class="itemize"><span class="uwave">Auto</span> <span class="uwave">— Choose the preferred architecture automatically. </span>
+         </li>
+         <li class="itemize"><span class="uwave">i386</span> <span class="uwave">— Use </span><span class="uwave">i386</span> <span class="uwave">(32-bit) kernel when available. </span>
+         </li>
+         <li class="itemize"><span class="uwave">i386-user32</span> <span class="uwave">— Use </span><span class="uwave">i386</span> <span class="uwave">(32-bit) kernel when available and force the use of 32-bit userspace on 64-bit
+         capable processors. On macOS 64-bit capable processors are assumed to support </span><span class="uwave">SSSE3</span><span class="uwave">. This is not the case
+         for older 64-bit capable Pentium processors, which cause some applications to crash on macOS 10.6. The
+         behaviour corresponds to </span><span class="uwave">-legacy</span> <span class="uwave">kernel boot argument. </span>
+         </li>
+         <li class="itemize"><span class="uwave">x86_64</span> <span class="uwave">— Use </span><span class="uwave">x86_64</span> <span class="uwave">(64-bit) kernel when available. </span></li></ul>
+     <!--l. 2550--><p class="noindent" ><span class="uwave">Below is the algorithm determining the kernel architecture. </span>
+         </p><ol  class="enumerate2" >
+         <li 
+  class="enumerate" id="x1-39006x1"><span class="uwave">arch</span> <span class="uwave">argument in image arguments (e.g. when launched via UEFI Shell) or in </span><span class="uwave">boot-args</span> <span class="uwave">variable overrides
+         any compatibility checks and forces the specified architecture, completing this algorithm. </span>
+         </li>
+         <li 
+  class="enumerate" id="x1-39008x2"><span class="uwave">OpenCore build architecture restricts capabilities to </span><span class="uwave">i386</span> <span class="uwave">and </span><span class="uwave">i386-user32</span> <span class="uwave">mode for the 32-bit firmware
+         variant. </span>
+         </li>
+         <li 
+  class="enumerate" id="x1-39010x3"><span class="uwave">Determined EfiBoot version restricts architecture choice: </span>
+             <ul class="itemize1">
+             <li class="itemize"><span class="uwave">10.4-10.5 — </span><span class="uwave">i386</span> <span class="uwave">or </span><span class="uwave">i386-user32</span>
+             </li>
+             <li class="itemize"><span class="uwave">10.6-10.7 — </span><span class="uwave">i386</span><span class="uwave">, </span><span class="uwave">i386-user32</span><span class="uwave">, or </span><span class="uwave">x86_64</span>
+             </li>
+             <li class="itemize"><span class="uwave">10.8 or newer — </span><span class="uwave">x86_64</span></li></ul>
+         </li>
+         <li 
+  class="enumerate" id="x1-39012x4"><span class="uwave">If </span><span class="uwave">KernelArch</span> <span class="uwave">is set to </span><span class="uwave">Auto</span> <span class="uwave">and </span><span class="uwave">SSSE3</span> <span class="uwave">is not supported by the CPU, capabilities are restricted to </span><span class="uwave">i386-user32</span> <span class="uwave">if
+         supported by EfiBoot. </span>
+         </li>
+         <li 
+  class="enumerate" id="x1-39014x5"><span class="uwave">Board identifier (from SMBIOS) based on EfiBoot version disables </span><span class="uwave">x86_64</span> <span class="uwave">support on an unsupported model if
+         any </span><span class="uwave">i386</span> <span class="uwave">variant is supported. </span><span class="uwave">Auto</span> <span class="uwave">is not consulted here as the list is not overridable in EfiBoot.
+         </span>
+         </li>
+         <li 
+  class="enumerate" id="x1-39016x6"><span class="uwave">KernelArch</span> <span class="uwave">restricts the support to the explicitly specified architecture (when not set to </span><span class="uwave">Auto</span><span class="uwave">) if the architecture
+         remains present in the capabilities. </span>
+         </li>
+         <li 
+  class="enumerate" id="x1-39018x7"><span class="uwave">The best supported architecture is chosen in this order: </span><span class="uwave">x86_64</span><span class="uwave">, </span><span class="uwave">i386</span><span class="uwave">, </span><span class="uwave">i386-user32</span><span class="uwave">. </span></li></ol>
+     <!--l. 2579--><p class="noindent" ><span class="uwave">Unlike macOS 10.7, where select boards identifiers are treated as the </span><span class="uwave">i386</span> <span class="uwave">only machines, and macOS 10.5 or
+     earlier, where </span><span class="uwave">x86_64</span> <span class="uwave">is not supported by the macOS kernel, macOS 10.6 is very special. The architecture
+     choice on macOS 10.6 depends on many factors including not only the board identifier, but also macOS
+     product type (client vs server), macOS point release, and RAM amount. The detection of them all is
+     complicated and not practical, because several point releases had genuine bugs and failed to properly perform
+     the server detection in the first place. For this reason OpenCore on macOS 10.6 will fallback to </span><span class="uwave">x86_64</span>
+     <span class="uwave">architecture whenever it is supported by the board at all, just like on macOS 10.7. As a reference here is the
+     64-bit Mac model compatibility corresponding to actual EfiBoot behaviour on macOS 10.6.8 and 10.7.5.
+     </span>
+                                                                                                  
+                                                                                                  
+</p>
+     <div class="center" 
+>
+<!--l. 2592--><p class="noindent" >
+</p>
+<div class="tabular"> <table id="TBL-2" class="tabular" 
+ 
+><colgroup id="TBL-2-1g"><col 
+id="TBL-2-1" /></colgroup><colgroup id="TBL-2-2g"><col 
+id="TBL-2-2" /></colgroup><colgroup id="TBL-2-3g"><col 
+id="TBL-2-3" /></colgroup><colgroup id="TBL-2-4g"><col 
+id="TBL-2-4" /></colgroup><colgroup id="TBL-2-5g"><col 
+id="TBL-2-5" /></colgroup><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-1-"><td  style="white-space:normal; text-align:left;" id="TBL-2-1-1"  
+class="td11"><!--l. 2595--><p class="noindent" ><span class="uwave">Model</span>         </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-1-2"  
+class="td11"><span class="uwave">10.6 (minimal)</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-1-3"  
+class="td11"> <span class="uwave">10.6 (client)</span>  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-1-4"  
+class="td11"> <span class="uwave">10.6 (server)</span> </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-1-5"  
+class="td11">  <span class="uwave">10.7 (any)</span>   </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-2-"><td  style="white-space:normal; text-align:left;" id="TBL-2-2-1"  
+class="td11"><!--l. 2597--><p class="noindent" ><span class="uwave">Macmini </span>        </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-2"  
+class="td11"> <span class="uwave">4,x (Mid 2010) </span> </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-3"  
+class="td11"> <span class="uwave">5,x (Mid 2011) </span> </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-4"  
+class="td11"> <span class="uwave">4,x (Mid 2010) </span> </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-5"  
+class="td11"><span class="uwave">3,x (Early 2009) </span></td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-3-"><td  style="white-space:normal; text-align:left;" id="TBL-2-3-1"  
+class="td11"><!--l. 2599--><p class="noindent" ><span class="uwave">MacBook </span>       </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-2"  
+class="td11"> <span class="uwave">Unsupported </span>  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-3"  
+class="td11"> <span class="uwave">Unsupported </span>  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-4"  
+class="td11"> <span class="uwave">Unsupported </span>  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-5"  
+class="td11"> <span class="uwave">5,x (2009/09) </span>  </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-4-"><td  style="white-space:normal; text-align:left;" id="TBL-2-4-1"  
+class="td11"><!--l. 2601--><p class="noindent" ><span class="uwave">MacBookAir </span>   </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-2"  
+class="td11"> <span class="uwave">Unsupported </span>  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-3"  
+class="td11"> <span class="uwave">Unsupported </span>  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-4"  
+class="td11"> <span class="uwave">Unsupported </span>  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-5"  
+class="td11"><span class="uwave">2,x (Late 2008) </span> </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-5-"><td  style="white-space:normal; text-align:left;" id="TBL-2-5-1"  
+class="td11"><!--l. 2603--><p class="noindent" ><span class="uwave">MacBookPro </span>  </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-2"  
+class="td11"><span class="uwave">4,x (Early 2008) </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-3"  
+class="td11"><span class="uwave">8,x (Early 2011) </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-4"  
+class="td11"><span class="uwave">8,x (Early 2011) </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-5"  
+class="td11"> <span class="uwave">3,x (Mid 2007) </span> </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-6-"><td  style="white-space:normal; text-align:left;" id="TBL-2-6-1"  
+class="td11"><!--l. 2605--><p class="noindent" ><span class="uwave">iMac </span>             </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-2"  
+class="td11"><span class="uwave">8,x (Early 2008) </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-3"  
+class="td11"><span class="uwave">12,x (Mid 2011) </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-4"  
+class="td11"><span class="uwave">12,x (Mid 2011) </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-5"  
+class="td11"> <span class="uwave">7,x (Mid 2007) </span> </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-7-"><td  style="white-space:normal; text-align:left;" id="TBL-2-7-1"  
+class="td11"><!--l. 2607--><p class="noindent" ><span class="uwave">MacPro </span>         </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-7-2"  
+class="td11"><span class="uwave">3,x (Early 2008) </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-7-3"  
+class="td11"> <span class="uwave">5,x (Mid 2010) </span> </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-7-4"  
+class="td11"><span class="uwave">3,x (Early 2008) </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-7-5"  
+class="td11"><span class="uwave">3,x (Early 2008) </span></td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-8-"><td  style="white-space:normal; text-align:left;" id="TBL-2-8-1"  
+class="td11"><!--l. 2609--><p class="noindent" ><span class="uwave">Xserve </span>           </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-8-2"  
+class="td11"><span class="uwave">2,x (Early 2008) </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-8-3"  
+class="td11"><span class="uwave">2,x (Early 2008) </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-8-4"  
+class="td11"><span class="uwave">2,x (Early 2008) </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-8-5"  
+class="td11"><span class="uwave">2,x (Early 2008) </span></td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-9-"><td  style="white-space:normal; text-align:left;" id="TBL-2-9-1"  
+class="td11">             </td>
+</tr></table></div></div>
+     <!--l. 2614--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: </span><span class="uwave">3+2</span> <span class="uwave">and </span><span class="uwave">6+4</span> <span class="uwave">hotkeys to choose the preferred architecture are unsupported due to being handled by EfiBoot and
+     thus being hard to properly detect. </span>
+     </p></li>
+     <li 
+  class="enumerate" id="x1-39020x3"><span class="uwave">KernelCache</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist string</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">Auto</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Prefer specified kernel cache type (</span><span class="uwave">Auto</span><span class="uwave">, </span><span class="uwave">Cacheless</span><span class="uwave">, </span><span class="uwave">Mkext</span><span class="uwave">, </span><span class="uwave">Prelinked</span><span class="uwave">) when available.
+     </span>
+     <!--l. 2630--><p class="noindent" ><span class="uwave">Different variants of macOS support different kernel caching variants designed to improve boot performance. This setting
+     allows to prevent using faster kernel caching variants if slower variants are available for debugging and stability reasons.
+     I.e. by specifying </span><span class="uwave">Mkext</span> <span class="uwave">one will disable </span><span class="uwave">Prelinked</span> <span class="uwave">for e.g. 10.6 but not 10.7. </span>
+     </p><!--l. 2634--><p class="noindent" ><span class="uwave">The list of available kernel caching types and its current support in OpenCore is listed below. </span>
+</p>
+     <div class="center" 
+>
+<!--l. 2636--><p class="noindent" >
+</p>
+<div class="tabular"> <table id="TBL-3" class="tabular" 
+ 
+><colgroup id="TBL-3-1g"><col 
+id="TBL-3-1" /></colgroup><colgroup id="TBL-3-2g"><col 
+id="TBL-3-2" /></colgroup><colgroup id="TBL-3-3g"><col 
+id="TBL-3-3" /></colgroup><colgroup id="TBL-3-4g"><col 
+id="TBL-3-4" /></colgroup><colgroup id="TBL-3-5g"><col 
+id="TBL-3-5" /></colgroup><colgroup id="TBL-3-6g"><col 
+id="TBL-3-6" /></colgroup><colgroup id="TBL-3-7g"><col 
+id="TBL-3-7" /></colgroup><colgroup id="TBL-3-8g"><col 
+id="TBL-3-8" /></colgroup><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-1-"><td  style="white-space:normal; text-align:left;" id="TBL-3-1-1"  
+class="td11"><!--l. 2639--><p class="noindent" ><span class="uwave">macOS</span>   </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-1-2"  
+class="td11"><span class="uwave">i386 NC</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-1-3"  
+class="td11"><span class="uwave">i386 MK</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-1-4"  
+class="td11"><span class="uwave">i386 PK</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-1-5"  
+class="td11"><span class="uwave">x86_64 NC</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-1-6"  
+class="td11"><span class="uwave">x86_64 MK</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-1-7"  
+class="td11"><span class="uwave">x86_64 PK</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-1-8"  
+class="td11"><span class="uwave">x86_64 KC</span></td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-2-"><td  style="white-space:normal; text-align:left;" id="TBL-3-2-1"  
+class="td11"><!--l. 2641--><p class="noindent" ><span class="uwave">10.4 </span>         </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-2"  
+class="td11">  <span class="uwave">NO </span>   </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-3"  
+class="td11"><span class="uwave">NO (V1) </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-4"  
+class="td11">  <span class="uwave">NO </span>   </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-5"  
+class="td11">    <span class="uwave">— </span>       </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-6"  
+class="td11">     <span class="uwave">— </span>       </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-7"  
+class="td11">    <span class="uwave">— </span>       </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-8"  
+class="td11">    <span class="uwave">— </span>       </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-3-"><td  style="white-space:normal; text-align:left;" id="TBL-3-3-1"  
+class="td11"><!--l. 2643--><p class="noindent" ><span class="uwave">10.5 </span>         </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-2"  
+class="td11">  <span class="uwave">NO </span>   </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-3"  
+class="td11"><span class="uwave">NO (V1) </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-4"  
+class="td11">  <span class="uwave">NO </span>   </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-5"  
+class="td11">    <span class="uwave">— </span>       </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-6"  
+class="td11">     <span class="uwave">— </span>       </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-7"  
+class="td11">    <span class="uwave">— </span>       </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-8"  
+class="td11">    <span class="uwave">— </span>       </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-4-"><td  style="white-space:normal; text-align:left;" id="TBL-3-4-1"  
+class="td11"><!--l. 2645--><p class="noindent" ><span class="uwave">10.6 </span>         </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-2"  
+class="td11">  <span class="uwave">NO </span>   </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-3"  
+class="td11"><span class="uwave">NO (V2) </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-4"  
+class="td11">  <span class="uwave">NO </span>   </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-5"  
+class="td11">   <span class="uwave">YES </span>     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-6"  
+class="td11"> <span class="uwave">YES (V2) </span>  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-7"  
+class="td11">   <span class="uwave">YES </span>     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-8"  
+class="td11">    <span class="uwave">— </span>       </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-5-"><td  style="white-space:normal; text-align:left;" id="TBL-3-5-1"  
+class="td11"><!--l. 2647--><p class="noindent" ><span class="uwave">10.7 </span>         </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-2"  
+class="td11">  <span class="uwave">NO </span>   </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-3"  
+class="td11">   <span class="uwave">— </span>     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-4"  
+class="td11">  <span class="uwave">NO </span>   </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-5"  
+class="td11">   <span class="uwave">YES </span>     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-6"  
+class="td11">     <span class="uwave">— </span>       </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-7"  
+class="td11">   <span class="uwave">YES </span>     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-8"  
+class="td11">    <span class="uwave">— </span>       </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-6-"><td  style="white-space:normal; text-align:left;" id="TBL-3-6-1"  
+class="td11"><!--l. 2649--><p class="noindent" ><span class="uwave">10.8-10.9 </span>   </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-2"  
+class="td11">   <span class="uwave">— </span>    </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-3"  
+class="td11">   <span class="uwave">— </span>     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-4"  
+class="td11">   <span class="uwave">— </span>    </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-5"  
+class="td11">   <span class="uwave">YES </span>     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-6"  
+class="td11">     <span class="uwave">— </span>       </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-7"  
+class="td11">   <span class="uwave">YES </span>     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-8"  
+class="td11">    <span class="uwave">— </span>       </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-7-"><td  style="white-space:normal; text-align:left;" id="TBL-3-7-1"  
+class="td11"><!--l. 2651--><p class="noindent" ><span class="uwave">10.10-10.15
+</span>                </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-2"  
+class="td11">   <span class="uwave">— </span>    </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-3"  
+class="td11">   <span class="uwave">— </span>     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-4"  
+class="td11">   <span class="uwave">— </span>    </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-5"  
+class="td11">    <span class="uwave">— </span>       </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-6"  
+class="td11">     <span class="uwave">— </span>       </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-7"  
+class="td11">   <span class="uwave">YES </span>     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-8"  
+class="td11">    <span class="uwave">— </span>       </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-8-"><td  style="white-space:normal; text-align:left;" id="TBL-3-8-1"  
+class="td11"><!--l. 2653--><p class="noindent" ><span class="uwave">11.0+ </span>       </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-2"  
+class="td11">   <span class="uwave">— </span>    </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-3"  
+class="td11">   <span class="uwave">— </span>     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-4"  
+class="td11">   <span class="uwave">— </span>    </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-5"  
+class="td11">    <span class="uwave">— </span>       </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-6"  
+class="td11">     <span class="uwave">— </span>       </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-7"  
+class="td11">   <span class="uwave">YES </span>     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-8"  
+class="td11">   <span class="uwave">YES </span>     </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-9-"><td  style="white-space:normal; text-align:left;" id="TBL-3-9-1"  
+class="td11">          </td>
+</tr></table></div></div>
+     </li></ol>
+<a 
+ id="x1-39021r33"></a>
+<h3 class="sectionHead"><span class="titlemark">8   </span> <a 
+ id="x1-400008"></a>Misc</h3>
+<a 
+ id="x1-40001r42"></a>
+<h4 class="subsectionHead"><span class="titlemark">8.1   </span> <a 
+ id="x1-410001"></a>Introduction</h4>
+<!--l. 2666--><p class="noindent" >This section contains miscellaneous configuration affecting OpenCore operating system loading behaviour as well as other
+entries, which do not go to any other section.
+                                                                                                  
+                                                                                                  
+     <li 
+  class="enumerate" id="x1-42006x3">Debug<br 
+class="newline" />Type: plist dict<br 
+class="newline" />Description: Apply debug configuration described in <a 
+href="#x1-440004">Debug Properties</a> section below.
+     </li>
+     <li 
+  class="enumerate" id="x1-42008x4">Entries<br 
+class="newline" />Type: plist array<br 
+class="newline" />Description: Add boot entries to boot picker.
+     <!--l. 2796--><p class="noindent" >Designed to be filled with plist dict values, describing each load entry. See <a 
+href="#x1-460006">Entry Properties</a> section below.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-42010x5">Security<br 
+class="newline" />Type: plist dict<br 
+class="newline" />Description: Apply security configuration described in <a 
+href="#x1-450005">Security Properties</a> section below.
+     </li>
+     <li 
+  class="enumerate" id="x1-42012x6">Tools<a 
+ id="x1-420116"></a><br 
+class="newline" />Type: plist array<br 
+class="newline" />Description: Add tool entries to boot picker.
+     <!--l. 2810--><p class="noindent" >Designed to be filled with plist dict values, describing each load entry. See <a 
+href="#x1-460006">Entry Properties</a> section below.
+     </p><!--l. 2813--><p class="noindent" >Note:  Select  tools,  for  example,  UEFI  Shell,  are  very  dangerous  and  MUST  NOT appear  in  production
+     configurations, especially in vaulted ones and protected with secure boot, as they may be used to easily bypass
+     secure boot chain. <span class="uwave">For tool examples check the </span><a 
+href="#x1-620003">UEFI</a> <span class="uwave">section of this document. </span>
+</p>
+     </li></ol>
+<a 
+ id="x1-42013r45"></a>
+<h4 class="subsectionHead"><span class="titlemark">8.3   </span> <a 
+ id="x1-430003"></a>Boot Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-43002x1">ConsoleAttributes<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Sets specific attributes for console.
+     <!--l. 2832--><p class="noindent" >Text renderer supports colour arguments as a sum of foreground and background colours according to UEFI
+     specification. The value of black background and black foreground (0) is reserved. List of colour names:
+</p>
+         <ul class="itemize1">
+         <li class="itemize">0x00 — EFI_BLACK
+         </li>
+         <li class="itemize">0x01 — EFI_BLUE
+         </li>
+         <li class="itemize">0x02 — EFI_GREEN
+         </li>
+         <li class="itemize">0x03 — EFI_CYAN
+         </li>
+         <li class="itemize">0x04 — EFI_RED
+         </li>
+         <li class="itemize">0x05 — EFI_MAGENTA
+         </li>
+         <li class="itemize">0x06 — EFI_BROWN
+         </li>
+         <li class="itemize">0x07 — EFI_LIGHTGRAY
+         </li>
+         <li class="itemize">0x08 — EFI_DARKGRAY
+         </li>
+         <li class="itemize">0x09 — EFI_LIGHTBLUE
                                                                                                   
                                                                                                   
      
      
      
+     
+           
+      
+     
+     
+      
+     
+     
+      
+     
+                                
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+                                               
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+       
       
      
      
@@ -306,157 +1426,533 @@ class="newline" />Description: Reset BGRT table Displayed status field to false.
      
      
       
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-                                 
+                                                                                                  
+                                                                                                  
+     </p></li>
+     <li 
+  class="enumerate" id="x1-49004x2"> elete<br 
+class="newline" />Type: plist dict<br 
+class="newline" />Description: Removes NVRAM variables from a map (plist dict) of GUIDs to an array (plist array) of
+     variable names in plist string format.
+     </li>
+     <li 
+  class="enumerate" id="x1-49006x3">LegacyEnable<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Enables loading of NVRAM variable file named nvram.plist from EFI volume root.
+     <!--l. 3945--><p class="noindent" >This file must have root plist dictionary type and contain two fields: </p>
+         <ul class="itemize1">
+         <li class="itemize">Version — plist integer, file version, must be set to 1.
+         </li>
+         <li class="itemize">Add — plist dictionary, equivalent to Add from config.plist.</li></ul>
+     <!--l. 3953--><p class="noindent" >Variable loading happens prior to Delete (and Add) phases. Unless LegacyOverwrite is enabled, it will not overwrite any
+     existing variable. Variables allowed to be set must be specified in LegacySchema. Third-party scripts may be used to
+     create nvram.plist file. An example of such script can be found in Utilities. The use of third-party scripts may
+     require ExposeSensitiveData set to 0x3 to provide boot-path variable with OpenCore EFI partition
+     UUID.
+     </p><!--l. 3961--><p class="noindent" ><span class="sout">WARNING</span><span class="uwave">Warning</span>: This feature is very dangerous as it passes unprotected data to your firmware variable
+     services. Use it only when no hardware NVRAM implementation is provided by the firmware or it is
+     incompatible.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-49008x4">LegacyOverwrite<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Permits overwriting firmware variables from nvram.plist.
+     <!--l. 3971--><p class="noindent" >Note: Only variables accessible from the operating system will be overwritten.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-49010x5">LegacySchema<br 
+class="newline" />Type: plist dict<br 
+class="newline" />Description: Allows setting select NVRAM variables from a map (plist dict) of GUIDs to an array (plist array) of
+     variable names in plist string format.
+     <!--l. 3980--><p class="noindent" >You can use * value to accept all variables for select GUID.
+     </p><!--l. 3982--><p class="noindent" >WARNING: Choose variables very carefully, as nvram.plist is not vaulted. For instance, do not put boot-args or
+     csr-active-config, as this can bypass SIP.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-49012x6">WriteFlash<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Enables writing to flash memory for all added variables.
+     <!--l. 3992--><p class="noindent" >Note: This value is recommended to be enabled on most firmwares, but is left configurable for firmwares that may have
+     issues with NVRAM variable storage garbage collection or alike.
+</p>
+     </li></ol>
+<!--l. 3998--><p class="noindent" >To read NVRAM variable value from macOS one could use nvram by concatenating variable GUID and name separated by :
+symbol. For example, nvram 7C436110-AB2A-4BBB-A880-FE41995C9F82:boot-args.
+</p><!--l. 4002--><p class="noindent" >A continuously updated variable list can be found in a corresponding document: <a 
+href="https://docs.google.com/spreadsheets/d/1HTCBwfOBkXsHiK7os3b2CUc6k68axdJYdGl-TyXqLu0" >NVRAM Variables</a>.
+<a 
+ id="x1-49013r52"></a>
+                                                                                                  
+                                                                                                  
+</p>
+<h4 class="subsectionHead"><span class="titlemark">9.3   </span> <a 
+ id="x1-500003"></a>Mandatory Variables</h4>
+<!--l. 4007--><p class="noindent" ><span class="sout">Warning</span><span class="uwave">Warning</span>: These variables may be added by ?? or <a 
+href="#x1-550002">Generic</a> subsections of ?? section. Using PlatformInfo is the
+recommend way of setting these variables.
+</p><!--l. 4014--><p class="noindent" >The following variables are mandatory for macOS functioning:
+</p>
+     <ul class="itemize1">
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:FirmwareFeatures
+     32-bit FirmwareFeatures. Present on all Macs to avoid extra parsing of SMBIOS tables
+     </li>
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:FirmwareFeaturesMask
+     32-bit FirmwareFeaturesMask. Present on all Macs to avoid extra parsing of SMBIOS tables.
+     </li>
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:MLB
+     BoardSerialNumber. Present on newer Macs (2013+ at least) to avoid extra parsing of SMBIOS tables, especially
+     in boot.efi.
+     </li>
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:ROM
+     Primary network adapter MAC address or replacement value. Present on newer Macs (2013+ at least) to avoid
+     accessing special memory region, especially in boot.efi.</li></ul>
+<a 
+ id="x1-50001r53"></a>
+<h4 class="subsectionHead"><span class="titlemark">9.4   </span> <a 
+ id="x1-510004"></a>Recommended Variables</h4>
+<!--l. 4041--><p class="noindent" >The following variables are recommended for faster startup or other improvements:
+</p>
+     <ul class="itemize1">
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:csr-active-config
+     32-bit System Integrity Protection bitmask. Declared in XNU source code in <a 
+href="https://opensource.apple.com/source/xnu/xnu-4570.71.2/bsd/sys/csr.h.auto.html" >csr.h</a>.
+     </li>
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:ExtendedFirmwareFeatures
+     Combined FirmwareFeatures and ExtendedFirmwareFeatures. Present on newer Macs to avoid extra parsing
+     of SMBIOS tables
+     </li>
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:ExtendedFirmwareFeaturesMask
+     Combined FirmwareFeaturesMask and ExtendedFirmwareFeaturesMask. Present on newer Macs to avoid extra
+     parsing of SMBIOS tables.
+     </li>
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:HW_BID
+     Hardware BoardProduct (e.g. Mac-35C1E88140C3E6CF). Not present on real Macs, but used to avoid extra
+     parsing of SMBIOS tables, especially in boot.efi.
+     </li>
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:HW_MLB
+     Hardware BoardSerialNumber. Override for MLB. Present on newer Macs (2013+ at least).
+     </li>
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:HW_ROM
+     Hardware ROM. Override for ROM. Present on newer Macs (2013+ at least).
+     </li>
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:prev-lang:kbd
+     ASCII string defining default keyboard layout. Format is lang-COUNTRY:keyboard, e.g. ru-RU:252 for Russian
+     locale and ABC keyboard. Also accepts short forms: ru:252 or ru:0 (U.S. keyboard, compatible with 10.9). Full
+     decoded keyboard list from AppleKeyboardLayouts-L.dat can be found <a 
+href="https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/AppleKeyboardLayouts" >here</a>. Using non-latin keyboard on 10.14
+     will not enable ABC keyboard, unlike previous and subsequent macOS versions, and is thus not recommended
+     in case you need 10.14.
+     </li>
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:security-mode
+                                                                                                  
+                                                                                                  
+     <li class="itemize"><a 
+href="https://www.dmtf.org/standards/smbios" >SMBIOS</a>
+     </li>
+     <li class="itemize"><a 
+href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Intel/Protocol/DataHub.h" >Data Hub</a>
+     </li>
+     <li class="itemize">NVRAM</li></ul>
+<!--l. 4322--><p class="noindent" >Most of the fields specify the overrides in SMBIOS, and their field names conform to EDK2 <a 
+href="https://github.com/acidanthera/audk/blob/master/MdePkg/Include/IndustryStandard/SmBios.h" >SmBios.h</a> header file. However,
+several important fields reside in Data Hub and NVRAM. Some of the values can be found in more than one field and/or
+destination, so there are two ways to control their update process: manual, where one specifies all the values (the
+default), and semi-automatic, where (Automatic) only select values are specified, and later used for system
+configuration.
+</p><!--l. 4332--><p class="noindent" >To inspect SMBIOS contents <a 
+href="http://www.nongnu.org/dmidecode" >dmidecode</a> utility can be used. Version with macOS specific enhancements can be downloaded
+from <a 
+href="https://github.com/acidanthera/dmidecode/releases" >Acidanthera/dmidecode</a>.
+<a 
+ id="x1-53001r55"></a>
+</p>
+<h4 class="subsectionHead"><span class="titlemark">10.1   </span> <a 
+ id="x1-540001"></a>Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-54002x1">Automatic<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Generate PlatformInfo based on Generic section instead of using values from DataHub, NVRAM,
+     and SMBIOS sections.
+     <!--l. 4347--><p class="noindent" >Enabling this option is useful when Generic section is flexible enough: </p>
+         <ul class="itemize1">
+         <li class="itemize">When enabled SMBIOS, DataHub, and PlatformNVRAM data is unused.
+         </li>
+         <li class="itemize">When disabled Generic section is unused.</li></ul>
+     <!--l. 4357--><p class="noindent" ><span class="uwave">Warning</span><span class="uwave">: It is strongly discouraged set this option to </span><span class="uwave">false</span> <span class="uwave">when intending to update platform information. The only
+     reason to do that is when doing minor correction of the SMBIOS present and alike. In all other cases not using
+     </span><span class="uwave">Automatic</span> <span class="uwave">may lead to hard to debug errors. </span>
+     </p></li>
+     <li 
+  class="enumerate" id="x1-54004x2">UpdateDataHub<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Update Data Hub fields. These fields are read from Generic or DataHub sections depending on Automatic
+     value.
+     </li>
+     <li 
+  class="enumerate" id="x1-54006x3">UpdateNVRAM<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Update NVRAM fields related to platform information.
+     <!--l. 4376--><p class="noindent" >These fields are read from Generic or PlatformNVRAM sections depending on Automatic value. All the other fields are to
+     be specified with NVRAM section.
+     </p><!--l. 4380--><p class="noindent" >If UpdateNVRAM is set to false the aforementioned variables can be updated with ?? section. If UpdateNVRAM is set to
+     true the behaviour is undefined when any of the fields are present in NVRAM section.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-54008x4">UpdateSMBIOS<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Update SMBIOS fields. These fields are read from Generic or SMBIOS sections depending on Automatic
+     value.
+     </li>
+                                                                                                  
+                                                                                                  
+     <li 
+  class="enumerate" id="x1-54010x5">UpdateSMBIOSMode<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Create<br 
+class="newline" />Description: Update SMBIOS fields approach:
+         <ul class="itemize1">
+         <li class="itemize">TryOverwrite — Overwrite if new size is &#x003C;= than the page-aligned original and there are no issues with
+         legacy region unlock. Create otherwise. Has issues with some firmwares.
+         </li>
+         <li class="itemize">Create —  Replace  the  tables  with  newly  allocated  EfiReservedMemoryType  at  AllocateMaxAddress
+         without any fallbacks.
+         </li>
+         <li class="itemize">Overwrite — Overwrite existing gEfiSmbiosTableGuid and gEfiSmbiosTable3Guid data if it fits new size.
+         Abort with unspecified state otherwise.
+         </li>
+         <li class="itemize">Custom —  Write  SMBIOS  tables  (gEfiSmbios(3)TableGuid)  to  gOcCustomSmbios(3)TableGuid to
+         workaround firmwares overwriting SMBIOS contents at ExitBootServices. Otherwise equivalent to Create.
+         Requires patching AppleSmbios.kext and AppleACPIPlatform.kext to read from another GUID: &#x0022;EB9D2D31&#x0022;
+         - &#x0022;EB9D2D35&#x0022; (in ASCII), done automatically by CustomSMBIOSGuid quirk.</li></ul>
+     <!--l. 4420--><p class="noindent" >Note: A side effect of using Custom approach is making SMBIOS updates exclusive to macOS, avoiding a
+     collission with existing Windows activation and custom OEM software but potentially breaking Apple-specific
+     tools.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-54012x6">Generic<br 
+class="newline" />Type: plist dictonary<br 
+class="newline" /><span class="sout">Optional</span><span class="sout">: When </span><span class="sout">Automatic</span> <span class="sout">is </span><span class="sout">false</span>Description: Update all fields. This section is read only when Automatic is
+     active.
+     </li>
+     <li 
+  class="enumerate" id="x1-54014x7">DataHub<br 
+class="newline" />Type: plist dictonary<br 
+class="newline" />Optional: When Automatic is true<br 
+class="newline" />Description: Update Data Hub fields. This section is read only when Automatic is not active.
+     </li>
+     <li 
+  class="enumerate" id="x1-54016x8">PlatformNVRAM<br 
+class="newline" />Type: plist dictonary<br 
+class="newline" />Optional: When Automatic is true<br 
+class="newline" />Description: Update platform NVRAM fields. This section is read only when Automatic is not active.
+     </li>
+     <li 
+  class="enumerate" id="x1-54018x9">SMBIOS<br 
+class="newline" />Type: plist dictonary<br 
+class="newline" />Optional: When Automatic is true<br 
+class="newline" />Description: Update SMBIOS fields. This section is read only when Automatic is not active.</li></ol>
+<a 
+ id="x1-54019r57"></a>
+<h4 class="subsectionHead"><span class="titlemark">10.2   </span> <a 
+ id="x1-550002"></a>Generic Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-55002x1">SpoofVendor<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Sets SMBIOS vendor fields to Acidanthera.
+     <!--l. 4463--><p class="noindent" >It is dangerous to use Apple in SMBIOS vendor fields for reasons given in SystemManufacturer description.
+     However, certain firmwares may not provide valid values otherwise, which could break some software.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-55004x2">AdviseWindows                              <br 
+class="newline" /> escription: Reinstalls Apple Event protocol with a builtin version. This may be used to ensure File Vault 2
+     compatibility on VMs or legacy Macs.
+     </li>
+     <li 
+  class="enumerate" id="x1-70010x5">AppleFramebufferInfo<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Reinstalls Apple Framebuffer Info protocol with a builtin version. This may be used to override
+     framebuffer information on VMs or legacy Macs to improve compatibility with legacy EfiBoot like the one in
+     macOS 10.4.
+     </li>
+     <li 
+  class="enumerate" id="x1-70012x6">AppleImageConversion<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Reinstalls Apple Image Conversion protocol with a builtin version.
+     </li>
+     <li 
+  class="enumerate" id="x1-70014x7"><span class="uwave">AppleImg4Verification</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">false</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Reinstalls Apple IMG4 Verification protocol with a builtin version. This protocol is used to verify
+     </span><span class="uwave">im4m</span> <span class="uwave">manifest files used by Apple Secure Boot. </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-70016x8">AppleKeyMap<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Reinstalls Apple Key Map protocols with builtin versions.
+     </li>
+     <li 
+  class="enumerate" id="x1-70018x9">AppleRtcRam<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Reinstalls Apple RTC RAM protocol with builtin version.
+     <!--l. 5987--><p class="noindent" >Note: Builtin version of Apple RTC RAM protocol may filter out I/O attempts to select RTC memory addresses.
+     The list of addresses can be specified in 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:rtc-blacklist variable as
+     a data array.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-70020x10"><span class="uwave">AppleSecureBoot</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">false</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Reinstalls Apple Secure Boot protocol with a builtin version. </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-70022x11">AppleSmcIo<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Reinstalls Apple SMC I/O protocol with a builtin version.
+     <!--l. 6007--><p class="noindent" >This protocol replaces legacy VirtualSmc UEFI driver, and is compatible with any SMC kernel extension.
+     However, in case FakeSMC kernel extension is used, manual NVRAM key variable addition may be needed.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-70024x12">AppleUserInterfaceTheme<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Reinstalls Apple User Interface Theme protocol with a builtin version.
+     </li>
+     <li 
+  class="enumerate" id="x1-70026x13">DataHub<br 
+class="newline" />Description: This region will not be reserved unless set to true.
+     </li></ol>
+<a 
+ id="x1-72009r62"></a>
+<h3 class="sectionHead"><span class="titlemark">12   </span> <a 
+ id="x1-7300012"></a>Troubleshooting</h3>
+<a 
+ id="x1-73001r76"></a>
+<h4 class="subsectionHead"><span class="titlemark">12.1   </span> <a 
+ id="x1-740001"></a><span class="uwave">Legacy Apple OS</span></h4>
+<!--l. 6246--><p class="noindent" ><span class="uwave">Older operating systems may be more complicated to install, but sometimes can be necessary to use for all kinds of reasons.
+While a compatible board identifier and CPUID are the obvious requiremenets for proper functioning of an older operating
+system, there are many other less obvious things to keep in mind. This section tries to cover a common set of issues relevant to
+installing older macOS operating systems. </span>
+<a 
+ id="x1-74001r1"></a>
+</p>
+<h5 class="subsubsectionHead"><span class="titlemark">12.1.1   </span> <a 
+ id="x1-750001"></a><span class="uwave">macOS 10.8 and 10.9</span></h5>
+     <ul class="itemize1">
+     <li class="itemize"><span class="uwave">Disk images on these systems use Apple Partitioning Scheme and will require the proprietary </span><span class="uwave">PartitionDxe</span>
+     <span class="uwave">driver to run DMG recovery and installation. It is possible to set </span><span class="uwave">DmgLoading</span> <span class="uwave">to </span><span class="uwave">Disabled</span> <span class="uwave">to run the recovery
+     without DMG loading avoiding the need for </span><span class="uwave">PartitionDxe</span><span class="uwave">. </span>
+     </li>
+     <li class="itemize"><span class="uwave">Cached  kernel  images  often  do  not  contain  family  drivers  for  networking  (</span><span class="uwave">IONetworkingFamily</span><span class="uwave">)  or  audio
+     (</span><span class="uwave">IOAudioFamily</span><span class="uwave">) requiring one to use </span><span class="uwave">Force</span> <span class="uwave">loading in order to inject networking or audio drivers. </span></li></ul>
+<a 
+ id="x1-75001r79"></a>
+<h5 class="subsubsectionHead"><span class="titlemark">12.1.2   </span> <a 
+ id="x1-760002"></a><span class="uwave">macOS 10.7</span></h5>
+     <ul class="itemize1">
+     <li class="itemize"><span class="uwave">All previous issues apply. </span>
+     </li>
+     <li class="itemize"><span class="uwave">Many kexts, including </span><span class="uwave">Lilu</span> <span class="uwave">and its plugins, are unsupported on macOS 10.7 and older as they require newer
+     kernel APIs, which are not part of the macOS 10.7 SDK. </span>
+     </li>
+     <li class="itemize"><span class="uwave">Prior to macOS 10.8 KASLR sliding is not supported, which will result in memory allocation failures on firmwares
+     that utilise lower memory for their own purposes. Refer to </span><a 
+href="https://github.com/acidanthera/bugtracker/issues/1125" >acidanthera/bugtracker#1125</a> <span class="uwave">for tracking. </span>
+     </li>
+     <li class="itemize"><span class="uwave">32-bit kernel interaction is unsupported and will lead to issues like kernel patching or injection failure. </span></li></ul>
+<a 
+ id="x1-76001r80"></a>
+<h5 class="subsubsectionHead"><span class="titlemark">12.1.3   </span> <a 
+ id="x1-770003"></a><span class="uwave">macOS 10.6</span></h5>
+     <ul class="itemize1">
+     <li class="itemize"><span class="uwave">All previous issues apply. </span>
+     </li>
+     <li class="itemize"><span class="uwave">Last  released  installer  images  for  macOS 10.6  are  macOS 10.6.7  builds  </span><span class="uwave">10J3250</span> <span class="uwave">(for  </span><span class="uwave">MacBookPro8,x</span><span class="uwave">)  and
+     </span><span class="uwave">10J4139</span> <span class="uwave">(for </span><span class="uwave">iMac12,x</span><span class="uwave">), without Xcode). These images are limited to their target model identifiers and have no
+     </span><span class="uwave">-no_compat_check</span> <span class="uwave">boot argument support. Modified images (with </span><span class="uwave">ACDT</span> <span class="uwave">suffix) without model restrictions can
+     be found </span><a 
+href="https://mega.nz/folder/z5YUhYTb#gA_IRY5KMuYpnNCg7kR3ug" >here</a><span class="uwave">, assuming that you legally own macOS 10.6. Read </span><span class="uwave">DIGEST.txt</span> <span class="uwave">for more details. Keep in mind,
+     that these are the earliest tested versions of macOS 10.6 with OpenCore. </span></li></ul>
+<!--l. 6294--><p class="noindent" ><span class="uwave">You can also patch out model checking yourself by editing </span><span class="uwave">OSInstall.mpkg</span> <span class="uwave">with e.g. </span><span class="uwave">Flat Package Editor</span> <span class="uwave">by making
+</span><span class="uwave">Distribution</span> <span class="uwave">script to always return </span><span class="uwave">true</span> <span class="uwave">in </span><span class="uwave">hwbeModelCheck</span> <span class="uwave">function. Since updating the only file in the image and not
+corrupting other files can be difficult and may cause slow booting due to kernel cache date changes, it is recommended to script
+image rebuilding as shown below: </span>
+</p>
+<!--l. 6303-->
+                                                                                                  
+                                                                                                  
+<div class="lstlisting" id="listing-17"><span class="label"><a 
+ id="x1-77001r1"></a></span><span class="uwave">#!/</span><span class="uwave">bin</span><span class="uwave">/</span><span class="uwave">bash</span> <br /><span class="label"><a 
+ id="x1-77002r2"></a></span><span class="uwave">#</span><span class="uwave"> </span><span class="uwave">Original</span><span class="uwave">.</span><span class="uwave">dmg</span><span class="uwave"> </span><span class="uwave">is</span><span class="uwave"> </span><span class="uwave">original</span><span class="uwave"> </span><span class="uwave">image</span><span class="uwave">,</span><span class="uwave"> </span><span class="uwave">OSInstall</span><span class="uwave">.</span><span class="uwave">mpkg</span><span class="uwave"> </span><span class="uwave">is</span><span class="uwave"> </span><span class="uwave">patched</span><span class="uwave"> </span><span class="uwave">package</span> <br /><span class="label"><a 
+ id="x1-77003r3"></a></span><span class="uwave">mkdir</span><span class="uwave"> </span><span class="uwave">RO</span> <br /><span class="label"><a 
+ id="x1-77004r4"></a></span><span class="uwave">hdiutil</span><span class="uwave"> </span><span class="uwave">mount</span><span class="uwave"> </span><span class="uwave">Original</span><span class="uwave">.</span><span class="uwave">dmg</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">noverify</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">noautoopen</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">noautoopenrw</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">noautofsck</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">mountpoint</span><span class="uwave"> </span><span class="uwave">RO</span> <br /><span class="label"><a 
+ id="x1-77005r5"></a></span><span class="uwave">cp</span><span class="uwave"> </span><span class="uwave">RO</span><span class="uwave">/.</span><span class="uwave">DS_Store</span><span class="uwave"> </span><span class="uwave">DS_STORE</span> <br /><span class="label"><a 
+ id="x1-77006r6"></a></span><span class="uwave">hdiutil</span><span class="uwave"> </span><span class="uwave">detach</span><span class="uwave"> </span><span class="uwave">RO</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">force</span> <br /><span class="label"><a 
+ id="x1-77007r7"></a></span><span class="uwave">rm</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">rf</span><span class="uwave"> </span><span class="uwave">RO</span> <br /><span class="label"><a 
+ id="x1-77008r8"></a></span><span class="uwave">hdiutil</span><span class="uwave"> </span><span class="uwave">convert</span><span class="uwave"> </span><span class="uwave">Original</span><span class="uwave">.</span><span class="uwave">dmg</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">format</span><span class="uwave"> </span><span class="uwave">UDRW</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">o</span><span class="uwave"> </span><span class="uwave">ReadWrite</span><span class="uwave">.</span><span class="uwave">dmg</span> <br /><span class="label"><a 
+ id="x1-77009r9"></a></span><span class="uwave">mkdir</span><span class="uwave"> </span><span class="uwave">RW</span> <br /><span class="label"><a 
+ id="x1-77010r10"></a></span><span class="uwave">xattr</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">c</span><span class="uwave"> </span><span class="uwave">OSInstall</span><span class="uwave">.</span><span class="uwave">mpkg</span> <br /><span class="label"><a 
+ id="x1-77011r11"></a></span><span class="uwave">hdiutil</span><span class="uwave"> </span><span class="uwave">mount</span><span class="uwave"> </span><span class="uwave">ReadWrite</span><span class="uwave">.</span><span class="uwave">dmg</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">noverify</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">noautoopen</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">noautoopenrw</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">noautofsck</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">mountpoint</span><span class="uwave"> </span><span class="uwave">RW</span> <br /><span class="label"><a 
+ id="x1-77012r12"></a></span><span class="uwave">cp</span><span class="uwave"> </span><span class="uwave">OSInstall</span><span class="uwave">.</span><span class="uwave">mpkg</span><span class="uwave"> </span><span class="uwave">RW</span><span class="uwave">/</span><span class="uwave">System</span><span class="uwave">/</span><span class="uwave">Installation</span><span class="uwave">/</span><span class="uwave">Packages</span><span class="uwave">/</span><span class="uwave">OSInstall</span><span class="uwave">.</span><span class="uwave">mpkg</span> <br /><span class="label"><a 
+ id="x1-77013r13"></a></span><span class="uwave">killall</span><span class="uwave"> </span><span class="uwave">Finder</span><span class="uwave"> </span><span class="uwave">fseventsd</span> <br /><span class="label"><a 
+ id="x1-77014r14"></a></span><span class="uwave">rm</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">rf</span><span class="uwave"> </span><span class="uwave">RW</span><span class="uwave">/.</span><span class="uwave">fseventsd</span> <br /><span class="label"><a 
+ id="x1-77015r15"></a></span><span class="uwave">cp</span><span class="uwave"> </span><span class="uwave">DS_STORE</span><span class="uwave"> </span><span class="uwave">RW</span><span class="uwave">/.</span><span class="uwave">DS_Store</span> <br /><span class="label"><a 
+ id="x1-77016r16"></a></span><span class="uwave">hdiutil</span><span class="uwave"> </span><span class="uwave">detach</span><span class="uwave"> </span><span class="uwave">RW</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">force</span> <br /><span class="label"><a 
+ id="x1-77017r17"></a></span><span class="uwave">rm</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">rf</span><span class="uwave"> </span><span class="uwave">DS_STORE</span><span class="uwave"> </span><span class="uwave">RW</span> <br /><span class="label"><a 
+ id="x1-77018r18"></a></span><span class="uwave">hdiutil</span><span class="uwave"> </span><span class="uwave">convert</span><span class="uwave"> </span><span class="uwave">ReadWrite</span><span class="uwave">.</span><span class="uwave">dmg</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">format</span><span class="uwave"> </span><span class="uwave">UDZO</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">o</span><span class="uwave"> </span><span class="uwave">ReadOnly</span><span class="uwave">.</span><span class="uwave">dmg</span>
+</div>
+<a 
+ id="x1-77019r78"></a>
+<h4 class="subsectionHead"><span class="titlemark">12.2   </span> <a 
+ id="x1-780002"></a><span class="uwave">UEFI Secure Boot</span></h4>
+<!--l. 6330--><p class="noindent" ><span class="uwave">OpenCore is designed to provide a secure boot chain between your firmware and your operating system. On most x86
+platforms trusted loading is implemented via </span><a 
+href="https://en.wikipedia.org/wiki/UEFI_Secure_Boot" >UEFI Secure Boot</a> <span class="uwave">model. Not only OpenCore fully supports this model, but it
+also extends its capabilities to ensure sealed configuration via </span><a 
+href="#x1-4503712">vaulting</a> <span class="uwave">and provide trusted loading to the operating systems
+using custom verification, such as </span><a 
+href="#x1-4504714">Apple Secure Boot</a><span class="uwave">. Proper secure boot chain requires several steps and careful configuration
+of select settings as explained below: </span>
+     </p><ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-78002x1"><span class="uwave">Enable Apple Secure Boot by setting </span><span class="uwave">SecureBootModel</span> <span class="uwave">if you need to run macOS. Note, that not every macOS
+     is compatible with Apple Secure Boot and there are several other restrictions as explained in </span><a 
+href="#x1-4504714">Apple Secure Boot</a>
+     <span class="uwave">section. </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-78004x2"><span class="uwave">Disable DMG loading by setting </span><span class="uwave">DmgLoading</span> <span class="uwave">to </span><span class="uwave">Disabled</span> <span class="uwave">if you are concerned of loading old vulnerable DMG
+     recoveries. This is </span><span class="uwave">not</span> <span class="uwave">required, but recommended. For the actual tradeoffs see the details in </span><a 
+href="#x1-450186">DMG loading</a>
+     <span class="uwave">section. </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-78006x3"><span class="uwave">Make sure that APFS JumpStart functionality restricts the loading of old vulnerable drivers by setting </span><span class="uwave">MinDate</span>
+     <span class="uwave">and </span><span class="uwave">MinVersion</span> <span class="uwave">to </span><span class="uwave">0</span><span class="uwave">. More details are provided in </span>?? <span class="uwave">section. An alternative is to install </span><span class="uwave">apfs.efi</span> <span class="uwave">driver
+     manually. </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-78008x4"><span class="uwave">Make sure that you do not need </span><span class="uwave">Force</span> <span class="uwave">driver loading and can still boot all the operating systems you need. </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-78010x5"><span class="uwave">Make sure that </span><span class="uwave">ScanPolicy</span> <span class="uwave">restricts loading from undesired devices. It is a good idea to prohibit all removable
+     drivers or unknown filesystems. </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-78012x6"><span class="uwave">Sign all the installed drivers and tools with your private key. Do not sign tools that provide administrative access
+     to your computer, like UEFI Shell. </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-78014x7"><span class="uwave">Vault your configuration as explained </span><a 
+href="#x1-4503712">Vaulting</a> <span class="uwave">section. </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-78016x8"><span class="uwave">Sign all OpenCore binaries (</span><span class="uwave">BOOTX64.efi</span><span class="uwave">, </span><span class="uwave">BOOTIa32.efi</span><span class="uwave">, </span><span class="uwave">Bootstrap.efi</span><span class="uwave">, </span><span class="uwave">OpenCore.efi</span><span class="uwave">) used on this system
+     with the same private key. </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-78018x9"><span class="uwave">Sign all third-party operating system (not made by Microsoft or Apple) bootloaders if you need them. For Linux
+     there is an option to install Microsoft-signed Shim bootloader as explained on e.g. </span><a 
+href="https://wiki.debian.org/SecureBoot" >Debian Wiki</a><span class="uwave">. </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-78020x10"><span class="uwave">Enable UEFI Secure Boot in your firmware preferences and install the certificate with a private key you own.
+     Details on how to generate a certificate can be found in various articles, like </span><a 
+href="https://habr.com/en/post/273497" >this one</a><span class="uwave">, and are out of the scope of
+     this document. If you need to launch Windows you will also need to add the </span><a 
+href="http://go.microsoft.com/fwlink/?LinkID=321192" >Microsoft Windows Production CA
+     2011</a><span class="uwave">. If you need to launch option ROMs or decided to use signed Linux drivers you will also need the </span><a 
+href="http://go.microsoft.com/fwlink/?LinkId=321194" >Microsoft
+     UEFI Driver Signing CA</a><span class="uwave">. </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-78022x11"><span class="uwave">Password-protect changing firmware settings to ensure that UEFI Secure Boot cannot be disabled without your
+     knowledge. </span></li></ol>
+<a 
+ id="x1-78023r82"></a>
+                                                                                                  
+                                                                                                  
+     <!--l. 6559--><p class="noindent" >If there is no obvious error, check the available hacks in Quirks sections one by one. For early boot troubleshooting, for
+     instance, when OpenCore menu does not appear, using UEFI Shell (bundled with OpenCore) may help to see early
+     debug messages.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-81004x2">How to debug macOS boot failure?
+         <ul class="itemize1">
+         <li class="itemize">Refer to boot-args values like debug=0x100, keepsyms=1, -v, and similar.
+         </li>
+         <li class="itemize">Do not forget about AppleDebug and ApplePanic properties.
+         </li>
+         <li class="itemize">Take care of Booter, Kernel, and UEFI quirks.
+         </li>
+         <li class="itemize">Consider  using  serial  port  to  inspect  early  kernel  boot  failures.  For  this  you  may  need  debug=0x108,
+         serial=5, and msgbuf=1048576 arguments. Refer to the patches in Sample.plist when dying before serial
+         init.
+         </li>
+         <li class="itemize">Always read the logs carefully.</li></ul>
+     </li>
+     <li 
+  class="enumerate" id="x1-81006x3">How to customise boot entries?
+     <!--l. 6582--><p class="noindent" >OpenCore follows standard Apple Bless model and extracts the entry name from .contentDetails and
+     .disk_label.contentDetails files in the booter directory if present. These files contain an ASCII string with an entry
+     title, which may then be customised by the user.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-81008x4">How to choose the default boot entry?
+     <!--l. 6590--><p class="noindent" >OpenCore uses the primary UEFI boot option to select the default entry. This choice can be altered from UEFI Setup,
+     with the macOS <a 
+href="https://support.apple.com/HT202796" >Startup Disk</a> preference, or the Windows <a 
+href="https://support.apple.com/guide/bootcamp-control-panel/start-up-your-mac-in-windows-or-macos-bcmp29b8ac66/mac" >Boot Camp</a> Control Panel. Since choosing OpenCore’s
+     BOOTx64.EFI as a primary boot option limits this functionality in addition to several firmwares deleting
+     incompatible boot options, potentially including those created by macOS, you are strongly encouraged to
+     use the RequestBootVarRouting quirk, which will preserve your selection made in the operating system
+     within the OpenCore variable space. Note, that RequestBootVarRouting requires a separate driver for
+     functioning.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-81010x5"><a 
+ id="x1-810095"></a> What is the simplest way to install macOS?
+     <!--l. 6604--><p class="noindent" >Copy online recovery image (*.dmg and *.chunklist files) to com.apple.recovery.boot directory on a FAT32 partition
+     with OpenCore. Load OpenCore Boot Picker and choose the entry, it will have a (dmg) suffix. Custom name may be
+     created by providing .contentDetails file.
+     </p><!--l. 6609--><p class="noindent" >To download recovery online you may use <a 
+href="https://github.com/acidanthera/OpenCorePkg/blob/master/Utilities/macrecovery/macrecovery.py" >macrecovery.py</a>, builtin tool.
+     </p><!--l. 6613--><p class="noindent" >For offline installation refer to <a 
+href="https://support.apple.com/HT201372" >How to create a bootable installer for macOS</a> article. Apart from App Store and
+     softwareupdate utility there also are <a 
+href="https://github.com/corpnewt/gibMacOS" >third-party utilities</a> to download an offline image.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-81012x6">Why do online recovery images (*.dmg) fail to load?
+     <!--l. 6621--><p class="noindent" >This may be caused by missing HFS+ driver, as all presently known recovery volumes have HFS+ filesystem.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-81014x7">Can I use this on Apple hardware or virtual machines?
+     <!--l. 6627--><p class="noindent" >Sure, most relatively modern Mac models including MacPro5,1 and virtual machines are fully supported. Even though
+     there are little to none specific details relevant to Mac hardware, some ongoing instructions can be found on
+     <a 
+href="https://forums.macrumors.com/threads/opencore-on-the-mac-pro.2207814" >MacRumors.com</a>.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-81016x8">Why do Find&#x0026;Replace patches must equal in length?
+                                                                                                  
 
-     
-     
-     
-      
-        
-      
-        
-      
-     
-      
-      
-     
-      
-      
-     
-      
-     
-      
-      
-     
-         
-         
-         
-      
-      
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-                
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-                          
-      
-     
-     
-      
-     
-     
-      
-     
-      
-      
-     
-                
 
-
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-      
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-     
-     
-      
-     
-     
-     
-     
-      
-     
-     
-     
-     
-      
-     
-                                     </body>
+</body>
 </html>
