@@ -32,7 +32,7 @@ This month we've actually had numerous updates to the guides including adding th
 * Sandy Bridge(Both mobile and desktop)
 * Ivy Bridge-E(HEDT and server)
 
-And we also have plans to expand for UEFI based secure boot and adding Nehalem guides, however due to time constraints this will likely be added with next month's release.
+And we also have plans to expand for UEFI based secure boot and adding Nehalem guides, however due to time constraints this will likely be added with next month's release. We really hope you enjoy the updated guides to go along side 0.6.1!
 
 * [OpenCore Install Guide](https://dortania.github.io/OpenCore-Install-Guide/)
 * [OpenCore Post-Install](https://dortania.github.io/OpenCore-Post-Install/)
