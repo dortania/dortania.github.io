@@ -11,7 +11,19 @@ categories: Hackintosh updates
 
 # A message from vit9696
 
-{Insert inspirational message}
+The summer is over and I am glad to meet you all in the beginning of autumn. Some of you might not remember but today is a very important day for the team. Exactly one year ago on 7 September OpenCore went out of a developer preview stage. Now we have accomplished many goals and created a mature product that is fast, functional, and easy to use. We continue to move forward with all our products and do the best to explore the opportunities in front of us.
+
+One of the important parts of all our pursuits has always been interacting with the community. By making it convenient for the fellow engineers to contribute we enabled the opportunity to not only breed the new features from the inside but also let them to be offered from the outside. For instance, [AppleALC](https://github.com/acidanthera/AppleALC) is one of the greatest examples of such community collaboration we were able to achieve. This release includes Ice Lake IGPU patches by [@0xFireWolf](https://github.com/0xFireWolf) in [WhateverGreen](https://github.com/acidanthera/WhateverGreen), battery supplement information by [@zhen-zen](https://github.com/zhen-zen) in [SMCBatteryManager](https://github.com/acidanthera/VirtualSMC), much improved hotkey handling by [@varahash](https://github.com/varahash) in [OpenCore](https://github.com/acidanthera/OpenCorePkg/), and several other changes all provided externally.
+
+Many will agree that doing laptop support is a non-trivial thing. There are many differences in both hardware and firmware across even very similar models. For us it means that we will never be able to cover all the peculiarities. In most cases you will be all alone with your issue and your only option will be to debug the driver yourself. Even so, we try to do what is practical. For example, [itlwm](https://github.com/usr-sse2/itlwm) IO80211Family integration I announced earlier is continuing to move forward and [@usr-sse2](https://github.com/usr-sse2) was able to achieve considerable progress with WPA Enterprise you will find in the upcoming commits. [AirportBrcmFixup](https://github.com/acidanthera/AirportBrcmFixup) was also improved quite a bit by [@lvs1974](https://github.com/lvs1974) bringing better compatibility with older operating systems and resolving some long-standing issues with exotic setups. [HibernationFixup](https://github.com/acidanthera/HibernationFixup) also got better.
+
+Now to OpenCore. With 0.6.1 we managed to fit what we have planned long ago: macOS Snow Leopard support and Apple Secure Boot. When [@Goldfish64](https://github.com/Goldfish64) said he is adding Snow Leopard support, we immediately realized that this is a challenge. Nevertheless we all supported that initiative as much as we could, as macOS 10.6 is very dear to us. This release is the first release to showcase our efforts: macOS 10.6 will install and launch at top notch speeds as you always expect from OpenCore. Not only we fully support the installation but we are first to implement the fastest available kernel caching with fuzzy matching easily beating Chameleon performance.
+
+Apple Secure Boot is a thing that makes sure that your Apple operating system is correctly installed and is not corrupted by a drive failure for instance. Before OpenCore it was only available to Macs with T2 and now, thanks to [@Download-Fritz](https://github.com/Download-Fritz) efforts, it is supported on any UEFI compatible firmware letting the developers and security researchers understand the boot flow of modern Apple Hardware. While it is just a preview and it is yet to undergo the security audit, you can already try it along with UEFI Secure Boot.
+
+Enjoy the new features and see you soon.
+
+— Vit
 
 # Guide Updates
 
