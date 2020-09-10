@@ -20,6 +20,67 @@ width="160" height="160"  />
 </p>
 </div>
                                                                                                   
+                                                                                                  
+         <li class="itemize">Overwrite — Overwrite existing gEfiSmbiosTableGuid and gEfiSmbiosTable3Guid data if it fits new size.
+         Abort with unspecified state otherwise.
+         </li>
+         <li class="itemize">Custom —  Write  SMBIOS  tables  (gEfiSmbios(3)TableGuid)  to  gOcCustomSmbios(3)TableGuid to
+         workaround firmwares overwriting SMBIOS contents at ExitBootServices. Otherwise equivalent to Create.
+         Requires patching AppleSmbios.kext and AppleACPIPlatform.kext to read from another GUID: &#x0022;EB9D2D31&#x0022;
+         - &#x0022;EB9D2D35&#x0022; (in ASCII), done automatically by CustomSMBIOSGuid quirk.</li></ul>
+     <!--l. 4327--><p class="noindent" >Note: A side effect of using Custom approach is making SMBIOS updates exclusive to macOS, avoiding a
+     collission with existing Windows activation and custom OEM software but potentially breaking Apple-specific
+     tools.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-54012x6">Generic<br 
+class="newline" />Type: plist dictonary<br 
+class="newline" />Description: Update all fields. This section is read only when Automatic is active.
+     </li>
+     <li 
+  class="enumerate" id="x1-54014x7">DataHub<br 
+class="newline" />Type: plist dictonary<br 
+class="newline" />Optional: When Automatic is true<br 
+class="newline" />Description: Update Data Hub fields. This section is read only when Automatic is not active.
+     </li>
+     <li 
+  class="enumerate" id="x1-54016x8">PlatformNVRAM<br 
+class="newline" />Type: plist dictonary<br 
+class="newline" />Optional: When Automatic is true<br 
+class="newline" />Description: Update platform NVRAM fields. This section is read only when Automatic is not active.
+     </li>
+     <li 
+  class="enumerate" id="x1-54018x9">SMBIOS<br 
+class="newline" />Type: plist dictonary<br 
+class="newline" />Optional: When Automatic is true<br 
+class="newline" />Description: Update SMBIOS fields. This section is read only when Automatic is not active.</li></ol>
+<a 
+ id="x1-54019r57"></a>
+<h4 class="subsectionHead"><span class="titlemark">10.2   </span> <a 
+ id="x1-550002"></a>Generic Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-55002x1">SpoofVendor<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Sets SMBIOS vendor fields to Acidanthera.
+     <!--l. 4365--><p class="noindent" >It is dangerous to use Apple in SMBIOS vendor fields for reasons given in SystemManufacturer description.
+     However, certain firmwares may not provide valid values otherwise, which could break some software.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-55004x2">AdviseWindows<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Forces Windows support in FirmwareFeatures.
+     <!--l. 4375--><p class="noindent" >Added bits to FirmwareFeatures:
+</p>
+         <ul class="itemize1">
+         <li class="itemize">FW_FEATURE_SUPPORTS_CSM_LEGACY_MODE (0x1) - Without this bit it is not possible to reboot to Windows
+         installed on a drive with EFI partition being not the first partition on the disk.
+         </li>
+         <li class="itemize">FW_FEATURE_SUPPORTS_UEFI_WINDOWS_BOOT (0x20000000) - Without this bit it is not possible to reboot
+         to Windows installed on a drive with EFI partition being the first partition on the disk.</li></ul>
+                                                                                                  
 
 
 </body>
