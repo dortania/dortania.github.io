@@ -21,65 +21,127 @@ width="160" height="160"  />
 </div>
                                                                                                   
                                                                                                   
-         <li class="itemize">Overwrite — Overwrite existing gEfiSmbiosTableGuid and gEfiSmbiosTable3Guid data if it fits new size.
-         Abort with unspecified state otherwise.
+         <li class="itemize">OCB — OcBootManagementLib
          </li>
-         <li class="itemize">Custom —  Write  SMBIOS  tables  (gEfiSmbios(3)TableGuid)  to  gOcCustomSmbios(3)TableGuid to
-         workaround firmwares overwriting SMBIOS contents at ExitBootServices. Otherwise equivalent to Create.
-         Requires patching AppleSmbios.kext and AppleACPIPlatform.kext to read from another GUID: &#x0022;EB9D2D31&#x0022;
-         - &#x0022;EB9D2D35&#x0022; (in ASCII), done automatically by CustomSMBIOSGuid quirk.</li></ul>
-     <!--l. 4327--><p class="noindent" >Note: A side effect of using Custom approach is making SMBIOS updates exclusive to macOS, avoiding a
-     collission with existing Windows activation and custom OEM software but potentially breaking Apple-specific
-     tools.
-     </p></li>
-     <li 
-  class="enumerate" id="x1-54012x6">Generic<br 
-class="newline" />Type: plist dictonary<br 
-class="newline" />Description: Update all fields. This section is read only when Automatic is active.
+         <li class="itemize">OCCL — OcAppleChunkListLib
+         </li>
+         <li class="itemize">OCCPU — OcCpuLib
+         </li>
+         <li class="itemize">OCC — OcConsoleLib
+         </li>
+         <li class="itemize"><span class="uwave">OCDC</span> <span class="uwave">— OcDriverConnectionLib </span>
+         </li>
+         <li class="itemize">OCDH — OcDataHubLib
+         </li>
+         <li class="itemize">OCDI — OcAppleDiskImageLib
+         </li>
+         <li class="itemize"><span class="sout">OCFSQ</span> <span class="sout">— OcFileLib, UnblockFs quirk </span>
+         </li>
+         <li class="itemize">OCFS — OcFileLib
+         </li>
+         <li class="itemize">OCFV — OcFirmwareVolumeLib
+         </li>
+         <li class="itemize">OCHS — OcHashServicesLib
+         </li>
+         <li class="itemize">OCI4 — OcAppleImg4Lib
+         </li>
+         <li class="itemize">OCIC — OcImageConversionLib
+         </li>
+         <li class="itemize">OCII — OcInputLib
+         </li>
+         <li class="itemize">OCJS — OcApfsLib
+         </li>
+         <li class="itemize">OCKM — OcAppleKeyMapLib
+         </li>
+         <li class="itemize">OCL — OcDebugLogLib
+         </li>
+         <li class="itemize">OCMCO — OcMachoLib
+         </li>
+         <li class="itemize">OCME — OcHeciLib
+         </li>
+         <li class="itemize">OCMM — OcMemoryLib
+         </li>
+         <li class="itemize">OCPI — OcFileLib, partition info
+         </li>
+         <li class="itemize">OCPNG — OcPngLib
+         </li>
+         <li class="itemize">OCRAM — OcAppleRamDiskLib
+         </li>
+         <li class="itemize">OCRTC — OcRtcLib
+         </li>
+         <li class="itemize">OCSB — OcAppleSecureBootLib
+         </li>
+         <li class="itemize">OCSMB — OcSmbiosLib
+         </li>
+         <li class="itemize">OCSMC — OcSmcLib
+         </li>
+         <li class="itemize">OCST — OcStorageLib
+         </li>
+         <li class="itemize">OCS — OcSerializedLib
+                                                                                                  
+                                                                                                  
+         to Windows installed on a drive with EFI partition being the first partition on the disk.</li></ul>
      </li>
      <li 
-  class="enumerate" id="x1-54014x7">DataHub<br 
-class="newline" />Type: plist dictonary<br 
-class="newline" />Optional: When Automatic is true<br 
-class="newline" />Description: Update Data Hub fields. This section is read only when Automatic is not active.
+  class="enumerate" id="x1-55006x3"><span class="uwave">ProcessorType</span> <span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist integer</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: Automatic</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Refer to SMBIOS </span><span class="uwave">ProcessorType</span><span class="uwave">. </span>
      </li>
      <li 
-  class="enumerate" id="x1-54016x8">PlatformNVRAM<br 
-class="newline" />Type: plist dictonary<br 
-class="newline" />Optional: When Automatic is true<br 
-class="newline" />Description: Update platform NVRAM fields. This section is read only when Automatic is not active.
+  class="enumerate" id="x1-55008x4">SystemProductName<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: MacPro6,1<br 
+class="newline" />Description: Refer to SMBIOS SystemProductName.
      </li>
      <li 
-  class="enumerate" id="x1-54018x9">SMBIOS<br 
-class="newline" />Type: plist dictonary<br 
-class="newline" />Optional: When Automatic is true<br 
-class="newline" />Description: Update SMBIOS fields. This section is read only when Automatic is not active.</li></ol>
+  class="enumerate" id="x1-55010x5">SystemSerialNumber<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: OPENCORE_SN1<br 
+class="newline" />Description: Refer to SMBIOS SystemSerialNumber.
+     </li>
+     <li 
+  class="enumerate" id="x1-55012x6">SystemUUID<br 
+class="newline" />Type: plist string, GUID<br 
+class="newline" />Failsafe: OEM specified<br 
+class="newline" />Description: Refer to SMBIOS SystemUUID.
+     </li>
+     <li 
+  class="enumerate" id="x1-55014x7">MLB<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: OPENCORE_MLB_SN11<br 
+class="newline" />Description: Refer to SMBIOS BoardSerialNumber.
+     </li>
+     <li 
+  class="enumerate" id="x1-55016x8">ROM<br 
+class="newline" />Type: plist data, 6 bytes<br 
+class="newline" />Failsafe: all zero<br 
+class="newline" />Description: Refer to 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:ROM.
+     </li></ol>
 <a 
- id="x1-54019r57"></a>
-<h4 class="subsectionHead"><span class="titlemark">10.2   </span> <a 
- id="x1-550002"></a>Generic Properties</h4>
+ id="x1-55017r58"></a>
+<h4 class="subsectionHead"><span class="titlemark">10.3   </span> <a 
+ id="x1-560003"></a>DataHub Properties</h4>
      <ol  class="enumerate1" >
      <li 
-  class="enumerate" id="x1-55002x1">SpoofVendor<br 
-class="newline" />Type: plist boolean<br 
-class="newline" />Failsafe: false<br 
-class="newline" />Description: Sets SMBIOS vendor fields to Acidanthera.
-     <!--l. 4365--><p class="noindent" >It is dangerous to use Apple in SMBIOS vendor fields for reasons given in SystemManufacturer description.
-     However, certain firmwares may not provide valid values otherwise, which could break some software.
-     </p></li>
+  class="enumerate" id="x1-56002x1">PlatformName<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Not installed<br 
+class="newline" />Description: Sets name in gEfiMiscSubClassGuid. Value found on Macs is platform in ASCII.
+     </li>
      <li 
-  class="enumerate" id="x1-55004x2">AdviseWindows<br 
-class="newline" />Type: plist boolean<br 
-class="newline" />Failsafe: false<br 
-class="newline" />Description: Forces Windows support in FirmwareFeatures.
-     <!--l. 4375--><p class="noindent" >Added bits to FirmwareFeatures:
-</p>
-         <ul class="itemize1">
-         <li class="itemize">FW_FEATURE_SUPPORTS_CSM_LEGACY_MODE (0x1) - Without this bit it is not possible to reboot to Windows
-         installed on a drive with EFI partition being not the first partition on the disk.
-         </li>
-         <li class="itemize">FW_FEATURE_SUPPORTS_UEFI_WINDOWS_BOOT (0x20000000) - Without this bit it is not possible to reboot
-         to Windows installed on a drive with EFI partition being the first partition on the disk.</li></ul>
+  class="enumerate" id="x1-56004x2">SystemProductName<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Not installed<br 
+class="newline" />Description:   Sets   Model  in   gEfiMiscSubClassGuid.   Value   found   on   Macs   is   equal   to   SMBIOS
+     SystemProductName in Unicode.
+     </li>
+     <li 
+  class="enumerate" id="x1-56006x3">SystemSerialNumber<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Not installed<br 
+class="newline" />Description: Sets SystemSerialNumber in gEfiMiscSubClassGuid. Value found on Macs is equal to SMBIOS
+     SystemSerialNumber in Unicode.
+     </li>
                                                                                                   
 
 
