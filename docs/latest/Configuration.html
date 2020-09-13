@@ -4217,7 +4217,7 @@ href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/Proto
              </li>
              <li class="itemize"><tspan class="ec-lmtt-10">1 </tspan>— enables serial logging for <tspan class="ec-lmtt-10">EXITBS:END </tspan>onwards.
              </li>
-             <li class="itemize"><tspan class="ec-lmtt-10">1 </tspan>— enables serial logging for <tspan class="ec-lmtt-10">EXITBS:START </tspan>onwards.
+             <li class="itemize"><tspan class="ec-lmtt-10">2 </tspan>— enables serial logging for <tspan class="ec-lmtt-10">EXITBS:START </tspan>onwards.
              </li>
              <li class="itemize"><tspan class="ec-lmtt-10">3 </tspan>— enables serial logging when debug protocol is missing.
              </li>
@@ -6416,8 +6416,8 @@ To additionally enable XNU kernel serial output you will need <tspan class="ec-l
          <li class="itemize">Take care of <tspan class="ec-lmtt-10">Booter</tspan>, <tspan class="ec-lmtt-10">Kernel</tspan>, and <tspan class="ec-lmtt-10">UEFI </tspan>quirks.
          </li>
          <li class="itemize">Consider  using  serial  port  to  inspect  early  kernel  boot  failures.  For  this  you  may  need  <tspan class="ec-lmtt-10">debug=0x108</tspan>,
-         <tspan class="ec-lmtt-10">serial=5</tspan>, and <tspan class="ec-lmtt-10">msgbuf=1048576 </tspan>arguments. Refer to the patches in Sample.plist when dying before serial
-         init.
+         <tspan class="ec-lmtt-10">serial=5</tspan>, and <tspan class="ec-lmtt-10">msgbuf=1048576 </tspan>boot arguments. Refer to the patches in Sample.plist when dying before
+         serial init.
          </li>
          <li class="itemize">Always read the logs carefully.</li></ul>
      </li>
