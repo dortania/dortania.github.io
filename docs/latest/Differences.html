@@ -21,7 +21,137 @@ width="160" height="160"  />
 </div>
                                                                                                   
                                                                                                   
-     <!--l. 2195--><p class="noindent" >Note: Refer to <a 
+     <li 
+  class="enumerate" id="x1-19014x7">OemTableId<br 
+class="newline" />Type: plist data, 8 bytes<br 
+class="newline" />Failsafe: All zero<br 
+class="newline" />Description: Match table OEM ID to be equal to this value unless all zero.
+     </li>
+     <li 
+  class="enumerate" id="x1-19016x8">Replace<br 
+class="newline" />Type: plist data<br 
+class="newline" />Failsafe: Empty data<br 
+class="newline" />Description: Replacement data of one or more bytes.
+     </li>
+     <li 
+  class="enumerate" id="x1-19018x9">ReplaceMask<br 
+class="newline" />Type: plist data<br 
+class="newline" />Failsafe: Empty data<br 
+class="newline" />Description: Data bitwise mask used during replacement. Allows fuzzy replacement by updating masked (set
+     to non-zero) bits. Can be set to empty data to be ignored. Must equal to Replace in size otherwise.
+     </li>
+     <li 
+  class="enumerate" id="x1-19020x10">Skip<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Number of found occurrences to be skipped before replacement is done.
+     </li>
+     <li 
+  class="enumerate" id="x1-19022x11">TableLength<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Match table size to be equal to this value unless 0.
+     </li>
+     <li 
+  class="enumerate" id="x1-19024x12">TableSignature<br 
+class="newline" />Type: plist data, 4 bytes<br 
+class="newline" />Failsafe: All zero<br 
+class="newline" />Description: Match table signature to be equal to this value unless all zero.
+     </li></ol>
+<!--l. 1104--><p class="noindent" >In the majority of the cases ACPI patches are not useful and harmful:
+</p>
+     <ul class="itemize1">
+     <li class="itemize">Avoid renaming devices with ACPI patches. This may fail or perform improper renaming of unrelated devices
+     (e.g. EC and EC0), be unnecessary, or even fail to rename devices in select tables. For ACPI consistency it is much
+     safer to rename devices at I/O Registry level, as done by <a 
+href="https://github.com/acidanthera/WhateverGreen" >WhateverGreen</a>.
+     </li>
+     <li class="itemize"><span class="sout">Avoid </span><span class="uwave">Try to avoid </span>patching _OSI to support a higher level of feature sets <span class="sout">unless absolutely required</span><span class="uwave">whenever
+     possible</span>. Commonly this enables a number of hacks on APTIO firmwares, which result in the need to add more
+     patches. Modern firmwares generally do not need it at all, and those that do are fine with much smaller patches.
+     <span class="uwave">However, laptop vendors usually rely on this method to determine the availability of functions like modern I2C
+     input support, thermal adjustment and custom feature additions. </span>
+     </li>
+     <li class="itemize"><span class="uwave">Avoid patching embedded controller event </span><span class="uwave">_Qxx</span> <span class="uwave">just for enabling brightness keys. The conventional process to
+     find these keys usually involves massive modification on DSDT and SSDTs and the debug kext is not stable on
+     newer systems. Please switch to built-in brightness key discovery of </span><a 
+href="https://github.com/acidanthera/VoodooPS2" >VoodooPS2</a> <span class="uwave">instead. </span>
+     </li>
+     <li class="itemize">Try to avoid hacky changes like renaming _PRW or _DSM whenever possible.</li></ul>
+<!--l. 1133--><p class="noindent" >Several cases, where patching actually does make sense, include:
+</p>
+                                                                                                  
+                                                                                                  
+     <ul class="itemize1">
+     <li class="itemize">Refreshing HPET (or another device) method header to avoid compatibility checks by _OSI on legacy hardware.
+     _STA method  with  if ((OSFL () == Zero)) { If (HPTE) ... Return (Zero) content  may  be  forced  to
+     always return 0xF by replacing A0 10 93 4F 53 46 4C 00 with A4 0A 0F A3 A3 A3 A3 A3.
+     </li>
+     <li class="itemize">To provide custom method implementation with in an SSDT, for instance, to <span class="sout">report functional key presses on
+     a laptop</span><span class="uwave">inject shutdown fix on certain computers</span>, the original method can be replaced with a dummy name by
+     patching _<span class="sout">Q11</span><span class="uwave">PTS</span> with <span class="sout">XQ11</span><span class="uwave">ZPTS</span> <span class="uwave">and adding a callback to original method</span>.</li></ul>
+<!--l. 1149--><p class="noindent" >Tianocore <a 
+href="https://github.com/acidanthera/audk/blob/master/MdePkg/Include/IndustryStandard/AcpiAml.h" >AcpiAml.h</a> source file may help understanding ACPI opcodes.
+</p><!--l. 1152--><p class="noindent" >Note: Patches of different Find and Replace lengths are unsupported as they may corrupt ACPI tables and make you system
+unstable due to area relocation. If you need such changes you may utilise “proxy” patching or NOP the remaining
+area.
+<a 
+ id="x1-19025r22"></a>
+</p>
+<h4 class="subsectionHead"><span class="titlemark">4.6   </span> <a 
+ id="x1-200006"></a>Quirks Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-20002x1">FadtEnableReset<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Provide reset register and flag in FADT table to enable reboot and shutdown.
+     <!--l. 1168--><p class="noindent" >Mainly required on legacy hardware and few laptops. Can also fix power-button shortcuts. Not recommended
+     unless required.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-20004x2">NormalizeHeaders<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description:  Cleanup  ACPI  header  fields  to  workaround  macOS  ACPI  implementation  bug  causing  boot
+     crashes. Reference: <a 
+href="https://alextjam.es/debugging-appleacpiplatform/" >Debugging AppleACPIPlatform on 10.13</a> by Alex James aka theracermaster. The issue is
+     fixed in macOS Mojave (10.14).
+     </li>
+     <li 
+  class="enumerate" id="x1-20006x3">RebaseRegions<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Attempt to heuristically relocate ACPI memory regions. Not recommended.
+     <!--l. 1188--><p class="noindent" >ACPI   tables   are   often   generated   dynamically   by   underlying   firmware   implementation.   Among   the
+     position-independent  code,  ACPI  tables  may  contain  physical  addresses  of  MMIO  areas  used  for  device
+     configuration,  usually  grouped  in  regions  (e.g.  OperationRegion).  Changing  firmware  settings  or  hardware
+     configuration, upgrading or patching the firmware inevitably leads to changes in dynamically generated ACPI
+     code, which sometimes lead to the shift of the addresses in aforementioned OperationRegion constructions.
+     </p><!--l. 1198--><p class="noindent" >For this reason it is very dangerous to apply any kind of modifications to ACPI tables. The most reasonable
+     approach is to make as few as possible changes to ACPI and try to not replace any tables, especially DSDT.
+     When this is not possible, then at least attempt to ensure that custom DSDT is based on the most recent DSDT
+     or remove writes and reads for the affected areas.
+     </p><!--l. 1205--><p class="noindent" >When nothing else helps this option could be tried to avoid stalls at PCI Configuration Begin phase of macOS
+     booting by attempting to fix the ACPI addresses. It does not do magic, and only works with most common cases.
+     Do not use unless absolutely required.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-20008x4">ResetHwSig<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Reset FACS table HardwareSignature value to 0.
+                                                                                                  
+                                                                                                  
+     <!--l. 2196--><p class="noindent" >Note: Refer to <a 
+href="#kernmatch">Add MaxKernel description</a> for matching logic.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-37022x11">MinKernel<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty string<br 
+class="newline" />Description: Patches data on specified macOS version or newer.
+     <!--l. 2204--><p class="noindent" >Note: Refer to <a 
 href="#kernmatch">Add MaxKernel description</a> for matching logic.
      </p></li>
      <li 
@@ -56,9 +186,9 @@ class="newline" />Requirement: <span class="sout">10.6 (64-bit)</span><span clas
 class="newline" />Description:                 Disables                 PKG_CST_CONFIG_CONTROL           (0xE2)                 MSR
      modification in AppleIntelCPUPowerManagement.kext, commonly causing early kernel panic, when it is locked
      from writing.
-     <!--l. 2234--><p class="noindent" >Certain  firmwares  lock  PKG_CST_CONFIG_CONTROL MSR  register.  To  check  its  state  one  can  use  bundled
+     <!--l. 2243--><p class="noindent" >Certain  firmwares  lock  PKG_CST_CONFIG_CONTROL MSR  register.  To  check  its  state  one  can  use  bundled
      VerifyMsrE2 tool. Select firmwares have this register locked on some cores only.
-     </p><!--l. 2238--><p class="noindent" >As modern firmwares provide CFG Lock setting, which allows configuring PKG_CST_CONFIG_CONTROL MSR register
+     </p><!--l. 2247--><p class="noindent" >As modern firmwares provide CFG Lock setting, which allows configuring PKG_CST_CONFIG_CONTROL MSR register
      lock, this option should be avoided whenever possible. For several APTIO firmwares not displaying CFG Lock
      setting in the GUI it is possible to access the option directly:
          </p><ol  class="enumerate2" >
@@ -81,6 +211,8 @@ href="https://github.com/LongSoft/Universal-IFR-Extractor/releases" >IFR-Extract
   class="enumerate" id="x1-38012x5">Find CFG Lock, VarStoreInfo (VarOffset/VarName): in Setup.txt and remember the offset right after
          it (e.g. 0x123).
          </li>
+                                                                                                  
+                                                                                                  
          <li 
   class="enumerate" id="x1-38014x6">Download and run <a 
 href="http://brains.by/posts/bootx64.7z" >Modified GRUB Shell</a> compiled by <a 
@@ -90,11 +222,9 @@ href="https://github.com/datasone" >datasone</a>.
          </li>
          <li 
   class="enumerate" id="x1-38016x7">Enter setup_var 0x123 0x00 command, where 0x123 should be replaced by your actual offset, and reboot.</li></ol>
-     <!--l. 2262--><p class="noindent" >Warning: Variable offsets are unique not only to each motherboard but even to its firmware version. Never ever try to
+     <!--l. 2271--><p class="noindent" >Warning: Variable offsets are unique not only to each motherboard but even to its firmware version. Never ever try to
      use an offset without checking.
      </p></li>
-                                                                                                  
-                                                                                                  
      <li 
   class="enumerate" id="x1-38018x2">AppleXcpmCfgLock<br 
 class="newline" />Type: plist boolean<br 
@@ -102,7 +232,7 @@ class="newline" />Failsafe: false<br
 class="newline" />Requirement: 10.8 (not required for older)<br 
 class="newline" />Description: Disables PKG_CST_CONFIG_CONTROL (0xE2) MSR modification in XNU kernel, commonly causing early
      kernel panic, when it is locked from writing (XCPM power management).
-     <!--l. 2274--><p class="noindent" >Note: This option should be avoided whenever possible. See AppleCpuPmCfgLock description for more
+     <!--l. 2283--><p class="noindent" >Note: This option should be avoided whenever possible. See AppleCpuPmCfgLock description for more
      details.
      </p></li>
      <li 
@@ -111,10 +241,10 @@ class="newline" />Type: plist boolean<br
 class="newline" />Failsafe: false<br 
 class="newline" />Requirement: 10.8 (not required for older)<br 
 class="newline" />Description: Disables multiple MSR access critical for select CPUs, which have no native XCPM support.
-     <!--l. 2285--><p class="noindent" >This is normally used in conjunction with Emulate section on Haswell-E, Broadwell-E, Skylake-SP, and similar CPUs.
+     <!--l. 2294--><p class="noindent" >This is normally used in conjunction with Emulate section on Haswell-E, Broadwell-E, Skylake-SP, and similar CPUs.
      More details on the XCPM patches are outlined in <a 
 href="https://github.com/acidanthera/bugtracker/issues/365" >acidanthera/bugtracker#365</a>.
-     </p><!--l. 2289--><p class="noindent" >Note: Additional not provided patches will be required for Ivy Bridge or Pentium CPUs. It is recommended to use
+     </p><!--l. 2298--><p class="noindent" >Note: Additional not provided patches will be required for Ivy Bridge or Pentium CPUs. It is recommended to use
      AppleIntelCpuPowerManagement.kext for the former.
      </p></li>
      <li 
@@ -123,9 +253,9 @@ class="newline" />Type: plist boolean<br
 class="newline" />Failsafe: false<br 
 class="newline" />Requirement: 10.8 (not required for older)<br 
 class="newline" />Description: Forces maximum performance in XCPM mode.
-     <!--l. 2299--><p class="noindent" >This patch writes 0xFF00 to MSR_IA32_PERF_CONTROL (0x199), effectively setting maximum multiplier for all the
+     <!--l. 2308--><p class="noindent" >This patch writes 0xFF00 to MSR_IA32_PERF_CONTROL (0x199), effectively setting maximum multiplier for all the
      time.
-     </p><!--l. 2302--><p class="noindent" >Note: While this may increase the performance, this patch is strongly discouraged on all systems but those
+     </p><!--l. 2311--><p class="noindent" >Note: While this may increase the performance, this patch is strongly discouraged on all systems but those
      explicitly dedicated to scientific or media calculations. In general only certain Xeon models benefit from the
      patch.
      </p></li>
@@ -143,18 +273,18 @@ class="newline" />Type: plist boolean<br
 class="newline" />Failsafe: false<br 
 class="newline" />Requirement: 10.8 (not required for older)<br 
 class="newline" />Description: Disables IOMapper support in XNU (VT-d), which may conflict with the firmware implementation.
-     <!--l. 2322--><p class="noindent" >Note: This option is a preferred alternative to deleting DMAR ACPI table and disabling VT-d in firmware preferences,
+     <!--l. 2331--><p class="noindent" >Note: This option is a preferred alternative to deleting DMAR ACPI table and disabling VT-d in firmware preferences,
      which does not break VT-d support in other systems in case they need it.
      </p></li>
+                                                                                                  
+                                                                                                  
      <li 
   class="enumerate" id="x1-38028x7">DisableLinkeditJettison<br 
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Requirement: 11.0<br 
 class="newline" />Description: Disables __LINKEDIT jettison code.
-     <!--l. 2333--><p class="noindent" >This option lets Lilu.kext and possibly some others function in macOS Big Sur with best performance without
-                                                                                                  
-                                                                                                  
+     <!--l. 2342--><p class="noindent" >This option lets Lilu.kext and possibly some others function in macOS Big Sur with best performance without
      keepsyms=1 boot argument.
      </p></li>
      <li 
@@ -163,10 +293,10 @@ class="newline" />Type: plist boolean<br
 class="newline" />Failsafe: false<br 
 class="newline" />Requirement: <span class="sout">10.6 (64-bit)</span><span class="uwave">10.4</span><br 
 class="newline" />Description: Disables primary checksum (0x58-0x59) writing in AppleRTC.
-     <!--l. 2345--><p class="noindent" >Note 1: This option will not protect other areas from being overwritten, see <a 
+     <!--l. 2354--><p class="noindent" >Note 1: This option will not protect other areas from being overwritten, see <a 
 href="https://github.com/acidanthera/RTCMemoryFixup" >RTCMemoryFixup</a> kernel extension if this is
      desired.
-     </p><!--l. 2349--><p class="noindent" >Note 2: This option will not protect areas from being overwritten at firmware stage (e.g. macOS bootloader), see
+     </p><!--l. 2358--><p class="noindent" >Note 2: This option will not protect areas from being overwritten at firmware stage (e.g. macOS bootloader), see
      AppleRtc protocol description if this is desired.
      </p></li>
      <li 
@@ -175,7 +305,7 @@ class="newline" />Type: plist boolean<br
 class="newline" />Failsafe: false<br 
 class="newline" />Requirement: <span class="sout">10.6 (64-bit)</span><span class="uwave">10.4</span><br 
 class="newline" />Description: Disables AppleIntelCpuPowerManagement.
-     <!--l. 2360--><p class="noindent" >Note: This option is a preferred alternative to NullCpuPowerManagement.kext for CPUs without native power
+     <!--l. 2369--><p class="noindent" >Note: This option is a preferred alternative to NullCpuPowerManagement.kext for CPUs without native power
      management driver in macOS.
      </p></li>
      <li 
@@ -185,7 +315,7 @@ class="newline" />Failsafe: false<br
 class="newline" />Requirement: <span class="sout">10.6 (64-bit)</span><span class="uwave">10.4</span><br 
 class="newline" />Description: Apply icon type patches to AppleAHCIPort.kext to force internal disk icons for all AHCI
      disks.
-     <!--l. 2372--><p class="noindent" >Note: This option should be avoided whenever possible. Modern firmwares usually have compatible AHCI
+     <!--l. 2381--><p class="noindent" >Note: This option should be avoided whenever possible. Modern firmwares usually have compatible AHCI
      controllers.
      </p></li>
      <li 
@@ -194,7 +324,7 @@ class="newline" />Type: plist boolean<br
 class="newline" />Failsafe: false<br 
 class="newline" />Requirement: 10.10<br 
 class="newline" />Description: Increases 32-bit PCI bar size in IOPCIFamily from 1 to 4 GBs.
-     <!--l. 2382--><p class="noindent" >Note: This option should be avoided whenever possible. In general the necessity of this option means misconfigured or
+     <!--l. 2391--><p class="noindent" >Note: This option should be avoided whenever possible. In general the necessity of this option means misconfigured or
      broken firmware.
      </p></li>
      <li 
@@ -218,7 +348,7 @@ class="newline" />Type: plist boolean<br
 class="newline" />Failsafe: false<br 
 class="newline" />Requirement: 10.15 (not required for older)<br 
 class="newline" />Description: Disables kernel panic on setPowerState timeout.
-     <!--l. 2407--><p class="noindent" >An additional security measure was added to macOS Catalina (10.15) causing kernel panic on power change timeout for
+     <!--l. 2416--><p class="noindent" >An additional security measure was added to macOS Catalina (10.15) causing kernel panic on power change timeout for
      Apple drivers. Sometimes it may cause issues on misconfigured hardware, notably digital audio, which sometimes fails to
      wake up. For debug kernels setpowerstate_panic=0 boot argument should be used, which is otherwise equivalent to this
      quirk.
@@ -230,7 +360,7 @@ class="newline" />Failsafe: false<br
 class="newline" />Requirement: 10.6 (<span class="sout">64-bit, </span>not required for older)<br 
 class="newline" />Description: Apply vendor patches to IOAHCIBlockStorage.kext to enable native features for third-party drives, such
      as TRIM on SSDs or hibernation support on 10.15 and newer.
-     <!--l. 2422--><p class="noindent" >Note: This option may be avoided on user preference. NVMe SSDs are compatible without the change. For AHCI SSDs
+     <!--l. 2431--><p class="noindent" >Note: This option may be avoided on user preference. NVMe SSDs are compatible without the change. For AHCI SSDs
      on modern macOS version there is a dedicated built-in utility called trimforce. Starting from 10.15
      this utility creates EnableTRIM variable in APPLE_BOOT_VARIABLE_GUID namespace with 01 00 00 00
      value.
@@ -242,7 +372,7 @@ class="newline" />Failsafe: false<br
 class="newline" />Requirement: 10.11 (not required for older)<br 
 class="newline" />Description: Patch various kexts (AppleUSBXHCI.kext, AppleUSBXHCIPCI.kext, IOUSBHostFamily.kext) to remove
      USB port count limit of 15 ports.
-     <!--l. 2436--><p class="noindent" >Note: This option should be avoided whenever possible. USB port limit is imposed by the amount of used bits in
+     <!--l. 2445--><p class="noindent" >Note: This option should be avoided whenever possible. USB port limit is imposed by the amount of used bits in
      locationID format and there is no possible way to workaround this without heavy OS modification. The only
      valid solution is to limit the amount of used ports to 15 (discarding some). More details can be found on
      <a 
@@ -253,7 +383,7 @@ href="https://applelife.ru/posts/550233" >AppleLife.ru</a>.
  id="x1-38047r41"></a>
 <h4 class="subsectionHead"><span class="titlemark">7.9   </span> <a 
  id="x1-390009"></a>Scheme Properties</h4>
-<!--l. 2446--><p class="noindent" >These properties are particularly relevant for older macOS operating systems. For more details on how to install and
+<!--l. 2455--><p class="noindent" >These properties are particularly relevant for older macOS operating systems. For more details on how to install and
 troubleshoot such macOS installation refer to ??.
      </p><ol  class="enumerate1" >
      <li 
@@ -261,10 +391,12 @@ troubleshoot such macOS installation refer to ??.
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Use kernelcache with different checksums when available.
-     <!--l. 2458--><p class="noindent" >On macOS 10.6 and earlier kernelcache filename has a checksum, which essentially is adler32 from SMBIOS
+     <!--l. 2467--><p class="noindent" >On macOS 10.6 and earlier kernelcache filename has a checksum, which essentially is adler32 from SMBIOS
      product name and EfiBoot device path. On certain firmwares EfiBoot device path differs between UEFI and
      macOS due to ACPI or hardware specifics, rendering kernelcache checksum as always different.
-     </p><!--l. 2463--><p class="noindent" >This setting allows matching the latest kernelcache with a suitable architecture when the kernelcache without
+     </p><!--l. 2472--><p class="noindent" >This setting allows matching the latest kernelcache with a suitable architecture when the kernelcache without
+                                                                                                  
+                                                                                                  
      suffix is unavailable, improving macOS 10.6 boot performance on several platforms.
      </p></li>
      <li 
@@ -272,9 +404,7 @@ class="newline" />Description: Use kernelcache with different checksums when ava
 class="newline" />Type: plist string<br 
 class="newline" />Failsafe: Auto<br 
 class="newline" />Description: Prefer specified kernel architecture (Auto, i386, i386-user32, x86_64) when available.
-                                                                                                  
-                                                                                                  
-     <!--l. 2474--><p class="noindent" >On macOS 10.7 and earlier XNU kernel can boot with architectures different from the usual x86_64. This setting
+     <!--l. 2483--><p class="noindent" >On macOS 10.7 and earlier XNU kernel can boot with architectures different from the usual x86_64. This setting
      will use the specified architecture to boot macOS when it is supported by the macOS and the configuration:
 </p>
          <ul class="itemize1">
@@ -288,7 +418,7 @@ class="newline" />Description: Prefer specified kernel architecture (Auto, i386,
          behaviour corresponds to -legacy kernel boot argument.
          </li>
          <li class="itemize">x86_64 — Use x86_64 (64-bit) kernel when available.</li></ul>
-     <!--l. 2491--><p class="noindent" >Below is the algorithm determining the kernel architecture.
+     <!--l. 2500--><p class="noindent" >Below is the algorithm determining the kernel architecture.
          </p><ol  class="enumerate2" >
          <li 
   class="enumerate" id="x1-39006x1">arch argument in image arguments (e.g. when launched via UEFI Shell) or in boot-args variable overrides
@@ -324,11 +454,13 @@ class="newline" />Description: Prefer specified kernel architecture (Auto, i386,
          </li>
          <li 
   class="enumerate" id="x1-39018x7">The best supported architecture is chosen in this order: x86_64, i386, i386-user32.</li></ol>
-     <!--l. 2521--><p class="noindent" >Unlike macOS 10.7, where select boards identifiers are treated as the i386 only machines, and macOS 10.5 or
+     <!--l. 2530--><p class="noindent" >Unlike macOS 10.7, where select boards identifiers are treated as the i386 only machines, and macOS 10.5 or
      earlier, where x86_64 is not supported by the macOS kernel, macOS 10.6 is very special. The architecture
      choice on macOS 10.6 depends on many factors including not only the board identifier, but also macOS
      product type (client vs server), macOS point release, and RAM amount. The detection of them all is
      complicated and not practical, because several point releases had genuine bugs and failed to properly perform
+                                                                                                  
+                                                                                                  
      the server detection in the first place. For this reason OpenCore on macOS 10.6 will fallback to x86_64
      architecture whenever it is supported by the board at all, just like on macOS 10.7. As a reference here is
      the 64-bit Mac model compatibility corresponding to actual EfiBoot behaviour on macOS 10.6.8 and
@@ -336,9 +468,7 @@ class="newline" />Description: Prefer specified kernel architecture (Auto, i386,
 </p>
      <div class="center" 
 >
-                                                                                                  
-                                                                                                  
-<!--l. 2533--><p class="noindent" >
+<!--l. 2542--><p class="noindent" >
 </p>
 <div class="tabular"> <table id="TBL-2" class="tabular" 
  
@@ -350,7 +480,7 @@ id="TBL-2-4" /></colgroup><colgroup id="TBL-2-5g"><col
 id="TBL-2-5" /></colgroup><tr 
 class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-1-"><td  style="white-space:normal; text-align:left;" id="TBL-2-1-1"  
-class="td11"><!--l. 2536--><p class="noindent" >Model         </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-1-2"  
+class="td11"><!--l. 2545--><p class="noindent" >Model         </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-1-2"  
 class="td11">10.6 (minimal)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-1-3"  
 class="td11"> 10.6 (client) </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-1-4"  
 class="td11"> 10.6 (server) </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-1-5"  
@@ -358,7 +488,7 @@ class="td11">  10.7 (any)   </td>
 </tr><tr 
 class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-2-"><td  style="white-space:normal; text-align:left;" id="TBL-2-2-1"  
-class="td11"><!--l. 2538--><p class="noindent" >Macmini         </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-2"  
+class="td11"><!--l. 2547--><p class="noindent" >Macmini         </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-2"  
 class="td11"> 4,x (Mid 2010) </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-3"  
 class="td11"> 5,x (Mid 2011) </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-4"  
 class="td11"> 4,x (Mid 2010) </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-5"  
@@ -366,7 +496,7 @@ class="td11">3,x (Early 2009)</td>
 </tr><tr 
 class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-3-"><td  style="white-space:normal; text-align:left;" id="TBL-2-3-1"  
-class="td11"><!--l. 2540--><p class="noindent" >MacBook        </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-2"  
+class="td11"><!--l. 2549--><p class="noindent" >MacBook        </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-2"  
 class="td11">  Unsupported   </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-3"  
 class="td11"> Unsupported  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-4"  
 class="td11"> Unsupported  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-5"  
@@ -374,7 +504,7 @@ class="td11"> 5,x (2009/09)  </td>
 </tr><tr 
 class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-4-"><td  style="white-space:normal; text-align:left;" id="TBL-2-4-1"  
-class="td11"><!--l. 2542--><p class="noindent" >MacBookAir    </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-2"  
+class="td11"><!--l. 2551--><p class="noindent" >MacBookAir    </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-2"  
 class="td11">  Unsupported   </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-3"  
 class="td11"> Unsupported  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-4"  
 class="td11"> Unsupported  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-5"  
@@ -382,7 +512,7 @@ class="td11"> 2,x (Late 2008) </td>
 </tr><tr 
 class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-5-"><td  style="white-space:normal; text-align:left;" id="TBL-2-5-1"  
-class="td11"><!--l. 2544--><p class="noindent" >MacBookPro   </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-2"  
+class="td11"><!--l. 2553--><p class="noindent" >MacBookPro   </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-2"  
 class="td11">4,x (Early 2008)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-3"  
 class="td11">8,x (Early 2011)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-4"  
 class="td11">8,x (Early 2011)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-5"  
@@ -390,7 +520,7 @@ class="td11"> 3,x (Mid 2007) </td>
 </tr><tr 
 class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-6-"><td  style="white-space:normal; text-align:left;" id="TBL-2-6-1"  
-class="td11"><!--l. 2546--><p class="noindent" >iMac              </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-2"  
+class="td11"><!--l. 2555--><p class="noindent" >iMac              </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-2"  
 class="td11">8,x (Early 2008)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-3"  
 class="td11">12,x (Mid 2011)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-4"  
 class="td11">12,x (Mid 2011)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-5"  
@@ -398,7 +528,7 @@ class="td11"> 7,x (Mid 2007) </td>
 </tr><tr 
 class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-7-"><td  style="white-space:normal; text-align:left;" id="TBL-2-7-1"  
-class="td11"><!--l. 2548--><p class="noindent" >MacPro          </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-7-2"  
+class="td11"><!--l. 2557--><p class="noindent" >MacPro          </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-7-2"  
 class="td11">3,x (Early 2008)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-7-3"  
 class="td11"> 5,x (Mid 2010) </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-7-4"  
 class="td11">3,x (Early 2008)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-7-5"  
@@ -406,7 +536,7 @@ class="td11">3,x (Early 2008)</td>
 </tr><tr 
 class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-8-"><td  style="white-space:normal; text-align:left;" id="TBL-2-8-1"  
-class="td11"><!--l. 2550--><p class="noindent" >Xserve            </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-8-2"  
+class="td11"><!--l. 2559--><p class="noindent" >Xserve            </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-8-2"  
 class="td11">2,x (Early 2008)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-8-3"  
 class="td11">2,x (Early 2008)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-8-4"  
 class="td11">2,x (Early 2008)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-8-5"  
@@ -416,7 +546,7 @@ class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><h
  style="vertical-align:baseline;" id="TBL-2-9-"><td  style="white-space:normal; text-align:left;" id="TBL-2-9-1"  
 class="td11">             </td>
 </tr></table></div></div>
-     <!--l. 2555--><p class="noindent" >Note: 3+2 and 6+4 hotkeys to choose the preferred architecture are unsupported due to being handled by EfiBoot and
+     <!--l. 2564--><p class="noindent" >Note: 3+2 and 6+4 hotkeys to choose the preferred architecture are unsupported due to being handled by EfiBoot and
      thus being hard to properly detect.
      </p></li>
      <li 
@@ -424,14 +554,14 @@ class="td11">             </td>
 class="newline" />Type: plist string<br 
 class="newline" />Failsafe: Auto<br 
 class="newline" />Description: Prefer specified kernel cache type (Auto, Cacheless, Mkext, Prelinked) when available.
-     <!--l. 2566--><p class="noindent" >Different variants of macOS support different kernel caching variants designed to improve boot performance. This setting
+     <!--l. 2575--><p class="noindent" >Different variants of macOS support different kernel caching variants designed to improve boot performance. This setting
      allows to prevent using faster kernel caching variants if slower variants are available for debugging and stability reasons.
      I.e. by specifying Mkext one will disable Prelinked for e.g. 10.6 but not 10.7.
-     </p><!--l. 2571--><p class="noindent" >The list of available kernel caching types and its current support in OpenCore is listed below.
+     </p><!--l. 2580--><p class="noindent" >The list of available kernel caching types and its current support in OpenCore is listed below.
 </p>
      <div class="center" 
 >
-<!--l. 2573--><p class="noindent" >
+<!--l. 2582--><p class="noindent" >
 </p>
 <div class="tabular"> <table id="TBL-3" class="tabular" 
  
@@ -446,7 +576,7 @@ id="TBL-3-7" /></colgroup><colgroup id="TBL-3-8g"><col
 id="TBL-3-8" /></colgroup><tr 
 class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-3-1-"><td  style="white-space:normal; text-align:left;" id="TBL-3-1-1"  
-class="td11"><!--l. 2576--><p class="noindent" >macOS   </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-1-2"  
+class="td11"><!--l. 2585--><p class="noindent" >macOS   </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-1-2"  
 class="td11">i386 NC</td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-1-3"  
 class="td11">  i386 MK  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-1-4"  
 class="td11">i386 PK</td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-1-5"  
@@ -457,7 +587,7 @@ class="td11">x86_64 KC</td>
 </tr><tr 
 class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-3-2-"><td  style="white-space:normal; text-align:left;" id="TBL-3-2-1"  
-class="td11"><!--l. 2578--><p class="noindent" >10.4          </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-2"  
+class="td11"><!--l. 2587--><p class="noindent" >10.4          </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-2"  
 class="td11"><span class="sout">NO </span><span class="uwave">YES </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-3"  
 class="td11"><span class="sout">NO </span><span class="uwave">YES </span>(V1)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-4"  
 class="td11">NO <span class="uwave">(V1) </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-5"  
@@ -468,7 +598,7 @@ class="td11">     —       </td>
 </tr><tr 
 class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-3-3-"><td  style="white-space:normal; text-align:left;" id="TBL-3-3-1"  
-class="td11"><!--l. 2580--><p class="noindent" >10.5          </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-2"  
+class="td11"><!--l. 2589--><p class="noindent" >10.5          </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-2"  
 class="td11"><span class="sout">NO </span><span class="uwave">YES </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-3"  
 class="td11"><span class="sout">NO </span><span class="uwave">YES </span>(V1)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-4"  
 class="td11">NO <span class="uwave">(V1) </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-5"  
@@ -479,7 +609,7 @@ class="td11">     —       </td>
 </tr><tr 
 class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-3-4-"><td  style="white-space:normal; text-align:left;" id="TBL-3-4-1"  
-class="td11"><!--l. 2582--><p class="noindent" >10.6          </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-2"  
+class="td11"><!--l. 2591--><p class="noindent" >10.6          </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-2"  
 class="td11"><span class="sout">NO </span><span class="uwave">YES </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-3"  
 class="td11"><span class="sout">NO </span><span class="uwave">YES </span>(V2)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-4"  
 class="td11">NO <span class="uwave">(V2) </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-5"  
@@ -490,7 +620,7 @@ class="td11">     —       </td>
 </tr><tr 
 class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-3-5-"><td  style="white-space:normal; text-align:left;" id="TBL-3-5-1"  
-class="td11"><!--l. 2584--><p class="noindent" >10.7          </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-2"  
+class="td11"><!--l. 2593--><p class="noindent" >10.7          </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-2"  
 class="td11"><span class="sout">NO </span><span class="uwave">YES </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-3"  
 class="td11">     —        </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-4"  
 class="td11">NO <span class="uwave">(V3) </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-5"  
@@ -501,7 +631,7 @@ class="td11">     —       </td>
 </tr><tr 
 class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-3-6-"><td  style="white-space:normal; text-align:left;" id="TBL-3-6-1"  
-class="td11"><!--l. 2586--><p class="noindent" >10.8-10.9    </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-2"  
+class="td11"><!--l. 2595--><p class="noindent" >10.8-10.9    </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-2"  
 class="td11">   —     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-3"  
 class="td11">     —        </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-4"  
 class="td11">   —     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-5"  
@@ -512,7 +642,7 @@ class="td11">     —       </td>
 </tr><tr 
 class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-3-7-"><td  style="white-space:normal; text-align:left;" id="TBL-3-7-1"  
-class="td11"><!--l. 2588--><p class="noindent" >10.10-10.15 </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-2"  
+class="td11"><!--l. 2597--><p class="noindent" >10.10-10.15 </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-2"  
 class="td11">   —     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-3"  
 class="td11">     —        </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-4"  
 class="td11">   —     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-5"  
@@ -523,7 +653,7 @@ class="td11">     —       </td>
 </tr><tr 
 class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-3-8-"><td  style="white-space:normal; text-align:left;" id="TBL-3-8-1"  
-class="td11"><!--l. 2590--><p class="noindent" >11.0+        </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-2"  
+class="td11"><!--l. 2599--><p class="noindent" >11.0+        </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-2"  
 class="td11">   —     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-3"  
 class="td11">     —        </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-4"  
 class="td11">   —     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-5"  
@@ -545,18 +675,17 @@ class="td11">          </td>
  id="x1-40001r42"></a>
 <h4 class="subsectionHead"><span class="titlemark">8.1   </span> <a 
  id="x1-410001"></a>Introduction</h4>
-<!--l. 2603--><p class="noindent" >This section contains miscellaneous configuration affecting OpenCore operating system loading behaviour as well as other
+<!--l. 2612--><p class="noindent" >This section contains miscellaneous configuration affecting OpenCore operating system loading behaviour as well as other
 entries, which do not go to any other section.
-</p><!--l. 2606--><p class="noindent" >OpenCore tries to follow “bless” model also known as “Apple Boot Policy”. The primary specialty of “bless” model is to
+</p><!--l. 2615--><p class="noindent" >OpenCore tries to follow “bless” model also known as “Apple Boot Policy”. The primary specialty of “bless” model is to
 allow embedding boot options within the file system (and be accessible through a specialised driver) as well as
-supporting a broader range of predefined boot paths compared to the removable media list found in the UEFI
-specification.
-</p><!--l. 2611--><p class="noindent" >Each partition will only be used for booting when it corresponds to “Scan policy”: a set of restrictions to only use partitions
-with specific file systems and from specific device types. Scan policy behaviour is discussed in ScanPolicy property
-description.
-</p><!--l. 2615--><p class="noindent" >Scan process starts with obtaining all the partitions filtered with “Scan policy”. Each partition may produce multiple primary
                                                                                                   
                                                                                                   
+         </li>
+         <li class="itemize">OCAU — OcAudioLib
+         </li>
+         <li class="itemize">OCAV — OcAppleImageVerificationLib
+         </li>
          <li class="itemize">OCA —- OcAcpiLib
          </li>
          <li class="itemize">OCBP — OcAppleBootPolicyLib
@@ -609,25 +738,29 @@ description.
          </li>
          <li class="itemize">OCRTC — OcRtcLib
          </li>
-         <li class="itemize">OCSB — OcAppleSecureBootLib
-         </li>
-         <li class="itemize">OCSMB — OcSmbiosLib
-         </li>
-         <li class="itemize">OCSMC — OcSmcLib
                                                                                                   
                                                                                                   
          </li>
          <li 
+  class="enumerate" id="x1-45058x5">Operating systems released before Apple Secure Boot landed (e.g. macOS 10.12 or earlier) will still boot
+         until UEFI Secure Boot is enabled. This is so, because from Apple Secure Boot point they are treated as
+         incompatible and are assumed to be handled by the firmware just like Microsoft Windows is.
+         </li>
+         <li 
+  class="enumerate" id="x1-45060x6">On older CPUs (e.g. before Sandy Bridge) enabling Apple Secure Boot might cause slightly slower loading
+         by up to 1 second.
+         </li>
+         <li 
   class="enumerate" id="x1-45062x7">Since Default value will increase with time to support the latest major release operating system, it is not
          recommended to use ApECID and Default value together.</li></ol>
-     <!--l. 3703--><p class="noindent" >Sometimes the already installed operating system may have outdated Apple Secure Boot manifests on the Preboot
+     <!--l. 3712--><p class="noindent" >Sometimes the already installed operating system may have outdated Apple Secure Boot manifests on the Preboot
      partition causing boot failure. If you see the “OCB: Apple Secure Boot prohibits this boot entry, enforcing!”
      message, it is likely the case. When this happens you can either reinstall the operating system or copy
      the manifests (files with .im4m extension, like boot.efi.j137.im4m) from /usr/standalone/i386 to
      /Volumes/Preboot/&#x003C;UUID&#x003E;/System/Library/CoreServices. Here &#x003C;UUID&#x003E; is your system volume identifier. <span class="uwave">On HFS+
      installations the manifests should be copied to </span><span class="uwave">/System/Library/CoreServices</span> <span class="uwave">on the system volume.
      </span>
-     </p><!--l. 3714--><p class="noindent" >For more details on how to configure Apple Secure Boot with UEFI Secure Boot refer to ?? section.
+     </p><!--l. 3723--><p class="noindent" >For more details on how to configure Apple Secure Boot with UEFI Secure Boot refer to ?? section.
 </p>
      </li></ol>
 <a 
@@ -670,138 +803,13 @@ class="newline" />Description: Human readable entry name displayed in boot picke
   class="enumerate" id="x1-46012x6">Path<br 
 class="newline" />Type: plist string<br 
 class="newline" />Failsafe: Empty string<br 
-class="newline" />Description: Entry location depending on entry type.
-         <ul class="itemize1">
-         <li class="itemize">Entries specify external boot options, and therefore take device paths in Path key. These values are not
-         checked, thus be extremely careful. Example: PciRoot(0x0)/Pci(0x1,0x1)/.../\EFI\COOL.EFI
-         </li>
-         <li class="itemize">Tools specify internal boot options, which are part of bootloader vault, and therefore take file paths relative
-                                                                                                  
-                                                                                                  
-     Four-byte BGRA data defining boot.efi user interface background colour. Standard colours include BF BF BF
-     00 (Light Gray) and 00 00 00 00 (Syrah Black). Other colours may be set at user’s preference.</li></ul>
-<a 
- id="x1-51001r54"></a>
-<h4 class="subsectionHead"><span class="titlemark">9.5   </span> <a 
- id="x1-520005"></a>Other Variables</h4>
-<!--l. 4023--><p class="noindent" >The following variables may be useful for certain configurations or troubleshooting:
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Forces Windows support in FirmwareFeatures.
+     <!--l. 4392--><p class="noindent" >Added bits to FirmwareFeatures:
 </p>
-     <ul class="itemize1">
-     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:boot-args
-     Kernel arguments, used to pass configuration to Apple kernel and drivers. There are many arguments, which
-     may be found by looking for the use of PE_parse_boot_argn function in the kernel or driver code. Some of the
-     known boot arguments include:
-         <ul class="itemize2">
-         <li class="itemize">acpi_layer=0xFFFFFFFF
-         </li>
-         <li class="itemize">acpi_level=0xFFFF5F (implies <a 
-href="https://github.com/acpica/acpica/blob/master/source/include/acoutput.h" >ACPI_ALL_COMPONENTS</a>)
-         </li>
-         <li class="itemize"><span class="uwave">arch=i386</span> <span class="uwave">(force kernel architecture to </span><span class="uwave">i386</span><span class="uwave">, see </span><span class="uwave">KernelArch</span><span class="uwave">) </span>
-         </li>
-         <li class="itemize">batman=VALUE (AppleSmartBatteryManager debug mask)
-         </li>
-         <li class="itemize">batman-nosmc=1 (disable AppleSmartBatteryManager SMC interface)
-         </li>
-         <li class="itemize">cpus=VALUE (maximum number of CPUs used)
-         </li>
-         <li class="itemize">debug=VALUE (debug mask)
-         </li>
-         <li class="itemize">io=VALUE (IOKit debug mask)
-         </li>
-         <li class="itemize">keepsyms=1 (show panic log debug symbols)
-         </li>
-         <li class="itemize">kextlog=VALUE (kernel extension loading debug mask)
-         </li>
-         <li class="itemize">nv_disable=1 (disables NVIDIA GPU acceleration)
-         </li>
-         <li class="itemize">nvda_drv=1 (legacy way to enable NVIDIA web driver, removed in 10.12)
-         </li>
-         <li class="itemize">npci=0x2000 (<a 
-href="https://www.insanelymac.com/forum/topic/260539-1068-officially-released/?do=findComment&comment=1707972" >legacy</a>, disables kIOPCIConfiguratorPFM64)
-         </li>
-         <li class="itemize">lapic_dont_panic=1
-         </li>
-         <li class="itemize">slide=VALUE (manually set KASLR slide)
-         </li>
-         <li class="itemize">smcdebug=VALUE (AppleSMC debug mask)
-         </li>
-         <li class="itemize">-amd_no_dgpu_accel (alternative to <a 
-href="https://github.com/acidanthera/WhateverGreen" >WhateverGreen</a>’s -radvesa for new GPUs)
-         </li>
-         <li class="itemize">-nehalem_error_disable
-         </li>
-         <li class="itemize">-no_compat_check (disable model checking <span class="uwave">on 10.7+</span>)
-         </li>
-         <li class="itemize">-s (single mode)
-         </li>
-         <li class="itemize">-v (verbose mode)
-         </li>
-         <li class="itemize">-x (safe mode)</li></ul>
-     <!--l. 4063--><p class="noindent" >There are multiple external places summarising macOS argument lists: <a 
-href="https://osxeon.wordpress.com/2015/08/10/boot-argument-options-in-os-x" >example 1</a>, <a 
-href="https://superuser.com/questions/255176/is-there-a-list-of-available-boot-args-for-darwin-os-x" >example 2</a>.
-                                                                                                  
-                                                                                                  
-             <li class="itemize">3 — (unavailable).
-             </li>
-             <li class="itemize">4 — (save to file, unavailable).</li></ul>
-         </li>
-         <li class="itemize">breakpoint=VALUE — enables debug breaks (missing in production boot.efi).
-             <ul class="itemize3">
-             <li class="itemize">0 — disables debug breaks on errors (default).
-             </li>
-             <li class="itemize">1 — enables debug breaks on errors.</li></ul>
-         </li>
-         <li class="itemize">console=VALUE — enables console logging.
-             <ul class="itemize3">
-             <li class="itemize">0 — disables console logging.
-             </li>
-             <li class="itemize">1 — enables console logging when debug protocol is missing (default).
-             </li>
-             <li class="itemize">2 — enables console logging unconditionally (unavailable).</li></ul>
-         </li>
-         <li class="itemize">embed-log-dt=VALUE — enables DeviceTree logging.
-             <ul class="itemize3">
-             <li class="itemize">0 — disables DeviceTree logging (default).
-             </li>
-             <li class="itemize">1 — enables DeviceTree logging.</li></ul>
-         </li>
-         <li class="itemize">kc-read-size=VALUE — Chunk size used for buffered I/O from network or disk for prelinkedkernel reading and
-         related. Set to 1MB (0x100000) by default, can be tuned for faster booting.
-         </li>
-         <li class="itemize">log-level=VALUE — log level bitmask.
-             <ul class="itemize3">
-             <li class="itemize">0x01 — enables trace logging (default).</li></ul>
-         </li>
-         <li class="itemize">serial=VALUE — enables serial logging.
-             <ul class="itemize3">
-             <li class="itemize">0 — disables serial logging (default).
-             </li>
-             <li class="itemize">1 — enables serial logging for EXITBS:END onwards.
-             </li>
-             <li class="itemize"><span class="sout">1</span><span class="uwave">2</span> — enables serial logging for EXITBS:START onwards.
-             </li>
-             <li class="itemize">3 — enables serial logging when debug protocol is missing.
-             </li>
-             <li class="itemize">4 — enables serial logging unconditionally.</li></ul>
-         </li>
-         <li class="itemize">timestamps=VALUE — enables timestamp logging.
-             <ul class="itemize3">
-             <li class="itemize">0 — disables timestamp logging.
-             </li>
-             <li class="itemize">1 — enables timestamp logging (default).</li></ul>
-         </li>
-         <li class="itemize">log=VALUE — deprecated starting from 10.15.
-             <ul class="itemize3">
-             <li class="itemize">1 — AppleLoggingConOutOrErrSet/AppleLoggingConOutOrErrPrint (classical ConOut/StdErr)
-             </li>
-             <li class="itemize">2 — AppleLoggingStdErrSet/AppleLoggingStdErrPrint (StdErr or serial?)
-             </li>
-             <li class="itemize">4  —   AppleLoggingFileSet/AppleLoggingFilePrint   (BOOTER.LOG/BOOTER.OLD   file   on   EFI
-             partition)</li></ul>
-                                                                                                  
-                                                                                                  
+         <ul class="itemize1">
+         <li class="itemize">FW_FEATURE_SUPPORTS_CSM_LEGACY_MODE (0x1) - Without this bit it is not possible to reboot to Windows
          installed on a drive with EFI partition being not the first partition on the disk.
          </li>
          <li class="itemize">FW_FEATURE_SUPPORTS_UEFI_WINDOWS_BOOT (0x20000000) - Without this bit it is not possible to reboot
@@ -856,14 +864,6 @@ class="newline" />Description: Sets name in gEfiMiscSubClassGuid. Value found on
      <li 
   class="enumerate" id="x1-56004x2">SystemProductName<br 
 class="newline" />Type: plist string<br 
-class="newline" />Failsafe: Not installed<br 
-class="newline" />Description:   Sets   Model  in   gEfiMiscSubClassGuid.   Value   found   on   Macs   is   equal   to   SMBIOS
-     SystemProductName in Unicode.
-     </li>
-     <li 
-  class="enumerate" id="x1-56006x3">SystemSerialNumber<br 
-class="newline" />Type: plist string<br 
-class="newline" />Failsafe: Not installed<br 
 class="newline" />SMBIOS: APPLE_SMBIOS_TABLE_TYPE134 - Version<br 
 class="newline" />Description: ASCII string containing SMC version in upper case. Missing on T2 based Macs. Ignored when
      zero.
@@ -892,7 +892,7 @@ class="newline" />Type: plist integer, 16-bit<br
 class="newline" />Failsafe: Automatic<br 
 class="newline" />SMBIOS: APPLE_SMBIOS_TABLE_TYPE131 - ProcessorType<br 
 class="newline" />Description: Combined of Processor Major and Minor types.
-     <!--l. 4905--><p class="noindent" ><span class="uwave">Automatic value generation tries to provide most accurate value for the currently installed CPU. When this fails please
+     <!--l. 4914--><p class="noindent" ><span class="uwave">Automatic value generation tries to provide most accurate value for the currently installed CPU. When this fails please
      make sure to create an </span><a 
 href="https://github.com/acidanthera/bugtracker/issues" >issue</a> <span class="uwave">and provide </span><span class="uwave">sysctl machdep.cpu</span> <span class="uwave">and </span><a 
 href="https://github.com/acidanthera/dmidecode" >dmidecode</a> <span class="uwave">output. For a full list of available values
@@ -914,7 +914,7 @@ class="newline" />Description: Memory form factor. On Macs it should be DIMM or 
  id="x1-59001r61"></a>
 <h4 class="subsectionHead"><span class="titlemark">11.1   </span> <a 
  id="x1-600001"></a>Introduction</h4>
-<!--l. 4924--><p class="noindent" ><a 
+<!--l. 4933--><p class="noindent" ><a 
 href="https://uefi.org/specifications" >UEFI</a> (Unified Extensible Firmware Interface) is a specification that defines a software interface between an operating system
 and platform firmware. This section allows to load additional UEFI modules and/or apply tweaks for the onboard firmware. To
 inspect firmware contents, apply modifications and perform upgrades <a 
@@ -925,7 +925,7 @@ used.
 </p>
 <h4 class="subsectionHead"><span class="titlemark">11.2   </span> <a 
  id="x1-610002"></a>Drivers</h4>
-<!--l. 4933--><p class="noindent" >Depending on the firmware a different set of drivers may be required. Loading an incompatible driver may lead your
+<!--l. 4942--><p class="noindent" >Depending on the firmware a different set of drivers may be required. Loading an incompatible driver may lead your
 system to unbootable state or even cause permanent firmware damage. Some of the known drivers are listed
 below:
 </p>
@@ -944,13 +944,13 @@ below:
      </li>
      <li 
   class="enumerate" id="x1-81006x3">How to customise boot entries?
-     <!--l. 6490--><p class="noindent" >OpenCore follows standard Apple Bless model and extracts the entry name from .contentDetails and
+     <!--l. 6499--><p class="noindent" >OpenCore follows standard Apple Bless model and extracts the entry name from .contentDetails and
      .disk_label.contentDetails files in the booter directory if present. These files contain an ASCII string with an entry
      title, which may then be customised by the user.
      </p></li>
      <li 
   class="enumerate" id="x1-81008x4">How to choose the default boot entry?
-     <!--l. 6498--><p class="noindent" >OpenCore uses the primary UEFI boot option to select the default entry. This choice can be altered from UEFI Setup,
+     <!--l. 6507--><p class="noindent" >OpenCore uses the primary UEFI boot option to select the default entry. This choice can be altered from UEFI Setup,
      with the macOS <a 
 href="https://support.apple.com/HT202796" >Startup Disk</a> preference, or the Windows <a 
 href="https://support.apple.com/guide/bootcamp-control-panel/start-up-your-mac-in-windows-or-macos-bcmp29b8ac66/mac" >Boot Camp</a> Control Panel. Since choosing OpenCore’s
@@ -963,30 +963,30 @@ href="https://support.apple.com/guide/bootcamp-control-panel/start-up-your-mac-i
      <li 
   class="enumerate" id="x1-81010x5"><a 
  id="x1-810095"></a> What is the simplest way to install macOS?
-     <!--l. 6512--><p class="noindent" >Copy online recovery image (*.dmg and *.chunklist files) to com.apple.recovery.boot directory on a FAT32 partition
+     <!--l. 6521--><p class="noindent" >Copy online recovery image (*.dmg and *.chunklist files) to com.apple.recovery.boot directory on a FAT32 partition
      with OpenCore. Load OpenCore Boot Picker and choose the entry, it will have a (dmg) suffix. Custom name may be
      created by providing .contentDetails file.
-     </p><!--l. 6517--><p class="noindent" >To download recovery online you may use <a 
+     </p><!--l. 6526--><p class="noindent" >To download recovery online you may use <a 
 href="https://github.com/acidanthera/OpenCorePkg/blob/master/Utilities/macrecovery/macrecovery.py" >macrecovery.py</a>, builtin tool.
-     </p><!--l. 6521--><p class="noindent" >For offline installation refer to <a 
+     </p><!--l. 6530--><p class="noindent" >For offline installation refer to <a 
 href="https://support.apple.com/HT201372" >How to create a bootable installer for macOS</a> article. Apart from App Store and
      softwareupdate utility there also are <a 
 href="https://github.com/corpnewt/gibMacOS" >third-party utilities</a> to download an offline image.
      </p></li>
      <li 
   class="enumerate" id="x1-81012x6">Why do online recovery images (*.dmg) fail to load?
-     <!--l. 6529--><p class="noindent" >This may be caused by missing HFS+ driver, as all presently known recovery volumes have HFS+ filesystem.
+     <!--l. 6538--><p class="noindent" >This may be caused by missing HFS+ driver, as all presently known recovery volumes have HFS+ filesystem.
      </p></li>
      <li 
   class="enumerate" id="x1-81014x7">Can I use this on Apple hardware or virtual machines?
-     <!--l. 6535--><p class="noindent" >Sure, most relatively modern Mac models including MacPro5,1 and virtual machines are fully supported. Even though
+     <!--l. 6544--><p class="noindent" >Sure, most relatively modern Mac models including MacPro5,1 and virtual machines are fully supported. Even though
      there are little to none specific details relevant to Mac hardware, some ongoing instructions can be found on
      <a 
 href="https://forums.macrumors.com/threads/opencore-on-the-mac-pro.2207814" >MacRumors.com</a>.
      </p></li>
      <li 
   class="enumerate" id="x1-81016x8">Why do Find&#x0026;Replace patches must equal in length?
-     <!--l. 6543--><p class="noindent" >For machine code (x86 code) it is not possible to do differently sized replacements due to <a 
+     <!--l. 6552--><p class="noindent" >For machine code (x86 code) it is not possible to do differently sized replacements due to <a 
 href="https://en.wikipedia.org/w/index.php?title=Relative_addressing" >relative addressing</a>. For ACPI
      code this is risky, and is technically equivalent to ACPI table replacement, thus not implemented. More detailed
      explanation can be found on <a 
@@ -994,7 +994,7 @@ href="https://applelife.ru/posts/819790" >AppleLife.ru</a> or in the ACPI sectio
      </p></li>
      <li 
   class="enumerate" id="x1-81018x9">How can I decide which Booter quirks to use?
-     <!--l. 6552--><p class="noindent" >These quirks originate from AptioMemoryFix driver but provide a wider set of changes specific to modern systems. Note,
+     <!--l. 6561--><p class="noindent" >These quirks originate from AptioMemoryFix driver but provide a wider set of changes specific to modern systems. Note,
      that OpenRuntime driver is required for most configurations. To get a configuration similar to AptioMemoryFix you may
                                                                                                   
 
