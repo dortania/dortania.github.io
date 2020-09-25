@@ -5,9 +5,9 @@ date:   2020-10-13 7:00:00 -0600
 categories: Hackintosh updates
 ---
 
-It's that time of year again, and we've got a new version of macOS on our hands! This year we've finally jumped off the 10.xx naming scheme and now going to 11! And with, a lot has changed under the hood in macOS.
+It's that time of year again, and we've got a new version of macOS on our hands! This year we've finally jumped off the 10.xx naming scheme and now going to 11! And with that, a lot has changed under the hood in macOS.
 
-As with [previous years](https://dortania.github.io/hackintosh/updates/2019/10/07/catalina.html), we'll be going over what's changed in macOS and what you should be aware of as a macOS and Hackintosh enthusiast. 
+As with [previous years](https://dortania.github.io/hackintosh/updates/2019/10/07/catalina.html), we'll be going over what's changed in macOS and what you should be aware of as a macOS and Hackintosh enthusiast.
 
 <details>
 <summary>Table of Contents:</summary>
@@ -42,11 +42,19 @@ As with [previous years](https://dortania.github.io/hackintosh/updates/2019/10/0
 </details>
 <br>
 
+# Has Nvidia Support finally arrived?
+
+![](https://github.com/dortania/GPU-Buyers-Guide/blob/master/WebDrivers.gif?raw=true)
+
+Sadly every year I have to answer the obligatory question, no there is no new Nvidia support. Currently [Nvidia's Kepler line](https://dortania.github.io/GPU-Buyers-Guide/modern-gpus/nvidia-gpu.html) is the only natively supported gen.
+
+However macOS 11 makes some interesting changes to the boot process, specifically moving GU drivers into stage 2 of booting. Why this is relevant is due to Apple's initial reason for killing off Web Drivers: Secure boot. What I mean is that secure boot cannot work with Nvidia's Web Drivers due to how early Nvidia's drivers have to initialize at, and thus Apple refused to sign the binaries. With Bg Sur, there could be 3rd party GPUs however the chances are still super slim but slightly higher than with 10.14 and 10.15.
+
 # What has changed on the surface
 
 ## A whole new iOS-like UI
 
-Love it or hate it, we've got a new UI more reminiscent of iOS 14 with hints of skeuomorphism as a call back to previous mac UIs which have subtle details in the icons
+Love it or hate it, we've got a new UI more reminiscent of iOS 14 with hints of skeuomorphism(A somewhat subtle call back to previous mac UIs which have neat details in the icons)
 
 ## macOS Snapshotting
 
@@ -54,7 +62,7 @@ A feature initially baked into APFS back in 2017 with the release of macOS 10.13
 
 * 3rd parties have a much more difficult time modifying the system volume, allowing for greater security
 * OS updates can now be installed while you're using the OS, similar to how iOS handles updates
-* Time Machine can now more easily perform back ups, without file inconsistencies with HFS Plus while you were using the machines
+* Time Machine can now more easily perform backups, without file inconsistencies with HFS Plus while you were using the machines
 
 However there are a few things to note with this new enforcement of snapshotting:
 
@@ -82,7 +90,7 @@ Quite a few things actually! Both in good and bad ways unfortunately.
 
 ## New Kernel Cache system: KernelCollections!
 
-So for the past 9 years, macOS has been using the Prelinked Kernel as a form of Kernel and Kext caching. And with macOS Big Sur's new Read-only, snapshot based system volume, a new version of caching has be developed: KernelCollections!
+So for the past 15 years, macOS has been using the Prelinked Kernel as a form of Kernel and Kext caching. And with macOS Big Sur's new Read-only, snapshot based system volume, a new version of caching has be developed: KernelCollections!
 
 How this differs to previous OSes:
 
@@ -90,7 +98,7 @@ How this differs to previous OSes:
 * The Secure Boot and standard kernel are now one(ie. no more dedicated Immutable Kernel)
 * Symbols are no longer required
 
-The last point is the most important part, as this is what we use for kext injection in OpenCore. Currently Apple has left symbols in place seemingly for debugging purposes however this is a bit worrying as Apple could outright remove symbols in later versions of macOS. But for macOS 11, Big Sur's cycle, we'll be good on that end
+The last point is the most important part, as this is what we use for kext injection in OpenCore. Currently Apple has left symbols in place seemingly for debugging purposes however this is a bit worrying as Apple could outright remove symbols in later versions of macOS. But for macOS 11, Big Sur's cycle, we'll be good on that end however we'll be keeping an eye on macOS 12.
 
 ## New Kernel Requirements
 
@@ -127,6 +135,14 @@ For those running on AMD-Based CPUs, you'll want to also update your kernel patc
 
 ## Other notable Hackintosh issues
 
+* [Several SMBIOS have been dropped](#several-smbios-have-been-dropped)
+* [Dropped hardware](#dropped-ardware)
+* [Extra long install process](#extra-long-install-process)
+* [X79 and X99 Boot issues](#x79-and-x99-boot-issues)
+* [New RTC requirements](#new-rtc-requirements)
+* [SATA Issues](#sata-issues)
+* [Legacy GPU Patches currently unavailable](#legacy-gpu-patches-currently-unavailable)
+
 ### Several SMBIOS have been dropped
 
 Big Sur dropped a few Ivy Bridge and Haswell based SMBIOS from macOS, so see below that yours wasn't dropped:
@@ -139,7 +155,7 @@ Big Sur dropped a few Ivy Bridge and Haswell based SMBIOS from macOS, so see bel
 * MacBookAir5,x and older
 * MacBookPro10,x and older
 
-If your SMBIOS was supported in Catalina and isn't included above, you're good to go!
+If your SMBIOS was supported in Catalina and isn't included above, you're good to go! We also have a more in-depth page here: [Choosing the right SMBIOS](https://dortania.github.io/OpenCore-Install-Guide/extras/smbios-support.html)
 
 For those wanting a simple translation for their Ivy and Haswell Machines:
 
@@ -174,7 +190,7 @@ Due to the new snapshot-based OS, installation now takes some extra time with se
 
 ### X79 and X99 Boot issues
 
-With macOS 11, Big Sur, IOPCIFamily went through a decent rewriting causing many of X99 patches to break and many X79 boards in addition now fail to boot with IOPCIFamily kernel panics. Currently no solution is available so we recommend staying on macOS catalina until issues have been resolved.
+With macOS 11, Big Sur, IOPCIFamily went through a decent rewriting causing many of X99 patches to break and many X79 boards fail to boot as well with IOPCIFamily kernel panics. Currently no solution is available so we recommend staying on macOS Catalina until issues have been resolved.
 
 ### New RTC requirements
 
@@ -192,7 +208,7 @@ For some reason, Apple removed the AppleIntelPchSeriesAHCI class from AppleAHCIP
 
 ### Legacy GPU Patches currently unavailable
 
-Due to major changes in many frameworks around GPUs, those using [ASentientBot's](https://forums.macrumors.com/members/1135186/) legacy GPU patches are currently out of luck. We recommend users with these older GPUs stay on Catalina until further developments arise.
+Due to major changes in many frameworks around GPUs, those using [ASentientBot's](https://forums.macrumors.com/members/1135186/) legacy GPU patches are currently out of luck. We either recommend users with these older GPUs stay on Catalina until further developments arise or buy an [officially supported GPU](https://dortania.github.io/GPU-Buyers-Guide/)
 
 # What’s new in the Hackintosh scene?
 
@@ -205,7 +221,7 @@ Due to major changes in many frameworks around GPUs, those using [ASentientBot's
 
 ## Dortania: a new organization has appeared
 
-As many of you have probably noticed, a new Organization focusing on documenting the hackintoshing process has appeared. Originally under my alias, [Khronokernel](https://github.com/khronokernel), I started to transition my guides over to this new family as a way to concentrate the vast amount of information around Hackintoshes to both ease users and give a single trusted source for information. 
+As many of you have probably noticed, a new organization focusing on documenting the hackintoshing process has appeared. Originally under my alias, [Khronokernel](https://github.com/khronokernel), I started to transition my guides over to this new family as a way to concentrate the vast amount of information around Hackintoshes to both ease users and give a single trusted source for information. 
 
 We work quite closely with the community and developers to ensure information's correct, up-to-date and of the best standards. While not perfect in every way, we hope to be the go-to resource for reliable Hackintosh information.
 
@@ -219,7 +235,7 @@ For those who either want to run the lastest builds of a kext or need an easy wa
 
 * [**Build Repo**](https://dortania.github.io/builds/)
 
-Kexts here are build right after commit, and currently supports most major Acidanthera kexts and some 3rd party devs as well. If you'd like to add support for more kexts, feel free to PR: [Build Repo source](https://github.com/dortania/build-repo)
+Kexts here are built right after commit, and currently supports most of Acidanthera's kexts and some 3rd party devs as well. If you'd like to add support for more kexts, feel free to PR: [Build Repo source](https://github.com/dortania/build-repo)
 
 ## True legacy macOS Support!
 
@@ -234,6 +250,7 @@ Another amazing step forward in the Hackintosh community, near-native Intel Wifi
 For more info on the developments, please see the itlwm project on GitHub: [itlwm](https://github.com/OpenIntelWireless/itlwm)
 
 * Note, native support requires the AirportItlwm.kext and [SecureBootModel enabled on OpenCore](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html). Alternatively you can force IO80211Family.kext to ensure AirportItlwm works correctly.
+* Airdrop support currently is also not implemented
 
 ## Clover's revival? A frankestien of a bootloader
 
