@@ -9,24 +9,34 @@ It's that time of year again, and we've got a new version of macOS on our hands!
 
 As with [previous years](https://dortania.github.io/hackintosh/updates/2019/10/07/catalina.html), we'll be going over what's changed in macOS and what you should be aware of as a macOS and Hackintosh enthusiast. 
 
-Table of Contents:
-
 <details>
 <summary>Table of Contents:</summary>
 
-* What has changed on the surface
+* [What has changed on the surface](#hwt-has-changed-on-the-surface)
   * [A whole new iOS-like UI](#a-whole-new-ios-like-ui)
   * [macOS Snapshotting](#macos-snapshotting)
   * [Broken Kexts in Big Sur](#broken-kexts-in-big-sur)
-* What has changed under the hood
+* [What has changed under the hood](#what-has-changed-under-the-hood)
   * [New kext cache system: KernelCollections!](#new-kext-cache-system-kernelcollections)
-
-* What’s new in the Hackintosh scene?
+  * [New Kernel Requirements](#new-kernel-requirements)
+  * [Broken Kexts in Big Sur](#broken-kexts-in-big-sur)
+  * [MSI Navi installer Bug Resolved](#msi-navi-installer-bug-resolved)
+  * [New AMD OS X Kernel Patches](#new-amd-osx-patches)
+  * [Other notable Hackintosh issues](#other-notable-hackintosh-issues)
+    * [Several SMBIOS have been dropped](#several-smbios-have-been-dropped)
+    * [Dropped hardware](#dropped-ardware)
+    * [Extra long install process](#extra-long-install-process)
+    * [X79 and X99 Boot issues](#x79-and-x99-boot-issues)
+    * [New RTC requirements](#new-rtc-requirements)
+    * [SATA Issues](#sata-issues)
+    * [Legacy GPU Patches currently unavailable](#legacy-gpu-patches-currently-unavailable)
+* [What’s new in the Hackintosh scene?](#whats-new-in-the-hackintosh-scene)
   * [Dortania: a new Organization has appeared](#dortania-a-new-organization-has-appeared)
   * [True legacy macOS Support!](#true-legacy-macos-support)
   * [Intel Wireless: More native than ever!](#intel-wireless-more-native-than-ever)
   * [Clover's revival? A frankestien of a bootloader](clover-s-revival-a-frankestien-of-a-bootloader)
   * [Death of x86 and the future of Hackintoshing](#death-of-x86-and-the-future-of-hackintoshing)
+* [Getting ready for macOS 11, Big Sur](#getting-ready-for-macos-11-big-sur)
   
 </details>
 <br>
@@ -56,7 +66,18 @@ However there are a few things to note with this new enforcement of snapshotting
 Quite a few things actually! Both in good and bad ways unfortunately.
 
 * [New kext cache system: KernelCollections!](#new-kext-cache-system-kernelcollections)
+* [New Kernel Requirements](#new-kernel-requirements)
 * [Broken Kexts in Big Sur](#broken-kexts-in-big-sur)
+* [MSI Navi installer Bug Resolved](#msi-navi-installer-bug-resolved)
+* [New AMD OS X Kernel Patches](#new-amd-osx-patches)
+* [Other notable Hackintosh issues](#other-notable-hackintosh-issues)
+  * [Several SMBIOS have been dropped](#several-smbios-have-been-dropped)
+  * [Dropped hardware](#dropped-ardware)
+  * [Extra long install process](#extra-long-install-process)
+  * [X79 and X99 Boot issues](#x79-and-x99-boot-issues)
+  * [New RTC requirements](#new-rtc-requirements)
+  * [SATA Issues](#sata-issues)
+  * [Legacy GPU Patches currently unavailable](#legacy-gpu-patches-currently-unavailable)
 
 ## New Kernel Cache system: KernelCollections!
 
@@ -138,11 +159,17 @@ Currently only certain hardware has been officially dropped:
   * See [Wireless Buyers guide](https://dortania.github.io/Wireless-Buyers-Guide/) for potential cards to upgrade to.
   * Note, while AirPortBrcm4360.kext has been removed in Big Sur, support for the 4360 series cards have been moved into AirPortBrcmNIC.kext, which still exists.
 
-### Extra Long install process
+### Extra long install process
 
 Due to the new snapshot-based OS, installation now takes some extra time with sealing. If you get stuck at `Forcing CS_RUNTIME for entitlement`, **do not shutdown**. This will corrupt your install and break the sealing process, so please be patient:
 
+<details>
+<summary>macOS Sealing Example</summary>
+
 ![](https://github.com/dortania/OpenCore-Install-Guide/blob/master/images/extras/big-sur/readme/cs-stuck.jpg?raw=true)
+
+</details>
+<br>
 
 ### X79 and X99 Boot issues
 
@@ -231,7 +258,7 @@ This will be your short run down if you skipped the above:
 * BCM94331 support was dropped
 * X79 and X99 no longer boot
 * X299 requires SSDT-RTC0-RANGE
-  * see above how to make it
+  * See above how to make it
 * AMD CPUs need their kernel patches updated
   * See above for new patches
 * OpenCore 0.6.0 or newer is required to boot
