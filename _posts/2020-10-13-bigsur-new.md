@@ -1,0 +1,242 @@
+---
+layout: post
+title:  "What's new in macOS 11, Big Sur!"
+date:   2020-10-13 7:00:00 -0600
+categories: Hackintosh updates
+---
+
+It's that time of year again, and we've got a new version of macOS on our hands! This year we've finally jumped off the 10.xx naming scheme and now going to 11! And with, a lot has changed under the hood in macOS.
+
+As with [previous years](https://dortania.github.io/hackintosh/updates/2019/10/07/catalina.html), we'll be going over what's changed in macOS and what you should be aware of as a macOS and Hackintosh enthusiast. 
+
+Table of Contents:
+
+<details>
+<summary>Table of Contents:</summary>
+
+* What has changed on the surface
+  * [A whole new iOS-like UI](#a-whole-new-ios-like-ui)
+  * [macOS Snapshotting](#macos-snapshotting)
+  * [Broken Kexts in Big Sur](#broken-kexts-in-big-sur)
+* What has changed under the hood
+  * [New kext cache system: KernelCollections!](#new-kext-cache-system-kernelcollections)
+
+* What’s new in the Hackintosh scene?
+  * [Dortania: a new Organization has appeared](#dortania-a-new-organization-has-appeared)
+  * [True legacy macOS Support!](#true-legacy-macos-support)
+  * [Intel Wireless: More native than ever!](#intel-wireless-more-native-than-ever)
+  * [Clover's revival? A frankestien of a bootloader](clover-s-revival-a-frankestien-of-a-bootloader)
+  * [Death of x86 and the future of Hackintoshing](#death-of-x86-and-the-future-of-hackintoshing)
+  
+</details>
+<br>
+
+# What has changed on the surface
+
+## A whole new iOS-like UI
+
+Love it or hate it, we've got a new UI more reminiscent of iOS 14 with hints of skeuomorphism as a call back to previous mac UIs which have subtle details in the icons
+
+## macOS Snapshotting
+
+A feature initially baked into APFS back in 2017 with the release of macOS 10.13, High Sierra, now macOS's main System volume has become both read-only and snapshotted. What this means is:
+
+* 3rd parties have a much more difficult time modifying the system volume, allowing for greater security
+* OS updates can now be installed while you're using the OS, similar to how iOS handles updates
+* Time Machine can now more easily perform back ups, without file inconsistencies with HFS Plus while you were using the machines
+
+However there are a few things to note with this new enforcement of snapshotting:
+
+* OS snapshots are not calculated as used space, instead being labeled as purgeable space
+* Disabling macOS snapshots for the root volume with break software updates, and can corrupt data if one is applied
+
+
+# What has changed under the hood
+
+Quite a few things actually! Both in good and bad ways unfortunately.
+
+* [New kext cache system: KernelCollections!](#new-kext-cache-system-kernelcollections)
+* [Broken Kexts in Big Sur](#broken-kexts-in-big-sur)
+
+## New Kernel Cache system: KernelCollections!
+
+So for the past 9 years, macOS has been using the Prelinked Kernel as a form of Kernel and Kext caching. And with macOS Big Sur's new Read-only, snapshot based system volume, a new version of caching has be developed: KernelCollections!
+
+How this differs to previous OSes:
+
+* Kexts can no longer be hot-loaded, instead requiring a reboot to load with `kmutil`
+* The Secure Boot and standard kernel are now one(ie. no more dedicated Immutable Kernel)
+* Symbols are no longer required
+
+The last point is the most important part, as this is what we use for kext injection in OpenCore. Currently Apple has left symbols in place seemingly for debugging purposes however this is a bit worrying as Apple could outright remove symbols in later versions of macOS. But for macOS 11, Big Sur's cycle, we'll be good on that end
+
+## New Kernel Requirements
+
+With this update, the `AvoidRuntimeDefrag` Booter quirk in OpenCore broke. Because of this, the macOS kernel will fall flat when trying to boot. Reason for this is due to `cpu_count_enabled_logical_processors` requiring the MADT (APIC) table, and so OpenCore will now ensure this table is made accessible to the kernel. Users will however need a build of OpenCore 0.6.0 with commit [`bb12f5f`](https://github.com/acidanthera/OpenCorePkg/commit/9f59339e7eb8c213e84551df0fdbf9905cd98ca4) **or newer** to resolve this issue.
+
+To check your OpenCore version, run the following in terminal:
+
+```sh
+nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:opencore-version
+```
+
+If you're not up-to-date, see here on how to upgrade OpenCore: [Updating OpenCore, Kexts and macOS](https://dortania.github.io/OpenCore-Post-Install/universal/update.html)
+
+## Broken Kexts in Big Sur
+
+Unfortunately with the aforementioned KernelCollections, some kexts have unfortunately broken or have been hindered in some way. The main kexts that currently have issues are anything relying on Lilu's userspace patching functionality:
+
+* [WhateverGreen's](https://github.com/acidanthera/WhateverGreen) [DRM](https://dortania.github.io/OpenCore-Post-Install/universal/drm.html) and `-cdfon` patches
+  * Most of WhateverGreen's functions are still working as they're kernelspace based
+* [MacProMemoryNotificationDisabler](https://github.com/IOIIIO/MacProMemoryNotificationDisabler)
+* [SystemProfilerMemoryFixup](https://github.com/Goldfish64/SystemProfilerMemoryFixup)
+
+Thankfully most important kexts rely on kernelspace patcher which is now in fact working again.
+
+## MSI Navi installer Bug Resolved
+
+For those receiving boot failures in the installer due to having an MSI Navi GPU installed, macOS Big Sur has finally resolved this issue!
+
+## New AMD OS X Kernel Patches
+
+For those running on AMD-Based CPUs, you'll want to also update your kernel patches as well since patches have been rewritten for macOS Big Sur support:
+
+* [AMD OSX Kernel Patches](https://github.com/AMD-OSX/AMD_Vanilla)
+
+## Other notable Hackintosh issues
+
+### Several SMBIOS have been dropped
+
+Big Sur dropped a few Ivy Bridge and Haswell based SMBIOS from macOS, so see below that yours wasn't dropped:
+
+* iMac14,3 and older
+  * Note iMac14,4 is still supported
+* MacPro5,1 and older
+* MacMini6,x and older
+* MacBook7,1 and older
+* MacBookAir5,x and older
+* MacBookPro10,x and older
+
+If your SMBIOS was supported in Catalina and isn't included above, you're good to go!
+
+For those wanting a simple translation for their Ivy and Haswell Machines:
+
+* iMac13,2 should transition over to using MacPro6,1
+* iMac14,2 and iMac14,3 should transition over to using iMac15,1
+* iMac14,1 should transition over to iMac14,4
+
+### Dropped hardware
+
+Currently only certain hardware has been officially dropped:
+
+* "Official" Consumer Ivy Bridge Support(U, H and S series)
+  * These CPUs will still boot without much issue, but note that no Macs are supported with consumer Ivy Bridge in Big Sur.
+  * Ivy Bridge-E CPUs are still supported thanks to being in MacPro6,1
+* Ivy Bridge iGPUs.
+  * HD 4000 and HD 2500, initial developer beta forgot to remove drivers but more than likely to be removed in later updates.
+* BCM94331 based Wifi cards.
+  * See [Wireless Buyers guide](https://dortania.github.io/Wireless-Buyers-Guide/) for potential cards to upgrade to.
+  * Note, while AirPortBrcm4360.kext has been removed in Big Sur, support for the 4360 series cards have been moved into AirPortBrcmNIC.kext, which still exists.
+
+### Extra Long install process
+
+Due to the new snapshot-based OS, installation now takes some extra time with sealing. If you get stuck at `Forcing CS_RUNTIME for entitlement`, **do not shutdown**. This will corrupt your install and break the sealing process, so please be patient:
+
+![](https://github.com/dortania/OpenCore-Install-Guide/blob/master/images/extras/big-sur/readme/cs-stuck.jpg?raw=true)
+
+### X79 and X99 Boot issues
+
+With macOS 11, Big Sur, IOPCIFamily went through a decent rewriting causing many of X99 patches to break and many X79 boards in addition now fail to boot with IOPCIFamily kernel panics. Currently no solution is available so we recommend staying on macOS catalina until issues have been resolved.
+
+### New RTC requirements
+
+With macOS Big Sur, AppleRTC has become much more picky on making sure your OEM correctly mapped the RTC regions in your ACPI tables. This is mainly relevant on Intel's HEDT series boards, I documented how to patch said RTC regions in OpenCorePkg:
+
+* [SSDT-RTC0-RANGE](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-RTC0-RANGE.dsl)
+
+For those having boot issues on X299, this section is super important, you'll likely get stuck at `PCI Configuration Begins`
+
+### SATA Issues
+
+For some reason, Apple removed the AppleIntelPchSeriesAHCI class from AppleAHCIPort.kext. Due to the outright removal of the class, trying to spoof to another ID (generally done by SATA-unsupported.kext) can fail for many and create instability for others.
+  * A partial fix is to block Big Sur's AppleAHCIPort.kext and inject Catalina's version with any conflicting symbols being patched. You can find a sample kext here: [Catalina's patched AppleAHCIPort.kext](https://github.com/dortania/OpenCore-Install-Guide/blob/master/extra-files/CtlnaAHCIPort.kext.zip)
+  * This will work in both Catalina and Big Sur so you can remove SATA-unsupported if you want. However we recommend setting the MinKernel value to 20.0.0 to avoid any potential issues.
+
+### Legacy GPU Patches currently unavailable
+
+Due to major changes in many frameworks around GPUs, those using [ASentientBot's](https://forums.macrumors.com/members/1135186/) legacy GPU patches are currently out of luck. We recommend users with these older GPUs stay on Catalina until further developments arise.
+
+# What’s new in the Hackintosh scene?
+
+* [Dortania: a new Organization has appeared](#dortania-a-new-organization-has-appeared)
+* [True legacy macOS Support!](#true-legacy-macos-support)
+* [Intel Wireless: More native than ever!](#intel-wireless-more-native-than-ever)
+* [Clover's revival? A frankestien of a bootloader](clover-s-revival-a-frankestien-of-a-bootloader)
+* [Death of x86 and the future of Hackintoshing](#death-of-x86-and-the-future-of-hackintoshing)
+
+## Dortania: a new Organization has appeared
+
+As many of you have probably noticed, a new Organization focusing on documenting the hackintoshing process has appeared. Originally under my alias, [Khronokernel](https://github.com/khronokernel), I started to transition my guides over to this new family as a way to concentrate the vast amount of information around Hackintoshes to both ease users and give a single trusted source for information. 
+
+We work quite closely with the community and developers to ensure information's correct, up-to-date and of the best standards. While not perfect in every way, we hope to be the go-to resource for reliable Hackintosh information.
+
+And for the times our information is either outdated, missing context or generally needs improving, we have our bug tracker to allow the community to more easily bring attention to issues and speak directly with the authors:
+
+* [Dortania's Bugtracker](https://github.com/dortania/bugtracker)
+
+## True legacy macOS Support!
+
+As of OpenCore's latest versioning, 0.6.2, you can now boot every version of x86-based builds of OS X/macOS! A huge achievement on GoldFish64's part, we now support every major version of kernel cache both 32 and 64-bit wise. This means machines like Yonah and newer should work great with OpenCore and you can even relive the old days of OS X like OS X 10.4!
+
+And Dortania guides have been updated accordingly to accommodate for builds of those eras, we hope you get as much enjoyment going back as we did working on this project!
+
+## Intel Wireless: More native than ever!
+
+Another amazing step forward in the Hackintosh community, near-native Intel Wifi support! Thanks to the endless work on many contributors of the [OpenIntelWireless project](https://github.com/OpenIntelWireless/), we can now use Apple's built-in IO80211 framework to have near identical support to those of Broadcom wireless cards including features like network access in recovery and control center support.
+
+For more info on the developments, please see the itlwm project on GitHub: [itlwm](https://github.com/OpenIntelWireless/itlwm)
+
+* Note, native support requires the AirportItlwm.kext and [SecureBootModel enabled on OpenCore](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html). Alternatively you can force IO80211Family.kext to ensure AirportItlwm works correctly.
+
+## Clover's revival? A frankestien of a bootloader
+
+As many in the community have seen, a new bootloader popped up back in April 2019 called [OpenCore](https://github.com/acidanthera/OpenCorePkg). This bootloader was made by the same people behind projects such as [Lilu](https://github.com/acidanthera/Lilu), [WhateverGreen](https://github.com/acidanthera/WhateverGreen), [AppleALC](https://github.com/acidanthera/AppleALC) and many other extremely important utilities for the hackintosh community. OpenCore's design had been properly thought out with security auditing and proper road mapping laid down, it was clear that this was to be the next stage of hackintoshing for the years we have left with x86.
+
+And now lets bring this back to the old crowd favorite, [Clover](https://github.com/CloverHackyColor/CloverBootloader/). Clover has been having a rough time of recent both with the community and stability wise, with many devs jumping ship to OpenCore and Clover's stability breaking more and more with C++ rewrites, it was clear Clover was on its last legs. Interestingly enough, the community didn't want Clover to die, similarly to how Chameleon lived on through Enoch. And thus, we now have the [Clover OpenCore integration project](https://github.com/CloverHackyColor/CloverBootloader/tree/opencore_integration).
+
+The goal is to combine OpenCore into Clover allowing the project to live a bit longer, as Clover's current state can no longer boot macOS Big Sur or older versions of OS X such as 10.6. As of writing, this project seems to be a bit confusing as there seems to be little reason to actually support Clover. Many of Clover's properties have [feature-parity in OpenCore](https://github.com/dortania/OpenCore-Install-Guide/tree/master/clover-conversion) and trying to combine both C++ and C ruins many of the features and benefits either languages provide.
+
+## Death of x86 and the future of Hackintoshing
+
+With macOS Big Sur, a big turning point is about to happen with Apple and their Macs. As we know it, Apple will be shifting to in-house designed Apple Silicon Macs(Really just ARM) and thus x86 machines will slowly be phased out of their lineup within 2 years. 
+
+What does this mean for both x86 based Macs and Hackintoshing in general? Well we can expect about 5 years of proper OS support for the iMac20,x series which released earlier this year with an extra 2 years of security updates. After this, we Apple will most likely stop shipping x86 builds of macOS and hackintoshing as we know it will have passed away.
+
+For those still in denial and hope something like ARM Hackintoshes will arrive, please consider the following:
+
+* We have yet to see an iPhone "Hackintosh" and thus the likely hood of an ARM Hackintosh is unlikely as well
+* Apple's use of "Apple silicon" hints that ARM is not actually what future macs will be running, instead we'll see highly customized chips *based* off ARM
+  * For example, Apple will be heavily relying on hardware features such as [W^X](https://en.wikipedia.org/wiki/W%5EX), kernel memory protection, Pointer Auth, etc for security and thus both macOS and Applications will be dependant on it. This means hackintoshing on bare-metal(without a VM) will become extremely difficult without copious amounts of work
+  * Also keep in mind Apple Silicon will no longer be UEFI-based like Intel Macs are, meaning a huge amount of work would also be required on this end as well
+
+So while we may be heart broken the journey is coming to a stop in the somewhat near future, hackintoshing will still be a time piece in Apple's history. So enjoy it now while we still can, and we here at Dortania will still continuing supporting the community with our guides till the very end!
+
+# Getting ready for macOS 11, Big Sur
+
+This will be your short run down if you skipped the above:
+
+* Many Ivy Bridge and Haswell SMBIOS were dropped
+  * See above for what SMBIOS to choose
+* Ivy Bridge iGPUs were dropped
+* BCM94331 support was dropped
+* X79 and X99 no longer boot
+* X299 requires SSDT-RTC0-RANGE
+  * see above how to make it
+* AMD CPUs need their kernel patches updated
+  * See above for new patches
+* OpenCore 0.6.0 or newer is required to boot
+* Latest releases of all your kexts
+
+For the last 2, see here on how to update: [Updating OpenCore, Kexts and macOS](https://dortania.github.io/OpenCore-Post-Install/universal/update.html)
+
+
