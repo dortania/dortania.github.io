@@ -11,8 +11,8 @@ As with [previous years](https://dortania.github.io/hackintosh/updates/2019/10/0
 
 <details>
 <summary>Table of Contents:</summary>
-
-* [What has changed on the surface](#hwt-has-changed-on-the-surface)
+* [Has Nvidia Support finally arrived?](#has-nvidia-support-finally-arrived)
+* [What has changed on the surface](#whwt-has-changed-on-the-surface)
   * [A whole new iOS-like UI](#a-whole-new-ios-like-ui)
   * [macOS Snapshotting](#macos-snapshotting)
   * [Broken Kexts in Big Sur](#broken-kexts-in-big-sur)
