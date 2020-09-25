@@ -48,7 +48,7 @@ As with [previous years](https://dortania.github.io/hackintosh/updates/2019/10/0
 
 Sadly every year I have to answer the obligatory question, no there is no new Nvidia support. Currently [Nvidia's Kepler line](https://dortania.github.io/GPU-Buyers-Guide/modern-gpus/nvidia-gpu.html) is the only natively supported gen.
 
-However macOS 11 makes some interesting changes to the boot process, specifically moving GU drivers into stage 2 of booting. Why this is relevant is due to Apple's initial reason for killing off Web Drivers: Secure boot. What I mean is that secure boot cannot work with Nvidia's Web Drivers due to how early Nvidia's drivers have to initialize at, and thus Apple refused to sign the binaries. With Bg Sur, there could be 3rd party GPUs however the chances are still super slim but slightly higher than with 10.14 and 10.15.
+However macOS 11 makes some interesting changes to the boot process, specifically moving GPU drivers into stage 2 of booting. Why this is relevant is due to Apple's initial reason for killing off Web Drivers: Secure boot. What I mean is that secure boot cannot work with Nvidia's Web Drivers due to how early Nvidia's drivers have to initialize at, and thus Apple refused to sign the binaries. With Bg Sur, there could be 3rd party GPUs however the chances are still super slim but slightly higher than with 10.14 and 10.15.
 
 # What has changed on the surface
 
