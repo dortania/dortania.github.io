@@ -13,19 +13,19 @@ As with [previous years](https://dortania.github.io/hackintosh/updates/2019/10/0
 <summary>Table of Contents:</summary>
 
 * [Has Nvidia Support finally arrived?](#has-nvidia-support-finally-arrived)
-* [What has changed on the surface](#whwt-has-changed-on-the-surface)
+* [What has changed on the surface](#what-has-changed-on-the-surface)
   * [A whole new iOS-like UI](#a-whole-new-ios-like-ui)
   * [macOS Snapshotting](#macos-snapshotting)
   * [Broken Kexts in Big Sur](#broken-kexts-in-big-sur)
 * [What has changed under the hood](#what-has-changed-under-the-hood)
-  * [New kext cache system: KernelCollections!](#new-kext-cache-system-kernelcollections)
+  * [New Kernel cache system: KernelCollections!](#new-kernel-cache-system-kernelcollections)
   * [New Kernel Requirements](#new-kernel-requirements)
   * [Broken Kexts in Big Sur](#broken-kexts-in-big-sur)
   * [MSI Navi installer Bug Resolved](#msi-navi-installer-bug-resolved)
-  * [New AMD OS X Kernel Patches](#new-amd-osx-patches)
+  * [New AMD OS X Kernel Patches](#new-amd-os-x-patches)
   * [Other notable Hackintosh issues](#other-notable-hackintosh-issues)
     * [Several SMBIOS have been dropped](#several-smbios-have-been-dropped)
-    * [Dropped hardware](#dropped-ardware)
+    * [Dropped hardware](#dropped-hardware)
     * [Extra long install process](#extra-long-install-process)
     * [X79 and X99 Boot issues](#x79-and-x99-boot-issues)
     * [New RTC requirements](#new-rtc-requirements)
@@ -33,10 +33,10 @@ As with [previous years](https://dortania.github.io/hackintosh/updates/2019/10/0
     * [Legacy GPU Patches currently unavailable](#legacy-gpu-patches-currently-unavailable)
 * [What’s new in the Hackintosh scene?](#whats-new-in-the-hackintosh-scene)
   * [Dortania: a new organization has appeared](#dortania-a-new-organization-has-appeared)
-  * [Dortania's Build Repo](#dortania-s-buld-repo)
+  * [Dortania's Build Repo](#dortania-s-build-repo)
   * [True legacy macOS Support!](#true-legacy-macos-support)
   * [Intel Wireless: More native than ever!](#intel-wireless-more-native-than-ever)
-  * [Clover's revival? A frankestien of a bootloader](clover-s-revival-a-frankestien-of-a-bootloader)
+  * [Clover's revival? A frankestien of a bootloader](#clover-s-revival-a-frankestien-of-a-bootloader)
   * [Death of x86 and the future of Hackintoshing](#death-of-x86-and-the-future-of-hackintoshing)
 * [Getting ready for macOS 11, Big Sur](#getting-ready-for-macos-11-big-sur)
 
@@ -75,19 +75,18 @@ However there are a few things to note with this new enforcement of snapshotting
 
 Quite a few things actually! Both in good and bad ways unfortunately.
 
-* [New kext cache system: KernelCollections!](#new-kext-cache-system-kernelcollections)
+* [New Kernel cache system: KernelCollections!](#new-kernel-cache-system-kernelcollections)
 * [New Kernel Requirements](#new-kernel-requirements)
 * [Broken Kexts in Big Sur](#broken-kexts-in-big-sur)
 * [MSI Navi installer Bug Resolved](#msi-navi-installer-bug-resolved)
-* [New AMD OS X Kernel Patches](#new-amd-osx-patches)
+* [New AMD OS X Kernel Patches](#new-amd-os-x-patches)
 * [Other notable Hackintosh issues](#other-notable-hackintosh-issues)
   * [Several SMBIOS have been dropped](#several-smbios-have-been-dropped)
-  * [Dropped hardware](#dropped-ardware)
+  * [Dropped hardware](#dropped-hardware)
   * [Extra long install process](#extra-long-install-process)
   * [X79 and X99 Boot issues](#x79-and-x99-boot-issues)
   * [New RTC requirements](#new-rtc-requirements)
   * [SATA Issues](#sata-issues)
-  * [Legacy GPU Patches currently unavailable](#legacy-gpu-patches-currently-unavailable)
 
 ## New Kernel Cache system: KernelCollections!
 
@@ -137,12 +136,11 @@ For those running on AMD-Based CPUs, you'll want to also update your kernel patc
 ## Other notable Hackintosh issues
 
 * [Several SMBIOS have been dropped](#several-smbios-have-been-dropped)
-* [Dropped hardware](#dropped-ardware)
+* [Dropped hardware](#dropped-hardware)
 * [Extra long install process](#extra-long-install-process)
 * [X79 and X99 Boot issues](#x79-and-x99-boot-issues)
 * [New RTC requirements](#new-rtc-requirements)
 * [SATA Issues](#sata-issues)
-* [Legacy GPU Patches currently unavailable](#legacy-gpu-patches-currently-unavailable)
 
 ### Several SMBIOS have been dropped
 
@@ -214,10 +212,10 @@ Due to major changes in many frameworks around GPUs, those using [ASentientBot's
 # What’s new in the Hackintosh scene?
 
 * [Dortania: a new organization has appeared](#dortania-a-new-organization-has-appeared)
-* [Dortania's Build Repo](#dortania-s-buld-repo)
+* [Dortania's Build Repo](#dortania-s-build-repo)
 * [True legacy macOS Support!](#true-legacy-macos-support)
 * [Intel Wireless: More native than ever!](#intel-wireless-more-native-than-ever)
-* [Clover's revival? A frankestien of a bootloader](clover-s-revival-a-frankestien-of-a-bootloader)
+* [Clover's revival? A frankestien of a bootloader](#clover-s-revival-a-frankestien-of-a-bootloader)
 * [Death of x86 and the future of Hackintoshing](#death-of-x86-and-the-future-of-hackintoshing)
 
 ## Dortania: a new organization has appeared
