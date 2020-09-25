@@ -31,7 +31,8 @@ As with [previous years](https://dortania.github.io/hackintosh/updates/2019/10/0
     * [SATA Issues](#sata-issues)
     * [Legacy GPU Patches currently unavailable](#legacy-gpu-patches-currently-unavailable)
 * [What’s new in the Hackintosh scene?](#whats-new-in-the-hackintosh-scene)
-  * [Dortania: a new Organization has appeared](#dortania-a-new-organization-has-appeared)
+  * [Dortania: a new organization has appeared](#dortania-a-new-organization-has-appeared)
+  * [Dortania's Build Repo](#dortania-s-buld-repo)
   * [True legacy macOS Support!](#true-legacy-macos-support)
   * [Intel Wireless: More native than ever!](#intel-wireless-more-native-than-ever)
   * [Clover's revival? A frankestien of a bootloader](clover-s-revival-a-frankestien-of-a-bootloader)
@@ -195,13 +196,14 @@ Due to major changes in many frameworks around GPUs, those using [ASentientBot's
 
 # What’s new in the Hackintosh scene?
 
-* [Dortania: a new Organization has appeared](#dortania-a-new-organization-has-appeared)
+* [Dortania: a new organization has appeared](#dortania-a-new-organization-has-appeared)
+* [Dortania's Build Repo](#dortania-s-buld-repo)
 * [True legacy macOS Support!](#true-legacy-macos-support)
 * [Intel Wireless: More native than ever!](#intel-wireless-more-native-than-ever)
 * [Clover's revival? A frankestien of a bootloader](clover-s-revival-a-frankestien-of-a-bootloader)
 * [Death of x86 and the future of Hackintoshing](#death-of-x86-and-the-future-of-hackintoshing)
 
-## Dortania: a new Organization has appeared
+## Dortania: a new organization has appeared
 
 As many of you have probably noticed, a new Organization focusing on documenting the hackintoshing process has appeared. Originally under my alias, [Khronokernel](https://github.com/khronokernel), I started to transition my guides over to this new family as a way to concentrate the vast amount of information around Hackintoshes to both ease users and give a single trusted source for information. 
 
@@ -210,6 +212,14 @@ We work quite closely with the community and developers to ensure information's 
 And for the times our information is either outdated, missing context or generally needs improving, we have our bug tracker to allow the community to more easily bring attention to issues and speak directly with the authors:
 
 * [Dortania's Bugtracker](https://github.com/dortania/bugtracker)
+
+## Dortania's Build Repo
+
+For those who either want to run the lastest builds of a kext or need an easy way to test old builds of something, Dortania's Build Repo is for you!
+
+* [**Build Repo**](https://dortania.github.io/builds/)
+
+Kexts here are build right after commit, and currently supports most major Acidanthera kexts and some 3rd party devs as well. If you'd like to add support for more kexts, feel free to PR: [Build Repo source](https://github.com/dortania/build-repo)
 
 ## True legacy macOS Support!
 
