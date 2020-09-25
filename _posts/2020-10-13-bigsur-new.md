@@ -11,6 +11,7 @@ As with [previous years](https://dortania.github.io/hackintosh/updates/2019/10/0
 
 <details>
 <summary>Table of Contents:</summary>
+
 * [Has Nvidia Support finally arrived?](#has-nvidia-support-finally-arrived)
 * [What has changed on the surface](#whwt-has-changed-on-the-surface)
   * [A whole new iOS-like UI](#a-whole-new-ios-like-ui)
@@ -38,7 +39,7 @@ As with [previous years](https://dortania.github.io/hackintosh/updates/2019/10/0
   * [Clover's revival? A frankestien of a bootloader](clover-s-revival-a-frankestien-of-a-bootloader)
   * [Death of x86 and the future of Hackintoshing](#death-of-x86-and-the-future-of-hackintoshing)
 * [Getting ready for macOS 11, Big Sur](#getting-ready-for-macos-11-big-sur)
-  
+
 </details>
 <br>
 
