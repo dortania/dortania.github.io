@@ -655,7 +655,7 @@ href="https://opensource.apple.com/source/IOFireWireFamily/IOFireWireFamily-473/
  id="x1-51001r54"></a>
 <h4 class="subsectionHead"><span class="titlemark">9.5   </span> <a 
  id="x1-520005"></a>Other Variables</h4>
-<!--l. 4095--><p class="noindent" >The following variables may be useful for certain configurations or troubleshooting:
+<!--l. 4096--><p class="noindent" >The following variables may be useful for certain configurations or troubleshooting:
 </p>
      <ul class="itemize1">
      <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:boot-args
@@ -711,7 +711,7 @@ href="https://github.com/acidanthera/WhateverGreen" >WhateverGreen</a>’s -radv
          <li class="itemize">-v (verbose mode)
          </li>
          <li class="itemize">-x (safe mode)</li></ul>
-     <!--l. 4135--><p class="noindent" >There are multiple external places summarising macOS argument lists: <a 
+     <!--l. 4136--><p class="noindent" >There are multiple external places summarising macOS argument lists: <a 
 href="https://osxeon.wordpress.com/2015/08/10/boot-argument-options-in-os-x" >example 1</a>, <a 
 href="https://superuser.com/questions/255176/is-there-a-list-of-available-boot-args-for-darwin-os-x" >example 2</a>.
      </p></li>
@@ -746,7 +746,7 @@ href="https://superuser.com/questions/255176/is-there-a-list-of-available-boot-a
          <li class="itemize">0x0B – EXITBS:END (forced serial only).
          </li>
          <li class="itemize">0x0C – UNKNOWN.</li></ul>
-     <!--l. 4166--><p class="noindent" >In 10.15 debugging support was mostly broken before 10.15.4 due to some kind of refactoring and introduction of a <a 
+     <!--l. 4167--><p class="noindent" >In 10.15 debugging support was mostly broken before 10.15.4 due to some kind of refactoring and introduction of a <a 
 href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/Protocol/AppleDebugLog.h" >new
      debug protocol</a>. Some of the arguments and their values below may not be valid for versions prior to 10.15.4. The list of
      known arguments is covered below:
@@ -785,7 +785,7 @@ href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/Proto
          </li>
          <li class="itemize">level=VALUE — deprecated starting from 10.15. Verbosity level of DEBUG output. Everything but 0x80000000 is
          stripped from the binary, and this is the default value.</li></ul>
-     <!--l. 4245--><p class="noindent" >Note: To see verbose output from boot.efi on modern macOS versions enable AppleDebug option. This will save the log
+     <!--l. 4246--><p class="noindent" >Note: To see verbose output from boot.efi on modern macOS versions enable AppleDebug option. This will save the log
      to general OpenCore log. For versions before 10.15.4 set bootercfg to log=1. This will print verbose output
      onscreen.
      </p></li>
