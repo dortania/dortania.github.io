@@ -11,9 +11,19 @@ categories: Hackintosh updates
 
 # A message from vit9696
 
-{Insert inspirational message}
+We are very pleased to meet you this evening to present our latest achievements on the scene, this update is particularly remarkable for one reason: Today OpenCore becomes the only openly available bootloader capable of running any version of macOS released for Intel CPUs spanning as early as macOS 10.4 to macOS 11, which is currently in late beta phase. Most importantly, the architecture we created allowed us to perform a very clean integration both code-wise and configuration-wise, allowing the user to have a single configuration for every macOS version ever needed. My congratulations to all who made this possible.
 
-— Vit
+Last month we stated that collaboration is a primary goal for Acidanthera in every aspect, and today we present our next steps in this direction. If you use multiple macOS versions you might have noticed that some kexts may not always work on an older operating system if built with a newer Xcode version. This is because the macOS kernel SDK is version dependent and does not always respect the API and ABI differences in the kernel. Previously we used various workarounds available in most Acidanthera kexts which let us target macOS 10.8 and sometimes even lower, and now these workarounds are available to everyone as a standalone product: [MacKernelSDK](https://github.com/acidanthera/bugtracker). This product lets you build kernel extensions with basically any recent Xcode version for basically any macOS version. It is very easy to integrate in your environment and all the kexts in Acidanthera have already been migrated providing a great example to numerous popular third-party kexts migrating right now.
+ 
+Another important side of the collaboration is the ability to share our code. Previously we made it possible to build standalone drivers like [OcQuirks](https://github.com/ReddestDream/OcQuirks) providing compatibility layer for legacy bootloaders and we also shared our code with various projects for classic Mac Pros letting them work with most GPUs available on the market. This time, we shared our core code with a popular legacy bootloader named [Clover](https://github.com/CloverHackyColor/CloverBootloader) letting it launch recent versions of macOS operating systems. Surely we understand that such a project will never be as stable, fast, or secure as the original, that goes without saying. However, the users are those who we actually value. And we understand that not all these users have completed the migration and so as part of our good will we gave them an ability to postpone this a little longer. Take your time while we care for your productivity.
+
+For the technical part of the story I cannot miss the chance to shed a little light on some key changes. [@Goldfish64](https://github.com/Goldfish64) merged all the remarkable work dedicated to 32-bit macOS compatibility making it possible to install basically any version from a clean image through the original installer even with CPUs as far back as the Pentium 4 CPU. To our own surprise, most of the validation team members were pleased to report that the migration of their old machines went very smoothly. [@BAndysc](https://github.com/BAndysc) and [@hieplpvip](https://github.com/hieplpvip) contributed basic ELAN touchpad to [VoodooPS2](https://github.com/acidanthera/VoodooPS2) with a large number of touchpads working out of the box and more issues are currently being worked on. [@zhen-zen](https://github.com/zhen-zen) and [@usr-sse2](https://github.com/usr-sse2) contributed a new driver called [BrightnessKeys](https://github.com/acidanthera/BrightnessKeys) that greatly simplifies the process of ACPI editing for backlight hotkey handling. [@lvs1974](https://github.com/lvs1974) and [@PMHeart](https://github.com/PMHeart) made it possible to reimplement [BT4LEContinuityFixup](https://github.com/acidanthera/BT4LEContinuityFixup)'s functionality into all recent macOS versions as a part of an OpenCore quirk known as `ExtendBTFeatureFlags`. The advancements in Intel Wireless support by [@usr-sse2](https://github.com/usr-sse2) were also merged upstream and released as a part of the latest [alpha release](https://github.com/OpenIntelWireless/itlwm/releases).
+
+Every release is a considerable amount of effort by a small team with the members spending a lot of their free time to make it possible. They write code, they write documentation, they run a lot of tests, they help to maintain the repositories and reply on the [bugtracker](https://github.com/acidanthera/bugtracker). While it is not possible to mention everyone in the highlights, I use this ability to thank them all once more.
+
+We hope you enjoy the new features and stay safe as the situation gets more serious outside.
+
+- Vit
 
 # Guide Updates
 
@@ -24,7 +34,7 @@ Just like with last month, we've expanded our guide support once again! Specific
 * Clarksfield and Arrandale
 * Nehalem and Westmere
 
-In addition to more legacy support hardware wise, we've also expanded our DuetPkg support to Windows, added more OS X install methods including 10.4 and much more info on legacy quirks in OpenCore. This is all thanks to the rigorous work from [@goldfish64](https://github.com/Goldfish64) and [@vit9696](https://github.com/vit9696) on adding more legacy support to OpenCore itself!
+In addition to more legacy support hardware wise, we've also expanded our DuetPkg support to Windows, added more OS X install methods including 10.4 and much more info on legacy quirks in OpenCore. This is all thanks to the rigorous work from [@Goldfish64](https://github.com/Goldfish64) and [@vit9696](https://github.com/vit9696) on adding more legacy support to OpenCore itself!
 
 We had quite a bit fun going back and messing with older versions of OS X and even experience some versions for the first time. I made a mini thread about my hardware here: [One box, every x86 install! HP DC 7900](https://www.reddit.com/r/hackintosh/comments/j0d6t0/one_box_every_x86_install_hp_dc_7900/)
 
