@@ -9,18 +9,32 @@
 <link rel="stylesheet" type="text/css" href="../main.css" /></head><body 
 ><div class="center" 
 >
-<!--l. 137--><p class="noindent" >
-</p><!--l. 144--><p class="noindent" > <img 
+<!--l. 142--><p class="noindent" >
+</p><!--l. 149--><p class="noindent" > <img 
 src="Logos/Logo-.png" alt="PIC"  
 width="160" height="160"  />
-</p><!--l. 148--><p class="noindent" >OpenCore
-</p><!--l. 152--><p class="noindent" >Reference Manual (0.6<span class="sout">.1</span><span class="uwave">.2</span>)
-</p><!--l. 156--><p class="noindent" >[2020.10.04]
-</p><!--l. 164--><p class="noindent" >Copyright ©2018-2020 vit9696
+</p><!--l. 153--><p class="noindent" >OpenCore
+</p><!--l. 157--><p class="noindent" >Reference Manual (0.6<span class="sout">.1</span><span class="uwave">.2</span>)
+</p><!--l. 161--><p class="noindent" >[2020.10.05]
+</p><!--l. 169--><p class="noindent" >Copyright ©2018-2020 vit9696
 </p>
 </div>
                                                                                                   
                                                                                                   
+<br /> <span class="subsectionToc" >11.4 <a 
+href="#x1-630004" id="QQ2-1-67">OpenCanopy</a></span>
+<br /> <span class="subsectionToc" >11.7 <a 
+href="#x1-660007" id="QQ2-1-70">APFS Properties</a></span>
+<br /> <span class="subsectionToc" >11.10 <a 
+href="#x1-6900010" id="QQ2-1-73">Output Properties</a></span>
+<br /> <span class="subsectionToc" >11.13 <a 
+href="#x1-7200013" id="QQ2-1-76">ReservedMemory Properties</a></span>
+<br /><span class="sectionToc" >12 <a 
+href="#x1-7300012" id="QQ2-1-77">Troubleshooting</a></span>
+<br /> <span class="subsectionToc" >12.1 <a 
+href="#x1-740001" id="QQ2-1-78">Legacy Apple OS</a></span>
+<br /> <span class="subsectionToc" >12.2 <a 
+href="#x1-800002" id="QQ2-1-84">UEFI Secure Boot</a></span>
 <br /> <span class="subsectionToc" >12.3 <a 
 href="#x1-810003" id="QQ2-1-85">Windows support</a></span>
 <br /> <span class="subsectionToc" >12.4 <a 
@@ -32,20 +46,20 @@ href="#x1-830005" id="QQ2-1-88">Tips and Tricks</a></span>
  id="x1-1001r1"></a>
 <h3 class="sectionHead"><span class="titlemark">1   </span> <a 
  id="x1-20001"></a>Introduction</h3>
-<!--l. 173--><p class="noindent" >This document provides information on <a 
-href="https://github.com/acidanthera/OpenCorePkg" >OpenCore</a> user configuration file format used to setup the correct functioning of <span class="uwave">the
-</span>macOS operating system. It is to be read as the official clarification of expected OpenCore behaviour. All deviations, if found
-in published OpenCore releases, shall be considered <span class="uwave">to be </span>documentation or implementation bugs <span class="sout">, and are requested to be
-reported through </span><span class="uwave">which should be reported via the </span><a 
+<!--l. 178--><p class="noindent" >This document provides information on <a 
+href="https://github.com/acidanthera/OpenCorePkg" >OpenCore</a> user configuration file format used to <span class="sout">setup </span><span class="uwave">set up </span>the correct functioning of
+<span class="uwave">the </span>macOS operating system. It is to be read as the official clarification of expected OpenCore behaviour. All deviations, if
+found in published OpenCore releases, shall be considered <span class="uwave">to be </span>documentation or implementation bugs <span class="sout">, and are requested to
+be reported through </span><span class="uwave">which should be reported via the </span><a 
 href="https://github.com/acidanthera/bugtracker" >Acidanthera Bugtracker</a>. <span class="sout">Errata </span><span class="uwave">An errata </span>sheet is available in
 <a 
 href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Errata/Errata.pdf" >OpenCorePkg repository</a>.
-</p><!--l. 184--><p class="noindent" >This document is structured as a specification <span class="sout">, </span>and is not meant to provide a <span class="sout">step by step algorithm for configuring
+</p><!--l. 189--><p class="noindent" >This document is structured as a specification <span class="sout">, </span>and is not meant to provide a <span class="sout">step by step algorithm for configuring
 </span><span class="uwave">step-by-step guide to configuring an </span>end-user <span class="sout">board support package </span><span class="uwave">Board Support Package </span>(BSP). The intended audience of
 the document <span class="sout">are </span><span class="uwave">is anticipated to be </span>programmers and engineers with <span class="uwave">a </span>basic understanding of macOS internals and UEFI
 <span class="sout">functioning</span><span class="uwave">functionality</span>. For these reasons<span class="uwave">, </span>this document is available exclusively in English, and all other sources or
 translations of this document are unofficial and may contain errors.
-</p><!--l. 192--><p class="noindent" >Third-party articles, utilities, books, and alike<span class="uwave">, </span>may be more useful for a wider audience as they could provide guide-like
+</p><!--l. 197--><p class="noindent" >Third-party articles, utilities, books, and alike<span class="uwave">, </span>may be more useful for a wider audience as they could provide guide-like
 material. However, they are <span class="sout">prone </span><span class="uwave">subject </span>to their authors’ preferences, tastes, <span class="sout">this document misinterpretation, and essential
 </span><span class="uwave">misinterpretations of this document, and unavoidable </span>obsolescence. In <span class="sout">case you use these sources, for example, </span><span class="uwave">cases of using
 such sources, such as </span><a 
@@ -54,7 +68,7 @@ href="https://dortania.github.io/OpenCore-Install-Guide" >OpenCore Install Guide
 href="https://dortania.github.io/getting-started" >related material</a>, please <span class="sout">ensure to follow this document for
 every made decision and judge its </span><span class="uwave">refer back to this document on every decision made and re-evaluate potential
 </span>consequences.
-</p><!--l. 200--><p class="noindent" ><span class="sout">Be warned </span><span class="uwave">Please note </span>that regardless of the sources used<span class="sout">you </span><span class="uwave">, users </span>are required to fully understand every <span class="sout">dedicated
+</p><!--l. 205--><p class="noindent" ><span class="sout">Be warned </span><span class="uwave">Please note </span>that regardless of the sources used<span class="sout">you </span><span class="uwave">, users </span>are required to fully understand every <span class="sout">dedicated
 </span>OpenCore configuration option<span class="sout">and concept prior to reporting any issues in </span><span class="uwave">, and the principles behind them, before posting
 issues to the </span><a 
 href="https://github.com/acidanthera/bugtracker" >Acidanthera Bugtracker</a>.
@@ -74,28 +88,84 @@ href="https://github.com/acidanthera/bugtracker" >Acidanthera Bugtracker</a>.
      plist data, plist date, plist boolean, plist integer, plist real).
      </li>
      <li class="itemize">plist object — definite realisation of plist type, which may be interpreted as value.
+                                                                                                  
+                                                                                                  
+     Windows), see BootProtect for more details.
      </li>
-     <li class="itemize">plist array — array-like collection, conforms to array. Consists of zero or more plist objects.
+     <li class="itemize">boot <br 
+class="newline" />Duet bootstrap loader, which initialises UEFI environment on legacy BIOS firmwares and loads OpenCore.efi
+     similarly to other bootstrap loaders. Modern Duet bootstrap loader will default to OpenCore.efi on the same
+     partition when present.
      </li>
-     <li class="itemize">plist dictionary —  map-like  (associative  array)  collection,  conforms  to  dict.  Consists  of  zero  or  more
-     plist keys.
+     <li class="itemize">ACPI <br 
+class="newline" />Directory used for storing supplemental ACPI information for ?? section.
      </li>
-     <li class="itemize">plist key — contains one plist object going by the name of plist key, conforms to key. Consists of printable
-     7-bit ASCII characters.
+     <li class="itemize">Drivers <br 
+class="newline" />Directory used for storing supplemental UEFI drivers for <a 
+href="#x1-5900011">UEFI</a> section.
+     </li>
+     <li class="itemize">Kexts <br 
+class="newline" />Directory used for storing supplemental kernel information for <a 
+href="#x1-300007">Kernel</a> section.
+     </li>
+     <li class="itemize">Resources <br 
+class="newline" />Directory used for storing media resources, such as audio files for screen reader support. See ?? section for more
+     details. This directory also contains image files for graphical user interface. See <a 
+href="#x1-630004">OpenCanopy</a> section for more
+     details.
+     </li>
+     <li class="itemize">Tools <br 
+class="newline" />Directory used for storing supplemental tools.
+     </li>
+     <li class="itemize">OpenCore.efi <br 
+class="newline" />Main booter driver responsible for operating system loading.
+     </li>
+     <li class="itemize">config.plist <br 
+class="newline" />OC Config.
+     </li>
+     <li class="itemize">vault.plist <br 
+class="newline" />Hashes for all files potentially loadable by OC Config.
+     </li>
+     <li class="itemize">vault.sig <br 
+class="newline" />Signature for vault.plist.
+     </li>
+     <li class="itemize">SysReport <br 
+class="newline" />Directory containing system reports generated by SysReport option.
+     </li>
+     <li class="itemize">nvram.plist <br 
+class="newline" />OpenCore variable import file.
+     </li>
+     <li class="itemize">opencore-YYYY-MM-DD-HHMMSS.txt <br 
+class="newline" />OpenCore log file.
+     </li>
+     <li class="itemize">panic-YYYY-MM-DD-HHMMSS.txt <br 
+class="newline" />Kernel panic log file.</li></ul>
+<!--l. 617--><p class="noindent" >Note: It is not guaranteed that paths longer than OC_STORAGE_SAFE_PATH_MAX (128 characters including <br 
+class="newline" />0<span class="sout">-termnator</span><span class="uwave">-terminator</span>) will be accessible within OpenCore.
+<a 
+ id="x1-9001r10"></a>
+</p>
+<h4 class="subsectionHead"><span class="titlemark">3.2   </span> <a 
+ id="x1-100002"></a>Installation and Upgrade</h4>
+<!--l. 623--><p class="noindent" >To install OpenCore reflect the ?? described in the previous section on a EFI volume of a GPT partition. While corresponding
+sections of this document do provide some information in regards to external resources like ACPI tables, UEFI drivers, or
+kernel extensions (kexts), completeness of the matter is out of the scope of this document. Information about kernel extensions
+may be found in a separate <a 
+href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Kexts.md" >Kext List</a> document available in OpenCore repository. Vaulting information is provided in ??
                                                                                                   
                                                                                                   
 section of this document.
-</p><!--l. 630--><p class="noindent" >OC config, just like any property lists can be edited with any stock textual editor (e.g. nano, vim), but specialised software
+</p><!--l. 635--><p class="noindent" >OC config, just like any property lists can be edited with any stock textual editor (e.g. nano, vim), but specialised software
 may provide better experience. On macOS the preferred GUI application is <a 
 href="https://developer.apple.com/xcode" >Xcode</a>. For a lightweight cross-platform and
 open-source alternative <a 
 href="https://github.com/corpnewt/ProperTree" >ProperTree</a> editor can be utilised.
-</p><!--l. 638--><p class="noindent" >For BIOS booting a third-party UEFI environment provider will have to be used. OpenDuetPkg is one of the known UEFI
+</p><!--l. 643--><p class="noindent" >For BIOS booting a third-party UEFI environment provider will have to be used. OpenDuetPkg is one of the known UEFI
 environment providers for legacy systems. To run OpenCore on such a legacy system<span class="sout">you can install </span><span class="uwave">, </span>OpenDuetPkg <span class="uwave">can be
 installed </span>with a dedicated tool — BootInstall (bundled with OpenCore). <a 
 href="https://github.com/corpnewt/gibMacOS" >Third-party utilities</a> can be used to perform this on
 systems <span class="sout">different from </span><span class="uwave">other than </span>macOS.
-</p><!--l. 646--><p class="noindent" >For upgrade purposes refer to Differences.pdf document, providing the information about the changes affecting the
+</p><!--l. 651--><p class="noindent" >For upgrade purposes refer to Differences.pdf document, providing the information about the changes affecting the
 configuration compared to the previous release, and Changelog.md document, containing the list of modifications across all
 published updates.
 <a 
@@ -103,23 +173,23 @@ published updates.
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.3   </span> <a 
  id="x1-110003"></a>Contribution</h4>
-<!--l. 653--><p class="noindent" >OpenCore can be compiled as an ordinary <a 
+<!--l. 658--><p class="noindent" >OpenCore can be compiled as an ordinary <a 
 href="https://github.com/tianocore/tianocore.github.io/wiki/EDK-II" >EDK II</a> package. Since <a 
 href="https://github.com/tianocore/tianocore.github.io/wiki/UDK" >UDK</a> development was abandoned by TianoCore, OpenCore
 requires the use of <a 
 href="https://github.com/tianocore/tianocore.github.io/wiki/EDK-II#stable-tags" >EDK II Stable</a>. Currently supported EDK II release is hosted in <a 
 href="https://github.com/acidanthera/audk" >acidanthera/audk</a>. The required patches for
 the package are present in Patches directory.
-</p><!--l. 662--><p class="noindent" >The only officially supported toolchain is XCODE5. Other toolchains might work, but are neither supported, nor recommended.
+</p><!--l. 667--><p class="noindent" >The only officially supported toolchain is XCODE5. Other toolchains might work, but are neither supported, nor recommended.
 Contribution of clean patches is welcome. Please do follow <a 
 href="https://github.com/tianocore/tianocore.github.io/wiki/Code-Style-C" >EDK II C Codestyle</a>.
-</p><!--l. 667--><p class="noindent" >To compile with XCODE5, besides <a 
+</p><!--l. 672--><p class="noindent" >To compile with XCODE5, besides <a 
 href="https://developer.apple.com/xcode" >Xcode</a>, one should also install <a 
 href="https://www.nasm.us" >NASM</a> and <a 
 href="https://github.com/acidanthera/ocbuild/tree/master/external" >MTOC</a>. The latest Xcode version is recommended
 for use despite the toolchain name. Example command sequence may look as follows:
 </p>
-<!--l. 673-->
+<!--l. 678-->
 <a 
  id="x1-11001r1"></a>
 <a 
@@ -135,12 +205,12 @@ for use despite the toolchain name. Example command sequence may look as follows
 <figcaption class="caption" ><span class="id">Listing 1:</span><span  
 class="content">Compilation Commands</span></figcaption><!--tex4ht:label?: x1-11001r -->
 </div>
-<!--l. 683--><p class="noindent" >For IDE usage Xcode projects are available in the root of the repositories. Another approach could be <a 
+<!--l. 688--><p class="noindent" >For IDE usage Xcode projects are available in the root of the repositories. Another approach could be <a 
 href="https://www.sublimetext.com" >Sublime Text</a> with
 <a 
 href="https://niosus.github.io/EasyClangComplete" >EasyClangComplete</a> plugin. Add .clang_complete file with similar content to <span class="sout">your </span><span class="uwave">the </span>UDK root:
 </p>
-<!--l. 688-->
+<!--l. 693-->
 <a 
  id="x1-11010r2"></a>
 <a 
@@ -181,7 +251,7 @@ href="https://niosus.github.io/EasyClangComplete" >EasyClangComplete</a> plugin.
 <figcaption class="caption" ><span class="id">Listing 2:</span><span  
 class="content">ECC Configuration</span></figcaption><!--tex4ht:label?: x1-11010r -->
 </div>
-<!--l. 723--><p class="noindent" >Warning: Tool developers modifying config.plist or any other OpenCore files must ensure that their tool checks for
+<!--l. 728--><p class="noindent" >Warning: Tool developers modifying config.plist or any other OpenCore files must ensure that their tool checks for
 opencore-version NVRAM variable (see <a 
 href="#x1-440004">Debug Properties</a> section below) and warn the user if the version listed is
 unsupported or prerelease. OpenCore configuration may change across the releases and the tool shall ensure that it carefully
@@ -192,7 +262,7 @@ means.
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.4   </span> <a 
  id="x1-120004"></a>Coding conventions</h4>
-<!--l. 733--><p class="noindent" >Just like any other project we have conventions that we follow during the development. All third-party contributors are highly
+<!--l. 738--><p class="noindent" >Just like any other project we have conventions that we follow during the development. All third-party contributors are highly
                                                                                                   
                                                                                                   
      <li 
@@ -232,7 +302,7 @@ class="newline" />Type: plist data, 4 bytes<br
 class="newline" />Failsafe: All zero<br 
 class="newline" />Description: Match table signature to be equal to this value unless all zero.
      </li></ol>
-<!--l. 1108--><p class="noindent" >In the majority of the cases ACPI patches are not useful and harmful:
+<!--l. 1113--><p class="noindent" >In the majority of the cases ACPI patches are not useful and harmful:
 </p>
      <ul class="itemize1">
      <li class="itemize">Avoid renaming devices with ACPI patches. This may fail or perform improper renaming of unrelated devices
@@ -252,7 +322,7 @@ href="https://github.com/acidanthera/WhateverGreen" >WhateverGreen</a>.
 href="https://github.com/acidanthera/BrightnessKeys" >BrightnessKeys</a> <span class="uwave">instead. </span>
      </li>
      <li class="itemize">Try to avoid hacky changes like renaming _PRW or _DSM whenever possible.</li></ul>
-<!--l. 1137--><p class="noindent" >Several cases, where patching actually does make sense, include:
+<!--l. 1142--><p class="noindent" >Several cases, where patching actually does make sense, include:
 </p>
                                                                                                   
                                                                                                   
@@ -264,9 +334,9 @@ href="https://github.com/acidanthera/BrightnessKeys" >BrightnessKeys</a> <span c
      <li class="itemize">To provide custom method implementation with in an SSDT, for instance, to <span class="sout">report functional key presses on
      a laptop</span><span class="uwave">inject shutdown fix on certain computers</span>, the original method can be replaced with a dummy name by
      patching _<span class="sout">Q11</span><span class="uwave">PTS</span> with <span class="sout">XQ11</span><span class="uwave">ZPTS</span> <span class="uwave">and adding a callback to original method</span>.</li></ul>
-<!--l. 1153--><p class="noindent" >Tianocore <a 
+<!--l. 1158--><p class="noindent" >Tianocore <a 
 href="https://github.com/acidanthera/audk/blob/master/MdePkg/Include/IndustryStandard/AcpiAml.h" >AcpiAml.h</a> source file may help understanding ACPI opcodes.
-</p><!--l. 1156--><p class="noindent" >Note: Patches of different Find and Replace lengths are unsupported as they may corrupt ACPI tables and make
+</p><!--l. 1161--><p class="noindent" >Note: Patches of different Find and Replace lengths are unsupported as they may corrupt ACPI tables and make
 <span class="sout">you </span><span class="uwave">the </span>system unstable due to area relocation. If <span class="sout">you need such changes you may utilise </span><span class="uwave">such changes are
 needed, the utilisation of </span>“proxy” patching or <span class="uwave">the padding of </span>NOP <span class="uwave">to </span>the remaining area <span class="uwave">might be taken into
 account</span>.
@@ -281,7 +351,7 @@ account</span>.
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Provide reset register and flag in FADT table to enable reboot and shutdown.
-     <!--l. 1172--><p class="noindent" >Mainly required on legacy hardware and few laptops. Can also fix power-button shortcuts. Not recommended
+     <!--l. 1177--><p class="noindent" >Mainly required on legacy hardware and few laptops. Can also fix power-button shortcuts. Not recommended
      unless required.
      </p></li>
      <li 
@@ -298,16 +368,16 @@ href="https://alextjam.es/debugging-appleacpiplatform/" >Debugging AppleACPIPlat
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Attempt to heuristically relocate ACPI memory regions. Not recommended.
-     <!--l. 1192--><p class="noindent" >ACPI   tables   are   often   generated   dynamically   by   underlying   firmware   implementation.   Among   the
+     <!--l. 1197--><p class="noindent" >ACPI   tables   are   often   generated   dynamically   by   underlying   firmware   implementation.   Among   the
      position-independent  code,  ACPI  tables  may  contain  physical  addresses  of  MMIO  areas  used  for  device
      configuration,  usually  grouped  in  regions  (e.g.  OperationRegion).  Changing  firmware  settings  or  hardware
      configuration, upgrading or patching the firmware inevitably leads to changes in dynamically generated ACPI
      code, which sometimes lead to the shift of the addresses in aforementioned OperationRegion constructions.
-     </p><!--l. 1202--><p class="noindent" >For this reason it is very dangerous to apply any kind of modifications to ACPI tables. The most reasonable
+     </p><!--l. 1207--><p class="noindent" >For this reason it is very dangerous to apply any kind of modifications to ACPI tables. The most reasonable
      approach is to make as few as possible changes to ACPI and try to not replace any tables, especially DSDT.
      When this is not possible, then at least attempt to ensure that custom DSDT is based on the most recent DSDT
      or remove writes and reads for the affected areas.
-     </p><!--l. 1209--><p class="noindent" >When nothing else helps this option could be tried to avoid stalls at PCI Configuration Begin phase of macOS
+     </p><!--l. 1214--><p class="noindent" >When nothing else helps this option could be tried to avoid stalls at PCI Configuration Begin phase of macOS
      booting by attempting to fix the ACPI addresses. It does not do magic, and only works with most common cases.
      Do not use unless absolutely required.
      </p></li>
@@ -316,7 +386,7 @@ class="newline" />Description: Attempt to heuristically relocate ACPI memory reg
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Reset FACS table HardwareSignature value to 0.
-     <!--l. 1221--><p class="noindent" >This works around firmwares that fail to maintain hardware signature across the reboots and cause issues with
+     <!--l. 1226--><p class="noindent" >This works around firmwares that fail to maintain hardware signature across the reboots and cause issues with
      waking from hibernation.
      </p></li>
      <li 
@@ -324,7 +394,7 @@ class="newline" />Description: Reset FACS table HardwareSignature value to 0.
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Reset BGRT table Displayed status field to false.
-     <!--l. 1231--><p class="noindent" >This works around firmwares that provide BGRT table but fail to handle screen updates afterwards.
+     <!--l. 1236--><p class="noindent" >This works around firmwares that provide BGRT table but fail to handle screen updates afterwards.
 </p>
      </li></ol>
 <a 
@@ -335,13 +405,13 @@ class="newline" />Description: Reset BGRT table Displayed status field to false.
  id="x1-21001r23"></a>
 <h4 class="subsectionHead"><span class="titlemark">5.1   </span> <a 
  id="x1-220001"></a>Introduction</h4>
-<!--l. 1241--><p class="noindent" >This section allows to apply different kinds of UEFI modifications on Apple bootloader (boot.efi). The modifications
+<!--l. 1246--><p class="noindent" >This section allows to apply different kinds of UEFI modifications on Apple bootloader (boot.efi). The modifications
 currently provide various patches and environment alterations for different firmwares. Some of these features were originally
 implemented as a part of <a 
 href="https://github.com/acidanthera/AptioFixPkg" >AptioMemoryFix.efi</a>, which is no longer maintained. See <a 
 href="#x1-830005">Tips and Tricks</a> section for migration
 steps.
-</p><!--l. 1249--><p class="noindent" >If <span class="sout">you are using this </span><span class="uwave">this is used </span>for the first time on a customised firmware, there is a list of checks to do first. Prior to
+</p><!--l. 1254--><p class="noindent" >If <span class="sout">you are using this </span><span class="uwave">this is used </span>for the first time on a customised firmware, there is a list of checks to do first. Prior to
 starting<span class="sout">please ensure that you have</span><span class="uwave">, the following requirements should be fulfilled</span>:
 </p>
      <ul class="itemize1">
@@ -377,7 +447,7 @@ href="http://www.insanelymac.com/forum/topic/299614-asus-eah6450-video-bios-uefi
      </li>
      <li class="itemize">While it may not be required, sometimes <span class="sout">you have to disable </span>Thunderbolt support, Intel SGX, and Intel
      Platform Trust <span class="uwave">may have to be disabled </span>in firmware settings present.</li></ul>
-<!--l. 1290--><p class="noindent" >When debugging sleep issues <span class="sout">you may want to (temporarily) disable </span>Power Nap and automatic power off <span class="uwave">may be (temporarily)
+<!--l. 1295--><p class="noindent" >When debugging sleep issues <span class="sout">you may want to (temporarily) disable </span>Power Nap and automatic power off <span class="uwave">may be (temporarily)
                                                                                                   
                                                                                                   
      
@@ -421,7 +491,15 @@ href="http://www.insanelymac.com/forum/topic/299614-asus-eah6450-video-bios-uefi
      
       
      
+                                 
+
      
+     
+     
+      
+        
+      
+        
       
      
       
@@ -555,7 +633,107 @@ href="http://www.insanelymac.com/forum/topic/299614-asus-eah6450-video-bios-uefi
      
          
          
-                                                                                                                                             
+         
+      
+     
+      
+      
+      
+     
+      
+      
+      
+     
+      
+      
+      
+     
+         
+      
+     
+     
+      
+     
+     
+                
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+                          
+      
+     
+     
+      
+     
+                                
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+                                     
+      
+     
+       
+     
+      
+         
+      
+        
+      
+     
+        
+      
+     
+     
+      
+        
+      
+     
+     
+      
+     
+                                                                                                  
+                                                                                                  
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
       
      
       
@@ -604,6 +782,21 @@ href="http://www.insanelymac.com/forum/topic/299614-asus-eah6450-video-bios-uefi
      
       
      
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
       
       
      
@@ -619,5 +812,5 @@ href="http://www.insanelymac.com/forum/topic/299614-asus-eah6450-video-bios-uefi
      
       
      
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </body>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          </body>
 </html>
