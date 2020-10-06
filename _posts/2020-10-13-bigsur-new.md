@@ -238,7 +238,7 @@ Kexts here are built right after commit, and currently supports most of Acidanth
 
 ## True legacy macOS Support!
 
-As of OpenCore's latest versioning, 0.6.2, you can now boot every version of x86-based builds of OS X/macOS! A huge achievement on GoldFish64's part, we now support every major version of kernel cache both 32 and 64-bit wise. This means machines like Yonah and newer should work great with OpenCore and you can even relive the old days of OS X like OS X 10.4!
+As of OpenCore's latest versioning, 0.6.2, you can now boot every version of x86-based builds of OS X/macOS! A huge achievement on [@Goldfish64](https://github.com/Goldfish64)'s part, we now support every major version of kernel cache both 32 and 64-bit wise. This means machines like Yonah and newer should work great with OpenCore and you can even relive the old days of OS X like OS X 10.4!
 
 And Dortania guides have been updated accordingly to accommodate for builds of those eras, we hope you get as much enjoyment going back as we did working on this project!
 
@@ -291,5 +291,4 @@ This will be your short run down if you skipped the above:
 * Latest releases of all your kexts
 
 For the last 2, see here on how to update: [Updating OpenCore, Kexts and macOS](https://dortania.github.io/OpenCore-Post-Install/universal/update.html)
-
 
