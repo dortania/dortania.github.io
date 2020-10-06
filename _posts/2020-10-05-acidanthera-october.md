@@ -71,7 +71,7 @@ We had quite a bit fun going back and messing with older versions of OS X and ev
 - Added `LegacyCommpage` quirk to improve pre-SSSE3 userspace compatibility
 - Fixed legacy SATA HDDs displaying as external drives in the picker
 
-### [Lili 1.4.8](https://github.com/acidanthera/Lilu/releases)
+#### [Lilu 1.4.8](https://github.com/acidanthera/Lilu/releases)
 
 - Added MacKernelSDK with Xcode 12 compatibility
 - Removed `kern_atomic.hpp` due to MacKernelSDK implementation
