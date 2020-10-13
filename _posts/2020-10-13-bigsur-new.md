@@ -195,7 +195,7 @@ This should spit out something like this:
 The ending `PciRoot(0x0)/Pci(0x1F,0x6)` is what you want to add in your config.plist under `DeviceProperties -> Add` with the following properties:
 
 | Key | Type | Value |
-| :--- | : --- | :--- |
+| :--- | :--- | :--- |
 | compatible | String | "pcie14e4,43ba" |
 | device-id  | Data | BA430000 |
 
