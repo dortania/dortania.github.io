@@ -174,6 +174,34 @@ Currently only certain hardware has been officially dropped:
 * BCM94331 based Wifi cards.
   * See [Wireless Buyers guide](https://dortania.github.io/Wireless-Buyers-Guide/) for potential cards to upgrade to.
   * Note, while AirPortBrcm4360.kext has been removed in Big Sur, support for the 4360 series cards have been moved into AirPortBrcmNIC.kext, which still exists.
+  
+<details>
+<summary>BCM94331 work around</summary>
+
+While AirPortBrcm4360.kext has been removed from macOS, AirPortBrcmNIC.kext actually still supports the 4331 family if you spoof the model to a supported card(ie. BCM94360 PCI ID)
+
+To do this, grab [gfxutil](https://github.com/acidanthera/gfxutil/releases) and the the following:
+
+```sh
+/path/to/gfxutil | grep -i "14e4:4331"
+```
+
+This should spit out something like this:
+
+```
+00:1f.6 14e4:4331 /PC00@0/PXSX@1F,6 = PciRoot(0x0)/Pci(0x1F,0x6)
+```
+
+The ending `PciRoot(0x0)/Pci(0x1F,0x6)` is what you want to add in your config.plist under `DeviceProperties -> Add` with the following properties:
+
+| Key | Type | Value |
+| :--- | : --- | :--- |
+| compatible | String | "pcie14e4,43ba" |
+| device-id  | Data | BA430000 |
+
+</details>
+<br>
+
 
 ### Extra long install process
 
@@ -189,7 +217,7 @@ Due to the new snapshot-based OS, installation now takes some extra time with se
 
 ### X79 and X99 Boot issues
 
-With macOS 11, Big Sur, IOPCIFamily went through a decent rewriting causing many of X99 patches to break and many X79 boards fail to boot as well with IOPCIFamily kernel panics. Currently no solution is available so we recommend staying on macOS Catalina until issues have been resolved.
+With macOS 11, Big Sur, IOPCIFamily went through a decent rewriting causing many of X99 patches to break and many X79 boards fail to boot as well with IOPCIFamily kernel panics. Currently no solution is available so we recommend staying on macOS Catalina until issues have been resolved, however Acidanthera is actively looking into the situation and the guides will be updated with information when released.
 
 ### New RTC requirements
 
@@ -255,9 +283,9 @@ For more info on the developments, please see the itlwm project on GitHub: [itlw
 
 As many in the community have seen, a new bootloader popped up back in April 2019 called [OpenCore](https://github.com/acidanthera/OpenCorePkg). This bootloader was made by the same people behind projects such as [Lilu](https://github.com/acidanthera/Lilu), [WhateverGreen](https://github.com/acidanthera/WhateverGreen), [AppleALC](https://github.com/acidanthera/AppleALC) and many other extremely important utilities for the hackintosh community. OpenCore's design had been properly thought out with security auditing and proper road mapping laid down, it was clear that this was to be the next stage of hackintoshing for the years we have left with x86.
 
-And now lets bring this back to the old crowd favorite, [Clover](https://github.com/CloverHackyColor/CloverBootloader/). Clover has been having a rough time of recent both with the community and stability wise, with many devs jumping ship to OpenCore and Clover's stability breaking more and more with C++ rewrites, it was clear Clover was on its last legs. Interestingly enough, the community didn't want Clover to die, similarly to how Chameleon lived on through Enoch. And thus, we now have the [Clover OpenCore integration project](https://github.com/CloverHackyColor/CloverBootloader/tree/opencore_integration).
+And now lets bring this back to the old crowd favorite, [Clover](https://github.com/CloverHackyColor/CloverBootloader/). Clover has been having a rough time of recent both with the community and stability wise, with many devs jumping ship to OpenCore and Clover's stability breaking more and more with C++ rewrites, it was clear Clover was on its last legs. Interestingly enough, the community didn't want Clover to die, similarly to how Chameleon lived on through Enoch. And thus, we now have the [Clover OpenCore integration project](https://github.com/CloverHackyColor/CloverBootloader/tree/opencore_integration)(Now merged into Master with r5123+).
 
-The goal is to combine OpenCore into Clover allowing the project to live a bit longer, as Clover's current state can no longer boot macOS Big Sur or older versions of OS X such as 10.6. As of writing, this project seems to be a bit confusing as there seems to be little reason to actually support Clover. Many of Clover's properties have [feature-parity in OpenCore](https://github.com/dortania/OpenCore-Install-Guide/tree/master/clover-conversion) and trying to combine both C++ and C ruins many of the features and benefits either languages provide.
+The goal is to combine OpenCore into Clover allowing the project to live a bit longer, as Clover's current state can no longer boot macOS Big Sur or older versions of OS X such as 10.6. As of writing, this project seems to be a bit confusing as there seems to be little reason to actually support Clover. Many of Clover's properties have [feature-parity in OpenCore](https://github.com/dortania/OpenCore-Install-Guide/tree/master/clover-conversion) and trying to combine both C++ and C ruins many of the features and benefits either languages provide. The only feature OpenCore does not support is macOS-only ACPI injection, however the reasoning is covered here: [Does OpenCore always inject SMBIOS and ACPI data into other OSes?](https://dortania.github.io/OpenCore-Install-Guide/why-oc.html#does-opencore-always-inject-smbios-and-acpi-data-into-other-oses)
 
 ## Death of x86 and the future of Hackintoshing
 
@@ -278,11 +306,15 @@ So while we may be heart broken the journey is coming to a stop in the somewhat 
 
 This will be your short run down if you skipped the above:
 
+* DRM is broken for many
+  * Specifically for those relying on WhateverGreen for DRM
 * Many Ivy Bridge and Haswell SMBIOS were dropped
   * See above for what SMBIOS to choose
 * Ivy Bridge iGPUs were dropped
 * BCM94331 support was dropped
+  * Solution listed above
 * X79 and X99 no longer boot
+  * Solution is currently being worked on inside Acidanthera
 * X299 requires SSDT-RTC0-RANGE
   * See above how to make it
 * AMD CPUs need their kernel patches updated
@@ -291,4 +323,8 @@ This will be your short run down if you skipped the above:
 * Latest releases of all your kexts
 
 For the last 2, see here on how to update: [Updating OpenCore, Kexts and macOS](https://dortania.github.io/OpenCore-Post-Install/universal/update.html)
+
+And as with every year, the first few weeks to months of a new OS release are painful in the community. We **highly** advise users to stay away from Big Sur for first time installers. The reason is that we cannot determine whether issues are Apple related or with your specific machine, so it's best to install and debug a machine on a known working OS before testing out the new and shiny.
+
+For more in-depth troubleshooting with Big Sur, see here: [OpenCore and macOS 11: Big Sur](https://dortania.github.io/OpenCore-Install-Guide/extras/big-sur/)
 
