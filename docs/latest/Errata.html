@@ -4,7 +4,7 @@
 <meta charset='utf-8' /> 
 <meta name='generator' content='TeX4ht (http://www.tug.org/tex4ht/)' /> 
 <meta name='viewport' content='width=device-width,initial-scale=1' /> 
-<link rel='stylesheet' type='text/css' href='Errata.css' /> 
+<link href='Errata.css' type='text/css' rel='stylesheet' /> 
 <meta name='src' content='Errata.tex' /> 
 <link rel="stylesheet" type="text/css" href="../main.css" /></head><body>
 <!-- l. 76 --><p class='noindent'>
@@ -13,7 +13,7 @@
 </p>
 <div class='center'>
 <!-- l. 77 --><p class='noindent'>
-</p><!-- l. 84 --><p class='noindent'> <img width='160' height='160' src='Logos/Logo-.png' alt='PIC' />
+</p><!-- l. 84 --><p class='noindent'> <img src='Logos/Logo-.png' alt='PIC' width='160' height='160' />
 </p><!-- l. 88 --><p class='noindent'><span class='ec-lmssbx-10x-x-248'>OpenCore</span>
 </p><!-- l. 92 --><p class='noindent'><span class='ec-lmss-17x-x-143'>Errata Sheet</span>
 </p><!-- l. 96 --><p class='noindent'><span class='ec-lmss-17x-x-143'>[2020.10.24]</span>
@@ -110,6 +110,14 @@ including feature requests and development version issues can be found at <a hre
          </li>
          <li class='itemize'>Disable  <span class='ec-lmtt-10'>ConnectDrivers </span>and  enable  <span class='ec-lmtt-10'>GlobalConnect </span>(may  cause  performance  and  compatibility  issues
          depending on the driver use)
+         </li></ul>
+     </li>
+     <li class='itemize'><span class='ec-lmbx-10'>Identifier</span>: <span class='ec-lmtt-10'>ERR062-1 </span><br class='newline' /><span class='ec-lmbx-10'>Published</span>: 2020-10-25 01:22 MSK <br class='newline' /><span class='ec-lmbx-10'>Updated</span>: 2020-10-25 01:22 MSK <br class='newline' /><span class='ec-lmbx-10'>Affected versions</span>: 0.6.1 and newer <br class='newline' /><span class='ec-lmbx-10'>Resolved in</span>: — <br class='newline' /><span class='ec-lmbx-10'>Description</span>:
+     <!-- l. 281 --><p class='noindent'>Booting Big Sur beta 10 will cause a kernel panic in <span class='ec-lmtt-10'>apfs.kext </span>with the <span class='ec-lmtt-10'>Rooting from the live fs of a sealed
+     </span><span class='ec-lmtt-10'>volume is not allowed on a RELEASE build </span>message. Reference: <a href='https://github.com/acidanthera/bugtracker/issues/1235'>acidanthera/bugtracker#1235</a>.
+     </p><!-- l. 286 --><p class='noindent'><span class='ec-lmbx-10'>Possible workarounds</span>: </p>
+         <ul class='itemize2'>
+         <li class='itemize'>Set <span class='ec-lmtt-10'>SecureBootModel </span>to <span class='ec-lmtt-10'>Disabled</span>
          </li></ul>
      </li></ul>
  
