@@ -98,7 +98,7 @@ How this differs to previous OSes:
 * The Secure Boot and standard kernel are now one(ie. no more dedicated Immutable Kernel)
 * Symbols are no longer required
 
-The last point is the most important part, as this is what we use for kext injection in OpenCore. Currently Apple has left symbols in place seemingly for debugging purposes however this is a bit worrying as Apple could outright remove symbols in later versions of macOS. But for macOS 11, Big Sur's cycle, we'll be good on that end however we'll be keeping an eye on macOS 12.
+The last point is the most important part, as this is what we use for kext injection in OpenCore. Currently Apple has left symbols in place seemingly for debugging purposes however this is a bit worrying as Apple could outright remove symbols in later versions of macOS. But for macOS 11, Big Sur's cycle, we'll be good on that end however we'll be keeping an eye on future releases of macOS.
 
 ## New Kernel Requirements
 
@@ -327,4 +327,3 @@ For the last 2, see here on how to update: [Updating OpenCore, Kexts and macOS](
 And as with every year, the first few weeks to months of a new OS release are painful in the community. We **highly** advise users to stay away from Big Sur for first time installers. The reason is that we cannot determine whether issues are Apple related or with your specific machine, so it's best to install and debug a machine on a known working OS before testing out the new and shiny.
 
 For more in-depth troubleshooting with Big Sur, see here: [OpenCore and macOS 11: Big Sur](https://dortania.github.io/OpenCore-Install-Guide/extras/big-sur/)
-
