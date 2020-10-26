@@ -160,6 +160,7 @@ For those wanting a simple translation for their Ivy and Haswell Machines:
 
 * iMac13,2 should transition over to using MacPro6,1
 * iMac14,2 and iMac14,3 should transition over to using iMac15,1
+  * Note: AMD CPUs users should transition over to MacPro7,1
 * iMac14,1 should transition over to iMac14,4
 
 ### Dropped hardware
@@ -171,37 +172,10 @@ Currently only certain hardware has been officially dropped:
   * Ivy Bridge-E CPUs are still supported thanks to being in MacPro6,1
 * Ivy Bridge iGPUs.
   * HD 4000 and HD 2500, initial developer beta forgot to remove drivers but more than likely to be removed in later updates.
-* BCM94331 based Wifi cards.
+* BCM4331 and BCM43224 based Wifi cards.
   * See [Wireless Buyers guide](https://dortania.github.io/Wireless-Buyers-Guide/) for potential cards to upgrade to.
   * Note, while AirPortBrcm4360.kext has been removed in Big Sur, support for the 4360 series cards have been moved into AirPortBrcmNIC.kext, which still exists.
-  
-<details>
-<summary>BCM94331 work around</summary>
-
-While AirPortBrcm4360.kext has been removed from macOS, AirPortBrcmNIC.kext actually still supports the 4331 family if you spoof the model to a supported card(ie. BCM94360 PCI ID)
-
-To do this, grab [gfxutil](https://github.com/acidanthera/gfxutil/releases) and the the following:
-
-```sh
-/path/to/gfxutil | grep -i "14e4:4331"
-```
-
-This should spit out something like this:
-
-```
-00:1f.6 14e4:4331 /PC00@0/PXSX@1F,6 = PciRoot(0x0)/Pci(0x1F,0x6)
-```
-
-The ending `PciRoot(0x0)/Pci(0x1F,0x6)` is what you want to add in your config.plist under `DeviceProperties -> Add` with the following properties:
-
-| Key | Type | Value |
-| :--- | :--- | :--- |
-| compatible | String | "pcie14e4,43ba" |
-| device-id  | Data | BA430000 |
-
-</details>
-<br>
-
+  * For work-arounds, see here: [Legacy Wireless Kexts](https://github.com/khronokernel/IO80211-Patches)
 
 ### Extra long install process
 
@@ -306,13 +280,19 @@ So while we may be heart broken the journey is coming to a stop in the somewhat 
 
 This will be your short run down if you skipped the above:
 
-* DRM is broken for many
-  * Specifically for those relying on WhateverGreen for DRM
+* Lilu's userspace patcher is broken
+  * Due to this many kext will break:
+      * DiskArbitrationFixup
+      * MacProMemoryNotificationDisabler
+      * SidecarEnabler
+      * SystemProfilerMemoryFixup
+      * NoTouchID
+      * WhateverGreen's DRM and -cdfon patches
 * Many Ivy Bridge and Haswell SMBIOS were dropped
   * See above for what SMBIOS to choose
 * Ivy Bridge iGPUs were dropped
-* BCM94331 support was dropped
-  * Solution listed above
+* BCM4331 and BCM43224 support was dropped
+  * Solution listed here: [Legacy Wireless Kexts](https://github.com/khronokernel/IO80211-Patches)
 * X79 and X99 no longer boot
   * Solution is currently being worked on inside Acidanthera
 * X299 requires SSDT-RTC0-RANGE
