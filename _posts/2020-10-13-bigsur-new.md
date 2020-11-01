@@ -281,7 +281,7 @@ So while we may be heart broken the journey is coming to a stop in the somewhat 
 This will be your short run down if you skipped the above:
 
 * Lilu's userspace patcher is broken
-  * Due to this many kext will break:
+  * Due to this many kexts will break:
       * DiskArbitrationFixup
       * MacProMemoryNotificationDisabler
       * SidecarEnabler
