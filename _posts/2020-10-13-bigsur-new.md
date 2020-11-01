@@ -191,7 +191,7 @@ Due to the new snapshot-based OS, installation now takes some extra time with se
 
 ### X79 and X99 Boot issues
 
-With macOS 11, Big Sur, IOPCIFamily went through a decent rewriting causing many of X99 patches to break and many X79 boards fail to boot as well with IOPCIFamily kernel panics. Currently no solution is available so we recommend staying on macOS Catalina until issues have been resolved, however Acidanthera is actively looking into the situation and the guides will be updated with information when released.
+With macOS 11, Big Sur, IOPCIFamily went through a decent rewriting causing many of X99 patches to break and many X79 boards fail to boot as well with IOPCIFamily kernel panics. Currently no solution is available so we recommend staying on macOS Catalina until issues have been resolved, however Acidanthera is actively looking into the situation and the guides will be updated when new information is available.
 
 ### New RTC requirements
 
