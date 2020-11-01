@@ -7,12 +7,15 @@
 .ec-lmss-17x-x-143{ font-family: sans-serif;}
 .ec-lmss-17x-x-143{ font-family: sans-serif;}
 .ec-lmss-17x-x-143{ font-family: sans-serif;}
+.ec-lmss-17x-x-143{ font-family: sans-serif;}
 .ec-lmssbx-10x-x-248{font-size:248%; font-family: sans-serif; font-weight: bold;}
 .ec-lmssbx-10x-x-248{ font-family: sans-serif; font-weight: bold;}
 .ec-lmssbx-10x-x-248{ font-family: sans-serif; font-weight: bold;}
 .ec-lmssbx-10x-x-248{ font-family: sans-serif; font-weight: bold;}
 .ec-lmssbx-10x-x-248{ font-family: sans-serif; font-weight: bold;}
 .ec-lmssbx-10x-x-248{ font-family: sans-serif; font-weight: bold;}
+.ec-lmssbx-10x-x-248{ font-family: sans-serif; font-weight: bold;}
+.ec-lmtt-10{ font-family: monospace,monospace;}
 .ec-lmtt-10{ font-family: monospace,monospace;}
 .ec-lmtt-10{ font-family: monospace,monospace;}
 .ec-lmtt-10{ font-family: monospace,monospace;}
@@ -25,6 +28,14 @@
 .ec-lmbx-10{ font-weight: bold;}
 .ec-lmbx-10{ font-weight: bold;}
 .ec-lmbx-10{ font-weight: bold;}
+.ec-lmbx-10{ font-weight: bold;}
+.ec-lmri-10{ font-style:italic;}
+.ec-lmri-10{ font-style:italic;}
+.ec-lmri-10{ font-style:italic;}
+.ec-lmri-10{ font-style:italic;}
+.ec-lmri-10{ font-style:italic;}
+.ec-lmri-10{ font-style:italic;}
+.ec-lmri-10{ font-style:italic;}
 p{margin-top:0;margin-bottom:0}
 p.indent{text-indent:0;}
 p + p{margin-top:1em;}
