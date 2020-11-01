@@ -17,7 +17,24 @@ categories: Hackintosh updates
 
 # Guide Updates
 
-{Insert boring message}
+This month we've taken a bit of a step back in regards to the install guide, however we've pivoted our time towards [post-install guide](https://dortania.github.io/OpenCore-Post-Install/) updates before things get too hectic with Big Sur's imminent release. The main things we've been working on:
+
+* [Legacy Intel Patching](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/legacy-intel/)
+  * GMA series supported
+* [Legacy Nvidia Patching](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/nvidia-patching/)
+  * Tesla through Fermi series supported
+* [More in-depth WhateverGreen Patching](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/intel-patching/)
+  * Sandy bridge and newer supported
+  
+We know that documentation on legacy hardware can be quite difficult to find as more and more sites go offline, and even more challenging finding credible information from that era where users would throw anything at the wall till it sticks. So to ease users wanting to breath new life into older hardware or ditch Chameleon and Clover, we dedicated quite a bit of time and resources into documenting support for older GPUs. And thanks to the efforts of [@1Revenger1](https://github.com/1Revenger1/), we now have an amazing utility to help calculate NVCAP values for legacy Nvidia GPUs by simply importing your VBIOS into [NVCAP-Calculator](https://github.com/1Revenger1/NVCAP-Calculator).
+
+Additionally, we've also begun work on a new guide to breath new life into legacy Macs. This guide focuses os setting up a Mac no longer supported by the latest OS, and installing OpenCore with little to no modifications to the file system. This allows for native OS updates, full features such as SIP and APFS snapshots allowing for a near-identical experience to a supported Macs. The guide is still a work in progress, as legacy GPU acceleration and AppleHDA patching are still being worked on, however this is the only way to get certain Macs like iMac11,x and MacBookPro6,x to boot Big Sur at all. You can read more about this new guide here:
+
+* [OpenCore for Legacy Macs](https://dortania.github.io/OpenCore-For-Legacy-Macs/)
+
+And as mentioned before, Big Sur's release is just around the corner. Unfortunately quite a bit has changed with the software catalogue so we do want to warn users in advance that gibMacOS may not fully support Windows or Linux initially (however macOS-based installers will still be fully supported). You may find [macrecovery.py](https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/macrecovery) to be a more reliable solution until things have been patched up to accomodate the new GDMF update system, we will be updating the guides regularly with new information on Big Sur installs as it comes out.
+
+We hope you enjoy the updates to the guides, and we'll be seeing you in a few weeks with a new Big Sur update thread on all things to watch out for with the release!
 
 — Khronokernel
 
