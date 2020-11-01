@@ -36,7 +36,7 @@ As with [previous years](https://dortania.github.io/hackintosh/updates/2019/10/0
   * [Dortania's Build Repo](#dortania-s-build-repo)
   * [True legacy macOS Support!](#true-legacy-macos-support)
   * [Intel Wireless: More native than ever!](#intel-wireless-more-native-than-ever)
-  * [Clover's revival? A frankestien of a bootloader](#clovers-revival-a-frankestien-of-a-bootloader)
+  * [Clover's revival? A frankenstein of a bootloader](#clovers-revival-a-frankenstein-of-a-bootloader)
   * [Death of x86 and the future of Hackintoshing](#death-of-x86-and-the-future-of-hackintoshing)
 * [Getting ready for macOS 11, Big Sur](#getting-ready-for-macos-11-big-sur)
 
