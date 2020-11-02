@@ -104,6 +104,9 @@ The last point is the most important part, as this is what we use for kext injec
 
 With this update, the `AvoidRuntimeDefrag` Booter quirk in OpenCore broke. Because of this, the macOS kernel will fall flat when trying to boot. Reason for this is due to `cpu_count_enabled_logical_processors` requiring the MADT (APIC) table, and so OpenCore will now ensure this table is made accessible to the kernel. Users will however need a build of OpenCore 0.6.0 with commit [`bb12f5f`](https://github.com/acidanthera/OpenCorePkg/commit/9f59339e7eb8c213e84551df0fdbf9905cd98ca4) **or newer** to resolve this issue.
 
+Additionally, both Kernel Allocation requirements and Secure Boot have also broken with Big Sur due to the new caching system discussed above. Thankfully these have also been resolved in OpenCore 0.6.3.
+
+
 To check your OpenCore version, run the following in terminal:
 
 ```sh
@@ -170,8 +173,8 @@ Currently only certain hardware has been officially dropped:
 * "Official" Consumer Ivy Bridge Support(U, H and S series)
   * These CPUs will still boot without much issue, but note that no Macs are supported with consumer Ivy Bridge in Big Sur.
   * Ivy Bridge-E CPUs are still supported thanks to being in MacPro6,1
-* Ivy Bridge iGPUs.
-  * HD 4000 and HD 2500, initial developer beta forgot to remove drivers but more than likely to be removed in later updates.
+* Ivy Bridge iGPUs slated for removal
+  * HD 4000 and HD 2500, however currently these drivers are still present in 11.0.1
 * BCM4331 and BCM43224 based Wifi cards.
   * See [Wireless Buyers guide](https://dortania.github.io/Wireless-Buyers-Guide/) for potential cards to upgrade to.
   * Note, while AirPortBrcm4360.kext has been removed in Big Sur, support for the 4360 series cards have been moved into AirPortBrcmNIC.kext, which still exists.
@@ -298,7 +301,8 @@ This will be your short run down if you skipped the above:
       * WhateverGreen's DRM and -cdfon patches
 * Many Ivy Bridge and Haswell SMBIOS were dropped
   * See above for what SMBIOS to choose
-* Ivy Bridge iGPUs were dropped
+* Ivy Bridge iGPUs are to be dropped
+  * Currently in 11.0.1, these drivers are still present
 * BCM4331 and BCM43224 support was dropped
   * Solution listed here: [Legacy Wireless Kexts](https://github.com/khronokernel/IO80211-Patches)
 * X79 and X99 require SSDT-UNC
@@ -307,7 +311,7 @@ This will be your short run down if you skipped the above:
   * See above how to make it
 * AMD CPUs need their kernel patches updated
   * See above for new patches
-* OpenCore 0.6.0 or newer is required to boot
+* OpenCore 0.6.3 or newer is required to boot
 * Latest releases of all your kexts
 
 For the last 2, see here on how to update: [Updating OpenCore, Kexts and macOS](https://dortania.github.io/OpenCore-Post-Install/universal/update.html)
