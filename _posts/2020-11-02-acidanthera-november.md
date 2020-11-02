@@ -11,7 +11,11 @@ categories: Hackintosh updates
 
 # A message from vit9696
 
-{Insert inspirational message}
+Welcome back. Today we are pleased to announce one more autumn software iteration in preparation for Big Sur. Based on our experience with the seeds, I believe I can safely admit that we are ready for it. Even so, I advise everyone not to rush and instead skip a couple of point releases before transitioning your primary installation. The amount of changes within the operating system itself has affected application developers a lot more than us, and naturally it will take time before all the software has been updated to work correctly in Big Sur.
+
+With the November update we made further improvements in Apple Secure Boot support. The latest additions to Big Sur let us discover genuine issues in the implementation that were not critical to previous macOS versions. We fixed these problems and published the [ACDT0133PRU](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Errata/Errata.pdf) note to explain the nuances to the general audience. We expect that its contents will soon appear in Dortania guides in some way. For improved security and stability we recommend all the users to enable Apple Secure Boot.
+
+In addition to that, we resolved some long-standing problems with hardware configuration. In the current OpenCore version one can find SMBIOS memory property customization and Intel IGPU resolution patching for legacy systems contributed by [@Goldfish64](https://github.com/Goldfish64). We also included an ACPI table required by some X99 platforms for macOS 11 to function researched by [@RemB](https://github.com/remb). On the kext side, [@lvs1974](https://github.com/lvs1974) updated [SMCDellSensors](https://github.com/acidanthera/VirtualSMC) to improve Bluetooth audio stability, and [@black-dragon74](https://github.com/black-dragon74) contributed custom verb sending to [AppleALC](https://github.com/acidanthera/AppleALC/releases). Additionally [@0xFireWolf](https://github.com/0xFireWolf) continued the refactoring of IGPU patches in [WhateverGreen](WhateverGreen) and added automatic link rate calculation.
 
 - Vit
 
