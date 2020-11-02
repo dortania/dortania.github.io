@@ -191,7 +191,13 @@ Due to the new snapshot-based OS, installation now takes some extra time with se
 
 ### X79 and X99 Boot issues
 
-With macOS 11, Big Sur, IOPCIFamily went through a decent rewriting causing many of X99 patches to break and many X79 boards fail to boot as well with IOPCIFamily kernel panics. Currently no solution is available so we recommend staying on macOS Catalina until issues have been resolved, however Acidanthera is actively looking into the situation and the guides will be updated when new information is available.
+With macOS 11, Big Sur, IOPCIFamily went through a decent rewriting causing many of X99 patches to break and many X79 boards fail to boot as well with IOPCIFamily kernel panics. To resolve this issue, you'll need to disable the unused uncore bridge:
+
+* [SSDT-UNC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-UNC.dsl)
+
+You can also find prebuilts here for those who do not wish to compile the file themselves:
+
+* [Dortania's Pre-Built SSDTs](Pre-Built SSDTs)
 
 ### New RTC requirements
 
@@ -199,7 +205,9 @@ With macOS Big Sur, AppleRTC has become much more picky on making sure your OEM 
 
 * [SSDT-RTC0-RANGE](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-RTC0-RANGE.dsl)
 
-For those having boot issues on X299, this section is super important, you'll likely get stuck at `PCI Configuration Begins`
+For those having boot issues on X99 and X299, this section is super important, you'll likely get stuck at `PCI Configuration Begins`. You can also find prebuilts here for those who do not wish to compile the file themselves:
+
+* [Dortania's Pre-Built SSDTs](Pre-Built SSDTs)
 
 ### SATA Issues
 
@@ -293,9 +301,9 @@ This will be your short run down if you skipped the above:
 * Ivy Bridge iGPUs were dropped
 * BCM4331 and BCM43224 support was dropped
   * Solution listed here: [Legacy Wireless Kexts](https://github.com/khronokernel/IO80211-Patches)
-* X79 and X99 no longer boot
-  * Solution is currently being worked on inside Acidanthera
-* X299 requires SSDT-RTC0-RANGE
+* X79 and X99 require SSDT-UNC
+  * See above how to make it
+* X99 and X299 requires SSDT-RTC0-RANGE
   * See above how to make it
 * AMD CPUs need their kernel patches updated
   * See above for new patches
