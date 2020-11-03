@@ -20,6 +20,70 @@ width="160" height="160"  />
 </p>
 </div>
                                                                                                   
+                                                                                                  
+     decoded keyboard list from AppleKeyboardLayouts-L.dat can be found <a 
+href="https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/AppleKeyboardLayouts" >here</a>. Using non-latin keyboard on 10.14
+     will not enable ABC keyboard, unlike previous and subsequent macOS versions, and is thus not recommended
+     in case 10.14 is needed.
+     </li>
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:security-mode
+     ASCII  string  defining  FireWire  security  mode.  Legacy,  can  be  found  in  IOFireWireFamily  source  code  in
+     <a 
+href="https://opensource.apple.com/source/IOFireWireFamily/IOFireWireFamily-473/IOFireWireFamily.kmodproj/IOFireWireController.cpp.auto.html" >IOFireWireController.cpp</a>. It is recommended not to set this variable, which may speedup system startup. Setting
+     to full is equivalent to not setting the variable and none disables FireWire security.
+     </li>
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:UIScale
+     One-byte data defining boot.efi user interface scaling. Should be 01 for normal screens and 02 for HiDPI
+     screens.
+     </li>
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:DefaultBackgroundColor
+     Four-byte BGRA data defining boot.efi user interface background colour. Standard colours include BF BF BF
+     00 (Light Gray) and 00 00 00 00 (Syrah Black). Other colours may be set at user’s preference.</li></ul>
+<a 
+ id="x1-51001r54"></a>
+<h4 class="subsectionHead"><span class="titlemark">9.5   </span> <a 
+ id="x1-520005"></a>Other Variables</h4>
+<!--l. 4109--><p class="noindent" >The following variables may be useful for certain configurations or troubleshooting:
+</p>
+     <ul class="itemize1">
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:boot-args
+     Kernel arguments, used to pass configuration to Apple kernel and drivers. There are many arguments, which
+     may be found by looking for the use of PE_parse_boot_argn function in the kernel or driver code. Some of the
+     known boot arguments include:
+         <ul class="itemize2">
+         <li class="itemize">acpi_layer=0xFFFFFFFF
+         </li>
+         <li class="itemize">acpi_level=0xFFFF5F (implies <a 
+href="https://github.com/acpica/acpica/blob/master/source/include/acoutput.h" >ACPI_ALL_COMPONENTS</a>)
+         </li>
+         <li class="itemize">arch=i386 (force kernel architecture to i386, see KernelArch)
+         </li>
+         <li class="itemize">batman=VALUE (AppleSmartBatteryManager debug mask)
+         </li>
+         <li class="itemize">batman-nosmc=1 (disable AppleSmartBatteryManager SMC interface)
+         </li>
+         <li class="itemize">cpus=VALUE (maximum number of CPUs used)
+         </li>
+         <li class="itemize">debug=VALUE (debug mask)
+         </li>
+         <li class="itemize">io=VALUE (IOKit debug mask)
+         </li>
+         <li class="itemize">keepsyms=1 (show panic log debug symbols)
+         </li>
+         <li class="itemize">kextlog=VALUE (kernel extension loading debug mask<span class="uwave">) </span>
+         </li>
+         <li class="itemize"><span class="uwave">nvram-log=1</span> <span class="uwave">(enables AppleEFINVRAM logs</span>)
+         </li>
+         <li class="itemize">nv_disable=1 (disables NVIDIA GPU acceleration)
+         </li>
+         <li class="itemize">nvda_drv=1 (legacy way to enable NVIDIA web driver, removed in 10.12)
+         </li>
+         <li class="itemize">npci=0x2000 (<a 
+href="https://www.insanelymac.com/forum/topic/260539-1068-officially-released/?do=findComment&comment=1707972" >legacy</a>, disables kIOPCIConfiguratorPFM64)
+         </li>
+         <li class="itemize">lapic_dont_panic=1
+         </li>
+                                                                                                  
 
 
 </body>
