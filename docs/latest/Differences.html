@@ -197,22 +197,23 @@ class="newline" />Description: Entry location depending on entry type.
      <li 
   class="enumerate" id="x1-46014x7"><span class="uwave">RealPath</span><br 
 class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
-class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">false</span><br 
 class="newline" /><span class="uwave">Description</span><span class="uwave">: Pass full path to the tool when launching. </span>
      <!--l. 3888--><p class="noindent" ><span class="uwave">Passing tool directory may be unsafe for tool accidentally trying to access files without checking their integrity and thus
                                                                                                   
                                                                                                   
      should generally be disabled. Reason to enable this property may include cases where tools cannot work without external
-     files. </span>
-     </p><!--l. 3890--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: This property is only valid for </span><span class="uwave">Tools</span><span class="uwave">. For </span><span class="uwave">Entries</span> <span class="uwave">this property cannot be specified and is always </span><span class="uwave">true</span><span class="uwave">.
+     files or may need them for better function (e.g. </span><span class="uwave">memtest86</span> <span class="uwave">for logging and configuration or </span><span class="uwave">Shell</span> <span class="uwave">for automatic script
+     execution). </span>
+     </p><!--l. 3892--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: This property is only valid for </span><span class="uwave">Tools</span><span class="uwave">. For </span><span class="uwave">Entries</span> <span class="uwave">this property cannot be specified and is always </span><span class="uwave">true</span><span class="uwave">.
      </span>
      </p></li>
      <li 
   class="enumerate" id="x1-46016x8"><span class="uwave">TextMode</span><br 
 class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
-class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">false</span><br 
 class="newline" /><span class="uwave">Description</span><span class="uwave">: Run the entry in text mode instead of graphics mode. </span>
-     <!--l. 3903--><p class="noindent" ><span class="uwave">This setting may be benefitial to some older tools that require text output. By default all the tools are launched in
+     <!--l. 3905--><p class="noindent" ><span class="uwave">This setting may be benefitial to some older tools that require text output. By default all the tools are launched in
      graphics mode. Read more about text modes in </span>?? <span class="uwave">section below. </span>
 </p>
      </li></ol>
@@ -224,10 +225,10 @@ class="newline" /><span class="uwave">Description</span><span class="uwave">: Ru
  id="x1-47001r49"></a>
 <h4 class="subsectionHead"><span class="titlemark">9.1   </span> <a 
  id="x1-480001"></a>Introduction</h4>
-<!--l. 3912--><p class="noindent" >Has plist dict type and allows to set volatile UEFI variables commonly referred as NVRAM variables. Refer to man nvram
+<!--l. 3914--><p class="noindent" >Has plist dict type and allows to set volatile UEFI variables commonly referred as NVRAM variables. Refer to man nvram
 for more details. macOS extensively uses NVRAM variables for OS — Bootloader — Firmware intercommunication, and thus
 supplying several NVRAM is required for proper macOS functioning.
-</p><!--l. 3918--><p class="noindent" >Each NVRAM variable consists of its name, value, attributes (refer to UEFI specification), and its <a 
+</p><!--l. 3920--><p class="noindent" >Each NVRAM variable consists of its name, value, attributes (refer to UEFI specification), and its <a 
 href="https://en.wikipedia.org/wiki/Universally_unique_identifier" >GUID</a>, representing which
 ‘section’ NVRAM variable belongs to. macOS uses several GUIDs, including but not limited to:
 </p>
@@ -239,9 +240,9 @@ href="https://en.wikipedia.org/wiki/Universally_unique_identifier" >GUID</a>, re
      <li class="itemize">8BE4DF61-93CA-11D2-AA0D-00E098032B8C (EFI_GLOBAL_VARIABLE_GUID)
      </li>
      <li class="itemize">4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102 (OC_VENDOR_VARIABLE_GUID)</li></ul>
-<!--l. 3940--><p class="noindent" >Note: Some of the variables may be added by ?? or ?? subsections of ?? section. Please ensure that variables of this section
+<!--l. 3942--><p class="noindent" >Note: Some of the variables may be added by ?? or ?? subsections of ?? section. Please ensure that variables of this section
 never collide with them, as behaviour is undefined otherwise.
-</p><!--l. 3947--><p class="noindent" >For proper macOS functioning it is often required to use OC_FIRMWARE_RUNTIME protocol implementation currently offered as a
+</p><!--l. 3949--><p class="noindent" >For proper macOS functioning it is often required to use OC_FIRMWARE_RUNTIME protocol implementation currently offered as a
 part of OpenRuntime driver. While it brings any benefits, there are certain limitations which arise depending on the
 use.
      </p><ol  class="enumerate1" >
@@ -260,10 +261,10 @@ class="newline" />Type: plist dict<br
 class="newline" />Description: Sets NVRAM variables from a map (plist dict) of GUIDs to a map (plist dict) of variable
      names and their values in plist metadata format. GUIDs must be provided in canonic string format in upper
      or lower case (e.g. 8BE4DF61-93CA-11D2-AA0D-00E098032B8C).
-     <!--l. 3970--><p class="noindent" >Created variables get EFI_VARIABLE_BOOTSERVICE_ACCESS and EFI_VARIABLE_RUNTIME_ACCESS attributes set.
-     Variables will only be set if not present or deleted. I.e. to overwrite an existing variable value add the variable
                                                                                                   
                                                                                                   
+     decoded keyboard list from AppleKeyboardLayouts-L.dat can be found <a 
+href="https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/AppleKeyboardLayouts" >here</a>. Using non-latin keyboard on 10.14
      will not enable ABC keyboard, unlike previous and subsequent macOS versions, and is thus not recommended
      in case 10.14 is needed.
      </li>
@@ -284,7 +285,7 @@ href="https://opensource.apple.com/source/IOFireWireFamily/IOFireWireFamily-473/
  id="x1-51001r54"></a>
 <h4 class="subsectionHead"><span class="titlemark">9.5   </span> <a 
  id="x1-520005"></a>Other Variables</h4>
-<!--l. 4155--><p class="noindent" >The following variables may be useful for certain configurations or troubleshooting:
+<!--l. 4157--><p class="noindent" >The following variables may be useful for certain configurations or troubleshooting:
 </p>
      <ul class="itemize1">
      <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:boot-args
@@ -324,7 +325,6 @@ href="https://www.insanelymac.com/forum/topic/260539-1068-officially-released/?d
          </li>
          <li class="itemize">lapic_dont_panic=1
          </li>
-         <li class="itemize">slide=VALUE (manually set KASLR slide)
                                                                                                   
 
 
