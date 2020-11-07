@@ -140,9 +140,151 @@ class="newline" />Description: Define Disk Image (DMG) loading policy used for m
          will cause a boot failure when Apple Secure Boot is activated.</li></ul>
                                                                                                   
                                                                                                   
+     /Volumes/Preboot/&#x003C;UUID&#x003E;/System/Library/CoreServices. Here &#x003C;UUID&#x003E; is the system volume identifier. On
+     HFS+ installations the manifests should be copied to /System/Library/CoreServices on the system
+     volume.
+     </p><!--l. 3818--><p class="noindent" >For more details on how to configure Apple Secure Boot with UEFI Secure Boot refer to ?? section.
+</p>
+     </li></ol>
+<a 
+ id="x1-45065r48"></a>
+<h4 class="subsectionHead"><span class="titlemark">8.6   </span> <a 
+ id="x1-460006"></a>Entry Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-46002x1">Arguments<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty string<br 
+class="newline" />Description: Arbitrary ASCII string used as boot arguments (load options) of the specified entry.
+     </li>
+     <li 
+  class="enumerate" id="x1-46004x2">Auxiliary<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: This entry will not be listed by default when HideAuxiliary is set to true.
+     </li>
+     <li 
+  class="enumerate" id="x1-46006x3">Comment<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty string<br 
+class="newline" />Description: Arbitrary ASCII string used to provide human readable reference for the entry. It is implementation
+     defined whether this value is used.
+     </li>
+     <li 
+  class="enumerate" id="x1-46008x4">Enabled<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: This entry will not be listed unless set to true.
+     </li>
+     <li 
+  class="enumerate" id="x1-46010x5">Name<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty string<br 
+class="newline" />Description: Human readable entry name displayed in boot picker.
+     </li>
+     <li 
+  class="enumerate" id="x1-46012x6">Path<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty string<br 
+class="newline" />Description: Entry location depending on entry type.
+         <ul class="itemize1">
+         <li class="itemize">Entries specify external boot options, and therefore take device paths in Path key. These values are not
+         checked, thus be extremely careful. Example: PciRoot(0x0)/Pci(0x1,0x1)/.../\EFI\COOL.EFI
+         </li>
+         <li class="itemize">Tools specify internal boot options, which are part of bootloader vault, and therefore take file paths relative
+         to OC/Tools directory. Example: OpenShell.efi.</li></ul>
+     </li>
+     <li 
+  class="enumerate" id="x1-46014x7"><span class="uwave">RealPath</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Pass full path to the tool when launching. </span>
+     <!--l. 3888--><p class="noindent" ><span class="uwave">Passing tool directory may be unsafe for tool accidentally trying to access files without checking their integrity and thus
+                                                                                                  
+                                                                                                  
+     should generally be disabled. Reason to enable this property may include cases where tools cannot work without external
+     files. </span>
+     </p><!--l. 3890--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: This property is only valid for </span><span class="uwave">Tools</span><span class="uwave">. For </span><span class="uwave">Entries</span> <span class="uwave">this property cannot be specified and is always </span><span class="uwave">true</span><span class="uwave">.
+     </span>
+     </p></li>
+     <li 
+  class="enumerate" id="x1-46016x8"><span class="uwave">TextMode</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Run the entry in text mode instead of graphics mode. </span>
+     <!--l. 3903--><p class="noindent" ><span class="uwave">This setting may be benefitial to some older tools that require text output. By default all the tools are launched in
+     graphics mode. Read more about text modes in </span>?? <span class="uwave">section below. </span>
+</p>
+     </li></ol>
+<a 
+ id="x1-46017r43"></a>
+<h3 class="sectionHead"><span class="titlemark">9   </span> <a 
+ id="x1-470009"></a>NVRAM</h3>
+<a 
+ id="x1-47001r49"></a>
+<h4 class="subsectionHead"><span class="titlemark">9.1   </span> <a 
+ id="x1-480001"></a>Introduction</h4>
+<!--l. 3912--><p class="noindent" >Has plist dict type and allows to set volatile UEFI variables commonly referred as NVRAM variables. Refer to man nvram
+for more details. macOS extensively uses NVRAM variables for OS — Bootloader — Firmware intercommunication, and thus
+supplying several NVRAM is required for proper macOS functioning.
+</p><!--l. 3918--><p class="noindent" >Each NVRAM variable consists of its name, value, attributes (refer to UEFI specification), and its <a 
+href="https://en.wikipedia.org/wiki/Universally_unique_identifier" >GUID</a>, representing which
+‘section’ NVRAM variable belongs to. macOS uses several GUIDs, including but not limited to:
+</p>
+     <ul class="itemize1">
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14 (APPLE_VENDOR_VARIABLE_GUID)
+     </li>
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82 (APPLE_BOOT_VARIABLE_GUID)
+     </li>
+     <li class="itemize">8BE4DF61-93CA-11D2-AA0D-00E098032B8C (EFI_GLOBAL_VARIABLE_GUID)
+     </li>
+     <li class="itemize">4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102 (OC_VENDOR_VARIABLE_GUID)</li></ul>
+<!--l. 3940--><p class="noindent" >Note: Some of the variables may be added by ?? or ?? subsections of ?? section. Please ensure that variables of this section
+never collide with them, as behaviour is undefined otherwise.
+</p><!--l. 3947--><p class="noindent" >For proper macOS functioning it is often required to use OC_FIRMWARE_RUNTIME protocol implementation currently offered as a
+part of OpenRuntime driver. While it brings any benefits, there are certain limitations which arise depending on the
+use.
+     </p><ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-48002x1">Not all tools may be aware of protected namespaces.<br 
+class="newline" />When RequestBootVarRouting is used Boot-prefixed variable access is restricted and protected in a separate
+     namespace. To access the original variables tools have to be aware of OC_FIRMWARE_RUNTIME logic.</li></ol>
+<a 
+ id="x1-48003r51"></a>
+<h4 class="subsectionHead"><span class="titlemark">9.2   </span> <a 
+ id="x1-490002"></a>Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-49002x1">Add<br 
+class="newline" />Type: plist dict<br 
+class="newline" />Description: Sets NVRAM variables from a map (plist dict) of GUIDs to a map (plist dict) of variable
+     names and their values in plist metadata format. GUIDs must be provided in canonic string format in upper
+     or lower case (e.g. 8BE4DF61-93CA-11D2-AA0D-00E098032B8C).
+     <!--l. 3970--><p class="noindent" >Created variables get EFI_VARIABLE_BOOTSERVICE_ACCESS and EFI_VARIABLE_RUNTIME_ACCESS attributes set.
+     Variables will only be set if not present or deleted. I.e. to overwrite an existing variable value add the variable
+                                                                                                  
+                                                                                                  
+     will not enable ABC keyboard, unlike previous and subsequent macOS versions, and is thus not recommended
+     in case 10.14 is needed.
+     </li>
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:security-mode
+     ASCII  string  defining  FireWire  security  mode.  Legacy,  can  be  found  in  IOFireWireFamily  source  code  in
+     <a 
+href="https://opensource.apple.com/source/IOFireWireFamily/IOFireWireFamily-473/IOFireWireFamily.kmodproj/IOFireWireController.cpp.auto.html" >IOFireWireController.cpp</a>. It is recommended not to set this variable, which may speedup system startup. Setting
+     to full is equivalent to not setting the variable and none disables FireWire security.
+     </li>
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:UIScale
+     One-byte data defining boot.efi user interface scaling. Should be 01 for normal screens and 02 for HiDPI
+     screens.
+     </li>
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:DefaultBackgroundColor
+     Four-byte BGRA data defining boot.efi user interface background colour. Standard colours include BF BF BF
+     00 (Light Gray) and 00 00 00 00 (Syrah Black). Other colours may be set at user’s preference.</li></ul>
+<a 
+ id="x1-51001r54"></a>
 <h4 class="subsectionHead"><span class="titlemark">9.5   </span> <a 
  id="x1-520005"></a>Other Variables</h4>
-<!--l. 4127--><p class="noindent" >The following variables may be useful for certain configurations or troubleshooting:
+<!--l. 4155--><p class="noindent" >The following variables may be useful for certain configurations or troubleshooting:
 </p>
      <ul class="itemize1">
      <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:boot-args
@@ -183,25 +325,6 @@ href="https://www.insanelymac.com/forum/topic/260539-1068-officially-released/?d
          <li class="itemize">lapic_dont_panic=1
          </li>
          <li class="itemize">slide=VALUE (manually set KASLR slide)
-         </li>
-         <li class="itemize">smcdebug=VALUE (AppleSMC debug mask)
-         </li>
-         <li class="itemize">-amd_no_dgpu_accel (alternative to <a 
-href="https://github.com/acidanthera/WhateverGreen" >WhateverGreen</a>’s -radvesa for new GPUs)
-         </li>
-         <li class="itemize">-nehalem_error_disable
-         </li>
-         <li class="itemize">-no_compat_check (disable model checking on 10.7+)
-         </li>
-         <li class="itemize">-s (single mode)
-         </li>
-         <li class="itemize">-v (verbose mode)
-         </li>
-         <li class="itemize">-x (safe mode)</li></ul>
-     <!--l. 4168--><p class="noindent" >There are multiple external places summarising macOS argument lists: <a 
-href="https://osxeon.wordpress.com/2015/08/10/boot-argument-options-in-os-x" >example 1</a>, <a 
-href="https://superuser.com/questions/255176/is-there-a-list-of-available-boot-args-for-darwin-os-x" >example 2</a>.
-     </p></li>
                                                                                                   
 
 
