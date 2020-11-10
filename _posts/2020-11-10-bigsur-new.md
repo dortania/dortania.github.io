@@ -309,7 +309,7 @@ What does this mean for both x86 based Macs and Hackintoshing in general? Well w
 
 For those still in denial and hope something like ARM Hackintoshes will arrive, please consider the following:
 
-* We have yet to see a ture iPhone "Hackintosh" and thus the likely hood of an ARM Hackintosh is unlikely as well
+* We have yet to see a true iPhone "Hackintosh" and thus the likely hood of an ARM Hackintosh is unlikely as well
   * There have been successful attempts to get the iOS kernel running in virtual machines, however much work is still to be done
 * Apple's use of "Apple Silicon" hints that ARM is not actually what future Macs will be running, instead we'll see highly customized chips *based* off ARM
   * For example, Apple will be heavily relying on hardware features such as [W^X](https://en.wikipedia.org/wiki/W%5EX), kernel memory protection, Pointer Auth, etc for security and thus both macOS and Applications will be dependant on it. This means hackintoshing on bare-metal(without a VM) will become extremely difficult without copious amounts of work
