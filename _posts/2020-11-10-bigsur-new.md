@@ -121,7 +121,7 @@ With regards to Secure Boot, now all officially supported Macs will also now sup
 While technically these security features are optional and can be disabled after installation, many features including OS updates will no longer work reliably once disabled. This is due to the heavy reliance of snapshots for OS updates, as mentioned above and so we highly encourage all users to ensure at minimum `SecureBootModel` is set to `Default` or [higher](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html).
 
 * **Note**: ApECID is not required for functionality, and can be skipped if so desired.
-* **Note 2**: OpenCore v0.6.3 or newer is required for Secure Boot in Big Sur.
+* **Note 2**: OpenCore 0.6.3 or newer is required for Secure Boot in Big Sur.
 
 ### No more symbols required
 
