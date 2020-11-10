@@ -237,7 +237,7 @@ With macOS Big Sur, AppleRTC has become much more picky on making sure your OEM 
 
 * [SSDT-RTC0-RANGE](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-RTC0-RANGE.dsl)
 
-For those having boot issues on X99 and X299, this section is super important, you'll likely get stuck at `PCI Configuration Begins`. You can also find prebuilts here for those who do not wish to compile the file themselves:
+For those having boot issues on X99 and X299, this section is super important; you'll likely get stuck at `PCI Configuration Begin`. You can also find prebuilts here for those who do not wish to compile the file themselves:
 
 * [Dortania's Pre-Built SSDTs](https://dortania.github.io/Getting-Started-With-ACPI/ssdt-methods/ssdt-prebuilt.html)
 
