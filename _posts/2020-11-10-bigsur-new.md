@@ -103,7 +103,7 @@ So for the past 15 years, macOS has been using the Prelinked Kernel as a form of
 How this differs to previous OSes:
 
 * Kexts can no longer be hot-loaded, instead requiring a reboot to load with `kmutil`
-* [The Secure Boot and standard kernel are now one(ie. no more dedicated Immutable Kernel)](#secure-boot-changes)
+* [All kernels now support Secure Boot(ie. no more dedicated `immutablekernel`)](#secure-boot-changes)
   * Now all Macs will have some form of basic Secure Boot support
 * [Symbols are no longer required](#no-more-symbols-required)
 
