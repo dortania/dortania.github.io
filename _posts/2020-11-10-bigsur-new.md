@@ -61,7 +61,7 @@ Love it or hate it, we've got a new UI more reminiscent of iOS 14 with hints of 
 
 You can check out Apple's site to get a better idea:
 
-* [Apple's Big sur Preview](https://www.apple.com/macos/big-sur-preview/)
+* [Apple's Big Sur Preview](https://www.apple.com/macos/big-sur-preview/)
 
 ## macOS Snapshotting
 
