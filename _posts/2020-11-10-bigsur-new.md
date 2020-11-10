@@ -223,7 +223,7 @@ Due to the new snapshot-based OS, installation now takes some extra time with se
 
 ### X79 and X99 Boot issues
 
-With macOS 11, Big Sur, IOPCIFamily went through a decent rewriting causing many of X99 patches to break and many X79 boards fail to boot as well with IOPCIFamily kernel panics. To resolve this issue, you'll need to disable the unused uncore bridge:
+With Big Sur, IOPCIFamily went through a decent rewriting causing many X79 and X99 boards to fail to boot as well as panic on IOPCIFamily. To resolve this issue, you'll need to disable the unused uncore bridge:
 
 * [SSDT-UNC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-UNC.dsl)
 
