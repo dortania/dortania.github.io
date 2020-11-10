@@ -125,7 +125,7 @@ While technically these security features are optional and can be disabled after
 
 ### No more symbols required
 
-This point is the most important part, as this is what we use for kext injection in OpenCore. Currently Apple has left symbols in place seemingly for debugging purposes however this is a bit worrying as Apple could outright remove symbols in later versions of macOS. But for macOS 11, Big Sur's cycle, we'll be good on that end however we'll be keeping an eye on future releases of macOS.
+This point is the most important part, as this is what we use for kext injection in OpenCore. Currently Apple has left symbols in place seemingly for debugging purposes however this is a bit worrying as Apple could outright remove symbols in later versions of macOS. But for Big Sur's cycle, we'll be good on that end however we'll be keeping an eye on future releases of macOS.
 
 ## New Kernel Requirements
 
