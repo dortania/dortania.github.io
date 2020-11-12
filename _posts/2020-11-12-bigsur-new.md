@@ -11,9 +11,6 @@ It's that time of year again, and we've got a new version of macOS on our hands!
 
 As with [previous years](https://dortania.github.io/hackintosh/updates/2019/10/07/catalina.html), we'll be going over what's changed in macOS and what you should be aware of as a macOS and Hackintosh enthusiast.
 
-<details>
-<summary>Table of Contents:</summary>
-
 * [Has Nvidia Support finally arrived?](#has-nvidia-support-finally-arrived)
 * [What has changed on the surface](#what-has-changed-on-the-surface)
   * [A whole new iOS-like UI](#a-whole-new-ios-like-ui)
@@ -43,9 +40,6 @@ As with [previous years](https://dortania.github.io/hackintosh/updates/2019/10/0
   * [Clover's revival? A frankenstein of a bootloader](#clovers-revival-a-frankenstein-of-a-bootloader)
   * [Death of x86 and the future of Hackintoshing](#death-of-x86-and-the-future-of-hackintoshing)
 * [Getting ready for macOS 11, Big Sur](#getting-ready-for-macos-11-big-sur)
-
-</details>
-<br>
 
 # Has Nvidia Support finally arrived?
 
@@ -215,13 +209,7 @@ Currently only certain hardware has been officially dropped:
 
 Due to the new snapshot-based OS, installation now takes some extra time with sealing. If you get stuck at `Forcing CS_RUNTIME for entitlement`, **do not shutdown**. This will corrupt your install and break the sealing process, so please be patient:
 
-<details>
-<summary>macOS Sealing Example</summary>
-
 ![](https://github.com/dortania/OpenCore-Install-Guide/blob/master/images/extras/big-sur/readme/cs-stuck.jpg?raw=true)
-
-</details>
-<br>
 
 ### X79 and X99 Boot issues
 
