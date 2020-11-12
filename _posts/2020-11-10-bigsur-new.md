@@ -346,6 +346,8 @@ This will be your short run down if you skipped the above:
 
 For the last 2, see here on how to update: [Updating OpenCore, Kexts and macOS](https://dortania.github.io/OpenCore-Post-Install/universal/update.html)
 
+In regards to downloading Big Sur, currently [gibMacOS](https://github.com/corpnewt/gibMacOS) in macOS or Apple's own software updater are the most reliable methods for grabbing the installer. Windows and Linux support is still unknown so please stand by as we continue to look into this situation, [macrecovery.py](https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/macrecovery) may be more reliable if you require the recovery package.
+
 And as with every year, the first few weeks to months of a new OS release are painful in the community. We **highly** advise users to stay away from Big Sur for first time installers. The reason is that we cannot determine whether issues are Apple related or with your specific machine, so it's best to install and debug a machine on a known working OS before testing out the new and shiny.
 
 For more in-depth troubleshooting with Big Sur, see here: [OpenCore and macOS 11: Big Sur](https://dortania.github.io/OpenCore-Install-Guide/extras/big-sur/)
