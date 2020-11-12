@@ -5,6 +5,8 @@ date:   2020-11-12 7:00:00 -0600
 categories: Hackintosh updates
 ---
 
+* [Reddit Thread](https://www.reddit.com/r/hackintosh/comments/jsziec/whats_new_in_macos_11_big_sur/)
+
 It's that time of year again, and we've got a new version of macOS on our hands! This year we've finally jumped off the 10.xx naming scheme and now going to 11! And with that, a lot has changed under the hood in macOS.
 
 As with [previous years](https://dortania.github.io/hackintosh/updates/2019/10/07/catalina.html), we'll be going over what's changed in macOS and what you should be aware of as a macOS and Hackintosh enthusiast.
