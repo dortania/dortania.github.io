@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "What's new in macOS 11, Big Sur!"
-date:   2020-11-10 7:00:00 -0600
+date:   2020-12-10 7:00:00 -0600
 categories: Hackintosh updates
 ---
 
