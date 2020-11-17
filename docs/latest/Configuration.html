@@ -2392,7 +2392,7 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Disables <tspan
   class="enumerate" id="x1-38028x7"><tspan class="ec-lmtt-10">DisableLinkeditJettison</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-10">plist</tspan><tspan class="ec-lmtt-10"> boolean</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: <tspan class="ec-lmtt-10">false</tspan><br 
-class="newline" /><tspan class="ec-lmbx-10">Requirement</tspan>: 11.0<br 
+class="newline" /><tspan class="ec-lmbx-10">Requirement</tspan>: 11<br 
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Disables <tspan class="ec-lmtt-10">__LINKEDIT </tspan>jettison code.
      <!--l. 2362--><p class="noindent" >This option lets <tspan class="ec-lmtt-10">Lilu.kext </tspan>and possibly some others function in macOS Big Sur with best performance without
      <tspan class="ec-lmtt-10">keepsyms=1 </tspan>boot argument.
@@ -2434,7 +2434,7 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Apply icon type
   class="enumerate" id="x1-38036x11"><tspan class="ec-lmtt-10">ForceSecureBootScheme</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-10">plist</tspan><tspan class="ec-lmtt-10"> boolean</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: <tspan class="ec-lmtt-10">false</tspan><br 
-class="newline" /><tspan class="ec-lmbx-10">Requirement</tspan>: 11.0<br 
+class="newline" /><tspan class="ec-lmbx-10">Requirement</tspan>: 11<br 
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Force <tspan class="ec-lmtt-10">x86 </tspan>scheme for IMG4 verification.
      <!--l. 2411--><p class="noindent" ><tspan class="ec-lmri-10">Note</tspan>: This option is required on virtual machines when using <tspan class="ec-lmtt-10">SecureBootModel </tspan>different from <tspan class="ec-lmtt-10">x86legacy</tspan>.
      </p></li>
@@ -2788,7 +2788,7 @@ class="td11">     —       </td>
 </tr><tr 
 class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-3-8-"><td  style="white-space:normal; text-align:left;" id="TBL-3-8-1"  
-class="td11"><!--l. 2642--><p class="noindent" >11.0+        </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-2"  
+class="td11"><!--l. 2642--><p class="noindent" >11+          </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-2"  
 class="td11">   —     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-3"  
 class="td11">   —     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-4"  
 class="td11">   —     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-5"  
@@ -3518,8 +3518,8 @@ class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: <tspan class="ec-l
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Apple Enclave Identifier.
      <!--l. 3351--><p class="noindent" >Setting this value to any non-zero 64-bit integer will allow using personalised Apple Secure Boot identifiers. To
      use this setting, make sure to generate a random 64-bit number with a cryptographically secure random number
-     generator. As an alternative, first 8 bytes of <tspan class="ec-lmtt-10">SystemUUID </tspan>can be used for <tspan class="ec-lmtt-10">ApECID</tspan>, this is found in macOS 11.0
-     for Macs without the T2 chip.
+     generator. As an alternative, first 8 bytes of <tspan class="ec-lmtt-10">SystemUUID </tspan>can be used for <tspan class="ec-lmtt-10">ApECID</tspan>, this is found in macOS 11 for
+     Macs without the T2 chip.
      </p><!--l. 3358--><p class="noindent" >With this value set and <tspan class="ec-lmtt-10">SecureBootModel </tspan>valid and not <tspan class="ec-lmtt-10">Disabled </tspan>it is possible to achieve <a 
 href="https://support.apple.com/en-us/HT208330" ><tspan class="ec-lmtt-10">Full Security</tspan></a> of
      Apple Secure Boot.
@@ -3540,7 +3540,7 @@ href="#x1-450207">DMG loading</a> needs to be set to <tspan class="ec-lmtt-10">S
  id="x1-45008r2"></a></span><tspan class="ec-lmtt-10"> </tspan><tspan class="ec-lmtt-10"> </tspan><tspan class="ec-lmtt-10">-</tspan><tspan class="ec-lmtt-10">-</tspan><tspan class="ec-lmtt-10">boote</tspan><tspan class="ec-lmtt-10">fi</tspan><tspan class="ec-lmtt-10"> </tspan><tspan class="ec-lmtt-10">-</tspan><tspan class="ec-lmtt-10">-</tspan><tspan class="ec-lmtt-10">personalize</tspan>
      
      </div>
-     <!--l. 3381--><p class="noindent" >Before macOS 11.0, which introduced a dedicated <tspan class="ec-lmtt-10">x86legacy </tspan>model for models without the T2 chip, personalised Apple
+     <!--l. 3381--><p class="noindent" >Before macOS 11, which introduced a dedicated <tspan class="ec-lmtt-10">x86legacy </tspan>model for models without the T2 chip, personalised Apple
      Secure Boot may not work as expected. When reinstalling the operating system, macOS Installer from macOS 10.15 and
      older, will usually run out of free memory on the <tspan class="ec-lmtt-10">/var/tmp </tspan>partition when trying to install macOS with the
      personalised Apple Secure Boot. Soon after downloading the macOS installer image an <tspan class="ec-lmtt-10">Unable to verify</tspan>
@@ -3885,7 +3885,7 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Apple Secure Bo
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">j185f </tspan>— <tspan class="ec-lmtt-10">iMac20,2 (August 2020) minimum macOS 10.15.6 (19G2005)</tspan>
          </li>
-         <li class="itemize"><tspan class="ec-lmtt-10">x86legacy </tspan>— <tspan class="ec-lmtt-10">Macs and VMs without T2 chip minimum macOS 11.0</tspan></li></ul>
+         <li class="itemize"><tspan class="ec-lmtt-10">x86legacy </tspan>— <tspan class="ec-lmtt-10">Macs and VMs without T2 chip minimum macOS 11.0.1 (20B29)</tspan></li></ul>
      <!--l. 3739--><p class="noindent" >Apple Secure Boot appeared in macOS 10.13 on models with T2 chips. Since <tspan class="ec-lmtt-10">PlatformInfo </tspan>and <tspan class="ec-lmtt-10">SecureBootModel </tspan>are
      independent, Apple Secure Boot can be used with any SMBIOS with and without T2. Setting <tspan class="ec-lmtt-10">SecureBootModel </tspan>to any
      valid value but <tspan class="ec-lmtt-10">Disabled </tspan>is equivalent to <a 

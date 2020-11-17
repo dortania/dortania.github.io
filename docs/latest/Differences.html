@@ -21,6 +21,8 @@ width="160" height="160"  />
 </div>
                                                                                                   
                                                                                                   
+     loaded by the firmware by default according to UEFI specification, and Bootstrap.efi can be registered as a
+     custom option to let OpenCore coexist with operating systems using BOOTx64.efi as their own loaders (e.g.
      Windows), see BootProtect for more details.
      </li>
      <li class="itemize">boot <br 
@@ -77,8 +79,6 @@ class="newline" />0-terminator) will be accessible within OpenCore.
 <h4 class="subsectionHead"><span class="titlemark">3.2   </span> <a 
  id="x1-100002"></a>Installation and Upgrade</h4>
 <!--l. 630--><p class="noindent" >To install OpenCore reflect the ?? described in the previous section on a EFI volume of a GPT partition. While corresponding
-sections of this document do provide some information regarding external resources such as ACPI tables, UEFI drivers, or
-kernel extensions (kexts), completeness of the matter is out of the scope of this document. Information about kernel extensions
                                                                                                   
                                                                                                   
 <!--l. 1299--><p class="noindent" >When debugging sleep issues Power Nap and automatic power off may be (temporarily) disabled, which appear to sometimes
@@ -204,6 +204,253 @@ href="https://web.archive.org/web/20200517125051/https://support.apple.com/en-us
      </p></li>
                                                                                                   
                                                                                                   
+     
+     
+     
+     
+     
+     
+      
+     
+     
+     
+      
+     
+     
+     
+      
+     
+     
+     
+      
+     
+     
+     
+      
+     
+     
+                                                                                                  
+                                                                                                  
+     <div class="center" 
+>
+<!--l. 2689--><p class="noindent" >
+</p>
+<div class="tabular"> <table id="TBL-3" class="tabular" 
+ 
+><colgroup id="TBL-3-1g"><col 
+id="TBL-3-1" /></colgroup><colgroup id="TBL-3-2g"><col 
+id="TBL-3-2" /></colgroup><colgroup id="TBL-3-3g"><col 
+id="TBL-3-3" /></colgroup><colgroup id="TBL-3-4g"><col 
+id="TBL-3-4" /></colgroup><colgroup id="TBL-3-5g"><col 
+id="TBL-3-5" /></colgroup><colgroup id="TBL-3-6g"><col 
+id="TBL-3-6" /></colgroup><colgroup id="TBL-3-7g"><col 
+id="TBL-3-7" /></colgroup><colgroup id="TBL-3-8g"><col 
+id="TBL-3-8" /></colgroup><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-1-"><td  style="white-space:normal; text-align:left;" id="TBL-3-1-1"  
+class="td 1"><!--l. 2692--><p class="noindent" >macOS   </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-1-2"  
+class="td11">i386 NC</td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-1-3"  
+class="td11">i386 MK</td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-1-4"  
+class="td11">i386 PK</td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-1-5"  
+class="td11">x86_64 NC</td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-1-6"  
+class="td11">x86_64 MK</td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-1-7"  
+class="td11">x86_64 PK</td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-1-8"  
+class="td11">x86_64 KC</td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-2-"><td  style="white-space:normal; text-align:left;" id="TBL-3-2-1"  
+class="td11"><!--l. 2694--><p class="noindent" >10.4          </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-2"  
+class="td11">  YES   </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-3"  
+class="td11">YES (V1)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-4"  
+class="td11"> NO (V1) </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-5"  
+class="td11">     —       </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-6"  
+class="td11">     —        </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-7"  
+class="td11">     —       </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-8"  
+class="td11">     —       </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-3-"><td  style="white-space:normal; text-align:left;" id="TBL-3-3-1"  
+class="td11"><!--l. 2696--><p class="noindent" >10.5          </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-2"  
+class="td11">  YES   </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-3"  
+class="td11">YES (V1)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-4"  
+class="td11"> NO (V1) </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-5"  
+class="td11">     —       </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-6"  
+class="td11">     —        </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-7"  
+class="td11">     —       </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-8"  
+class="td11">     —       </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-4-"><td  style="white-space:normal; text-align:left;" id="TBL-3-4-1"  
+class="td11"><!--l. 2698--><p class="noindent" >10.6          </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-2"  
+class="td11">  YES   </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-3"  
+class="td11">YES (V2)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-4"  
+class="td11">YES (V2)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-5"  
+class="td11">    YES      </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-6"  
+class="td11">  YES (V2)   </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-7"  
+class="td11"> YES (V2)  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-8"  
+class="td11">     —       </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-5-"><td  style="white-space:normal; text-align:left;" id="TBL-3-5-1"  
+class="td11"><!--l. 2700--><p class="noindent" >10.7          </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-2"  
+class="td11">  YES   </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-3"  
+class="td11">   —     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-4"  
+class="td11">YES (V3)</td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-5"  
+class="td11">    YES      </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-6"  
+class="td11">     —        </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-7"  
+class="td11"> YES (V3)  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-8"  
+class="td11">     —       </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-6-"><td  style="white-space:normal; text-align:left;" id="TBL-3-6-1"  
+class="td11"><!--l. 2702--><p class="noindent" >10.8-10.9    </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-2"  
+class="td11">   —     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-3"  
+class="td11">   —     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-4"  
+class="td11">   —     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-5"  
+class="td11">    YES      </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-6"  
+class="td11">     —        </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-7"  
+class="td11"> YES (V3)  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-8"  
+class="td11">     —       </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-7-"><td  style="white-space:normal; text-align:left;" id="TBL-3-7-1"  
+class="td11"><!--l. 2704--><p class="noindent" >10.10-10.15 </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-2"  
+class="td11">   —     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-3"  
+class="td11">   —     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-4"  
+class="td11">   —     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-5"  
+class="td11">     —       </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-6"  
+class="td11">     —        </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-7"  
+class="td11"> YES (V3)  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-8"  
+class="td11">     —       </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-8-"><td  style="white-space:normal; text-align:left;" id="TBL-3-8-1"  
+class="td11"><!--l. 2706--><p class="noindent" ><span class="sout">11.0</span><span class="uwave">11</span>+     </p></td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-2"  
+class="td11">   —     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-3"  
+class="td11">   —     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-4"  
+class="td11">   —     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-5"  
+class="td11">     —       </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-6"  
+class="td11">     —        </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-7"  
+class="td11"> YES (V3)  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-8"  
+class="td11">    YES      </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-9-"><td  style="white-space:normal; text-align:left;" id="TBL-3-9-1"  
+class="td11">          </td>
+</tr></table></div></div>
+     <!--l. 2711--><p class="noindent" >Note: First version (V1) of 32-bit prelinkedkernel is unsupported due to kext symbol tables being corrupted by the
+     tools. On these versions Auto will block prelinkedkernel booting. This also makes keepsyms=1 for kext frames broken
+     on these systems.
+</p>
+     </li></ol>
+<a 
+ id="x1-39021r33"></a>
+<h3 class="sectionHead"><span class="titlemark">8   </span> <a 
+ id="x1-400008"></a>Misc</h3>
+<a 
+ id="x1-40001r42"></a>
+<h4 class="subsectionHead"><span class="titlemark">8.1   </span> <a 
+ id="x1-410001"></a>Introduction</h4>
+<!--l. 2723--><p class="noindent" >This section contains miscellaneous configuration affecting OpenCore operating system loading behaviour as well as other
+entries, which do not go to any other section.
+</p><!--l. 2726--><p class="noindent" >OpenCore tries to follow “bless” model also known as “Apple Boot Policy”. The primary specialty of “bless” model is to
+allow embedding boot options within the file system (and be accessible through a specialised driver) as well as
+supporting a broader range of predefined boot paths compared to the removable media list found in the UEFI
+specification.
+</p><!--l. 2731--><p class="noindent" >Each partition will only be used for booting when it corresponds to “Scan policy”: a set of restrictions to only use partitions
+with specific file systems and from specific device types. Scan policy behaviour is discussed in ScanPolicy property
+description.
+</p><!--l. 2735--><p class="noindent" >Scan process starts with obtaining all the partitions filtered with “Scan policy”. Each partition may produce multiple primary
+and alternate options. Primary options describe operating systems installed on this media. Alternate options describe recovery
+options for the operating systems on the media. It is possible for alternate options to exist without primary options and vice
+versa. Be warned that the options may not necessarily describe the operating systems on the same partition. Each primary and
+alternate option can be an auxiliary option or not, refer to HideAuxiliary for more details. Algorithm to determine boot
+options behaves as follows:
+     </p><ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-41002x1">Obtain all available partition handles filtered by “Scan policy” (and driver availability).
+     </li>
+     <li 
+  class="enumerate" id="x1-41004x2">Obtain all available boot options from BootOrder UEFI variable.
+     </li>
+     <li 
+  class="enumerate" id="x1-41006x3">For each found boot option:
+         <ul class="itemize1">
+         <li class="itemize">Retrieve device path of the boot option.
+         </li>
+         <li class="itemize">Perform fixups (e.g. NVMe subtype correction) and expansion (e.g. for Boot Camp) of the device path.
+         </li>
+         <li class="itemize">Obtain device handle by locating device path of the resulting device path (ignore it on failure).
+         </li>
+         <li class="itemize">Find device handle in the list of partition handles (ignore it if missing).
+         </li>
+         <li class="itemize">For disk device paths (not specifying a bootloader) execute “bless” (may return &#x003E; 1 entry).
+                                                                                                  
+                                                                                                  
+     </p><!--l. 3399--><p class="noindent" >Note 2: Resetting NVRAM will also erase all the boot options otherwise not backed up with bless (e.g. Linux).
+     </p></li>
+     <li 
+  class="enumerate" id="x1-45004x2">AllowSetDefault<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Allow CTRL+Enter and CTRL+Index handling to set the default boot option in boot picker.
+     </li>
+     <li 
+  class="enumerate" id="x1-45006x3">ApECID<br 
+class="newline" />Type: plist integer, 64 bit<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Apple Enclave Identifier.
+     <!--l. 3415--><p class="noindent" >Setting this value to any non-zero 64-bit integer will allow using personalised Apple Secure Boot identifiers. To
+     use this setting, make sure to generate a random 64-bit number with a cryptographically secure random number
+     generator. As an alternative, first 8 bytes of SystemUUID can be used for ApECID, this is found in macOS <span class="sout">11.0
+     </span><span class="uwave">11 </span>for Macs without the T2 chip.
+     </p><!--l. 3422--><p class="noindent" >With this value set and SecureBootModel valid and not Disabled it is possible to achieve <a 
+href="https://support.apple.com/en-us/HT208330" >Full Security</a> of
+     Apple Secure Boot.
+     </p><!--l. 3427--><p class="noindent" >To start using personalised Apple Secure Boot, the operating system will have to be reinstalled or personalised.
+     Unless the operating system is personalised, macOS DMG recovery cannot be loaded. If DMG recovery is missing,
+     it can be downloaded with macrecovery utility and put to com.apple.recovery.boot as explained in ?? section.
+     Note that <a 
+href="#x1-450207">DMG loading</a> needs to be set to Signed to use any DMG with Apple Secure Boot.
+     </p><!--l. 3436--><p class="noindent" >To personalise an existing operating system use bless command after loading to macOS DMG recovery. Mount
+     the system volume partition, unless it has already been mounted, and execute the following command:
+</p>
+     <!--l. 3440-->
+<a 
+ id="x1-450053"></a>
+     <div class="lstlisting" id="listing-8"><span class="label"><a 
+ id="x1-45007r1"></a></span>bless bless --folder &#x0022;/Volumes/Macintosh HD/System/Library/CoreServices&#x0022; \ <br /><span class="label"><a 
+ id="x1-45008r2"></a></span>  --bootefi --personalize
+     
+     </div>
+     <!--l. 3445--><p class="noindent" >Before macOS <span class="sout">11.0</span><span class="uwave">11</span>, which introduced a dedicated x86legacy model for models without the T2 chip, personalised
+     Apple Secure Boot may not work as expected. When reinstalling the operating system, macOS Installer from macOS
+     10.15 and older, will usually run out of free memory on the /var/tmp partition when trying to install macOS with the
+     personalised Apple Secure Boot. Soon after downloading the macOS installer image an Unable to verify
+     macOS error message will appear. To workaround this issue allocate a dedicated RAM disk of 2 MBs for
+     macOS personalisation by entering the following commands in macOS recovery terminal before starting the
+     installation:
+</p>
+     <!--l. 3456-->
+     <div class="lstlisting" id="listing-9"><span class="label"><a 
+ id="x1-45009r1"></a></span>disk=$(hdiutil attach -nomount ram://4096) <br /><span class="label"><a 
+ id="x1-45010r2"></a></span>diskutil erasevolume HFS+ SecureBoot $disk <br /><span class="label"><a 
+ id="x1-45011r3"></a></span>diskutil unmount $disk <br /><span class="label"><a 
+ id="x1-45012r4"></a></span>mkdir /var/tmp/OSPersonalizationTemp <br /><span class="label"><a 
+ id="x1-45013r5"></a></span>diskutil mount -mountpoint /var/tmp/OSPersonalizationTemp $disk
+     
+     </div>
+     </li>
+     <li 
+  class="enumerate" id="x1-45015x4">AuthRestart<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Enable VirtualSMC-compatible authenticated restart.
+     <!--l. 3470--><p class="noindent" >Authenticated restart is a way to reboot FileVault 2 enabled macOS without entering the password. A dedicated terminal
+     command can be used to perform authenticated restarts: sudo fdesetup authrestart. It is also used when installing
+     operating system updates.
+                                                                                                  
+                                                                                                  
      </p><!--l. 3474--><p class="noindent" >VirtualSMC performs authenticated restart by saving disk encryption key split in NVRAM and RTC,
      which despite being removed as soon as OpenCore starts, may be considered a security risk and thus is
      optional.
@@ -261,6 +508,71 @@ class="newline" />Description: Define Disk Image (DMG) loading policy used for m
          </li>
          <li class="itemize">Any — any DMG images will mount as normal filesystems. Any policy is strongly not recommended and
          will cause a boot failure when Apple Secure Boot is activated.</li></ul>
+                                                                                                  
+                                                                                                  
+         <li class="itemize">j213 — MacBookPro15,4 (July 2019) minimum macOS 10.14.5 (18F2058)
+         </li>
+         <li class="itemize">j140a — MacBookAir8,2 (July 2019) minimum macOS 10.14.5 (18F2058)
+         </li>
+         <li class="itemize">j152f — MacBookPro16,1 (November 2019) minimum macOS 10.15.1 (19B2093)
+         </li>
+         <li class="itemize">j160 — MacPro7,1 (December 2019) minimum macOS 10.15.1 (19B88)
+         </li>
+         <li class="itemize">j230k — MacBookAir9,1 (March 2020) minimum macOS 10.15.3 (19D2064)
+         </li>
+         <li class="itemize">j214k — MacBookPro16,2 (May 2020) minimum macOS 10.15.4 (19E2269)
+         </li>
+         <li class="itemize">j223 — MacBookPro16,3 (May 2020) minimum macOS 10.15.4 (19E2265)
+         </li>
+         <li class="itemize">j215 — MacBookPro16,4 (June 2020) minimum macOS 10.15.5 (19F96)
+         </li>
+         <li class="itemize">j185 — iMac20,1 (August 2020) minimum macOS 10.15.6 (19G2005)
+         </li>
+         <li class="itemize">j185f — iMac20,2 (August 2020) minimum macOS 10.15.6 (19G2005)
+         </li>
+         <li class="itemize">x86legacy — Macs and VMs without T2 chip minimum macOS 11.0<span class="uwave">.1 (20B29)</span></li></ul>
+     <!--l. 3805--><p class="noindent" >Apple Secure Boot appeared in macOS 10.13 on models with T2 chips. Since PlatformInfo and SecureBootModel are
+     independent, Apple Secure Boot can be used with any SMBIOS with and without T2. Setting SecureBootModel to any
+     valid value but Disabled is equivalent to <a 
+href="https://support.apple.com/en-us/HT208330" >Medium Security</a> of Apple Secure Boot. The ApECID value must also be
+     specified to achieve Full Security. Check ForceSecureBootScheme when using Apple Secure Boot on a virtual
+     machine.
+     </p><!--l. 3815--><p class="noindent" >Enabling Apple Secure Boot is more demanding to incorrect configurations, buggy macOS installations, and unsupported
+     setups. Things to consider:
+         </p><ol  class="enumerate2" >
+         <li 
+  class="enumerate" id="x1-45052x1">As with T2 Macs, unsigned kernel drivers and several signed kernel drivers, including NVIDIA Web Drivers,
+         cannot be installed.
+         </li>
+         <li 
+  class="enumerate" id="x1-45054x2">The list of cached drivers may be different, resulting in the need to change the list of Added or Forced
+         kernel drivers. For example, IO80211Family cannot be injected in this case.
+         </li>
+         <li 
+  class="enumerate" id="x1-45056x3">System volume alterations on operating systems with sealing, such as macOS 11, may result in the operating
+         system being unbootable. Do not try to disable system volume encryption unless Apple Secure Boot is
+         disabled.
+         </li>
+         <li 
+  class="enumerate" id="x1-45058x4">If the platform requires certain settings, but they were not enabled, because the obvious issues did not
+         trigger before, boot failure might occur. Be extra careful with IgnoreInvalidFlexRatio or HashServices.
+         </li>
+         <li 
+  class="enumerate" id="x1-45060x5">Operating systems released before Apple Secure Boot landed (e.g. macOS 10.12 or earlier) will still boot
+         until UEFI Secure Boot is enabled. This is so, because from Apple Secure Boot point they are treated as
+         incompatible and are assumed to be handled by the firmware as Microsoft Windows is.
+         </li>
+         <li 
+  class="enumerate" id="x1-45062x6">On older CPUs (e.g. before Sandy Bridge) enabling Apple Secure Boot might cause slightly slower loading
+         by up to 1 second.
+         </li>
+         <li 
+  class="enumerate" id="x1-45064x7">Since Default value will increase with time to support the latest major release operating system, it is not
+         recommended to use ApECID and Default value together.</li></ol>
+     <!--l. 3842--><p class="noindent" >Sometimes the already installed operating system may have outdated Apple Secure Boot manifests on the
+     Preboot partition causing boot failure. If there is “OCB: Apple Secure Boot prohibits this boot entry,
+     enforcing!” message, it is likely the case. When this happens, either reinstall the operating system or copy the
+     manifests (files with .im4m extension, such as boot.efi.j137.im4m) from /usr/standalone/i386 to
                                                                                                   
                                                                                                   
      /Volumes/Preboot/&#x003C;UUID&#x003E;/System/Library/CoreServices. Here &#x003C;UUID&#x003E; is the system volume identifier. On
