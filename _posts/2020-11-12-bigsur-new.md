@@ -29,6 +29,7 @@ As with [previous years](https://dortania.github.io/hackintosh/updates/2019/10/0
     * [Dropped hardware](#dropped-hardware)
     * [Extra long install process](#extra-long-install-process)
     * [X79 and X99 Boot issues](#x79-and-x99-boot-issues)
+	* [Asus Z97 failing Stage 2 Installation](#asus-z97-failing-stage-2-installation)
     * [New RTC requirements](#new-rtc-requirements)
     * [SATA Issues](#sata-issues)
     * [Legacy GPU Patches currently unavailable](#legacy-gpu-patches-currently-unavailable)
@@ -165,6 +166,7 @@ For those running on AMD-Based CPUs, you'll want to also update your kernel patc
 * [Dropped hardware](#dropped-hardware)
 * [Extra long install process](#extra-long-install-process)
 * [X79 and X99 Boot issues](#x79-and-x99-boot-issues)
+* [Asus Z97 failing Stage 2 Installation](#asus-z97-failing-stage-2-installation)
 * [New RTC requirements](#new-rtc-requirements)
 * [SATA Issues](#sata-issues)
 
@@ -220,6 +222,15 @@ With Big Sur, IOPCIFamily went through a decent rewriting causing many X79 and X
 You can also find prebuilts here for those who do not wish to compile the file themselves:
 
 * [Dortania's Pre-Built SSDTs](https://dortania.github.io/Getting-Started-With-ACPI/ssdt-methods/ssdt-prebuilt.html)
+
+### Asus Z97 failing Stage 2 Installation
+
+With Big Sur, there's a higher reliance on native NVRAM for installation otherwise the installer will get stuck in a reboot loop. To resolve this you'll need to either:
+
+* Install Big Sur on another machine, then transfer the drive
+* Fix the motherboard's NVRAM
+
+For the latter, see here: [Haswell ASUS Z97 Big Sur Update Thread](https://www.reddit.com/r/hackintosh/comments/jw7qf1/haswell_asus_z97_big_sur_update_and_installation/)
 
 ### New RTC requirements
 
@@ -329,6 +340,8 @@ This will be your short run down if you skipped the above:
   * See above how to make it
 * X99 and X299 requires SSDT-RTC0-RANGE
   * See above how to make it
+* Asus Z97 needing to fix NVRAM
+  * See above
 * AMD CPUs need their kernel patches updated
   * See above for new patches
 * OpenCore 0.6.3 or newer is required to boot
