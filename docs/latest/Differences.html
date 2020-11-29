@@ -570,21 +570,25 @@ href="https://support.apple.com/en-us/HT208330" >Medium Security</a> of Apple Se
          </li>
          <li 
   class="enumerate" id="x1-45064x7">Since Default value will increase with time to support the latest major release operating system, it is not
-         recommended to use ApECID and Default value together.</li></ol>
-     <!--l. 3845--><p class="noindent" >Sometimes the already installed operating system may have outdated Apple Secure Boot manifests on the
+         recommended to use ApECID and Default value together.
+         </li>
+         <li 
+  class="enumerate" id="x1-45066x8"><span class="uwave">Installing macOS with Apple Secure Boot enabled is not possible while using HFS+ target volume. This
+         may include HFS+ formatted drives when no spare APFS drive is available. </span></li></ol>
+                                                                                                  
+                                                                                                  
+     <!--l. 3847--><p class="noindent" >Sometimes the already installed operating system may have outdated Apple Secure Boot manifests on the
      Preboot partition causing boot failure. If there is “OCB: Apple Secure Boot prohibits this boot entry,
-                                                                                                  
-                                                                                                  
      enforcing!” message, it is likely the case. When this happens, either reinstall the operating system or copy the
      manifests (files with .im4m extension, such as boot.efi.j137.im4m) from /usr/standalone/i386 to
      /Volumes/Preboot/&#x003C;UUID&#x003E;/System/Library/CoreServices. Here &#x003C;UUID&#x003E; is the system volume identifier. On
      HFS+ installations the manifests should be copied to /System/Library/CoreServices on the system
      volume.
-     </p><!--l. 3855--><p class="noindent" >For more details on how to configure Apple Secure Boot with UEFI Secure Boot refer to ?? section.
+     </p><!--l. 3857--><p class="noindent" >For more details on how to configure Apple Secure Boot with UEFI Secure Boot refer to ?? section.
 </p>
      </li></ol>
 <a 
- id="x1-45065r48"></a>
+ id="x1-45067r48"></a>
 <h4 class="subsectionHead"><span class="titlemark">8.6   </span> <a 
  id="x1-460006"></a>Entry Properties</h4>
      <ol  class="enumerate1" >
@@ -636,11 +640,11 @@ class="newline" />Description: Entry location depending on entry type.
 class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
 class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">false</span><br 
 class="newline" /><span class="uwave">Description</span><span class="uwave">: Pass full path to the tool when launching. </span>
-     <!--l. 3925--><p class="noindent" ><span class="uwave">Passing tool directory may be unsafe for tool accidentally trying to access files without checking their integrity and thus
+     <!--l. 3927--><p class="noindent" ><span class="uwave">Passing tool directory may be unsafe for tool accidentally trying to access files without checking their integrity and thus
      should generally be disabled. Reason to enable this property may include cases where tools cannot work without external
      files or may need them for better function (e.g. </span><span class="uwave">memtest86</span> <span class="uwave">for logging and configuration or </span><span class="uwave">Shell</span> <span class="uwave">for automatic script
      execution). </span>
-     </p><!--l. 3929--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: This property is only valid for </span><span class="uwave">Tools</span><span class="uwave">. For </span><span class="uwave">Entries</span> <span class="uwave">this property cannot be specified and is always </span><span class="uwave">true</span><span class="uwave">.
+     </p><!--l. 3931--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: This property is only valid for </span><span class="uwave">Tools</span><span class="uwave">. For </span><span class="uwave">Entries</span> <span class="uwave">this property cannot be specified and is always </span><span class="uwave">true</span><span class="uwave">.
      </span>
      </p></li>
      <li 
@@ -648,7 +652,7 @@ class="newline" /><span class="uwave">Description</span><span class="uwave">: Pa
 class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
 class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">false</span><br 
 class="newline" /><span class="uwave">Description</span><span class="uwave">: Run the entry in text mode instead of graphics mode. </span>
-     <!--l. 3942--><p class="noindent" ><span class="uwave">This setting may be benefitial to some older tools that require text output. By default all the tools are launched in
+     <!--l. 3944--><p class="noindent" ><span class="uwave">This setting may be benefitial to some older tools that require text output. By default all the tools are launched in
      graphics mode. Read more about text modes in </span>?? <span class="uwave">section below. </span>
 </p>
      </li></ol>
@@ -660,10 +664,10 @@ class="newline" /><span class="uwave">Description</span><span class="uwave">: Ru
  id="x1-47001r49"></a>
 <h4 class="subsectionHead"><span class="titlemark">9.1   </span> <a 
  id="x1-480001"></a>Introduction</h4>
-<!--l. 3951--><p class="noindent" >Has plist dict type and allows to set volatile UEFI variables commonly referred as NVRAM variables. Refer to man nvram
+<!--l. 3953--><p class="noindent" >Has plist dict type and allows to set volatile UEFI variables commonly referred as NVRAM variables. Refer to man nvram
 for more details. macOS extensively uses NVRAM variables for OS — Bootloader — Firmware intercommunication, and thus
 supplying several NVRAM is required for proper macOS functioning.
-</p><!--l. 3957--><p class="noindent" >Each NVRAM variable consists of its name, value, attributes (refer to UEFI specification), and its <a 
+</p><!--l. 3959--><p class="noindent" >Each NVRAM variable consists of its name, value, attributes (refer to UEFI specification), and its <a 
 href="https://en.wikipedia.org/wiki/Universally_unique_identifier" >GUID</a>, representing which
 ‘section’ NVRAM variable belongs to. macOS uses several GUIDs, including but not limited to:
 </p>
@@ -675,9 +679,9 @@ href="https://en.wikipedia.org/wiki/Universally_unique_identifier" >GUID</a>, re
      <li class="itemize">8BE4DF61-93CA-11D2-AA0D-00E098032B8C (EFI_GLOBAL_VARIABLE_GUID)
      </li>
      <li class="itemize">4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102 (OC_VENDOR_VARIABLE_GUID)</li></ul>
-<!--l. 3979--><p class="noindent" >Note: Some of the variables may be added by ?? or ?? subsections of ?? section. Please ensure that variables of this section
+<!--l. 3981--><p class="noindent" >Note: Some of the variables may be added by ?? or ?? subsections of ?? section. Please ensure that variables of this section
 never collide with them, as behaviour is undefined otherwise.
-</p><!--l. 3986--><p class="noindent" >For proper macOS functioning it is often required to use OC_FIRMWARE_RUNTIME protocol implementation currently offered as a
+</p><!--l. 3988--><p class="noindent" >For proper macOS functioning it is often required to use OC_FIRMWARE_RUNTIME protocol implementation currently offered as a
 part of OpenRuntime driver. While it brings any benefits, there are certain limitations which arise depending on the
 use.
      </p><ol  class="enumerate1" >
@@ -692,75 +696,5 @@ class="newline" />When RequestBootVarRouting is used Boot-prefixed variable acce
      <ol  class="enumerate1" >
      <li 
   class="enumerate" id="x1-49002x1">Add<br 
-class="newline" />Type: plist dict<br 
-class="newline" />Description: Sets NVRAM variables from a map (plist dict) of GUIDs to a map (plist dict) of variable
-     names and their values in plist metadata format. GUIDs must be provided in canonic string format in upper
-                                                                                                  
-                                                                                                  
-     locale and ABC keyboard. Also accepts short forms: ru:252 or ru:0 (U.S. keyboard, compatible with 10.9). Full
-     decoded keyboard list from AppleKeyboardLayouts-L.dat can be found <a 
-href="https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/AppleKeyboardLayouts" >here</a>. Using non-latin keyboard on 10.14
-     will not enable ABC keyboard, unlike previous and subsequent macOS versions, and is thus not recommended
-     in case 10.14 is needed.
-     </li>
-     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:security-mode
-     ASCII  string  defining  FireWire  security  mode.  Legacy,  can  be  found  in  IOFireWireFamily  source  code  in
-     <a 
-href="https://opensource.apple.com/source/IOFireWireFamily/IOFireWireFamily-473/IOFireWireFamily.kmodproj/IOFireWireController.cpp.auto.html" >IOFireWireController.cpp</a>. It is recommended not to set this variable, which may speedup system startup. Setting
-     to full is equivalent to not setting the variable and none disables FireWire security.
-     </li>
-     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:UIScale
-     One-byte data defining boot.efi user interface scaling. Should be 01 for normal screens and 02 for HiDPI
-     screens.
-     </li>
-     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:DefaultBackgroundColor
-     Four-byte BGRA data defining boot.efi user interface background colour. Standard colours include BF BF BF
-     00 (Light Gray) and 00 00 00 00 (Syrah Black). Other colours may be set at user’s preference.</li></ul>
-<a 
- id="x1-51001r54"></a>
-<h4 class="subsectionHead"><span class="titlemark">9.5   </span> <a 
- id="x1-520005"></a>Other Variables</h4>
-<!--l. 4194--><p class="noindent" >The following variables may be useful for certain configurations or troubleshooting:
-</p>
-     <ul class="itemize1">
-     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:boot-args
-     Kernel arguments, used to pass configuration to Apple kernel and drivers. There are many arguments, which
-     may be found by looking for the use of PE_parse_boot_argn function in the kernel or driver code. Some of the
-     known boot arguments include:
-         <ul class="itemize2">
-         <li class="itemize">acpi_layer=0xFFFFFFFF
-         </li>
-         <li class="itemize">acpi_level=0xFFFF5F (implies <a 
-href="https://github.com/acpica/acpica/blob/master/source/include/acoutput.h" >ACPI_ALL_COMPONENTS</a>)
-         </li>
-         <li class="itemize">arch=i386 (force kernel architecture to i386, see KernelArch)
-         </li>
-         <li class="itemize">batman=VALUE (AppleSmartBatteryManager debug mask)
-         </li>
-         <li class="itemize">batman-nosmc=1 (disable AppleSmartBatteryManager SMC interface)
-         </li>
-         <li class="itemize">cpus=VALUE (maximum number of CPUs used)
-         </li>
-         <li class="itemize">debug=VALUE (debug mask)
-         </li>
-         <li class="itemize">io=VALUE (IOKit debug mask)
-         </li>
-         <li class="itemize">keepsyms=1 (show panic log debug symbols)
-         </li>
-         <li class="itemize">kextlog=VALUE (kernel extension loading debug mask<span class="uwave">) </span>
-         </li>
-         <li class="itemize"><span class="uwave">nvram-log=1</span> <span class="uwave">(enables AppleEFINVRAM logs</span>)
-         </li>
-         <li class="itemize">nv_disable=1 (disables NVIDIA GPU acceleration)
-         </li>
-         <li class="itemize">nvda_drv=1 (legacy way to enable NVIDIA web driver, removed in 10.12)
-         </li>
-         <li class="itemize">npci=0x2000 (<a 
-href="https://www.insanelymac.com/forum/topic/260539-1068-officially-released/?do=findComment&comment=1707972" >legacy</a>, disables kIOPCIConfiguratorPFM64)
-         </li>
-         <li class="itemize">lapic_dont_panic=1
-                                                                                                  
-
-
-</body>
+class="newline" />Type: plist dict</body>
 </html>
