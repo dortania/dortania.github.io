@@ -34,7 +34,7 @@ Because of this philosophy, we've gained a lot of features most patchers cannot 
 * Only current way to boot Arrandale, Lynnfield and Clarkdale Macs
   * ie. iMac11,1, iMac11,2, iMac11,3, MacBookPro6,1, MacBookPro6,2, MacBookPro6,3
  
-We hope that the community can also use our tools to the fullest pottential, and we want to give a big thanks to Acidanthera for the countless hours, days, months and years spent working on tools used in our project such as OpenCorePkg, Lilu, WhateverGreen, etc 
+We hope that the community can also use our tools to the fullest potential, and we want to give some big thanks to Acidanthera for the countless hours, days, months and years spent working on tools used in our project such as OpenCorePkg, Lilu, WhateverGreen, etc 
 
 — Khronokernel
 
