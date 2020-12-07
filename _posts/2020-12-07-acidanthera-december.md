@@ -17,7 +17,7 @@ categories: Hackintosh updates
 
 # Dortania Updates
 
-This month has been a fairly quiet commit cycle for us on the guides, and thanks to this bit of peace we here at Dortania have been able to dedicate more time into ome smaller projects. The project we've been hard at work on this month has been our [OpenCore Legacy Patcher](https://github.com/dortania/Opencore-Legacy-Patcher). 
+This month has been a fairly quiet commit cycle for us on the guides, and thanks to this bit of peace we here at Dortania have been able to dedicate more time to some smaller projects. The project we've been hard at work on this month has been our [OpenCore Legacy Patcher](https://github.com/dortania/Opencore-Legacy-Patcher). 
 
 The goal of this tool is simple:
 
