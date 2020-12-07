@@ -31,7 +31,7 @@ Because of this philosophy, we've gained a lot of features most patchers cannot 
 * Full FileVault 2 support
 * APFS Snapshotting
 * Native IO80211 usage for many broadcom cards
-* Only current way to boot Arrendale, Lynnfield and Clarkdale Macs
+* Only current way to boot Arrandale, Lynnfield and Clarkdale Macs
   * ie. iMac11,1, iMac11,2, iMac11,3, MacBookPro6,1, MacBookPro6,2, MacBookPro6,3
  
 We hope that the community can also use our tools to the fullest pottential, and we want to give a big thanks to Acidanthera for the countless hours, days, months and years spent working on tools used in our project such as OpenCorePkg, Lilu, WhateverGreen, etc 
