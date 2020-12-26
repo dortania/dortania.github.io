@@ -21,26 +21,172 @@ width="160" height="160"  />
 </div>
                                                                                                   
                                                                                                   
-     
-     
-      
-      
-     
-         
-      
-     
-     
-      
-     
-     
-      
-     
-     
-     
-      
-     
-     
-      
-     
-      </body>
+     </p></li>
+     <li 
+  class="enumerate" id="x1-70010x5">MinimumVolume<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Minimal heard volume level from 0 to 100.
+     <!--l. 5961--><p class="noindent" >Screen reader will use this volume level, when the calculated volume level is less than MinimumVolume. Boot
+     chime sound will not play if the calculated volume level is less than MinimumVolume.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-70012x6">PlayChime<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: empty string<br 
+class="newline" />Description: Play chime sound at startup.
+     <!--l. 5971--><p class="noindent" >Enabling  this  setting  plays  boot  chime  through  builtin  audio  support.  Volume  level  is  determined  by
+     MinimumVolume and  VolumeAmplifier settings  and  SystemAudioVolume NVRAM  variable.  Possible  values
+     include:
+</p>
+         <ul class="itemize1">
+         <li class="itemize">Auto — Enables chime when StartupMute NVRAM variable is not present or set to 00.
+         </li>
+         <li class="itemize">Enabled — Enables chime unconditionally.
+         </li>
+         <li class="itemize">Disabled — Disables chime unconditionally.</li></ul>
+     <!--l. 5983--><p class="noindent" >Note: Enabled can be used in separate from StartupMute NVRAM variable to avoid conflicts when the firmware is able
+     to play boot chime.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-70014x7"><span class="uwave">SetupDelay</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist integer</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">0</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Audio codec reconfiguration delay in microseconds. </span>
+     <!--l. 5996--><p class="noindent" ><span class="uwave">Some codecs require a vendor-specific delay after the reconfiguration (e.g. volume setting). This option makes it
+     configurable. In general the necessary delay may be as long as 0.5 seconds. </span>
+     </p></li>
+     <li 
+  class="enumerate" id="x1-70016x8">VolumeAmplifier<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Multiplication coefficient for system volume to raw volume linear translation from 0 to
+     1000.
+     <!--l. 6005--><p class="noindent" >Volume level range read from SystemAudioVolume varies depending on the codec. To transform read
+     value in [0, 127] range into raw volume range [0, 100] the read value is scaled to VolumeAmplifier
+     percents:
+                                                                                                  
+                                                                                                  
+     File Vault 2 compatibility on platforms providing broken SHA-1 hashing. Can be diagnosed by invalid cursor
+     size with UIScale set to 02, in general platforms prior to APTIO V (Haswell and older) are affected.
+     </li>
+     <li 
+  class="enumerate" id="x1-73034x17">OSInfo<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Forcibly reinstalls OS Info protocol with builtin versions. This protocol is generally used to receive
+     notifications from macOS bootloader, by the firmware or by other applications.
+     </li>
+     <li 
+  class="enumerate" id="x1-73036x18">UnicodeCollation<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Forcibly reinstalls unicode collation services with builtin version. Should be set to true to ensure
+     UEFI Shell compatibility on platforms providing broken unicode collation. In general legacy Insyde and APTIO
+     platforms on Ivy Bridge and earlier are affected.
+     </li></ol>
+<a 
+ id="x1-73037r77"></a>
+<h4 class="subsectionHead"><span class="titlemark">11.12   </span> <a 
+ id="x1-7400012"></a>Quirks Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-74002x1"><span class="sout">DeduplicateBootOrder</span><span class="sout">Type</span><span class="sout">:  </span><span class="sout">plist boolean</span><span class="sout">Failsafe</span><span class="sout">:  </span><span class="sout">false</span><span class="sout">Description</span><span class="sout">:  Remove  duplicate  entries  in
+     </span><span class="sout">BootOrder</span> <span class="sout">variable in </span><span class="sout">EFI_GLOBAL_VARIABLE_GUID</span><span class="sout">. </span>
+     <!--l. 6559--><p class="noindent" ><span class="sout">This  quirk  requires  </span><span class="sout">RequestBootVarRouting</span> <span class="sout">to  be  enabled  and  therefore  </span><span class="sout">OC_FIRMWARE_RUNTIME</span> <span class="sout">protocol
+     implemented in </span><span class="sout">OpenRuntime.efi</span><span class="sout">. </span>
+     </p><!--l. 6567--><p class="noindent" ><span class="sout">By redirecting </span><span class="sout">Boot</span> <span class="sout">prefixed variables to a separate GUID namespace with the help of </span><span class="sout">RequestBootVarRouting</span> <span class="sout">quirk we
+     achieve multiple goals: </span></p>
+         <ul class="itemize1">
+         <li class="itemize"><span class="sout">Operating systems are jailed and only controlled by OpenCore boot environment to enhance security. </span>
+         </li>
+         <li class="itemize"><span class="sout">Operating systems do not mess with OpenCore boot priority, and guarantee fluent updates and hibernation
+         wakes for cases that require reboots with OpenCore in the middle. </span>
+         </li>
+         <li class="itemize"><span class="sout">Potentially incompatible boot entries, such as macOS entries, are not deleted or anyhow corrupted. </span></li></ul>
+     <!--l. 6598--><p class="noindent" ><span class="sout">However, some types of firmware do their own boot option scanning on startup by checking for file presence on the
+     available disks. This scanning often includes non-standard locations such as Windows Bootloader paths. This is typically
+     not an issue but some firmware, such as ASUS firmware on the APTIO V, have bugs. On such, scanning is
+     implemented improperly and firmware preferences may get accidentally corrupted due to </span><span class="sout">BootOrder</span> <span class="sout">entry
+     duplication (each option will be added twice) making it impossible to boot without resetting NVRAM.
+     </span>
+     </p><!--l. 6605--><p class="noindent" ><span class="sout">To trigger the bug, some valid boot options (e.g. OpenCore) are required. Then install Windows with
+     </span><span class="sout">RequestBootVarRouting</span> <span class="sout">enabled. As the Windows bootloader option will not be created by the Windows
+     installer, the firmware will attempt to create this itself, leading to a corruption of its boot option list.
+     </span>
+     </p><!--l. 6612--><p class="noindent" ><span class="sout">This quirk removes all duplicates in </span><span class="sout">BootOrder</span> <span class="sout">variable attempting to resolve the consequences of the bugs upon
+     OpenCore loading. It is recommended to use this key along with </span><span class="sout">BootProtect</span> <span class="sout">option. </span>
+     </p></li>
+     <li 
+  class="enumerate" id="x1-74004x2">ExitBootServicesDelay<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Adds delay in microseconds after EXIT_BOOT_SERVICES event.
+     <!--l. 6628--><p class="noindent" >This is a very rough workaround to circumvent the Still waiting for root device message on some APTIO IV
+                                                                                                  
+                                                                                                  
+     firmware (ASUS Z87-Pro) particularly when using FileVault 2. It appears that for some reason, they execute code in
+     parallel to EXIT_BOOT_SERVICES, which results in the SATA controller being inaccessible from macOS. A
+     better approach should be found in some future. Expect 3 to 5 seconds to be adequate when this quirk is
+     needed.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-74006x3">IgnoreInvalidFlexRatio<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Some types of firmware (such as APTIO IV) may contain invalid values in the MSR_FLEX_RATIO (0x194)
+     MSR register. These values may cause macOS boot failures on Intel platforms.
+     <!--l. 6642--><p class="noindent" >Note: While the option is not expected to harm unaffected firmware, its use is only recommended when it is specifically
+     required.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-74008x4">ReleaseUsbOwnership<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Attempt to detach USB controller ownership from the firmware driver. While most types of firmware
+     manage to do that properly, or at least have an option for this, some do not. As a result, the operating system may freeze
+     upon boot. Not recommended unless required.
+     </li>
+     <li 
+  class="enumerate" id="x1-74010x5">RequestBootVarRouting<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Request redirect of all Boot prefixed variables from EFI_GLOBAL_VARIABLE_GUID to <br 
+class="newline" />OC_VENDOR_VARIABLE_GUID.
+     <!--l. 6661--><p class="noindent" >This quirk requires OC_FIRMWARE_RUNTIME protocol implemented in OpenRuntime.efi. The quirk lets default boot entry
+     preservation at times when the firmware deletes incompatible boot entries. In summary, this quirk is required to reliably
+     use the <a 
+href="https://support.apple.com/HT202796" >Startup Disk</a> preference pane in firmware that is not compatible with macOS boot entries by
+     design.
+     </p><!--l. 6669--><p class="noindent" ><span class="uwave">By redirecting </span><span class="uwave">Boot</span> <span class="uwave">prefixed variables to a separate GUID namespace with the help of </span><span class="uwave">RequestBootVarRouting</span> <span class="uwave">quirk we
+     achieve multiple goals: </span></p>
+         <ul class="itemize1">
+         <li class="itemize"><span class="uwave">Operating systems are jailed and only controlled by OpenCore boot environment to enhance security. </span>
+         </li>
+         <li class="itemize"><span class="uwave">Operating systems do not mess with OpenCore boot priority, and guarantee fluent updates and hibernation
+         wakes for cases that require reboots with OpenCore in the middle. </span>
+         </li>
+         <li class="itemize"><span class="uwave">Potentially incompatible boot entries, such as macOS entries, are not deleted or anyhow corrupted. </span></li></ul>
+     </li>
+     <li 
+  class="enumerate" id="x1-74012x6">TscSyncTimeout<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Attempts to perform TSC synchronisation with a specified timeout.
+     <!--l. 6689--><p class="noindent" >The primary purpose of this quirk is to enable early bootstrap TSC synchronisation on some server and laptop models
+     when running a debug XNU kernel. For the debug kernel the TSC needs to be kept in sync across the
+     cores before any kext could kick in rendering all other solutions problematic. The timeout is specified in
+     microseconds and depends on the amount of cores present on the platform, the recommended starting value is
+     500000.
+     </p><!--l. 6695--><p class="noindent" >This is an experimental quirk, which should only be used for the aforementioned problem. In all other cases the quirk
+     may render the operating system unstable and is not recommended. The recommended solution in the other cases is to
+     install a kernel driver such as <a 
+href="https://github.com/RehabMan/VoodooTSCSync" >VoodooTSCSync</a>, <a 
+href="https://github.com/interferenc/TSCAdjustReset" >TSCAdjustReset</a>, or <a 
+href="https://github.com/lvs1974/CpuTscSync" >CpuTscSync</a> (a more specialised variant of
+     VoodooTSCSync for newer laptops).
+                                                                                                  
+
+
+</body>
 </html>
