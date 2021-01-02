@@ -21,13 +21,76 @@ width="160" height="160"  />
 </div>
                                                                                                   
                                                                                                   
+     <li class="itemize">NVRAM   namespaces,   allowing   to   isolate   operating   systems   from   accessing   select   variables   (e.g.
+     RequestBootVarRouting or ProtectSecureBoot).
+     </li>
+     <li class="itemize">Read-only and write-only NVRAM variables, enhancing the security of OpenCore, Lilu, and Lilu plugins, such
+     as VirtualSMC, which implements AuthRestart support.
+     </li>
+     <li class="itemize">NVRAM isolation, allowing to protect all variables from being written from an untrusted operating system (e.g.
+     DisableVariableWrite).
+     </li>
+     <li class="itemize">UEFI   Runtime   Services   memory   protection   management   to   workaround   read-only   mapping   (e.g.
+     EnableWriteUnprotector).</li></ul>
+<a 
+ id="x1-67001r71"></a>
+<h4 class="subsectionHead"><span class="titlemark">11.6   </span> <a 
+ id="x1-680006"></a>Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-68002x1">APFS<br 
+class="newline" />Type: plist dict<br 
+class="newline" />Failsafe: None<br 
+class="newline" />Description: Provide APFS support as configured in ?? section below.
+     </li>
+     <li 
+  class="enumerate" id="x1-68004x2">Audio<br 
+class="newline" />Type: plist dict<br 
+class="newline" />Failsafe: None<br 
+class="newline" />Description: Configure audio backend support described in ?? section below.
+     <!--l. 5698--><p class="noindent" >Audio support provides a way for upstream protocols to interact with the selected hardware and audio resources.
+     All audio resources should reside in \EFI\OC\Resources\Audio directory. Currently the <span class="sout">only </span>supported audio
+     file <span class="sout">format is </span><span class="uwave">formats are MP3 and </span>WAVE PCM. While it is driver-dependent which audio stream format is
+     supported, most common audio cards support 16-bit signed stereo audio at 44100 or 48000 Hz.
+     </p><!--l. 5705--><p class="noindent" >Audio file path is determined by audio type, audio localisation, and audio path. Each filename looks as follows:
+     [audio type]_[audio localisation]_[audio path].<span class="sout">wav</span>[<span class="uwave">audio ext</span>]. For unlocalised files filename does not
+     include the language code and looks as follows: [audio type]_[audio path].<span class="sout">wav</span>[<span class="uwave">audio ext</span>]. <span class="uwave">Audio extension
+     can either be </span><span class="uwave">mp3</span> <span class="uwave">or </span><span class="uwave">wav</span><span class="uwave">. </span>
+</p>
+         <ul class="itemize1">
+         <li class="itemize">Audio type can be OCEFIAudio for OpenCore audio files or AXEFIAudio for macOS bootloader audio files.
+         </li>
+         <li class="itemize">Audio localisation is a two letter language code (e.g. en) with an exception for Chinese, Spanish, and
+         Portuguese. Refer to <a 
+href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/Protocol/AppleVoiceOver.h" >APPLE_VOICE_OVER_LANGUAGE_CODE definition</a> for the list of all supported localisations.
+         </li>
+         <li class="itemize">Audio path is the base filename corresponding to a file identifier. For macOS bootloader audio paths refer to
+         <a 
+href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/Protocol/AppleVoiceOver.h" >APPLE_VOICE_OVER_AUDIO_FILE definition</a>. For OpenCore audio paths refer to <a 
+href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Acidanthera/Protocol/OcAudio.h" >OC_VOICE_OVER_AUDIO_FILE
+         definition</a>. The only exception is OpenCore boot chime file, which is OCEFIAudio_VoiceOver_Boot.<span class="sout">wav</span><span class="uwave">mp3</span>.</li></ul>
+     <!--l. 5727--><p class="noindent" >Audio localisation is determined separately for macOS bootloader and OpenCore. For macOS bootloader it is set in
+     preferences.efires archive in systemLanguage.utf8 file and is controlled by the operating system. For
+     OpenCore the value of prev-lang:kbd variable is used. When native audio localisation of a particular file is
+     missing, English language (en) localisation is used. Sample audio files can be found in <a 
+href="https://github.com/acidanthera/OcBinaryData" >OcBinaryData
+     repository</a>.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-68006x3">ConnectDrivers<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Perform UEFI controller connection after driver loading.
+                                                                                                  
+                                                                                                  
+     specified codec (AudioCodec) located on the audio controller (AudioDevice).
      </p></li>
      <li 
   class="enumerate" id="x1-70010x5">MinimumVolume<br 
 class="newline" />Type: plist integer<br 
 class="newline" />Failsafe: 0<br 
 class="newline" />Description: Minimal heard volume level from 0 to 100.
-     <!--l. 5961--><p class="noindent" >Screen reader will use this volume level, when the calculated volume level is less than MinimumVolume. Boot
+     <!--l. 5963--><p class="noindent" >Screen reader will use this volume level, when the calculated volume level is less than MinimumVolume. Boot
      chime sound will not play if the calculated volume level is less than MinimumVolume.
      </p></li>
      <li 
@@ -35,7 +98,7 @@ class="newline" />Description: Minimal heard volume level from 0 to 100.
 class="newline" />Type: plist string<br 
 class="newline" />Failsafe: empty string<br 
 class="newline" />Description: Play chime sound at startup.
-     <!--l. 5971--><p class="noindent" >Enabling  this  setting  plays  boot  chime  through  builtin  audio  support.  Volume  level  is  determined  by
+     <!--l. 5973--><p class="noindent" >Enabling  this  setting  plays  boot  chime  through  builtin  audio  support.  Volume  level  is  determined  by
      MinimumVolume and  VolumeAmplifier settings  and  SystemAudioVolume NVRAM  variable.  Possible  values
      include:
 </p>
@@ -45,7 +108,7 @@ class="newline" />Description: Play chime sound at startup.
          <li class="itemize">Enabled — Enables chime unconditionally.
          </li>
          <li class="itemize">Disabled — Disables chime unconditionally.</li></ul>
-     <!--l. 5983--><p class="noindent" >Note: Enabled can be used in separate from StartupMute NVRAM variable to avoid conflicts when the firmware is able
+     <!--l. 5985--><p class="noindent" >Note: Enabled can be used in separate from StartupMute NVRAM variable to avoid conflicts when the firmware is able
      to play boot chime.
      </p></li>
      <li 
@@ -53,7 +116,7 @@ class="newline" />Description: Play chime sound at startup.
 class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist integer</span><br 
 class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">0</span><br 
 class="newline" /><span class="uwave">Description</span><span class="uwave">: Audio codec reconfiguration delay in microseconds. </span>
-     <!--l. 5996--><p class="noindent" ><span class="uwave">Some codecs require a vendor-specific delay after the reconfiguration (e.g. volume setting). This option makes it
+     <!--l. 5998--><p class="noindent" ><span class="uwave">Some codecs require a vendor-specific delay after the reconfiguration (e.g. volume setting). This option makes it
      configurable. In general the necessary delay may be as long as 0.5 seconds. </span>
      </p></li>
      <li 
@@ -62,7 +125,7 @@ class="newline" />Type: plist integer<br
 class="newline" />Failsafe: 0<br 
 class="newline" />Description: Multiplication coefficient for system volume to raw volume linear translation from 0 to
      1000.
-     <!--l. 6005--><p class="noindent" >Volume level range read from SystemAudioVolume varies depending on the codec. To transform read
+     <!--l. 6007--><p class="noindent" >Volume level range read from SystemAudioVolume varies depending on the codec. To transform read
      value in [0, 127] range into raw volume range [0, 100] the read value is scaled to VolumeAmplifier
      percents:
                                                                                                   
@@ -93,9 +156,9 @@ class="newline" />Description: Forcibly reinstalls unicode collation services wi
      <li 
   class="enumerate" id="x1-74002x1"><span class="sout">DeduplicateBootOrder</span><span class="sout">Type</span><span class="sout">:  </span><span class="sout">plist boolean</span><span class="sout">Failsafe</span><span class="sout">:  </span><span class="sout">false</span><span class="sout">Description</span><span class="sout">:  Remove  duplicate  entries  in
      </span><span class="sout">BootOrder</span> <span class="sout">variable in </span><span class="sout">EFI_GLOBAL_VARIABLE_GUID</span><span class="sout">. </span>
-     <!--l. 6559--><p class="noindent" ><span class="sout">This  quirk  requires  </span><span class="sout">RequestBootVarRouting</span> <span class="sout">to  be  enabled  and  therefore  </span><span class="sout">OC_FIRMWARE_RUNTIME</span> <span class="sout">protocol
+     <!--l. 6561--><p class="noindent" ><span class="sout">This  quirk  requires  </span><span class="sout">RequestBootVarRouting</span> <span class="sout">to  be  enabled  and  therefore  </span><span class="sout">OC_FIRMWARE_RUNTIME</span> <span class="sout">protocol
      implemented in </span><span class="sout">OpenRuntime.efi</span><span class="sout">. </span>
-     </p><!--l. 6567--><p class="noindent" ><span class="sout">By redirecting </span><span class="sout">Boot</span> <span class="sout">prefixed variables to a separate GUID namespace with the help of </span><span class="sout">RequestBootVarRouting</span> <span class="sout">quirk we
+     </p><!--l. 6569--><p class="noindent" ><span class="sout">By redirecting </span><span class="sout">Boot</span> <span class="sout">prefixed variables to a separate GUID namespace with the help of </span><span class="sout">RequestBootVarRouting</span> <span class="sout">quirk we
      achieve multiple goals: </span></p>
          <ul class="itemize1">
          <li class="itemize"><span class="sout">Operating systems are jailed and only controlled by OpenCore boot environment to enhance security. </span>
@@ -104,17 +167,17 @@ class="newline" />Description: Forcibly reinstalls unicode collation services wi
          wakes for cases that require reboots with OpenCore in the middle. </span>
          </li>
          <li class="itemize"><span class="sout">Potentially incompatible boot entries, such as macOS entries, are not deleted or anyhow corrupted. </span></li></ul>
-     <!--l. 6598--><p class="noindent" ><span class="sout">However, some types of firmware do their own boot option scanning on startup by checking for file presence on the
+     <!--l. 6600--><p class="noindent" ><span class="sout">However, some types of firmware do their own boot option scanning on startup by checking for file presence on the
      available disks. This scanning often includes non-standard locations such as Windows Bootloader paths. This is typically
      not an issue but some firmware, such as ASUS firmware on the APTIO V, have bugs. On such, scanning is
      implemented improperly and firmware preferences may get accidentally corrupted due to </span><span class="sout">BootOrder</span> <span class="sout">entry
      duplication (each option will be added twice) making it impossible to boot without resetting NVRAM.
      </span>
-     </p><!--l. 6605--><p class="noindent" ><span class="sout">To trigger the bug, some valid boot options (e.g. OpenCore) are required. Then install Windows with
+     </p><!--l. 6607--><p class="noindent" ><span class="sout">To trigger the bug, some valid boot options (e.g. OpenCore) are required. Then install Windows with
      </span><span class="sout">RequestBootVarRouting</span> <span class="sout">enabled. As the Windows bootloader option will not be created by the Windows
      installer, the firmware will attempt to create this itself, leading to a corruption of its boot option list.
      </span>
-     </p><!--l. 6612--><p class="noindent" ><span class="sout">This quirk removes all duplicates in </span><span class="sout">BootOrder</span> <span class="sout">variable attempting to resolve the consequences of the bugs upon
+     </p><!--l. 6614--><p class="noindent" ><span class="sout">This quirk removes all duplicates in </span><span class="sout">BootOrder</span> <span class="sout">variable attempting to resolve the consequences of the bugs upon
      OpenCore loading. It is recommended to use this key along with </span><span class="sout">BootProtect</span> <span class="sout">option. </span>
      </p></li>
      <li 
@@ -122,7 +185,7 @@ class="newline" />Description: Forcibly reinstalls unicode collation services wi
 class="newline" />Type: plist integer<br 
 class="newline" />Failsafe: 0<br 
 class="newline" />Description: Adds delay in microseconds after EXIT_BOOT_SERVICES event.
-     <!--l. 6628--><p class="noindent" >This is a very rough workaround to circumvent the Still waiting for root device message on some APTIO IV
+     <!--l. 6630--><p class="noindent" >This is a very rough workaround to circumvent the Still waiting for root device message on some APTIO IV
                                                                                                   
                                                                                                   
      firmware (ASUS Z87-Pro) particularly when using FileVault 2. It appears that for some reason, they execute code in
@@ -136,7 +199,7 @@ class="newline" />Type: plist boolean<br
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Some types of firmware (such as APTIO IV) may contain invalid values in the MSR_FLEX_RATIO (0x194)
      MSR register. These values may cause macOS boot failures on Intel platforms.
-     <!--l. 6642--><p class="noindent" >Note: While the option is not expected to harm unaffected firmware, its use is only recommended when it is specifically
+     <!--l. 6644--><p class="noindent" >Note: While the option is not expected to harm unaffected firmware, its use is only recommended when it is specifically
      required.
      </p></li>
      <li 
@@ -153,12 +216,12 @@ class="newline" />Type: plist boolean<br
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Request redirect of all Boot prefixed variables from EFI_GLOBAL_VARIABLE_GUID to <br 
 class="newline" />OC_VENDOR_VARIABLE_GUID.
-     <!--l. 6661--><p class="noindent" >This quirk requires OC_FIRMWARE_RUNTIME protocol implemented in OpenRuntime.efi. The quirk lets default boot entry
+     <!--l. 6663--><p class="noindent" >This quirk requires OC_FIRMWARE_RUNTIME protocol implemented in OpenRuntime.efi. The quirk lets default boot entry
      preservation at times when the firmware deletes incompatible boot entries. In summary, this quirk is required to reliably
      use the <a 
 href="https://support.apple.com/HT202796" >Startup Disk</a> preference pane in firmware that is not compatible with macOS boot entries by
      design.
-     </p><!--l. 6669--><p class="noindent" ><span class="uwave">By redirecting </span><span class="uwave">Boot</span> <span class="uwave">prefixed variables to a separate GUID namespace with the help of </span><span class="uwave">RequestBootVarRouting</span> <span class="uwave">quirk we
+     </p><!--l. 6671--><p class="noindent" ><span class="uwave">By redirecting </span><span class="uwave">Boot</span> <span class="uwave">prefixed variables to a separate GUID namespace with the help of </span><span class="uwave">RequestBootVarRouting</span> <span class="uwave">quirk we
      achieve multiple goals: </span></p>
          <ul class="itemize1">
          <li class="itemize"><span class="uwave">Operating systems are jailed and only controlled by OpenCore boot environment to enhance security. </span>
@@ -173,12 +236,12 @@ href="https://support.apple.com/HT202796" >Startup Disk</a> preference pane in f
 class="newline" />Type: plist integer<br 
 class="newline" />Failsafe: 0<br 
 class="newline" />Description: Attempts to perform TSC synchronisation with a specified timeout.
-     <!--l. 6689--><p class="noindent" >The primary purpose of this quirk is to enable early bootstrap TSC synchronisation on some server and laptop models
+     <!--l. 6691--><p class="noindent" >The primary purpose of this quirk is to enable early bootstrap TSC synchronisation on some server and laptop models
      when running a debug XNU kernel. For the debug kernel the TSC needs to be kept in sync across the
      cores before any kext could kick in rendering all other solutions problematic. The timeout is specified in
      microseconds and depends on the amount of cores present on the platform, the recommended starting value is
      500000.
-     </p><!--l. 6695--><p class="noindent" >This is an experimental quirk, which should only be used for the aforementioned problem. In all other cases the quirk
+     </p><!--l. 6697--><p class="noindent" >This is an experimental quirk, which should only be used for the aforementioned problem. In all other cases the quirk
      may render the operating system unstable and is not recommended. The recommended solution in the other cases is to
      install a kernel driver such as <a 
 href="https://github.com/RehabMan/VoodooTSCSync" >VoodooTSCSync</a>, <a 
