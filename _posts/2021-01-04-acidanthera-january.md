@@ -23,7 +23,7 @@ The road to Big Sur was not quite smooth for some, and this update brings a few 
 
 # Dortania Updates
 
-Happy new years to everyone from Dortania! As we're coming off the holidays, we wanted to take a look back at what's happened in the community over the past year.
+Happy new year to everyone from Dortania! As we're coming off the holidays, we wanted to take a look back at what's happened in the community over the past year.
 
 Late March last year we had the release of macOS 10.15.4, where we got official support for Comet and Ice Lake CPUs. Overall Comet Lake's introduction was quite smooth however Ice Lake's iGPU drivers needed more work done to ensure stable operations with consumer PCs. Not too long after, [@0xFireWolf](https://github.com/0xFireWolf) and others in the community had adapted WhateverGreen into fully supporting Ice Lake's iGPUs.
 
