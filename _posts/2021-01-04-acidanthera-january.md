@@ -64,7 +64,7 @@ And for my final words, I wanted to dedicate a bit of this in memory of my late 
 * Add max pixel clock override through `-igfxmpc` boot argument or `enable-max-pixel-clock-override` and `max-pixel-clock-frequency` device properties
 * Moved PNLF samples to OpenCore
 
-#### [IntelMausi 1.0.5](https://github.com/acidanthera/NVMeFix/releases)
+#### [IntelMausi 1.0.5](https://github.com/acidanthera/IntelMausi/releases)
 
 * Merged changes from 2.5.3d1
 * Updated e1000e sources from Linux upstream branch
@@ -85,7 +85,7 @@ And for my final words, I wanted to dedicate a bit of this in memory of my late 
     * I219-LM19
     * I219-V19
 
-#### [NVMeFix 1.0.5](https://github.com/acidanthera/IntelMausi/releases)
+#### [NVMeFix 1.0.5](https://github.com/acidanthera/NVMeFix/releases)
 
 * Fixed quirks enabling per controller
 * Fixed initialisation on 10.15+
