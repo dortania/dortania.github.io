@@ -11,7 +11,7 @@ categories: Hackintosh updates
 
 # A message from vit9696
 
-Happy New Year everyone! We hope that you had and perhaps still have some calm holidays and are ready to check-in for a small but important update we prepared. We begin this year under the slogan of stability and usability improvements, and this time we did really well to help you maintain your setup.
+Happy New Year everyone! We hope that you have had and perhaps still have some calm holidays and are ready to check-in for a small but important update we prepared. We begin this year under the slogan of stability and usability improvements, and this time we have done really well to help you maintain your setup.
 
 To begin with, [@PMheart](https://github.com/PMheart) wrote an absolutely overwhelming update to [ocvalidate utility](https://github.com/acidanthera/OpenCorePkg). While some of you might not know, ocvalidate is an OpenCore configuration checking tool, which only reports issues that are clear violations of the specification, i.e. real mistakes in the configuration. [@PMheart](https://github.com/PMheart) added many semantical checks that allow not only finding missing fields or wrong field types, but also various inconsistencies, incorrect values, duplicate entries, and many more. Hopefully, ocvalidate will continue to ensure a cleaner configuration for everyone. Other than that, several other utilities like [dmidecode](), [macserial, macrecovery, and LogoutHook](https://github.com/acidanthera/OpenCorePkg) got their own updates with many thanks going to [@roddy20](https://github.com/roddy20) for still caring about older hardware.
 
