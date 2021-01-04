@@ -17,7 +17,17 @@ categories: Hackintosh updates
 
 # Dortania Updates
 
-{Inspirational message}
+Happy new years to everyone from Dortania! As we're coming off the holidays, we wanted to take a look back at what's happened in the community over the past year.
+
+Late March last year we had the release of macOS 10.15.4, where we got official support for Comet and Ice Lake CPUs. Overall Comet Lake's introduction was quite smooth however Ice Lake's iGPU drivers needed more work done to ensure stable operations with consumer PCs. Not too long after, [@0xFireWolf](https://github.com/0xFireWolf) and others in the community had adapted WhateverGreen into fully supporting Ice Lake's iGPUs.
+
+Soon after in early April, we started working on a new organization to centralize Hackintosh documentation as well as allowing more users to join in and contribute. Initially, most of the guides on Dortania were hosted under my alias, khronokernel, meaning the work was heavily tied to me. But with Dortania, this new organization, we were able to bring in a much larger contributor base allowing us to expand and improve the quality of our sites. 
+
+From there came June and Apple's WWDC event. Here we were introduced to both macOS 11, Big Sur as well as Apple's transition away from Intel towards their in-house silicon. While the public was all eyes on the death of x86 in macOS, here in the community we had much bigger fish to fry. From Apple's new kernel cache system, snapshot-based system volume, reworked framework caching system, there was much to be done. Almost all before Big Sur's release, Acidanthera had the most important issues resolved.
+
+Overall it's been quite a roller coaster, but we're still committed to supporting Hackintoshes till the end. While the popularity in building a hack will go down, we know many of you are still around to learn and to tinker. And for those enthusiasts, we're more than happy to continue writing.
+
+And for my final words, I wanted to dedicate a bit of this in memory of my late father, Volodymyr Grymalyuk. A man passionate about his work, I inherited a lot of your drive and passion for your work and while we may not have had the best relationship, I am truly honored to be your son and hope for a safe passage in the after-life.
 
 ——Khronokernel
 
