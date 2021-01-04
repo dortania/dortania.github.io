@@ -11,7 +11,13 @@ categories: Hackintosh updates
 
 # A message from vit9696
 
-{Inspirational message}
+Happy New Year everyone! We hope that you had and perhaps still have some calm holidays and are ready to check-in for a small but important update we prepared. We begin this year under the slogan of stability and usability improvements, and this time we did really well to help you maintain your setup.
+
+To begin with, [@PMheart](https://github.com/PMheart) wrote an absolutely overwhelming update to [ocvalidate utility](https://github.com/acidanthera/OpenCorePkg). While some of you might not know, ocvalidate is an OpenCore configuration checking tool, which only reports issues that are clear violations of the specification, i.e. real mistakes in the configuration. [@PMheart](https://github.com/PMheart) added many semantical checks that allow not only finding missing fields or wrong field types, but also various inconsistencies, incorrect values, duplicate entries, and many more. Hopefully, ocvalidate will continue to ensure a cleaner configuration for everyone. Other than that, several other utilities like [dmidecode](), [macserial, macrecovery, and LogoutHook](https://github.com/acidanthera/OpenCorePkg) got their own updates with many thanks going to [@roddy20](https://github.com/roddy20) for still caring about older hardware.
+
+It was quite some time we made changes to [OpenCanopy](https://github.com/acidanthera/OpenCorePkg), so this update brings small but important changes to its audio-visual experience. From now on you can utilize prefixes for the icon packs, and as a result, a new Modern icon pack was bundled as a built-in addendum thanks to [@Andrey1970AppleLife](https://github.com/Andrey1970AppleLife). We are continuing to make the artists' lives better, and hopefully, this change will make their experience even more smooth. In addition, we also brought audio assistant support to OpenCanopy and re-encoded the audio files significantly reducing their size.
+
+The road to Big Sur was not quite smooth for some, and this update brings a few more compatibility improvements. [NVMeFix](https://github.com/acidanthera/NVMeFix) got initial macOS 11 support noticeably reducing laptop power consumption and MacPro7,1 users got a new [RestrictEvents kext](https://github.com/acidanthera/RestrictEvents) resolving issues with the memory misconfiguration notifications. Last but not least, [@savvamitrofanov](https://github.com/savvamitrofanov) spent quite some time exploring the issues in [IntelMausi](https://github.com/acidanthera/IntelMausi), eventually, he was able to resolve many speed issues and Wake on Lan problems for some machines. While we still recommend the upstream version and provide no support for our variant, perhaps the changes made are useful for further development.
 
 ——Vit
 
@@ -27,7 +33,7 @@ From there came June and Apple's WWDC event. Here we were introduced to both mac
 
 Overall it's been quite a roller coaster, but we're still committed to supporting Hackintoshes till the end. While the popularity in building a hack will go down, we know many of you are still around to learn and to tinker. And for those enthusiasts, we're more than happy to continue writing.
 
-And for my final words, I wanted to dedicate a bit of this in memory of my late father, Volodymyr Grymalyuk. A man passionate about his work, I inherited a lot of your drive and passion for your work and while we may not have had the best relationship, I am truly honored to be your son and hope for a safe passage in the after-life.
+And for my final words, I wanted to dedicate a bit of this in memory of my late father, Volodymyr Grymalyuk. A man passionate about his work, I inherited a lot of your drive and passion for your work, I am truly honored to be your son and hope for a safe passage in the after-life.
 
 ——Khronokernel
 
