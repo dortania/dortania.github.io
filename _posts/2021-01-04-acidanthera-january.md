@@ -35,7 +35,7 @@ Overall it's been quite a roller coaster, but we're still committed to supportin
 
 And for my final words, I wanted to dedicate a bit of this in memory of my late father, Volodymyr Grymalyuk. A man passionate about his work, I inherited a lot of your drive and passion for your work, I am truly honored to be your son and hope for a safe passage in the after-life.
 
-——Khronokernel
+——Mykola Grymalyuk (Khronokernel)
 
 # Changelogs
 
