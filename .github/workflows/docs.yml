@@ -102,3 +102,18 @@ jobs:
           TARGET_FOLDER: docs
           BASE_BRANCH: master
           CLEAN: true
+      - name: Upload Latest Docs
+        uses: actions/upload-artifact@v2.2.2
+        with:
+          name: latest
+          path: latest/Docs
+      - name: Upload Release Docs
+        uses: actions/upload-artifact@v2.2.2
+        with:
+          name: release
+          path: release/Docs
+      - name: Upload HTML Output
+        uses: actions/upload-artifact@v2.2.2
+        with:
+          name: html
+          path: Deploy
