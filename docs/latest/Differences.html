@@ -21,14 +21,208 @@ width="160" height="160"  />
 </div>
                                                                                                   
                                                                                                   
+     </li></ol>
+<!--l. 4193--><p class="noindent" >To read NVRAM variable value from macOS, nvram could be used by concatenating GUID and name variables separated by a
+: symbol. For example, nvram 7C436110-AB2A-4BBB-A880-FE41995C9F82:boot-args.
+</p><!--l. 4197--><p class="noindent" >A continuously updated variable list can be found in a corresponding document: <a 
+href="https://docs.google.com/spreadsheets/d/1HTCBwfOBkXsHiK7os3b2CUc6k68axdJYdGl-TyXqLu0" >NVRAM Variables</a>.
+<a 
+ id="x1-50013r53"></a>
+</p>
+<h4 class="subsectionHead"><span class="titlemark">9.3   </span> <a 
+ id="x1-510003"></a>Mandatory Variables</h4>
+<!--l. 4202--><p class="noindent" >Warning: These variables may be added by ?? or <a 
+href="#x1-560002">Generic</a> subsections of ?? section. Using PlatformInfo is the <span class="sout">recommend
+</span><span class="uwave">recommended </span>way of setting these variables.
+</p><!--l. 4208--><p class="noindent" >The following variables are mandatory for macOS functioning:
+</p>
+     <ul class="itemize1">
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:FirmwareFeatures
+     32-bit FirmwareFeatures. Present on all Macs to avoid extra parsing of SMBIOS tables<span class="uwave">. </span>
+     </li>
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:FirmwareFeaturesMask
+     32-bit FirmwareFeaturesMask. Present on all Macs to avoid extra parsing of SMBIOS tables.
+     </li>
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:MLB
+     BoardSerialNumber. Present on newer Macs (2013+ at least) to avoid extra parsing of SMBIOS tables, especially
+     in boot.efi.
+     </li>
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:ROM
+     Primary network adapter MAC address or replacement value. Present on newer Macs (2013+ at least) to avoid
+     accessing special memory region, especially in boot.efi.</li></ul>
+<a 
+ id="x1-51001r54"></a>
+<h4 class="subsectionHead"><span class="titlemark">9.4   </span> <a 
+ id="x1-520004"></a>Recommended Variables</h4>
+<!--l. 4235--><p class="noindent" >The following variables are recommended for faster startup or other improvements:
+</p>
+     <ul class="itemize1">
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:csr-active-config
+     32-bit System Integrity Protection bitmask. Declared in XNU source code in <a 
+href="https://opensource.apple.com/source/xnu/xnu-4570.71.2/bsd/sys/csr.h.auto.html" >csr.h</a>.
+     </li>
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:ExtendedFirmwareFeatures
+     Combined FirmwareFeatures and ExtendedFirmwareFeatures. Present on newer Macs to avoid extra parsing
+     of SMBIOS tables<span class="uwave">. </span>
+     </li>
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:ExtendedFirmwareFeaturesMask
+     Combined FirmwareFeaturesMask and ExtendedFirmwareFeaturesMask. Present on newer Macs to avoid extra
+     parsing of SMBIOS tables.
+     </li>
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:HW_BID
+     Hardware BoardProduct (e.g. Mac-35C1E88140C3E6CF). Not present on real Macs, but used to avoid extra
+     parsing of SMBIOS tables, especially in boot.efi.
+     </li>
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:HW_MLB
+     Hardware BoardSerialNumber. Override for MLB. Present on newer Macs (2013+ at least).
+     </li>
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:HW_ROM
+     Hardware ROM. Override for ROM. Present on newer Macs (2013+ at least).
+     </li>
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:prev-lang:kbd
+     ASCII string defining default keyboard layout. Format is lang-COUNTRY:keyboard, e.g. ru-RU:252 for Russian
+                                                                                                  
+                                                                                                  
+     </li>
+     <li 
+  class="enumerate" id="x1-55018x9">Memory<br 
+class="newline" />Type: plist dictionary<br 
+class="newline" />Optional: When CustomMemory is false<br 
+class="newline" />Description: Define custom memory configuration.
+     </li>
+     <li 
+  class="enumerate" id="x1-55020x10">PlatformNVRAM<br 
+class="newline" />Type: plist dictionary<br 
+class="newline" />Optional: When Automatic is true<br 
+class="newline" />Description: Update platform NVRAM fields. This section is read only when Automatic is not active.
+     </li>
+     <li 
+  class="enumerate" id="x1-55022x11">SMBIOS<br 
+class="newline" />Type: plist dictionary<br 
+class="newline" />Optional: When Automatic is true<br 
+class="newline" />Description: Update SMBIOS fields. This section is read only when Automatic is not active.</li></ol>
+<a 
+ id="x1-55023r58"></a>
+<h4 class="subsectionHead"><span class="titlemark">10.2   </span> <a 
+ id="x1-560002"></a>Generic Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-56002x1">SpoofVendor<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Sets SMBIOS vendor fields to Acidanthera.
+     <!--l. 4669--><p class="noindent" >It is dangerous to use Apple in SMBIOS vendor fields for reasons given in SystemManufacturer description.
+     However, certain firmware may not provide valid values otherwise, which could break some software.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-56004x2">AdviseWindows<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Forces Windows support in FirmwareFeatures.
+     <!--l. 4679--><p class="noindent" >Added bits to FirmwareFeatures:
+</p>
+         <ul class="itemize1">
+         <li class="itemize">FW_FEATURE_SUPPORTS_CSM_LEGACY_MODE (0x1) - Without this bit it is not possible to reboot to Windows
+         installed on a drive with EFI partition being not the first partition on the disk.
+         </li>
+         <li class="itemize">FW_FEATURE_SUPPORTS_UEFI_WINDOWS_BOOT (0x20000000) - Without this bit it is not possible to reboot
+         to Windows installed on a drive with EFI partition being the first partition on the disk.</li></ul>
+     </li>
+     <li 
+  class="enumerate" id="x1-56006x3"><span class="uwave">MaxBIOSVersion</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">false</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Sets </span><span class="uwave">BIOSVersion</span> <span class="uwave">to </span><span class="uwave">9999.999.999.999.999</span><span class="uwave">, recommended for legacy Macs when using </span><span class="uwave">Automatic</span>
+     <span class="uwave">PlatformInfo to avoid BIOS updates in unofficially supported macOS versions. </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-56008x4">SystemMemoryStatus<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Auto<br 
+class="newline" />Description: Indicates whether system memory is upgradable in PlatformFeature. This controls the visibility of the
+     Memory tab in About This Mac.
+     <!--l. 4706--><p class="noindent" >Valid values:
+</p>
+                                                                                                  
+                                                                                                  
+         <ul class="itemize1">
+         <li class="itemize">Auto — use the original PlatformFeature value.
+         </li>
+         <li class="itemize">Upgradable — explicitly unset PT_FEATURE_HAS_SOLDERED_SYSTEM_MEMORY (0x2) in PlatformFeature.
+         </li>
+         <li class="itemize">Soldered — explicitly set PT_FEATURE_HAS_SOLDERED_SYSTEM_MEMORY (0x2) in PlatformFeature.</li></ul>
+     <!--l. 4717--><p class="noindent" >Note: On certain Mac models (namely MacBookPro10,x and any MacBookAir), SPMemoryReporter.spreporter will ignore
+     PT_FEATURE_HAS_SOLDERED_SYSTEM_MEMORY and assume that system memory is non-upgradable.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-56010x5">ProcessorType<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0 (Automatic)<br 
+class="newline" />Description: Refer to SMBIOS ProcessorType.
+     </li>
+     <li 
+  class="enumerate" id="x1-56012x6">SystemProductName<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: MacPro6,1<br 
+class="newline" />Description: Refer to SMBIOS SystemProductName.
+     </li>
+     <li 
+  class="enumerate" id="x1-56014x7">SystemSerialNumber<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: OPENCORE_SN1<br 
+class="newline" />Description: Refer to SMBIOS SystemSerialNumber.
+     </li>
+     <li 
+  class="enumerate" id="x1-56016x8">SystemUUID<br 
+class="newline" />Type: plist string, GUID<br 
+class="newline" />Failsafe: OEM specified<br 
+class="newline" />Description: Refer to SMBIOS SystemUUID.
+     </li>
+     <li 
+  class="enumerate" id="x1-56018x9">MLB<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: OPENCORE_MLB_SN11<br 
+class="newline" />Description: Refer to SMBIOS BoardSerialNumber.
+     </li>
+     <li 
+  class="enumerate" id="x1-56020x10">ROM<br 
+class="newline" />Type: plist data, 6 bytes<br 
+class="newline" />Failsafe: all zero<br 
+class="newline" />Description: Refer to 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:ROM.
+     </li></ol>
+<a 
+ id="x1-56021r59"></a>
+<h4 class="subsectionHead"><span class="titlemark">10.3   </span> <a 
+ id="x1-570003"></a>DataHub Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-57002x1">PlatformName<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Not installed<br 
+class="newline" />Description: Sets name in gEfiMiscSubClassGuid. Value found on Macs is platform in ASCII.
+     </li>
+     <li 
+  class="enumerate" id="x1-57004x2">SystemProductName<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Not installed<br 
+class="newline" />Description:   Sets   Model  in   gEfiMiscSubClassGuid.   Value   found   on   Macs   is   equal   to   SMBIOS
+     SystemProductName in Unicode.
+                                                                                                  
+                                                                                                  
      
-       
+     
+     
+     
+     
+     
       
      
      
-      
-        
+     
       
      
-                        </body>
+     
+                
+
+                                                                                             </body>
 </html>
