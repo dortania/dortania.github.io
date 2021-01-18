@@ -21,20 +21,80 @@ width="160" height="160"  />
 </div>
                                                                                                   
                                                                                                   
-     </li></ol>
-<!--l. 4193--><p class="noindent" >To read NVRAM variable value from macOS, nvram could be used by concatenating GUID and name variables separated by a
+     </li>
+     <li class="itemize">sizeof operator should take variables instead of types where possible to be error prone. Use ARRAY_SIZE to
+     obtain array size in elements. Use L_STR_LEN and L_STR_SIZE macros from OcStringLib to obtain string literal
+     sizes to ensure compiler optimisation.
+     </li>
+     <li class="itemize">Do not use goto keyword. Prefer early return, break, or continue after failing to pass error checking instead
+     of nesting conditionals.
+     </li>
+     <li class="itemize">Use EFIAPI, force UEFI calling convention, only in protocols, external callbacks between modules, and functions
+     with variadic arguments.
+     </li>
+     <li class="itemize">Provide inline documentation to every added function, at least describing its inputs, outputs, precondition,
+     postcondition, and giving a brief description.
+     </li>
+     <li class="itemize">Do not use RETURN_STATUS. Assume EFI_STATUS to be a matching superset that is to be always used when
+     BOOLEAN is not enough.
+     </li>
+     <li class="itemize">Security violations should halt the system or cause a forced reboot.</li></ul>
+<!--l. 810--><p class="noindent" >Codestyle. The codebase follows <a 
+href="https://github.com/tianocore/tianocore.github.io/wiki/Code-Style-C" >EDK II codestyle</a> with few changes and clarifications. </p>
+     <ul class="itemize1">
+     <li class="itemize">Write inline documentation for the functions and variables only once: in headers, where a header prototype is
+     available, and inline for static variables and functions.
+     </li>
+     <li class="itemize">Use line length of 120 characters or less, preferably 100 characters.
+     </li>
+     <li class="itemize">Use spaces after casts, e.g. (VOID *)(UINTN) Variable.
+     </li>
+     <li class="itemize">Use <span class="uwave">two spaces as indentations as always. </span>
+     </li>
+     <li class="itemize"><span class="uwave">Use </span>SPDX license headers as shown in <a 
+href="https://github.com/acidanthera/bugtracker/issues/483" >acidanthera/bugtracker#483</a>.</li></ul>
+<a 
+ id="x1-12001r15"></a>
+<h4 class="subsectionHead"><span class="titlemark">3.5   </span> <a 
+ id="x1-130005"></a>Debugging</h4>
+<!--l. 826--><p class="noindent" >The codebase incorporates EDK II debugging and few custom features to improve the experience. </p>
+     <ul class="itemize1">
+     <li class="itemize">Use module prefixes, 2-5 letters followed by a colon (:), for debug messages. For OpenCorePkg use OC:, for
+     libraries and drivers use their own unique prefixes.
+     </li>
+     <li class="itemize">Do not use dots (.) in the end of debug messages and separate EFI_STATUS, printed by %r, with a hyphen (e.g.
+     OCRAM: Allocation of %u bytes failed - %r\n).
+     </li>
+     <li class="itemize">Use DEBUG_CODE_BEGIN () and DEBUG_CODE_END () constructions to guard debug checks that may potentially
+     reduce the performance of release builds and are otherwise unnecessary.
+     </li>
+     <li class="itemize">Use DEBUG macro to print debug messages during normal functioning, and RUNTIME_DEBUG for debugging after
+     EXIT_BOOT_SERVICES.
+     </li>
+     <li class="itemize">Use DEBUG_VERBOSE debug level to leave debug messages for future debugging of the code, which are currently
+     not necessary. By default DEBUG_VERBOSE messages are ignored even in DEBUG builds.
+     </li>
+     <li class="itemize">Use DEBUG_INFO debug level for all non critical messages (including errors) and DEBUG_BULK_INFO for extensive
+     messages that should not appear in NVRAM log that is heavily limited in size. These messages are ignored in
+     RELEASE builds.
+     </li>
+     <li class="itemize">Use DEBUG_ERROR to print critical human visible messages that may potentially halt the boot process, and
+     DEBUG_WARN for all other human visible errors, RELEASE builds included.</li></ul>
+                                                                                                  
+                                                                                                  
+<!--l. 4194--><p class="noindent" >To read NVRAM variable value from macOS, nvram could be used by concatenating GUID and name variables separated by a
 : symbol. For example, nvram 7C436110-AB2A-4BBB-A880-FE41995C9F82:boot-args.
-</p><!--l. 4197--><p class="noindent" >A continuously updated variable list can be found in a corresponding document: <a 
+</p><!--l. 4198--><p class="noindent" >A continuously updated variable list can be found in a corresponding document: <a 
 href="https://docs.google.com/spreadsheets/d/1HTCBwfOBkXsHiK7os3b2CUc6k68axdJYdGl-TyXqLu0" >NVRAM Variables</a>.
 <a 
  id="x1-50013r53"></a>
 </p>
 <h4 class="subsectionHead"><span class="titlemark">9.3   </span> <a 
  id="x1-510003"></a>Mandatory Variables</h4>
-<!--l. 4202--><p class="noindent" >Warning: These variables may be added by ?? or <a 
+<!--l. 4203--><p class="noindent" >Warning: These variables may be added by ?? or <a 
 href="#x1-560002">Generic</a> subsections of ?? section. Using PlatformInfo is the <span class="sout">recommend
 </span><span class="uwave">recommended </span>way of setting these variables.
-</p><!--l. 4208--><p class="noindent" >The following variables are mandatory for macOS functioning:
+</p><!--l. 4209--><p class="noindent" >The following variables are mandatory for macOS functioning:
 </p>
      <ul class="itemize1">
      <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:FirmwareFeatures
@@ -54,7 +114,7 @@ href="#x1-560002">Generic</a> subsections of ?? section. Using PlatformInfo is t
  id="x1-51001r54"></a>
 <h4 class="subsectionHead"><span class="titlemark">9.4   </span> <a 
  id="x1-520004"></a>Recommended Variables</h4>
-<!--l. 4235--><p class="noindent" >The following variables are recommended for faster startup or other improvements:
+<!--l. 4236--><p class="noindent" >The following variables are recommended for faster startup or other improvements:
 </p>
      <ul class="itemize1">
      <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:csr-active-config
@@ -81,6 +141,7 @@ href="https://opensource.apple.com/source/xnu/xnu-4570.71.2/bsd/sys/csr.h.auto.h
      </li>
      <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:prev-lang:kbd
      ASCII string defining default keyboard layout. Format is lang-COUNTRY:keyboard, e.g. ru-RU:252 for Russian
+     locale and ABC keyboard. Also accepts short forms: ru:252 or ru:0 (U.S. keyboard, compatible with 10.9). Full
                                                                                                   
                                                                                                   
      </li>
@@ -111,7 +172,7 @@ class="newline" />Description: Update SMBIOS fields. This section is read only w
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Sets SMBIOS vendor fields to Acidanthera.
-     <!--l. 4669--><p class="noindent" >It is dangerous to use Apple in SMBIOS vendor fields for reasons given in SystemManufacturer description.
+     <!--l. 4670--><p class="noindent" >It is dangerous to use Apple in SMBIOS vendor fields for reasons given in SystemManufacturer description.
      However, certain firmware may not provide valid values otherwise, which could break some software.
      </p></li>
      <li 
@@ -119,7 +180,7 @@ class="newline" />Description: Sets SMBIOS vendor fields to Acidanthera.
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Forces Windows support in FirmwareFeatures.
-     <!--l. 4679--><p class="noindent" >Added bits to FirmwareFeatures:
+     <!--l. 4680--><p class="noindent" >Added bits to FirmwareFeatures:
 </p>
          <ul class="itemize1">
          <li class="itemize">FW_FEATURE_SUPPORTS_CSM_LEGACY_MODE (0x1) - Without this bit it is not possible to reboot to Windows
@@ -141,7 +202,7 @@ class="newline" />Type: plist string<br
 class="newline" />Failsafe: Auto<br 
 class="newline" />Description: Indicates whether system memory is upgradable in PlatformFeature. This controls the visibility of the
      Memory tab in About This Mac.
-     <!--l. 4706--><p class="noindent" >Valid values:
+     <!--l. 4707--><p class="noindent" >Valid values:
 </p>
                                                                                                   
                                                                                                   
@@ -151,7 +212,7 @@ class="newline" />Description: Indicates whether system memory is upgradable in 
          <li class="itemize">Upgradable — explicitly unset PT_FEATURE_HAS_SOLDERED_SYSTEM_MEMORY (0x2) in PlatformFeature.
          </li>
          <li class="itemize">Soldered — explicitly set PT_FEATURE_HAS_SOLDERED_SYSTEM_MEMORY (0x2) in PlatformFeature.</li></ul>
-     <!--l. 4717--><p class="noindent" >Note: On certain Mac models (namely MacBookPro10,x and any MacBookAir), SPMemoryReporter.spreporter will ignore
+     <!--l. 4718--><p class="noindent" >Note: On certain Mac models (namely MacBookPro10,x and any MacBookAir), SPMemoryReporter.spreporter will ignore
      PT_FEATURE_HAS_SOLDERED_SYSTEM_MEMORY and assume that system memory is non-upgradable.
      </p></li>
      <li 
@@ -227,5 +288,11 @@ class="newline" />Description:   Sets   Model  in   gEfiMiscSubClassGuid.   Valu
 
       
      
-                                                                                                  </body>
+     
+      
+     
+     
+      
+     
+                                                                                               </body>
 </html>
