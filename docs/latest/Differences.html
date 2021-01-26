@@ -22,6 +22,8 @@ width="160" height="160"  />
                                                                                                   
                                                                                                   
      </li>
+     <li class="itemize">Do ensure unsigned arithmetics especially in bitwise maths, shifts in particular.
+     </li>
      <li class="itemize">sizeof operator should take variables instead of types where possible to be error prone. Use ARRAY_SIZE to
      obtain array size in elements. Use L_STR_LEN and L_STR_SIZE macros from OcStringLib to obtain string literal
      sizes to ensure compiler optimisation.
@@ -78,14 +80,25 @@ href="https://github.com/acidanthera/bugtracker/issues/483" >acidanthera/bugtrac
      <li class="itemize">Use DEBUG_VERBOSE debug level to leave debug messages for future debugging of the code, which are currently
      not necessary. By default DEBUG_VERBOSE messages are ignored even in DEBUG builds.
      </li>
-     <li class="itemize">Use DEBUG_INFO debug level for all non critical messages (including errors) and DEBUG_BULK_INFO for extensive
-     messages that should not appear in NVRAM log that is heavily limited in size. These messages are ignored in
                                                                                                   
                                                                                                   
      
      
      
      
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+                    
       
      
      
@@ -97,5 +110,99 @@ href="https://github.com/acidanthera/bugtracker/issues/483" >acidanthera/bugtrac
      
       
      
-                                                                                                                                                </body>
+     
+      
+     
+     
+      
+        
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+                                                                                                  
+                                                                                                  
+     
+     
+      
+     
+     
+     
+      
+     
+     
+     
+      
+     
+     
+                
+
+
+      
+     
+     
+      
+     
+     
+      
+     
+     
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+                                                                                                             </body>
 </html>
