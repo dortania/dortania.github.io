@@ -56,7 +56,7 @@ jobs:
           key: ${{ runner.os }}-mactex-${{ steps.mactexversion.outputs.version }}
       - name: Install Dependencies
         run: |
-          brew cask install mactex
+          brew install --cask mactex
       - name: Refresh PATH
         run: eval "$(/usr/libexec/path_helper)"
       - name: Build Master Configuration
