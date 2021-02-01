@@ -17,7 +17,13 @@ categories: Hackintosh updates
 
 # Dortania Updates
 
-{Insert message}
+A new year and a whole of changes from us and Acidanthera! As Vit mentioned earlier, BootProtect has now been reworked into LaucherOption and we've updates the Post Install Guide accordingly. This also includes a new section just for those updating, in cases where people may be a bit overwhelmed with the Configuration.pdf:
+
+* [Updating Bootstrap in 0.6.6](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap.html#updating-bootstrap-in-0-6-6)
+
+Besides the main user facing changes with Dortania, I've taken a bit of time to experiment with Apple's latest silicon. Specifically emulating older versions of Mac OS X and macOS on an M1 MacBook Pro and even on iOS devices. You can read a bit more about my experiment here(even ended up with a geekbench single core of [68!](https://browser.geekbench.com/v5/cpu/6070899)):
+
+* [Virtualizing OpenCore and x86 macOS on Apple Silicon (and even iOS!)](https://khronokernel.github.io/apple/silicon/2021/01/17/QEMU-AS.html)
 
 ——Khronokernel
 
