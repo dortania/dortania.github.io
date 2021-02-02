@@ -11,7 +11,7 @@ categories: Hackintosh updates
 
 # A message from vit9696
 
-It is nice to meet you with the first actually made in 2021 release. This time we a handful changes to share with.
+It is nice to meet you with the first actually made in 2021 release. This time we have a handful changes to share with.
  
 As some of you noticed this time we slightly postponed the deadline from the usual, and the primary reason behind this was to be able to include some imminent changes in OpenCore. After a long and tiring work with the PE/COFF loader [@mhaeuser](https://github.com/mhaeuser) (ex Download-Fritz) finally wrote a formal proof of its most critical properties. As we plan to later include it in EDK II itself and essentially in every new UEFI firmware, we now launch a second testing phase by embedding the up-to-date version in OpenCore. For the bootloader the most important changes are the fixes for certain potential memory corruptions and enhanced APFS driver signature verification, provided as an extension to the base code. Our technically inclined users may also find the [original paper](https://github.com/mhaeuser/ISPRASOpen-SecurePE) to be an interesting read.
  
@@ -25,7 +25,7 @@ Besides OpenCore, our kexts also got notable updates. AppleALC got legacy Mac su
 
 # Dortania Updates
 
-A new year and a whole of changes from us and Acidanthera! As Vit mentioned earlier, BootProtect has now been reworked into LaucherOption and we've updates the Post Install Guide accordingly. This also includes a new section just for those updating, in cases where people may be a bit overwhelmed with the Configuration.pdf:
+A new year and a whole lot of changes from us and Acidanthera! As Vit mentioned earlier, BootProtect has now been reworked into LaucherOption and we've updates the Post Install Guide accordingly. This also includes a new section just for those updating, in cases where people may be a bit overwhelmed with the Configuration.pdf:
 
 * [Updating Bootstrap in 0.6.6](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap.html#updating-bootstrap-in-0-6-6)
 
