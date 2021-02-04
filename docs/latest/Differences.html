@@ -20,6 +20,96 @@ width="160" height="160"  />
 </p>
 </div>
                                                                                                   
+                                                                                                  
+     <li class="itemize"><a 
+href="https://www.dmtf.org/standards/smbios" >SMBIOS</a>
+     </li>
+     <li class="itemize"><a 
+href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Intel/Protocol/DataHub.h" >Data Hub</a>
+     </li>
+     <li class="itemize">NVRAM</li></ul>
+<!--l. 4574--><p class="noindent" >Most of the fields specify the overrides in SMBIOS, and their field names conform to EDK2 <a 
+href="https://github.com/acidanthera/audk/blob/master/MdePkg/Include/IndustryStandard/SmBios.h" >SmBios.h</a> header file. However,
+several important fields reside in Data Hub and NVRAM. Some of the values can be found in more than one field and/or
+destination, so there are two ways to control their update process: manual, where all the values are specified (the
+default), and semi-automatic, where (Automatic) only select values are specified, and later used for system
+configuration.
+</p><!--l. 4584--><p class="noindent" >To inspect SMBIOS contents <a 
+href="http://www.nongnu.org/dmidecode" >dmidecode</a> utility can be used. Version with macOS specific enhancements can be downloaded
+from <a 
+href="https://github.com/acidanthera/dmidecode/releases" >Acidanthera/dmidecode</a>.
+<a 
+ id="x1-54001r56"></a>
+</p>
+<h4 class="subsectionHead"><span class="titlemark">10.1   </span> <a 
+ id="x1-550001"></a>Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-55002x1">Automatic<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Generate PlatformInfo based on Generic section instead of using values from DataHub, NVRAM,
+     and SMBIOS sections.
+     <!--l. 4599--><p class="noindent" >Enabling this option is useful when Generic section is flexible enough: </p>
+         <ul class="itemize1">
+         <li class="itemize">When enabled SMBIOS, DataHub, and PlatformNVRAM data is unused.
+         </li>
+         <li class="itemize">When disabled Generic section is unused.</li></ul>
+     <!--l. 4608--><p class="noindent" >Warning: It is strongly discouraged set this option to false when intending to update platform information. The only
+     reason to do that is when doing minor correction of the SMBIOS present and similar. In all other cases not using
+     Automatic may lead to hard to debug errors.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-55004x2">CustomMemory<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Use custom memory configuration defined in the Memory section. This completely replaces any existing
+     memory configuration in SMBIOS, and is only active when UpdateSMBIOS is set to true.
+     </li>
+     <li 
+  class="enumerate" id="x1-55006x3">UpdateDataHub<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Update Data Hub fields. These fields are read from Generic or DataHub sections depending on Automatic
+     value.
+     <!--l. 4631--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: The implementation of the Data Hub protocol in EFI firmware on essentially all systems, including Apple
+     hardware, means that existing Data Hub entries cannot be overridden, while new entries are added to
+     the end with macOS ignoring them. You can work around this by reinstalling the Data Hub protocol
+     using the </span><span class="uwave">ProtocolOverrides</span> <span class="uwave">section. Refer to the </span><span class="uwave">DataHub</span> <span class="uwave">protocol override description for details.
+     </span>
+     </p></li>
+     <li 
+  class="enumerate" id="x1-55008x4">UpdateNVRAM<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Update NVRAM fields related to platform information.
+                                                                                                  
+                                                                                                  
+     
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+                                                                                                  
 
 
 </body>
