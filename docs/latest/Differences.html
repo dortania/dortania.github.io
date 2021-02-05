@@ -15,102 +15,630 @@ src="Logos/Logo-.png" alt="PIC"
 width="160" height="160"  />
 </p><!--l. 153--><p class="noindent" >OpenCore
 </p><!--l. 157--><p class="noindent" >Reference Manual (0.6<span class="sout">.6</span><span class="uwave">.7</span>)
-</p><!--l. 161--><p class="noindent" >[2021.02.04]
+</p><!--l. 161--><p class="noindent" >[2021.02.05]
 </p><!--l. 169--><p class="noindent" >Copyright ©2018-2021 vit9696
 </p>
 </div>
                                                                                                   
                                                                                                   
-     <li class="itemize"><a 
-href="https://www.dmtf.org/standards/smbios" >SMBIOS</a>
-     </li>
-     <li class="itemize"><a 
-href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Intel/Protocol/DataHub.h" >Data Hub</a>
-     </li>
-     <li class="itemize">NVRAM</li></ul>
-<!--l. 4574--><p class="noindent" >Most of the fields specify the overrides in SMBIOS, and their field names conform to EDK2 <a 
-href="https://github.com/acidanthera/audk/blob/master/MdePkg/Include/IndustryStandard/SmBios.h" >SmBios.h</a> header file. However,
-several important fields reside in Data Hub and NVRAM. Some of the values can be found in more than one field and/or
-destination, so there are two ways to control their update process: manual, where all the values are specified (the
-default), and semi-automatic, where (Automatic) only select values are specified, and later used for system
-configuration.
-</p><!--l. 4584--><p class="noindent" >To inspect SMBIOS contents <a 
-href="http://www.nongnu.org/dmidecode" >dmidecode</a> utility can be used. Version with macOS specific enhancements can be downloaded
-from <a 
-href="https://github.com/acidanthera/dmidecode/releases" >Acidanthera/dmidecode</a>.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-16006x3">Patch<br 
+class="newline" />Type: plist array<br 
+class="newline" />Failsafe: Empty<br 
+class="newline" />Description: Perform binary patches in ACPI tables before table addition or removal.
+     <!--l. 927--><p class="noindent" >Designed to be filled with plist dictionary values describing each patch entry. See <a 
+href="#x1-190005">Patch Properties</a> section
+     below.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-16008x4">Quirks<br 
+class="newline" />Type: plist dict<br 
+class="newline" />Description: Apply individual ACPI quirks described in ?? section below.
+     </li></ol>
 <a 
- id="x1-54001r56"></a>
-</p>
-<h4 class="subsectionHead"><span class="titlemark">10.1   </span> <a 
- id="x1-550001"></a>Properties</h4>
+ id="x1-16009r19"></a>
+<h4 class="subsectionHead"><span class="titlemark">4.3   </span> <a 
+ id="x1-170003"></a>Add Properties</h4>
      <ol  class="enumerate1" >
      <li 
-  class="enumerate" id="x1-55002x1">Automatic<br 
-class="newline" />Type: plist boolean<br 
-class="newline" />Failsafe: false<br 
-class="newline" />Description: Generate PlatformInfo based on Generic section instead of using values from DataHub, NVRAM,
-     and SMBIOS sections.
-     <!--l. 4599--><p class="noindent" >Enabling this option is useful when Generic section is flexible enough: </p>
-         <ul class="itemize1">
-         <li class="itemize">When enabled SMBIOS, DataHub, and PlatformNVRAM data is unused.
-         </li>
-         <li class="itemize">When disabled Generic section is unused.</li></ul>
-     <!--l. 4608--><p class="noindent" >Warning: It is strongly discouraged set this option to false when intending to update platform information. The only
-     reason to do that is when doing minor correction of the SMBIOS present and similar. In all other cases not using
-     Automatic may lead to hard to debug errors.
-     </p></li>
-     <li 
-  class="enumerate" id="x1-55004x2">CustomMemory<br 
-class="newline" />Type: plist boolean<br 
-class="newline" />Failsafe: false<br 
-class="newline" />Description: Use custom memory configuration defined in the Memory section. This completely replaces any existing
-     memory configuration in SMBIOS, and is only active when UpdateSMBIOS is set to true.
+  class="enumerate" id="x1-17002x1">Comment<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty<span class="sout">string</span><br 
+class="newline" />Description: Arbitrary ASCII string used to provide human readable reference for the entry. It is implementation
+     defined whether this value is used.
      </li>
      <li 
-  class="enumerate" id="x1-55006x3">UpdateDataHub<br 
+  class="enumerate" id="x1-17004x2">Enabled<br 
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
-class="newline" />Description: Update Data Hub fields. These fields are read from Generic or DataHub sections depending on Automatic
-     value.
-     <!--l. 4631--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: The implementation of the Data Hub protocol in EFI firmware on essentially all systems, including Apple
-     hardware, means that existing Data Hub entries cannot be overridden, while new entries are added to
-     the end with macOS ignoring them. You can work around this by reinstalling the Data Hub protocol
-     using the </span><span class="uwave">ProtocolOverrides</span> <span class="uwave">section. Refer to the </span><span class="uwave">DataHub</span> <span class="uwave">protocol override description for details.
-     </span>
+class="newline" />Description: This ACPI table will not be added unless set to true.
+     </li>
+     <li 
+  class="enumerate" id="x1-17006x3">Path<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty<span class="sout">string</span><br 
+class="newline" />Description:   File   paths   meant   to   be   loaded   as   ACPI   tables.   Example   values   include   DSDT.aml,
+     SubDir/SSDT-8.aml, SSDT-USBX.aml, etc.
+     <!--l. 964--><p class="noindent" >ACPI table load order follows the item order in the array. All ACPI tables load from OC/ACPI directory.
+     </p><!--l. 967--><p class="noindent" >Note: All tables but tables with DSDT table identifier (determined by parsing data not by filename) insert new
+     tables into ACPI stack. DSDT, unlike the rest, performs replacement of DSDT table.
+</p>
+     </li></ol>
+<a 
+ id="x1-17007r20"></a>
+<h4 class="subsectionHead"><span class="titlemark">4.4   </span> <a 
+ id="x1-180004"></a>Delete Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-18002x1">All<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: If set to true, all ACPI tables matching the condition will be deleted. Otherwise only first matched
+     table.
+     </li>
+     <li 
+  class="enumerate" id="x1-18004x2">Comment<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty<span class="sout">string</span><br 
+class="newline" />Description: Arbitrary ASCII string used to provide human readable reference for the entry. It is implementation
+     defined whether this value is used.
+                                                                                                  
+                                                                                                  
+     </li>
+     <li 
+  class="enumerate" id="x1-18006x3">Enabled<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: This ACPI table will not be removed unless set to true.
+     </li>
+     <li 
+  class="enumerate" id="x1-18008x4">OemTableId<br 
+class="newline" />Type: plist data, 8 bytes<br 
+class="newline" />Failsafe: All zero<br 
+class="newline" />Description: Match table OEM ID to be equal to this value unless all zero.
+     </li>
+     <li 
+  class="enumerate" id="x1-18010x5">TableLength<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Match table size to be equal to this value unless 0.
+     </li>
+     <li 
+  class="enumerate" id="x1-18012x6">TableSignature<br 
+class="newline" />Type: plist data, 4 bytes<br 
+class="newline" />Failsafe: All zero<br 
+class="newline" />Description: Match table signature to be equal to this value unless all zero.
+     <!--l. 1019--><p class="noindent" >Note: Make sure not to specify table signature when the sequence needs to be replaced in multiple places.
+     Especially when performing different kinds of renames.
+</p>
+     </li></ol>
+<a 
+ id="x1-18013r21"></a>
+<h4 class="subsectionHead"><span class="titlemark">4.5   </span> <a 
+ id="x1-190005"></a>Patch Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-19002x1">Comment<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty<span class="sout">string</span><br 
+class="newline" />Description: Arbitrary ASCII string used to provide human readable reference for the entry. It is implementation
+     defined whether this value is used.
+     </li>
+     <li 
+  class="enumerate" id="x1-19004x2">Count<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Number of patch occurrences to apply. 0 applies the patch to all occurrences found.
+     </li>
+     <li 
+  class="enumerate" id="x1-19006x3">Enabled<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: This ACPI patch will not be used unless set to true.
+     </li>
+     <li 
+  class="enumerate" id="x1-19008x4">Find<br 
+class="newline" />Type: plist data<br 
+class="newline" />Failsafe: Empty data<br 
+class="newline" />Description: Data to find. Must equal to Replace in size.
+     </li>
+     <li 
+  class="enumerate" id="x1-19010x5">Limit<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Maximum number of bytes to search for. Can be set to 0 to look through the whole ACPI table.
+                                                                                                  
+                                                                                                  
+     </li>
+     <li class="itemize">While it may not be required, sometimes Thunderbolt support, Intel SGX, and Intel Platform Trust may
+     have to be disabled in firmware settings present.</li></ul>
+<!--l. 1297--><p class="noindent" >When debugging sleep issues Power Nap and automatic power off may be (temporarily) disabled, which appear to sometimes
+cause wake to black screen or boot loop issues on older platforms. The particular issues may vary, but in general ACPI tables
+should be looked up first. Here is an example of a bug found in some <a 
+href="http://www.insanelymac.com/forum/topic/329624-need-cmos-reset-after-sleep-only-after-login/#entry2534645" >Z68 motherboards</a>. To turn Power Nap and the others off
+run the following commands in Terminal: </p><!--l. 1303-->
+<div class="lstlisting" id="listing-3"><span class="label"><a 
+ id="x1-22001r1"></a></span>sudo pmset autopoweroff 0 <br /><span class="label"><a 
+ id="x1-22002r2"></a></span>sudo pmset powernap 0 <br /><span class="label"><a 
+ id="x1-22003r3"></a></span>sudo pmset standby 0
+</div>
+<!--l. 1309--><p class="noindent" >Note: These settings may reset at hardware change and in certain other circumstances. To view their current state use pmset
+-g command in Terminal.
+<a 
+ id="x1-22004r25"></a>
+</p>
+<h4 class="subsectionHead"><span class="titlemark">5.2   </span> <a 
+ id="x1-230002"></a>Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-23002x1">MmioWhitelist<br 
+class="newline" />Type: plist array<br 
+class="newline" />Description: Designed to be filled with plist dict values, describing addresses critical for particular firmware
+     functioning when DevirtualiseMmio quirk is in use. See <a 
+href="#x1-240003">MmioWhitelist Properties</a> section below.
+     </li>
+     <li 
+  class="enumerate" id="x1-23004x2">Patch<br 
+class="newline" />Type: plist array<br 
+class="newline" />Failsafe: Empty<br 
+class="newline" />Description: Perform binary patches in booter.
+     <!--l. 1330--><p class="noindent" >Designed to be filled with plist dictionary values, describing each patch. See <a 
+href="#x1-250004">Patch Properties</a> section below.
      </p></li>
      <li 
-  class="enumerate" id="x1-55008x4">UpdateNVRAM<br 
+  class="enumerate" id="x1-23006x3">Quirks<br 
+class="newline" />Type: plist dict<br 
+class="newline" />Description: Apply individual booter quirks described in <a 
+href="#x1-260005">Quirks Properties</a> section below.
+     </li></ol>
+<a 
+ id="x1-23007r26"></a>
+<h4 class="subsectionHead"><span class="titlemark">5.3   </span> <a 
+ id="x1-240003"></a>MmioWhitelist Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-24002x1">Address<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Exceptional MMIO address, which memory descriptor should be left virtualised (unchanged) by
+     DevirtualiseMmio. This means that the firmware will be able to directly communicate with this memory region
+     during operating system functioning, because the region this value is in will be assigned a virtual address.
+     <!--l. 1354--><p class="noindent" >The  addresses  written  here  must  be  part  of  the  memory  map,  have  EfiMemoryMappedIO type  and
+     EFI_MEMORY_RUNTIME attribute (highest bit) set. To find the list of the candidates the debug log can be used.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-24004x2">Comment<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty<span class="sout">string</span><br 
+class="newline" />Description: Arbitrary ASCII string used to provide human readable reference for the entry. It is implementation
+     defined whether this value is used.
+                                                                                                  
+                                                                                                  
+     </li>
+     <li 
+  class="enumerate" id="x1-24006x3">Enabled<br 
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
-class="newline" />Description: Update NVRAM fields related to platform information.
+class="newline" />Description: This address will be devirtualised unless set to true.
+     </li></ol>
+<a 
+ id="x1-24007r27"></a>
+<h4 class="subsectionHead"><span class="titlemark">5.4   </span> <a 
+ id="x1-250004"></a>Patch Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-25002x1">Arch<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Any<br 
+class="newline" />Description: Booter patch architecture (Any, i386, x86_64).
+     </li>
+     <li 
+  class="enumerate" id="x1-25004x2">Comment<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty<span class="sout">string</span><br 
+class="newline" />Description: Arbitrary ASCII string used to provide human readable reference for the entry. It is implementation
+     defined whether this value is used.
+     </li>
+     <li 
+  class="enumerate" id="x1-25006x3">Count<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Number of patch occurrences to apply. 0 applies the patch to all occurrences found.
+     </li>
+     <li 
+  class="enumerate" id="x1-25008x4">Enabled<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: This booter patch will not be used unless set to true.
+     </li>
+     <li 
+  class="enumerate" id="x1-25010x5">Find<br 
+class="newline" />Type: plist data<br 
+class="newline" />Failsafe: Empty data<br 
+class="newline" />Description: Data to find. This must equal to Replace in size.
+     </li>
+     <li 
+  class="enumerate" id="x1-25012x6">Identifier<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty<span class="sout">string</span><br 
+class="newline" />Description: Apple for macOS booter (generally boot.efi); or a name with suffix (e.g. bootmgfw.efi) for a
+     specific booter; or Any / empty string (failsafe) to match any booter.
+     </li>
+     <li 
+  class="enumerate" id="x1-25014x7">Limit<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Maximum number of bytes to search for. Can be set to 0 to look through the whole booter.
+     </li>
+     <li 
+  class="enumerate" id="x1-25016x8">Mask<br 
+class="newline" />Type: plist data<br 
+class="newline" />Failsafe: Empty data<br 
+class="newline" />Description: Data bitwise mask used during find comparison. Allows fuzzy search by ignoring not masked (set
+     to zero) bits. Can be set to empty data to be ignored. Must equal to Find in size otherwise.
+     </li>
                                                                                                   
                                                                                                   
-     
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
+     <li 
+  class="enumerate" id="x1-25018x9">Replace<br 
+class="newline" />Type: plist data<br 
+class="newline" />Failsafe: Empty data<br 
+class="newline" />Description: Replacement data of one or more bytes.
+     </li>
+     <li 
+  class="enumerate" id="x1-25020x10">ReplaceMask<br 
+class="newline" />Type: plist data<br 
+class="newline" />Failsafe: Empty data<br 
+class="newline" />Description: Data bitwise mask used during replacement. Allows fuzzy replacement by updating masked (set
+     to non-zero) bits. Can be set to empty data to be ignored. Must equal to Replace in size otherwise.
+     </li>
+     <li 
+  class="enumerate" id="x1-25022x11">Skip<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Number of found occurrences to be skipped before replacement is done.
+     </li></ol>
+<a 
+ id="x1-25023r28"></a>
+<h4 class="subsectionHead"><span class="titlemark">5.5   </span> <a 
+ id="x1-260005"></a>Quirks Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-26002x1">AllowRelocationBlock<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Allows booting macOS through a relocation block.
+     <!--l. 1469--><p class="noindent" >Relocation block is a scratch buffer allocated in lower 4 GB to be used for loading the kernel and related structures
+     by EfiBoot on firmwares where lower memory is otherwise occupied by the (assumed to be) non-runtime data.
+     Right before kernel startup the relocation block is copied back to lower addresses. Similarly all the other addresses
+     pointing to relocation block are also carefully adjusted. Relocation block can be used when:
+</p>
+         <ul class="itemize1">
+         <li class="itemize">No better slide exists (all the memory is used)
+         </li>
+         <li class="itemize">slide=0 is forced (by an argument or safe mode)
+         </li>
+         <li class="itemize">KASLR (slide) is unsupported (this is macOS 10.7 or older)</li></ul>
+     <!--l. 1483--><p class="noindent" >This quirk requires ProvideCustomSlide to also be enabled and generally needs AvoidRuntimeDefrag to work correctly.
+     Hibernation is not supported when booting with a relocation block (but relocation block is not always used when the
+     quirk is enabled).
+     </p><!--l. 1488--><p class="noindent" >Note: While this quirk is required to run older macOS versions on platforms with used lower memory it is not compatible
+     with some hardware and macOS 11. In <span class="sout">this case one may try to use </span><span class="uwave">such cases, consider using </span>EnableSafeModeSlide
+     instead.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-26004x2">AvoidRuntimeDefrag<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Protect from boot.efi runtime memory defragmentation.
+     <!--l. 1500--><p class="noindent" >This option fixes UEFI runtime services (date, time, NVRAM, power control, etc.) support on firmware that uses SMM
+     backing for select services such as variable storage. SMM may try to access physical addresses, but they get moved by
+     boot.efi.
+     </p><!--l. 1504--><p class="noindent" >Note: Most types of firmware, apart from Apple and VMware, need this quirk.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-26006x3">DevirtualiseMmio                                                                                   <br 
+class="newline" /> ailsafe: Unknown<br 
+class="newline" />SMBIOS: Memory Device (Type 17) — Device Locator<br 
+class="newline" />Description: Specifies the physically-labeled socket or board position where the memory device is located.
+     </li>
+     <li 
+  class="enumerate" id="x1-59008x4">Manufacturer<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Unknown<br 
+class="newline" />SMBIOS: Memory Device (Type 17) — Manufacturer<br 
+class="newline" />Description: Specifies the manufacturer of this memory device.
+     </li>
+     <li 
+  class="enumerate" id="x1-59010x5">PartNumber<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Unknown<br 
+class="newline" />SMBIOS: Memory Device (Type 17) — Part Number<br 
+class="newline" />Description: Specifies the part number of this memory device.
+     </li>
+     <li 
+  class="enumerate" id="x1-59012x6">SerialNumber<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Unknown<br 
+class="newline" />SMBIOS: Memory Device (Type 17) — Serial Number<br 
+class="newline" />Description: Specifies the serial number of this memory device.
+     </li>
+     <li 
+  class="enumerate" id="x1-59014x7">Size<br 
+class="newline" />Type: plist integer, 32-bit<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />SMBIOS: Memory Device (Type 17) — Size<br 
+class="newline" />Description: Specifies the size of the memory device, in megabytes. 0 indicates this slot is not populated.
+     </li>
+     <li 
+  class="enumerate" id="x1-59016x8">Speed<br 
+class="newline" />Type: plist integer, 16-bit<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />SMBIOS: Memory Device (Type 17) — Speed<br 
+class="newline" />Description:  Specifies  the  maximum  capable  speed  of  the  device,  in  megatransfers  per  second  (MT/s).  0
+     indicates an unknown speed.
+     </li></ol>
+<a 
+ id="x1-59017r61"></a>
+<h4 class="subsectionHead"><span class="titlemark">10.5   </span> <a 
+ id="x1-600005"></a>PlatformNVRAM Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-60002x1">BID<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: <span class="sout">Not installed</span><span class="uwave">Empty (Not installed)</span><br 
+class="newline" />Description: Specifies the value of NVRAM variable 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:HW_BID.
+     </li>
+     <li 
+  class="enumerate" id="x1-60004x2">ROM<br 
+class="newline" />Type: plist data, 6 bytes<br 
+class="newline" />Failsafe: <span class="sout">Not installed</span><span class="uwave">Empty (Not installed)</span><br 
+class="newline" />Description: Specifies the values of NVRAM variables 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:HW_ROM and
+     4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:ROM.
+     </li>
+     <li 
+  class="enumerate" id="x1-60006x3">MLB<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: <span class="sout">Not installed</span><span class="uwave">Empty (Not installed)</span><br 
+class="newline" />Description: Specifies the values of NVRAM variables 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:HW_MLB and
+     4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:MLB.
+     </li>
+     <li 
+  class="enumerate" id="x1-60008x4">FirmwareFeatures<br 
+class="newline" />Type: plist data, 8 bytes<br 
+class="newline" />Failsafe: <span class="sout">Not installed</span><span class="uwave">Empty (Not installed)</span><br 
+class="newline" />Description: This variable comes in pair with FirmwareFeaturesMask. Specifies the values of NVRAM
+     variables:
+         <ul class="itemize1">
+         <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:FirmwareFeatures
+         </li>
+         <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:ExtendedFirmwareFeatures</li></ul>
+     </li>
+     <li 
+  class="enumerate" id="x1-60010x5">FirmwareFeaturesMask<br 
+class="newline" />Type: plist data, 8 bytes<br 
+class="newline" />Failsafe: <span class="sout">Not installed</span><span class="uwave">Empty (Not installed)</span><br 
+class="newline" />Description: This variable comes in pair with FirmwareFeatures. Specifies the values of NVRAM variables:
+         <ul class="itemize1">
+         <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:FirmwareFeaturesMask
+         </li>
+         <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:ExtendedFirmwareFeaturesMask</li></ul>
+     </li>
+     <li 
+  class="enumerate" id="x1-60012x6">SystemUUID<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: <span class="sout">Not installed</span><span class="uwave">Empty (Not installed)</span><br 
+class="newline" />Description: Specifies the value of NVRAM variable 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:system-id for boot
+     services only. Value found on Macs is equal to SMBIOS SystemUUID.
+     </li></ol>
+<a 
+ id="x1-60013r63"></a>
+<h4 class="subsectionHead"><span class="titlemark">10.6   </span> <a 
+ id="x1-610006"></a>SMBIOS Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-61002x1">BIOSVendor<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: <span class="sout">OEM specified</span><span class="uwave">Empty (OEM specified)</span><br 
+class="newline" />SMBIOS: BIOS Information (Type 0) — Vendor<br 
+class="newline" />Description: BIOS Vendor. All rules of SystemManufacturer do apply.
+     </li>
+     <li 
+  class="enumerate" id="x1-61004x2">BIOSVersion<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: <span class="sout">OEM specified</span><span class="uwave">Empty (OEM specified)</span><br 
+class="newline" />SMBIOS: BIOS Information (Type 0) — BIOS Version<br 
+class="newline" />Description:  Firmware  version.  This  value  gets  updated  and  takes  part  in  update  delivery  configuration
+     and  macOS  version  compatibility.  This  value  could  look  like  MM71.88Z.0234.B00.1809171422 in  older
+     firmware   and   is   described   in   <a 
+href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/Guid/BiosId.h" >BiosId.h</a>.   In   newer   firmware,   it   should   look   like   236.0.0.0.0  or
+     220.230.16.0.0 (iBridge: 16.16.2542.0.0,0). iBridge version is read from BridgeOSVersion variable, and
+     is only present on macs with T2.
                                                                                                   
-
-
-</body>
+                                                                                                  
+     <div class="verbatim" id="verbatim-1">
+     Apple ROM Version
+      <br /> BIOS ID:      MBP151.88Z.F000.B00.1811142212
+      <br /> Model:        MBP151
+      <br /> EFI Version:  220.230.16.0.0
+      <br /> Built by:     root@quinoa
+      <br /> Date:         Wed Nov 14 22:12:53 2018
+      <br /> Revision:     220.230.16 (B&#x0026;I)
+      <br /> ROM Version:  F000_B00
+      <br /> Build Type:   Official Build, RELEASE
+      <br /> Compiler:     Apple LLVM version 10.0.0 (clang-1000.2.42)
+      <br /> UUID:         E5D1475B-29FF-32BA-8552-682622BA42E1
+      <br /> UUID:         151B0907-10F9-3271-87CD-4BF5DBECACF5</div>
+     <!--l. 5356--><p class="nopar" >
+     </p></li>
+     <li 
+  class="enumerate" id="x1-61006x3">BIOSReleaseDate<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: <span class="sout">OEM specified</span><span class="uwave">Empty (OEM specified)</span><br 
+class="newline" />SMBIOS: BIOS Information (Type 0) — BIOS Release Date<br 
+class="newline" />Description: Firmware release date. Similar to BIOSVersion. May look like 12/08/2017.
+     </li>
+     <li 
+  class="enumerate" id="x1-61008x4">SystemManufacturer<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: <span class="sout">OEM specified</span><span class="uwave">Empty (OEM specified)</span><br 
+class="newline" />SMBIOS: System Information (Type 1) — Manufacturer<br 
+class="newline" />Description: OEM manufacturer of the particular board. Shall not be specified unless strictly required. Should not
+     contain Apple Inc., as this confuses numerous services present in the operating system, such as firmware updates,
+     eficheck, as well as kernel extensions developed in Acidanthera, such as Lilu and its plugins. In addition it will also make
+     some operating systems such as Linux unbootable.
+     </li>
+     <li 
+  class="enumerate" id="x1-61010x5">SystemProductName<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: <span class="sout">OEM specified</span><span class="uwave">Empty (OEM specified)</span><br 
+class="newline" />SMBIOS: System Information (Type 1), Product Name<br 
+class="newline" />Description: Preferred Mac model used to mark the device as supported by the operating system. This value must be
+     specified by any configuration for later automatic generation of the related values in this and other SMBIOS tables and
+     related configuration parameters. If SystemProductName is not compatible with the target operating system,
+     -no_compat_check boot argument may be used as an override.
+     <!--l. 5389--><p class="noindent" >Note: If SystemProductName is unknown, and related fields are unspecified, default values should be assumed as being
+     set to MacPro6,1 data. The list of known products can be found in AppleModels.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-61012x6">SystemVersion<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: <span class="sout">OEM specified</span><span class="uwave">Empty (OEM specified)</span><br 
+class="newline" />SMBIOS: System Information (Type 1) — Version<br 
+class="newline" />Description: Product iteration version number. May look like 1.1.
+     </li>
+     <li 
+  class="enumerate" id="x1-61014x7">SystemSerialNumber<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: <span class="sout">OEM specified</span><span class="uwave">Empty (OEM specified)</span><br 
+class="newline" />SMBIOS: System Information (Type 1) — Serial Number<br 
+class="newline" />Description: Product serial number in defined format. Known formats are described in <a 
+href="https://github.com/acidanthera/OpenCorePkg/blob/master/Utilities/macserial/FORMAT.md" >macserial</a>.
+     </li>
+     <li 
+  class="enumerate" id="x1-61016x8">SystemUUID<br 
+class="newline" />Type: plist string, GUID<br 
+class="newline" />Failsafe: <span class="sout">OEM specified</span><span class="uwave">Empty (OEM specified)</span><br 
+class="newline" />SMBIOS: System Information (Type 1) — UUID<br 
+class="newline" />Description: A UUID is an identifier that is designed to be unique across both time and space. It requires no central
+     registration process.
+     </li>
+     <li 
+  class="enumerate" id="x1-61018x9">SystemSKUNumber<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: <span class="sout">OEM specified</span><span class="uwave">Empty (OEM specified)</span><br 
+class="newline" />SMBIOS: System Information (Type 1) — SKU Number<br 
+class="newline" />Description: Mac Board ID (board-id). May look like Mac-7BA5B2D9E42DDD94 or Mac-F221BEC8 in older models.
+     Sometimes it can be just empty.
+     </li>
+     <li 
+  class="enumerate" id="x1-61020x10">SystemFamily<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: <span class="sout">OEM specified</span><span class="uwave">Empty (OEM specified)</span><br 
+class="newline" />SMBIOS: System Information (Type 1) — Family<br 
+class="newline" />Description: Family name. May look like iMac Pro.
+     </li>
+     <li 
+  class="enumerate" id="x1-61022x11">BoardManufacturer<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: <span class="sout">OEM specified</span><span class="uwave">Empty (OEM specified)</span><br 
+class="newline" />SMBIOS: Baseboard (or Module) Information (Type 2) - Manufacturer<br 
+class="newline" />Description: Board manufacturer. All rules of SystemManufacturer do apply.
+     </li>
+     <li 
+  class="enumerate" id="x1-61024x12">BoardProduct<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: <span class="sout">OEM specified</span><span class="uwave">Empty (OEM specified)</span><br 
+class="newline" />SMBIOS: Baseboard (or Module) Information (Type 2) - Product<br 
+class="newline" />Description: Mac Board ID (board-id). May look like Mac-7BA5B2D9E42DDD94 or Mac-F221BEC8 in older
+     models.
+     </li>
+     <li 
+  class="enumerate" id="x1-61026x13">BoardVersion<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: <span class="sout">OEM specified</span><span class="uwave">Empty (OEM specified)</span><br 
+class="newline" />SMBIOS: Baseboard (or Module) Information (Type 2) - Version<br 
+class="newline" />Description: Board version number. Varies, may match SystemProductName or SystemProductVersion.
+     </li>
+     <li 
+  class="enumerate" id="x1-61028x14">BoardSerialNumber<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: <span class="sout">OEM specified</span><span class="uwave">Empty (OEM specified)</span><br 
+class="newline" />SMBIOS: Baseboard (or Module) Information (Type 2) — Serial Number<br 
+class="newline" />Description: Board serial number in defined format. Known formats are described in <a 
+href="https://github.com/acidanthera/macserial/blob/master/FORMAT.md" >macserial</a>.
+     </li>
+     <li 
+  class="enumerate" id="x1-61030x15">BoardAssetTag<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: <span class="sout">OEM specified</span><span class="uwave">Empty (OEM specified)</span><br 
+class="newline" />SMBIOS: Baseboard (or Module) Information (Type 2) — Asset Tag<br 
+class="newline" />Description: Asset tag number. Varies, may be empty or Type2 - Board Asset Tag.
+     </li>
+                                                                                                  
+                                                                                                  
+     <li 
+  class="enumerate" id="x1-61032x16">BoardType<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: <span class="sout">OEM specified</span><span class="uwave">0 (OEM specified)</span><br 
+class="newline" />SMBIOS: Baseboard (or Module) Information (Type 2) — Board Type<br 
+class="newline" />Description: Either 0xA (Motherboard (includes processor, memory, and I/O) or 0xB (Processor/Memory Module),
+     refer to Table 15 – Baseboard: Board Type for more details.
+     </li>
+     <li 
+  class="enumerate" id="x1-61034x17">BoardLocationInChassis<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: <span class="sout">OEM specified</span><span class="uwave">Empty (OEM specified)</span><br 
+class="newline" />SMBIOS: Baseboard (or Module) Information (Type 2) — Location in Chassis<br 
+class="newline" />Description: Varies, may be empty or Part Component.
+     </li>
+     <li 
+  class="enumerate" id="x1-61036x18">ChassisManufacturer<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: <span class="sout">OEM specified</span><span class="uwave">Empty (OEM specified)</span><br 
+class="newline" />SMBIOS: System Enclosure or Chassis (Type 3) — Manufacturer<br 
+class="newline" />Description: Board manufacturer. All rules of SystemManufacturer do apply.
+     </li>
+     <li 
+  class="enumerate" id="x1-61038x19">ChassisType<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: <span class="sout">OEM specified</span><span class="uwave">0 (OEM specified)</span><br 
+class="newline" />SMBIOS: System Enclosure or Chassis (Type 3) — Type<br 
+class="newline" />Description: Chassis type, refer to Table 17 — System Enclosure or Chassis Types for more details.
+     </li>
+     <li 
+  class="enumerate" id="x1-61040x20">ChassisVersion<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: <span class="sout">OEM specified</span><span class="uwave">Empty (OEM specified)</span><br 
+class="newline" />SMBIOS: System Enclosure or Chassis (Type 3) — Version<br 
+class="newline" />Description: Should match BoardProduct.
+     </li>
+     <li 
+  class="enumerate" id="x1-61042x21">ChassisSerialNumber<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: <span class="sout">OEM specified</span><span class="uwave">Empty (OEM specified)</span><br 
+class="newline" />SMBIOS: System Enclosure or Chassis (Type 3) — Version<br 
+class="newline" />Description: Should match SystemSerialNumber.
+     </li>
+     <li 
+  class="enumerate" id="x1-61044x22">ChassisAssetTag<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: <span class="sout">OEM specified</span><span class="uwave">Empty (OEM specified)</span><br 
+class="newline" />SMBIOS: System Enclosure or Chassis (Type 3) — Asset Tag Number<br 
+class="newline" />Description: Chassis type name. Varies, could be empty or MacBook-Aluminum.
+     </li>
+     <li 
+  class="enumerate" id="x1-61046x23">PlatformFeature<br 
+class="newline" />Type: plist integer, 32-bit<br 
+class="newline" />Failsafe: 0xFFFFFFFF<br 
+class="newline" />SMBIOS: APPLE_SMBIOS_TABLE_TYPE133 - PlatformFeature<br 
+class="newline" />Description: Platform features bitmask. Refer to <a 
+href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/IndustryStandard/AppleFeatures.h" >AppleFeatures.h</a> for more details. Use 0xFFFFFFFF value to not
+     provide this table.
+     </li>
+     <li 
+  class="enumerate" id="x1-61048x24">SmcVersion<br 
+class="newline" />Type: plist data, 16 bytes<br 
+class="newline" />Failsafe: All zero                                    </body>
 </html>
