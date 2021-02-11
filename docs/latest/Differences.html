@@ -1450,13 +1450,13 @@ class="newline" />Description: Sets console output screen resolution.
          <li class="itemize">Set to WxH@Bpp (e.g. 1920x1080@32) or WxH (e.g. 1920x1080) formatted string to request custom resolution
          from GOP if available.
          </li>
-         <li class="itemize"><span class="sout">Set to empty string not to change screen resolution. </span>
+         <li class="itemize">Set to <span class="sout">empty string not to change screen resolution. </span>
          </li>
-         <li class="itemize"><span class="sout">Set to </span><span class="uwave">Set to </span>Max to <span class="sout">try to use </span><span class="uwave">attempt using the </span>largest available screen resolution.</li></ul>
-     <!--l. 6408--><p class="noindent" >On HiDPI screens APPLE_VENDOR_VARIABLE_GUID UIScale NVRAM variable may need to be set to 02 to enable HiDPI
+         <li class="itemize"><span class="sout">Set to </span>Max to <span class="sout">try to use </span><span class="uwave">attempt using the </span>largest available screen resolution.</li></ul>
+     <!--l. 6407--><p class="noindent" >On HiDPI screens APPLE_VENDOR_VARIABLE_GUID UIScale NVRAM variable may need to be set to 02 to enable HiDPI
      scaling in Builtin text renderer, FileVault 2 UEFI password interface, and boot screen logo. Refer to ?? section for more
      details.
-     </p><!--l. 6414--><p class="noindent" >Note: This will fail when console handle has no GOP protocol. When the firmware does not provide it, it can be added
+     </p><!--l. 6413--><p class="noindent" >Note: This will fail when console handle has no GOP protocol. When the firmware does not provide it, it can be added
      with ProvideConsoleGop set to true.
      </p></li>
      <li 
@@ -1466,7 +1466,7 @@ class="newline" />Failsafe: false<br
 class="newline" />Description: Forces Resolution to be set in cases where the desired resolution is not available by default, such as on
      legacy Intel GMA and first generation Intel HD Graphics (Ironlake/Arrandale). Setting Resolution to Max will try to
      pull the largest available resolution from the connected display’s EDID.
-     <!--l. 6428--><p class="noindent" >Note: This option depends on the <a 
+     <!--l. 6427--><p class="noindent" >Note: This option depends on the <a 
 href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Acidanthera/Protocol/OcForceResolution.h" >OC_FORCE_RESOLUTION_PROTOCOL</a> protocol being present. This protocol is
      currently only supported by OpenDuetPkg. The OpenDuetPkg implementation currently only supports Intel
      iGPUs.
@@ -1478,14 +1478,14 @@ class="newline" />Failsafe: false<br
 class="newline" />Description: Some types of firmware only clear part of the screen when switching from graphics to text mode, leaving a
      fragment of previously drawn images visible. This option fills the entire graphics screen with black colour before switching
      to text mode.
-     <!--l. 6441--><p class="noindent" >Note: This option only applies to System renderer.
+     <!--l. 6440--><p class="noindent" >Note: This option only applies to System renderer.
      </p></li>
      <li 
   class="enumerate" id="x1-72012x6">DirectGopRendering<br 
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Use builtin graphics output protocol renderer for console.
-     <!--l. 6449--><p class="noindent" >On some types of firmware, such as on the MacPro5,1, this may provide better performance or fix rendering issues.
+     <!--l. 6448--><p class="noindent" >On some types of firmware, such as on the MacPro5,1, this may provide better performance or fix rendering issues.
      However, this option is not recommended unless there is an obvious benefit as it may result in issues such as slower
      scrolling.
                                                                                                   
@@ -1498,7 +1498,7 @@ class="newline" />Failsafe: false<br
 class="newline" />Description: Some types of firmware output text onscreen in both graphics and text mode. This is typically unexpected
      as random text may appear over graphical images and cause UI corruption. Setting this option to true will discard all
      text output when console control is in a different mode from Text.
-     <!--l. 6462--><p class="noindent" >Note: This option only applies to the System renderer.
+     <!--l. 6461--><p class="noindent" >Note: This option only applies to the System renderer.
      </p></li>
      <li 
   class="enumerate" id="x1-72016x8">ReplaceTabWithSpace<br 
@@ -1507,17 +1507,17 @@ class="newline" />Failsafe: false<br
 class="newline" />Description: Some types of firmware do not print tab characters or everything that follows them, causing difficulties in
      using the UEFI Shell’s builtin text editor to edit property lists and other documents. This option makes the console
      output spaces instead of tabs.
-     <!--l. 6473--><p class="noindent" >Note: This option only applies to System renderer.
+     <!--l. 6472--><p class="noindent" >Note: This option only applies to System renderer.
      </p></li>
      <li 
   class="enumerate" id="x1-72018x9">ProvideConsoleGop<br 
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Ensure GOP (Graphics Output Protocol) on console handle.
-     <!--l. 6481--><p class="noindent" >macOS bootloader requires GOP or UGA (for 10.4 EfiBoot) to be present on console handle, yet the exact location of the
+     <!--l. 6480--><p class="noindent" >macOS bootloader requires GOP or UGA (for 10.4 EfiBoot) to be present on console handle, yet the exact location of the
      graphics protocol is not covered by the UEFI specification. This option will ensure GOP and UGA, if present, are
      available on the console handle.
-     </p><!--l. 6486--><p class="noindent" >Note: This option will also replace broken GOP protocol on console handle, which may be the case on MacPro5,1 with
+     </p><!--l. 6485--><p class="noindent" >Note: This option will also replace broken GOP protocol on console handle, which may be the case on MacPro5,1 with
      newer GPUs.
      </p></li>
      <li 
@@ -1525,10 +1525,10 @@ class="newline" />Description: Ensure GOP (Graphics Output Protocol) on console 
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Reconnect console controllers after changing screen resolution.
-     <!--l. 6495--><p class="noindent" >On some types of firmware, the controllers that produce the console protocols (simple text out) must be reconnected
+     <!--l. 6494--><p class="noindent" >On some types of firmware, the controllers that produce the console protocols (simple text out) must be reconnected
      when the screen resolution is changed via GOP. Otherwise they will not produce text based on the new
      resolution.
-     </p><!--l. 6499--><p class="noindent" >Note: On several boards this logic may result in black screen when launching OpenCore from Shell and thus it is
+     </p><!--l. 6498--><p class="noindent" >Note: On several boards this logic may result in black screen when launching OpenCore from Shell and thus it is
      optional. In versions prior to 0.5.2 this option was mandatory and not configurable. Please do not use this unless
      required.
      </p></li>
@@ -1539,7 +1539,7 @@ class="newline" />Failsafe: false<br
 class="newline" />Description: Some types of firmware reset screen resolutions to a failsafe value (such as 1024x768) on the
      attempts to clear screen contents when large display (e.g. 2K or 4K) is used. This option attempts to apply a
      workaround.
-     <!--l. 6512--><p class="noindent" >Note: This option only applies to <span class="uwave">the </span>System renderer. On all known affected systems<span class="uwave">, </span>ConsoleMode <span class="sout">had to </span><span class="uwave">must </span>be set
+     <!--l. 6511--><p class="noindent" >Note: This option only applies to <span class="uwave">the </span>System renderer. On all known affected systems<span class="uwave">, </span>ConsoleMode <span class="sout">had to </span><span class="uwave">must </span>be set
      to <span class="uwave">an </span>empty string for this <span class="uwave">option </span>to work.
      </p></li>
      <li 
@@ -1549,7 +1549,7 @@ class="newline" />Failsafe: false<br
 class="newline" />Description: Provide UGA protocol instances on top of GOP protocol <span class="uwave">instances</span>.
                                                                                                   
                                                                                                   
-     <!--l. 6522--><p class="noindent" >Some types of firmware do not implement the legacy UGA protocol but this may be required for screen output by older
+     <!--l. 6521--><p class="noindent" >Some types of firmware do not implement the legacy UGA protocol but this may be required for screen output by older
      EFI applications such as EfiBoot from 10.4.
 </p>
      </li></ol>
@@ -1563,13 +1563,13 @@ class="newline" />Description: Provide UGA protocol instances on top of GOP prot
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: <span class="sout">Reinstalls </span><span class="uwave">Replaces </span>Apple audio protocols with builtin versions.
-     <!--l. 6539--><p class="noindent" >Apple audio protocols allow macOS bootloader and OpenCore to play sounds and signals for screen reading or
+     <!--l. 6538--><p class="noindent" >Apple audio protocols allow macOS bootloader and OpenCore to play sounds and signals for screen reading or
      audible error reporting. Supported protocols are beep generation and VoiceOver. VoiceOver protocol is specific to
      Gibraltar machines (T2) and is not supported before macOS High Sierra (10.13). Instead older macOS versions
      use AppleHDA protocol, which is currently not implemented.
-     </p><!--l. 6546--><p class="noindent" >Only one set of audio protocols can be available at a time, so in order to get audio playback in OpenCore user
+     </p><!--l. 6545--><p class="noindent" >Only one set of audio protocols can be available at a time, so in order to get audio playback in OpenCore user
      interface on Mac system implementing some of these protocols this setting should be enabled.
-     </p><!--l. 6550--><p class="noindent" >Note: Backend audio driver needs to be configured in UEFI Audio section for these protocols to be able to stream
+     </p><!--l. 6549--><p class="noindent" >Note: Backend audio driver needs to be configured in UEFI Audio section for these protocols to be able to stream
      audio.
      </p></li>
      <li 
@@ -1578,7 +1578,7 @@ class="newline" />Type: plist boolean<br
 class="newline" />Failsafe: false<br 
 class="newline" />Description: <span class="sout">Reinstalls </span><span class="uwave">Replaces </span>Apple Boot Policy protocol with a builtin version. This may be used to ensure
      APFS compatibility on VMs or legacy Macs.
-     <!--l. 6560--><p class="noindent" >Note: Some Macs, namely MacPro5,1, do have APFS compatibility, but their Apple Boot Policy protocol contains
+     <!--l. 6559--><p class="noindent" >Note: Some Macs, namely MacPro5,1, do have APFS compatibility, but their Apple Boot Policy protocol contains
      recovery detection issues, thus using this option is advised on them as well.
      </p></li>
      <li 
@@ -1628,7 +1628,7 @@ class="newline" />Description: <span class="sout">Reinstalls </span><span class=
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: <span class="sout">Reinstalls </span><span class="uwave">Replaces </span>Apple RTC RAM protocol with <span class="uwave">a </span>builtin version.
-     <!--l. 6615--><p class="noindent" >Note: Builtin version of Apple RTC RAM protocol may filter out I/O attempts to select RTC memory addresses.
+     <!--l. 6614--><p class="noindent" >Note: Builtin version of Apple RTC RAM protocol may filter out I/O attempts to select RTC memory addresses.
      The list of addresses can be specified in 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:rtc-blacklist variable as
      a data array.
      </p></li>
@@ -1643,7 +1643,7 @@ class="newline" />Description: <span class="sout">Reinstalls </span><span class=
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: <span class="sout">Reinstalls </span><span class="uwave">Replaces </span>Apple SMC I/O protocol with a builtin version.
-     <!--l. 6634--><p class="noindent" >This protocol replaces legacy VirtualSmc UEFI driver, and is compatible with any SMC kernel extension.
+     <!--l. 6633--><p class="noindent" >This protocol replaces legacy VirtualSmc UEFI driver, and is compatible with any SMC kernel extension.
      However, in case FakeSMC kernel extension is used, manual NVRAM key variable addition may be needed.
      </p></li>
      <li 
@@ -1658,7 +1658,7 @@ class="newline" />Type: plist boolean<br
 class="newline" />Failsafe: false<br 
 class="newline" />Description:  <span class="sout">Reinstalls  </span><span class="uwave">Replaces  </span>Data  Hub  protocol  with  a  builtin  version.  <span class="sout">This  will  delete  all  previous
      properties </span>
-     <!--l. 6652--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: This will discard all previous entries </span>if the protocol was already installed<span class="uwave">, so all properties required for safe
+     <!--l. 6651--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: This will discard all previous entries </span>if the protocol was already installed<span class="uwave">, so all properties required for safe
      operation of the system must be specified in your configuration</span>.
      </p></li>
      <li 
@@ -1667,7 +1667,7 @@ class="newline" />Type: plist boolean<br
 class="newline" />Failsafe: false<br 
 class="newline" />Description: <span class="sout">Reinstalls </span><span class="uwave">Replaces </span>Device Property protocol with a builtin version. This <span class="sout">will delete all previous
      properties if it was already installed. This </span>may be used to ensure full compatibility on VMs or legacy Macs.
-     <!--l. 6664--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: This will discard all previous entries if the protocol was already installed, so all properties required for safe
+     <!--l. 6663--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: This will discard all previous entries if the protocol was already installed, so all properties required for safe
      operation of the system must be specified in your configuration. </span>
                                                                                                   
                                                                                                   
@@ -1679,7 +1679,7 @@ class="newline" />Failsafe: false<br
 class="newline" />Description: <span class="sout">Forcibly wraps </span><span class="uwave">Wraps </span>Firmware Volume protocols or installs <span class="sout">new </span><span class="uwave">a new version </span>to support custom
      cursor images for File Vault 2. Should be set to true to ensure File Vault 2 compatibility on everything but VMs
      and legacy Macs.
-     <!--l. 6678--><p class="noindent" >Note: Several virtual machines including VMware may have corrupted cursor image in HiDPI mode and thus
+     <!--l. 6677--><p class="noindent" >Note: Several virtual machines including VMware may have corrupted cursor image in HiDPI mode and thus
      may also require this setting to be enabled.
      </p></li>
      <li 
@@ -1718,7 +1718,7 @@ class="newline" />Description: <span class="sout">Forcibly reinstalls </span><sp
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Disable platform security policy.
-     <!--l. 6723--><p class="noindent" >Note: This setting disables various security features of the firmware, defeating the purpose of any kind of Secure
+     <!--l. 6722--><p class="noindent" >Note: This setting disables various security features of the firmware, defeating the purpose of any kind of Secure
      Boot. Do NOT enable if you use UEFI Secure Boot.
      </p></li>
      <li 
@@ -1726,7 +1726,7 @@ class="newline" />Description: Disable platform security policy.
 class="newline" />Type: plist integer<br 
 class="newline" />Failsafe: 0<br 
 class="newline" />Description: Adds delay in microseconds after EXIT_BOOT_SERVICES event.
-     <!--l. 6734--><p class="noindent" >This is a very rough workaround to circumvent the Still waiting for root device message on some APTIO
+     <!--l. 6733--><p class="noindent" >This is a very rough workaround to circumvent the Still waiting for root device message on some APTIO
      IV firmware (ASUS Z87-Pro) particularly when using FileVault 2. It appears that for some reason, they execute
      code in parallel to EXIT_BOOT_SERVICES, which results in the SATA controller being inaccessible from macOS. A
      better approach should be found in some future. Expect 3 to 5 seconds to be adequate when this quirk is needed.
