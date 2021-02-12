@@ -3255,7 +3255,7 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Sets specific a
              <li class="itemize"><tspan class="ec-lmtt-10">.VolumeIcon.icns </tspan>file at volume root for other filesystems.</li></ul>
          <!--l. 3108--><p class="noindent" ><tspan class="ec-lmri-10">Note 1</tspan>: Apple’s boot picker partially supports placing a volume icon file at the operating system’s <tspan class="ec-lmtt-10">Data </tspan>volume root
          (<tspan class="ec-lmtt-10">/System/Volumes/Data/ </tspan>when mounted at default location within macOS). This approach is broken: that file is
-         not accessible either by OpenCanopy or by Apple’s own boot picker when FaultVault 2 is enabled, which should be
+         not accessible either by OpenCanopy or by Apple’s own boot picker when FileVault 2 is enabled, which should be
          most people’s default choice. Therefore OpenCanopy does not try to support it. You may place a volume icon file at
          <tspan class="ec-lmtt-10">Preboot </tspan>root for compatibility with both the Apple and OpenCanopy boot pickers, or use the <tspan class="ec-lmtt-10">Preboot</tspan>
          per-volume location as above with OpenCanopy as a preferred alternative to Apple’s existing approach.
