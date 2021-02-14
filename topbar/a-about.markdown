@@ -25,6 +25,8 @@ Now that you know your hardware is supported, it's time to finally proceed to se
 
 * [OpenCore Post-Install](https://dortania.github.io/OpenCore-Post-Install/)
   * Guide for once you have OpenCore installed, and want to put the finishing touches.
+* [OpenCore Multiboot](https://dortania.github.io/OpenCore-Multiboot/)
+  * Dedicated guide for those multibooting with OpenCore
 * [WhateverGreen's Framebuffer Patching](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
   * Deep dive into how to setup your iGPU.
 * [OpenCore's Official Configuration PDF](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf)
