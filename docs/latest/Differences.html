@@ -1144,9 +1144,9 @@ class="newline" />Description: Specifies the primary hardware error correction o
      
       
      
+                                                                                                  
+                                                                                                  
      
-                                                                                                  
-                                                                                                  
      
       
      
@@ -1213,7 +1213,6 @@ class="newline" />Description: Specifies the primary hardware error correction o
      
      
       
-     
                                                                                                   
                                                                                                   
      
@@ -1232,10 +1231,10 @@ class="newline" />Description: Specifies the primary hardware error correction o
      
                                                                                                   
                                                                                                   
-     <!--l. 6254--><p class="noindent" > imilarly to KeyForgetThreshold, this option works around the sequential nature of key submission. To be able
+     <!--l. 6256--><p class="noindent" > imilarly to KeyForgetThreshold, this option works around the sequential nature of key submission. To be able
      to recognise simultaneously pressed keys in the situation when all keys arrive sequentially, we are required to set
      a timeout within which we assume the keys were pressed together.
-     </p><!--l. 6259--><p class="noindent" >Holding multiple keys results in reports every 2 and 1 milliseconds for VMware and APTIO V respectively.
+     </p><!--l. 6261--><p class="noindent" >Holding multiple keys results in reports every 2 and 1 milliseconds for VMware and APTIO V respectively.
      Pressing keys one after the other results in delays of at least 6 and 10 milliseconds for the same platforms. The
      recommended value for this option is 2 milliseconds, but it may be decreased for faster platforms and increased
      for slower.
@@ -1245,7 +1244,7 @@ class="newline" />Description: Specifies the primary hardware error correction o
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Enable internal keyboard input translation to AppleKeyMapAggregator protocol.
-     <!--l. 6272--><p class="noindent" >This   option   activates   the   internal   keyboard   interceptor   driver,   based   on   AppleGenericInput  aka
+     <!--l. 6274--><p class="noindent" >This   option   activates   the   internal   keyboard   interceptor   driver,   based   on   AppleGenericInput  aka
      (AptioInputFix), to fill AppleKeyMapAggregator database for input functioning. In case a separate driver is
      used, such as OpenUsbKbDxe, this option should never be enabled.
      </p></li>
@@ -1262,7 +1261,7 @@ class="newline" />Description: Set internal keyboard input translation to AppleK
          <li class="itemize">V2 — Uses UEFI standard modern input protocol EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL.
          </li>
          <li class="itemize">AMI — Uses APTIO input protocol AMI_EFIKEYCODE_PROTOCOL.</li></ul>
-     <!--l. 6293--><p class="noindent" >Note: Currently V1, V2, and AMI unlike Auto only do filtering of the particular specified protocol. This may change in the
+     <!--l. 6295--><p class="noindent" >Note: Currently V1, V2, and AMI unlike Auto only do filtering of the particular specified protocol. This may change in the
      future versions.
      </p></li>
      <li 
@@ -1270,14 +1269,14 @@ class="newline" />Description: Set internal keyboard input translation to AppleK
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Swap Command and Option keys during submission.
-     <!--l. 6302--><p class="noindent" >This option may be useful for keyboard layouts with Option key situated to the right of Command key.
+     <!--l. 6304--><p class="noindent" >This option may be useful for keyboard layouts with Option key situated to the right of Command key.
      </p></li>
      <li 
   class="enumerate" id="x1-71014x7">PointerSupport<br 
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Enable internal pointer driver.
-     <!--l. 6311--><p class="noindent" >This option implements standard UEFI pointer protocol (EFI_SIMPLE_POINTER_PROTOCOL) through select
+     <!--l. 6313--><p class="noindent" >This option implements standard UEFI pointer protocol (EFI_SIMPLE_POINTER_PROTOCOL) through select
      OEM protocols. The option may be useful on Z87 ASUS boards, where EFI_SIMPLE_POINTER_PROTOCOL is
      broken.
      </p></li>
@@ -1286,7 +1285,7 @@ class="newline" />Description: Enable internal pointer driver.
 class="newline" />Type: plist string<br 
 class="newline" />Failsafe: <span class="sout">empty string</span><span class="uwave">Empty</span><br 
 class="newline" />Description: Set OEM protocol used for internal pointer driver.
-     <!--l. 6321--><p class="noindent" >Currently the only supported variant is ASUS, using specialised protocol available on select Z87 and Z97 ASUS boards.
+     <!--l. 6323--><p class="noindent" >Currently the only supported variant is ASUS, using specialised protocol available on select Z87 and Z97 ASUS boards.
      More details can be found in <a 
 href="https://github.com/LongSoft/UEFITool/pull/116" >LongSoft/UefiTool#116</a>. The value of this property cannot be empty if PointerSupport is
                                                                                                   
@@ -1298,10 +1297,10 @@ href="https://github.com/LongSoft/UEFITool/pull/116" >LongSoft/UefiTool#116</a>.
 class="newline" />Type: plist integer<br 
 class="newline" />Failsafe: 0<br 
 class="newline" />Description: Set architecture timer resolution.
-     <!--l. 6332--><p class="noindent" >This option allows to update firmware architecture timer period with the specified value in 100 nanosecond
+     <!--l. 6334--><p class="noindent" >This option allows to update firmware architecture timer period with the specified value in 100 nanosecond
      units. Setting a lower value generally improves performance and responsiveness of the interface and input
      handling.
-     </p><!--l. 6336--><p class="noindent" >The recommended value is 50000 (5 milliseconds) or slightly higher. Select ASUS Z87 boards use 60000 for the interface.
+     </p><!--l. 6338--><p class="noindent" >The recommended value is 50000 (5 milliseconds) or slightly higher. Select ASUS Z87 boards use 60000 for the interface.
      Apple boards use 100000. In case of issues, this option can be left as 0.
 </p>
      </li></ol>
@@ -1315,15 +1314,15 @@ class="newline" />Description: Set architecture timer resolution.
 class="newline" />Type: plist string<br 
 class="newline" />Failsafe: BuiltinGraphics<br 
 class="newline" />Description: Chooses renderer for text going through standard console output.
-     <!--l. 6353--><p class="noindent" >Currently two renderers are supported: Builtin and System. System renderer uses firmware services for text
+     <!--l. 6355--><p class="noindent" >Currently two renderers are supported: Builtin and System. System renderer uses firmware services for text
      rendering. Builtin bypassing firmware services and performs text rendering on its own. Different renderers
      support a different set of options. It is recommended to use Builtin renderer, as it supports HiDPI mode and
      uses full screen resolution.
-     </p><!--l. 6360--><p class="noindent" >UEFI firmware generally supports ConsoleControl with two rendering modes: Graphics and Text. Some types
+     </p><!--l. 6362--><p class="noindent" >UEFI firmware generally supports ConsoleControl with two rendering modes: Graphics and Text. Some types
      of firmware do not support ConsoleControl and rendering modes. OpenCore and macOS expect text to only be
      shown in Graphics mode and graphics to be drawn in any mode. Since this is not required by UEFI specification,
      exact behaviour varies.
-     </p><!--l. 6367--><p class="noindent" >Valid values are combinations of text renderer and rendering mode:
+     </p><!--l. 6369--><p class="noindent" >Valid values are combinations of text renderer and rendering mode:
 </p>
          <ul class="itemize1">
          <li class="itemize">BuiltinGraphics — Switch to Graphics mode and use Builtin renderer with custom ConsoleControl.
@@ -1335,14 +1334,14 @@ class="newline" />Description: Chooses renderer for text going through standard 
          <li class="itemize">SystemText — Switch to Text mode and use System renderer with custom ConsoleControl.
          </li>
          <li class="itemize">SystemGeneric — Use System renderer with system ConsoleControl assuming it behaves correctly.</li></ul>
-     <!--l. 6387--><p class="noindent" >The use of BuiltinGraphics is generally straightforward. For most platforms it is necessary to enable
+     <!--l. 6389--><p class="noindent" >The use of BuiltinGraphics is generally straightforward. For most platforms it is necessary to enable
      ProvideConsoleGop, set Resolution to Max. BuiltinText variant is an alternative BuiltinGraphics for some very old
      and buggy laptop firmware, which can only draw in Text mode.
-     </p><!--l. 6393--><p class="noindent" >The use of System protocols is more complicated. In general the preferred setting is SystemGraphics or SystemText.
+     </p><!--l. 6395--><p class="noindent" >The use of System protocols is more complicated. In general the preferred setting is SystemGraphics or SystemText.
      Enabling ProvideConsoleGop, setting Resolution to Max, enabling ReplaceTabWithSpace is useful on almost all
      platforms. SanitiseClearScreen, IgnoreTextInGraphics, and ClearScreenOnModeSwitch are more specific, and their
      use depends on the firmware.
-     </p><!--l. 6401--><p class="noindent" >Note: Some Macs, namely MacPro5,1, may have broken console output with newer GPUs, and thus only
+     </p><!--l. 6403--><p class="noindent" >Note: Some Macs, namely MacPro5,1, may have broken console output with newer GPUs, and thus only
      BuiltinGraphics may work for them.
      </p></li>
                                                                                                   
@@ -1352,10 +1351,10 @@ class="newline" />Description: Chooses renderer for text going through standard 
 class="newline" />Type: plist string<br 
 class="newline" />Failsafe: Empty <span class="sout">string</span><span class="uwave">(Maintain current console mode)</span><br 
 class="newline" />Description: Sets console output mode as specified with the WxH (e.g. 80x24) formatted string.
-     <!--l. 6412--><p class="noindent" >Set to <span class="sout">empty string not to change console mode. Set to </span>Max to <span class="sout">try to use </span><span class="uwave">attempt using the </span>largest available console
+     <!--l. 6414--><p class="noindent" >Set to <span class="sout">empty string not to change console mode. Set to </span>Max to <span class="sout">try to use </span><span class="uwave">attempt using the </span>largest available console
      mode. <span class="sout">Currently </span><span class="uwave">This option is currently ignored as the </span>Builtin text renderer <span class="sout">supports only </span><span class="uwave">only supports </span>one console
      mode<span class="sout">, so this option is ignored</span>.
-     </p><!--l. 6418--><p class="noindent" >Note: This field is best left empty on most types of firmware.
+     </p><!--l. 6420--><p class="noindent" >Note: This field is best left empty on most types of firmware.
      </p></li>
      <li 
   class="enumerate" id="x1-72006x3">Resolution<br 
@@ -1369,10 +1368,10 @@ class="newline" />Description: Sets console output screen resolution.
          <li class="itemize">Set to <span class="sout">empty string not to change screen resolution. </span>
          </li>
          <li class="itemize"><span class="sout">Set to </span>Max to <span class="sout">try to use </span><span class="uwave">attempt using the </span>largest available screen resolution.</li></ul>
-     <!--l. 6438--><p class="noindent" >On HiDPI screens APPLE_VENDOR_VARIABLE_GUID UIScale NVRAM variable may need to be set to 02 to enable HiDPI
+     <!--l. 6440--><p class="noindent" >On HiDPI screens APPLE_VENDOR_VARIABLE_GUID UIScale NVRAM variable may need to be set to 02 to enable HiDPI
      scaling in Builtin text renderer, FileVault 2 UEFI password interface, and boot screen logo. Refer to ?? section for more
      details.
-     </p><!--l. 6444--><p class="noindent" >Note: This will fail when console handle has no GOP protocol. When the firmware does not provide it, it can be added
+     </p><!--l. 6446--><p class="noindent" >Note: This will fail when console handle has no GOP protocol. When the firmware does not provide it, it can be added
      with ProvideConsoleGop set to true.
      </p></li>
      <li 
@@ -1382,7 +1381,7 @@ class="newline" />Failsafe: false<br
 class="newline" />Description: Forces Resolution to be set in cases where the desired resolution is not available by default, such as on
      legacy Intel GMA and first generation Intel HD Graphics (Ironlake/Arrandale). Setting Resolution to Max will try to
      pull the largest available resolution from the connected display’s EDID.
-     <!--l. 6458--><p class="noindent" >Note: This option depends on the <a 
+     <!--l. 6460--><p class="noindent" >Note: This option depends on the <a 
 href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Acidanthera/Protocol/OcForceResolution.h" >OC_FORCE_RESOLUTION_PROTOCOL</a> protocol being present. This protocol is
      currently only supported by OpenDuetPkg. The OpenDuetPkg implementation currently only supports Intel
      iGPUs.
@@ -1394,14 +1393,14 @@ class="newline" />Failsafe: false<br
 class="newline" />Description: Some types of firmware only clear part of the screen when switching from graphics to text mode, leaving a
      fragment of previously drawn images visible. This option fills the entire graphics screen with black colour before switching
      to text mode.
-     <!--l. 6471--><p class="noindent" >Note: This option only applies to System renderer.
+     <!--l. 6473--><p class="noindent" >Note: This option only applies to System renderer.
      </p></li>
      <li 
   class="enumerate" id="x1-72012x6">DirectGopRendering<br 
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Use builtin graphics output protocol renderer for console.
-     <!--l. 6479--><p class="noindent" >On some types of firmware, such as on the MacPro5,1, this may provide better performance or fix rendering issues.
+     <!--l. 6481--><p class="noindent" >On some types of firmware, such as on the MacPro5,1, this may provide better performance or fix rendering issues.
      However, this option is not recommended unless there is an obvious benefit as it may result in issues such as slower
      scrolling.
                                                                                                   
@@ -1414,7 +1413,7 @@ class="newline" />Failsafe: false<br
 class="newline" />Description: Some types of firmware output text onscreen in both graphics and text mode. This is typically unexpected
      as random text may appear over graphical images and cause UI corruption. Setting this option to true will discard all
      text output when console control is in a different mode from Text.
-     <!--l. 6492--><p class="noindent" >Note: This option only applies to the System renderer.
+     <!--l. 6494--><p class="noindent" >Note: This option only applies to the System renderer.
      </p></li>
      <li 
   class="enumerate" id="x1-72016x8">ReplaceTabWithSpace<br 
@@ -1423,17 +1422,17 @@ class="newline" />Failsafe: false<br
 class="newline" />Description: Some types of firmware do not print tab characters or everything that follows them, causing difficulties in
      using the UEFI Shell’s builtin text editor to edit property lists and other documents. This option makes the console
      output spaces instead of tabs.
-     <!--l. 6503--><p class="noindent" >Note: This option only applies to System renderer.
+     <!--l. 6505--><p class="noindent" >Note: This option only applies to System renderer.
      </p></li>
      <li 
   class="enumerate" id="x1-72018x9">ProvideConsoleGop<br 
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Ensure GOP (Graphics Output Protocol) on console handle.
-     <!--l. 6511--><p class="noindent" >macOS bootloader requires GOP or UGA (for 10.4 EfiBoot) to be present on console handle, yet the exact location of the
+     <!--l. 6513--><p class="noindent" >macOS bootloader requires GOP or UGA (for 10.4 EfiBoot) to be present on console handle, yet the exact location of the
      graphics protocol is not covered by the UEFI specification. This option will ensure GOP and UGA, if present, are
      available on the console handle.
-     </p><!--l. 6516--><p class="noindent" >Note: This option will also replace broken GOP protocol on console handle, which may be the case on MacPro5,1 with
+     </p><!--l. 6518--><p class="noindent" >Note: This option will also replace broken GOP protocol on console handle, which may be the case on MacPro5,1 with
      newer GPUs.
      </p></li>
      <li 
@@ -1441,10 +1440,10 @@ class="newline" />Description: Ensure GOP (Graphics Output Protocol) on console 
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Reconnect console controllers after changing screen resolution.
-     <!--l. 6525--><p class="noindent" >On some types of firmware, the controllers that produce the console protocols (simple text out) must be reconnected
+     <!--l. 6527--><p class="noindent" >On some types of firmware, the controllers that produce the console protocols (simple text out) must be reconnected
      when the screen resolution is changed via GOP. Otherwise they will not produce text based on the new
      resolution.
-     </p><!--l. 6529--><p class="noindent" >Note: On several boards this logic may result in black screen when launching OpenCore from Shell and thus it is
+     </p><!--l. 6531--><p class="noindent" >Note: On several boards this logic may result in black screen when launching OpenCore from Shell and thus it is
      optional. In versions prior to 0.5.2 this option was mandatory and not configurable. Please do not use this unless
      required.
      </p></li>
@@ -1455,7 +1454,7 @@ class="newline" />Failsafe: false<br
 class="newline" />Description: Some types of firmware reset screen resolutions to a failsafe value (such as 1024x768) on the
      attempts to clear screen contents when large display (e.g. 2K or 4K) is used. This option attempts to apply a
      workaround.
-     <!--l. 6542--><p class="noindent" >Note: This option only applies to <span class="uwave">the </span>System renderer. On all known affected systems<span class="uwave">, </span>ConsoleMode <span class="sout">had to </span><span class="uwave">must </span>be set
+     <!--l. 6544--><p class="noindent" >Note: This option only applies to <span class="uwave">the </span>System renderer. On all known affected systems<span class="uwave">, </span>ConsoleMode <span class="sout">had to </span><span class="uwave">must </span>be set
      to <span class="uwave">an </span>empty string for this <span class="uwave">option </span>to work.
      </p></li>
      <li 
@@ -1465,7 +1464,7 @@ class="newline" />Failsafe: false<br
 class="newline" />Description: Provide UGA protocol instances on top of GOP protocol <span class="uwave">instances</span>.
                                                                                                   
                                                                                                   
-     <!--l. 6552--><p class="noindent" >Some types of firmware do not implement the legacy UGA protocol but this may be required for screen output by older
+     <!--l. 6554--><p class="noindent" >Some types of firmware do not implement the legacy UGA protocol but this may be required for screen output by older
      EFI applications such as EfiBoot from 10.4.
 </p>
      </li></ol>
@@ -1479,13 +1478,13 @@ class="newline" />Description: Provide UGA protocol instances on top of GOP prot
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: <span class="sout">Reinstalls </span><span class="uwave">Replaces </span>Apple audio protocols with builtin versions.
-     <!--l. 6569--><p class="noindent" >Apple audio protocols allow macOS bootloader and OpenCore to play sounds and signals for screen reading or
+     <!--l. 6571--><p class="noindent" >Apple audio protocols allow macOS bootloader and OpenCore to play sounds and signals for screen reading or
      audible error reporting. Supported protocols are beep generation and VoiceOver. VoiceOver protocol is specific to
      Gibraltar machines (T2) and is not supported before macOS High Sierra (10.13). Instead older macOS versions
      use AppleHDA protocol, which is currently not implemented.
-     </p><!--l. 6576--><p class="noindent" >Only one set of audio protocols can be available at a time, so in order to get audio playback in OpenCore user
+     </p><!--l. 6578--><p class="noindent" >Only one set of audio protocols can be available at a time, so in order to get audio playback in OpenCore user
      interface on Mac system implementing some of these protocols this setting should be enabled.
-     </p><!--l. 6580--><p class="noindent" >Note: Backend audio driver needs to be configured in UEFI Audio section for these protocols to be able to stream
+     </p><!--l. 6582--><p class="noindent" >Note: Backend audio driver needs to be configured in UEFI Audio section for these protocols to be able to stream
      audio.
      </p></li>
      <li 
@@ -1494,7 +1493,7 @@ class="newline" />Type: plist boolean<br
 class="newline" />Failsafe: false<br 
 class="newline" />Description: <span class="sout">Reinstalls </span><span class="uwave">Replaces the </span>Apple Boot Policy protocol with a builtin version. This may be used to
      ensure APFS compatibility on VMs or legacy Macs.
-     <!--l. 6590--><p class="noindent" >Note: Some Macs, namely MacPro5,1, do have APFS compatibility, but their Apple Boot Policy protocol contains
+     <!--l. 6592--><p class="noindent" >Note: Some Macs, namely MacPro5,1, do have APFS compatibility, but their Apple Boot Policy protocol contains
      recovery detection issues, thus using this option is advised on them as well.
      </p></li>
      <li 
@@ -1544,7 +1543,7 @@ class="newline" />Description: <span class="sout">Reinstalls </span><span class=
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: <span class="sout">Reinstalls </span><span class="uwave">Replaces the </span>Apple RTC RAM protocol with <span class="uwave">a </span>builtin version.
-     <!--l. 6645--><p class="noindent" >Note: Builtin version of Apple RTC RAM protocol may filter out I/O attempts to select RTC memory addresses.
+     <!--l. 6647--><p class="noindent" >Note: Builtin version of Apple RTC RAM protocol may filter out I/O attempts to select RTC memory addresses.
      The list of addresses can be specified in 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:rtc-blacklist variable as
      a data array.
      </p></li>
@@ -1559,7 +1558,7 @@ class="newline" />Description: <span class="sout">Reinstalls </span><span class=
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: <span class="sout">Reinstalls </span><span class="uwave">Replaces the </span>Apple SMC I/O protocol with a builtin version.
-     <!--l. 6664--><p class="noindent" >This protocol replaces legacy VirtualSmc UEFI driver, and is compatible with any SMC kernel extension.
+     <!--l. 6666--><p class="noindent" >This protocol replaces legacy VirtualSmc UEFI driver, and is compatible with any SMC kernel extension.
      However, in case FakeSMC kernel extension is used, manual NVRAM key variable addition may be needed.
      </p></li>
      <li 
@@ -1574,7 +1573,7 @@ class="newline" />Type: plist boolean<br
 class="newline" />Failsafe: false<br 
 class="newline" />Description: <span class="sout">Reinstalls </span><span class="uwave">Replaces the </span>Data Hub protocol with a builtin version. <span class="sout">This will delete all previous
      properties </span>
-     <!--l. 6682--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: This will discard all previous entries </span>if the protocol was already installed<span class="uwave">, so all properties required for safe
+     <!--l. 6684--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: This will discard all previous entries </span>if the protocol was already installed<span class="uwave">, so all properties required for safe
      operation of the system must be specified in your configuration</span>.
      </p></li>
      <li 
@@ -1583,7 +1582,7 @@ class="newline" />Type: plist boolean<br
 class="newline" />Failsafe: false<br 
 class="newline" />Description: <span class="sout">Reinstalls </span><span class="uwave">Replaces the </span>Device Property protocol with a builtin version. This <span class="sout">will delete all previous
      properties if it was already installed. This </span>may be used to ensure full compatibility on VMs or legacy Macs.
-     <!--l. 6694--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: This will discard all previous entries if the protocol was already installed, so all properties required for safe
+     <!--l. 6696--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: This will discard all previous entries if the protocol was already installed, so all properties required for safe
      operation of the system must be specified in your configuration. </span>
                                                                                                   
                                                                                                   
@@ -1595,7 +1594,7 @@ class="newline" />Failsafe: false<br
 class="newline" />Description: <span class="sout">Forcibly wraps </span><span class="uwave">Wraps </span>Firmware Volume protocols or installs <span class="sout">new </span><span class="uwave">a new version </span>to support custom
      cursor images for <span class="sout">File Vault </span><span class="uwave">FileVault </span>2. <span class="sout">Should be set </span><span class="uwave">Set </span>to true to ensure <span class="sout">File Vault </span><span class="uwave">FileVault </span>2 compatibility
      on <span class="sout">everything but </span><span class="uwave">anything other than </span>VMs and legacy Macs.
-     <!--l. 6708--><p class="noindent" >Note: Several virtual machines including VMware may have corrupted cursor <span class="sout">image </span><span class="uwave">images </span>in HiDPI mode and
+     <!--l. 6710--><p class="noindent" >Note: Several virtual machines including VMware may have corrupted cursor <span class="sout">image </span><span class="uwave">images </span>in HiDPI mode and
      thus<span class="uwave">, </span>may also require <span class="sout">this setting to be enabled</span><span class="uwave">enabling this setting</span>.
      </p></li>
      <li 
@@ -1635,7 +1634,7 @@ class="newline" />Description: <span class="sout">Forcibly reinstalls </span><sp
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Disable platform security policy.
-     <!--l. 6753--><p class="noindent" >Note: This setting disables various security features of the firmware, defeating the purpose of any kind of Secure
+     <!--l. 6755--><p class="noindent" >Note: This setting disables various security features of the firmware, defeating the purpose of any kind of Secure
      Boot. Do NOT enable if you use UEFI Secure Boot.
      </p></li>
      <li 
@@ -1643,7 +1642,7 @@ class="newline" />Description: Disable platform security policy.
 class="newline" />Type: plist integer<br 
 class="newline" />Failsafe: 0<br 
 class="newline" />Description: Adds delay in microseconds after EXIT_BOOT_SERVICES event.
-     <!--l. 6764--><p class="noindent" >This is a very rough workaround to circumvent the Still waiting for root device message on some APTIO
+     <!--l. 6766--><p class="noindent" >This is a very rough workaround to circumvent the Still waiting for root device message on some APTIO
      IV firmware (ASUS Z87-Pro) particularly when using FileVault 2. It appears that for some reason, they execute
      code in parallel to EXIT_BOOT_SERVICES, which results in the SATA controller being inaccessible from macOS.
      A better approach <span class="sout">should be found in some future</span><span class="uwave">is required and Acidanthera is open to suggestions</span>. Expect 3
@@ -1657,7 +1656,7 @@ class="newline" />Type: plist boolean<br
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Some types of firmware (such as APTIO IV) may contain invalid values in the MSR_FLEX_RATIO
      (0x194) MSR register. These values may cause macOS boot failures on Intel platforms.
-     <!--l. 6779--><p class="noindent" >Note: While the option is not expected to harm unaffected firmware, its use is <span class="sout">only recommended when it is
+     <!--l. 6781--><p class="noindent" >Note: While the option is not expected to harm unaffected firmware, its use is <span class="sout">only recommended when it is
      </span><span class="uwave">recommended only when </span>specifically required.
      </p></li>
      <li 
@@ -1674,12 +1673,12 @@ class="newline" />Type: plist boolean<br
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Request redirect of all Boot prefixed variables from EFI_GLOBAL_VARIABLE_GUID to <br 
 class="newline" />OC_VENDOR_VARIABLE_GUID.
-     <!--l. 6798--><p class="noindent" >This quirk requires OC_FIRMWARE_RUNTIME protocol implemented in OpenRuntime.efi. The quirk lets default
+     <!--l. 6800--><p class="noindent" >This quirk requires OC_FIRMWARE_RUNTIME protocol implemented in OpenRuntime.efi. The quirk lets default
      boot entry preservation at times when the firmware deletes incompatible boot entries. In summary, this quirk is
      required to reliably use the <a 
 href="https://support.apple.com/HT202796" >Startup Disk</a> preference pane in firmware that is not compatible with macOS boot
      entries by design.
-     </p><!--l. 6805--><p class="noindent" >By redirecting Boot prefixed variables to a separate GUID namespace with the help of RequestBootVarRouting quirk we
+     </p><!--l. 6807--><p class="noindent" >By redirecting Boot prefixed variables to a separate GUID namespace with the help of RequestBootVarRouting quirk we
      achieve multiple goals: </p>
          <ul class="itemize1">
          <li class="itemize">Operating systems are jailed and only controlled by OpenCore boot environment to enhance security.
@@ -1695,19 +1694,19 @@ href="https://support.apple.com/HT202796" >Startup Disk</a> preference pane in f
 class="newline" />Type: plist integer<br 
 class="newline" />Failsafe: 0<br 
 class="newline" />Description: Attempts to perform TSC synchronisation with a specified timeout.
-     <!--l. 6824--><p class="noindent" >The primary purpose of this quirk is to enable early bootstrap TSC synchronisation on some server and laptop models
+     <!--l. 6826--><p class="noindent" >The primary purpose of this quirk is to enable early bootstrap TSC synchronisation on some server and laptop models
      when running a debug XNU kernel. For the debug kernel the TSC needs to be kept in sync across the
      cores before any kext could kick in rendering all other solutions problematic. The timeout is specified in
      microseconds and depends on the amount of cores present on the platform, the recommended starting value is
      500000.
-     </p><!--l. 6830--><p class="noindent" >This is an experimental quirk, which should only be used for the aforementioned problem. In all other cases<span class="uwave">, </span>the quirk
+     </p><!--l. 6832--><p class="noindent" >This is an experimental quirk, which should only be used for the aforementioned problem. In all other cases<span class="uwave">, </span>the quirk
      may render the operating system unstable and is not recommended. The recommended solution in the other cases is to
      install a kernel driver such as <a 
 href="https://github.com/RehabMan/VoodooTSCSync" >VoodooTSCSync</a>, <a 
 href="https://github.com/interferenc/TSCAdjustReset" >TSCAdjustReset</a>, or <a 
 href="https://github.com/lvs1974/CpuTscSync" >CpuTscSync</a> (a more specialised variant of
      VoodooTSCSync for newer laptops).
-     </p><!--l. 6838--><p class="noindent" >Note: <span class="sout">The reason this </span><span class="uwave">This </span>quirk cannot replace the kernel driver <span class="sout">is </span>because it cannot operate in ACPI S3 <span class="sout">mode </span>(sleep
+     </p><!--l. 6840--><p class="noindent" >Note: <span class="sout">The reason this </span><span class="uwave">This </span>quirk cannot replace the kernel driver <span class="sout">is </span>because it cannot operate in ACPI S3 <span class="sout">mode </span>(sleep
      wake) <span class="uwave">mode </span>and because the UEFI firmware <span class="uwave">only </span>provides very limited multicore support <span class="sout">preventing the precise update
                                                                                                   
                                                                                                   
@@ -1719,7 +1718,7 @@ class="newline" />Type: plist boolean<br
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Some types of firmware block partition handles by opening them in By Driver mode, resulting in <span class="sout">being
      unable </span><span class="uwave">an inability </span>to install File System protocols.
-     <!--l. 6850--><p class="noindent" >Note: <span class="sout">The quirk is mostly relevant for select HP laptops with no drives listed</span><span class="uwave">This quirk is useful in cases where
+     <!--l. 6852--><p class="noindent" >Note: <span class="sout">The quirk is mostly relevant for select HP laptops with no drives listed</span><span class="uwave">This quirk is useful in cases where
      unsuccessful drive detection results in an absence of boot entries</span>.
 </p>
      </li></ol>
@@ -1734,9 +1733,9 @@ class="newline" />Type: plist integer<br
 class="newline" />Failsafe: 0<br 
 class="newline" />Description: Start address of the reserved memory region, which should be allocated as reserved effectively
      marking the memory of this type inaccessible to the operating system.
-     <!--l. 6866--><p class="noindent" >The addresses written here must be part of the memory map, have <span class="uwave">a </span>EfiConventionalMemory type, and <span class="uwave">be
+     <!--l. 6868--><p class="noindent" >The addresses written here must be part of the memory map, have <span class="uwave">a </span>EfiConventionalMemory type, and <span class="uwave">be
      </span>page-aligned (4 KBs).
-     </p><!--l. 6869--><p class="noindent" >Note: Some types of firmware may not allocate memory areas used by S3 (sleep) and S4 (hibernation) code unless
+     </p><!--l. 6871--><p class="noindent" >Note: Some types of firmware may not allocate memory areas used by S3 (sleep) and S4 (hibernation) code unless
      CSM is enabled causing wake failures. After comparing the memory maps with CSM disabled and enabled, these
      areas can be found in the lower memory and can be fixed up by doing the reservation. See Sample.plist for
      more details.
@@ -1806,11 +1805,11 @@ class="newline" />Description: This region will not be reserved unless set to tr
  id="x1-76001r79"></a>
 <h4 class="subsectionHead"><span class="titlemark">12.1   </span> <a 
  id="x1-770001"></a>Legacy Apple OS</h4>
-<!--l. 6925--><p class="noindent" >Older operating systems may be more complicated to install, but sometimes can be necessary to use for all kinds of reasons.
+<!--l. 6927--><p class="noindent" >Older operating systems may be more complicated to install, but sometimes can be necessary to use for all kinds of reasons.
 While a compatible board identifier and CPUID are the obvious requirements for proper functioning of an older operating
 system, there are many other less obvious things to consider. This section tries to cover a common set of issues relevant to
 installing older macOS operating systems.
-</p><!--l. 6932--><p class="noindent" >While newer operating systems can be downloaded over the internet, older operating systems did not have installation media
+</p><!--l. 6934--><p class="noindent" >While newer operating systems can be downloaded over the internet, older operating systems did not have installation media
 for every minor release<span class="sout">, so to get a compatible distribution one may have to </span><span class="uwave">. For compatible distributions of such, </span>download
 a device-specific image and <span class="sout">mod </span><span class="uwave">modify </span>it if necessary. <span class="sout">To get the </span><span class="uwave">Visit this archived Apple Support </span><a 
 href="https://web.archive.org/web/20170705003629/https://support.apple.com/en-us/HT204319" >article</a>
@@ -1841,7 +1840,7 @@ href="https://forums.macrumors.com/threads/opencore-on-the-mac-pro.2207814" >Mac
      </p></li>
      <li 
   class="enumerate" id="x1-86016x8">Why <span class="sout">do </span><span class="uwave">must </span>Find&#x0026;Replace patches <span class="sout">must </span><span class="uwave">be </span>equal in <span class="sout">length</span><span class="uwave">size</span>?
-     <!--l. 7372--><p class="noindent" >For machine code (x86 code) it is not possible to do differently sized replacements due to <a 
+     <!--l. 7374--><p class="noindent" >For machine code (x86 code) it is not possible to do differently sized replacements due to <a 
 href="https://en.wikipedia.org/w/index.php?title=Relative_addressing" >relative addressing</a>. For ACPI
      code this is risky, and is technically equivalent to ACPI table replacement, thus not implemented. More detailed
      explanation can be found on <a 
@@ -1849,7 +1848,7 @@ href="https://applelife.ru/posts/819790" >AppleLife.ru</a> or in the ACPI sectio
      </p></li>
      <li 
   class="enumerate" id="x1-86018x9">How can I decide which Booter quirks to use?
-     <!--l. 7381--><p class="noindent" >These quirks originate from AptioMemoryFix driver but provide a wider set of changes specific to modern systems. Note,
+     <!--l. 7383--><p class="noindent" >These quirks originate from AptioMemoryFix driver but provide a wider set of changes specific to modern systems. Note,
      that OpenRuntime driver is required for most configurations. To get a configuration similar to AptioMemoryFix the
      following set of quirks should be enabled: </p>
          <ul class="itemize1">
@@ -1872,10 +1871,10 @@ href="https://applelife.ru/posts/819790" >AppleLife.ru</a> or in the ACPI sectio
          <li class="itemize">RebuildAppleMemoryMap
          </li>
          <li class="itemize">SetupVirtualMap</li></ul>
-     <!--l. 7399--><p class="noindent" >However, as of today, such set is strongly discouraged as some of these quirks are not necessary to be enabled or need
+     <!--l. 7401--><p class="noindent" >However, as of today, such set is strongly discouraged as some of these quirks are not necessary to be enabled or need
      additional quirks. For example, DevirtualiseMmio and ProtectUefiServices are often required, while
      DiscardHibernateMap and ForceExitBootServices are rarely necessary.
-     </p><!--l. 7405--><p class="noindent" >Unfortunately for some quirks such as RebuildAppleMemoryMap, EnableWriteUnprotector, ProtectMemoryRegions,
+     </p><!--l. 7407--><p class="noindent" >Unfortunately for some quirks such as RebuildAppleMemoryMap, EnableWriteUnprotector, ProtectMemoryRegions,
      SetupVirtualMap, and SyncRuntimePermissions there is no definite approach even on similar systems, so trying all
      their combinations may be required for optimal setup. Refer to individual quirk descriptions in this document for more
      details.

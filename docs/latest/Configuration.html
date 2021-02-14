@@ -5313,10 +5313,10 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Firmware releas
 class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-10">plist</tspan><tspan class="ec-lmtt-10"> string</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: Empty (OEM specified)<br 
 class="newline" /><tspan class="ec-lmbx-10">SMBIOS</tspan>: System Information (Type 1) — Manufacturer<br 
-class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: OEM manufacturer of the particular board. Shall not be specified unless strictly required. Should <tspan class="ec-lmri-10">not</tspan>
-     contain <tspan class="ec-lmtt-10">Apple</tspan><tspan class="ec-lmtt-10"> Inc.</tspan>, as this confuses numerous services present in the operating system, such as firmware updates,
-     eficheck, as well as kernel extensions developed in Acidanthera, such as Lilu and its plugins. In addition it will also make
-     some operating systems such as Linux unbootable.
+class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: OEM manufacturer of the particular board. Use failsafe unless strictly required. Do not override to contain
+     <tspan class="ec-lmtt-10">Apple</tspan><tspan class="ec-lmtt-10"> Inc. </tspan>on non-Apple hardware, as this confuses numerous services present in the operating system, such as firmware
+     updates, eficheck, as well as kernel extensions developed in Acidanthera, such as Lilu and its plugins. In addition it will
+     also make some operating systems such as Linux unbootable.
      </li>
      <li 
   class="enumerate" id="x1-61010x5"><tspan class="ec-lmtt-10">SystemProductName</tspan><br 
