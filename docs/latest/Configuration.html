@@ -1553,9 +1553,9 @@ class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-
 class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: <tspan class="ec-lmtt-10">false</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Allows booting macOS through a relocation block.
      <!--l. 1396--><p class="noindent" >Relocation block is a scratch buffer allocated in lower 4 GB to be used for loading the kernel and related structures
-     by EfiBoot on firmwares where lower memory is otherwise occupied by the (assumed to be) non-runtime data.
-     Right before kernel startup the relocation block is copied back to lower addresses. Similarly all the other addresses
-     pointing to relocation block are also carefully adjusted. Relocation block can be used when:
+     by EfiBoot on firmware where the lower memory region is otherwise occupied by (assumed) non-runtime data.
+     Right before kernel startup, the relocation block is copied back to lower addresses. Similarly, all the other
+     addresses pointing to relocation block are also carefully adjusted. Relocation block can be used when:
 </p>
          <ul class="itemize1">
          <li class="itemize">No better slide exists (all the memory is used)
@@ -3197,8 +3197,8 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Register launch
          <li class="itemize"><tspan class="ec-lmtt-10">Full </tspan>— create or update top-priority boot option in UEFI variable storage at bootloader startup. For this
          option to work <tspan class="ec-lmtt-10">RequestBootVarRouting </tspan>is required to be enabled.
          </li>
-         <li class="itemize"><tspan class="ec-lmtt-10">Short </tspan>— create a short boot option instead of a complete one. This variant is useful for some older firmwares,
-         Insyde in particular, but possibly others, which cannot handle full device paths.</li></ul>
+         <li class="itemize"><tspan class="ec-lmtt-10">Short </tspan>— create a short boot option instead of a complete one. This variant is useful for some older types
+         of firmware, typically from Insyde, that are unable to manage full device paths.</li></ul>
      <!--l. 3024--><p class="noindent" >This option provides integration with third-party operating system installation and upgrade at the times
      they overwrite <tspan class="ec-lmtt-10">\EFI\BOOT\BOOTx64.efi </tspan>file. By creating a custom option in this file path becomes no
      longer used for bootstrapping OpenCore. The path used for bootstrapping is specified in <tspan class="ec-lmtt-10">LauncherPath</tspan>
@@ -4844,17 +4844,17 @@ class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-
 class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: Empty (OEM specified or not installed)<br 
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Refer to SMBIOS <tspan class="ec-lmtt-10">SystemSerialNumber</tspan>.
      <!--l. 4782--><p class="noindent" >Specify special string value <tspan class="ec-lmtt-10">OEM </tspan>to extract current value from SMBIOS and use it throughout the sections. This feature
-     can only be used on Mac-compatible firmwares.
+     can only be used on Mac-compatible firmware.
      </p></li>
      <li 
   class="enumerate" id="x1-56016x8"><tspan class="ec-lmtt-10">SystemUUID</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-10">plist</tspan><tspan class="ec-lmtt-10"> string</tspan>, GUID<br 
 class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: Empty (OEM specified or not installed)<br 
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Refer to SMBIOS <tspan class="ec-lmtt-10">SystemUUID</tspan>.
-     <!--l. 4791--><p class="noindent" >Specify special string value <tspan class="ec-lmtt-10">OEM </tspan>to extract current value from SMBIOS and use it throughout the sections. Since not all
-     firmwares have valid (and unique) values, this feature is not applicable to some setups, and may provide unexpected
-     results. It is highly recommended to specify the UUID explicitly. Refer to <tspan class="ec-lmtt-10">UseRawUuidEncoding </tspan>to determine how
-     SMBIOS value is parsed.
+     <!--l. 4791--><p class="noindent" >Specify special string value <tspan class="ec-lmtt-10">OEM </tspan>to extract current value from SMBIOS and use it throughout the sections. Since not
+     every firmware implementation has valid (and unique) values, this feature is not applicable to some setups, and may
+     provide unexpected results. It is highly recommended to specify the UUID explicitly. Refer to <tspan class="ec-lmtt-10">UseRawUuidEncoding </tspan>to
+     determine how SMBIOS value is parsed.
      </p></li>
      <li 
   class="enumerate" id="x1-56018x9"><tspan class="ec-lmtt-10">MLB</tspan><br 
@@ -4862,7 +4862,7 @@ class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-
 class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: Empty (OEM specified or not installed)<br 
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Refer to SMBIOS <tspan class="ec-lmtt-10">BoardSerialNumber</tspan>.
      <!--l. 4803--><p class="noindent" >Specify special string value <tspan class="ec-lmtt-10">OEM </tspan>to extract current value from NVRAM (<tspan class="ec-lmtt-10">MLB </tspan>variable) or SMBIOS and use it throughout
-     the sections. This feature can only be used on Mac-compatible firmwares.
+     the sections. This feature can only be used on Mac-compatible firmware.
      </p></li>
      <li 
   class="enumerate" id="x1-56020x10"><tspan class="ec-lmtt-10">ROM</tspan><br 
@@ -4870,7 +4870,7 @@ class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-
 class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: Empty (OEM specified or not installed)<br 
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Refer to <tspan class="ec-lmtt-10">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:ROM</tspan>.
      <!--l. 4813--><p class="noindent" >Specify special string value <tspan class="ec-lmtt-10">OEM </tspan>to extract current value from NVRAM (<tspan class="ec-lmtt-10">ROM </tspan>variable) and use it throughout the sections.
-     This feature can only be used on Mac-compatible firmwares.
+     This feature can only be used on Mac-compatible firmware.
 </p>
      </li></ol>
 <a 
