@@ -3107,69 +3107,77 @@ class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan
                                                                                                   
      </p></li>
      <li 
-  class="enumerate" id="x1-72014x7"><tspan font-family="ec-lmtt" font-size="10">IgnoreTextInGraphics</tspan><br 
+  class="enumerate" id="x1-72014x7"><span class="uwave"><tspan font-family="ec-lmtt" font-size="10">GopPassThrough</tspan></span><br 
+class="newline" /><span class="uwave"><tspan font-family="ec-lmbx" font-size="10">Type</tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">: </tspan></span><span class="uwave"><tspan font-family="ec-lmtt" font-size="10">plist</tspan><tspan font-family="ec-lmtt" font-size="10"> boolean</tspan></span><br 
+class="newline" /><span class="uwave"><tspan font-family="ec-lmbx" font-size="10">Failsafe</tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">: </tspan></span><span class="uwave"><tspan font-family="ec-lmtt" font-size="10">false</tspan></span><br 
+class="newline" /><span class="uwave"><tspan font-family="ec-lmbx" font-size="10">Description</tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">: Provide GOP protocol instances on top of UGA protocol instances. </tspan></span>
+     <!--l. 6639--><p class="noindent" ><span class="uwave"><tspan font-family="ec-lmr" font-size="10">Some types of firmware do not implement the GOP protocol, this option provides it via a UGA-based proxy. This option</tspan>
+     <tspan font-family="ec-lmr" font-size="10">requires </tspan></span><span class="uwave"><tspan font-family="ec-lmtt" font-size="10">ProvideConsoleGop</tspan></span> <span class="uwave"><tspan font-family="ec-lmr" font-size="10">to be enabled. (TODO) </tspan></span>
+     </p></li>
+     <li 
+  class="enumerate" id="x1-72016x8"><tspan font-family="ec-lmtt" font-size="10">IgnoreTextInGraphics</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Type</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">plist</tspan><tspan font-family="ec-lmtt" font-size="10"> boolean</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Failsafe</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">false</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan><tspan font-family="ec-lmr" font-size="10">: Some types of firmware output text onscreen in both graphics and text mode. This is typically unexpected</tspan>
      <tspan font-family="ec-lmr" font-size="10">as random text may appear over graphical images and cause UI corruption. Setting this option to </tspan><tspan font-family="ec-lmtt" font-size="10">true </tspan><tspan font-family="ec-lmr" font-size="10">will discard all</tspan>
      <tspan font-family="ec-lmr" font-size="10">text output when console control is in a different mode from </tspan><tspan font-family="ec-lmtt" font-size="10">Text</tspan><tspan font-family="ec-lmr" font-size="10">.</tspan>
-     <!--l. 6640--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: This option only applies to the </tspan><tspan font-family="ec-lmtt" font-size="10">System </tspan><tspan font-family="ec-lmr" font-size="10">renderer.</tspan>
+     <!--l. 6651--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: This option only applies to the </tspan><tspan font-family="ec-lmtt" font-size="10">System </tspan><tspan font-family="ec-lmr" font-size="10">renderer.</tspan>
      </p></li>
      <li 
-  class="enumerate" id="x1-72016x8"><tspan font-family="ec-lmtt" font-size="10">ReplaceTabWithSpace</tspan><br 
+  class="enumerate" id="x1-72018x9"><tspan font-family="ec-lmtt" font-size="10">ReplaceTabWithSpace</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Type</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">plist</tspan><tspan font-family="ec-lmtt" font-size="10"> boolean</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Failsafe</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">false</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan><tspan font-family="ec-lmr" font-size="10">: Some types of firmware do not print tab characters or everything that follows them, causing difficulties in</tspan>
      <tspan font-family="ec-lmr" font-size="10">using the UEFI Shell’s builtin text editor to edit property lists and other documents. This option makes the console</tspan>
      <tspan font-family="ec-lmr" font-size="10">output spaces instead of tabs.</tspan>
-     <!--l. 6651--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: This option only applies to </tspan><tspan font-family="ec-lmtt" font-size="10">System </tspan><tspan font-family="ec-lmr" font-size="10">renderer.</tspan>
+     <!--l. 6662--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: This option only applies to </tspan><tspan font-family="ec-lmtt" font-size="10">System </tspan><tspan font-family="ec-lmr" font-size="10">renderer.</tspan>
      </p></li>
      <li 
-  class="enumerate" id="x1-72018x9"><tspan font-family="ec-lmtt" font-size="10">ProvideConsoleGop</tspan><br 
+  class="enumerate" id="x1-72020x10"><tspan font-family="ec-lmtt" font-size="10">ProvideConsoleGop</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Type</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">plist</tspan><tspan font-family="ec-lmtt" font-size="10"> boolean</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Failsafe</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">false</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan><tspan font-family="ec-lmr" font-size="10">: Ensure GOP (Graphics Output Protocol) on console handle.</tspan>
-     <!--l. 6659--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">macOS bootloader requires GOP or UGA (for 10.4 EfiBoot) to be present on console handle, yet the exact location of the</tspan>
+     <!--l. 6670--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">macOS bootloader requires GOP or UGA (for 10.4 EfiBoot) to be present on console handle, yet the exact location of the</tspan>
      <tspan font-family="ec-lmr" font-size="10">graphics protocol is not covered by the UEFI specification. This option will ensure GOP and UGA, if present, are</tspan>
      <tspan font-family="ec-lmr" font-size="10">available on the console handle.</tspan>
-     </p><!--l. 6664--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: This option will also replace broken GOP protocol on console handle, which may be the case on </tspan><tspan font-family="ec-lmtt" font-size="10">MacPro5,1 </tspan><tspan font-family="ec-lmr" font-size="10">with</tspan>
+     </p><!--l. 6675--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: This option will also replace broken GOP protocol on console handle, which may be the case on </tspan><tspan font-family="ec-lmtt" font-size="10">MacPro5,1 </tspan><tspan font-family="ec-lmr" font-size="10">with</tspan>
      <tspan font-family="ec-lmr" font-size="10">newer GPUs.</tspan>
      </p></li>
      <li 
-  class="enumerate" id="x1-72020x10"><tspan font-family="ec-lmtt" font-size="10">ReconnectOnResChange</tspan><br 
+  class="enumerate" id="x1-72022x11"><tspan font-family="ec-lmtt" font-size="10">ReconnectOnResChange</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Type</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">plist</tspan><tspan font-family="ec-lmtt" font-size="10"> boolean</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Failsafe</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">false</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan><tspan font-family="ec-lmr" font-size="10">: Reconnect console controllers after changing screen resolution.</tspan>
-     <!--l. 6673--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">On some types of firmware, the controllers that produce the console protocols (simple text out) must be reconnected</tspan>
+     <!--l. 6684--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">On some types of firmware, the controllers that produce the console protocols (simple text out) must be reconnected</tspan>
      <tspan font-family="ec-lmr" font-size="10">when the screen resolution is changed via GOP. Otherwise they will not produce text based on the new</tspan>
      <tspan font-family="ec-lmr" font-size="10">resolution.</tspan>
-     </p><!--l. 6677--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: On several boards this logic may result in black screen when launching OpenCore from Shell and thus it is</tspan>
+     </p><!--l. 6688--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: On several boards this logic may result in black screen when launching OpenCore from Shell and thus it is</tspan>
      <tspan font-family="ec-lmr" font-size="10">optional. In versions prior to 0.5.2 this option was mandatory and not configurable. Please do not use this unless</tspan>
      <tspan font-family="ec-lmr" font-size="10">required.</tspan>
      </p></li>
      <li 
-  class="enumerate" id="x1-72022x11"><tspan font-family="ec-lmtt" font-size="10">SanitiseClearScreen</tspan><br 
+  class="enumerate" id="x1-72024x12"><tspan font-family="ec-lmtt" font-size="10">SanitiseClearScreen</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Type</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">plist</tspan><tspan font-family="ec-lmtt" font-size="10"> boolean</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Failsafe</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">false</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan><tspan font-family="ec-lmr" font-size="10">: Some types of firmware reset screen resolutions to a failsafe value (such as </tspan><tspan font-family="ec-lmtt" font-size="10">1024x768</tspan><tspan font-family="ec-lmr" font-size="10">) on the</tspan>
      <tspan font-family="ec-lmr" font-size="10">attempts to clear screen contents when large display (e.g. 2K or 4K) is used. This option attempts to apply a</tspan>
      <tspan font-family="ec-lmr" font-size="10">workaround.</tspan>
-     <!--l. 6690--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: This option only applies to </tspan><span class="uwave"><tspan font-family="ec-lmr" font-size="10">the </tspan></span><tspan font-family="ec-lmtt" font-size="10">System </tspan><tspan font-family="ec-lmr" font-size="10">renderer. On all known affected systems</tspan><span class="uwave"><tspan font-family="ec-lmr" font-size="10">, </tspan></span><tspan font-family="ec-lmtt" font-size="10">ConsoleMode </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">had to </tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">must </tspan></span><tspan font-family="ec-lmr" font-size="10">be set</tspan>
+                                                                                                  
+                                                                                                  
+     <!--l. 6701--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: This option only applies to </tspan><span class="uwave"><tspan font-family="ec-lmr" font-size="10">the </tspan></span><tspan font-family="ec-lmtt" font-size="10">System </tspan><tspan font-family="ec-lmr" font-size="10">renderer. On all known affected systems</tspan><span class="uwave"><tspan font-family="ec-lmr" font-size="10">, </tspan></span><tspan font-family="ec-lmtt" font-size="10">ConsoleMode </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">had to </tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">must </tspan></span><tspan font-family="ec-lmr" font-size="10">be set</tspan>
      <tspan font-family="ec-lmr" font-size="10">to </tspan><span class="uwave"><tspan font-family="ec-lmr" font-size="10">an </tspan></span><tspan font-family="ec-lmr" font-size="10">empty string for this </tspan><span class="uwave"><tspan font-family="ec-lmr" font-size="10">option </tspan></span><tspan font-family="ec-lmr" font-size="10">to work.</tspan>
      </p></li>
      <li 
-  class="enumerate" id="x1-72024x12"><tspan font-family="ec-lmtt" font-size="10">UgaPassThrough</tspan><br 
+  class="enumerate" id="x1-72026x13"><tspan font-family="ec-lmtt" font-size="10">UgaPassThrough</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Type</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">plist</tspan><tspan font-family="ec-lmtt" font-size="10"> boolean</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Failsafe</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">false</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan><tspan font-family="ec-lmr" font-size="10">: Provide UGA protocol instances on top of GOP protocol </tspan><span class="uwave"><tspan font-family="ec-lmr" font-size="10">instances</tspan></span><tspan font-family="ec-lmr" font-size="10">.</tspan>
-                                                                                                  
-                                                                                                  
-     <!--l. 6700--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">Some types of firmware do not implement the legacy UGA protocol but this may be required for screen output by older</tspan>
+     <!--l. 6711--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">Some types of firmware do not implement the legacy UGA protocol but this may be required for screen output by older</tspan>
      <tspan font-family="ec-lmr" font-size="10">EFI applications such as EfiBoot from 10.4.</tspan>
 </p>
      </li></ol>
 <a 
- id="x1-72025r76"></a>
+ id="x1-72027r76"></a>
 <h4 class="subsectionHead"><span class="titlemark"><tspan font-family="ec-lmr" font-size="10">11.11   </tspan></span> <a 
  id="x1-7300011"></a><tspan font-family="ec-lmr" font-size="10">ProtocolOverrides Properties</tspan></h4>
      <ol  class="enumerate1" >
@@ -3178,13 +3186,13 @@ class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Type</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">plist</tspan><tspan font-family="ec-lmtt" font-size="10"> boolean</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Failsafe</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">false</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">Reinstalls </tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">Replaces </tspan></span><tspan font-family="ec-lmr" font-size="10">Apple audio protocols with builtin versions.</tspan>
-     <!--l. 6717--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">Apple audio protocols allow macOS bootloader and OpenCore to play sounds and signals for screen reading or</tspan>
+     <!--l. 6728--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">Apple audio protocols allow macOS bootloader and OpenCore to play sounds and signals for screen reading or</tspan>
      <tspan font-family="ec-lmr" font-size="10">audible error reporting. Supported protocols are beep generation and VoiceOver. VoiceOver protocol is specific to</tspan>
      <tspan font-family="ec-lmr" font-size="10">Gibraltar machines (T2) and is not supported before macOS High Sierra (10.13). Instead older macOS versions</tspan>
      <tspan font-family="ec-lmr" font-size="10">use AppleHDA protocol, which is currently not implemented.</tspan>
-     </p><!--l. 6724--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">Only one set of audio protocols can be available at a time, so in order to get audio playback in OpenCore user</tspan>
+     </p><!--l. 6735--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">Only one set of audio protocols can be available at a time, so in order to get audio playback in OpenCore user</tspan>
      <tspan font-family="ec-lmr" font-size="10">interface on Mac system implementing some of these protocols this setting should be enabled.</tspan>
-     </p><!--l. 6728--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: Backend audio driver needs to be configured in </tspan><tspan font-family="ec-lmtt" font-size="10">UEFI Audio </tspan><tspan font-family="ec-lmr" font-size="10">section for these protocols to be able to stream</tspan>
+     </p><!--l. 6739--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: Backend audio driver needs to be configured in </tspan><tspan font-family="ec-lmtt" font-size="10">UEFI Audio </tspan><tspan font-family="ec-lmr" font-size="10">section for these protocols to be able to stream</tspan>
      <tspan font-family="ec-lmr" font-size="10">audio.</tspan>
      </p></li>
      <li 
@@ -3193,7 +3201,7 @@ class="newline" /><tspan font-family="ec-lmbx" font-size="10">Type</tspan><tspan
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Failsafe</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">false</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">Reinstalls </tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">Replaces the </tspan></span><tspan font-family="ec-lmr" font-size="10">Apple Boot Policy protocol with a builtin version. This may be used to</tspan>
      <tspan font-family="ec-lmr" font-size="10">ensure APFS compatibility on VMs or legacy Macs.</tspan>
-     <!--l. 6738--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: Some Macs, namely </tspan><tspan font-family="ec-lmtt" font-size="10">MacPro5,1</tspan><tspan font-family="ec-lmr" font-size="10">, do have APFS compatibility, but their Apple Boot Policy protocol contains</tspan>
+     <!--l. 6749--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: Some Macs, namely </tspan><tspan font-family="ec-lmtt" font-size="10">MacPro5,1</tspan><tspan font-family="ec-lmr" font-size="10">, do have APFS compatibility, but their Apple Boot Policy protocol contains</tspan>
      <tspan font-family="ec-lmr" font-size="10">recovery detection issues, thus using this option is advised on them as well.</tspan>
      </p></li>
      <li 
@@ -3215,6 +3223,8 @@ class="newline" /><tspan font-family="ec-lmbx" font-size="10">Type</tspan><tspan
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Failsafe</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">false</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">Reinstalls </tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">Replaces the </tspan></span><tspan font-family="ec-lmr" font-size="10">Apple Framebuffer Info protocol with a builtin version. This may be used</tspan>
      <tspan font-family="ec-lmr" font-size="10">to override framebuffer information on VMs or legacy Macs to improve compatibility with legacy EfiBoot such</tspan>
+                                                                                                  
+                                                                                                  
      <tspan font-family="ec-lmr" font-size="10">as the one in macOS 10.4.</tspan>
      </li>
      <li 
@@ -3223,8 +3233,6 @@ class="newline" /><tspan font-family="ec-lmbx" font-size="10">Type</tspan><tspan
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Failsafe</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">false</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">Reinstalls </tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">Replaces the </tspan></span><tspan font-family="ec-lmr" font-size="10">Apple Image Conversion protocol with a builtin version.</tspan>
      </li>
-                                                                                                  
-                                                                                                  
      <li 
   class="enumerate" id="x1-73014x7"><tspan font-family="ec-lmtt" font-size="10">AppleImg4Verification</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Type</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">plist</tspan><tspan font-family="ec-lmtt" font-size="10"> boolean</tspan><br 
@@ -3243,7 +3251,7 @@ class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Type</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">plist</tspan><tspan font-family="ec-lmtt" font-size="10"> boolean</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Failsafe</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">false</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">Reinstalls </tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">Replaces the </tspan></span><tspan font-family="ec-lmr" font-size="10">Apple RTC RAM protocol with </tspan><span class="uwave"><tspan font-family="ec-lmr" font-size="10">a </tspan></span><tspan font-family="ec-lmr" font-size="10">builtin version.</tspan>
-     <!--l. 6793--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: Builtin version of Apple RTC RAM protocol may filter out I/O attempts to </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">select </tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">certain </tspan></span><tspan font-family="ec-lmr" font-size="10">RTC memory</tspan>
+     <!--l. 6804--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: Builtin version of Apple RTC RAM protocol may filter out I/O attempts to </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">select </tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">certain </tspan></span><tspan font-family="ec-lmr" font-size="10">RTC memory</tspan>
      <tspan font-family="ec-lmr" font-size="10">addresses. The list of addresses can be specified in </tspan><tspan font-family="ec-lmtt" font-size="10">4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:rtc-blacklist</tspan>
      <tspan font-family="ec-lmr" font-size="10">variable as a data array.</tspan>
      </p></li>
@@ -3258,7 +3266,7 @@ class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Type</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">plist</tspan><tspan font-family="ec-lmtt" font-size="10"> boolean</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Failsafe</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">false</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">Reinstalls </tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">Replaces the </tspan></span><tspan font-family="ec-lmr" font-size="10">Apple SMC I/O protocol with a builtin version.</tspan>
-     <!--l. 6812--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">This protocol replaces legacy </tspan><tspan font-family="ec-lmtt" font-size="10">VirtualSmc </tspan><tspan font-family="ec-lmr" font-size="10">UEFI driver, and is compatible with any SMC kernel extension.</tspan>
+     <!--l. 6823--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">This protocol replaces legacy </tspan><tspan font-family="ec-lmtt" font-size="10">VirtualSmc </tspan><tspan font-family="ec-lmr" font-size="10">UEFI driver, and is compatible with any SMC kernel extension.</tspan>
      <tspan font-family="ec-lmr" font-size="10">However, in case </tspan><tspan font-family="ec-lmtt" font-size="10">FakeSMC </tspan><tspan font-family="ec-lmr" font-size="10">kernel extension is used, manual NVRAM key variable addition may be needed.</tspan>
      </p></li>
      <li 
@@ -3273,19 +3281,19 @@ class="newline" /><tspan font-family="ec-lmbx" font-size="10">Type</tspan><tspan
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Failsafe</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">false</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">Reinstalls </tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">Replaces the </tspan></span><tspan font-family="ec-lmr" font-size="10">Data Hub protocol with a builtin version. </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">This will delete all previous</tspan>
      <tspan font-family="ec-lmr" font-size="10">properties </tspan></span>
-     <!--l. 6830--><p class="noindent" ><span class="uwave"><tspan font-family="ec-lmri" font-size="10">Note</tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">: This will discard all previous entries </tspan></span><tspan font-family="ec-lmr" font-size="10">if the protocol was already installed</tspan><span class="uwave"><tspan font-family="ec-lmr" font-size="10">, so all properties required for safe</tspan>
+     <!--l. 6841--><p class="noindent" ><span class="uwave"><tspan font-family="ec-lmri" font-size="10">Note</tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">: This will discard all previous entries </tspan></span><tspan font-family="ec-lmr" font-size="10">if the protocol was already installed</tspan><span class="uwave"><tspan font-family="ec-lmr" font-size="10">, so all properties required for safe</tspan>
      <tspan font-family="ec-lmr" font-size="10">operation of the system must be specified in your configuration</tspan></span><tspan font-family="ec-lmr" font-size="10">.</tspan>
      </p></li>
+                                                                                                  
+                                                                                                  
      <li 
   class="enumerate" id="x1-73028x14"><tspan font-family="ec-lmtt" font-size="10">DeviceProperties</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Type</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">plist</tspan><tspan font-family="ec-lmtt" font-size="10"> boolean</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Failsafe</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">false</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">Reinstalls </tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">Replaces the </tspan></span><tspan font-family="ec-lmr" font-size="10">Device Property protocol with a builtin version. This </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">will delete all previous</tspan>
      <tspan font-family="ec-lmr" font-size="10">properties if it was already installed. This </tspan></span><tspan font-family="ec-lmr" font-size="10">may be used to ensure full compatibility on VMs or legacy Macs.</tspan>
-     <!--l. 6842--><p class="noindent" ><span class="uwave"><tspan font-family="ec-lmri" font-size="10">Note</tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">: This will discard all previous entries if the protocol was already installed, so all properties required for safe</tspan>
+     <!--l. 6853--><p class="noindent" ><span class="uwave"><tspan font-family="ec-lmri" font-size="10">Note</tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">: This will discard all previous entries if the protocol was already installed, so all properties required for safe</tspan>
      <tspan font-family="ec-lmr" font-size="10">operation of the system must be specified in your configuration. </tspan></span>
-                                                                                                  
-                                                                                                  
      </p></li>
      <li 
   class="enumerate" id="x1-73030x15"><tspan font-family="ec-lmtt" font-size="10">FirmwareVolume</tspan><br 
@@ -3294,7 +3302,7 @@ class="newline" /><tspan font-family="ec-lmbx" font-size="10">Failsafe</tspan><t
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">Forcibly wraps </tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">Wraps </tspan></span><tspan font-family="ec-lmr" font-size="10">Firmware Volume protocols or installs </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">new </tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">a new version </tspan></span><tspan font-family="ec-lmr" font-size="10">to support custom</tspan>
      <tspan font-family="ec-lmr" font-size="10">cursor images for </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">File Vault </tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">FileVault </tspan></span><tspan font-family="ec-lmr" font-size="10">2. </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">Should be set </tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">Set </tspan></span><tspan font-family="ec-lmr" font-size="10">to </tspan><tspan font-family="ec-lmtt" font-size="10">true </tspan><tspan font-family="ec-lmr" font-size="10">to ensure </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">File Vault </tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">FileVault </tspan></span><tspan font-family="ec-lmr" font-size="10">2 compatibility</tspan>
      <tspan font-family="ec-lmr" font-size="10">on </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">everything but </tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">anything other than </tspan></span><tspan font-family="ec-lmr" font-size="10">VMs and legacy Macs.</tspan>
-     <!--l. 6856--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: Several virtual machines including VMware may have corrupted cursor </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">image </tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">images </tspan></span><tspan font-family="ec-lmr" font-size="10">in HiDPI mode and</tspan>
+     <!--l. 6867--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: Several virtual machines including VMware may have corrupted cursor </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">image </tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">images </tspan></span><tspan font-family="ec-lmr" font-size="10">in HiDPI mode and</tspan>
      <tspan font-family="ec-lmr" font-size="10">thus</tspan><span class="uwave"><tspan font-family="ec-lmr" font-size="10">, </tspan></span><tspan font-family="ec-lmr" font-size="10">may also require </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">this setting to be enabled</tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">enabling this setting</tspan></span><tspan font-family="ec-lmr" font-size="10">.</tspan>
      </p></li>
      <li 
@@ -3334,7 +3342,7 @@ class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Type</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">plist</tspan><tspan font-family="ec-lmtt" font-size="10"> boolean</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Failsafe</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">false</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan><tspan font-family="ec-lmr" font-size="10">: Disable platform security policy.</tspan>
-     <!--l. 6901--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: This setting disables various security features of the firmware, defeating the purpose of any kind of Secure</tspan>
+     <!--l. 6912--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: This setting disables various security features of the firmware, defeating the purpose of any kind of Secure</tspan>
      <tspan font-family="ec-lmr" font-size="10">Boot. Do NOT enable if you use UEFI Secure Boot.</tspan>
      </p></li>
      <li 
@@ -3342,12 +3350,10 @@ class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Type</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">plist</tspan><tspan font-family="ec-lmtt" font-size="10"> integer</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Failsafe</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">0</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan><tspan font-family="ec-lmr" font-size="10">: Adds delay in microseconds after </tspan><tspan font-family="ec-lmtt" font-size="10">EXIT_BOOT_SERVICES </tspan><tspan font-family="ec-lmr" font-size="10">event.</tspan>
-     <!--l. 6912--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">This is a very rough workaround to circumvent the </tspan><tspan font-family="ec-lmtt" font-size="10">Still</tspan><tspan font-family="ec-lmtt" font-size="10"> waiting</tspan><tspan font-family="ec-lmtt" font-size="10"> for</tspan><tspan font-family="ec-lmtt" font-size="10"> root</tspan><tspan font-family="ec-lmtt" font-size="10"> device </tspan><tspan font-family="ec-lmr" font-size="10">message on some APTIO</tspan>
+     <!--l. 6923--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">This is a very rough workaround to circumvent the </tspan><tspan font-family="ec-lmtt" font-size="10">Still</tspan><tspan font-family="ec-lmtt" font-size="10"> waiting</tspan><tspan font-family="ec-lmtt" font-size="10"> for</tspan><tspan font-family="ec-lmtt" font-size="10"> root</tspan><tspan font-family="ec-lmtt" font-size="10"> device </tspan><tspan font-family="ec-lmr" font-size="10">message on some APTIO</tspan>
      <tspan font-family="ec-lmr" font-size="10">IV firmware (ASUS Z87-Pro) particularly when using FileVault 2. It appears that for some reason, they execute</tspan>
      <tspan font-family="ec-lmr" font-size="10">code in parallel to </tspan><tspan font-family="ec-lmtt" font-size="10">EXIT_BOOT_SERVICES</tspan><tspan font-family="ec-lmr" font-size="10">, which results in the SATA controller being inaccessible from macOS.</tspan>
      <tspan font-family="ec-lmr" font-size="10">A better approach </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">should be found in some future</tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">is required and Acidanthera is open to suggestions</tspan></span><tspan font-family="ec-lmr" font-size="10">. Expect 3</tspan>
-                                                                                                  
-                                                                                                  
      <tspan font-family="ec-lmr" font-size="10">to 5 seconds to be adequate when this quirk is needed.</tspan>
      </p></li>
      <li 
@@ -3356,7 +3362,7 @@ class="newline" /><tspan font-family="ec-lmbx" font-size="10">Type</tspan><tspan
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Failsafe</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">false</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan><tspan font-family="ec-lmr" font-size="10">: Some types of firmware (such as APTIO IV) may contain invalid values in the </tspan><tspan font-family="ec-lmtt" font-size="10">MSR_FLEX_RATIO</tspan>
      <tspan font-family="ec-lmr" font-size="10">(</tspan><tspan font-family="ec-lmtt" font-size="10">0x194</tspan><tspan font-family="ec-lmr" font-size="10">) MSR register. These values may cause macOS boot failures on Intel platforms.</tspan>
-     <!--l. 6927--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: While the option is not expected to harm unaffected firmware, its use is </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">only recommended when it is</tspan>
+     <!--l. 6938--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: While the option is not expected to harm unaffected firmware, its use is </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">only recommended when it is</tspan>
      </span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">recommended only when </tspan></span><tspan font-family="ec-lmr" font-size="10">specifically required.</tspan>
      </p></li>
      <li 
@@ -3373,12 +3379,12 @@ class="newline" /><tspan font-family="ec-lmbx" font-size="10">Type</tspan><tspan
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Failsafe</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">false</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan><tspan font-family="ec-lmr" font-size="10">: Request redirect of all </tspan><tspan font-family="ec-lmtt" font-size="10">Boot </tspan><tspan font-family="ec-lmr" font-size="10">prefixed variables from </tspan><tspan font-family="ec-lmtt" font-size="10">EFI_GLOBAL_VARIABLE_GUID </tspan><tspan font-family="ec-lmr" font-size="10">to </tspan><br 
 class="newline" /><tspan font-family="ec-lmtt" font-size="10">OC_VENDOR_VARIABLE_GUID</tspan><tspan font-family="ec-lmr" font-size="10">.</tspan>
-     <!--l. 6946--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">This quirk requires </tspan><tspan font-family="ec-lmtt" font-size="10">OC_FIRMWARE_RUNTIME </tspan><tspan font-family="ec-lmr" font-size="10">protocol implemented in </tspan><tspan font-family="ec-lmtt" font-size="10">OpenRuntime.efi</tspan><tspan font-family="ec-lmr" font-size="10">. The quirk lets default</tspan>
+     <!--l. 6957--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">This quirk requires </tspan><tspan font-family="ec-lmtt" font-size="10">OC_FIRMWARE_RUNTIME </tspan><tspan font-family="ec-lmr" font-size="10">protocol implemented in </tspan><tspan font-family="ec-lmtt" font-size="10">OpenRuntime.efi</tspan><tspan font-family="ec-lmr" font-size="10">. The quirk lets default</tspan>
      <tspan font-family="ec-lmr" font-size="10">boot entry preservation at times when the firmware deletes incompatible boot entries. In summary, this quirk is</tspan>
      <tspan font-family="ec-lmr" font-size="10">required to reliably use the </tspan><a 
 href="https://support.apple.com/HT202796" ><tspan font-family="ec-lmr" font-size="10">Startup Disk</tspan></a> <tspan font-family="ec-lmr" font-size="10">preference pane in firmware that is not compatible with macOS boot</tspan>
      <tspan font-family="ec-lmr" font-size="10">entries by design.</tspan>
-     </p><!--l. 6953--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">By redirecting </tspan><tspan font-family="ec-lmtt" font-size="10">Boot </tspan><tspan font-family="ec-lmr" font-size="10">prefixed variables to a separate GUID namespace with the help of </tspan><tspan font-family="ec-lmtt" font-size="10">RequestBootVarRouting </tspan><tspan font-family="ec-lmr" font-size="10">quirk we</tspan>
+     </p><!--l. 6964--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">By redirecting </tspan><tspan font-family="ec-lmtt" font-size="10">Boot </tspan><tspan font-family="ec-lmr" font-size="10">prefixed variables to a separate GUID namespace with the help of </tspan><tspan font-family="ec-lmtt" font-size="10">RequestBootVarRouting </tspan><tspan font-family="ec-lmr" font-size="10">quirk we</tspan>
      <tspan font-family="ec-lmr" font-size="10">achieve multiple goals:</tspan> </p>
          <ul class="itemize1">
          <li class="itemize"><tspan font-family="ec-lmr" font-size="10">Operating systems are jailed and only controlled by OpenCore boot environment to enhance security.</tspan>
@@ -3394,22 +3400,22 @@ href="https://support.apple.com/HT202796" ><tspan font-family="ec-lmr" font-size
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Type</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">plist</tspan><tspan font-family="ec-lmtt" font-size="10"> integer</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Failsafe</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">0</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan><tspan font-family="ec-lmr" font-size="10">: Attempts to perform TSC synchronisation with a specified timeout.</tspan>
-     <!--l. 6972--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">The primary purpose of this quirk is to enable early bootstrap TSC synchronisation on some server and laptop models</tspan>
+     <!--l. 6983--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">The primary purpose of this quirk is to enable early bootstrap TSC synchronisation on some server and laptop models</tspan>
      <tspan font-family="ec-lmr" font-size="10">when running a debug XNU kernel. For the debug kernel the TSC needs to be kept in sync across the</tspan>
      <tspan font-family="ec-lmr" font-size="10">cores before any kext could kick in rendering all other solutions problematic. The timeout is specified in</tspan>
      <tspan font-family="ec-lmr" font-size="10">microseconds and depends on the amount of cores present on the platform, the recommended starting value is</tspan>
+                                                                                                  
+                                                                                                  
      <tspan font-family="ec-lmtt" font-size="10">500000</tspan><tspan font-family="ec-lmr" font-size="10">.</tspan>
-     </p><!--l. 6978--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">This is an experimental quirk, which should only be used for the aforementioned problem. In all other cases</tspan><span class="uwave"><tspan font-family="ec-lmr" font-size="10">, </tspan></span><tspan font-family="ec-lmr" font-size="10">the quirk</tspan>
+     </p><!--l. 6989--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">This is an experimental quirk, which should only be used for the aforementioned problem. In all other cases</tspan><span class="uwave"><tspan font-family="ec-lmr" font-size="10">, </tspan></span><tspan font-family="ec-lmr" font-size="10">the quirk</tspan>
      <tspan font-family="ec-lmr" font-size="10">may render the operating system unstable and is not recommended. The recommended solution in the other cases is to</tspan>
      <tspan font-family="ec-lmr" font-size="10">install a kernel driver such as </tspan><a 
 href="https://github.com/RehabMan/VoodooTSCSync" ><tspan font-family="ec-lmr" font-size="10">VoodooTSCSync</tspan></a><tspan font-family="ec-lmr" font-size="10">, </tspan><a 
 href="https://github.com/interferenc/TSCAdjustReset" ><tspan font-family="ec-lmr" font-size="10">TSCAdjustReset</tspan></a><tspan font-family="ec-lmr" font-size="10">, or </tspan><a 
 href="https://github.com/lvs1974/CpuTscSync" ><tspan font-family="ec-lmr" font-size="10">CpuTscSync</tspan></a> <tspan font-family="ec-lmr" font-size="10">(a more specialised variant of</tspan>
      <tspan font-family="ec-lmr" font-size="10">VoodooTSCSync for newer laptops).</tspan>
-     </p><!--l. 6986--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">The reason this </tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">This </tspan></span><tspan font-family="ec-lmr" font-size="10">quirk cannot replace the kernel driver </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">is </tspan></span><tspan font-family="ec-lmr" font-size="10">because it cannot operate in ACPI S3 </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">mode </tspan></span><tspan font-family="ec-lmr" font-size="10">(sleep</tspan>
+     </p><!--l. 6997--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">The reason this </tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">This </tspan></span><tspan font-family="ec-lmr" font-size="10">quirk cannot replace the kernel driver </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">is </tspan></span><tspan font-family="ec-lmr" font-size="10">because it cannot operate in ACPI S3 </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">mode </tspan></span><tspan font-family="ec-lmr" font-size="10">(sleep</tspan>
      <tspan font-family="ec-lmr" font-size="10">wake) </tspan><span class="uwave"><tspan font-family="ec-lmr" font-size="10">mode </tspan></span><tspan font-family="ec-lmr" font-size="10">and because the UEFI firmware </tspan><span class="uwave"><tspan font-family="ec-lmr" font-size="10">only </tspan></span><tspan font-family="ec-lmr" font-size="10">provides very limited multicore support </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">preventing the precise update</tspan>
-                                                                                                  
-                                                                                                  
      </span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">which prevents precise updates </tspan></span><tspan font-family="ec-lmr" font-size="10">of the MSR registers.</tspan>
      </p></li>
      <li 
@@ -3418,7 +3424,7 @@ class="newline" /><tspan font-family="ec-lmbx" font-size="10">Type</tspan><tspan
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Failsafe</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">false</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan><tspan font-family="ec-lmr" font-size="10">: Some types of firmware block partition handles by opening them in </tspan><tspan font-family="ec-lmtt" font-size="10">By</tspan><tspan font-family="ec-lmtt" font-size="10"> Driver </tspan><tspan font-family="ec-lmr" font-size="10">mode, resulting in </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">being</tspan>
      <tspan font-family="ec-lmr" font-size="10">unable </tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">an inability </tspan></span><tspan font-family="ec-lmr" font-size="10">to install File System protocols.</tspan>
-     <!--l. 6998--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">The quirk is mostly relevant for select HP laptops with no drives listed</tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">This quirk is useful in cases where</tspan>
+     <!--l. 7009--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">The quirk is mostly relevant for select HP laptops with no drives listed</tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">This quirk is useful in cases where</tspan>
      <tspan font-family="ec-lmr" font-size="10">unsuccessful drive detection results in an absence of boot entries</tspan></span><tspan font-family="ec-lmr" font-size="10">.</tspan>
 </p>
      </li></ol>
@@ -3433,9 +3439,9 @@ class="newline" /><tspan font-family="ec-lmbx" font-size="10">Type</tspan><tspan
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Failsafe</tspan><tspan font-family="ec-lmr" font-size="10">: </tspan><tspan font-family="ec-lmtt" font-size="10">0</tspan><br 
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan><tspan font-family="ec-lmr" font-size="10">: Start address of the reserved memory region, which should be allocated as reserved effectively</tspan>
      <tspan font-family="ec-lmr" font-size="10">marking the memory of this type inaccessible to the operating system.</tspan>
-     <!--l. 7014--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">The addresses written here must be part of the memory map, have </tspan><span class="uwave"><tspan font-family="ec-lmr" font-size="10">a </tspan></span><tspan font-family="ec-lmtt" font-size="10">EfiConventionalMemory </tspan><tspan font-family="ec-lmr" font-size="10">type, and </tspan><span class="uwave"><tspan font-family="ec-lmr" font-size="10">be</tspan>
+     <!--l. 7025--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">The addresses written here must be part of the memory map, have </tspan><span class="uwave"><tspan font-family="ec-lmr" font-size="10">a </tspan></span><tspan font-family="ec-lmtt" font-size="10">EfiConventionalMemory </tspan><tspan font-family="ec-lmr" font-size="10">type, and </tspan><span class="uwave"><tspan font-family="ec-lmr" font-size="10">be</tspan>
      </span><tspan font-family="ec-lmr" font-size="10">page-aligned (4 KBs).</tspan>
-     </p><!--l. 7017--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: Some types of firmware may not allocate memory areas used by S3 (sleep) and S4 (hibernation) code unless</tspan>
+     </p><!--l. 7028--><p class="noindent" ><tspan font-family="ec-lmri" font-size="10">Note</tspan><tspan font-family="ec-lmr" font-size="10">: Some types of firmware may not allocate memory areas used by S3 (sleep) and S4 (hibernation) code unless</tspan>
      <tspan font-family="ec-lmr" font-size="10">CSM is enabled causing wake failures. After comparing the memory maps with CSM disabled and enabled, these</tspan>
      <tspan font-family="ec-lmr" font-size="10">areas can be found in the lower memory and can be fixed up by doing the reservation. See </tspan><tspan font-family="ec-lmtt" font-size="10">Sample.plist </tspan><tspan font-family="ec-lmr" font-size="10">for</tspan>
      <tspan font-family="ec-lmr" font-size="10">more details.</tspan>
@@ -3460,6 +3466,8 @@ class="newline" /><tspan font-family="ec-lmbx" font-size="10">Failsafe</tspan><t
 class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan><tspan font-family="ec-lmr" font-size="10">: Memory region type matching the UEFI specification memory descriptor types. Mapping:</tspan>
          <ul class="itemize1">
          <li class="itemize"><tspan font-family="ec-lmtt" font-size="10">Reserved </tspan><tspan font-family="ec-lmr" font-size="10">— </tspan><tspan font-family="ec-lmtt" font-size="10">EfiReservedMemoryType</tspan>
+                                                                                                  
+                                                                                                  
          </li>
          <li class="itemize"><tspan font-family="ec-lmtt" font-size="10">LoaderCode </tspan><tspan font-family="ec-lmr" font-size="10">— </tspan><tspan font-family="ec-lmtt" font-size="10">EfiLoaderCode</tspan>
          </li>
@@ -3469,8 +3477,6 @@ class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan
          </li>
          <li class="itemize"><tspan font-family="ec-lmtt" font-size="10">BootServiceData </tspan><tspan font-family="ec-lmr" font-size="10">— </tspan><tspan font-family="ec-lmtt" font-size="10">EfiBootServicesData</tspan>
          </li>
-                                                                                                  
-                                                                                                  
          <li class="itemize"><tspan font-family="ec-lmtt" font-size="10">RuntimeCode </tspan><tspan font-family="ec-lmr" font-size="10">— </tspan><tspan font-family="ec-lmtt" font-size="10">EfiRuntimeServicesCode</tspan>
          </li>
          <li class="itemize"><tspan font-family="ec-lmtt" font-size="10">RuntimeData </tspan><tspan font-family="ec-lmr" font-size="10">— </tspan><tspan font-family="ec-lmtt" font-size="10">EfiRuntimeServicesData</tspan>
@@ -3505,11 +3511,11 @@ class="newline" /><tspan font-family="ec-lmbx" font-size="10">Description</tspan
  id="x1-76001r79"></a>
 <h4 class="subsectionHead"><span class="titlemark"><tspan font-family="ec-lmr" font-size="10">12.1   </tspan></span> <a 
  id="x1-770001"></a><tspan font-family="ec-lmr" font-size="10">Legacy Apple OS</tspan></h4>
-<!--l. 7073--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">Older operating systems may be more complicated to install, but sometimes can be necessary to use for all kinds of reasons.</tspan>
+<!--l. 7084--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">Older operating systems may be more complicated to install, but sometimes can be necessary to use for all kinds of reasons.</tspan>
 <tspan font-family="ec-lmr" font-size="10">While a compatible board identifier and CPUID are the obvious requirements for proper functioning of an older operating</tspan>
 <tspan font-family="ec-lmr" font-size="10">system, there are many other less obvious things to consider. This section tries to cover a common set of issues relevant to</tspan>
 <tspan font-family="ec-lmr" font-size="10">installing older macOS operating systems.</tspan>
-</p><!--l. 7080--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">While newer operating systems can be downloaded over the internet, older operating systems did not have installation media</tspan>
+</p><!--l. 7091--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">While newer operating systems can be downloaded over the internet, older operating systems did not have installation media</tspan>
 <tspan font-family="ec-lmr" font-size="10">for every minor release</tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">, so to get a compatible distribution one may have to </tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">. For compatible distributions of such, </tspan></span><tspan font-family="ec-lmr" font-size="10">download</tspan>
 <tspan font-family="ec-lmr" font-size="10">a device-specific image and </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">mod </tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">modify </tspan></span><tspan font-family="ec-lmr" font-size="10">it if necessary. </tspan><span class="sout"><tspan font-family="ec-lmr" font-size="10">To get the </tspan></span><span class="uwave"><tspan font-family="ec-lmr" font-size="10">Visit this archived Apple Support </tspan></span><a 
 href="https://web.archive.org/web/20170705003629/https://support.apple.com/en-us/HT204319" ><tspan font-family="ec-lmr" font-size="10">article</tspan></a>
@@ -3523,18 +3529,20 @@ href="https://web.archive.org/web/20170705003629/https://support.apple.com/en-us
  id="x1-780001"></a><tspan font-family="ec-lmr" font-size="10">macOS 10.8 and 10.9</tspan></h5>
      <ul class="itemize1">
      <li class="itemize"><tspan font-family="ec-lmr" font-size="10">Disk images on these systems use Apple Partitioning Scheme and require </tspan><tspan font-family="ec-lmtt" font-size="10">OpenPartitionDxe </tspan><tspan font-family="ec-lmr" font-size="10">driver to run DMG</tspan>
-     <tspan font-family="ec-lmr" font-size="10">recovery and installation (included in OpenDuet). It is possible to set </tspan><tspan font-family="ec-lmtt" font-size="10">DmgLoading </tspan><tspan font-family="ec-lmr" font-size="10">to </tspan><tspan font-family="ec-lmtt" font-size="10">Disabled </tspan><tspan font-family="ec-lmr" font-size="10">to run the</tspan>
-     <tspan font-family="ec-lmr" font-size="10">recovery without DMG loading avoiding the need for </tspan><tspan font-family="ec-lmtt" font-size="10">OpenPartitionDxe</tspan><tspan font-family="ec-lmr" font-size="10">.</tspan>
+                                                                                                  
+                                                                                                  
+     <tspan font-family="ec-lmr" font-size="10">the kext tools. This nuance renders </tspan><tspan font-family="ec-lmtt" font-size="10">prelinkedkernel </tspan><tspan font-family="ec-lmr" font-size="10">kext injection impossible in OpenCore. </tspan><tspan font-family="ec-lmtt" font-size="10">Mkext </tspan><tspan font-family="ec-lmr" font-size="10">kext injection</tspan>
+     <tspan font-family="ec-lmr" font-size="10">will still work without noticeable performance drain and will be chosen automatically when </tspan><tspan font-family="ec-lmtt" font-size="10">KernelCache </tspan><tspan font-family="ec-lmr" font-size="10">is set</tspan>
+     <tspan font-family="ec-lmr" font-size="10">to </tspan><tspan font-family="ec-lmtt" font-size="10">Auto</tspan><tspan font-family="ec-lmr" font-size="10">.</tspan>
      </li>
-     <li class="itemize"><tspan font-family="ec-lmr" font-size="10">Cached  kernel  images  often  do  not  contain  family  drivers  for  networking  (</tspan><tspan font-family="ec-lmtt" font-size="10">IONetworkingFamily</tspan><tspan font-family="ec-lmr" font-size="10">)  or  audio</tspan>
-     <tspan font-family="ec-lmr" font-size="10">(</tspan><tspan font-family="ec-lmtt" font-size="10">IOAudioFamily</tspan><tspan font-family="ec-lmr" font-size="10">) requiring the use of </tspan><tspan font-family="ec-lmtt" font-size="10">Force </tspan><tspan font-family="ec-lmr" font-size="10">loading in order to inject networking or audio drivers.</tspan></li></ul>
+     <li class="itemize"><tspan font-family="ec-lmr" font-size="10">Last released installer image for macOS</tspan><tspan font-family="ec-lmr" font-size="10"> 10.5 is macOS</tspan><tspan font-family="ec-lmr" font-size="10"> 10.5.7 build </tspan><tspan font-family="ec-lmtt" font-size="10">9J3050 </tspan><tspan font-family="ec-lmr" font-size="10">(for </tspan><tspan font-family="ec-lmtt" font-size="10">MacBookPro5,3</tspan><tspan font-family="ec-lmr" font-size="10">). Unlike the</tspan>
+     <tspan font-family="ec-lmr" font-size="10">others, this image is not limited to the target model identifiers and can be used as is. The original </tspan><tspan font-family="ec-lmtt" font-size="10">9J3050 </tspan><tspan font-family="ec-lmr" font-size="10">image</tspan>
+     <tspan font-family="ec-lmr" font-size="10">can be found </tspan><a 
+href="https://archive.org/details/10.5.7-9-j-3050" ><tspan font-family="ec-lmr" font-size="10">here</tspan></a> <tspan font-family="ec-lmr" font-size="10">(</tspan><a 
+href="https://mega.nz/folder/inRBTarD#zanf7fUbviwz3WHBU5xpCg" ><tspan font-family="ec-lmr" font-size="10">MEGA Mirror</tspan></a><tspan font-family="ec-lmr" font-size="10">), assuming macOS</tspan><tspan font-family="ec-lmr" font-size="10"> 10.5 is legally owned. Read </tspan><tspan font-family="ec-lmtt" font-size="10">DIGEST.txt </tspan><tspan font-family="ec-lmr" font-size="10">for more details.</tspan>
+     <tspan font-family="ec-lmr" font-size="10">Note that this is the earliest tested version of macOS</tspan><tspan font-family="ec-lmr" font-size="10"> 10.5 with OpenCore.</tspan></li></ul>
 <a 
- id="x1-78001r82"></a>
-<h5 class="subsubsectionHead"><span class="titlemark"><tspan font-family="ec-lmr" font-size="10">12.1.2   </tspan></span> <a 
- id="x1-790002"></a><tspan font-family="ec-lmr" font-size="10">macOS 10.7</tspan></h5>
-     <ul class="itemize1">
-                                                                                                  
-                                                                                                  
+ id="x1-81001r85"></a>
 <h5 class="subsubsectionHead"><span class="titlemark"><tspan font-family="ec-lmr" font-size="10">12.1.5   </tspan></span> <a 
  id="x1-820005"></a><tspan font-family="ec-lmr" font-size="10">macOS 10.4</tspan></h5>
      <ul class="itemize1">
@@ -3554,7 +3562,7 @@ href="https://mega.nz/folder/D3ASzLzA#7sjYXE2X09f6aGjol_C7dg" ><tspan font-famil
  id="x1-82001r81"></a>
 <h4 class="subsectionHead"><span class="titlemark"><tspan font-family="ec-lmr" font-size="10">12.2   </tspan></span> <a 
  id="x1-830002"></a><tspan font-family="ec-lmr" font-size="10">UEFI Secure Boot</tspan></h4>
-<!--l. 7215--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">OpenCore is designed to provide a secure boot chain between firmware and operating system. On most x86 platforms trusted</tspan>
+<!--l. 7226--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">OpenCore is designed to provide a secure boot chain between firmware and operating system. On most x86 platforms trusted</tspan>
 <tspan font-family="ec-lmr" font-size="10">loading is implemented via </tspan><a 
 href="https://en.wikipedia.org/wiki/UEFI_Secure_Boot" ><tspan font-family="ec-lmr" font-size="10">UEFI Secure Boot</tspan></a> <tspan font-family="ec-lmr" font-size="10">model. Not only OpenCore fully supports this model, but it also extends its</tspan>
 <tspan font-family="ec-lmr" font-size="10">capabilities to ensure sealed configuration via</tspan> <tspan font-family="ec-lmbx" font-size="10">??</tspan> <tspan font-family="ec-lmr" font-size="10">and provide trusted loading to the operating systems using custom</tspan>
@@ -3590,29 +3598,27 @@ href="https://en.wikipedia.org/wiki/UEFI_Secure_Boot" ><tspan font-family="ec-lm
      </li>
      <li 
   class="enumerate" id="x1-83016x8"><tspan font-family="ec-lmr" font-size="10">Sign all OpenCore binaries (</tspan><tspan font-family="ec-lmtt" font-size="10">BOOTX64.efi</tspan><tspan font-family="ec-lmr" font-size="10">, </tspan><tspan font-family="ec-lmtt" font-size="10">BOOTIa32.efi</tspan><tspan font-family="ec-lmr" font-size="10">, </tspan><tspan font-family="ec-lmtt" font-size="10">OpenCore.efi</tspan><tspan font-family="ec-lmr" font-size="10">, custom launchers) used on this system</tspan>
-     <tspan font-family="ec-lmr" font-size="10">with the same private key.</tspan>
-     </li>
-     <li 
-  class="enumerate" id="x1-83018x9"><tspan font-family="ec-lmr" font-size="10">Sign all third-party operating system (not made by Microsoft or Apple) bootloaders if needed. For Linux there</tspan>
-     <tspan font-family="ec-lmr" font-size="10">is an option to install Microsoft-signed Shim bootloader as explained on e.g. </tspan><a 
-href="https://wiki.debian.org/SecureBoot" ><tspan font-family="ec-lmr" font-size="10">Debian Wiki</tspan></a><tspan font-family="ec-lmr" font-size="10">.</tspan>
-     </li>
-     <li 
-  class="enumerate" id="x1-83020x10"><tspan font-family="ec-lmr" font-size="10">Enable UEFI Secure Boot in firmware preferences and install the certificate with a private key. Details on how to</tspan>
-     <tspan font-family="ec-lmr" font-size="10">generate a certificate can be found in various articles, such as </tspan><a 
-href="https://habr.com/en/post/273497" ><tspan font-family="ec-lmr" font-size="10">this one</tspan></a><tspan font-family="ec-lmr" font-size="10">, and are out of the scope of this document.</tspan>
-     <tspan font-family="ec-lmr" font-size="10">If Windows is needed one will also need to add the </tspan><a 
-href="http://go.microsoft.com/fwlink/?LinkID=321192" ><tspan font-family="ec-lmr" font-size="10">Microsoft Windows Production CA 2011</tspan></a><tspan font-family="ec-lmr" font-size="10">. To launch option</tspan>
-     <tspan font-family="ec-lmr" font-size="10">ROMs or to use signed Linux drivers, </tspan><a 
-href="http://go.microsoft.com/fwlink/?LinkId=321194" ><tspan font-family="ec-lmr" font-size="10">Microsoft UEFI Driver Signing CA</tspan></a> <tspan font-family="ec-lmr" font-size="10">will also be needed.</tspan>
                                                                                                   
                                                                                                   
+     </p><!--l. 7509--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">For offline installation refer to </tspan><a 
+href="https://support.apple.com/HT201372" ><tspan font-family="ec-lmr" font-size="10">How to create a bootable installer for macOS</tspan></a> <tspan font-family="ec-lmr" font-size="10">article. Apart from App Store and</tspan>
+     <tspan font-family="ec-lmtt" font-size="10">softwareupdate </tspan><tspan font-family="ec-lmr" font-size="10">utility there also are </tspan><a 
+href="https://github.com/corpnewt/gibMacOS" ><tspan font-family="ec-lmr" font-size="10">third-party utilities</tspan></a> <tspan font-family="ec-lmr" font-size="10">to download an offline image.</tspan>
+     </p></li>
+     <li 
+  class="enumerate" id="x1-86012x6"><tspan font-family="ec-lmbx" font-size="10">Why do online recovery images (</tspan><tspan font-family="ec-lmtk" font-size="10">*.dmg</tspan><tspan font-family="ec-lmbx" font-size="10">) fail to load?</tspan>
+     <!--l. 7517--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">This may be caused by missing HFS+ driver, as all presently known recovery volumes have HFS+ filesystem.</tspan>
+     </p></li>
+     <li 
+  class="enumerate" id="x1-86014x7"><tspan font-family="ec-lmbx" font-size="10">Can I use this on Apple hardware or virtual machines?</tspan>
+     <!--l. 7523--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">Sure, most relatively modern Mac models including </tspan><tspan font-family="ec-lmtt" font-size="10">MacPro5,1 </tspan><tspan font-family="ec-lmr" font-size="10">and virtual machines are fully supported. Even though</tspan>
+     <tspan font-family="ec-lmr" font-size="10">there are little to none specific details relevant to Mac hardware, some ongoing instructions can be found on</tspan>
      <a 
 href="https://forums.macrumors.com/threads/opencore-on-the-mac-pro.2207814" ><tspan font-family="ec-lmr" font-size="10">MacRumors.com</tspan></a><tspan font-family="ec-lmr" font-size="10">.</tspan>
      </p></li>
      <li 
   class="enumerate" id="x1-86016x8"><tspan font-family="ec-lmbx" font-size="10">Why </tspan><span class="sout"><tspan font-family="ec-lmbx" font-size="10">do </tspan></span><span class="uwave"><tspan font-family="ec-lmbx" font-size="10">must </tspan></span><tspan font-family="ec-lmbx" font-size="10">Find&#x0026;Replace patches </tspan><span class="sout"><tspan font-family="ec-lmbx" font-size="10">must </tspan></span><span class="uwave"><tspan font-family="ec-lmbx" font-size="10">be </tspan></span><tspan font-family="ec-lmbx" font-size="10">equal in </tspan><span class="sout"><tspan font-family="ec-lmbx" font-size="10">length</tspan></span><span class="uwave"><tspan font-family="ec-lmbx" font-size="10">size</tspan></span><tspan font-family="ec-lmbx" font-size="10">?</tspan>
-     <!--l. 7520--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">For machine code (x86 code) it is not possible to do differently sized replacements due to </tspan><a 
+     <!--l. 7531--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">For machine code (x86 code) it is not possible to do differently sized replacements due to </tspan><a 
 href="https://en.wikipedia.org/w/index.php?title=Relative_addressing" ><tspan font-family="ec-lmr" font-size="10">relative addressing</tspan></a><tspan font-family="ec-lmr" font-size="10">. For ACPI</tspan>
      <tspan font-family="ec-lmr" font-size="10">code this is risky, and is technically equivalent to ACPI table replacement, thus not implemented. More detailed</tspan>
      <tspan font-family="ec-lmr" font-size="10">explanation can be found on </tspan><a 
@@ -3620,7 +3626,7 @@ href="https://applelife.ru/posts/819790" ><tspan font-family="ec-lmr" font-size=
      </p></li>
      <li 
   class="enumerate" id="x1-86018x9"><tspan font-family="ec-lmbx" font-size="10">How can I decide which </tspan><tspan font-family="ec-lmtk" font-size="10">Booter </tspan><tspan font-family="ec-lmbx" font-size="10">quirks to use?</tspan>
-     <!--l. 7529--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">These quirks originate from </tspan><tspan font-family="ec-lmtt" font-size="10">AptioMemoryFix </tspan><tspan font-family="ec-lmr" font-size="10">driver but provide a wider set of changes specific to modern systems. Note,</tspan>
+     <!--l. 7540--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">These quirks originate from </tspan><tspan font-family="ec-lmtt" font-size="10">AptioMemoryFix </tspan><tspan font-family="ec-lmr" font-size="10">driver but provide a wider set of changes specific to modern systems. Note,</tspan>
      <tspan font-family="ec-lmr" font-size="10">that </tspan><tspan font-family="ec-lmtt" font-size="10">OpenRuntime </tspan><tspan font-family="ec-lmr" font-size="10">driver is required for most configurations. To get a configuration similar to </tspan><tspan font-family="ec-lmtt" font-size="10">AptioMemoryFix </tspan><tspan font-family="ec-lmr" font-size="10">the</tspan>
      <tspan font-family="ec-lmr" font-size="10">following set of quirks should be enabled:</tspan> </p>
          <ul class="itemize1">
@@ -3643,10 +3649,10 @@ href="https://applelife.ru/posts/819790" ><tspan font-family="ec-lmr" font-size=
          <li class="itemize"><tspan font-family="ec-lmtt" font-size="10">RebuildAppleMemoryMap</tspan>
          </li>
          <li class="itemize"><tspan font-family="ec-lmtt" font-size="10">SetupVirtualMap</tspan></li></ul>
-     <!--l. 7547--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">However, as of today, such set is strongly discouraged as some of these quirks are not necessary to be enabled or need</tspan>
+     <!--l. 7558--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">However, as of today, such set is strongly discouraged as some of these quirks are not necessary to be enabled or need</tspan>
      <tspan font-family="ec-lmr" font-size="10">additional quirks. For example, </tspan><tspan font-family="ec-lmtt" font-size="10">DevirtualiseMmio </tspan><tspan font-family="ec-lmr" font-size="10">and </tspan><tspan font-family="ec-lmtt" font-size="10">ProtectUefiServices </tspan><tspan font-family="ec-lmr" font-size="10">are often required, while</tspan>
      <tspan font-family="ec-lmtt" font-size="10">DiscardHibernateMap </tspan><tspan font-family="ec-lmr" font-size="10">and </tspan><tspan font-family="ec-lmtt" font-size="10">ForceExitBootServices </tspan><tspan font-family="ec-lmr" font-size="10">are rarely necessary.</tspan>
-     </p><!--l. 7553--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">Unfortunately for some quirks such as </tspan><tspan font-family="ec-lmtt" font-size="10">RebuildAppleMemoryMap</tspan><tspan font-family="ec-lmr" font-size="10">, </tspan><tspan font-family="ec-lmtt" font-size="10">EnableWriteUnprotector</tspan><tspan font-family="ec-lmr" font-size="10">, </tspan><tspan font-family="ec-lmtt" font-size="10">ProtectMemoryRegions</tspan><tspan font-family="ec-lmr" font-size="10">,</tspan>
+     </p><!--l. 7564--><p class="noindent" ><tspan font-family="ec-lmr" font-size="10">Unfortunately for some quirks such as </tspan><tspan font-family="ec-lmtt" font-size="10">RebuildAppleMemoryMap</tspan><tspan font-family="ec-lmr" font-size="10">, </tspan><tspan font-family="ec-lmtt" font-size="10">EnableWriteUnprotector</tspan><tspan font-family="ec-lmr" font-size="10">, </tspan><tspan font-family="ec-lmtt" font-size="10">ProtectMemoryRegions</tspan><tspan font-family="ec-lmr" font-size="10">,</tspan>
      <tspan font-family="ec-lmtt" font-size="10">SetupVirtualMap</tspan><tspan font-family="ec-lmr" font-size="10">, and </tspan><tspan font-family="ec-lmtt" font-size="10">SyncRuntimePermissions </tspan><tspan font-family="ec-lmr" font-size="10">there is no definite approach even on similar systems, so trying all</tspan>
      <tspan font-family="ec-lmr" font-size="10">their combinations may be required for optimal setup. Refer to individual quirk descriptions in this document for more</tspan>
      <tspan font-family="ec-lmr" font-size="10">details.</tspan>
