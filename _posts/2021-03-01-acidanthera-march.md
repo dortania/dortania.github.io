@@ -33,7 +33,7 @@ Looking over to future changes in Dortania, we'd like to notify users of a poten
 
 * Note: Users who have `XhciPortLimit` disabled need not worry, however please ensure you've [mapped your USB ports](https://dortania.github.io/OpenCore-Post-Install/usb/) before updating
 
-Currently we expect 11.3 to be released to the public sometime this week or the coming weeks, so when these changes hit the public we will be merging the changes. Additionally, whenever there are new reports of `XhciPortLimit` being fixed, we will be updating Dortania to ensure users know. For users who'd like to aid in the patches, you can find the binaries of [11.3 Beta 1 and Beta 2 kexts ](https://github.com/acidanthera/bugtracker/issues/1514) as well as the source for [XhciPortLimit Patches](https://github.com/acidanthera/OpenCorePkg/blob/cbd2fa3ad306c123f2acaed5d2277bacfd48917b/Library/OcAppleKernelLib/CommonPatches.c#L527-L740).
+Currently we expect 11.3 to be released to the public sometime this week or the coming weeks, so when these changes hit the public we will be merging the changes. Additionally, whenever there are new reports of `XhciPortLimit` being fixed, we will be updating the guide to ensure users know. For users who'd like to aid in the patches, you can find the binaries of [11.3 Beta 1 and Beta 2 kexts ](https://github.com/acidanthera/bugtracker/issues/1514) as well as the source for [XhciPortLimit Patches](https://github.com/acidanthera/OpenCorePkg/blob/cbd2fa3ad306c123f2acaed5d2277bacfd48917b/Library/OcAppleKernelLib/CommonPatches.c#L527-L740).
 
 ——Khronokernel
 
