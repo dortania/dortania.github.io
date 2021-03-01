@@ -23,7 +23,7 @@ Looking over to future changes in Dortania, we'd like to notify users of a poten
 
 * Note: Users who have `XhciPortLimit` disabled need not worry, however please ensure you've [mapped your USB ports](https://dortania.github.io/OpenCore-Post-Install/usb/) before updating
 
-Currently we expect 11.3 to be released to the public sometime this week or the coming weeks, so when these changes hit the public we will be merging the changes. Additionally, whenever there are new reports of `XhciPortLimit` being fixed, we will be updating Dortania to ensure users know.
+Currently we expect 11.3 to be released to the public sometime this week or the coming weeks, so when these changes hit the public we will be merging the changes. Additionally, whenever there are new reports of `XhciPortLimit` being fixed, we will be updating the guide to ensure users know.
 
 ——Khronokernel
 
@@ -78,4 +78,3 @@ Currently we expect 11.3 to be released to the public sometime this week or the 
 #### [BrcmPatchRAM 2.5.7](https://github.com/acidanthera/BrcmPatchRAM/releases)
 
 - Added BCM94360Z4 identifiers for injection
-
