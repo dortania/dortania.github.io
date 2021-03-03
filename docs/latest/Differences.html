@@ -20,7 +20,1180 @@ width="160" height="160"  />
 </p>
 </div>
                                                                                                   
-
-
-</body>
+                                                                                                  
+</div>
+<a 
+ id="x1-1001r1"></a>
+<h3 class="sectionHead"><span class="titlemark">1   </span> <a 
+ id="x1-20001"></a>Introduction</h3>
+<!--l. 178--><p class="noindent" >This document provides information on the <span class="uwave">format of the </span><a 
+href="https://github.com/acidanthera/OpenCorePkg" >OpenCore</a> user configuration file <span class="sout">format </span>used to set up the correct
+functioning of the macOS operating system. It is to be read as the official clarification of expected OpenCore behaviour. All
+deviations, if found in published OpenCore releases, shall be considered to be documentation or implementation
+issues which should be reported via the <a 
+href="https://github.com/acidanthera/bugtracker" >Acidanthera Bugtracker</a>. An errata sheet is available in <a 
+href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Errata/Errata.pdf" >OpenCorePkg
+repository</a>.
+</p><!--l. 188--><p class="noindent" >This document is structured as a specification and is not meant to provide a step-by-step guide to configuring an end-user
+Board Support Package (BSP). The intended audience of the document is anticipated to be programmers and engineers with a
+basic understanding of macOS internals and UEFI functionality. For these reasons, this document is available
+exclusively in English, and all other sources or translations of this document are unofficial and may contain
+errors.
+</p><!--l. 195--><p class="noindent" >Third-party articles, utilities, books, and similar, may be more useful for a wider audience as they could provide
+guide-like material. However, they are subject to their authors’ preferences, <span class="sout">tastes, </span>misinterpretations of this
+document, and unavoidable obsolescence. In cases of using such sources, such as <a 
+href="https://dortania.github.io" >Dortania</a>’s <a 
+href="https://dortania.github.io/OpenCore-Install-Guide" >OpenCore Install
+Guide</a> and <a 
+href="https://dortania.github.io/getting-started" >related material</a>, please refer back to this document on every decision made and re-evaluate potential
+<span class="sout">consequences</span><span class="uwave">implications</span>.
+</p><!--l. 203--><p class="noindent" >Please note that regardless of the sources used, users are required to fully understand every OpenCore configuration option,
+and the principles behind them, before posting issues to the <a 
+href="https://github.com/acidanthera/bugtracker" >Acidanthera Bugtracker</a>.
+</p><!--l. 207--><p class="noindent" >Note: Creating this document would not have been possible without the invaluable contributions from other people:
+Andrey1970, Goldfish64, dakanji, PMheart, and several others, with the full list available in <a 
+href="https://github.com/acidanthera/OpenCorePkg/commits/master/Docs" >OpenCorePkg
+history</a>.
+<a 
+ id="x1-2001r1"></a>
+</p>
+<h4 class="subsectionHead"><span class="titlemark">1.1   </span> <a 
+ id="x1-30001"></a>Generic Terms</h4>
+     <ul class="itemize1">
+     <li class="itemize">plist —  Subset  of  ASCII  Property  List  format  written  in  XML,  also  know  as  XML  plist  format  version
+     1.  Uniform  Type  Identifier  (UTI):  com.apple.property-list.  Plists  consist  of  plist objects,  which  are
+     combined to form a hierarchical structure. Due to plist format not being well-defined, all the definitions of this
+     document may only be applied after plist is considered valid by running plutil -lint. External references:
+     https://www.apple.com/DTDs/PropertyList-1.0.dtd, man plutil.
+     </li>
+     <li class="itemize">plist type — plist collections (plist array, plist dictionary, plist key) and primitives (plist string,
+     plist data, plist date, plist boolean, plist integer, plist real).
+     </li>
+     <li class="itemize">plist object — definite realisation of plist type, which may be interpreted as value.
+     </li>
+     <li class="itemize">plist array — array-like collection, conforms to array. Consists of zero or more plist objects.
+     </li>
+     <li class="itemize">plist dictionary —  map-like  (associative  array)  collection,  conforms  to  dict.  Consists  of  zero  or  more
+     plist keys.
+     </li>
+     <li class="itemize">plist key — contains one plist object going by the name of plist key, conforms to key. Consists of printable
+     7-bit ASCII characters.
+     </li>
+     <li class="itemize">plist string — printable 7-bit ASCII string, conforms to string.
+     </li>
+     <li class="itemize">plist data — base64-encoded blob, conforms to data.
+                                                                                                  
+                                                                                                  
+     including, but not limited to, measures associated with fatal behaviour, assumptions of any state or value, or
+     disregarding any associated states or values. This is however subject to such measures not negatively impacting
+     upon system integrity.</li></ul>
+<a 
+ id="x1-5001r6"></a>
+<h4 class="subsectionHead"><span class="titlemark">2.2   </span> <a 
+ id="x1-60002"></a>Configuration Processing</h4>
+<!--l. 341--><p class="noindent" >The OC config file is guaranteed to be processed at least once if found. <span class="sout">Depending on </span><span class="uwave">Subject to the </span>OpenCore bootstrapping
+mechanism, the presence of multiple OC config files may lead to the reading of any of them. It is permissible for no OC Config
+file to be present on disk. In such cases, if the implementation does not abort the boot process, all values shall follow the rules
+of invalid values and optional values.
+</p><!--l. 348--><p class="noindent" >The OC config file has restrictions on size, nesting levels, and number of keys:
+</p>
+     <ul class="itemize1">
+     <li class="itemize">The OC config file size shall not exceed 32 MBs.
+     </li>
+     <li class="itemize">The OC config file shall not have more than 32 nesting levels.
+     </li>
+     <li class="itemize">The OC config file may have up to 32,768 XML nodes within each plist object.
+         <ul class="itemize2">
+         <li class="itemize">One plist dictionary item is counted as a pair of nodes</li></ul>
+     </li></ul>
+<!--l. 365--><p class="noindent" >Reading malformed OC config files results in undefined behaviour. Examples of malformed OC config files include the
+following:
+</p>
+     <ul class="itemize1">
+     <li class="itemize">OC config files that do not conform to DTD PLIST 1.0.
+     </li>
+     <li class="itemize">OC config files with unsupported or non-conformant plist objects found in this document.
+     </li>
+     <li class="itemize">OC config files violating restrictions on size, nesting levels, and number of keys.</li></ul>
+<!--l. 380--><p class="noindent" >It is recommended, but not required, to abort loading malformed OC config files and to continue as if an OC config file is not
+present. For forward compatibility, it is recommended, but not required, for the implementation to warn about the use of
+invalid values.
+</p><!--l. 385--><p class="noindent" >The recommended <span class="sout">practice for </span><span class="uwave">approach to </span>interpreting invalid values is to conform to the following convention where
+applicable:
+</p>
+<div class="center" 
+>
+<!--l. 388--><p class="noindent" >
+</p>
+<div class="tabular"> <table id="TBL-1" class="tabular" 
+ 
+><colgroup id="TBL-1-1g"><col 
+id="TBL-1-1" /></colgroup><colgroup id="TBL-1-2g"><col 
+id="TBL-1-2" /></colgroup><tr 
+class="hline"><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-1-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-1-1"  
+class="td11">Type            </td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-1-2"  
+class="td11">Value                                  </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-2-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-2-1"  
+class="td11">plist string  </td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-2-2"  
+class="td11">Empty string (&#x003C;string&#x003E;&#x003C;/string&#x003E;)</td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-3-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-3-1"  
+class="td11">plist data    </td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-3-2"  
+class="td11">Empty data (&#x003C;data&#x003E;&#x003C;/data&#x003E;)        </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-4-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-4-1"  
+class="td11">plist integer </td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-4-2"  
+class="td11">0 (&#x003C;integer&#x003E;0&#x003C;/integer&#x003E;)           </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-5-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-5-1"  
+class="td11">plist boolean </td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-5-2"  
+class="td11">False (&#x003C;false/&#x003E;)                         </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-6-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-6-1"  
+class="td11">plist tristate</td><td  style="white-space:nowrap; text-align:left;" id="TBL-1-6-2"  
+class="td11">False (&#x003C;false/&#x003E;)                         </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-7-"><td  style="white-space:nowrap; text-align:left;" id="TBL-1-7-1"  
+class="td11">              </td>
+</tr></table></div></div>
+<a 
+ id="x1-6001r7"></a>
+<h4 class="subsectionHead"><span class="titlemark">2.3   </span> <a 
+ id="x1-70003"></a>Configuration Structure</h4>
+<!--l. 413--><p class="noindent" >The OC config file is separated into subsections, as described in separate sections of this document, and is designed so as to
+attempt not to enable anything by default as well as to provide kill switches via an Enable property for plist dict entries
+that represent optional plugins and similar.
+                                                                                                  
+                                                                                                  
+     </li>
+     <li class="itemize">Use DEBUG_ERROR to print critical human visible messages that may potentially halt the boot process, and
+     DEBUG_WARN for all other human visible errors, RELEASE builds included.</li></ul>
+<!--l. 853--><p class="noindent" >The <a 
+href="https://git-scm.com/docs/git-bisect" >git-bisect</a> functionality may be useful when trying to find problematic changes. Unofficial sources of per-commit
+OpenCore binary builds, such as <a 
+href="https://dortania.github.io/builds" >Dortania</a>, may also be useful.
+<a 
+ id="x1-13001r9"></a>
+</p>
+<h3 class="sectionHead"><span class="titlemark">4   </span> <a 
+ id="x1-140004"></a>ACPI</h3>
+<a 
+ id="x1-14001r16"></a>
+<h4 class="subsectionHead"><span class="titlemark">4.1   </span> <a 
+ id="x1-150001"></a>Introduction</h4>
+<!--l. 861--><p class="noindent" >ACPI (Advanced Configuration and Power Interface) is an open standard to discover and configure computer hardware. The
+<a 
+href="https://uefi.org/specifications" >ACPI specification</a> <span class="sout">define the </span><span class="uwave">defines </span>standard tables (e.g. DSDT, SSDT, FACS, DMAR) and various methods (e.g. _DSM, _PRW) for
+implementation. Modern hardware needs <span class="sout">little </span><span class="uwave">few </span>changes to maintain ACPI compatibility <span class="sout">, yet some of those </span><span class="uwave">and some
+options for such changes </span>are provided as <span class="sout">a </span>part of OpenCore.
+</p><!--l. 872--><p class="noindent" >To compile and disassemble ACPI tables, the <a 
+href="https://github.com/acpica/acpica" >iASL compiler</a> developed by <a 
+href="https://www.acpica.org" >ACPICA</a> can be used. A GUI front-end to iASL
+compiler can be downloaded from <a 
+href="https://github.com/acidanthera/MaciASL/releases" >Acidanthera/MaciASL</a>.
+</p><!--l. 876--><p class="noindent" >ACPI changes apply globally (to every operating system) with the following effective order:
+</p>
+     <ul class="itemize1">
+     <li class="itemize">Patch is processed.
+     </li>
+     <li class="itemize">Delete is processed.
+     </li>
+     <li class="itemize">Add is processed.
+     </li>
+     <li class="itemize">Quirks are processed.</li></ul>
+<!--l. 886--><p class="noindent" >Applying the changes globally resolves the problems of incorrect operating system detection (consistent with the ACPI
+specification, not possible before the operating system boots), operating system chainloading, and difficult ACPI debugging.
+Hence, more attention may be required when writing changes to _OSI.
+</p><!--l. 891--><p class="noindent" >Applying the patches early makes it possible to write so called “proxy” patches, where the original method is patched in the
+original table and is implemented in the patched table.
+</p><!--l. 895--><p class="noindent" >There are several sources of ACPI tables and workarounds. Commonly used ACPI tables are provided with OpenCore,
+VirtualSMC, VoodooPS2, and WhateverGreen releases. Besides those, several third-party instructions may be found on the
+AppleLife <a 
+href="https://applelife.ru/forums/xakintosh.67" >Laboratory</a> and <a 
+href="https://applelife.ru/forums/dsdt.129" >DSDT</a> subforums (e.g. <a 
+href="https://applelife.ru/posts/498967" >Battery register splitting</a> guide). A slightly more user-friendly explanation of
+some tables included with OpenCore can also be found in <a 
+href="https://dortania.github.io" >Dortania</a>’s <a 
+href="https://dortania.github.io/Getting-Started-With-ACPI" >Getting started with ACPI</a> guide. For more exotic cases,
+there are several alternatives such as <a 
+href="https://github.com/daliansky" >daliansky</a>’s <a 
+href="https://github.com/daliansky/OC-little" >ACPI sample collection</a>. Note however that the quality of the suggested
+solutions will be variable.
+<a 
+ id="x1-15001r18"></a>
+</p>
+<h4 class="subsectionHead"><span class="titlemark">4.2   </span> <a 
+ id="x1-160002"></a>Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-16002x1">Add<br 
+class="newline" />Type: plist array<br 
+class="newline" />Failsafe: Empty<br 
+class="newline" />Description: Load selected tables from the OC/ACPI directory.
+     <!--l. 919--><p class="noindent" >Designed to be filled with plist dict values, describing each add entry. See the ?? section below.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-16004x2">Delete<br 
+class="newline" />Type: plist array<br 
+class="newline" />Failsafe: Empty                                    <br 
+class="newline" /> escription: Emulate certain hardware in kernelspace via parameters described in the <a 
+href="#x1-360005">Emulate Properties</a>
+     section below.
+     </li>
+     <li 
+  class="enumerate" id="x1-33008x4">Force<br 
+class="newline" />Type: plist array<br 
+class="newline" />Failsafe: Empty<br 
+class="newline" />Description: Load kernel drivers from system volume if they are not cached.
+     <!--l. 1934--><p class="noindent" >Designed to be filled with plist dict values, describing each driver. See the ?? section below. This section
+     resolves the problem of injecting drivers that depend on other drivers, which are not cached otherwise. The issue
+     <span class="sout">normally </span><span class="uwave">typically </span>affects older operating systems, where various dependency kexts, such as IOAudioFamily or
+     IONetworkingFamily may not be present in the kernel cache by default. The kernel driver load order follows the
+     item order in the array, thus the dependencies should be written prior to their consumers. Force happens before
+     Add.
+     </p><!--l. 1944--><p class="noindent" >Note: The signature of the “forced” kernel drivers is not checked anyhow, making the use of this feature extremely
+     dangerous and undesired for secure boot. This feature may not work on encrypted partitions in newer operating
+     systems.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-33010x5">Patch<br 
+class="newline" />Type: plist array<br 
+class="newline" />Failsafe: Empty<br 
+class="newline" />Description: Perform binary patches in kernel and drivers prior to driver addition and removal.
+     <!--l. 1955--><p class="noindent" >Designed to be filled with plist dictionary values, describing each patch. See the ?? section below.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-33012x6">Quirks<br 
+class="newline" />Type: plist dict<br 
+class="newline" />Description: Apply individual kernel and driver quirks described in the ?? section below.
+     </li>
+     <li 
+  class="enumerate" id="x1-33014x7">Scheme<br 
+class="newline" />Type: plist dict<br 
+class="newline" />Description: Define kernelspace operation mode via parameters described in the ?? section below.
+     </li></ol>
+<a 
+ id="x1-33015r36"></a>
+<h4 class="subsectionHead"><span class="titlemark">7.3   </span> <a 
+ id="x1-340003"></a>Add Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-34002x1">Arch<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Any (Apply to any supported architecture)<br 
+class="newline" />Description: Kext architecture (i386, x86_64).
+     </li>
+     <li 
+  class="enumerate" id="x1-34004x2">BundlePath<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty<br 
+class="newline" />Description: Kext bundle path (e.g. Lilu.kext or MyKext.kext/Contents/PlugIns/MySubKext.kext).
+     </li>
+     <li 
+  class="enumerate" id="x1-34006x3">Comment<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty<br 
+class="newline" />Description: Arbitrary ASCII string used to provide human readable reference for the entry. Whether this value
+     is used is implementation defined.
+     </li>
+     <li 
+  class="enumerate" id="x1-34008x4">Enabled                    <br 
+class="newline" /> escription: Set to true to hide auxiliary entries from the picker menu.
+     <!--l. 3076--><p class="noindent" >An entry is considered auxiliary when at least one of the following applies:
+</p>
+         <ul class="itemize1">
+         <li class="itemize">Entry is macOS recovery.
+         </li>
+         <li class="itemize">Entry is macOS Time Machine.
+         </li>
+         <li class="itemize">Entry is explicitly marked as Auxiliary.
+         </li>
+         <li class="itemize">Entry is system (e.g. Reset NVRAM).</li></ul>
+     <!--l. 3086--><p class="noindent" >To display all entries, the picker menu can be reloaded into “Extended Mode” by pressing the Spacebar key. Hiding
+     auxiliary entries may increase boot performance on multi-disk systems.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-44008x4">LauncherOption<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Disabled<br 
+class="newline" />Description: Register the launcher option in the firmware preferences for persistence.
+     <!--l. 3095--><p class="noindent" >Valid values:
+</p>
+         <ul class="itemize1">
+         <li class="itemize">Disabled — do nothing.
+         </li>
+         <li class="itemize">Full — create or update the top priority boot option in UEFI variable storage at bootloader startup.
+             <ul class="itemize2">
+             <li class="itemize">For this option to work, RequestBootVarRouting is required to be enabled.</li></ul>
+         </li>
+         <li class="itemize">Short — create a short boot option instead of a complete one.
+             <ul class="itemize2">
+             <li class="itemize">This variant is useful for some older types of firmware, typically from Insyde, that are unable to manage
+             full device paths.</li></ul>
+         </li></ul>
+     <!--l. 3114--><p class="noindent" >This option allows integration with third-party operating system installation and upgrades (which may overwrite the
+     \EFI\BOOT\BOOTx64.efi file). The BOOTx64.efi file is no longer used for bootstrapping OpenCore if a custom
+     option is created. The custom path used for bootstrapping can be specified by using the LauncherPath
+     option.
+     </p><!--l. 3119--><p class="noindent" >Note 1: Some types of firmware may have <span class="sout">defective NVRAM implementation </span><span class="uwave">NVRAM implementation flaws</span>, no boot
+     option support, or other incompatibilities. While unlikely, the use of this option may <span class="sout">cause </span><span class="uwave">result in </span>boot failures and
+     should only be used exclusively on <span class="sout">the </span>boards known to be compatible. Refer to <a 
+href="https://github.com/acidanthera/bugtracker/issues/1222" >acidanthera/bugtracker#1222</a> for some
+     known issues <span class="sout">with </span><span class="uwave">affecting </span>Haswell and other boards.
+     </p><!--l. 3125--><p class="noindent" >Note 2: While NVRAM resets executed from OpenCore would not typically erase the boot option created in Bootstrap,
+     executing NVRAM resets prior to loading OpenCore will erase the boot option. Therefore, for significant implementation
+     updates<span class="sout">(e.g. in </span><span class="uwave">, such as was the case with </span>OpenCore 0.6.4<span class="sout">)</span>, an NVRAM reset should be <span class="sout">performed </span><span class="uwave">executed </span>with
+     Bootstrap disabled<span class="uwave">, </span>after which it can be <span class="sout">reenabled</span><span class="uwave">re-enabled</span>.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-44010x5">LauncherPath<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Default<br 
+class="newline" />Description: Launch path for the LauncherOption property.
+     <!--l. 3136--><p class="noindent" >Default points to OpenCore.efi. User specified paths, e.g. \EFI\SomeLauncher.efi, can be used to provide custom
+     loaders, which are supposed to load OpenCore.efi themselves.
+                                                                                                  
+                                                                                                  
+         </li>
+         <li class="itemize">0x0008 — OC_ATTR_HIDE_THEMED_ICONS, prefers builtin icons for certain icon categories to match
+         the theme style. For example, this could force displaying the builtin Time Machine icon. Requires
+         OC_ATTR_USE_VOLUME_ICON.
+         </li>
+         <li class="itemize">0x0010 — OC_ATTR_USE_POINTER_CONTROL, enables pointer control in the OpenCore picker when available. For
+         example, this could make use of mouse or trackpad to control UI elements.</li></ul>
+     </li>
+     <li 
+  class="enumerate" id="x1-44014x7">PickerAudioAssist<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Enable screen reader by default in the OpenCore picker.
+     <!--l. 3227--><p class="noindent" >For the macOS bootloader, screen reader preference is set in the preferences.efires archive in the
+     isVOEnabled.int32 file and is controlled by the operating system. For OpenCore screen reader support,
+     this option is an independent equivalent. Toggling screen reader support in both the OpenCore picker
+     and the macOS bootloader FileVault 2 login window can also be done by using the Command + F5 key
+     combination.
+     </p><!--l. 3234--><p class="noindent" >Note: The screen reader requires working audio support. Refer to the <a 
+href="#x1-700008">UEFI Audio Properties</a> section for more
+     details.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-44016x8">PollAppleHotKeys<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Enable modifier hotkey handling in the OpenCore picker.
+     <!--l. 3243--><p class="noindent" >In addition to action hotkeys, which are partially described in <span class="uwave">the </span>PickerMode section and are <span class="sout">normally
+     </span><span class="uwave">typically </span>handled by Apple BDS, modifier keys handled by the operating system bootloader (boot.efi)
+     also exist. These keys allow changing the behaviour of the operating system by providing different boot
+     modes.
+     </p><!--l. 3248--><p class="noindent" >On certain firmware, using modifier keys may be problematic due to driver incompatibilities. To workaround
+     this problem, this option allows registering certain hotkeys in a more permissive manner from within the
+     OpenCore picker. Such extensions include support for tapping on keys in addition to holding and pressing
+     Shift along with other keys instead of only pressing the Shift key, which is not detectable on many PS/2
+     keyboards.
+     </p><!--l. 3254--><p class="noindent" >This list of known modifier hotkeys includes: </p>
+         <ul class="itemize1">
+         <li class="itemize">CMD+C+MINUS — disable board compatibility checking.
+         </li>
+         <li class="itemize">CMD+K — boot release kernel, similar to kcsuffix=release.
+         </li>
+         <li class="itemize">CMD+S — single user mode.
+         </li>
+         <li class="itemize">CMD+S+MINUS — disable KASLR slide, requires disabled SIP.
+         </li>
+         <li class="itemize">CMD+V — verbose mode.
+         </li>
+         <li class="itemize">Shift — safe mode.</li></ul>
+     </li>
+     <li 
+  class="enumerate" id="x1-44018x9">ShowPicker<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Show a simple picker to allow boot entry selection.
+     </li>
+                                                                                                  
+                                                                                                  
+     </li>
+     <li 
+  class="enumerate" id="x1-47010x5">Name<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty<br 
+class="newline" />Description: Human readable entry name displayed in the OpenCore picker.
+     </li>
+     <li 
+  class="enumerate" id="x1-47012x6">Path<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty<br 
+class="newline" />Description: Entry location depending on entry type.
+         <ul class="itemize1">
+         <li class="itemize">Entries specify external boot options, and therefore take device paths in the Path key. Care should be
+         exercised as these values are not checked. Example: PciRoot(0x0)/Pci(0x1,0x1)/.../\EFI\COOL.EFI
+         </li>
+         <li class="itemize">Tools specify internal boot options, which are part of the bootloader vault, and therefore take file paths
+         relative to the OC/Tools directory. Example: OpenShell.efi.</li></ul>
+     </li>
+     <li 
+  class="enumerate" id="x1-47014x7">RealPath<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Pass full path to the tool when launching.
+     <!--l. 4132--><p class="noindent" >This should typically be disabled as passing the tool directory may be unsafe with tools that accidentally attempt to
+     access files without checking their integrity. Reasons to enable this property may include cases where tools cannot work
+     without external files or may need them for enhanced functionality such as memtest86 (for logging and configuration), or
+     Shell (for automatic script execution).
+     </p><!--l. 4139--><p class="noindent" >Note: This property is only valid for Tools and cannot be specified for Entries (is always true).
+     </p></li>
+     <li 
+  class="enumerate" id="x1-47016x8">TextMode<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Run the entry in text mode instead of graphics mode.
+     <!--l. 4148--><p class="noindent" >This setting may be beneficial for some older tools that require text output as all the tools are launched in graphics mode
+     by default. Refer to the <a 
+href="#x1-7200010">Output Properties</a> section below for information on text modes.
+</p>
+     </li></ol>
+<a 
+ id="x1-47017r44"></a>
+<h3 class="sectionHead"><span class="titlemark">9   </span> <a 
+ id="x1-480009"></a>NVRAM</h3>
+<a 
+ id="x1-48001r50"></a>
+<h4 class="subsectionHead"><span class="titlemark">9.1   </span> <a 
+ id="x1-490001"></a>Introduction</h4>
+<!--l. 4158--><p class="noindent" ><span class="sout">Has </span><span class="sout">plist dict</span> <span class="sout">type and allows to set volatile </span><span class="uwave">This section allows setting non-volatile </span>UEFI variables commonly <span class="sout">referred
+</span><span class="uwave">described </span>as NVRAM variables. Refer to man nvram for more details. <span class="sout">macOS </span><span class="uwave">The macOS operating system </span>extensively uses
+NVRAM variables for OS — Bootloader — Firmware intercommunication<span class="sout">, and thus supplying several NVRAM </span><span class="uwave">. Hence,
+the supply of several NVRAM variables </span>is required for <span class="sout">proper macOS functioning </span><span class="uwave">the proper functioning of
+macOS</span>.
+</p><!--l. 4165--><p class="noindent" >Each NVRAM variable consists of its name, value, attributes (refer to UEFI specification), and its <a 
+href="https://en.wikipedia.org/wiki/Universally_unique_identifier" >GUID</a>, representing which
+‘section’ <span class="uwave">the </span>NVRAM variable belongs to. <span class="sout">macOS uses </span><span class="uwave">The macOS operating system makes use of </span>several GUIDs, including
+but not limited to:
+</p>
+     <ul class="itemize1">
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14 (APPLE_VENDOR_VARIABLE_GUID)
+                                                                                                  
+                                                                                                  
+     </li>
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82 (APPLE_BOOT_VARIABLE_GUID)
+     </li>
+     <li class="itemize">8BE4DF61-93CA-11D2-AA0D-00E098032B8C (EFI_GLOBAL_VARIABLE_GUID)
+     </li>
+     <li class="itemize">4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102 (OC_VENDOR_VARIABLE_GUID)</li></ul>
+<!--l. 4188--><p class="noindent" >Note: Some of the variables may be added by <span class="uwave">the </span>?? or <a 
+href="#x1-560002">Generic</a> subsections of <span class="uwave">the </span><a 
+href="#x1-5400010">PlatformInfo</a> section. Please ensure that
+variables <span class="sout">of this section never collide with them, as </span><span class="uwave">set in this section do not conflict with items in those subsections as the
+implementation </span>behaviour is undefined otherwise.
+</p><!--l. 4196--><p class="noindent" ><span class="sout">For proper macOS functioning it is often required to use </span><span class="uwave">The </span>OC_FIRMWARE_RUNTIME protocol implementation<span class="uwave">, </span>currently offered
+as a part of <span class="uwave">the </span>OpenRuntime driver<span class="sout">. While it brings any </span><span class="uwave">, is often required for macOS to function properly. While this brings
+many </span>benefits, there are <span class="sout">certain limitations which arise depending on the use </span><span class="uwave">some limitations that should be considered for
+certain use cases</span>.
+     </p><ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-49002x1">Not all tools may be aware of protected namespaces.<br 
+class="newline" />When RequestBootVarRouting is used<span class="uwave">, </span>Boot-prefixed variable access is restricted and protected in a separate
+     namespace. To access the original variables<span class="sout">tools have to </span><span class="uwave">, tools must </span>be aware of <span class="uwave">the </span>OC_FIRMWARE_RUNTIME
+     logic.</li></ol>
+<a 
+ id="x1-49003r52"></a>
+<h4 class="subsectionHead"><span class="titlemark">9.2   </span> <a 
+ id="x1-500002"></a>Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-50002x1">Add<br 
+class="newline" />Type: plist dict<br 
+class="newline" />Description: Sets NVRAM variables from a map (plist dict) of GUIDs to a map (plist dict) of variable
+     names and their values in plist multidata format. GUIDs must be provided in canonic string format in upper
+     or lower case (e.g. 8BE4DF61-93CA-11D2-AA0D-00E098032B8C).
+     <!--l. 4221--><p class="noindent" ><span class="sout">Created variables get </span><span class="uwave">The </span>EFI_VARIABLE_BOOTSERVICE_ACCESS and EFI_VARIABLE_RUNTIME_ACCESS attributes
+     <span class="uwave">of created variables are </span>set. Variables will only be set if not present or deleted. <span class="sout">I.e. </span><span class="uwave">That is, </span>to overwrite an
+     existing variable value<span class="uwave">, </span>add the variable name to the Delete section. This approach enables <span class="sout">to provide default
+     values till </span><span class="uwave">the provision of default values until </span>the operating system takes the lead.
+     </p><!--l. 4226--><p class="noindent" >Note: <span class="sout">If </span><span class="uwave">The implementation behaviour is undefined when the </span>plist key does not conform to <span class="sout">GUID format,
+     behaviour is undefined</span><span class="uwave">the GUID format</span>.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-50004x2">Delete<br 
+class="newline" />Type: plist dict<br 
+class="newline" />Description: Removes NVRAM variables from a map (plist dict) of GUIDs to an array (plist array) of
+     variable names in plist string format.
+     </li>
+     <li 
+  class="enumerate" id="x1-50006x3">LegacyEnable<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Enables loading <span class="sout">of </span><span class="uwave">a </span>NVRAM variable file named nvram.plist from EFI volume root.
+     <!--l. 4244--><p class="noindent" >This file must have <span class="uwave">a </span>root plist dictionary type and contain two fields: </p>
+         <ul class="itemize1">
+         <li class="itemize">Version — plist integer, file version, must be set to 1.
+         </li>
+         <li class="itemize">Add — plist dictionary, equivalent to Add from config.plist.</li></ul>
+     <!--l. 4252--><p class="noindent" >Variable loading happens prior to <span class="uwave">the </span>Delete (and Add) phases. Unless LegacyOverwrite is enabled, it will not overwrite
+     any existing variable. Variables allowed to be set must be specified in LegacySchema.
+     </p><!--l. 4257--><p class="noindent" >Third-party scripts may be used to create nvram.plist file. An example of such script can be found in Utilities. The
+     use of third-party scripts may require ExposeSensitiveData set to 0x3 to provide boot-path variable with <span class="uwave">the
+                                                                                                  
+                                                                                                  
+     </span>OpenCore EFI partition UUID.
+     </p><!--l. 4262--><p class="noindent" >Warning: This feature <span class="sout">is very dangerous</span><span class="uwave">can be dangerous, </span>as it passes unprotected data to firmware variable services.
+     <span class="sout">Use it only </span><span class="uwave">Only use </span>when no hardware NVRAM implementation is provided by the firmware or <span class="sout">it </span><span class="uwave">when the NVRAM
+     implementation </span>is incompatible.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-50008x4">LegacyOverwrite<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Permits overwriting firmware variables from nvram.plist.
+     <!--l. 4272--><p class="noindent" >Note: Only variables accessible from the operating system will be overwritten.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-50010x5">LegacySchema<br 
+class="newline" />Type: plist dict<br 
+class="newline" />Description: Allows setting certain NVRAM variables from a map (plist dict) of GUIDs to an array (plist array)
+     of variable names in plist string format.
+     <!--l. 4281--><p class="noindent" >* value can be used to accept all variables for certain GUID.
+     </p><!--l. 4283--><p class="noindent" >WARNING: Choose variables <span class="sout">very </span>carefully, as <span class="uwave">the </span>nvram.plist <span class="uwave">file </span>is not vaulted. For instance, do not <span class="sout">put </span><span class="uwave">include
+     </span>boot-args or csr-active-config, as <span class="sout">this can </span><span class="uwave">these can be used to </span>bypass SIP.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-50012x6">WriteFlash<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Enables writing to flash memory for all added variables.
+     <!--l. 4293--><p class="noindent" >Note: <span class="sout">It is recommended to have this value </span><span class="uwave">This value should be </span>enabled on most types of firmware but <span class="sout">it </span>is left
+     configurable <span class="uwave">to account </span>for firmware that may have issues with NVRAM variable storage garbage collection or
+     similar.
+</p>
+     </li></ol>
+<!--l. 4299--><p class="noindent" ><span class="sout">To </span><span class="uwave">The </span><span class="uwave">nvram</span> <span class="uwave">command can be used to </span>read NVRAM variable <span class="sout">value from macOS , </span><span class="sout">nvram</span> <span class="sout">could be used by concatenating
+</span><span class="uwave">values from macOS by concatenating the </span>GUID and name variables separated by a : symbol. For example, nvram
+7C436110-AB2A-4BBB-A880-FE41995C9F82:boot-args.
+</p><!--l. 4306--><p class="noindent" >A continuously updated variable list can be found in a corresponding document: <a 
+href="https://docs.google.com/spreadsheets/d/1HTCBwfOBkXsHiK7os3b2CUc6k68axdJYdGl-TyXqLu0" >NVRAM Variables</a>.
+<a 
+ id="x1-50013r53"></a>
+</p>
+<h4 class="subsectionHead"><span class="titlemark">9.3   </span> <a 
+ id="x1-510003"></a>Mandatory Variables</h4>
+<!--l. 4311--><p class="noindent" >Warning: These variables may be added by <span class="uwave">the </span>?? or <a 
+href="#x1-560002">Generic</a> subsections of <span class="uwave">the </span><a 
+href="#x1-5400010">PlatformInfo</a> section. Using PlatformInfo is
+the recommended way of setting these variables.
+</p><!--l. 4317--><p class="noindent" >The following variables are mandatory for macOS functioning:
+</p>
+     <ul class="itemize1">
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:FirmwareFeatures
+     32-bit FirmwareFeatures. Present on all Macs to avoid extra parsing of SMBIOS tables.
+     </li>
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:FirmwareFeaturesMask
+     32-bit FirmwareFeaturesMask. Present on all Macs to avoid extra parsing of SMBIOS tables.
+     </li>
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:MLB
+     BoardSerialNumber. Present on newer Macs (2013+ at least) to avoid extra parsing of SMBIOS tables, especially
+     in boot.efi.
+                                                                                                  
+                                                                                                  
+             <li class="itemize">2 — AppleLoggingStdErrSet/AppleLoggingStdErrPrint (StdErr or serial?)
+             </li>
+             <li class="itemize">4  —   AppleLoggingFileSet/AppleLoggingFilePrint   (BOOTER.LOG/BOOTER.OLD   file   on   EFI
+             partition)</li></ul>
+         </li>
+         <li class="itemize">debug=VALUE — deprecated starting from 10.15.
+             <ul class="itemize3">
+             <li class="itemize">1 — enables print something to BOOTER.LOG (stripped code implies there may be a crash)
+             </li>
+             <li class="itemize">2 — enables perf logging to /efi/debug-log in the device three
+             </li>
+             <li class="itemize">4 — enables timestamp printing for styled printf calls</li></ul>
+         </li>
+         <li class="itemize">level=VALUE — deprecated starting from 10.15. Verbosity level of DEBUG output. Everything but 0x80000000 is
+         stripped from the binary, and this is the default value.</li></ul>
+     <!--l. 4569--><p class="noindent" >Note: <span class="sout">To see </span><span class="uwave">Enable the </span><span class="uwave">AppleDebug</span> <span class="uwave">option to display </span>verbose output from boot.efi on modern macOS versions<span class="sout">enable
+     </span><span class="sout">AppleDebug</span> <span class="sout">option</span>. This will save the log to <span class="uwave">the </span>general OpenCore log <span class="uwave">file</span>. For versions before 10.15.4<span class="uwave">, </span>set bootercfg to
+     log=1. This will print verbose output onscreen.
+     </p></li>
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:bootercfg-once
+     Booter arguments override removed after first launch. Otherwise equivalent to bootercfg.
+     </li>
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:efiboot-perf-record
+     Enable performance log saving in boot.efi. Performance log is saved to physical memory and is pointed <span class="sout">by </span><span class="uwave">to by the
+     </span>efiboot-perf-record-data and efiboot-perf-record-size variables. Starting from 10.15.4<span class="uwave">, </span>it can also be saved to
+     <span class="uwave">the </span>OpenCore log by <span class="uwave">setting the </span>AppleDebug option.
+     </li>
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:fmm-computer-name
+     Current saved host name. ASCII string.
+     </li>
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:nvda_drv
+     NVIDIA Web Driver control variable. Takes ASCII digit 1 or 0 to enable or disable installed driver.
+     </li>
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:run-efi-updater
+     Override EFI firmware updating support in macOS (MultiUpdater, ThorUtil, and so on). Setting this to No or
+     alternative boolean-castable value will prevent any firmware updates in macOS starting with 10.10 at
+     least.
+     </li>
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:StartupMute
+     Mute startup chime sound in firmware audio support. 8-bit integer. The value of 0x00 means unmuted. Missing variable
+     or any other value means muted.
+     </li>
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:SystemAudioVolume
+     System audio volume level for firmware audio support. 8-bit integer. The bit of 0x80 means muted. Lower bits are used
+     to encode volume range specific to installed audio codec. The value is capped by MaximumBootBeepVolume AppleHDA
+     layout value to avoid too loud audio playback in the firmware.</li></ul>
+<a 
+ id="x1-53001r51"></a>
+<h3 class="sectionHead"><span class="titlemark">10   </span> <a 
+ id="x1-5400010"></a>PlatformInfo</h3>
+<!--l. 4616--><p class="noindent" >Platform information <span class="sout">is comprised </span><span class="uwave">consists </span>of several identification fields generated or filled manually to be compatible with
+macOS services. The base part of the configuration may be obtained from <a 
+href="https://github.com/acidanthera/OpenCorePkg/blob/master/AppleModels" >AppleModels</a>, which itself generates a set of
+interfaces based on a database in <a 
+href="https://yaml.org/spec/1.2/spec.html" >YAML</a> format. These fields are written to three destinations:
+</p>
+     <ul class="itemize1">
+     <li class="itemize"><a 
+href="https://www.dmtf.org/standards/smbios" >SMBIOS</a>
+     </li>
+     <li class="itemize"><a 
+href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Intel/Protocol/DataHub.h" >Data Hub</a>
+                                                                                                  
+                                                                                                  
+     </li>
+     <li class="itemize">NVRAM</li></ul>
+<!--l. 4635--><p class="noindent" >Most of the fields specify the overrides in SMBIOS, and their field names conform to EDK2 <a 
+href="https://github.com/acidanthera/audk/blob/master/MdePkg/Include/IndustryStandard/SmBios.h" >SmBios.h</a> header file. However,
+several important fields reside in Data Hub and NVRAM. Some of the values can be found in more than one field and/or
+destination, so there are two ways to control their update process: manual, where all the values are specified (the
+default), and semi-automatic, where (Automatic) only certain values are specified, and later used for system
+configuration.
+</p><!--l. 4645--><p class="noindent" ><span class="sout">To inspect SMBIOS contents </span><span class="uwave">The </span><a 
+href="http://www.nongnu.org/dmidecode" >dmidecode</a> utility can be used <span class="sout">. Version </span><span class="uwave">to inspect SMBIOS contents and a version </span>with
+macOS specific enhancements can be downloaded from <a 
+href="https://github.com/acidanthera/dmidecode/releases" >Acidanthera/dmidecode</a>.
+<a 
+ id="x1-54001r56"></a>
+</p>
+<h4 class="subsectionHead"><span class="titlemark">10.1   </span> <a 
+ id="x1-550001"></a>Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-55002x1">Automatic<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Generate PlatformInfo based on <span class="uwave">the </span>Generic section instead of using values from <span class="uwave">the </span>DataHub,
+     NVRAM, and SMBIOS sections.
+     <!--l. 4660--><p class="noindent" >Enabling this option is useful when Generic section is flexible enough: </p>
+         <ul class="itemize1">
+         <li class="itemize">When enabled SMBIOS, DataHub, and PlatformNVRAM data is unused.
+         </li>
+         <li class="itemize">When disabled Generic section is unused.</li></ul>
+     <!--l. 4669--><p class="noindent" >Warning: <span class="sout">It is strongly discouraged to set </span><span class="uwave">Setting </span>this option to false <span class="uwave">is strongly discouraged </span>when intending to update
+     platform information. <span class="sout">The only reason to do so is if making </span><span class="uwave">A </span><span class="uwave">false</span> <span class="uwave">setting is typically only valid for </span>minor
+     corrections to SMBIOS values on legacy Apple hardware. In all other cases<span class="uwave">, </span>setting Automatic to false
+     may lead to <span class="sout">hard to debug errors , due to </span><span class="uwave">hard-to-debug errors resulting from </span>inconsistent or invalid
+     settings.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-55004x2">CustomMemory<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Use custom memory configuration defined in the Memory section. This completely replaces any existing
+     memory configuration in SMBIOS, and is only active when UpdateSMBIOS is set to true.
+     </li>
+     <li 
+  class="enumerate" id="x1-55006x3">UpdateDataHub<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Update Data Hub fields. These fields are read from <span class="uwave">the </span>Generic or DataHub sections depending on <span class="uwave">the
+     setting of the </span>Automatic <span class="sout">value</span><span class="uwave">property</span>.
+     <!--l. 4695--><p class="noindent" >Note: The implementation of the Data Hub protocol in EFI firmware on <span class="sout">essentially </span><span class="uwave">virtually </span>all systems, including Apple
+     hardware, means that existing Data Hub entries cannot be overridden<span class="sout">, while new </span><span class="uwave">. New </span>entries are added to the end <span class="uwave">of
+     the Data Hub instead, </span>with macOS ignoring <span class="sout">them</span><span class="uwave">old entries</span>. This can be worked around by <span class="sout">reinstalling </span><span class="uwave">replacing </span>the
+     Data Hub protocol using the ProtocolOverrides section. Refer to the DataHub protocol override description for
+     details.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-55008x4">UpdateNVRAM<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Update NVRAM fields related to platform information.
+     <!--l. 4707--><p class="noindent" >These fields are read from <span class="uwave">the </span>Generic or PlatformNVRAM sections depending on <span class="uwave">the setting of the </span>Automatic
+                                                                                                  
+                                                                                                  
+     <span class="sout">value</span><span class="uwave">property</span>. All the other fields are to be specified with <span class="uwave">the </span>NVRAM section.
+     </p><!--l. 4711--><p class="noindent" >If UpdateNVRAM is set to false<span class="uwave">, </span>the aforementioned variables can be updated with <span class="uwave">the </span><a 
+href="#x1-480009">NVRAM</a> section. If
+     UpdateNVRAM is set to true<span class="uwave">, </span>the behaviour is undefined when any of the fields are present in <span class="uwave">the </span>NVRAM
+     section.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-55010x5">UpdateSMBIOS<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Update SMBIOS fields. These fields are read from <span class="uwave">the </span>Generic or SMBIOS sections depending on <span class="uwave">the
+     setting of the </span>Automatic <span class="sout">value</span><span class="uwave">property</span>.
+     </li>
+     <li 
+  class="enumerate" id="x1-55012x6">UpdateSMBIOSMode<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Create<br 
+class="newline" />Description: Update SMBIOS fields approach:
+         <ul class="itemize1">
+         <li class="itemize">TryOverwrite — Overwrite if new size is &#x003C;= than the page-aligned original and there are no issues with
+         legacy region unlock. Create otherwise. Has issues on some types of firmware.
+         </li>
+         <li class="itemize">Create —  Replace  the  tables  with  newly  allocated  EfiReservedMemoryType  at  AllocateMaxAddress
+         without any fallbacks.
+         </li>
+         <li class="itemize">Overwrite — Overwrite existing gEfiSmbiosTableGuid and gEfiSmbiosTable3Guid data if it fits new size.
+         Abort with unspecified state otherwise.
+         </li>
+         <li class="itemize">Custom —  Write  SMBIOS  tables  (gEfiSmbios(3)TableGuid)  to  gOcCustomSmbios(3)TableGuid to
+         workaround firmware overwriting SMBIOS contents at ExitBootServices. Otherwise equivalent to Create.
+         Requires patching AppleSmbios.kext and AppleACPIPlatform.kext to read from another GUID: &#x0022;EB9D2D31&#x0022;
+         - &#x0022;EB9D2D35&#x0022; (in ASCII), done automatically by CustomSMBIOSGuid quirk.</li></ul>
+     <!--l. 4751--><p class="noindent" >Note: A side effect of using <span class="uwave">the </span>Custom approach <span class="sout">is making </span><span class="uwave">that it makes </span>SMBIOS updates exclusive to macOS, avoiding
+     a collision with existing Windows activation and custom OEM software but potentially obstructing the operation of
+     Apple-specific tools.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-55014x7">UseRawUuidEncoding<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Use raw encoding for SMBIOS UUIDs.
+     <!--l. 4762--><p class="noindent" >Each UUID AABBCCDD-EEFF-GGHH-IIJJ-KKLLMMNNOOPP is essentially a hexadecimal 16-byte number. It can be encoded in
+     two ways:
+</p>
+         <ul class="itemize1">
+         <li class="itemize">Big Endian — by writing all the bytes as they are without making any order changes ({AA BB CC DD EE FF
+         GG HH II JJ KK LL MM NN OO PP}). This method is also known as <a 
+href="https://tools.ietf.org/html/rfc4122" >RFC 4122</a> encoding or Raw encoding.
+         </li>
+         <li class="itemize">Little Endian — by interpreting the bytes as numbers and using Little Endian byte representation ({DD
+         CC BB AA FF EE HH GG II JJ KK LL MM NN OO PP}).</li></ul>
+     <!--l. 4777--><p class="noindent" ><span class="uwave">The </span>SMBIOS specification did not explicitly specify the encoding format for the UUID up to SMBIOS 2.6, where it
+     stated that Little Endian encoding shall be used. This led to the confusion in both firmware implementations and
+     system software as different vendors used different encodings prior to that.
+</p>
+         <ul class="itemize1">
+         <li class="itemize">Apple uses <span class="uwave">the </span>Big Endian format everywhere but it ignores SMBIOS UUID within macOS.
+                                                                                                  
+                                                                                                  
+         </li>
+         <li class="itemize">dmidecode uses <span class="uwave">the </span>Big Endian format for SMBIOS 2.5.x or lower and <span class="uwave">the </span>Little Endian <span class="uwave">format </span>for 2.6
+         and newer. Acidanthera <a 
+href="https://github.com/acidanthera/dmidecode" >dmidecode</a> prints all <span class="sout">the </span>three.
+         </li>
+         <li class="itemize">Windows uses <span class="uwave">the </span>Little Endian format everywhere, but <span class="sout">it </span><span class="uwave">this </span>only affects the visual representation of
+         the values.</li></ul>
+     <!--l. 4792--><p class="noindent" >OpenCore always sets a recent SMBIOS version (currently 3.2) when generating the modified DMI tables. If
+     UseRawUuidEncoding is enabled, <span class="sout">then </span><span class="uwave">the </span>Big Endian format is used to store the SystemUUID data. Otherwise, <span class="uwave">the
+     </span>Little Endian <span class="uwave">format </span>is used.
+     </p><!--l. 4797--><p class="noindent" >Note: <span class="sout">Since </span><span class="uwave">This preference does not affect </span>UUIDs used in DataHub and NVRAM <span class="uwave">as they </span>are not standardised and are
+     added by Apple<span class="sout">, this preference does not affect them</span>. Unlike SMBIOS<span class="uwave">, </span>they are always stored in the Big Endian
+     format.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-55016x8">Generic<br 
+class="newline" />Type: plist dictionary<br 
+class="newline" />Description: Update all fields in Automatic mode.
+     <!--l. 4806--><p class="noindent" >Note: This section is ignored but may not be removed when Automatic is false.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-55018x9">DataHub<br 
+class="newline" />Type: plist dictionary<br 
+class="newline" />Description: Update Data Hub fields in non-Automatic mode.
+     <!--l. 4813--><p class="noindent" >Note: This section is ignored and may be removed when Automatic is true.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-55020x10">Memory<br 
+class="newline" />Type: plist dictionary<br 
+class="newline" />Description: Define custom memory configuration.
+     <!--l. 4820--><p class="noindent" >Note: This section is ignored and may be removed when CustomMemory is false.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-55022x11">PlatformNVRAM<br 
+class="newline" />Type: plist dictionary<br 
+class="newline" />Description: Update platform NVRAM fields in non-Automatic mode.
+     <!--l. 4827--><p class="noindent" >Note: This section is ignored and may be removed when Automatic is true.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-55024x12">SMBIOS<br 
+class="newline" />Type: plist dictionary<br 
+class="newline" />Description: Update SMBIOS fields in non-Automatic mode.
+     <!--l. 4834--><p class="noindent" >Note: This section is ignored and may be removed when Automatic is true.</p></li></ol>
+<a 
+ id="x1-55025r58"></a>
+<h4 class="subsectionHead"><span class="titlemark">10.2   </span> <a 
+ id="x1-560002"></a>Generic Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-56002x1">SpoofVendor<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Sets SMBIOS vendor fields to Acidanthera.
+     <!--l. 4847--><p class="noindent" >It  <span class="sout">is  </span><span class="uwave">can  be  </span>dangerous  to  use  <span class="sout">Apple  </span><span class="uwave">“Apple”  </span>in  SMBIOS  vendor  fields  for  reasons  <span class="sout">given  </span><span class="uwave">outlined  </span>in  the
+     SystemManufacturer description. However, certain firmware may not provide valid values otherwise, which could
+     obstruct the operation of some software.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-56004x2">AdviseWindows<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Forces Windows support in FirmwareFeatures.
+     <!--l. 4857--><p class="noindent" >Added bits to FirmwareFeatures:
+</p>
+         <ul class="itemize1">
+         <li class="itemize">FW_FEATURE_SUPPORTS_CSM_LEGACY_MODE (0x1) - Without this bit<span class="uwave">, </span>it is not possible to reboot to Windows
+         installed on a drive with <span class="sout">EFI partition being </span><span class="uwave">an EFI partition that is </span>not the first partition on the disk.
+         </li>
+         <li class="itemize">FW_FEATURE_SUPPORTS_UEFI_WINDOWS_BOOT (0x20000000) - Without this bit<span class="uwave">, </span>it is not possible to reboot
+         to Windows installed on a drive with <span class="sout">EFI partition being </span><span class="uwave">an EFI partition that is </span>the first partition on the
+         disk.</li></ul>
+     </li>
+     <li 
+  class="enumerate" id="x1-56006x3">MaxBIOSVersion<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Sets BIOSVersion to 9999.999.999.999.999, recommended for legacy Macs when using Automatic
+     PlatformInfo<span class="uwave">, </span>to avoid BIOS updates in unofficially supported macOS versions.
+     </li>
+     <li 
+  class="enumerate" id="x1-56008x4">SystemMemoryStatus<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Auto<br 
+class="newline" />Description: Indicates whether system memory is upgradable in PlatformFeature. This controls the visibility of the
+     Memory tab in <span class="uwave">“</span>About This Mac<span class="uwave">”</span>.
+     <!--l. 4883--><p class="noindent" >Valid values:
+</p>
+         <ul class="itemize1">
+         <li class="itemize">Auto — use the original PlatformFeature value.
+         </li>
+         <li class="itemize">Upgradable — explicitly unset PT_FEATURE_HAS_SOLDERED_SYSTEM_MEMORY (0x2) in PlatformFeature.
+         </li>
+         <li class="itemize">Soldered — explicitly set PT_FEATURE_HAS_SOLDERED_SYSTEM_MEMORY (0x2) in PlatformFeature.</li></ul>
+     <!--l. 4894--><p class="noindent" >Note: On certain Mac models, such as the MacBookPro10,x and any MacBookAir, SPMemoryReporter.spreporter will
+     ignore PT_FEATURE_HAS_SOLDERED_SYSTEM_MEMORY and assume that system memory is non-upgradable.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-56010x5">ProcessorType<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0 (Automatic)<br 
+class="newline" />Description: Refer to SMBIOS ProcessorType.
+     </li>
+     <li 
+  class="enumerate" id="x1-56012x6">SystemProductName<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty (OEM specified or not installed)<br 
+class="newline" />Description: Refer to SMBIOS SystemProductName.
+     </li>
+     <li 
+  class="enumerate" id="x1-56014x7">SystemSerialNumber<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty (OEM specified or not installed)<br 
+class="newline" />Description: Refer to SMBIOS SystemSerialNumber.
+     <!--l. 4914--><p class="noindent" >Specify special string value OEM to extract current value from NVRAM (SSN variable) or SMBIOS and use it throughout
+     the sections. This feature can only be used on Mac-compatible firmware.
+                                                                                                  
+                                                                                                  
+     <!--l. 5063--><p class="noindent" >Sets CPU FSB frequency. This value equals to CPU nominal frequency divided by CPU maximum bus ratio and is
+     specified in Hz. Refer to MSR_NEHALEM_PLATFORM_INFO (CEh) MSR value to determine maximum bus ratio on modern
+     Intel CPUs.
+     </p><!--l. 5068--><p class="noindent" >Note: This value is not used on Skylake and newer but is still provided to follow suit.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-57020x10">ARTFrequency<br 
+class="newline" />Type: plist integer, 64-bit<br 
+class="newline" />Failsafe: 0 (Automatic)<br 
+class="newline" />Description: Sets ARTFrequency in gEfiProcessorSubClassGuid.
+     <!--l. 5077--><p class="noindent" >This value contains CPU ART frequency, also known as crystal clock frequency. Its existence is exclusive to the Skylake
+     generation and newer. The value is specified in Hz, and is normally 24 MHz for <span class="uwave">the </span>client Intel segment, 25 MHz for <span class="uwave">the
+     </span>server Intel segment, and 19.2 MHz for Intel Atom CPUs. macOS till 10.15 inclusive assumes 24 MHz by
+     default.
+     </p><!--l. 5082--><p class="noindent" >Note: On Intel Skylake X ART frequency may be a little less (approx. 0.25%) than 24 or 25 MHz due to special
+     EMI-reduction circuit as described in <a 
+href="https://github.com/acidanthera/bugtracker/issues/448#issuecomment-524914166" >Acidanthera Bugtracker</a>.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-57022x11">DevicePathsSupported<br 
+class="newline" />Type: plist integer, 32-bit<br 
+class="newline" />Failsafe: 0 (Not installed)<br 
+class="newline" />Description: Sets DevicePathsSupported in gEfiMiscSubClassGuid. Must be set to 1 for AppleACPIPlatform.kext to
+     append SATA device paths to Boot#### and efi-boot-device-data variables. Set to 1 on all modern
+     Macs.
+     </li>
+     <li 
+  class="enumerate" id="x1-57024x12">SmcRevision<br 
+class="newline" />Type: plist data, 6 bytes<br 
+class="newline" />Failsafe: Empty (Not installed)<br 
+class="newline" />Description: Sets REV in gEfiMiscSubClassGuid. Custom property read by VirtualSMC or FakeSMC to generate SMC
+     REV key.
+     </li>
+     <li 
+  class="enumerate" id="x1-57026x13">SmcBranch<br 
+class="newline" />Type: plist data, 8 bytes<br 
+class="newline" />Failsafe: Empty (Not installed)<br 
+class="newline" />Description: Sets RBr in gEfiMiscSubClassGuid. Custom property read by VirtualSMC or FakeSMC to generate SMC
+     RBr key.
+     </li>
+     <li 
+  class="enumerate" id="x1-57028x14">SmcPlatform<br 
+class="newline" />Type: plist data, 8 bytes<br 
+class="newline" />Failsafe: Empty (Not installed)<br 
+class="newline" />Description: Sets RPlt in gEfiMiscSubClassGuid. Custom property read by VirtualSMC or FakeSMC to generate SMC
+     RPlt key.</li></ol>
+<a 
+ id="x1-57029r60"></a>
+<h4 class="subsectionHead"><span class="titlemark">10.4   </span> <a 
+ id="x1-580004"></a>Memory Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-58002x1">DataWidth<br 
+class="newline" />Type: plist integer, 16-bit<br 
+class="newline" />Failsafe: 0xFFFF (unknown)<br 
+class="newline" />SMBIOS: Memory Device (Type 17) — Data Width<br 
+class="newline" />Description: Specifies the data width, in bits, of the memory. A DataWidth of 0 and a TotalWidth of 8 indicates
+     that the device is being used solely to provide 8 error-correction bits.
+     </li>
+     <li 
+  class="enumerate" id="x1-58004x2">Devices<br 
+class="newline" />Type: plist array<br 
+class="newline" />Failsafe: Empty<br 
+class="newline" />Description: Specifies the custom memory devices to be added.
+     <!--l. 5139--><p class="noindent" >Designed to be filled with plist dictionary values, describing each memory device. See the ?? section below.
+     This should include all memory slots, even if unpopulated.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-58006x3">ErrorCorrection<br 
+class="newline" />Type: plist integer, 8-bit<br 
+class="newline" />Failsafe: 0x03<br 
+class="newline" />SMBIOS: Physical Memory Array (Type 16) — Memory Error Correction<br 
+class="newline" />Description: Specifies the primary hardware error correction or detection method supported by the memory.
+         <ul class="itemize1">
+         <li class="itemize">0x01 — Other
+         </li>
+         <li class="itemize">0x02 — Unknown
+         </li>
+         <li class="itemize">0x03 — None
+         </li>
+         <li class="itemize">0x04 — Parity
+         </li>
+         <li class="itemize">0x05 — Single-bit ECC
+         </li>
+         <li class="itemize">0x06 — Multi-bit ECC
+         </li>
+         <li class="itemize">0x07 — CRC</li></ul>
+     </li>
+     <li 
+  class="enumerate" id="x1-58008x4">FormFactor<br 
+class="newline" />Type: plist integer, 8-bit<br 
+class="newline" />Failsafe: 0x02<br 
+class="newline" />SMBIOS: Memory Device (Type 17) — Form Factor<br 
+class="newline" />Description: Specifies the form factor of the memory. On Macs, this should typically be DIMM or SODIMM.
+     Commonly used form factors are listed below.
+     <!--l. 5178--><p class="noindent" >When CustomMemory is false, this value is automatically set based on Mac product name.
+     </p><!--l. 5181--><p class="noindent" ><span class="uwave">When </span><span class="uwave">Automatic</span> <span class="uwave">is </span><span class="uwave">true</span><span class="uwave">, the original value from the the corresponding Mac model will be set if available. Otherwise, the
+     value from </span><span class="uwave">OcMacInfoLib</span> <span class="uwave">will be set. When </span><span class="uwave">Automatic</span> <span class="uwave">is </span><span class="uwave">false</span><span class="uwave">, a user-specified value will be set if available. Otherwise,
+     the original value from the firmware will be set. If no value is provided, the fallback value (</span><span class="uwave">zero</span><span class="uwave">) will be set.
+     </span>
+</p>
+         <ul class="itemize1">
+         <li class="itemize">0x01 — Other
+         </li>
+         <li class="itemize">0x02 — Unknown
+         </li>
+         <li class="itemize">0x09 — DIMM
+         </li>
+         <li class="itemize">0x0D — SODIMM
+         </li>
+         <li class="itemize">0x0F — FB-DIMM</li></ul>
+     </li>
+     <li 
+  class="enumerate" id="x1-58010x5">MaxCapacity<br 
+class="newline" />Type: plist integer, 64-bit<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />SMBIOS: Physical Memory Array (Type 16) — Maximum Capacity<br 
+class="newline" />Description: Specifies the maximum amount of memory, in bytes, supported by the system.
+                                                                                                  
+                                                                                                  
+     
+     
+     
+     
+     
+     
+      
+     
+     
+     
+      
+     
+     
+                                  
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+      
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+     
+     
+      
+     
+     
+     
+     
+      
+     
+     
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+                                                                                                                                                                                                                                                                                                                       </body>
 </html>
