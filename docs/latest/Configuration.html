@@ -6351,7 +6351,7 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Enable keyboard
   class="enumerate" id="x1-71004x2"><tspan class="ec-lmtt-10">KeyForgetThreshold</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-10">plist</tspan><tspan class="ec-lmtt-10"> integer</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: <tspan class="ec-lmtt-10">0</tspan><br 
-class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Remove key unless it was submitted during this timeout in milliseconds.
+class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Remove key unless it was submitted during this timeout in 10 ms units.
                                                                                                   
                                                                                                   
      <!--l. 6236--><p class="noindent" ><tspan class="ec-lmtt-10">AppleKeyMapAggregator </tspan>protocol is supposed to contain a fixed length buffer of currently pressed keys. However,
@@ -6359,13 +6359,14 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Remove key unle
      results in subsequent submissions of this key with some defined time interval. As a result we use a timeout to
      remove once pressed keys from the buffer once the timeout expires and no new submission of this key happened.
      </p><!--l. 6243--><p class="noindent" >This option allows setting this timeout based on the platform. The recommended value for the majority of
-     platforms is <tspan class="ec-lmtt-10">5 </tspan>milliseconds. For reference, holding one key on VMware will repeat it roughly every <tspan class="ec-lmtt-10">2 </tspan>milliseconds
-     and the same value for APTIO V is <tspan class="ec-lmtt-10">3-4 </tspan>milliseconds. Thus, it is possible to set a slightly lower value on faster
-     platforms and a slightly higher value on slower platforms for more responsive input.
-     </p><!--l. 6250--><p class="noindent" >Pressing keys one after the other results in delays of at least <tspan class="ec-lmtt-10">6 </tspan>and <tspan class="ec-lmtt-10">10 </tspan>milliseconds for the same platforms.
+     platforms is <tspan class="ec-lmtt-10">5 </tspan>(<tspan class="ec-lmtt-10">50 </tspan>milliseconds). For reference, holding one key on VMware will repeat it roughly every <tspan class="ec-lmtt-10">20</tspan>
+     milliseconds and the same value for APTIO V is <tspan class="ec-lmtt-10">30-40 </tspan>milliseconds. Thus, it is possible to set a slightly lower
+     value on faster platforms and a slightly higher value on slower platforms for more responsive input.
+     </p><!--l. 6250--><p class="noindent" >Pressing keys one after the other results in delays of at least <tspan class="ec-lmtt-10">60 </tspan>and <tspan class="ec-lmtt-10">100 </tspan>milliseconds for the same platforms.
      </p><!--l. 6253--><p class="noindent" ><tspan class="ec-lmri-10">Note</tspan>: Some platforms may require different values, which may be higher or lower. For example, when detecting
      key misses in OpenCanopy, try increasing this value (e.g. to <tspan class="ec-lmtt-10">10</tspan>), and when detecting key stall, try decreasing
-     this value. Since every platform is different, it may be prudent to check every value from <tspan class="ec-lmtt-10">1 </tspan>to <tspan class="ec-lmtt-10">25</tspan>.
+     this value. Since every platform is different, it may be prudent to check every value from <tspan class="ec-lmtt-10">1 </tspan>to <tspan class="ec-lmtt-10">25 </tspan>(<tspan class="ec-lmtt-10">10 </tspan>to <tspan class="ec-lmtt-10">250</tspan>
+     milliseconds).
      </p></li>
      <li 
   class="enumerate" id="x1-71006x3"><tspan class="ec-lmtt-10">KeySupport</tspan><br 
@@ -6408,6 +6409,8 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Enable internal
      OEM protocols. The option may be useful on Z87 ASUS boards, where <tspan class="ec-lmtt-10">EFI_SIMPLE_POINTER_PROTOCOL </tspan>is
      defective.
      </p></li>
+                                                                                                  
+                                                                                                  
      <li 
   class="enumerate" id="x1-71014x7"><tspan class="ec-lmtt-10">PointerSupportMode</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-10">plist</tspan><tspan class="ec-lmtt-10"> string</tspan><br 
@@ -6465,9 +6468,9 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Chooses rendere
      laptop firmware, which can only draw in <tspan class="ec-lmtt-10">Text </tspan>mode.
      </p><!--l. 6387--><p class="noindent" >The use of <tspan class="ec-lmtt-10">System </tspan>protocols is more complicated. Typically, the preferred setting is <tspan class="ec-lmtt-10">SystemGraphics </tspan>or <tspan class="ec-lmtt-10">SystemText</tspan>.
      Enabling <tspan class="ec-lmtt-10">ProvideConsoleGop</tspan>, setting <tspan class="ec-lmtt-10">Resolution </tspan>to <tspan class="ec-lmtt-10">Max</tspan>, enabling <tspan class="ec-lmtt-10">ReplaceTabWithSpace </tspan>is useful on almost all
+                                                                                                  
+                                                                                                  
      platforms. <tspan class="ec-lmtt-10">SanitiseClearScreen</tspan>, <tspan class="ec-lmtt-10">IgnoreTextInGraphics</tspan>, and <tspan class="ec-lmtt-10">ClearScreenOnModeSwitch </tspan>are more specific, and their
-                                                                                                  
-                                                                                                  
      use depends on the firmware.
      </p><!--l. 6395--><p class="noindent" ><tspan class="ec-lmri-10">Note</tspan>: Some Macs, such as the <tspan class="ec-lmtt-10">MacPro5,1</tspan>, may have incompatible console output when using modern GPUs, and thus
      only <tspan class="ec-lmtt-10">BuiltinGraphics </tspan>may work for them in such cases. NVIDIA GPUs may require additional <a 
