@@ -1432,7 +1432,7 @@ href="#x1-860005">Tips and Tricks</a> section for instructions on migration.
      <li class="itemize"><tspan class="ec-lmtt-10">CFG Lock </tspan>(MSR <tspan class="ec-lmtt-10">0xE2 </tspan>write protection) disabled in firmware settings if present. Consider <a 
 href="https://github.com/LongSoft/UEFITool/blob/master/UEFIPatch/patches.txt" >patching it</a> if no option
      is available (for advanced users only). See <a 
-href="#x1-390008">VerifyMsrE2</a> notes for more details.
+href="#x1-390008">ControlMsrE2</a> notes for more details.
      </li>
      <li class="itemize"><tspan class="ec-lmtt-10">CSM </tspan>(Compatibility Support Module) disabled in firmware settings if present. On NVIDIA 6xx/AMD 2xx or
      older, GOP ROM may have to be flashed first. Use <a 
@@ -2459,8 +2459,9 @@ class="newline" /><tspan class="ec-lmbx-10">Requirement</tspan>: 10.4<br
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>:                 Disables                 <tspan class="ec-lmtt-10">PKG_CST_CONFIG_CONTROL           </tspan>(<tspan class="ec-lmtt-10">0xE2</tspan>)                 MSR
      modification in AppleIntelCPUPowerManagement.kext, commonly causing early kernel panic, when it is locked
      from writing.
-     <!--l. 2373--><p class="noindent" >Some types of firmware lock the <tspan class="ec-lmtt-10">PKG_CST_CONFIG_CONTROL </tspan>MSR register and the bundled <tspan class="ec-lmtt-10">VerifyMsrE2 </tspan>tool can
-     be used to check its state. Note that some types of firmware only have this register locked on some cores.
+     <!--l. 2373--><p class="noindent" >Some types of firmware lock the <tspan class="ec-lmtt-10">PKG_CST_CONFIG_CONTROL </tspan>MSR register and the bundled <tspan class="ec-lmtt-10">ControlMsrE2 </tspan>tool
+     can be used to check its state and enable it on selected platforms with that option hidden. Note that some types
+     of firmware only have this register locked on some cores.
      </p><!--l. 2377--><p class="noindent" >As modern firmware provide a <tspan class="ec-lmtt-10">CFG Lock </tspan>setting that allows configuring the <tspan class="ec-lmtt-10">PKG_CST_CONFIG_CONTROL </tspan>MSR
      register lock, this option should be avoided whenever possible. On APTIO firmware that do not provide a <tspan class="ec-lmtt-10">CFG</tspan>
      <tspan class="ec-lmtt-10">Lock </tspan>setting in the GUI, it is possible to access the option directly:
@@ -2517,9 +2518,9 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Disables multip
 href="https://github.com/acidanthera/bugtracker/issues/365" >acidanthera/bugtracker#365</a>.
      </p><!--l. 2428--><p class="noindent" ><tspan class="ec-lmri-10">Note</tspan>: Additional not provided patches will be required for Ivy Bridge or Pentium CPUs. It is recommended to use
      <tspan class="ec-lmtt-10">AppleIntelCpuPowerManagement.kext </tspan>for the former.
+                                                                                                  
+                                                                                                  
      </p></li>
-                                                                                                  
-                                                                                                  
      <li 
   class="enumerate" id="x1-39022x4"><tspan class="ec-lmtt-10">AppleXcpmForceBoost</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-10">plist</tspan><tspan class="ec-lmtt-10"> boolean</tspan><br 
@@ -2577,9 +2578,9 @@ class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: <tspan class="ec-l
 class="newline" /><tspan class="ec-lmbx-10">Requirement</tspan>: 10.8<br 
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Set <tspan class="ec-lmtt-10">FeatureFlags </tspan>to <tspan class="ec-lmtt-10">0x0F </tspan>for full functionality of Bluetooth, including Continuity.
      <!--l. 2500--><p class="noindent" ><tspan class="ec-lmri-10">Note</tspan>: This option is a substitution for BT4LEContinuityFixup.kext, which does not function properly due to late
+                                                                                                  
+                                                                                                  
      patching progress.
-                                                                                                  
-                                                                                                  
      </p></li>
      <li 
   class="enumerate" id="x1-39034x10"><tspan class="ec-lmtt-10">ExternalDiskIcons</tspan><br 
@@ -2638,9 +2639,9 @@ class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-
 class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: <tspan class="ec-lmtt-10">false</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Requirement</tspan>: 10.15 (not required for older)<br 
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Disables kernel panic on setPowerState timeout.
+                                                                                                  
+                                                                                                  
      <!--l. 2566--><p class="noindent" >An additional security measure was added to macOS Catalina (10.15) causing kernel panic on power change timeout for
-                                                                                                  
-                                                                                                  
      Apple drivers. Sometimes it may cause issues on misconfigured hardware, notably digital audio, which sometimes fails to
      wake up. For debug kernels <tspan class="ec-lmtt-10">setpowerstate_panic=0 </tspan>boot argument should be used, which is otherwise equivalent to this
      quirk.
@@ -2698,9 +2699,9 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Patch various k
      valid solution is to limit the amount of used ports to 15 (discarding some). More details can be found on
      <a 
 href="https://applelife.ru/posts/550233" >AppleLife.ru</a>.
+                                                                                                  
+                                                                                                  
 </p>
-                                                                                                  
-                                                                                                  
      </li></ol>
 <a 
  id="x1-39053r42"></a>
@@ -2760,9 +2761,9 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Prefer specifie
              <li class="itemize">10.4-10.5 — <tspan class="ec-lmtt-10">i386 </tspan>or <tspan class="ec-lmtt-10">i386-user32 </tspan>(only on 32-bit firmware)
              </li>
              <li class="itemize">10.6 — <tspan class="ec-lmtt-10">i386</tspan>, <tspan class="ec-lmtt-10">i386-user32</tspan>, or <tspan class="ec-lmtt-10">x86_64</tspan>
+                                                                                                  
+                                                                                                  
              </li>
-                                                                                                  
-                                                                                                  
              <li class="itemize">10.7 — <tspan class="ec-lmtt-10">i386 </tspan>or <tspan class="ec-lmtt-10">x86_64</tspan>
              </li>
              <li class="itemize">10.8 or newer — <tspan class="ec-lmtt-10">x86_64</tspan></li></ul>
@@ -2888,9 +2889,9 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Prefer specifie
 </p>
      <div class="center" 
 >
+                                                                                                  
+                                                                                                  
 <!--l. 2780--><p class="noindent" >
-                                                                                                  
-                                                                                                  
 </p>
 <div class="tabular"> <table id="TBL-3" class="tabular" 
  
@@ -3041,10 +3042,10 @@ installed on the media, while alternate options represent recovery options for t
      </li>
      <li 
   class="enumerate" id="x1-42006x3">For each boot option found:
+                                                                                                  
+                                                                                                  
          <ul class="itemize1">
          <li class="itemize">Retrieve the device path of the boot option.
-                                                                                                  
-                                                                                                  
          </li>
          <li class="itemize">Perform fixups (e.g. NVMe subtype correction) and expansion (e.g. for Boot Camp) of the device path.
          </li>
@@ -3102,10 +3103,10 @@ scanning algorithm.
      </li>
      <li class="itemize">Custom entries, tools, and system entries will be added after all other options.
      </li>
+                                                                                                  
+                                                                                                  
      <li class="itemize">Auxiliary options will only be displayed upon entering “Extended Mode” in the OpenCore picker (typically by
      pressing the <tspan class="ec-lmtt-10">Space </tspan>key).</li></ul>
-                                                                                                  
-                                                                                                  
 <!--l. 2899--><p class="noindent" >The boot process is as follows: </p>
      <ul class="itemize1">
      <li class="itemize">Look up the first valid primary option in the <tspan class="ec-lmtt-10">BootNext </tspan>UEFI variable.
@@ -3166,6 +3167,8 @@ href="#x1-470006">Entry Properties</a> section below.
 class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-10">plist</tspan><tspan class="ec-lmtt-10"> dict</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Apply the security configuration described in the <a 
 href="#x1-460005">Security Properties</a> section below.
+                                                                                                  
+                                                                                                  
      </li>
      <li 
   class="enumerate" id="x1-43012x6"><tspan class="ec-lmtt-10">Tools</tspan><a 
@@ -3226,10 +3229,10 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Sets specific a
          <li class="itemize"><tspan class="ec-lmtt-10">0x0E </tspan>— <tspan class="ec-lmtt-10">EFI_YELLOW</tspan>
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">0x0F </tspan>— <tspan class="ec-lmtt-10">EFI_WHITE</tspan>
+                                                                                                  
+                                                                                                  
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">0x00 </tspan>— <tspan class="ec-lmtt-10">EFI_BACKGROUND_BLACK</tspan>
-                                                                                                  
-                                                                                                  
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">0x10 </tspan>— <tspan class="ec-lmtt-10">EFI_BACKGROUND_BLUE</tspan>
          </li>
@@ -3286,8 +3289,6 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Set to <tspan c
 class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-10">plist</tspan><tspan class="ec-lmtt-10"> string</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: <tspan class="ec-lmtt-10">Disabled</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Register the launcher option in the firmware preferences for persistence.
-                                                                                                  
-                                                                                                  
      <!--l. 3071--><p class="noindent" >Valid values:
 </p>
          <ul class="itemize1">
@@ -3340,11 +3341,11 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Sets specific a
 </p>
          <ul class="itemize1">
          <li class="itemize"><tspan class="ec-lmtt-10">0x0001 </tspan>— <tspan class="ec-lmtt-10">OC_ATTR_USE_VOLUME_ICON</tspan>, provides custom icons for boot entries:
+                                                                                                  
+                                                                                                  
          <!--l. 3141--><p class="noindent" >For <tspan class="ec-lmtt-10">Tools</tspan>, OpenCore will attempt loading a custom icon and fallback to a default icon on failure:
          </p>
              <ul class="itemize2">
-                                                                                                  
-                                                                                                  
              <li class="itemize"><tspan class="ec-lmtt-10">ResetNVRAM </tspan>— <tspan class="ec-lmtt-10">Resources\Image\ResetNVRAM.icns </tspan>— <tspan class="ec-lmtt-10">ResetNVRAM.icns </tspan>from icons directory.
              </li>
              <li class="itemize"><tspan class="ec-lmtt-10">Tools\&#x003C;TOOL_RELATIVE_PATH&#x003E;.icns </tspan>— icon near the tool file with appended <tspan class="ec-lmtt-10">.icns </tspan>extension.</li></ul>
@@ -3399,8 +3400,6 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Sets specific a
 class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-10">plist</tspan><tspan class="ec-lmtt-10"> boolean</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: <tspan class="ec-lmtt-10">false</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Enable screen reader by default in the OpenCore picker.
-                                                                                                  
-                                                                                                  
      <!--l. 3213--><p class="noindent" >For the macOS bootloader, screen reader preference is set in the <tspan class="ec-lmtt-10">preferences.efires </tspan>archive in the
      <tspan class="ec-lmtt-10">isVOEnabled.int32 </tspan>file and is controlled by the operating system. For OpenCore screen reader support,
      this option is an independent equivalent. Toggling screen reader support in both the OpenCore picker
@@ -3454,6 +3453,8 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Delay in micros
      mode. On some platforms, setting this option to a minimum of <tspan class="ec-lmtt-10">5000-10000 </tspan>microseconds may be required to access
      <tspan class="ec-lmtt-10">action hotkeys </tspan>due to the nature of the keyboard driver.
      </p></li>
+                                                                                                  
+                                                                                                  
      <li 
   class="enumerate" id="x1-44022x11"><tspan class="ec-lmtt-10">Timeout</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-10">plist</tspan><tspan class="ec-lmtt-10"> integer</tspan>, 32 bit<br 
@@ -3510,11 +3511,11 @@ href="https://support.apple.com/HT202796" >Startup Disk</a> preference pane.
      </p><!--l. 3334--><p class="noindent" ><tspan class="ec-lmri-10">Note 2</tspan>: In addition to <tspan class="ec-lmtt-10">OPT</tspan>, OpenCore supports using the <tspan class="ec-lmtt-10">Escape </tspan>key to display the OpenCore picker when
      <tspan class="ec-lmtt-10">ShowPicker </tspan>is disabled. This key exists for the <tspan class="ec-lmtt-10">Apple </tspan>picker mode as well as for firmware that fail to report
      held <tspan class="ec-lmtt-10">OPT </tspan>keys on PS/2 keyboards, requiring multiple presses of the <tspan class="ec-lmtt-10">Escape </tspan>key to access the OpenCore
+                                                                                                  
+                                                                                                  
      picker.
      </p><!--l. 3339--><p class="noindent" ><tspan class="ec-lmri-10">Note 3</tspan>: On Macs with problematic GOP, it may be difficult to access the Apple picker. The <tspan class="ec-lmtt-10">BootKicker </tspan>utility can be
      blessed to workaround this problem even without loading OpenCore. On some Macs however, the <tspan class="ec-lmtt-10">BootKicker </tspan>utility
-                                                                                                  
-                                                                                                  
      cannot be run from OpenCore.
      </p></li>
      <li 
@@ -3571,9 +3572,9 @@ href="https://developer.apple.com" >developer.apple.com</a> when debugging a pro
  id="x1-45005r1"></a></span><tspan class="ec-lmtk-10">cat</tspan><tspan class="ec-lmtt-10"> </tspan><tspan class="ec-lmtt-10">Kernel</tspan><tspan class="ec-lmtt-10">.</tspan><tspan class="ec-lmtt-10">panic</tspan><tspan class="ec-lmtt-10"> </tspan><tspan class="ec-lmtt-10">|</tspan><tspan class="ec-lmtt-10"> </tspan><tspan class="ec-lmtk-10">grep</tspan><tspan class="ec-lmtt-10"> </tspan><tspan class="ec-lmtt-10">macOSProcessedStackshotData</tspan><tspan class="ec-lmtt-10"> </tspan><tspan class="ec-lmtt-10">|</tspan><tspan class="ec-lmtt-10"> </tspan><br /><span class="label"><a 
  id="x1-45006r2"></a></span><tspan class="ec-lmtt-10"> </tspan><tspan class="ec-lmtt-10"> </tspan><tspan class="ec-lmtk-10">python</tspan><tspan class="ec-lmtt-10"> </tspan><tspan class="ec-lmtt-10">-</tspan><tspan class="ec-lmtt-10">c</tspan><tspan class="ec-lmtt-10"> </tspan><tspan class="ts1-lmtt10-">&#x0027;</tspan><tspan class="ec-lmtt-10">import</tspan><tspan class="ec-lmtt-10"> </tspan><tspan class="ec-lmtt-10">json</tspan><tspan class="ec-lmtt-10">,</tspan><tspan class="ec-lmtt-10">sys</tspan><tspan class="ec-lmtt-10">;</tspan><tspan class="ec-lmtt-10">print</tspan><tspan class="ec-lmtt-10">(</tspan><tspan class="ec-lmtt-10">json</tspan><tspan class="ec-lmtt-10">.</tspan><tspan class="ec-lmtt-10">load</tspan><tspan class="ec-lmtt-10">(</tspan><tspan class="ec-lmtt-10">sys</tspan><tspan class="ec-lmtt-10">.</tspan><tspan class="ec-lmtt-10">stdin</tspan><tspan class="ec-lmtt-10">)[</tspan><tspan class="ec-lmtt-10">&#x0022;</tspan><tspan class="ec-lmtt-10">macOSPanicString</tspan><tspan class="ec-lmtt-10">&#x0022;</tspan><tspan class="ec-lmtt-10">])</tspan><tspan class="ts1-lmtt10-">&#x0027;</tspan>
      
+                                                                                                  
+                                                                                                  
      </div>
-                                                                                                  
-                                                                                                  
      </li>
      <li 
   class="enumerate" id="x1-45008x3"><tspan class="ec-lmtt-10">DisableWatchDog</tspan><br 
@@ -3631,9 +3632,9 @@ class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: <tspan class="ec-l
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Produce system report on ESP folder.
      <!--l. 3466--><p class="noindent" >This option will create a <tspan class="ec-lmtt-10">SysReport </tspan>directory in the ESP partition unless already present. The directory will
      contain ACPI, SMBIOS, and audio codec dumps. Audio codec dumps require an audio backend driver to be
+                                                                                                  
+                                                                                                  
      loaded.
-                                                                                                  
-                                                                                                  
      </p><!--l. 3470--><p class="noindent" ><tspan class="ec-lmri-10">Note</tspan>: To maintain system integrity, the <tspan class="ec-lmtt-10">SysReport </tspan>option is <tspan class="ec-lmbx-10">not </tspan>available in <tspan class="ec-lmtt-10">RELEASE </tspan>builds. Use a <tspan class="ec-lmtt-10">DEBUG </tspan>build if this
      option is required.
      </p></li>
@@ -3685,11 +3686,11 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: A bitmask (sum)
      </p><!--l. 3519--><p class="noindent" >While the OpenCore boot log already contains basic version information including build type and date, this
      information may also be found in the <tspan class="ec-lmtt-10">opencore-version </tspan>NVRAM variable even when boot logging is
      disabled.
+                                                                                                  
+                                                                                                  
      </p><!--l. 3523--><p class="noindent" >File logging will create a file named <tspan class="ec-lmtt-10">opencore-YYYY-MM-DD-HHMMSS.txt </tspan>(in UTC) under the EFI volume root with log
      contents (the upper case letter sequence is replaced with date and time from the firmware). Please be warned
      that some file system drivers present in firmware are not reliable and may corrupt data when writing
-                                                                                                  
-                                                                                                  
      files through UEFI. Log writing is attempted in the safest manner and thus, is very slow. Ensure that
      <tspan class="ec-lmtt-10">DisableWatchDog </tspan>is set to <tspan class="ec-lmtt-10">true </tspan>when a slow drive is used. Try to avoid frequent use of this option when dealing
      with flash drives as large I/O amounts may speed up memory wear and render the flash drive unusable
@@ -3741,11 +3742,11 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: A bitmask (sum)
          <li class="itemize"><tspan class="ec-lmtt-10">OCCL </tspan>— OcAppleChunkListLib
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">OCCPU </tspan>— OcCpuLib
+                                                                                                  
+                                                                                                  
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">OCC </tspan>— OcConsoleLib
          </li>
-                                                                                                  
-                                                                                                  
          <li class="itemize"><tspan class="ec-lmtt-10">OCDC </tspan>— OcDriverConnectionLib
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">OCDH </tspan>— OcDataHubLib
@@ -3800,11 +3801,11 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: A bitmask (sum)
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">OCS </tspan>— OcSerializedLib
          </li>
+                                                                                                  
+                                                                                                  
          <li class="itemize"><tspan class="ec-lmtt-10">OCTPL </tspan>— OcTemplateLib
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">OCUC </tspan>— OcUnicodeCollationLib
-                                                                                                  
-                                                                                                  
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">OCUT </tspan>— OcAppleUserInterfaceThemeLib
          </li>
@@ -3863,11 +3864,11 @@ href="#x1-460186">DMG loading</a> needs to be set to <tspan class="ec-lmtt-10">S
  id="x1-46008r2"></a></span><tspan class="ec-lmtt-10"> </tspan><tspan class="ec-lmtt-10"> </tspan><tspan class="ec-lmtt-10">-</tspan><tspan class="ec-lmtt-10">-</tspan><tspan class="ec-lmtt-10">boote</tspan><tspan class="ec-lmtt-10">fi</tspan><tspan class="ec-lmtt-10"> </tspan><tspan class="ec-lmtt-10">-</tspan><tspan class="ec-lmtt-10">-</tspan><tspan class="ec-lmtt-10">personalize</tspan>
      
      </div>
+                                                                                                  
+                                                                                                  
      <!--l. 3667--><p class="noindent" >On macOS versions before macOS 11, which introduced a dedicated <tspan class="ec-lmtt-10">x86legacy </tspan>model for models without the T2 chip,
      personalised Apple Secure Boot may not work as expected. When reinstalling the operating system, the macOS Installer
      from macOS 10.15 and older will often run out of free memory on the <tspan class="ec-lmtt-10">/var/tmp </tspan>partition when trying to install macOS
-                                                                                                  
-                                                                                                  
      with the personalised Apple Secure Boot. Soon after downloading the macOS installer image, an <tspan class="ec-lmtt-10">Unable to verify</tspan>
      <tspan class="ec-lmtt-10">macOS </tspan>error message will appear.
      </p><!--l. 3675--><p class="noindent" >To workaround this issue, allocate a dedicated RAM disk of 2 MBs for macOS personalisation by entering the following
@@ -3924,6 +3925,8 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Define Disk Ima
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">Any </tspan>— any DMG images will mount as normal filesystems. The <tspan class="ec-lmtt-10">Any </tspan>policy is strongly discouraged and will
          result in boot failures when Apple Secure Boot is active.</li></ul>
+                                                                                                  
+                                                                                                  
      </li>
      <li 
   class="enumerate" id="x1-46021x7"><tspan class="ec-lmtt-10">EnablePassword</tspan><br 
@@ -3982,8 +3985,6 @@ class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-
 class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: <tspan class="ec-lmtt-10">0x80000000 </tspan>(<tspan class="ec-lmtt-10">DEBUG_ERROR</tspan>)<br 
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: EDK II debug level bitmask (sum) causing CPU to halt (stop execution) after obtaining a message of
      <tspan class="ec-lmtt-10">HaltLevel</tspan>. Possible values match <tspan class="ec-lmtt-10">DisplayLevel </tspan>values.
-                                                                                                  
-                                                                                                  
      </li>
      <li 
   class="enumerate" id="x1-46034x10"><tspan class="ec-lmtt-10">PasswordHash</tspan><br 
@@ -4038,12 +4039,12 @@ href="https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/CreateVau
          <li class="itemize">Create <tspan class="ec-lmtt-10">vault.plist</tspan>.
          </li>
          <li class="itemize">Create a new RSA key (always do this to avoid loading old configuration).
+                                                                                                  
+                                                                                                  
          </li>
          <li class="itemize">Embed RSA key into <tspan class="ec-lmtt-10">OpenCore.efi</tspan>.
          </li>
          <li class="itemize">Create <tspan class="ec-lmtt-10">vault.sig</tspan>.</li></ul>
-                                                                                                  
-                                                                                                  
      <!--l. 3864--><p class="noindent" >Can look as follows: </p><!--l. 3865-->
      <div class="lstlisting" id="listing-14"><span class="label"><a 
  id="x1-46039r1"></a></span><tspan class="ec-lmtk-10">cd</tspan><tspan class="ec-lmtt-10"> </tspan><tspan class="ec-lmtt-10">/</tspan><tspan class="ec-lmtt-10">Volumes</tspan><tspan class="ec-lmtt-10">/</tspan><tspan class="ec-lmtt-10">EFI</tspan><tspan class="ec-lmtt-10">/</tspan><tspan class="ec-lmtt-10">EFI</tspan><tspan class="ec-lmtt-10">/</tspan><tspan class="ec-lmtt-10">OC</tspan><tspan class="ec-lmtt-10"> </tspan><br /><span class="label"><a 
@@ -4101,12 +4102,12 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Define operatin
          <li class="itemize"><tspan class="ec-lmtt-10">0x00020000 </tspan>(bit <tspan class="ec-lmtt-10">17</tspan>) — <tspan class="ec-lmtt-10">OC_SCAN_ALLOW_DEVICE_SASEX</tspan>, allow scanning SAS and Mac NVMe devices.
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">0x00040000 </tspan>(bit <tspan class="ec-lmtt-10">18</tspan>) — <tspan class="ec-lmtt-10">OC_SCAN_ALLOW_DEVICE_SCSI</tspan>, allow scanning SCSI devices.
+                                                                                                  
+                                                                                                  
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">0x00080000 </tspan>(bit <tspan class="ec-lmtt-10">19</tspan>) — <tspan class="ec-lmtt-10">OC_SCAN_ALLOW_DEVICE_NVME</tspan>, allow scanning NVMe devices.
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">0x00100000 </tspan>(bit <tspan class="ec-lmtt-10">20</tspan>) — <tspan class="ec-lmtt-10">OC_SCAN_ALLOW_DEVICE_ATAPI</tspan>, allow scanning CD/DVD devices and old SATA.
-                                                                                                  
-                                                                                                  
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">0x00200000 </tspan>(bit <tspan class="ec-lmtt-10">21</tspan>) — <tspan class="ec-lmtt-10">OC_SCAN_ALLOW_DEVICE_USB</tspan>, allow scanning USB devices.
          </li>
@@ -4158,12 +4159,12 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Apple Secure Bo
          <li class="itemize"><tspan class="ec-lmtt-10">j137 </tspan>— <tspan class="ec-lmtt-10">iMacPro1,1 (December 2017). Minimum macOS 10.13.2 (17C2111)</tspan>
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">j680 </tspan>— <tspan class="ec-lmtt-10">MacBookPro15,1 (July 2018). Minimum macOS 10.13.6 (17G2112)</tspan>
+                                                                                                  
+                                                                                                  
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">j132 </tspan>— <tspan class="ec-lmtt-10">MacBookPro15,2 (July 2018). Minimum macOS 10.13.6 (17G2112)</tspan>
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">j174 </tspan>— <tspan class="ec-lmtt-10">Macmini8,1 (October 2018). Minimum macOS 10.14 (18A2063)</tspan>
-                                                                                                  
-                                                                                                  
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">j140k </tspan>— <tspan class="ec-lmtt-10">MacBookAir8,1 (October 2018). Minimum macOS 10.14.1 (18B2084)</tspan>
          </li>
@@ -4221,13 +4222,13 @@ href="https://support.apple.com/en-us/HT208330" ><tspan class="ec-lmtt-10">Mediu
          <li 
   class="enumerate" id="x1-46058x5">Operating systems released before Apple Secure Boot was released (e.g. macOS 10.12 or earlier), will still
          boot until UEFI Secure Boot is enabled. This is so because Apple Secure Boot treats these as incompatible
+                                                                                                  
+                                                                                                  
          and they are then handled by the firmware (as Microsoft Windows is).
          </li>
          <li 
   class="enumerate" id="x1-46060x6">On older CPUs (e.g. before Sandy Bridge), enabling Apple Secure Boot might cause slightly slower loading
          (by up to 1 second).
-                                                                                                  
-                                                                                                  
          </li>
          <li 
   class="enumerate" id="x1-46062x7">As the <tspan class="ec-lmtt-10">Default </tspan>value will increase with time to support the latest major released operating system, it is
@@ -4285,13 +4286,13 @@ class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-
 class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: Empty<br 
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Human readable entry name displayed in the OpenCore picker.
      </li>
+                                                                                                  
+                                                                                                  
      <li 
   class="enumerate" id="x1-47012x6"><tspan class="ec-lmtt-10">Path</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-10">plist</tspan><tspan class="ec-lmtt-10"> string</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: Empty<br 
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Entry location depending on entry type.
-                                                                                                  
-                                                                                                  
          <ul class="itemize1">
          <li class="itemize"><tspan class="ec-lmtt-10">Entries </tspan>specify external boot options, and therefore take device paths in the <tspan class="ec-lmtt-10">Path </tspan>key. Care should be
          exercised as these values are not checked. Example: <tspan class="ec-lmtt-10">PciRoot(0x0)/Pci(0x1,0x1)/.../\EFI\COOL.EFI</tspan>
@@ -4350,12 +4351,12 @@ href="#x1-600005">PlatformNVRAM</a> or <a
 href="#x1-560002">Generic</a> subsections of the <a 
 href="#x1-5400010">PlatformInfo</a> section. Please
 ensure that variables set in this section do not conflict with items in those subsections as the implementation behaviour is
+                                                                                                  
+                                                                                                  
 undefined otherwise.
 </p><!--l. 4182--><p class="noindent" >The <tspan class="ec-lmtt-10">OC_FIRMWARE_RUNTIME </tspan>protocol implementation, currently offered as a part of the <tspan class="ec-lmtt-10">OpenRuntime </tspan>driver, is often required
 for macOS to function properly. While this brings many benefits, there are some limitations that should be considered for
 certain use cases.
-                                                                                                  
-                                                                                                  
      </p><ol  class="enumerate1" >
      <li 
   class="enumerate" id="x1-49002x1">Not all tools may be aware of protected namespaces.<br 
@@ -4409,13 +4410,13 @@ class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-
 class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: <tspan class="ec-lmtt-10">false</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Permits overwriting firmware variables from <tspan class="ec-lmtt-10">nvram.plist</tspan>.
      <!--l. 4254--><p class="noindent" ><tspan class="ec-lmri-10">Note</tspan>: Only variables accessible from the operating system will be overwritten.
+                                                                                                  
+                                                                                                  
      </p></li>
      <li 
   class="enumerate" id="x1-50010x5"><tspan class="ec-lmtt-10">LegacySchema</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-10">plist</tspan><tspan class="ec-lmtt-10"> dict</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Allows setting certain NVRAM variables from a map (<tspan class="ec-lmtt-10">plist</tspan><tspan class="ec-lmtt-10"> dict</tspan>) of GUIDs to an array (<tspan class="ec-lmtt-10">plist</tspan><tspan class="ec-lmtt-10"> array</tspan>)
-                                                                                                  
-                                                                                                  
      of variable names in <tspan class="ec-lmtt-10">plist</tspan><tspan class="ec-lmtt-10"> string </tspan>format.
      <!--l. 4263--><p class="noindent" ><tspan class="ec-lmtt-10">* </tspan>value can be used to accept all variables for certain GUID.
      </p><!--l. 4265--><p class="noindent" ><tspan class="ec-lmbx-10">WARNING</tspan>: Choose variables carefully, as the nvram.plist file is not vaulted. For instance, do not include <tspan class="ec-lmtt-10">boot-args </tspan>or
@@ -4472,12 +4473,12 @@ href="#x1-5400010">PlatformInfo</a> section. Using
 href="https://opensource.apple.com/source/xnu/xnu-4570.71.2/bsd/sys/csr.h.auto.html" >csr.h</a>.
      </li>
      <li class="itemize"><tspan class="ec-lmtt-10">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:ExtendedFirmwareFeatures</tspan>
+                                                                                                  
+                                                                                                  
      Combined <tspan class="ec-lmtt-10">FirmwareFeatures </tspan>and <tspan class="ec-lmtt-10">ExtendedFirmwareFeatures</tspan>. Present on newer Macs to avoid extra parsing
      of SMBIOS tables.
      </li>
      <li class="itemize"><tspan class="ec-lmtt-10">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:ExtendedFirmwareFeaturesMask</tspan>
-                                                                                                  
-                                                                                                  
      Combined <tspan class="ec-lmtt-10">FirmwareFeaturesMask </tspan>and <tspan class="ec-lmtt-10">ExtendedFirmwareFeaturesMask</tspan>. Present on newer Macs to avoid extra
      parsing of SMBIOS tables.
      </li>
@@ -4535,12 +4536,12 @@ href="https://github.com/acpica/acpica/blob/master/source/include/acoutput.h" ><
          <li class="itemize"><tspan class="ec-lmtt-10">arch=i386 </tspan>(force kernel architecture to <tspan class="ec-lmtt-10">i386</tspan>, see <tspan class="ec-lmtt-10">KernelArch</tspan>)
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">batman=VALUE </tspan>(<tspan class="ec-lmtt-10">AppleSmartBatteryManager </tspan>debug mask)
+                                                                                                  
+                                                                                                  
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">batman-nosmc=1 </tspan>(disable <tspan class="ec-lmtt-10">AppleSmartBatteryManager </tspan>SMC interface)
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">cpus=VALUE </tspan>(maximum number of CPUs used)
-                                                                                                  
-                                                                                                  
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">debug=VALUE </tspan>(debug mask)
          </li>
@@ -4598,12 +4599,12 @@ href="https://superuser.com/questions/255176/is-there-a-list-of-available-boot-a
          <li class="itemize"><tspan class="ec-lmtt-10">0x00 </tspan>– <tspan class="ec-lmtt-10">INIT</tspan>.
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">0x01 </tspan>– <tspan class="ec-lmtt-10">VERBOSE </tspan>(e.g. <tspan class="ec-lmtt-10">-v</tspan>, force console logging).
+                                                                                                  
+                                                                                                  
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">0x02 </tspan>– <tspan class="ec-lmtt-10">EXIT</tspan>.
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">0x03 </tspan>– <tspan class="ec-lmtt-10">RESET:OK</tspan>.
-                                                                                                  
-                                                                                                  
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">0x04 </tspan>– <tspan class="ec-lmtt-10">RESET:FAIL </tspan>(e.g. unknown <tspan class="ec-lmtt-10">board-id</tspan>, hibernate mismatch, panic loop, etc.).
          </li>
@@ -4658,12 +4659,12 @@ href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/Proto
              </li>
              <li class="itemize"><tspan class="ec-lmtt-10">1 </tspan>— enables debug breaks on errors.</li></ul>
          </li>
+                                                                                                  
+                                                                                                  
          <li class="itemize"><tspan class="ec-lmtt-10">console=VALUE </tspan>— enables console logging.
              <ul class="itemize3">
              <li class="itemize"><tspan class="ec-lmtt-10">0 </tspan>— disables console logging.
              </li>
-                                                                                                  
-                                                                                                  
              <li class="itemize"><tspan class="ec-lmtt-10">1 </tspan>— enables console logging when debug protocol is missing (default).
              </li>
              <li class="itemize"><tspan class="ec-lmtt-10">2 </tspan>— enables console logging unconditionally (unavailable).</li></ul>
@@ -4717,12 +4718,12 @@ href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/Proto
              <li class="itemize"><tspan class="ec-lmtt-10">4 </tspan>— enables timestamp printing for styled printf calls</li></ul>
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">level=VALUE </tspan>— deprecated starting from 10.15. Verbosity level of DEBUG output. Everything but <tspan class="ec-lmtt-10">0x80000000 </tspan>is
+                                                                                                  
+                                                                                                  
          stripped from the binary, and this is the default value.</li></ul>
      <!--l. 4548--><p class="noindent" ><tspan class="ec-lmri-10">Note</tspan>: Enable the <tspan class="ec-lmtt-10">AppleDebug </tspan>option to display verbose output from <tspan class="ec-lmtt-10">boot.efi </tspan>on modern macOS versions. This will save
      the log to the general OpenCore log file. For versions before 10.15.4, set <tspan class="ec-lmtt-10">bootercfg </tspan>to <tspan class="ec-lmtt-10">log=1</tspan>. This will print verbose
      output onscreen.
-                                                                                                  
-                                                                                                  
      </p></li>
      <li class="itemize"><tspan class="ec-lmtt-10">7C436110-AB2A-4BBB-A880-FE41995C9F82:bootercfg-once</tspan>
      Booter arguments override removed after first launch. Otherwise equivalent to <tspan class="ec-lmtt-10">bootercfg</tspan>.
@@ -4782,6 +4783,8 @@ href="https://github.com/acidanthera/dmidecode/releases" >Acidanthera/dmidecode<
 <a 
  id="x1-54001r56"></a>
 </p>
+                                                                                                  
+                                                                                                  
 <h4 class="subsectionHead"><span class="titlemark">10.1   </span> <a 
  id="x1-550001"></a>Properties</h4>
      <ol  class="enumerate1" >
@@ -4846,8 +4849,6 @@ class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: <tspan class="ec-l
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Update SMBIOS fields approach:
          <ul class="itemize1">
          <li class="itemize"><tspan class="ec-lmtt-10">TryOverwrite </tspan>— <tspan class="ec-lmtt-10">Overwrite </tspan>if new size is &#x003C;= than the page-aligned original and there are no issues with
-                                                                                                  
-                                                                                                  
          legacy region unlock. <tspan class="ec-lmtt-10">Create </tspan>otherwise. Has issues on some types of firmware.
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">Create </tspan>—  Replace  the  tables  with  newly  allocated  EfiReservedMemoryType  at  AllocateMaxAddress
@@ -4898,14 +4899,14 @@ href="https://github.com/acidanthera/dmidecode" >dmidecode</a> prints all three.
      </p><!--l. 4771--><p class="noindent" ><tspan class="ec-lmri-10">Note</tspan>: This preference does not affect UUIDs used in DataHub and NVRAM as they are not standardised and are added
      by Apple. Unlike SMBIOS, they are always stored in the <tspan class="ec-lmtt-10">Big Endian </tspan>format.
      </p></li>
+                                                                                                  
+                                                                                                  
      <li 
   class="enumerate" id="x1-55016x8"><tspan class="ec-lmtt-10">Generic</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-10">plist</tspan><tspan class="ec-lmtt-10"> dictionary</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Update all fields in <tspan class="ec-lmtt-10">Automatic </tspan>mode.
      <!--l. 4780--><p class="noindent" ><tspan class="ec-lmri-10">Note</tspan>: This section is ignored but may not be removed when <tspan class="ec-lmtt-10">Automatic </tspan>is <tspan class="ec-lmtt-10">false</tspan>.
      </p></li>
-                                                                                                  
-                                                                                                  
      <li 
   class="enumerate" id="x1-55018x9"><tspan class="ec-lmtt-10">DataHub</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-10">plist</tspan><tspan class="ec-lmtt-10"> dictionary</tspan><br 
@@ -4964,8 +4965,6 @@ class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: <tspan class="ec-l
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Sets <tspan class="ec-lmtt-10">BIOSVersion </tspan>to <tspan class="ec-lmtt-10">9999.999.999.999.999</tspan>, recommended for legacy Macs when using <tspan class="ec-lmtt-10">Automatic</tspan>
      PlatformInfo, to avoid BIOS updates in unofficially supported macOS versions.
      </li>
-                                                                                                  
-                                                                                                  
      <li 
   class="enumerate" id="x1-56008x4"><tspan class="ec-lmtt-10">SystemMemoryStatus</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-10">plist</tspan><tspan class="ec-lmtt-10"> string</tspan><br 
@@ -5018,6 +5017,8 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Refer to SMBIOS
 class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-10">plist</tspan><tspan class="ec-lmtt-10"> string</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: Empty (OEM specified or not installed)<br 
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Refer to SMBIOS <tspan class="ec-lmtt-10">BoardSerialNumber</tspan>.
+                                                                                                  
+                                                                                                  
      <!--l. 4909--><p class="noindent" >Specify special string value <tspan class="ec-lmtt-10">OEM </tspan>to extract current value from NVRAM (<tspan class="ec-lmtt-10">MLB </tspan>variable) or SMBIOS and use it throughout
      the sections. This feature can only be used on Mac-compatible firmware.
      </p></li>
@@ -5085,8 +5086,6 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>:  Sets  <tspan c
          <ul class="itemize1">
          <li class="itemize"><tspan class="ec-lmtt-10">0x00000001 </tspan>— Shutdown cause was a <tspan class="ec-lmtt-10">PWROK </tspan>event (Same as <tspan class="ec-lmtt-10">GEN_PMCON_2 </tspan>bit 0)
          </li>
-                                                                                                  
-                                                                                                  
          <li class="itemize"><tspan class="ec-lmtt-10">0x00000002 </tspan>— Shutdown cause was a <tspan class="ec-lmtt-10">SYS_PWROK </tspan>event (Same as <tspan class="ec-lmtt-10">GEN_PMCON_2 </tspan>bit 1)
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">0x00000004 </tspan>— Shutdown cause was a <tspan class="ec-lmtt-10">THRMTRIP# </tspan>event (Same as <tspan class="ec-lmtt-10">GEN_PMCON_2 </tspan>bit 3)
@@ -5138,6 +5137,8 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Sets <tspan cla
      generation and newer. The value is specified in Hz, and is normally 24 MHz for the client Intel segment, 25 MHz for the
      server Intel segment, and 19.2 MHz for Intel Atom CPUs. macOS till 10.15 inclusive assumes 24 MHz by
      default.
+                                                                                                  
+                                                                                                  
      </p><!--l. 5056--><p class="noindent" ><tspan class="ec-lmri-10">Note</tspan>: On Intel Skylake X ART frequency may be a little less (approx. 0.25%) than 24 or 25 MHz due to special
      EMI-reduction circuit as described in <a 
 href="https://github.com/acidanthera/bugtracker/issues/448#issuecomment-524914166" >Acidanthera Bugtracker</a>.
@@ -5201,14 +5202,14 @@ class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Specifies the p
          <ul class="itemize1">
          <li class="itemize"><tspan class="ec-lmtt-10">0x01 </tspan>— Other
          </li>
+                                                                                                  
+                                                                                                  
          <li class="itemize"><tspan class="ec-lmtt-10">0x02 </tspan>— Unknown
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">0x03 </tspan>— None
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">0x04 </tspan>— Parity
          </li>
-                                                                                                  
-                                                                                                  
          <li class="itemize"><tspan class="ec-lmtt-10">0x05 </tspan>— Single-bit ECC
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">0x06 </tspan>— Multi-bit ECC
@@ -5260,14 +5261,14 @@ class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-
 class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: <tspan class="ec-lmtt-10">0x02</tspan><br 
 class="newline" /><tspan class="ec-lmbx-10">SMBIOS</tspan>: Memory Device (Type 17) — Memory Type<br 
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Specifies the memory type. Commonly used types are listed below.
+                                                                                                  
+                                                                                                  
          <ul class="itemize1">
          <li class="itemize"><tspan class="ec-lmtt-10">0x01 </tspan>— Other
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">0x02 </tspan>— Unknown
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">0x0F </tspan>— SDRAM
-                                                                                                  
-                                                                                                  
          </li>
          <li class="itemize"><tspan class="ec-lmtt-10">0x12 </tspan>— DDR
          </li>
@@ -5927,7 +5928,7 @@ class="td11"><!--l. 5801--><p class="noindent" >Utility to read and write RTC (C
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-5-12-"><td  style="white-space:normal; text-align:left;" id="TBL-5-12-1"  
 class="td11"><!--l. 5802--><p class="noindent" ><a 
-href="https://github.com/acidanthera/OpenCorePkg" ><tspan class="ec-lmtt-10">VerifyMsrE2</tspan></a><tspan class="ec-lmbx-10">*</tspan>         </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-12-2"  
+href="https://github.com/acidanthera/OpenCorePkg" ><tspan class="ec-lmtt-10">ControlMsrE2</tspan></a><tspan class="ec-lmbx-10">*</tspan>       </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-12-2"  
 class="td11"><!--l. 5803--><p class="noindent" >Check <tspan class="ec-lmtt-10">CFG Lock </tspan>(MSR <tspan class="ec-lmtt-10">0xE2 </tspan>write protection) consistency across all cores.                      </p></td>
 </tr></table></div>
 <a 
