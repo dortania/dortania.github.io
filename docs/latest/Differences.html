@@ -21,6 +21,10 @@ width="160" height="160"  />
 </div>
                                                                                                   
                                                                                                   
+<br /> <span class="subsectionToc" >11.10 <a 
+href="#x1-7200010" id="QQ2-1-76">Output Properties</a></span>
+<br /><span class="sectionToc" >12 <a 
+href="#x1-7600012" id="QQ2-1-80">Troubleshooting</a></span>
 <br /> <span class="subsectionToc" >12.1 <a 
 href="#x1-770001" id="QQ2-1-81">Legacy Apple OS</a></span>
 <br /> <span class="subsectionToc" >12.3 <a 
@@ -82,10 +86,10 @@ history</a>.
      <li class="itemize">plist array — array-like collection, conforms to array. Consists of zero or more plist objects.
      </li>
      <li class="itemize">plist dictionary —  map-like  (associative  array)  collection,  conforms  to  dict.  Consists  of  zero  or  more
-     plist keys.
-     </li>
                                                                                                   
                                                                                                   
+     provided in specific plist object description (instead of invalid value) when not present in OC config. All
+     other cases of invalid value do still apply. Unless explicitly marked as optional value, any other value is
      required to be present and reads to invalid value if missing.
      </li>
      <li class="itemize">fatal behaviour — behaviour leading to boot termination. Implementations shall prevent the boot process
@@ -136,6 +140,118 @@ applicable:
 </p>
                                                                                                   
                                                                                                   
+<a 
+ id="x1-9001r10"></a>
+</p>
+<h4 class="subsectionHead"><span class="titlemark">3.2   </span> <a 
+ id="x1-100002"></a>Installation and Upgrade</h4>
+<!--l. 636--><p class="noindent" >To install OpenCore, replicate the ?? described in the previous section in the EFI volume of a GPT partition. While
+corresponding sections of this document provide some information regarding external resources such as ACPI tables, UEFI
+drivers, or kernel extensions (kexts), completeness of the matter is out of the scope of this document. Information about kernel
+extensions may be found in a separate <a 
+href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Kexts.md" >Kext List</a> document available in the OpenCore repository. Vaulting information is
+provided in the <a 
+href="#x1-460005">Security Properties</a> section of this document.
+</p><!--l. 648--><p class="noindent" >The OC config file, as with any property list file, can be edited with any text editor, such as nano or vim. However, specialised
+software may provide a better experience. On macOS, the preferred GUI application is <a 
+href="https://developer.apple.com/xcode" >Xcode</a>. For a lightweight cross-platform
+and open-source alternative, the <a 
+href="https://github.com/corpnewt/ProperTree" >ProperTree</a> editor can be utilised.
+</p><!--l. 656--><p class="noindent" >For BIOS booting, a third-party UEFI environment provider is required and OpenDuetPkg is one such UEFI environment
+provider for legacy systems. To run OpenCore on such a legacy system, OpenDuetPkg can be installed with a dedicated tool —
+BootInstall (bundled with OpenCore). <a 
+href="https://github.com/corpnewt/gibMacOS" >Third-party utilities</a> can be used to perform this on systems other than
+macOS.
+</p><!--l. 663--><p class="noindent" >For upgrade purposes, refer to the Differences.pdf document which provides information about changes to the configuration
+(as compared to the previous release) as well as to the Changelog.md document (which contains a list of modifications across
+all published updates).
+<a 
+ id="x1-10001r11"></a>
+</p>
+<h4 class="subsectionHead"><span class="titlemark">3.3   </span> <a 
+ id="x1-110003"></a>Contribution</h4>
+<!--l. 670--><p class="noindent" >OpenCore can be compiled as a standard <a 
+href="https://github.com/tianocore/tianocore.github.io/wiki/EDK-II" >EDK II</a> package and requires the <a 
+href="https://github.com/tianocore/tianocore.github.io/wiki/EDK-II#stable-tags" >EDK II Stable</a> package. The currently supported
+EDK II release is hosted in <a 
+href="https://github.com/acidanthera/audk" >acidanthera/audk</a>. Required patches for this package can be found in the Patches
+directory.
+</p><!--l. 678--><p class="noindent" >The only officially supported toolchain is XCODE5. Other toolchains might work but are neither supported nor recommended.
+Contributions of clean patches are welcome. Please do follow <a 
+href="https://github.com/tianocore/tianocore.github.io/wiki/Code-Style-C" >EDK II C Codestyle</a>.
+</p><!--l. 683--><p class="noindent" >To compile with XCODE5, besides <a 
+href="https://developer.apple.com/xcode" >Xcode</a>, users should also install <a 
+href="https://www.nasm.us" >NASM</a> and <a 
+href="https://github.com/acidanthera/ocbuild/tree/master/external" >MTOC</a>. The latest Xcode version is recommended
+for use despite the toolchain name. An example command sequence is as follows:
+</p>
+<!--l. 689-->
+<a 
+ id="x1-11001r1"></a>
+<a 
+ id="x1-11002"></a>
+<div class="lstlisting" id="listing-1"><span class="label"><a 
+ id="x1-11003r1"></a></span>git clone --depth=1 https://github.com/acidanthera/audk UDK <br /><span class="label"><a 
+ id="x1-11004r2"></a></span>cd UDK <br /><span class="label"><a 
+ id="x1-11005r3"></a></span>git submodule update --init --recommend-shallow <br /><span class="label"><a 
+ id="x1-11006r4"></a></span>git clone --depth=1 https://github.com/acidanthera/OpenCorePkg <br /><span class="label"><a 
+ id="x1-11007r5"></a></span>source edksetup.sh <br /><span class="label"><a 
+ id="x1-11008r6"></a></span>make -C BaseTools <br /><span class="label"><a 
+ id="x1-11009r7"></a></span>build -a X64 -b RELEASE -t XCODE5 -p OpenCorePkg/OpenCorePkg.dsc
+<figcaption class="caption" ><span class="id">Listing 1:</span><span  
+class="content">Compilation Commands</span></figcaption><!--tex4ht:label?: x1-11001r -->
+</div>
+<!--l. 699--><p class="noindent" >For IDE usage Xcode projects are available in the root of the repositories. Another approach could be <a 
+href="https://www.sublimetext.com" >Sublime Text</a> with
+<a 
+href="https://niosus.github.io/EasyClangComplete" >EasyClangComplete</a> plugin. Add .clang_complete file with similar content to the UDK root:
+</p>
+<!--l. 705-->
+<a 
+ id="x1-11010r2"></a>
+<a 
+ id="x1-11011"></a>
+<div class="lstlisting" id="listing-2"><span class="label"><a 
+ id="x1-11012r1"></a></span>-I/UefiPackages/MdePkg <br /><span class="label"><a 
+ id="x1-11013r2"></a></span>-I/UefiPackages/MdePkg/Include <br /><span class="label"><a 
+ id="x1-11014r3"></a></span>-I/UefiPackages/MdePkg/Include/X64 <br /><span class="label"><a 
+ id="x1-11015r4"></a></span>-I/UefiPackages/MdeModulePkg <br /><span class="label"><a 
+ id="x1-11016r5"></a></span>-I/UefiPackages/MdeModulePkg/Include <br /><span class="label"><a 
+ id="x1-11017r6"></a></span>-I/UefiPackages/MdeModulePkg/Include/X64 <br /><span class="label"><a 
+ id="x1-11018r7"></a></span>-I/UefiPackages/OpenCorePkg/Include/AMI <br /><span class="label"><a 
+ id="x1-11019r8"></a></span>-I/UefiPackages/OpenCorePkg/Include/Acidanthera <br /><span class="label"><a 
+ id="x1-11020r9"></a></span>-I/UefiPackages/OpenCorePkg/Include/Apple <br /><span class="label"><a 
+ id="x1-11021r10"></a></span>-I/UefiPackages/OpenCorePkg/Include/Apple/X64 <br /><span class="label"><a 
+ id="x1-11022r11"></a></span>-I/UefiPackages/OpenCorePkg/Include/Duet <br /><span class="label"><a 
+ id="x1-11023r12"></a></span>-I/UefiPackages/OpenCorePkg/Include/Generic <br /><span class="label"><a 
+ id="x1-11024r13"></a></span>-I/UefiPackages/OpenCorePkg/Include/Intel <br /><span class="label"><a 
+ id="x1-11025r14"></a></span>-I/UefiPackages/OpenCorePkg/Include/Microsoft <br /><span class="label"><a 
+ id="x1-11026r15"></a></span><span class="uwave">-</span><span class="uwave">I</span><span class="uwave">/</span><span class="uwave">Ue</span><span class="uwave">fi</span><span class="uwave">Packages</span><span class="uwave">/</span><span class="uwave">OpenCorePkg</span><span class="uwave">/</span><span class="uwave">Include</span><span class="uwave">/</span><span class="uwave">Nvidia</span> <br /><span class="label"><a 
+ id="x1-11027r16"></a></span>-I/UefiPackages/OpenCorePkg/Include/VMware <br /><span class="label"><a 
+ id="x1-11028r17"></a></span>-I/UefiPackages/OvmfPkg/Include <br /><span class="label"><a 
+ id="x1-11029r18"></a></span>-I/UefiPackages/UefiCpuPkg/Include <br /><span class="label"><a 
+ id="x1-11030r19"></a></span>-IInclude <br /><span class="label"><a 
+ id="x1-11031r20"></a></span>-include <br /><span class="label"><a 
+ id="x1-11032r21"></a></span>/UefiPackages/MdePkg/Include/Uefi.h <br /><span class="label"><a 
+ id="x1-11033r22"></a></span>-fshort-wchar <br /><span class="label"><a 
+ id="x1-11034r23"></a></span>-Wall <br /><span class="label"><a 
+ id="x1-11035r24"></a></span>-Wextra <br /><span class="label"><a 
+ id="x1-11036r25"></a></span>-Wno-unused-parameter <br /><span class="label"><a 
+ id="x1-11037r26"></a></span>-Wno-missing-braces <br /><span class="label"><a 
+ id="x1-11038r27"></a></span>-Wno-missing-field-initializers <br /><span class="label"><a 
+ id="x1-11039r28"></a></span>-Wno-tautological-compare <br /><span class="label"><a 
+ id="x1-11040r29"></a></span>-Wno-sign-compare <br /><span class="label"><a 
+ id="x1-11041r30"></a></span>-Wno-varargs <br /><span class="label"><a 
+ id="x1-11042r31"></a></span>-Wno-unused-const-variable <br /><span class="label"><a 
+ id="x1-11043r32"></a></span>-DOC_TARGET_NOOPT=1 <br /><span class="label"><a 
+ id="x1-11044r33"></a></span>-DNO_MSABI_VA_FUNCS=1
+<figcaption class="caption" ><span class="id">Listing 2:</span><span  
+class="content">ECC Configuration</span></figcaption><!--tex4ht:label?: x1-11010r -->
+</div>
+<!--l. 742--><p class="noindent" >Warning: Tool developers modifying config.plist or any other OpenCore files must ensure that their tools check the
+opencore-version NVRAM variable (see the ?? section below) and warn users if the version listed is unsupported or
+                                                                                                  
+                                                                                                  
      </li>
      <li class="itemize">Use DEBUG_INFO debug level for all non critical messages (including errors) and DEBUG_BULK_INFO for extensive
      messages that should not appear in NVRAM log that is heavily limited in size. These messages are ignored in
@@ -143,7 +259,7 @@ applicable:
      </li>
      <li class="itemize">Use DEBUG_ERROR to print critical human visible messages that may potentially halt the boot process, and
      DEBUG_WARN for all other human visible errors, RELEASE builds included.</li></ul>
-<!--l. 853--><p class="noindent" >The <a 
+<!--l. 856--><p class="noindent" >The <a 
 href="https://git-scm.com/docs/git-bisect" >git-bisect</a> functionality may be useful when trying to find problematic changes. Unofficial sources of per-commit
 OpenCore binary builds, such as <a 
 href="https://dortania.github.io/builds" >Dortania</a>, may also be useful.
@@ -156,17 +272,17 @@ href="https://dortania.github.io/builds" >Dortania</a>, may also be useful.
  id="x1-14001r16"></a>
 <h4 class="subsectionHead"><span class="titlemark">4.1   </span> <a 
  id="x1-150001"></a>Introduction</h4>
-<!--l. 861--><p class="noindent" >ACPI (Advanced Configuration and Power Interface) is an open standard to discover and configure computer hardware. The
+<!--l. 864--><p class="noindent" >ACPI (Advanced Configuration and Power Interface) is an open standard to discover and configure computer hardware. The
 <a 
 href="https://uefi.org/specifications" >ACPI specification</a> <span class="sout">define the </span><span class="uwave">defines </span>standard tables (e.g. DSDT, SSDT, FACS, DMAR) and various methods (e.g. _DSM, _PRW) for
 implementation. Modern hardware needs <span class="sout">little </span><span class="uwave">few </span>changes to maintain ACPI compatibility <span class="sout">, yet some of those </span><span class="uwave">and some
 options for such changes </span>are provided as <span class="sout">a </span>part of OpenCore.
-</p><!--l. 872--><p class="noindent" >To compile and disassemble ACPI tables, the <a 
+</p><!--l. 875--><p class="noindent" >To compile and disassemble ACPI tables, the <a 
 href="https://github.com/acpica/acpica" >iASL compiler</a> developed by <a 
 href="https://www.acpica.org" >ACPICA</a> can be used. A GUI front-end to iASL
 compiler can be downloaded from <a 
 href="https://github.com/acidanthera/MaciASL/releases" >Acidanthera/MaciASL</a>.
-</p><!--l. 876--><p class="noindent" >ACPI changes apply globally (to every operating system) with the following effective order:
+</p><!--l. 879--><p class="noindent" >ACPI changes apply globally (to every operating system) with the following effective order:
 </p>
      <ul class="itemize1">
      <li class="itemize">Patch is processed.
@@ -176,12 +292,12 @@ href="https://github.com/acidanthera/MaciASL/releases" >Acidanthera/MaciASL</a>.
      <li class="itemize">Add is processed.
      </li>
      <li class="itemize">Quirks are processed.</li></ul>
-<!--l. 886--><p class="noindent" >Applying the changes globally resolves the problems of incorrect operating system detection (consistent with the ACPI
+<!--l. 889--><p class="noindent" >Applying the changes globally resolves the problems of incorrect operating system detection (consistent with the ACPI
 specification, not possible before the operating system boots), operating system chainloading, and difficult ACPI debugging.
 Hence, more attention may be required when writing changes to _OSI.
-</p><!--l. 891--><p class="noindent" >Applying the patches early makes it possible to write so called “proxy” patches, where the original method is patched in the
+</p><!--l. 894--><p class="noindent" >Applying the patches early makes it possible to write so called “proxy” patches, where the original method is patched in the
 original table and is implemented in the patched table.
-</p><!--l. 895--><p class="noindent" >There are several sources of ACPI tables and workarounds. Commonly used ACPI tables are provided with OpenCore,
+</p><!--l. 898--><p class="noindent" >There are several sources of ACPI tables and workarounds. Commonly used ACPI tables are provided with OpenCore,
 VirtualSMC, VoodooPS2, and WhateverGreen releases. Besides those, several third-party instructions may be found on the
 AppleLife <a 
 href="https://applelife.ru/forums/xakintosh.67" >Laboratory</a> and <a 
@@ -205,7 +321,7 @@ solutions will be variable.
 class="newline" />Type: plist array<br 
 class="newline" />Failsafe: Empty<br 
 class="newline" />Description: Load selected tables from the OC/ACPI directory.
-     <!--l. 919--><p class="noindent" >Designed to be filled with plist dict values, describing each add entry. See the ?? section below.
+     <!--l. 922--><p class="noindent" >Designed to be filled with plist dict values, describing each add entry. See the ?? section below.
                                                                                                   
                                                                                                   
      <li 
@@ -238,7 +354,7 @@ class="newline" />Description: Match table size equal to this value.
 class="newline" />Type: plist data, 4 bytes<br 
 class="newline" />Failsafe: All zero (Match any table signature)<br 
 class="newline" />Description: Match table signature equal to this value.
-     <!--l. 1023--><p class="noindent" >Note: Do not use table signatures when the sequence must be replaced in multiple places. This is particularly
+     <!--l. 1026--><p class="noindent" >Note: Do not use table signatures when the sequence must be replaced in multiple places. This is particularly
      relevant when performing different types of renames.
 </p>
      </li></ol>
@@ -253,9 +369,9 @@ class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><s
 class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: Empty (Ignored)</span><br 
 class="newline" /><span class="uwave">Description</span><span class="uwave">: Selects ACPI path base for patch lookup (or immediate replacement) by obtaining the offset to
      the provided path. </span>
-     <!--l. 1041--><p class="noindent" ><span class="uwave">Only fully-qualified absolute paths are supported (e.g. </span><span class="uwave">\_SB.PCI0.LPCB.HPET</span><span class="uwave">). Currently supported object types
+     <!--l. 1044--><p class="noindent" ><span class="uwave">Only fully-qualified absolute paths are supported (e.g. </span><span class="uwave">\_SB.PCI0.LPCB.HPET</span><span class="uwave">). Currently supported object types
      are: </span><span class="uwave">Device</span><span class="uwave">, </span><span class="uwave">Field</span><span class="uwave">, </span><span class="uwave">Method</span><span class="uwave">. </span>
-     </p><!--l. 1045--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: Use with care, not all OEM tables can be parsed. Use </span><span class="uwave">ACPIe</span> <span class="uwave">utility to debug. </span><span class="uwave">ACPIe</span> <span class="uwave">compiled with </span><span class="uwave">DEBUG=1
+     </p><!--l. 1048--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: Use with care, not all OEM tables can be parsed. Use </span><span class="uwave">ACPIe</span> <span class="uwave">utility to debug. </span><span class="uwave">ACPIe</span> <span class="uwave">compiled with </span><span class="uwave">DEBUG=1
      make</span> <span class="uwave">command produces helpful ACPI lookup tracing. </span>
      </p></li>
      <li 
@@ -290,7 +406,7 @@ class="newline" />Description: Set to true to apply this ACPI patch.
 class="newline" />Type: plist data<br 
 class="newline" />Failsafe: Empty<br 
 class="newline" />Description: Data to find. Must be equal to Replace in size if set.
-     <!--l. 1083--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: Can be empty, when </span><span class="uwave">Base</span> <span class="uwave">is specified, immediate replacement after </span><span class="uwave">Base</span> <span class="uwave">lookup happens in this case. </span>
+     <!--l. 1086--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: Can be empty, when </span><span class="uwave">Base</span> <span class="uwave">is specified, immediate replacement after </span><span class="uwave">Base</span> <span class="uwave">lookup happens in this case. </span>
      </p></li>
      <li 
   class="enumerate" id="x1-19014x7">Limit<br 
@@ -342,7 +458,7 @@ class="newline" />Type: plist data, 4 bytes<br
 class="newline" />Failsafe: All zero (Match any table signature)<br 
 class="newline" />Description: Match table signature equal to this value.
      </li></ol>
-<!--l. 1142--><p class="noindent" >In most cases, ACPI patches are not useful and are harmful:
+<!--l. 1145--><p class="noindent" >In most cases, ACPI patches are not useful and are harmful:
 </p>
      <ul class="itemize1">
      <li class="itemize">Avoid renaming devices with ACPI patches. This may fail or perform improper renaming of unrelated devices
@@ -362,7 +478,7 @@ href="https://github.com/acidanthera/WhateverGreen" >WhateverGreen</a>.
 href="https://github.com/acidanthera/BrightnessKeys" >BrightnessKeys</a> instead.
      </li>
      <li class="itemize">Avoid making ad hoc changes such as renaming _PRW or _DSM whenever possible.</li></ul>
-<!--l. 1172--><p class="noindent" >Some cases where patching is actually useful include:
+<!--l. 1175--><p class="noindent" >Some cases where patching is actually useful include:
 </p>
      <ul class="itemize1">
      <li class="itemize">Refreshing HPET (or another device) method header to avoid compatibility checks by _OSI on legacy hardware.
@@ -372,9 +488,9 @@ href="https://github.com/acidanthera/BrightnessKeys" >BrightnessKeys</a> instead
      <li class="itemize">To provide a custom method implementation within an SSDT, to inject shutdown fixes on certain computers for
      instance, the original method can be replaced with a dummy name by patching _PTS with ZPTS and adding a
      callback to the original method.</li></ul>
-<!--l. 1188--><p class="noindent" >The Tianocore <a 
+<!--l. 1191--><p class="noindent" >The Tianocore <a 
 href="https://github.com/acidanthera/audk/blob/master/MdePkg/Include/IndustryStandard/AcpiAml.h" >AcpiAml.h</a> source file may help with better understanding ACPI opcodes.
-</p><!--l. 1190--><p class="noindent" >Note: Patches of different Find and Replace lengths are unsupported as they may corrupt ACPI tables and make the system
+</p><!--l. 1193--><p class="noindent" >Note: Patches of different Find and Replace lengths are unsupported as they may corrupt ACPI tables and make the system
 unstable due to area relocation. If such changes are needed, the utilisation of “proxy” patching or the padding of NOP to the
 remaining area could be considered.
 <a 
@@ -388,7 +504,7 @@ remaining area could be considered.
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Provide reset register and flag in FADT table to enable reboot and shutdown.
-     <!--l. 1206--><p class="noindent" >Mainly  required  on  legacy  hardware  and  a  few  newer  laptops.  Can  also  fix  power-button  shortcuts.  Not
+     <!--l. 1209--><p class="noindent" >Mainly  required  on  legacy  hardware  and  a  few  newer  laptops.  Can  also  fix  power-button  shortcuts.  Not
      recommended unless required.
                                                                                                   
                                                                                                   
@@ -422,18 +538,18 @@ href="http://www.insanelymac.com/forum/topic/299614-asus-eah6450-video-bios-uefi
      </li>
      <li class="itemize">While it may not be required, sometimes Thunderbolt support, Intel SGX, and Intel Platform Trust may
      have to be disabled in firmware settings present.</li></ul>
-<!--l. 1323--><p class="noindent" >When debugging sleep issues, Power Nap and automatic power off (which appear to sometimes cause wake to black screen or
+<!--l. 1326--><p class="noindent" >When debugging sleep issues, Power Nap and automatic power off (which appear to sometimes cause wake to black screen or
 boot loop issues on older platforms) may be temporarily disabled. The specific issues may vary, but <span class="sout">generally </span>ACPI tables
 should <span class="uwave">typically </span>be looked at first.
-</p><!--l. 1327--><p class="noindent" >Here is an example of a defect found <span class="sout">in </span><span class="uwave">on </span>some <a 
+</p><!--l. 1330--><p class="noindent" >Here is an example of a defect found <span class="sout">in </span><span class="uwave">on </span>some <a 
 href="http://www.insanelymac.com/forum/topic/329624-need-cmos-reset-after-sleep-only-after-login/#entry2534645" >Z68 motherboards</a>. To turn Power Nap and the others off, run the following
-commands in Terminal: </p><!--l. 1330-->
+commands in Terminal: </p><!--l. 1333-->
 <div class="lstlisting" id="listing-3"><span class="label"><a 
  id="x1-22001r1"></a></span>sudo pmset autopoweroff 0 <br /><span class="label"><a 
  id="x1-22002r2"></a></span>sudo pmset powernap 0 <br /><span class="label"><a 
  id="x1-22003r3"></a></span>sudo pmset standby 0
 </div>
-<!--l. 1336--><p class="noindent" >Note: These settings may be reset by hardware changes and in certain other circumstances. To view their current state, use the
+<!--l. 1339--><p class="noindent" >Note: These settings may be reset by hardware changes and in certain other circumstances. To view their current state, use the
 pmset -g command in Terminal.
 <a 
  id="x1-22004r25"></a>
@@ -452,7 +568,7 @@ class="newline" />Description: Designed to be filled with plist dict values, de
 class="newline" />Type: plist array<br 
 class="newline" />Failsafe: Empty<br 
 class="newline" />Description: Perform binary patches in booter.
-     <!--l. 1357--><p class="noindent" >Designed to be filled with plist dictionary values, describing each patch. See the ?? section below.
+     <!--l. 1360--><p class="noindent" >Designed to be filled with plist dictionary values, describing each patch. See the ?? section below.
                                                                                                   
                                                                                                   
      </li>
@@ -511,7 +627,7 @@ class="newline" />Description: Number of found occurrences to skip before replac
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Allows booting macOS through a relocation block.
-     <!--l. 1488--><p class="noindent" >The relocation block is a scratch buffer allocated in the lower 4 GB used for loading the kernel and related
+     <!--l. 1491--><p class="noindent" >The relocation block is a scratch buffer allocated in the lower 4 GB used for loading the kernel and related
      structures  by  EfiBoot  on  firmware  where  the  lower  memory  region  is  otherwise  occupied  by  (assumed)
      non-runtime data. Right before kernel startup, the relocation block is copied back to lower addresses. Similarly,
      all the other addresses pointing to the relocation block are also carefully adjusted. The relocation block can be
@@ -526,11 +642,11 @@ class="newline" />Description: Allows booting macOS through a relocation block.
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Reuse original hibernate memory map.
-     <!--l. 1577--><p class="noindent" >This option forces the XNU kernel to ignore a newly supplied memory map and assume that it did not change after
+     <!--l. 1580--><p class="noindent" >This option forces the XNU kernel to ignore a newly supplied memory map and assume that it did not change after
      waking from hibernation. This behaviour is required by Windows to work. Windows mandates <a 
 href="https://docs.microsoft.com/en-us/windows-hardware/design/device-experiences/oem-uefi#hibernation-state-s4-transition-requirements" >preserving</a> runtime
      memory size and location after S4 wake.
-     </p><!--l. 1583--><p class="noindent" >Note: This may be used to workaround defective memory map implementations on older, rare legacy hardware. Examples
+     </p><!--l. 1586--><p class="noindent" >Note: This may be used to workaround defective memory map implementations on older, rare legacy hardware. Examples
      of such hardware are Ivy Bridge laptops with Insyde firmware such as the Acer V3-571G. Do not use this option without
      a full understanding of the implications.
      </p></li>
@@ -539,7 +655,7 @@ href="https://docs.microsoft.com/en-us/windows-hardware/design/device-experience
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Patch bootloader to have KASLR enabled in safe mode.
-     <!--l. 1593--><p class="noindent" >This option is relevant to users with issues booting to safe mode (e.g. by holding shift or with using the -x boot
+     <!--l. 1596--><p class="noindent" >This option is relevant to users with issues booting to safe mode (e.g. by holding shift or with using the -x boot
      argument). By default, safe mode forces 0 slide as if the system was launched with the slide=0 boot
      argument.
 </p>
@@ -548,7 +664,7 @@ class="newline" />Description: Patch bootloader to have KASLR enabled in safe mo
          (from 1 to 255 inclusive).
          </li>
          <li class="itemize">This quirk requires enabling ProvideCustomSlide.</li></ul>
-     <!--l. 1605--><p class="noindent" >Note: The need for this option is dependent on the availability of safe mode. It can be enabled when booting to safe mode
+     <!--l. 1608--><p class="noindent" >Note: The need for this option is dependent on the availability of safe mode. It can be enabled when booting to safe mode
      fails.
      </p></li>
      <li 
@@ -556,10 +672,10 @@ class="newline" />Description: Patch bootloader to have KASLR enabled in safe mo
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Permit write access to UEFI runtime services code.
-     <!--l. 1614--><p class="noindent" >This option bypasses R<span class='accenthat'>X</span> permissions in code pages of UEFI runtime services by removing write protection (WP) bit from
+     <!--l. 1617--><p class="noindent" >This option bypasses R<span class='accenthat'>X</span> permissions in code pages of UEFI runtime services by removing write protection (WP) bit from
      CR0 register during their execution. This quirk requires OC_FIRMWARE_RUNTIME protocol implemented in
      OpenRuntime.efi.
-     </p><!--l. 1619--><p class="noindent" >Note: This quirk may potentially weaken firmware security. Please use RebuildAppleMemoryMap if the firmware supports
+     </p><!--l. 1622--><p class="noindent" >Note: This quirk may potentially weaken firmware security. Please use RebuildAppleMemoryMap if the firmware supports
      memory attributes table (MAT). Refer to the OCABC: MAT support is 1/0 log entry to determine whether MAT is
      supported.
      </p></li>
@@ -568,15 +684,15 @@ class="newline" />Description: Permit write access to UEFI runtime services code
 class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
 class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">false</span><br 
 class="newline" /><span class="uwave">Description</span><span class="uwave">: Set macOS </span><span class="uwave">boot-signature</span> <span class="uwave">to OpenCore launcher. </span>
-     <!--l. 1634--><p class="noindent" ><span class="uwave">Booter signature, essentially a SHA-1 hash of the loaded image, is used by Mac EFI to verify the authenticity of the
+     <!--l. 1637--><p class="noindent" ><span class="uwave">Booter signature, essentially a SHA-1 hash of the loaded image, is used by Mac EFI to verify the authenticity of the
      bootloader when waking from hibernation. This option forces macOS to use OpenCore launcher SHA-1 hash as a booter
      signature to let OpenCore shim hibernation wake on Mac EFI firmware. </span>
-     </p><!--l. 1636--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: OpenCore launcher path is determined from </span><span class="uwave">LauncherPath</span> <span class="uwave">property. </span>
+     </p><!--l. 1639--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: OpenCore launcher path is determined from </span><span class="uwave">LauncherPath</span> <span class="uwave">property. </span>
      </p></li>
      <li 
   class="enumerate" id="x1-26020x10">ForceExitBootServices                                             <br 
 class="newline" /> escription: Sequence of EAX, EBX, ECX, EDX values to replace CPUID (1) call in XNU kernel.
-     <!--l. 2186--><p class="noindent" >This property primarily meets three requirements:
+     <!--l. 2189--><p class="noindent" >This property primarily meets three requirements:
 </p>
          <ul class="itemize1">
          <li class="itemize">Enabling support for an unsupported CPU model (e.g. Intel Pentium).
@@ -584,14 +700,14 @@ class="newline" /> escription: Sequence of EAX, EBX, ECX, EDX values to replace
          <li class="itemize">Enabling support for a CPU model not yet supported by a specific version of macOS (typically old versions).
          </li>
          <li class="itemize">Enabling XCPM support for an unsupported CPU variant.</li></ul>
-     <!--l. 2195--><p class="noindent" >Note 1: It may also be the case that the CPU model is supported but there is no power management supported (e.g.
+     <!--l. 2198--><p class="noindent" >Note 1: It may also be the case that the CPU model is supported but there is no power management supported (e.g.
      virtual machines). In this case, MinKernel and MaxKernel can be set to restrict CPU virtualisation and dummy power
      management patches to the particular macOS kernel version.
-     </p><!--l. 2199--><p class="noindent" >Note 2: <span class="sout">Normally it is only </span><span class="uwave">Only </span>the value of EAX<span class="sout">that needs to be taken care of, since it </span><span class="uwave">, which </span>represents the full
+     </p><!--l. 2202--><p class="noindent" >Note 2: <span class="sout">Normally it is only </span><span class="uwave">Only </span>the value of EAX<span class="sout">that needs to be taken care of, since it </span><span class="uwave">, which </span>represents the full
      CPUID<span class="sout">. The remaining bytes are to </span><span class="uwave">, typically needs to be accounted for and remaining bytes should </span>be left as zeroes.
      <span class="sout">Byte </span><span class="uwave">The byte </span>order is Little Endian<span class="sout">, so for </span><span class="uwave">. For </span>example, C3 06 03 00 stands for CPUID 0x0306C3
      (Haswell).
-     </p><!--l. 2204--><p class="noindent" >Note 3: For XCPM support it is recommended to use the following combinations.
+     </p><!--l. 2207--><p class="noindent" >Note 3: For XCPM support it is recommended to use the following combinations.
 </p>
          <ul class="itemize1">
          <li class="itemize">Haswell-E (0x0306F2) to Haswell (0x0306C3):<br 
@@ -601,7 +717,7 @@ class="newline" />Cpuid1Mask: FF FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00
          <li class="itemize">Broadwell-E (0x0406F1) to Broadwell (0x0306D4):<br 
 class="newline" />Cpuid1Data: D4 06 03 00 00 00 00 00 00 00 00 00 00 00 00 00<br 
 class="newline" />Cpuid1Mask: FF FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00</li></ul>
-     <!--l. 2216--><p class="noindent" >Note 4: Be aware that the following configurations are unsupported by XCPM (at least out of the box):
+     <!--l. 2219--><p class="noindent" >Note 4: Be aware that the following configurations are unsupported by XCPM (at least out of the box):
 </p>
          <ul class="itemize1">
          <li class="itemize">Consumer Ivy Bridge (0x0306A9) as Apple disabled XCPM for Ivy Bridge and recommends legacy power
@@ -617,7 +733,7 @@ href="https://github.com/acidanthera/bugtracker/issues/365" >acidanthera/bugtrac
 class="newline" />Type: plist data, 16 bytes<br 
 class="newline" />Failsafe: All zero<br 
 class="newline" />Description: Bit mask of active bits in Cpuid1Data.
-     <!--l. 2234--><p class="noindent" >When each Cpuid1Mask bit is set to 0, the original CPU bit is used, otherwise set bits take the value of
+     <!--l. 2237--><p class="noindent" >When each Cpuid1Mask bit is set to 0, the original CPU bit is used, otherwise set bits take the value of
      Cpuid1Data.
      </p></li>
      <li 
@@ -626,9 +742,9 @@ class="newline" />Type: plist boolean<br
 class="newline" />Failsafe: false<br 
 class="newline" />Requirement: 10.4<br 
 class="newline" />Description: Disables AppleIntelCpuPowerManagement.
-     <!--l. 2244--><p class="noindent" >Note 1: This option is a preferred alternative to NullCpuPowerManagement.kext for CPUs without native power
+     <!--l. 2247--><p class="noindent" >Note 1: This option is a preferred alternative to NullCpuPowerManagement.kext for CPUs without native power
      management driver in macOS.
-     </p><!--l. 2248--><p class="noindent" >Note 2: While this option is typically needed to disable AppleIntelCpuPowerManagement on unsupported platforms, it
+     </p><!--l. 2251--><p class="noindent" >Note 2: While this option is typically needed to disable AppleIntelCpuPowerManagement on unsupported platforms, it
                                                                                                   
                                                                                                   
      
