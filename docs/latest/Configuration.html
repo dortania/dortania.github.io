@@ -1981,14 +1981,13 @@ class="newline" /><tspan class="ec-lmbx-10">Type</tspan>: <tspan class="ec-lmtt-
 class="newline" /><tspan class="ec-lmbx-10">Failsafe</tspan>: Empty<br 
 class="newline" /><tspan class="ec-lmbx-10">Description</tspan>: Load selected kernel extensions (kexts) from the <tspan class="ec-lmtt-10">OC/Kexts </tspan>directory.
      <!--l. 1877--><p class="noindent" >To be filled with <tspan class="ec-lmtt-10">plist</tspan><tspan class="ec-lmtt-10"> dict </tspan>values, describing each kext. Refer to the <a 
-href="#x1-340003">Add Properties</a> section below.
+href="#x1-340003">Add Properties</a> section below for details.
      </p><!--l. 1880--><p class="noindent" ><tspan class="ec-lmri-10">Note 1</tspan>: The load order is based on the order in which the kexts appear in the array. Hence, dependencies must
      appear before kexts that depend on them.
      </p><!--l. 1883--><p class="noindent" ><tspan class="ec-lmri-10">Note 2</tspan>: To track the dependency order, inspect the <tspan class="ec-lmtt-10">OSBundleLibraries </tspan>key in the <tspan class="ec-lmtt-10">Info.plist </tspan>file of the kext
-     being added. Any kext included in the <tspan class="ec-lmtt-10">OSBundleLibraries </tspan>key is a dependency that must precede the kext
-     being added.
-     </p><!--l. 1888--><p class="noindent" ><tspan class="ec-lmri-10">Note 3</tspan>: Kexts may have inner kexts (<tspan class="ec-lmtt-10">Plugins</tspan>) included in the bundle and each such plugin must be added
-     separately.
+     being added. Any kext included under the key is a dependency that must appear before the kext being added.
+     </p><!--l. 1887--><p class="noindent" ><tspan class="ec-lmri-10">Note 3</tspan>: Kexts may have inner kexts (<tspan class="ec-lmtt-10">Plugins</tspan>) included in the bundle. Such <tspan class="ec-lmtt-10">Plugins </tspan>must be added separately
+     and follow the same global ordering rules as other kexts.
      </p></li>
      <li 
   class="enumerate" id="x1-33004x2"><tspan class="ec-lmtt-10">Block</tspan><br 
