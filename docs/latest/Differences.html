@@ -21,6 +21,8 @@ width="160" height="160"  />
 </div>
                                                                                                   
                                                                                                   
+<br /> <span class="subsectionToc" >8.6 <a 
+href="#x1-470006" id="QQ2-1-50">Entry Properties</a></span>
 <br /><span class="sectionToc" >9 <a 
 href="#x1-480009" id="QQ2-1-51">NVRAM</a></span>
 <br /> <span class="subsectionToc" >9.1 <a 
@@ -55,12 +57,16 @@ href="#x1-700008" id="QQ2-1-74">Audio Properties</a></span>
 href="#x1-710009" id="QQ2-1-75">Input Properties</a></span>
 <br /> <span class="subsectionToc" >11.10 <a 
 href="#x1-7200010" id="QQ2-1-76">Output Properties</a></span>
+<br /> <span class="subsectionToc" >11.11 <a 
+href="#x1-7300011" id="QQ2-1-77">ProtocolOverrides Properties</a></span>
+<br /> <span class="subsectionToc" >11.12 <a 
+href="#x1-7400012" id="QQ2-1-78">Quirks Properties</a></span>
+<br /> <span class="subsectionToc" >11.13 <a 
+href="#x1-7500013" id="QQ2-1-79">ReservedMemory Properties</a></span>
 <br /><span class="sectionToc" >12 <a 
 href="#x1-7600012" id="QQ2-1-80">Troubleshooting</a></span>
 <br /> <span class="subsectionToc" >12.1 <a 
 href="#x1-770001" id="QQ2-1-81">Legacy Apple OS</a></span>
-<br /> <span class="subsectionToc" >12.3 <a 
-href="#x1-840003" id="QQ2-1-88">Windows support</a></span>
 <br /> <span class="subsectionToc" >12.4 <a 
 href="#x1-850004" id="QQ2-1-90">Debugging</a></span>
 <br /> <span class="subsectionToc" >12.5 <a 
@@ -88,14 +94,14 @@ guide-like material. However, they are subject to their authors’ preferences, 
 document, and unavoidable obsolescence. In cases of using such sources, such as <a 
 href="https://dortania.github.io" >Dortania</a>’s <a 
 href="https://dortania.github.io/OpenCore-Install-Guide" >OpenCore Install
-Guide</a> and <a 
-href="https://dortania.github.io/getting-started" >related material</a>, please refer back to this document on every decision made and re-evaluate potential
-<span class="sout">consequences</span><span class="uwave">implications</span>.
-</p><!--l. 203--><p class="noindent" >Please note that regardless of the sources used, users are required to fully understand every OpenCore configuration option,
-and the principles behind them, before posting issues to the <a 
-href="https://github.com/acidanthera/bugtracker" >Acidanthera Bugtracker</a>.
                                                                                                   
                                                                                                   
+<a 
+ id="x1-3001r3"></a>
+<h3 class="sectionHead"><span class="titlemark">2   </span> <a 
+ id="x1-40002"></a>Configuration</h3>
+<a 
+ id="x1-4001r4"></a>
 <h4 class="subsectionHead"><span class="titlemark">2.1   </span> <a 
  id="x1-50001"></a>Configuration Terms</h4>
      <ul class="itemize1">
@@ -146,13 +152,13 @@ of invalid values and optional values.
      <li class="itemize">The OC config file size shall not exceed 32 MBs.
      </li>
      <li class="itemize">The OC config file shall not have more than 32 nesting levels.
+                                                                                                  
+                                                                                                  
      </li>
      <li class="itemize">The OC config file may have up to 32,768 XML nodes within each plist object.
          <ul class="itemize2">
          <li class="itemize">One plist dictionary item is counted as a pair of nodes</li></ul>
      </li></ul>
-                                                                                                  
-                                                                                                  
 <!--l. 365--><p class="noindent" >Reading malformed OC config files results in undefined behaviour. Examples of malformed OC config files include the
 following:
 </p>
@@ -234,14 +240,6 @@ that represent optional plugins and similar.
      <ul class="itemize1">
      <li class="itemize"><a 
 href="#x1-140004">ACPI</a>
-     </li>
-     <li class="itemize">??
-     </li>
-     <li class="itemize"><a 
-href="#x1-270006">DeviceProperties</a>
-     </li>
-     <li class="itemize"><a 
-href="#x1-310007">Kernel</a>
                                                                                                   
                                                                                                   
      </li>
@@ -741,5 +739,5 @@ class="newline" />Description: Provide reset register and flag in FADT table to 
      recommended unless required.
      </p></li>
      <li 
-  class="enumerate" id="x1-20004x2">NormalizeHeaders                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             </body>
+  class="enumerate" id="x1-20004x2">NormalizeHeaders                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           </body>
 </html>
