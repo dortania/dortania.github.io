@@ -13,3 +13,5 @@ header_pages:
   - topbar/e-builds.markdown
 plugins:
   - jekyll-feed
+  - jekyll-mentions
+  
