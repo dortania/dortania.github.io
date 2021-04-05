@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Acidanthera Updates: April 2021"
-date:   2021-04-07 14:45:00 -0400
+date:   2021-04-05 14:45:00 -0400
 categories: Hackintosh updates
 ---
 
