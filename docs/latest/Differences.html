@@ -20,6 +20,66 @@ width="160" height="160"  />
 </p>
 </div>
                                                                                                   
+                                                                                                  
+     <!--l. 6791--><p class="noindent" >Some types of firmware do not implement the legacy UGA protocol but this may be required for screen output by older
+     EFI applications such as EfiBoot from 10.4.
+</p>
+     </li></ol>
+<a 
+ id="x1-73027r77"></a>
+<h4 class="subsectionHead"><span class="titlemark">11.12   </span> <a 
+ id="x1-7400012"></a>ProtocolOverrides Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-74002x1">AppleAudio<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces Apple audio protocols with builtin versions.
+     <!--l. 6808--><p class="noindent" >Apple audio protocols allow OpenCore and the macOS bootloader to play sounds and signals for screen reading
+     or audible error reporting. Supported protocols are beep generation and VoiceOver. The VoiceOver protocol
+     is specific to Gibraltar machines (T2) and is not supported before macOS High Sierra (10.13). Older macOS
+     versions use the AppleHDA protocol (which is not currently implemented) instead.
+     </p><!--l. 6815--><p class="noindent" >Only one set of audio protocols can be available at a time, so this setting should be enabled in order to enable
+     audio playback in the OpenCore user interface on Mac systems implementing some of these protocols.
+     </p><!--l. 6819--><p class="noindent" >Note: The backend audio driver needs to be configured in UEFI Audio section for these protocols to be able to
+     stream audio.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-74004x2">AppleBootPolicy<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces the Apple Boot Policy protocol with a builtin version. This may be used to ensure APFS
+     compatibility on VMs and legacy Macs.
+     <!--l. 6829--><p class="noindent" >Note: This option is advisable on certain Macs, such as the MacPro5,1, that are APFS compatible but on which
+     the Apple Boot Policy protocol has recovery detection issues.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-74006x3">AppleDebugLog<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces the Apple Debug Log protocol with a builtin version<span class="sout">. </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-74008x4"><span class="sout">AppleEvent</span><span class="sout">Type</span><span class="sout">:  </span><span class="sout">plist boolean</span><span class="sout">Failsafe</span><span class="sout">:  </span><span class="sout">false</span><span class="sout">Description</span><span class="sout">:  Replaces  the  Apple  Event  protocol  with  a
+     builtin version. This may be used to ensure FileVault 2 compatibility on VMs and legacy Macs</span>.
+     </li>
+     <li 
+  class="enumerate" id="x1-74010x5">AppleFramebufferInfo<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces the Apple Framebuffer Info protocol with a builtin version. This may be used to override
+     framebuffer information on VMs and legacy Macs to improve compatibility with legacy EfiBoot such as the one
+     in macOS 10.4.
+     <!--l. 6867--><p class="noindent" >Note: The current implementation of this property results in it only being active when GOP is available (it is
+     always equivalent to false otherwise).
+     </p></li>
+     <li 
+  class="enumerate" id="x1-74012x6">AppleImageConversion<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces the Apple Image Conversion protocol with a builtin version.
+     </li>
+                                                                                                  
 
 
 </body>
