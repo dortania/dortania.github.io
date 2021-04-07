@@ -21,80 +21,349 @@ width="160" height="160"  />
 </div>
                                                                                                   
                                                                                                   
-     
-     
-     
-     
-     
+         <li class="itemize">0x0010 — OC_ATTR_USE_POINTER_CONTROL, enables pointer control in the OpenCore picker when available. For
+         example, this could make use of mouse or trackpad to control UI elements.
+         </li>
+         <li class="itemize">0x0020 — OC_ATTR_<span class="uwave">SHOW_</span>DEBUG_DISPLAY, enable display of additional timing and debug information, in Builtin
+         picker in DEBUG and NOOPT builds only.</li></ul>
+     </li>
+     <li 
+  class="enumerate" id="x1-44014x7">PickerAudioAssist<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Enable screen reader by default in the OpenCore picker.
+     <!--l. 3293--><p class="noindent" >For the macOS bootloader, screen reader preference is set in the preferences.efires archive in the
+     isVOEnabled.int32 file and is controlled by the operating system. For OpenCore screen reader support,
+     this option is an independent equivalent. Toggling screen reader support in both the OpenCore picker
+     and the macOS bootloader FileVault 2 login window can also be done by using the Command + F5 key
+     combination.
+     </p><!--l. 3300--><p class="noindent" >Note: The screen reader requires working audio support. Refer to the <a 
+href="#x1-710009">UEFI Audio Properties</a> section for
+     details.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-44016x8">PollAppleHotKeys<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Enable modifier hotkey handling in the OpenCore picker.
+     <!--l. 3309--><p class="noindent" >In addition to action hotkeys, which are partially described in the PickerMode section and are typically handled by
+     Apple BDS, modifier keys handled by the operating system bootloader (boot.efi) also exist. These keys allow changing
+     the behaviour of the operating system by providing different boot modes.
+     </p><!--l. 3314--><p class="noindent" >On certain firmware, using modifier keys may be problematic due to driver incompatibilities. To workaround this
+     problem, this option allows registering certain hotkeys in a more permissive manner from within the OpenCore
+     picker. Such extensions include support for tapping on key combinations before selecting the boot item,
+     and for reliable detection of the Shift key when selecting the boot item, in order to work around the
+     fact that hotkeys which are continuously held during boot cannot be reliably detected on many PS/2
+     keyboards.
+     </p><!--l. 3321--><p class="noindent" >This list of known modifier hotkeys includes: </p>
+         <ul class="itemize1">
+         <li class="itemize">CMD+C+MINUS — disable board compatibility checking.
+         </li>
+         <li class="itemize">CMD+K — boot release kernel, similar to kcsuffix=release.
+         </li>
+         <li class="itemize">CMD+S — single user mode.
+         </li>
+         <li class="itemize">CMD+S+MINUS — disable KASLR slide, requires disabled SIP.
+         </li>
+         <li class="itemize">CMD+V — verbose mode.
+         </li>
+         <li class="itemize">Shift+Enter, Shift+Index — safe mode, may be used in combination with CTRL+Enter, CTRL+Index.</li></ul>
+     </li>
+     <li 
+  class="enumerate" id="x1-44018x9">ShowPicker<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Show a simple picker to allow boot entry selection.
+     </li>
+     <li 
+  class="enumerate" id="x1-44020x10">TakeoffDelay<br 
+class="newline" />Type: plist integer, 32 bit<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Minimal allowed APFS driver version.
+     <!--l. 6182--><p class="noindent" >The APFS driver version connects the APFS driver with the macOS release. Apple ultimately drops support for older
+     macOS releases and APFS drivers from such releases may contain vulnerabilities that can be used to compromise a
+     computer if such drivers are used after support ends. This option permits restricting APFS drivers to current macOS
+     versions.
+</p>
+         <ul class="itemize1">
+         <li class="itemize">0 — require the default supported version of APFS in OpenCore. The default version will increase with
+         time and thus this setting is recommended. Currently set to the latest point release from High Sierra from
+         App Store (748077008000000).
+         </li>
+         <li class="itemize">-1 — permit any version to load (strongly discouraged).
+         </li>
+         <li class="itemize">Other — use custom minimal APFS version, e.g. 1412101001000000 from macOS Catalina 10.15.4. APFS
+         versions can be found in OpenCore boot log and <a 
+href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Acidanthera/Library/OcApfsLib.h" >OcApfsLib</a>.</li></ul>
+     </li></ol>
+<a 
+ id="x1-69013r73"></a>
+<h4 class="subsectionHead"><span class="titlemark">11.8   </span> <a 
+ id="x1-700008"></a>AppleInput Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-70002x1">AppleEvent<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Auto<br 
+class="newline" />Description: Determine whether OC builtin or OEM Apple Event protocol is used.
+     <!--l. 6212--><p class="noindent" >This  option  determines  whether  Apple’s  OEM  Apple  Event  protocol  is  used  (where  available),  or
+     whether  OpenCore’s  reversed  engineered  and  updated  re-implementation  is  used.  In  general  OpenCore’s
+     re-implementation should be preferred, since it contains updates such as noticeably improved fine mouse cursor
+     movement and configurable key repeat delays.
+</p>
+         <ul class="itemize1">
+         <li class="itemize">Auto — <span class="sout">Performs automatic choice of implementation . Because of optimisations used to achieve fast boot
+         times, this actually means that the OpenCore re-implementation will be found and usedexcept in the case
+         that OpenCore was been explicitly selected and started (not just auto-booted) from Apple ’s boot picker
+         (where present). </span><span class="uwave">Use OEM Apple Event implementation if available, connected and recent enough to be used,
+         otherwise use OC reimplementation. One some Macs (e.g. Mac Pro) this will find the Apple implementation.
+         On both older and newer Macs than this, this option will always or often use the OC implementation. On
+         older Macs this is because the implementation available is too old to be used, on newer Macs it is because
+         of optimisations added by Apple which do not connect the Apple Event protocol except when needed – e.g.
+         except when the Apple boot picker is explicitly started. Due to its somewhat unpredicatable results, this
+         option is not normally recommended. </span>
+         </li>
+         <li class="itemize">Builtin — Use OpenCore’s updated re-implementation of the Apple Event protocol. <span class="sout">Recommended</span><span class="uwave">Using
+         this  setting  is  recommended  even  on  Apple  hardware  where  the  OEM  version  can  be  used,  due  to
+         improvements (better fine mouse control, configurable key delays) made in the OC re-implementation of
+         the protocol</span>.
+         </li>
+         <li class="itemize">OEM — Assume Apple’s protocol will be available at driver connection. This results in Apple’s implementation
+         being <span class="sout">reliably used on </span><span class="uwave">used on most (except the oldest) </span>Apple systems. It results in no keyboard or mouse
+         support otherwise. <span class="uwave">On all Apple hardware where a recent enough version of the OEM protocol is available
+         – whether connected automatically by Apple’s firmware or not – this option will work reliably; nevertheless
+         for the reasons stated </span><span class="uwave">Builtin</span> <span class="uwave">is recommended in preference to this option in most use cases. </span></li></ul>
+     </li>
+     <li 
+  class="enumerate" id="x1-70004x2">CustomDelays<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Auto<br 
+class="newline" />Description: Enable custom key repeat delays <span class="sout">. </span><span class="uwave">when using the OpenCore implementation of the Apple Event protocol.
+     Has no effect when using the OEM Apple implementation (see </span><span class="uwave">AppleEvent</span> <span class="uwave">setting). </span>
+         <ul class="itemize1">
+         <li class="itemize">Auto — Treated as Enabled when KeySupport is true and Disabled otherwise.
+         </li>
+         <li class="itemize">Enabled — The values KeyInitialDelay and KeySubsequentDelay are used.
+         </li>
+         <li class="itemize">Disabled — Apple default values of 500ms (50) and 50ms (5) are used.</li></ul>
+     </li>
+     <li 
+  class="enumerate" id="x1-70006x3">KeyInitialDelay<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0 (no initial delay, immediate repeat)<br 
+class="newline" />Description: Configure initial keyboard repeat delay in OpenCore implementation of Apple Event protocol, in units of
+     10ms.
+     <!--l. 6264--><p class="noindent" >Configures the initial delay before key repeat. The Apple OEM default value is 50 (500ms).
+     </p><!--l. 6267--><p class="noindent" >Note <span class="uwave">1</span>: When using KeySupport, you may find that you get an additional slow key repeat before normal speed key
+     repeat starts. If so, <span class="sout">your </span><span class="uwave">the </span>initial key repeat delay is being driven by your BIOS firmware and cannot be overriden by
+     OC (due to technical limitations of how KeySupport works, to derive raw key data from the non-raw key data
+     which is all that UEFI makes available). To avoid this minor but undesired effect of two long repeats,
+     you can simply cancel the second, Apple Event, repeat by setting KeyInitialDelay to 0. When doing
+     this you should also set KeySubsequentDelay to at least the value of your KeyForgetThreshold setting
+     (see more information in the KeySubsequentDelay setting). <span class="sout">The instructions in this note only apply on
+     </span>
+     </p><!--l. 6278--><p class="noindent" ><span class="uwave">Note 2</span><span class="uwave">: On </span>systems using KeySupport<span class="sout">. </span><span class="uwave">, the recommended value is </span><span class="uwave">0</span><span class="uwave">. On other systems the recommended value is </span><span class="uwave">50</span><span class="uwave">,
+     which may optionally be tuned up or down according to user preference. </span>
+     </p></li>
+     <li 
+  class="enumerate" id="x1-70008x4">KeySubsequentDelay<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 1<br 
+class="newline" />Description: Configure subsequent keyboard repeat delay in OpenCore implementation of Apple Event protocol, in
+     units of 10ms.
+     <!--l. 6291--><p class="noindent" >Configures the gap between key repeats. The Apple OEM default value is 5 (50ms). 0 is an invalid value for this
+     option.
+     </p><!--l. 6294--><p class="noindent" >Note <span class="uwave">1</span>: When using KeySupport, you may find that you get one additional slow key repeat before normal speed key
+     repeat starts. If so, set KeyInitialDelay to 0 and set KeySubsequentDelay to at least the value of your
+     KeyForgetThreshold setting. The reason for this is that the key-smoothing parameter KeyForgetThreshold
+     effectively acts as the shortest time for which a key can appear to be held, therefore a key repeat delay
+     less than this will guarantee at least one extra repeat for every key press, however quickly the key is
+     physically tapped. (In the unlikely event that you still get frequent, or occasional, double key responses
+     after setting KeySubsequentDelay equal to your system’s value of KeyForgetThreshold, then increase
+     KeySubsequentDelay by one or two more until this effect goes away<span class="sout">- for greatest keyboard responsiveness, use the
+     lowest value which avoids multiple keypresses. ) The instructions in this note only apply on systems </span><span class="uwave">.)
+     </span>
+     </p><!--l. 6308--><p class="noindent" ><span class="uwave">Note 2</span><span class="uwave">: On systems using </span><span class="uwave">KeySupport</span><span class="uwave">, the recommended setting is to use the same value as </span><span class="uwave">KeyForgetThreshold</span><span class="uwave">. This
+     value may then be tuned upwards for slower key repeat if desired, but not downwards. On systems not </span>using KeySupport
+     <span class="uwave">the recommended starting value is </span><span class="uwave">5</span><span class="uwave">, and this may optionally be tuned up or down according to user
+     preference</span>.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-70010x5">PointerSpeedDiv<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 1<span class="sout">)</span><br 
+class="newline" />Description: Configure pointer speed divisor in OpenCore implementation of Apple Event protocol. <span class="uwave">Has no effect when
+     using the OEM Apple implementation (see </span><span class="uwave">AppleEvent</span> <span class="uwave">setting). </span>
+     <!--l. 6323--><p class="noindent" >Configures the divisor for pointer movements. The Apple OEM default value is 1. 0 is an invalid value for this
+     option.
+     </p><!--l. 6326--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: The recommended value for this option is </span><span class="uwave">1</span><span class="uwave">. This value may optionally be modified in combination
+     with </span><span class="uwave">PointerSpeedMul</span><span class="uwave">, according to user preference, to achieve customised mouse movement scaling.
+     </span>
+     </p></li>
+     <li 
+  class="enumerate" id="x1-70012x6">PointerSpeedMul<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0<span class="sout">)</span><br 
+class="newline" />Description: Configure pointer speed multiplier in OpenCore implementation of Apple Event protocol. <span class="uwave">Has no effect
+     when using the OEM Apple implementation (see </span><span class="uwave">AppleEvent</span> <span class="uwave">setting). </span>
+     <!--l. 6340--><p class="noindent" >Configures the multiplier for pointer movements. The Apple OEM default value is 1.
+     </p><!--l. 6342--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: The recommended value for this option is </span><span class="uwave">1</span><span class="uwave">. This value may optionally be modified in combination
+     with </span><span class="uwave">PointerSpeedDiv</span><span class="uwave">, according to user preference, to achieve customised mouse movement scaling.
+     </span>
+</p>
+     </li></ol>
+<a 
+ id="x1-70013r74"></a>
+<h4 class="subsectionHead"><span class="titlemark">11.9   </span> <a 
+ id="x1-710009"></a>Audio Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-71002x1">AudioCodec<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Codec address on the specified audio controller for audio support.
+     <!--l. 6359--><p class="noindent" >This typically contains the first audio codec address on the builtin analog audio controller (HDEF). Audio codec
+     addresses, e.g. 2, can be found in the debug log (marked in bold-italic):
+     </p><!--l. 6362--><p class="noindent" >OCAU: 1/3 PciRoot(0x0)/Pci(0x1,0x0)/Pci(0x0,0x1)/VenMsg(&#x003C;redacted&#x003E;,00000000) (4 outputs)<br 
+class="newline" />OCAU: 2/3 PciRoot(0x0)/Pci(0x3,0x0)/VenMsg(&#x003C;redacted&#x003E;,00000000) (1 outputs)<br 
+class="newline" />OCAU: 3/3 PciRoot(0x0)/Pci(0x1B,0x0)/VenMsg(&#x003C;redacted&#x003E;,02000000) (7 outputs)
+     </p><!--l. 6366--><p class="noindent" >As an alternative, this value can be obtained from IOHDACodecDevice class in I/O Registry containing it in
+     IOHDACodecAddress field.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-71004x2">AudioDevice<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty<br 
+class="newline" />Description: Device path of the specified audio controller for audio support.
+     <!--l. 6375--><p class="noindent" >This typically contains builtin analog audio controller (HDEF) device path, e.g. PciRoot(0x0)/Pci(0x1b,0x0).
+     The list of recognised audio controllers can be found in the debug log (marked in bold-italic):
+     </p><!--l. 6379--><p class="noindent" >OCAU: 1/3 PciRoot(0x0)/Pci(0x1,0x0)/Pci(0x0,0x1)/VenMsg(&#x003C;redacted&#x003E;,00000000) (4 outputs)<br 
+class="newline" />OCAU: 2/3 PciRoot(0x0)/Pci(0x3,0x0)/VenMsg(&#x003C;redacted&#x003E;,00000000) (1 outputs)<br 
+class="newline" />OCAU: 3/3 PciRoot(0x0)/Pci(0x1B,0x0)/VenMsg(&#x003C;redacted&#x003E;,02000000) (7 outputs)
+     </p><!--l. 6383--><p class="noindent" >As an alternative, gfxutil -f HDEF command can be used in macOS. Specifying an empty device path will
+     result in the first available audio controller being used.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-71006x3">AudioOut<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Description: Reconnect console controllers after changing screen resolution.
+     <!--l. 6807--><p class="noindent" >On certain firmware, the controllers that produce the console protocols (simple text out) must be reconnected
+     when the screen resolution is changed via GOP. Otherwise, they will not produce text based on the new
+     resolution.
+     </p><!--l. 6811--><p class="noindent" >Note: On several boards this logic may result in black screen when launching OpenCore from Shell and thus it is
+     optional. In versions prior to 0.5.2 this option was mandatory and not configurable. Please do not use this unless
+     required.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-73024x12">SanitiseClearScreen<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Some types of firmware reset screen resolutions to a failsafe value (such as 1024x768) on the
+     attempts to clear screen contents when large display (e.g. 2K or 4K) is used. This option attempts to apply a
+     workaround.
+     <!--l. 6824--><p class="noindent" >Note: This option only applies to the System renderer. On all known affected systems, ConsoleMode must be set to an
+     empty string for this option to work.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-73026x13">UgaPassThrough<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Provide UGA protocol instances on top of GOP protocol instances.
+     <!--l. 6834--><p class="noindent" >Some types of firmware do not implement the legacy UGA protocol but this may be required for screen output by older
+     EFI applications such as EfiBoot from 10.4.
+</p>
+     </li></ol>
+<a 
+ id="x1-73027r77"></a>
+<h4 class="subsectionHead"><span class="titlemark">11.12   </span> <a 
+ id="x1-7400012"></a>ProtocolOverrides Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-74002x1">AppleAudio<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces Apple audio protocols with builtin versions.
+     <!--l. 6851--><p class="noindent" >Apple audio protocols allow OpenCore and the macOS bootloader to play sounds and signals for screen reading
+     or audible error reporting. Supported protocols are beep generation and VoiceOver. The VoiceOver protocol
+     is specific to Gibraltar machines (T2) and is not supported before macOS High Sierra (10.13). Older macOS
+     versions use the AppleHDA protocol (which is not currently implemented) instead.
+     </p><!--l. 6858--><p class="noindent" >Only one set of audio protocols can be available at a time, so this setting should be enabled in order to enable
+     audio playback in the OpenCore user interface on Mac systems implementing some of these protocols.
+     </p><!--l. 6862--><p class="noindent" >Note: The backend audio driver needs to be configured in UEFI Audio section for these protocols to be able to
+     stream audio.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-74004x2">AppleBootPolicy<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces the Apple Boot Policy protocol with a builtin version. This may be used to ensure APFS
+     compatibility on VMs and legacy Macs.
+     <!--l. 6872--><p class="noindent" >Note: This option is advisable on certain Macs, such as the MacPro5,1, that are APFS compatible but on which
+     the Apple Boot Policy protocol has recovery detection issues.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-74006x3">AppleDebugLog<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces the Apple Debug Log protocol with a builtin version<span class="sout">. </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-74008x4"><span class="sout">AppleEvent</span><span class="sout">Type</span><span class="sout">:  </span><span class="sout">plist boolean</span><span class="sout">Failsafe</span><span class="sout">:  </span><span class="sout">false</span><span class="sout">Description</span><span class="sout">:  Replaces  the  Apple  Event  protocol  with  a
+     builtin version. This may be used to ensure FileVault 2 compatibility on VMs and legacy Macs</span>.
+     </li>
+     <li 
+  class="enumerate" id="x1-74010x5">AppleFramebufferInfo<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces the Apple Framebuffer Info protocol with a builtin version. This may be used to override
+     framebuffer information on VMs and legacy Macs to improve compatibility with legacy EfiBoot such as the one
+     in macOS 10.4.
+     <!--l. 6910--><p class="noindent" >Note: The current implementation of this property results in it only being active when GOP is available (it is
+     always equivalent to false otherwise).
+     </p></li>
+     <li 
+  class="enumerate" id="x1-74012x6">AppleImageConversion<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces the Apple Image Conversion protocol with a builtin version.
+     </li>
+     <li 
+  class="enumerate" id="x1-74014x7">AppleImg4Verification<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces the Apple IMG4 Verification protocol with a builtin version. This protocol is used to
+     verify im4m manifest files used by Apple Secure Boot.
+     </li>
+     <li 
+  class="enumerate" id="x1-74016x8">AppleKeyMap<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces Apple Key Map protocols with builtin versions.
+     </li>
+     <li 
+  class="enumerate" id="x1-74018x9">AppleRtcRam<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces the Apple RTC RAM protocol with a builtin version.
+     <!--l. 6942--><p class="noindent" >Note: Builtin version of Apple RTC RAM protocol may filter out I/O attempts to certain RTC memory addresses.
+     The list of addresses can be specified in 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:rtc-blacklist variable as
+     a data array.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-74020x10">AppleSecureBoot<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces the Apple Secure Boot protocol with a builtin version.
+     </li>
+     <li 
+  class="enumerate" id="x1-74022x11">AppleSmcIo<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces the Apple SMC I/O protocol with a builtin version.
+     <!--l. 6961--><p class="noindent" >This protocol replaces the legacy VirtualSmc UEFI driver, and is compatible with any SMC kernel extension.
+     However, in case the FakeSMC kernel extension is used, manual NVRAM key variable addition may be needed.
                                                                                                   
-                                                                                                  
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-                                                                                                  
-                                                                                                  
-     
-     
-      
-     
-     
-      
-     
-     
-     
-     
-      
-     
-     
-     
-     
-      
-                                                                                                  
-                                                                                                  
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-                                                                                                  
-                                                                                                  
-      
-     
-      
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     </body>
+
+
+</body>
 </html>
