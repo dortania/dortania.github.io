@@ -21,6 +21,9 @@ width="160" height="160"  />
 </div>
                                                                                                   
                                                                                                   
+<!--l. 630--><p class="noindent" >Note: It is not guaranteed that paths longer than OC_STORAGE_SAFE_PATH_MAX (128 characters including the
+<br 
+class="newline" />0-terminator) will be accessible within OpenCore.
 <a 
  id="x1-9001r9"></a>
 </p>
@@ -94,6 +97,8 @@ href="https://www.sublimetext.com" >Sublime Text</a> with
 href="https://niosus.github.io/EasyClangComplete" >EasyClangComplete</a> plugin. Add .clang_complete file with similar content to the UDK root:
 </p>
 <!--l. 717-->
+                                                                                                  
+                                                                                                  
 <a 
  id="x1-11010r2"></a>
 <a 
@@ -133,8 +138,6 @@ href="https://niosus.github.io/EasyClangComplete" >EasyClangComplete</a> plugin.
  id="x1-11043r32"></a></span>-Wno-unused-const-variable <br /><span class="label"><a 
  id="x1-11044r33"></a></span>-DOC_TARGET_NOOPT=1 <br /><span class="label"><a 
  id="x1-11045r34"></a></span>-DNO_MSABI_VA_FUNCS=1
-                                                                                                  
-                                                                                                  
 <figcaption class="caption" ><span class="id">Listing 2:</span><span  
 class="content">ECC Configuration</span></figcaption><!--tex4ht:label?: x1-11010r -->
 </div>
@@ -188,11 +191,22 @@ discussed below. </p>
      </li>
      <li class="itemize">Use flexible array members instead of zero-length or one-length arrays where necessary.
      </li>
-     <li class="itemize">Use static assertions (STATIC_ASSERT) for type and value assumptions, and runtime assertions (ASSERT) for
-     precondition and invariant sanity checking. Do not use runtime assertions to check for errors as they should never
-     alter control flow and potentially be excluded.
                                                                                                   
                                                                                                   
+         </p><!--l. 3274--><p class="noindent" >Note 2: Be aware that using a volume icon on any drive overrides the normal OpenCore picker behaviour for
+         that drive of selecting the appropriate icon depending on whether the drive is internal or external.
+         </p></li>
+         <li class="itemize">0x0002 — OC_ATTR_USE_DISK_LABEL_FILE, provides custom rendered titles for boot entries:
+             <ul class="itemize2">
+             <li class="itemize">.disk_label (.disk_label_2x) file near bootloader for all filesystems.
+             </li>
+             <li class="itemize">&#x003C;TOOL_NAME&#x003E;.lbl (&#x003C;TOOL_NAME&#x003E;.l2x) file near tool for Tools.</li></ul>
+         <!--l. 3285--><p class="noindent" >Prerendered labels can be generated via the disklabel utility or the bless command. When disabled
+         or missing text labels, (.contentDetails or .disk_label.contentDetails) are to be rendered
+         instead.
+         </p></li>
+         <li class="itemize">0x0004 — OC_ATTR_USE_GENERIC_LABEL_IMAGE, provides predefined label images for boot entries without custom
+         entries. This may however give less detail for the actual boot entry.
          </li>
          <li class="itemize">0x0008 — OC_ATTR_HIDE_THEMED_ICONS, prefers builtin icons for certain icon categories to match
          the theme style. For example, this could force displaying the builtin Time Machine icon. Requires
@@ -233,305 +247,127 @@ class="newline" />Description: Enable modifier hotkey handling in the OpenCore p
      and for reliable detection of the Shift key when selecting the boot item, in order to work around the
      fact that hotkeys which are continuously held during boot cannot be reliably detected on many PS/2
      keyboards.
-     </p><!--l. 3338--><p class="noindent" >This list of known modifier hotkeys includes: </p>
-         <ul class="itemize1">
-         <li class="itemize">CMD+C+MINUS — disable board compatibility checking.
-         </li>
-         <li class="itemize">CMD+K — boot release kernel, similar to kcsuffix=release.
-         </li>
-         <li class="itemize">CMD+S — single user mode.
-         </li>
-         <li class="itemize">CMD+S+MINUS — disable KASLR slide, requires disabled SIP.
-         </li>
-         <li class="itemize">CMD+V — verbose mode.
-         </li>
-         <li class="itemize">Shift+Enter, Shift+Index — safe mode, may be used in combination with CTRL+Enter, CTRL+Index.</li></ul>
-     </li>
-     <li 
-  class="enumerate" id="x1-44018x9">ShowPicker          <br 
-class="newline" /> ype: plist integer<br 
-class="newline" />Failsafe: 0<br 
-class="newline" />Description: Minimal allowed APFS driver version.
-     <!--l. 6199--><p class="noindent" >The APFS driver version connects the APFS driver with the macOS release. Apple ultimately drops support for older
-     macOS releases and APFS drivers from such releases may contain vulnerabilities that can be used to compromise a
-     computer if such drivers are used after support ends. This option permits restricting APFS drivers to current macOS
-     versions.
+                                                                                                  
+                                                                                                  
+</p><!--l. 5860--><p class="noindent" >To boot into OpenShell or any other tool directly save OpenShell.efi under the name of EFI\BOOT\BOOTX64.EFI on a FAT32
+partition. It is typically unimportant whether the partition scheme is GPT or MBR.
+</p><!--l. 5865--><p class="noindent" >While the previous approach works both on Macs and other computers, an alternative Mac-only approach to bless the tool on
+an HFS+ or APFS volume:
 </p>
-         <ul class="itemize1">
-         <li class="itemize">0 — require the default supported version of APFS in OpenCore. The default version will increase with
-         time and thus this setting is recommended. Currently set to the latest point release from High Sierra from
-         App Store (748077008000000).
-         </li>
-         <li class="itemize">-1 — permit any version to load (strongly discouraged).
-         </li>
-         <li class="itemize">Other — use custom minimal APFS version, e.g. 1412101001000000 from macOS Catalina 10.15.4. APFS
-         versions can be found in OpenCore boot log and <a 
-href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Acidanthera/Library/OcApfsLib.h" >OcApfsLib</a>.</li></ul>
-     </li></ol>
+<!--l. 5869-->
 <a 
- id="x1-69013r72"></a>
-<h4 class="subsectionHead"><span class="titlemark">11.8   </span> <a 
- id="x1-700008"></a>AppleInput Properties</h4>
-     <ol  class="enumerate1" >
-     <li 
-  class="enumerate" id="x1-70002x1">AppleEvent<br 
-class="newline" />Type: plist string<br 
-class="newline" />Failsafe: Auto<br 
-class="newline" />Description: Determine whether OC builtin or OEM Apple Event protocol is used.
-     <!--l. 6229--><p class="noindent" >This  option  determines  whether  Apple’s  OEM  Apple  Event  protocol  is  used  (where  available),  or
-     whether  OpenCore’s  reversed  engineered  and  updated  re-implementation  is  used.  In  general  OpenCore’s
-     re-implementation should be preferred, since it contains updates such as noticeably improved fine mouse cursor
-     movement and configurable key repeat delays.
-</p>
-         <ul class="itemize1">
-         <li class="itemize">Auto — <span class="sout">Performs automatic choice of implementation . Because of optimisations used to achieve fast boot
-         times, this actually means that the OpenCore re-implementation will be found and used except in the
-         case that OpenCore was been explicitly selected and started (not just auto-booted) from Apple ’s boot
-         picker (where present). </span><span class="uwave">Use OEM Apple Event implementation if available, connected and recent enough to
-         be used, otherwise use OC reimplementation. On non-Apple hardware this will use the OpenCore builtin
-         implementation. On some Macs (e.g. classic Mac Pro) this will find the Apple implementation. On both
-         older and newer Macs than this, this option will always or often use the OC implementation. On older
-         Macs this is because the implementation available is too old to be used, on newer Macs it is because of
-         optimisations added by Apple which do not connect the Apple Event protocol except when needed – e.g.
-         except when the Apple boot picker is explicitly started. Due to its somewhat unpredicatable results, this
-         option is not normally recommended. </span>
-         </li>
-         <li class="itemize">Builtin —  <span class="sout">Use  </span><span class="uwave">Always  use  </span>OpenCore’s  updated  re-implementation  of  the  Apple  Event  protocol.
-         <span class="sout">Recommended</span><span class="uwave">Use of this setting is recommended even on Apple hardware, due to improvements (better
-         fine mouse control, configurable key delays) made in the OC re-implementation of the protocol</span>.
-         </li>
-         <li class="itemize">OEM —  Assume  Apple’s  protocol  will  be  available  at  driver  connection.  <span class="sout">This  results  in  Apple  ’s
-         implementation being reliably used on Apple systems. It results </span><span class="uwave">On all Apple hardware where a recent
-         enough Apple OEM version of the protocol is available – whether or not connected automatically by Apple’s
-         firmware – this option will reliably access the Apple implementation. On all other systems, this option will
-         result </span>in no keyboard or mouse support<span class="sout">otherwise. </span><span class="uwave">. For the reasons stated, </span><span class="uwave">Builtin</span> <span class="uwave">is recommended in
-         preference to this option in most cases. </span></li></ul>
-                                                                                                  
-                                                                                                  
-     </li>
-     <li 
-  class="enumerate" id="x1-70004x2">CustomDelays<br 
-class="newline" />Type: plist <span class="sout">string</span><span class="uwave">boolean</span><br 
-class="newline" />Failsafe: <span class="sout">Auto</span><span class="uwave">false</span><br 
-class="newline" />Description: Enable custom key repeat delays <span class="sout">. </span><span class="uwave">when using the OpenCore implementation of the Apple Event protocol.
-     Has no effect when using the OEM Apple implementation (see </span><span class="uwave">AppleEvent</span> <span class="uwave">setting). </span>
-         <ul class="itemize1">
-         <li class="itemize"><span class="sout">Auto</span> <span class="sout">— Treated as </span><span class="sout">Enabled</span> <span class="sout">when </span><span class="sout">KeySupport</span> <span class="sout">is </span>true <span class="sout">and </span><span class="sout">Disabled</span> <span class="sout">otherwise. </span>
-         </li>
-         <li class="itemize"><span class="sout">Enabled</span> — The values <span class="uwave">of </span>KeyInitialDelay and KeySubsequentDelay are used.
-         </li>
-         <li class="itemize"><span class="sout">Disabled</span><span class="uwave">false</span> — Apple default values of 500ms (50) and 50ms (5) are used.</li></ul>
-     </li>
-     <li 
-  class="enumerate" id="x1-70006x3">KeyInitialDelay<br 
-class="newline" />Type: plist integer<br 
-class="newline" />Failsafe: <span class="sout">0</span><span class="uwave">50</span> (<span class="sout">no initial delay, immediate </span><span class="uwave">500ms before first key </span>repeat)<br 
-class="newline" />Description: <span class="sout">Configure initial keyboard repeat delay </span><span class="uwave">Configures the initial delay before keyboard key repeats </span>in
-     OpenCore implementation of Apple Event protocol, in units of 10ms.
-     <!--l. 6292--><p class="noindent" ><span class="sout">Configures the initial delay before key repeat. </span>The Apple OEM default value is 50 (500ms).
-     </p><!--l. 6294--><p class="noindent" >Note <span class="uwave">1</span>: <span class="sout">When </span><span class="uwave">On systems not </span>using KeySupport, <span class="uwave">this setting may be freely used to configure key repeat behaviour.
-     </span>
-     </p><!--l. 6298--><p class="noindent" ><span class="uwave">Note 2</span><span class="uwave">: On systems using </span><span class="uwave">KeySupport</span><span class="uwave">, but which do not show the ‘two long delays’ behavior (see Note 3) and/or which
-     always show a solid ‘set default’ indicator (see </span><span class="uwave">KeyForgetThreshold</span><span class="uwave">) then this setting may also be freely used to
-     configure key repeat initial delay behaviour, except that it should never be set to less than </span><span class="uwave">KeyForgetThreshold</span> <span class="uwave">to avoid
-     uncontrolled key repeats. </span>
-     </p><!--l. 6305--><p class="noindent" ><span class="uwave">Note 3</span><span class="uwave">: On some systems using </span><span class="uwave">KeySupport</span><span class="uwave">, </span>you may find that you <span class="sout">get an </span><span class="uwave">see one </span>additional slow key repeat before
-     normal speed key repeat starts<span class="uwave">, when holding a key down</span>. If so, <span class="sout">your initial key repeat delay is being driven by your
-     BIOS firmware and cannot be overriden by OC (due to technical limitations of how </span><span class="sout">KeySupport</span> <span class="sout">works, to derive raw key
-     data from the non-raw key data which is all that UEFI makes available). To avoid this minor but undesired effect of two
-     long repeats, you can simply cancel the second, Apple Event, repeat by setting </span><span class="sout">KeyInitialDelay</span> <span class="sout">to </span><span class="uwave">you may wish to
-     configure </span><span class="sout">0</span><span class="uwave">KeyInitialDelay</span> <span class="sout">. When doing this you should also set </span><span class="uwave">and </span>KeySubsequentDelay <span class="sout">to at least the
-     value of your </span><span class="sout">KeyForgetThreshold</span> <span class="sout">setting (see more information in the </span><span class="uwave">according to the instructions
-     at Note 3 of </span>KeySubsequentDelay<span class="sout">setting). The instructions in this note only apply on systems using
-     </span><span class="sout">KeySupport</span>.
-     </p></li>
-     <li 
-  class="enumerate" id="x1-70008x4">KeySubsequentDelay<br 
-class="newline" />Type: plist integer<br 
-class="newline" />Failsafe: <span class="sout">1</span><span class="uwave">5</span> <span class="uwave">(50ms between subsequent key repeats)</span><br 
-class="newline" />Description: <span class="sout">Configure subsequent keyboard repeat delay </span><span class="uwave">Configures the gap between keyboard key repeats </span>in
-     OpenCore implementation of Apple Event protocol, in units of 10ms.
-     <!--l. 6330--><p class="noindent" ><span class="sout">Configures the gap between key repeats. </span>The Apple OEM default value is 5 (50ms). 0 is an invalid value for this option
-     <span class="uwave">(will issue a debug log warning and use </span><span class="uwave">1</span> <span class="uwave">instead)</span>.
-     </p><!--l. 6333--><p class="noindent" >Note <span class="uwave">1</span>: <span class="sout">When </span><span class="uwave">On systems not </span>using KeySupport, <span class="uwave">this setting may be freely used to configure key repeat behaviour.
-     </span>
-     </p><!--l. 6337--><p class="noindent" ><span class="uwave">Note 2</span><span class="uwave">: On systems using </span><span class="uwave">KeySupport</span><span class="uwave">, but which do not show the ‘two long delays’ behaviour (see Note 3) and/or which
-     always show a solid ‘set default’ indicator (see </span><span class="uwave">KeyForgetThreshold</span><span class="uwave">) (which should apply to many/most systems using
-     </span><span class="uwave">AMI</span> <span class="uwave">KeySupport</span> <span class="uwave">mode) then this setting may be freely used to configure key repeat subsequent delay behaviour,
-     except that it should never be set to less than </span><span class="uwave">KeyForgetThreshold</span> <span class="uwave">to avoid uncontrolled key repeats.
-     </span>
-     </p><!--l. 6345--><p class="noindent" ><span class="uwave">Note 3</span><span class="uwave">: On some systems using </span><span class="uwave">KeySupport</span><span class="uwave">, particularly </span><span class="uwave">KeySupport</span> <span class="uwave">in non-</span><span class="uwave">AMI</span> <span class="uwave">mode, </span>you may find that <span class="uwave">after
-     configuring </span><span class="uwave">KeyForgetThreshold</span> you get one additional slow key repeat before normal speed key repeat starts<span class="sout">. If so, set
-     </span><span class="uwave">, when holding a key down. On systems where this is the case, it is an unavoidable artefect of using </span><span class="uwave">KeySupport</span> <span class="uwave">to
-                                                                                                  
-                                                                                                  
-     emulate raw keyboard data, which is not made available by UEFI. While this ‘two long delays’ issue has minimal
-     effect on overall usability, nevertheless you may wish to resolve it, and it is possible to do so as follows:
-     </span></p>
-         <ul class="itemize1">
-         <li class="itemize"><span class="uwave">Set </span><span class="uwave">CustomDelays</span> <span class="uwave">to </span><span class="uwave">true</span>
-         </li>
-         <li class="itemize"><span class="uwave">Set </span>KeyInitialDelay to 0 <span class="sout">and set </span>
-         </li>
-         <li class="itemize"><span class="uwave">Set </span>KeySubsequentDelay to at least the value of your KeyForgetThreshold setting <span class="sout">. The reason for this is
-         that the key-smoothing </span></li></ul>
-     <!--l. 6359--><p class="noindent" ><span class="uwave">The above procedure works as follows: </span></p>
-         <ul class="itemize1">
-         <li class="itemize"><span class="uwave">Setting </span><span class="uwave">KeyInitialDelay</span> <span class="uwave">to </span><span class="uwave">0</span> <span class="uwave">cancels the Apple Event initial repeat delay (when using the OC builtin
-         Apple Event implementation with </span><span class="uwave">CustomDelays</span> <span class="uwave">enabled), therefore the only long delay you will see is the
-         the non-configurable and non-avoidable initial long delay introduced by the BIOS key support on these
-         machines. </span>
-         </li>
-         <li class="itemize"><span class="uwave">Key-smoothing </span>parameter KeyForgetThreshold effectively acts as the shortest time for which a key can
-         appear to be held, therefore a key repeat delay <span class="uwave">of </span>less than this will guarantee at least one extra repeat for
-         every key press, however quickly the key is physically tapped. <span class="sout">(</span>
-         </li>
-         <li class="itemize">In   the   unlikely   event   that   you   still   get   frequent,   or   occasional,   double   key   responses   after
-         setting  KeySubsequentDelay equal  to  your  system’s  value  of  KeyForgetThreshold,  then  increase
-         KeySubsequentDelay by one or two more until this effect goes away<span class="sout">- for greatest keyboard responsiveness,
-         use the lowest value which avoids multiple keypresses. ) The instructions in this note only apply on systems
-         using </span><span class="sout">KeySupport</span>.</li></ul>
-     </li>
-     <li 
-  class="enumerate" id="x1-70010x5">PointerSpeedDiv<br 
-class="newline" />Type: plist integer<br 
-class="newline" />Failsafe: 1<span class="sout">)</span><br 
-class="newline" />Description: Configure pointer speed divisor in OpenCore implementation of Apple Event protocol. <span class="uwave">Has no effect when
-     using the OEM Apple implementation (see </span><span class="uwave">AppleEvent</span> <span class="uwave">setting). </span>
-     <!--l. 6388--><p class="noindent" >Configures the divisor for pointer movements. The Apple OEM default value is 1. 0 is an invalid value for this
-     option.
-     </p><!--l. 6391--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: The recommended value for this option is </span><span class="uwave">1</span><span class="uwave">. This value may optionally be modified in combination
-     with </span><span class="uwave">PointerSpeedMul</span><span class="uwave">, according to user preference, to achieve customised mouse movement scaling.
-     </span>
-     </p></li>
-     <li 
-  class="enumerate" id="x1-70012x6">PointerSpeedMul<br 
-class="newline" />Type: plist integer<br 
-class="newline" />Failsafe: <span class="sout">0</span><span class="uwave">1</span><span class="sout">)</span><br 
-class="newline" />Description: Configure pointer speed multiplier in OpenCore implementation of Apple Event protocol. <span class="uwave">Has no effect
-     when using the OEM Apple implementation (see </span><span class="uwave">AppleEvent</span> <span class="uwave">setting). </span>
-     <!--l. 6405--><p class="noindent" >Configures the multiplier for pointer movements. The Apple OEM default value is 1.
-     </p><!--l. 6407--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: The recommended value for this option is </span><span class="uwave">1</span><span class="uwave">. This value may optionally be modified in combination
-     with </span><span class="uwave">PointerSpeedDiv</span><span class="uwave">, according to user preference, to achieve customised mouse movement scaling.
-     </span>
-</p>
-     </li></ol>
+ id="x1-65001r3"></a>
 <a 
- id="x1-70013r73"></a>
-                                                                                                  
-                                                                                                  
-     </p><table 
-class="align-star">
-                 <tr><td 
-class="align-odd">RawV olume</td>                 <td 
-class="align-even"> = MIN(<img 
-src="Differences3x.png" alt="SystemAudioV  olume ∗ VolumeAmplif ier
-----------------100-----------------"  class="frac" align="middle" />,100)</td>                 <td 
-class="align-label"></td>                 <td 
-class="align-label"></td></tr></table>
-     <!--l. 6543--><p class="noindent" >Note: the transformation used in macOS is not linear, but it is very close and this nuance is thus ignored.
+ id="x1-65002"></a>
+<div class="lstlisting" id="listing-16"><span class="label"><a 
+ id="x1-65003r1"></a></span>sudo bless --verbose --file /Volumes/VOLNAME/DIR/OpenShell.efi \ <br /><span class="label"><a 
+ id="x1-65004r2"></a></span>  --folder /Volumes/VOLNAME/DIR/ --setBoot
+<figcaption class="caption" ><span class="id">Listing 3:</span><span  
+class="content">Blessing tool</span></figcaption><!--tex4ht:label?: x1-65001r -->
+</div>
+<!--l. 5874--><p class="noindent" >Note 1: /System/Library/CoreServices/BridgeVersion.bin should be copied to /Volumes/VOLNAME/DIR.
+<br 
+class="newline" />Note 2: To be able to use the bless command, <a 
+href="https://developer.apple.com/library/archive/documentation/Security/Conceptual/System_Integrity_Protection_Guide/ConfiguringSystemIntegrityProtection/ConfiguringSystemIntegrityProtection.html" >disabling System Integrity Protection</a> is necessary. <br 
+class="newline" />Note 3: To be able to boot <a 
+href="https://support.apple.com/HT208330" >Secure Boot</a> might be disabled if present.
+</p><!--l. 5881--><p class="noindent" >Some of the known tools are listed below (builtin tools are marked with *):
 </p>
-     </li></ol>
+<div class="tabular"> <table id="TBL-5" class="tabular" 
+ 
+><colgroup id="TBL-5-1g"><col 
+id="TBL-5-1" /><col 
+id="TBL-5-2" /></colgroup><tr  
+ style="vertical-align:baseline;" id="TBL-5-1-"><td  style="white-space:normal; text-align:left;" id="TBL-5-1-1"  
+class="td11"><!--l. 5884--><p class="noindent" ><a 
+href="https://github.com/acidanthera/OpenCorePkg" >BootKicker</a>*         </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-1-2"  
+class="td11"><!--l. 5885--><p class="noindent" >Enter Apple BootPicker menu (exclusive for Macs with compatible GPUs).                      </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-2-"><td  style="white-space:normal; text-align:left;" id="TBL-5-2-1"  
+class="td11"><!--l. 5886--><p class="noindent" ><a 
+href="https://github.com/acidanthera/OpenCorePkg" >ChipTune</a>*             </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-2-2"  
+class="td11"><!--l. 5887--><p class="noindent" >Test BeepGen protocol and generate audio signals of different style and length.                </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-3-"><td  style="white-space:normal; text-align:left;" id="TBL-5-3-1"  
+class="td11"><!--l. 5888--><p class="noindent" ><a 
+href="https://github.com/acidanthera/OpenCorePkg" >CleanNvram</a>*          </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-3-2"  
+class="td11"><!--l. 5889--><p class="noindent" >Reset NVRAM alternative bundled as a standalone tool.                                              </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-4-"><td  style="white-space:normal; text-align:left;" id="TBL-5-4-1"  
+class="td11"><!--l. 5890--><p class="noindent" ><a 
+href="https://github.com/acidanthera/OpenCorePkg" >GopStop</a>*              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-4-2"  
+class="td11"><!--l. 5891--><p class="noindent" >Test GraphicsOutput protocol with a <a 
+href="https://github.com/acidanthera/OpenCorePkg/tree/master/Application/GopStop" >simple scenario</a>.                                                  </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-5-"><td  style="white-space:normal; text-align:left;" id="TBL-5-5-1"  
+class="td11"><!--l. 5893--><p class="noindent" ><a 
+href="https://github.com/acidanthera/OpenCorePkg" >KeyTester</a>*            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-5-2"  
+class="td11"><!--l. 5894--><p class="noindent" >Test keyboard input in SimpleText mode.                                                                 </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-6-"><td  style="white-space:normal; text-align:left;" id="TBL-5-6-1"  
+class="td11"><!--l. 5895--><p class="noindent" ><a 
+href="https://www.memtest86.com" >MemTest86</a>          </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-6-2"  
+class="td11"><!--l. 5896--><p class="noindent" >Memory testing utility.                                                                                          </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-7-"><td  style="white-space:normal; text-align:left;" id="TBL-5-7-1"  
+class="td11"><!--l. 5897--><p class="noindent" ><a 
+href="https://github.com/acidanthera/OpenCorePkg" >OpenControl</a>*         </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-7-2"  
+class="td11"><!--l. 5898--><p class="noindent" >Unlock and lock back NVRAM protection for other tools to be able to get full NVRAM
+access when launching from OpenCore.                                                                     </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-8-"><td  style="white-space:normal; text-align:left;" id="TBL-5-8-1"  
+class="td11"><!--l. 5900--><p class="noindent" ><a 
+href="https://github.com/acidanthera/OpenCorePkg" >OpenShell</a>*            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-8-2"  
+class="td11"><!--l. 5901--><p class="noindent" >OpenCore-configured <a 
+href="http://github.com/tianocore/edk2" >UEFI Shell</a> for compatibility with a broad range of firmware.          </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-9-"><td  style="white-space:normal; text-align:left;" id="TBL-5-9-1"  
+class="td11"><!--l. 5903--><p class="noindent" ><a 
+href="https://github.com/acidanthera/OpenCorePkg" >PavpProvision</a>      </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-9-2"  
+class="td11"><!--l. 5904--><p class="noindent" >Perform EPID provisioning (requires certificate data configuration).                               </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-10-"><td  style="white-space:normal; text-align:left;" id="TBL-5-10-1"  
+class="td11"><!--l. 5905--><p class="noindent" ><a 
+href="https://github.com/acidanthera/OpenCorePkg" >ResetSystem</a>*         </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-10-2"  
+class="td11"><!--l. 5906--><p class="noindent" >Utility               to               perform               system               reset.               Takes
+reset type as an argument: <span class="sout">ColdReset</span><span class="uwave">coldreset</span>, <span class="sout">Firmware</span><span class="uwave">firmware</span>, <span class="sout">Shutdown</span><span class="uwave">shutdown</span>,
+<span class="sout">WarmReset</span><span class="uwave">warmreset</span>. Defaults to <span class="sout">ColdReset</span><span class="uwave">coldreset</span>.                                             </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-11-"><td  style="white-space:normal; text-align:left;" id="TBL-5-11-1"  
+class="td11"><!--l. 5909--><p class="noindent" ><a 
+href="https://github.com/acidanthera/OpenCorePkg" >RtcRw</a>*                 </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-11-2"  
+class="td11"><!--l. 5910--><p class="noindent" >Utility to read and write RTC (CMOS) memory.                                                        </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-12-"><td  style="white-space:normal; text-align:left;" id="TBL-5-12-1"  
+class="td11"><!--l. 5911--><p class="noindent" ><a 
+href="https://github.com/acidanthera/OpenCorePkg" >ControlMsrE2</a>*       </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-12-2"  
+class="td11"><!--l. 5912--><p class="noindent" >Check CFG Lock (MSR 0xE2 write protection) consistency across all cores and change such
+hidden options on selected platforms.                                                                       </p></td>
+</tr></table></div>
 <a 
- id="x1-71019r74"></a>
-<h4 class="subsectionHead"><span class="titlemark">11.10   </span> <a 
- id="x1-7200010"></a>Input Properties</h4>
-     <ol  class="enumerate1" >
-     <li 
-  class="enumerate" id="x1-72002x1">KeyFiltering<br 
-class="newline" />Type: plist boolean<br 
-class="newline" />Failsafe: false<br 
-class="newline" />Description: Enable keyboard input sanity checking.
-     <!--l. 6558--><p class="noindent" >Apparently some boards such as the GA Z77P-D3 may return uninitialised data in EFI_INPUT_KEY with all input
-     protocols. This option discards keys that are neither ASCII, nor are defined in the UEFI specification (see tables
-     107 and 108 in version 2.8).
-     </p></li>
-     <li 
-  class="enumerate" id="x1-72004x2">KeyForgetThreshold<br 
-class="newline" />Type: plist integer<br 
-class="newline" />Failsafe: 0<br 
-class="newline" />Description: Treat duplicate key presses as held keys if they arrive during this timeout, in 10 ms units. Only
-     applies to systems using KeySupport.
-     <!--l. 6570--><p class="noindent" >AppleKeyMapAggregator protocol is supposed to contain a fixed length buffer of currently pressed keys. However,
-     the  majority  of  the  drivers  which  require  KeySupport report  key  presses  as  interrupts,  with  automatically
-     generated key repeat behaviour with some defined initial and subsequent delay. As a result, to emulate the raw
-     key behaviour required by several Apple boot systems, we use a timeout to merge multiple repeated keys which
-     are submitted within a small timeout window.
-     </p><!--l. 6578--><p class="noindent" >This option allows setting this timeout based on the platform. The recommended value for the majority of
-     platforms is from 5 (50 milliseconds) to 7 (70 milliseconds), although values up to 9 (90 milliseconds) have been
-     observed to be required on some PS/2 systems. For reference, holding a key on VMware will repeat roughly
-     every 20 milliseconds and the equivalent value for APTIO V is 30-40 milliseconds. KeyForgetThreshold should
-     be configured to be longer than this. Thus, it is possible to configure a lower KeyForgetThreshold value on
-     platforms with a faster native driver key repeat rate, for more responsive input, and it is required to set a higher
-     value on slower platforms.
-     </p><!--l. 6589--><p class="noindent" >Pressing keys one after the other results in delays of at least 60 and 100 milliseconds for the same platforms.
-     Ideally, KeyForgetThreshold should remain lower than this value, to avoid merging real key presses.
-     </p><!--l. 6593--><p class="noindent" ><span class="sout">Note</span><span class="sout">: If you wish to fine tune this value , a good heuristic is to </span><span class="uwave">Tuning the value of </span><span class="uwave">KeyForgetThreshold</span> <span class="uwave">is
-     necessary for accurate and responsive keyboard input on systems on which </span><span class="uwave">KeySupport</span> <span class="uwave">is enabled, and it is
-     recommended to follow the instructions below to tune it correctly for your system. </span>
-     </p><!--l. 6600--><p class="noindent" ><span class="uwave">Note 1</span><span class="uwave">: To tune </span><span class="uwave">KeyForgetThreshold</span><span class="uwave">, you may </span>use the ‘set default’ indicator within either OpenCanopy or the
-     builtin picker. <span class="sout">When </span><span class="uwave">If </span>KeyForgetThreshold is <span class="sout">configured correctly, this indicator should </span><span class="uwave">too low then the ‘set
-     default’ indicator will continue to flicker while </span><span class="uwave">CTRL</span> <span class="uwave">or </span><span class="uwave">=/+</span> <span class="uwave">is held down. You should configure the lowest value
-     which avoids this flicker. On some systems (e.g. Aptio IV and potentially other systems using </span><span class="uwave">AMI</span> <span class="uwave">KeySupport</span>
-     <span class="uwave">mode) you will be able to find a minimum </span><span class="uwave">KeyForgetThreshold</span> <span class="uwave">value at which the ‘set default’ indicator goes on
-                                                                                                  
-                                                                                                  
-     and stays on with no flicker at all - if so, use this value. On most other systems using </span><span class="uwave">KeySupport</span><span class="uwave">, you will find
-     that the ‘set default’ indicator will </span>flicker once, when first pressing and holding the CTRL or =/+ key, and then
-     after a further very brief interval <span class="sout">should </span><span class="uwave">will </span>go on and stay on. <span class="sout">(The initial flicker </span><span class="uwave">On such systems, you should
-     chose the lowest value of </span><span class="uwave">KeyForgetThreshold</span> <span class="uwave">at which you see only one initial flicker and then no subsequent
-     flickering. (Where this happens, it </span>is an unavoidable <span class="sout">artefact </span><span class="uwave">artefect on those systems </span>of using KeySupport to
-     emulate raw keyboard data<span class="sout">.) If </span><span class="uwave">, which is not made available by UEFI.) </span>
-     </p><!--l. 6620--><p class="noindent" ><span class="uwave">Note 2</span><span class="uwave">: </span>KeyForgetThreshold <span class="sout">is configured too low for the system, then </span><span class="uwave">should never need to be more than about
-     </span><span class="uwave">9</span> <span class="uwave">or </span><span class="uwave">10</span> <span class="uwave">at most. If it is set to a value much higher than this, it will result in noticeably unresponsive keyboard
-     input. Therefore, for overall key responsiveness, it is strongly recommended to configure a relatively lower value,
-     at which </span>the ‘set default’ indicator <span class="sout">will continue to flickerwhile </span><span class="sout">CTRL</span> <span class="sout">or </span><span class="sout">=/+</span> <span class="sout">is held. Configure the lowest value
-     which causes this indicator to go on and stay on after the first initial flicker </span><span class="uwave">flickers once and then does not
-     flicker, rather than using a much higher value (i.e. significantly greater than </span><span class="uwave">10</span><span class="uwave">), which you may be able to find
-     but should not use, where the ‘set default’ indicator does not flicker at all</span>.
-     </p></li>
-     <li 
-  class="enumerate" id="x1-72006x3">KeySupport<br 
-class="newline" />Type: plist boolean<br 
-class="newline" />Failsafe: false<br 
-class="newline" />Description: Enable internal keyboard input translation to AppleKeyMapAggregator protocol.
-     <!--l. 6639--><p class="noindent" >This option activates the internal keyboard interceptor driver, based on AppleGenericInput, also known as
-     AptioInputFix, to fill the AppleKeyMapAggregator database for input functioning. In cases where a separate
-     driver such as OpenUsbKbDxe is used, this option should never be enabled. Additionally, this option is not required
-     and should not be enabled with Apple firmware.
-     </p></li>
-     <li 
-  class="enumerate" id="x1-72008x4">KeySupportMode<br 
-class="newline" />Type: plist string<br 
-class="newline" />Failsafe: Auto<br 
-class="newline" />Description: Set internal keyboard input translation to AppleKeyMapAggregator protocol mode.
-         <ul class="itemize1">
-         <li class="itemize">Auto — Performs automatic choice as available with the following preference: AMI, V2, V1.
-         </li>
-         <li class="itemize">V1 — Uses UEFI standard legacy input protocol EFI_SIMPLE_TEXT_INPUT_PROTOCOL.
-         </li>
-         <li class="itemize">V2 — Uses UEFI standard modern input protocol EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL.
-         </li>
-         <li class="itemize">AMI — Uses APTIO input protocol AMI_EFIKEYCODE_PROTOCOL.</li></ul>
-     <!--l. 6661--><p class="noindent" >Note: Currently V1, V2, and AMI unlike Auto only do filtering of the particular specified protocol. This may change in the
-     future versions.
-     </p></li>
-     <li 
-  class="enumerate" id="x1-72010x5">KeySwap<br 
-class="newline" />Type: plist boolean<br 
-class="newline" />Failsafe: false<br 
-class="newline" />Description: Swap Command and Option keys during submission.
-     <!--l. 6670--><p class="noindent" >This option may be useful for keyboard layouts with Option key situated to the right of Command key.
-     </p></li>
-     <li 
-  class="enumerate" id="x1-72012x6">PointerSupport<br 
-class="newline" />Type: plist boolean<br 
-class="newline" />Failsafe: false<br 
-class="newline" />Description: Enable internal pointer driver.
-     <!--l. 6679--><p class="noindent" >This option implements standard UEFI pointer protocol (EFI_SIMPLE_POINTER_PROTOCOL) through certain
-     OEM protocols. The option may be useful on Z87 ASUS boards, where EFI_SIMPLE_POINTER_PROTOCOL is
-     defective.
-     </p></li>
+ id="x1-65005r67"></a>
+<h4 class="subsectionHead"><span class="titlemark">11.4   </span> <a 
+ id="x1-660004"></a>OpenCanopy</h4>
+<!--l. 5918--><p class="noindent" >OpenCanopy is a graphical OpenCore user interface that runs in External PickerMode and relies on <a 
+href="https://github.com/acidanthera/OpenCorePkg" >OpenCorePkg</a>
+OcBootManagementLib similar to the builtin text interface.
+</p><!--l. 5923--><p class="noindent" >OpenCanopy requires graphical resources located in Resources directory to run. Sample resources (fonts and
+images) can be found in <a 
+href="https://github.com/acidanthera/OcBinaryData" >OcBinaryData repository</a>. Customised icons can be found over the internet (e.g. <a 
+href="https://github.com/blackosx/OpenCanopyIcons" >here</a> or
+<a 
+href="https://applelife.ru/threads/kastomizacija-opencanopy.2945020/" >there</a>).
+</p><!--l. 5928--><p class="noindent" >OpenCanopy provides full support for PickerAttributes and offers a configurable builtin icon set. The default chosen icon set
+depends on the DefaultBackgroundColor variable value. For Light Gray Old icon set will be used, for other colours — the one
+without a prefix.
+</p><!--l. 5933--><p class="noindent" >Predefined icons are saved in the \EFI\OC\Resources\Image directory. A full list of supported icons (in .icns format) is
+provided below. When optional icons are missing, the closest available icon will be used. External entries will use Ext-prefixed
+icon if available (e.g. OldExtHardDrive.icns).
+</p><!--l. 5939--><p class="noindent" >Note: In the following all dimensions are normative for the 1x scaling level and shall be scaled accordingly for other
+levels.
+</p>
+     <ul class="itemize1">
+     <li class="itemize">Cursor — Mouse cursor (mandatory, up to 144x144).
                                                                                                   
                                                                                                   
      
@@ -548,10 +384,55 @@ class="newline" />Description: Enable internal pointer driver.
      
       
      
+     
       
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+            
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
       
                                                                                                   
                                                                                                   
+     
+     
+      
      
      
       
@@ -570,7 +451,8 @@ class="newline" />Description: Enable internal pointer driver.
      
      
       
-     
-     
-     </body>
+                                                                                                  
+
+
+</body>
 </html>
