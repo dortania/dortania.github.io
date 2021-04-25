@@ -1,0 +1,458 @@
+<!DOCTYPE html> 
+<html lang="en-US" xml:lang="en-US" > 
+<head><title>Differences</title> 
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="Differences.css" /> 
+<meta name="src" content="Differences.tex" /> 
+<link rel="stylesheet" type="text/css" href="../main.css" /></head><body 
+><div class="center" 
+>
+<!--l. 142--><p class="noindent" >
+</p><!--l. 149--><p class="noindent" > <img 
+src="Logos/Logo-.png" alt="PIC"  
+width="160" height="160"  />
+</p><!--l. 153--><p class="noindent" >OpenCore
+</p><!--l. 157--><p class="noindent" >Reference Manual (0.6<span class="sout">.8</span><span class="uwave">.9</span>)
+</p><!--l. 161--><p class="noindent" >[2021.04.25]
+</p><!--l. 169--><p class="noindent" >Copyright ©2018-2021 vit9696
+</p>
+</div>
+                                                                                                  
+                                                                                                  
+<!--l. 630--><p class="noindent" >Note: It is not guaranteed that paths longer than OC_STORAGE_SAFE_PATH_MAX (128 characters including the
+<br 
+class="newline" />0-terminator) will be accessible within OpenCore.
+<a 
+ id="x1-9001r9"></a>
+</p>
+<h4 class="subsectionHead"><span class="titlemark">3.2   </span> <a 
+ id="x1-100002"></a>Installation and Upgrade</h4>
+<!--l. 636--><p class="noindent" >To install OpenCore, replicate the ?? described in the previous section in the EFI volume of a GPT partition. While
+corresponding sections of this document provide some information regarding external resources such as ACPI tables, UEFI
+drivers, or kernel extensions (kexts), completeness of the matter is out of the scope of this document. Information about kernel
+extensions may be found in a separate <a 
+href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Kexts.md" >Kext List</a> document available in the OpenCore repository. Vaulting information is
+provided in the ?? section of this document.
+</p><!--l. 648--><p class="noindent" >The OC config file, as with any property list file, can be edited with any text editor, such as nano or vim. However, specialised
+software may provide a better experience. On macOS, the preferred GUI application is <a 
+href="https://developer.apple.com/xcode" >Xcode</a>. For a lightweight cross-platform
+and open-source alternative, the <a 
+href="https://github.com/corpnewt/ProperTree" >ProperTree</a> editor can be utilised.
+</p><!--l. 662--><p class="noindent" ><span class="uwave">It is strongly advised not to use any software that is aware of the internal configration structure as it constantly gets out of
+date and will cause incorrect configuration to be generated. If it is a must desprite the warning one should make sure to only
+use stable versions of OpenCore with explicit support for the particular version in the app. The choice of open-source
+implementations with transparent binary generation is encouraged (e.g. </span><a 
+href="https://github.com/ic005k/QtOpenCoreConfig" ><span class="uwave">OCAT</span></a><span class="uwave">), since other tools may contain malware.
+Remember that a configuration made for a different hardware setup shall never be used on another hardware setup.
+</span>
+</p><!--l. 668--><p class="noindent" >For BIOS booting, a third-party UEFI environment provider is required and OpenDuetPkg is one such UEFI environment
+provider for legacy systems. To run OpenCore on such a legacy system, OpenDuetPkg can be installed with a dedicated tool —
+BootInstall (bundled with OpenCore). <a 
+href="https://github.com/corpnewt/gibMacOS" >Third-party utilities</a> can be used to perform this on systems other than
+macOS.
+</p><!--l. 675--><p class="noindent" >For upgrade purposes, refer to the Differences.pdf document which provides information about changes to the configuration
+(as compared to the previous release) as well as to the Changelog.md document (which contains a list of modifications across
+all published updates).
+<a 
+ id="x1-10001r10"></a>
+</p>
+<h4 class="subsectionHead"><span class="titlemark">3.3   </span> <a 
+ id="x1-110003"></a>Contribution</h4>
+<!--l. 682--><p class="noindent" >OpenCore can be compiled as a standard <a 
+href="https://github.com/tianocore/tianocore.github.io/wiki/EDK-II" >EDK II</a> package and requires the <a 
+href="https://github.com/tianocore/tianocore.github.io/wiki/EDK-II#stable-tags" >EDK II Stable</a> package. The currently supported
+EDK II release is hosted in <a 
+href="https://github.com/acidanthera/audk" >acidanthera/audk</a>. Required patches for this package can be found in the Patches
+directory.
+</p><!--l. 690--><p class="noindent" >The only officially supported toolchain is XCODE5. Other toolchains might work but are neither supported nor recommended.
+Contributions of clean patches are welcome. Please do follow <a 
+href="https://github.com/tianocore/tianocore.github.io/wiki/Code-Style-C" >EDK II C Codestyle</a>.
+</p><!--l. 695--><p class="noindent" >To compile with XCODE5, besides <a 
+href="https://developer.apple.com/xcode" >Xcode</a>, users should also install <a 
+href="https://www.nasm.us" >NASM</a> and <a 
+href="https://github.com/acidanthera/ocbuild/tree/master/external" >MTOC</a>. The latest Xcode version is recommended
+for use despite the toolchain name. An example command sequence is as follows:
+</p>
+<!--l. 701-->
+<a 
+ id="x1-11001r1"></a>
+<a 
+ id="x1-11002"></a>
+<div class="lstlisting" id="listing-1"><span class="label"><a 
+ id="x1-11003r1"></a></span>git clone --depth=1 https://github.com/acidanthera/audk UDK <br /><span class="label"><a 
+ id="x1-11004r2"></a></span>cd UDK <br /><span class="label"><a 
+ id="x1-11005r3"></a></span>git submodule update --init --recommend-shallow <br /><span class="label"><a 
+ id="x1-11006r4"></a></span>git clone --depth=1 https://github.com/acidanthera/OpenCorePkg <br /><span class="label"><a 
+ id="x1-11007r5"></a></span>source edksetup.sh <br /><span class="label"><a 
+ id="x1-11008r6"></a></span>make -C BaseTools <br /><span class="label"><a 
+ id="x1-11009r7"></a></span>build -a X64 -b RELEASE -t XCODE5 -p OpenCorePkg/OpenCorePkg.dsc
+<figcaption class="caption" ><span class="id">Listing 1:</span><span  
+class="content">Compilation Commands</span></figcaption><!--tex4ht:label?: x1-11001r -->
+</div>
+<!--l. 711--><p class="noindent" >For IDE usage Xcode projects are available in the root of the repositories. Another approach could be <a 
+href="https://www.sublimetext.com" >Sublime Text</a> with
+<a 
+href="https://niosus.github.io/EasyClangComplete" >EasyClangComplete</a> plugin. Add .clang_complete file with similar content to the UDK root:
+</p>
+<!--l. 717-->
+                                                                                                  
+                                                                                                  
+<a 
+ id="x1-11010r2"></a>
+<a 
+ id="x1-11011"></a>
+<div class="lstlisting" id="listing-2"><span class="label"><a 
+ id="x1-11012r1"></a></span>-I/UefiPackages/MdePkg <br /><span class="label"><a 
+ id="x1-11013r2"></a></span>-I/UefiPackages/MdePkg/Include <br /><span class="label"><a 
+ id="x1-11014r3"></a></span>-I/UefiPackages/MdePkg/Include/X64 <br /><span class="label"><a 
+ id="x1-11015r4"></a></span>-I/UefiPackages/MdeModulePkg <br /><span class="label"><a 
+ id="x1-11016r5"></a></span>-I/UefiPackages/MdeModulePkg/Include <br /><span class="label"><a 
+ id="x1-11017r6"></a></span>-I/UefiPackages/MdeModulePkg/Include/X64 <br /><span class="label"><a 
+ id="x1-11018r7"></a></span>-I/UefiPackages/OpenCorePkg/Include/AMI <br /><span class="label"><a 
+ id="x1-11019r8"></a></span>-I/UefiPackages/OpenCorePkg/Include/Acidanthera <br /><span class="label"><a 
+ id="x1-11020r9"></a></span>-I/UefiPackages/OpenCorePkg/Include/Apple <br /><span class="label"><a 
+ id="x1-11021r10"></a></span>-I/UefiPackages/OpenCorePkg/Include/Apple/X64 <br /><span class="label"><a 
+ id="x1-11022r11"></a></span>-I/UefiPackages/OpenCorePkg/Include/Duet <br /><span class="label"><a 
+ id="x1-11023r12"></a></span>-I/UefiPackages/OpenCorePkg/Include/Generic <br /><span class="label"><a 
+ id="x1-11024r13"></a></span>-I/UefiPackages/OpenCorePkg/Include/Intel <br /><span class="label"><a 
+ id="x1-11025r14"></a></span>-I/UefiPackages/OpenCorePkg/Include/Microsoft <br /><span class="label"><a 
+ id="x1-11026r15"></a></span>-I/UefiPackages/OpenCorePkg/Include/Nvidia <br /><span class="label"><a 
+ id="x1-11027r16"></a></span>-I/UefiPackages/OpenCorePkg/Include/VMware <br /><span class="label"><a 
+ id="x1-11028r17"></a></span>-I/UefiPackages/OvmfPkg/Include <br /><span class="label"><a 
+ id="x1-11029r18"></a></span><span class="uwave">-</span><span class="uwave">I</span><span class="uwave">/</span><span class="uwave">Ue</span><span class="uwave">fi</span><span class="uwave">Packages</span><span class="uwave">/</span><span class="uwave">ShellPkg</span><span class="uwave">/</span><span class="uwave">Include</span> <br /><span class="label"><a 
+ id="x1-11030r19"></a></span>-I/UefiPackages/UefiCpuPkg/Include <br /><span class="label"><a 
+ id="x1-11031r20"></a></span>-IInclude <br /><span class="label"><a 
+ id="x1-11032r21"></a></span>-include <br /><span class="label"><a 
+ id="x1-11033r22"></a></span>/UefiPackages/MdePkg/Include/Uefi.h <br /><span class="label"><a 
+ id="x1-11034r23"></a></span>-fshort-wchar <br /><span class="label"><a 
+ id="x1-11035r24"></a></span>-Wall <br /><span class="label"><a 
+ id="x1-11036r25"></a></span>-Wextra <br /><span class="label"><a 
+ id="x1-11037r26"></a></span>-Wno-unused-parameter <br /><span class="label"><a 
+ id="x1-11038r27"></a></span>-Wno-missing-braces <br /><span class="label"><a 
+ id="x1-11039r28"></a></span>-Wno-missing-field-initializers <br /><span class="label"><a 
+ id="x1-11040r29"></a></span>-Wno-tautological-compare <br /><span class="label"><a 
+ id="x1-11041r30"></a></span>-Wno-sign-compare <br /><span class="label"><a 
+ id="x1-11042r31"></a></span>-Wno-varargs <br /><span class="label"><a 
+ id="x1-11043r32"></a></span>-Wno-unused-const-variable <br /><span class="label"><a 
+ id="x1-11044r33"></a></span>-DOC_TARGET_NOOPT=1 <br /><span class="label"><a 
+ id="x1-11045r34"></a></span>-DNO_MSABI_VA_FUNCS=1
+<figcaption class="caption" ><span class="id">Listing 2:</span><span  
+class="content">ECC Configuration</span></figcaption><!--tex4ht:label?: x1-11010r -->
+</div>
+<!--l. 755--><p class="noindent" >Warning: Tool developers modifying config.plist or any other OpenCore files must ensure that their tools check the
+opencore-version NVRAM variable (see the ?? section below) and warn users if the version listed is unsupported or
+prerelease. The OpenCore configuration may change across releases and such tools shall ensure that they carefully follow
+this document. Failure to do so may result in such tools being considered to be malware and blocked by any
+means.
+<a 
+ id="x1-11046r11"></a>
+</p>
+<h4 class="subsectionHead"><span class="titlemark">3.4   </span> <a 
+ id="x1-120004"></a>Coding conventions</h4>
+<!--l. 764--><p class="noindent" >As with any other project, we have conventions that we follow during development. All third-party contributors are advised to
+adhere to the conventions listed below before submitting patches. To minimise abortive work and the potential rejection of
+submissions, third-party contributors should initially raise issues to the <a 
+href="https://github.com/acidanthera/bugtracker" >Acidanthera Bugtracker</a> for feedback before submitting
+patches.
+</p><!--l. 771--><p class="noindent" >Organisation. The codebase is contained in the OpenCorePkg repository, which is the primary EDK II package.
+</p>
+     <ul class="itemize1">
+     <li class="itemize">Whenever changes are required in multiple repositories, separate pull requests should be sent to each.
+     </li>
+     <li class="itemize">Committing the changes should happen firstly to dependent repositories, secondly to primary repositories to
+     avoid automatic build errors.
+     </li>
+     <li class="itemize">Each unique commit should compile with XCODE5 and preferably with other toolchains. In the majority of the
+     cases it can be checked by accessing the <a 
+href="https://travis-ci.com/acidanthera" >CI interface</a>. Ensuring that static analysis finds no warnings is preferred.
+     </li>
+     <li class="itemize">External pull requests and tagged commits must be validated. That said, commits in master may build but may
+     not necessarily work.
+     </li>
+     <li class="itemize">Internal branches should be named as follows: author-name-date, e.g. vit9696-ballooning-20191026.
+     </li>
+     <li class="itemize">Commit messages should be prefixed with the primary module (e.g. library or code module) the changes were
+     made in. For example, OcGuardLib: Add OC_ALIGNED macro. For non-library changes Docs or Build prefixes
+     are used.</li></ul>
+<!--l. 792--><p class="noindent" >Design. The codebase is written in a subset of freestanding C11 (C17) supported by most modern toolchains used by EDK II.
+Applying common software development practices or requesting clarification is recommended if any particular case is not
+discussed below. </p>
+     <ul class="itemize1">
+     <li class="itemize">Never rely on undefined behaviour and try to avoid implementation defined behaviour unless explicitly covered
+     below (feel free to create an issue when a relevant case is not present).
+     </li>
+     <li class="itemize">Use OcGuardLib to ensure safe integral arithmetics avoiding overflows. Unsigned wraparound should be relied
+     on with care and reduced to the necessary amount.
+     </li>
+     <li class="itemize">Check  pointers  for  correct  alignment  with  OcGuardLib and  do  not  rely  on  the  architecture  being  able  to
+     dereference unaligned pointers.
+     </li>
+     <li class="itemize">Use flexible array members instead of zero-length or one-length arrays where necessary.
+     </li>
+                                                                                                  
+                                                                                                  
+         </p><!--l. 3274--><p class="noindent" >Note 2: Be aware that using a volume icon on any drive overrides the normal OpenCore picker behaviour for
+         that drive of selecting the appropriate icon depending on whether the drive is internal or external.
+         </p></li>
+         <li class="itemize">0x0002 — OC_ATTR_USE_DISK_LABEL_FILE, provides custom rendered titles for boot entries:
+             <ul class="itemize2">
+             <li class="itemize">.disk_label (.disk_label_2x) file near bootloader for all filesystems.
+             </li>
+             <li class="itemize">&#x003C;TOOL_NAME&#x003E;.lbl (&#x003C;TOOL_NAME&#x003E;.l2x) file near tool for Tools.</li></ul>
+         <!--l. 3285--><p class="noindent" >Prerendered labels can be generated via the disklabel utility or the bless command. When disabled
+         or missing text labels, (.contentDetails or .disk_label.contentDetails) are to be rendered
+         instead.
+         </p></li>
+         <li class="itemize">0x0004 — OC_ATTR_USE_GENERIC_LABEL_IMAGE, provides predefined label images for boot entries without custom
+         entries. This may however give less detail for the actual boot entry.
+         </li>
+         <li class="itemize">0x0008 — OC_ATTR_HIDE_THEMED_ICONS, prefers builtin icons for certain icon categories to match
+         the theme style. For example, this could force displaying the builtin Time Machine icon. Requires
+         OC_ATTR_USE_VOLUME_ICON.
+         </li>
+         <li class="itemize">0x0010 — OC_ATTR_USE_POINTER_CONTROL, enables pointer control in the OpenCore picker when available. For
+         example, this could make use of mouse or trackpad to control UI elements.
+         </li>
+         <li class="itemize">0x0020 — OC_ATTR_<span class="uwave">SHOW_</span>DEBUG_DISPLAY, enable display of additional timing and debug information, in Builtin
+         picker in DEBUG and NOOPT builds only.
+         </li>
+         <li class="itemize"><span class="uwave">0x0040</span> <span class="uwave">— </span><span class="uwave">OC_ATTR_USE_MINIMAL_UI</span><span class="uwave">, use minimal UI display, no Shutdown or Restart buttons, affects OpenCanopy
+         and builtin picker. </span></li></ul>
+     </li>
+     <li 
+  class="enumerate" id="x1-44014x7">PickerAudioAssist<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Enable screen reader by default in the OpenCore picker.
+     <!--l. 3310--><p class="noindent" >For the macOS bootloader, screen reader preference is set in the preferences.efires archive in the
+     isVOEnabled.int32 file and is controlled by the operating system. For OpenCore screen reader support,
+     this option is an independent equivalent. Toggling screen reader support in both the OpenCore picker
+     and the macOS bootloader FileVault 2 login window can also be done by using the Command + F5 key
+     combination.
+     </p><!--l. 3317--><p class="noindent" >Note: The screen reader requires working audio support. Refer to the ?? section for details.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-44016x8">PollAppleHotKeys<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Enable modifier hotkey handling in the OpenCore picker.
+     <!--l. 3326--><p class="noindent" >In addition to action hotkeys, which are partially described in the PickerMode section and are typically handled by
+     Apple BDS, modifier keys handled by the operating system bootloader (boot.efi) also exist. These keys allow changing
+     the behaviour of the operating system by providing different boot modes.
+     </p><!--l. 3331--><p class="noindent" >On certain firmware, using modifier keys may be problematic due to driver incompatibilities. To workaround this
+     problem, this option allows registering certain hotkeys in a more permissive manner from within the OpenCore
+     picker. Such extensions include support for tapping on key combinations before selecting the boot item,
+     and for reliable detection of the Shift key when selecting the boot item, in order to work around the
+     fact that hotkeys which are continuously held during boot cannot be reliably detected on many PS/2
+     keyboards.
+                                                                                                  
+                                                                                                  
+</p><!--l. 5860--><p class="noindent" >To boot into OpenShell or any other tool directly save OpenShell.efi under the name of EFI\BOOT\BOOTX64.EFI on a FAT32
+partition. It is typically unimportant whether the partition scheme is GPT or MBR.
+</p><!--l. 5865--><p class="noindent" >While the previous approach works both on Macs and other computers, an alternative Mac-only approach to bless the tool on
+an HFS+ or APFS volume:
+</p>
+<!--l. 5869-->
+<a 
+ id="x1-65001r3"></a>
+<a 
+ id="x1-65002"></a>
+<div class="lstlisting" id="listing-16"><span class="label"><a 
+ id="x1-65003r1"></a></span>sudo bless --verbose --file /Volumes/VOLNAME/DIR/OpenShell.efi \ <br /><span class="label"><a 
+ id="x1-65004r2"></a></span>  --folder /Volumes/VOLNAME/DIR/ --setBoot
+<figcaption class="caption" ><span class="id">Listing 3:</span><span  
+class="content">Blessing tool</span></figcaption><!--tex4ht:label?: x1-65001r -->
+</div>
+<!--l. 5874--><p class="noindent" >Note 1: /System/Library/CoreServices/BridgeVersion.bin should be copied to /Volumes/VOLNAME/DIR.
+<br 
+class="newline" />Note 2: To be able to use the bless command, <a 
+href="https://developer.apple.com/library/archive/documentation/Security/Conceptual/System_Integrity_Protection_Guide/ConfiguringSystemIntegrityProtection/ConfiguringSystemIntegrityProtection.html" >disabling System Integrity Protection</a> is necessary. <br 
+class="newline" />Note 3: To be able to boot <a 
+href="https://support.apple.com/HT208330" >Secure Boot</a> might be disabled if present.
+</p><!--l. 5881--><p class="noindent" >Some of the known tools are listed below (builtin tools are marked with *):
+</p>
+<div class="tabular"> <table id="TBL-5" class="tabular" 
+ 
+><colgroup id="TBL-5-1g"><col 
+id="TBL-5-1" /><col 
+id="TBL-5-2" /></colgroup><tr  
+ style="vertical-align:baseline;" id="TBL-5-1-"><td  style="white-space:normal; text-align:left;" id="TBL-5-1-1"  
+class="td11"><!--l. 5884--><p class="noindent" ><a 
+href="https://github.com/acidanthera/OpenCorePkg" >BootKicker</a>*         </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-1-2"  
+class="td11"><!--l. 5885--><p class="noindent" >Enter Apple BootPicker menu (exclusive for Macs with compatible GPUs).                      </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-2-"><td  style="white-space:normal; text-align:left;" id="TBL-5-2-1"  
+class="td11"><!--l. 5886--><p class="noindent" ><a 
+href="https://github.com/acidanthera/OpenCorePkg" >ChipTune</a>*             </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-2-2"  
+class="td11"><!--l. 5887--><p class="noindent" >Test BeepGen protocol and generate audio signals of different style and length.                </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-3-"><td  style="white-space:normal; text-align:left;" id="TBL-5-3-1"  
+class="td11"><!--l. 5888--><p class="noindent" ><a 
+href="https://github.com/acidanthera/OpenCorePkg" >CleanNvram</a>*          </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-3-2"  
+class="td11"><!--l. 5889--><p class="noindent" >Reset NVRAM alternative bundled as a standalone tool.                                              </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-4-"><td  style="white-space:normal; text-align:left;" id="TBL-5-4-1"  
+class="td11"><!--l. 5890--><p class="noindent" ><a 
+href="https://github.com/acidanthera/OpenCorePkg" >GopStop</a>*              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-4-2"  
+class="td11"><!--l. 5891--><p class="noindent" >Test GraphicsOutput protocol with a <a 
+href="https://github.com/acidanthera/OpenCorePkg/tree/master/Application/GopStop" >simple scenario</a>.                                                  </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-5-"><td  style="white-space:normal; text-align:left;" id="TBL-5-5-1"  
+class="td11"><!--l. 5893--><p class="noindent" ><a 
+href="https://github.com/acidanthera/OpenCorePkg" >KeyTester</a>*            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-5-2"  
+class="td11"><!--l. 5894--><p class="noindent" >Test keyboard input in SimpleText mode.                                                                 </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-6-"><td  style="white-space:normal; text-align:left;" id="TBL-5-6-1"  
+class="td11"><!--l. 5895--><p class="noindent" ><a 
+href="https://www.memtest86.com" >MemTest86</a>          </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-6-2"  
+class="td11"><!--l. 5896--><p class="noindent" >Memory testing utility.                                                                                          </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-7-"><td  style="white-space:normal; text-align:left;" id="TBL-5-7-1"  
+class="td11"><!--l. 5897--><p class="noindent" ><a 
+href="https://github.com/acidanthera/OpenCorePkg" >OpenControl</a>*         </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-7-2"  
+class="td11"><!--l. 5898--><p class="noindent" >Unlock and lock back NVRAM protection for other tools to be able to get full NVRAM
+access when launching from OpenCore.                                                                     </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-8-"><td  style="white-space:normal; text-align:left;" id="TBL-5-8-1"  
+class="td11"><!--l. 5900--><p class="noindent" ><a 
+href="https://github.com/acidanthera/OpenCorePkg" >OpenShell</a>*            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-8-2"  
+class="td11"><!--l. 5901--><p class="noindent" >OpenCore-configured <a 
+href="http://github.com/tianocore/edk2" >UEFI Shell</a> for compatibility with a broad range of firmware.          </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-9-"><td  style="white-space:normal; text-align:left;" id="TBL-5-9-1"  
+class="td11"><!--l. 5903--><p class="noindent" ><a 
+href="https://github.com/acidanthera/OpenCorePkg" >PavpProvision</a>      </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-9-2"  
+class="td11"><!--l. 5904--><p class="noindent" >Perform EPID provisioning (requires certificate data configuration).                               </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-10-"><td  style="white-space:normal; text-align:left;" id="TBL-5-10-1"  
+class="td11"><!--l. 5905--><p class="noindent" ><a 
+href="https://github.com/acidanthera/OpenCorePkg" >ResetSystem</a>*         </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-10-2"  
+class="td11"><!--l. 5906--><p class="noindent" >Utility               to               perform               system               reset.               Takes
+reset type as an argument: <span class="sout">ColdReset</span><span class="uwave">coldreset</span>, <span class="sout">Firmware</span><span class="uwave">firmware</span>, <span class="sout">Shutdown</span><span class="uwave">shutdown</span>,
+<span class="sout">WarmReset</span><span class="uwave">warmreset</span>. Defaults to <span class="sout">ColdReset</span><span class="uwave">coldreset</span>.                                             </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-11-"><td  style="white-space:normal; text-align:left;" id="TBL-5-11-1"  
+class="td11"><!--l. 5909--><p class="noindent" ><a 
+href="https://github.com/acidanthera/OpenCorePkg" >RtcRw</a>*                 </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-11-2"  
+class="td11"><!--l. 5910--><p class="noindent" >Utility to read and write RTC (CMOS) memory.                                                        </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-12-"><td  style="white-space:normal; text-align:left;" id="TBL-5-12-1"  
+class="td11"><!--l. 5911--><p class="noindent" ><a 
+href="https://github.com/acidanthera/OpenCorePkg" >ControlMsrE2</a>*       </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-12-2"  
+class="td11"><!--l. 5912--><p class="noindent" >Check CFG Lock (MSR 0xE2 write protection) consistency across all cores and change such
+hidden options on selected platforms.                                                                       </p></td>
+</tr></table></div>
+<a 
+ id="x1-65005r67"></a>
+<h4 class="subsectionHead"><span class="titlemark">11.4   </span> <a 
+ id="x1-660004"></a>OpenCanopy</h4>
+<!--l. 5918--><p class="noindent" >OpenCanopy is a graphical OpenCore user interface that runs in External PickerMode and relies on <a 
+href="https://github.com/acidanthera/OpenCorePkg" >OpenCorePkg</a>
+OcBootManagementLib similar to the builtin text interface.
+</p><!--l. 5923--><p class="noindent" >OpenCanopy requires graphical resources located in Resources directory to run. Sample resources (fonts and
+images) can be found in <a 
+href="https://github.com/acidanthera/OcBinaryData" >OcBinaryData repository</a>. Customised icons can be found over the internet (e.g. <a 
+href="https://github.com/blackosx/OpenCanopyIcons" >here</a> or
+<a 
+href="https://applelife.ru/threads/kastomizacija-opencanopy.2945020/" >there</a>).
+</p><!--l. 5928--><p class="noindent" >OpenCanopy provides full support for PickerAttributes and offers a configurable builtin icon set. The default chosen icon set
+depends on the DefaultBackgroundColor variable value. For Light Gray Old icon set will be used, for other colours — the one
+without a prefix.
+</p><!--l. 5933--><p class="noindent" >Predefined icons are saved in the \EFI\OC\Resources\Image directory. A full list of supported icons (in .icns format) is
+provided below. When optional icons are missing, the closest available icon will be used. External entries will use Ext-prefixed
+icon if available (e.g. OldExtHardDrive.icns).
+</p><!--l. 5939--><p class="noindent" >Note: In the following all dimensions are normative for the 1x scaling level and shall be scaled accordingly for other
+levels.
+</p>
+     <ul class="itemize1">
+     <li class="itemize">Cursor — Mouse cursor (mandatory, up to 144x144).
+                                                                                                  
+                                                                                                  
+     
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+            
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+                                                                                                  
+                                                                                                  
+     
+     
+      
+     
+     
+      
+     
+         
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+                                                                                                  
+
+
+</body>
+</html>
