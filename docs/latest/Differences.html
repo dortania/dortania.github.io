@@ -249,12 +249,138 @@ class="newline" />Description: Enable modifier hotkey handling in the OpenCore p
      keyboards.
                                                                                                   
                                                                                                   
-</p><!--l. 5860--><p class="noindent" >To boot into OpenShell or any other tool directly save OpenShell.efi under the name of EFI\BOOT\BOOTX64.EFI on a FAT32
+         <li class="itemize">0x1D — LPDDR3
+         </li>
+         <li class="itemize">0x1E — LPDDR4</li></ul>
+     </li>
+     <li 
+  class="enumerate" id="x1-58016x8">TypeDetail<br 
+class="newline" />Type: plist integer, 16-bit<br 
+class="newline" />Failsafe: 0x4<br 
+class="newline" />SMBIOS: Memory Device (Type 17) — Type Detail<br 
+class="newline" />Description: Specifies additional memory type information.
+         <ul class="itemize1">
+         <li class="itemize">Bit 0 — Reserved, set to 0
+         </li>
+         <li class="itemize">Bit 1 — Other
+         </li>
+         <li class="itemize">Bit 2 — Unknown
+         </li>
+         <li class="itemize">Bit 7 — Synchronous
+         </li>
+         <li class="itemize">Bit 13 — Registered (buffered)
+         </li>
+         <li class="itemize">Bit 14 — Unbuffered (unregistered)</li></ul>
+     </li></ol>
+<a 
+ id="x1-58017r1"></a>
+<h5 class="subsubsectionHead"><span class="titlemark">10.4.1   </span> <a 
+ id="x1-590001"></a>Memory Device Properties</h5>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-59002x1">AssetTag<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Unknown<br 
+class="newline" />SMBIOS: Memory Device (Type 17) — Asset Tag<br 
+class="newline" />Description: Specifies the asset tag of this memory device.
+     </li>
+     <li 
+  class="enumerate" id="x1-59004x2">BankLocator<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Unknown<br 
+class="newline" />SMBIOS: Memory Device (Type 17) — Bank Locator<br 
+class="newline" />Description: Specifies the physically labeled bank where the memory device is located.
+     </li>
+     <li 
+  class="enumerate" id="x1-59006x3">DeviceLocator<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Unknown<br 
+class="newline" />SMBIOS: Memory Device (Type 17) — Device Locator<br 
+class="newline" />Description: Specifies the physically-labeled socket or board position where the memory device is located.
+     </li>
+     <li 
+  class="enumerate" id="x1-59008x4">Manufacturer<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Unknown<br 
+class="newline" />SMBIOS: Memory Device (Type 17) — Manufacturer<br 
+class="newline" />Description: Specifies the manufacturer of this memory device.
+     <!--l. 5395--><p class="noindent" ><span class="uwave">For empty slot this must be set to </span><span class="uwave">NO DIMM</span> <span class="uwave">for macOS System Profiler to correctly display memory slots on
+     certain Mac models, e.g. </span><span class="uwave">MacPro7,1</span><span class="uwave">. </span><span class="uwave">MacPro7,1</span> <span class="uwave">imposes additional requirements on the memory layout:
+     </span></p>
+         <ul class="itemize1">
+                                                                                                  
+                                                                                                  
+         <li class="itemize"><span class="uwave">The amount of installed sticks must one of the following: 4, 6, 8, 10, 12. Using any different value will cause
+         an error in the System Profiler. </span>
+         </li>
+         <li class="itemize"><span class="uwave">The amount of memory slots must equal to 12. Using any different value will cause an error in the System
+         Profiler. </span>
+         </li>
+         <li class="itemize"><span class="uwave">Memory sticks must be installed in dedicated memory slots as explained on the </span><a 
+href="https://support.apple.com/HT210103" ><span class="uwave">support page</span></a><span class="uwave">. SMBIOS
+         memory devices are mapped to the following slots: </span><span class="uwave">8, 7, 10, 9, 12, 11, 5, 6, 3, 4, 1, 2</span><span class="uwave">. </span></li></ul>
+     </li>
+     <li 
+  class="enumerate" id="x1-59010x5">PartNumber<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Unknown<br 
+class="newline" />SMBIOS: Memory Device (Type 17) — Part Number<br 
+class="newline" />Description: Specifies the part number of this memory device.
+     </li>
+     <li 
+  class="enumerate" id="x1-59012x6">SerialNumber<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Unknown<br 
+class="newline" />SMBIOS: Memory Device (Type 17) — Serial Number<br 
+class="newline" />Description: Specifies the serial number of this memory device.
+     </li>
+     <li 
+  class="enumerate" id="x1-59014x7">Size<br 
+class="newline" />Type: plist integer, 32-bit<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />SMBIOS: Memory Device (Type 17) — Size<br 
+class="newline" />Description: Specifies the size of the memory device, in megabytes. 0 indicates this slot is not populated.
+     </li>
+     <li 
+  class="enumerate" id="x1-59016x8">Speed<br 
+class="newline" />Type: plist integer, 16-bit<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />SMBIOS: Memory Device (Type 17) — Speed<br 
+class="newline" />Description: Specifies the maximum capable speed of the device, in megatransfers per second (MT/s). 0 indicates an
+     unknown speed.
+     </li></ol>
+<a 
+ id="x1-59017r60"></a>
+<h4 class="subsectionHead"><span class="titlemark">10.5   </span> <a 
+ id="x1-600005"></a>PlatformNVRAM Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-60002x1">BID<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty (Not installed)<br 
+class="newline" />Description: Specifies the value of NVRAM variable 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:HW_BID.
+     </li>
+     <li 
+  class="enumerate" id="x1-60004x2">ROM<br 
+class="newline" />Type: plist data, 6 bytes<br 
+class="newline" />Failsafe: Empty (Not installed)<br 
+class="newline" />Description: Specifies the values of NVRAM variables 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:HW_ROM and
+     4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:ROM.
+     </li>
+     <li 
+  class="enumerate" id="x1-60006x3">MLB<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty (Not installed)<br 
+class="newline" />Description: Specifies the values of NVRAM variables 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:HW_MLB and
+     4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:MLB.
+                                                                                                  
+                                                                                                  
+</p><!--l. 5875--><p class="noindent" >To boot into OpenShell or any other tool directly save OpenShell.efi under the name of EFI\BOOT\BOOTX64.EFI on a FAT32
 partition. It is typically unimportant whether the partition scheme is GPT or MBR.
-</p><!--l. 5865--><p class="noindent" >While the previous approach works both on Macs and other computers, an alternative Mac-only approach to bless the tool on
+</p><!--l. 5880--><p class="noindent" >While the previous approach works both on Macs and other computers, an alternative Mac-only approach to bless the tool on
 an HFS+ or APFS volume:
 </p>
-<!--l. 5869-->
+<!--l. 5884-->
 <a 
  id="x1-65001r3"></a>
 <a 
@@ -265,13 +391,13 @@ an HFS+ or APFS volume:
 <figcaption class="caption" ><span class="id">Listing 3:</span><span  
 class="content">Blessing tool</span></figcaption><!--tex4ht:label?: x1-65001r -->
 </div>
-<!--l. 5874--><p class="noindent" >Note 1: /System/Library/CoreServices/BridgeVersion.bin should be copied to /Volumes/VOLNAME/DIR.
+<!--l. 5889--><p class="noindent" >Note 1: /System/Library/CoreServices/BridgeVersion.bin should be copied to /Volumes/VOLNAME/DIR.
 <br 
 class="newline" />Note 2: To be able to use the bless command, <a 
 href="https://developer.apple.com/library/archive/documentation/Security/Conceptual/System_Integrity_Protection_Guide/ConfiguringSystemIntegrityProtection/ConfiguringSystemIntegrityProtection.html" >disabling System Integrity Protection</a> is necessary. <br 
 class="newline" />Note 3: To be able to boot <a 
 href="https://support.apple.com/HT208330" >Secure Boot</a> might be disabled if present.
-</p><!--l. 5881--><p class="noindent" >Some of the known tools are listed below (builtin tools are marked with *):
+</p><!--l. 5896--><p class="noindent" >Some of the known tools are listed below (builtin tools are marked with *):
 </p>
 <div class="tabular"> <table id="TBL-5" class="tabular" 
  
@@ -279,91 +405,91 @@ href="https://support.apple.com/HT208330" >Secure Boot</a> might be disabled if 
 id="TBL-5-1" /><col 
 id="TBL-5-2" /></colgroup><tr  
  style="vertical-align:baseline;" id="TBL-5-1-"><td  style="white-space:normal; text-align:left;" id="TBL-5-1-1"  
-class="td11"><!--l. 5884--><p class="noindent" ><a 
+class="td11"><!--l. 5899--><p class="noindent" ><a 
 href="https://github.com/acidanthera/OpenCorePkg" >BootKicker</a>*         </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-1-2"  
-class="td11"><!--l. 5885--><p class="noindent" >Enter Apple BootPicker menu (exclusive for Macs with compatible GPUs).                      </p></td>
+class="td11"><!--l. 5900--><p class="noindent" >Enter Apple BootPicker menu (exclusive for Macs with compatible GPUs).                      </p></td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-5-2-"><td  style="white-space:normal; text-align:left;" id="TBL-5-2-1"  
-class="td11"><!--l. 5886--><p class="noindent" ><a 
+class="td11"><!--l. 5901--><p class="noindent" ><a 
 href="https://github.com/acidanthera/OpenCorePkg" >ChipTune</a>*             </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-2-2"  
-class="td11"><!--l. 5887--><p class="noindent" >Test BeepGen protocol and generate audio signals of different style and length.                </p></td>
+class="td11"><!--l. 5902--><p class="noindent" >Test BeepGen protocol and generate audio signals of different style and length.                </p></td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-5-3-"><td  style="white-space:normal; text-align:left;" id="TBL-5-3-1"  
-class="td11"><!--l. 5888--><p class="noindent" ><a 
+class="td11"><!--l. 5903--><p class="noindent" ><a 
 href="https://github.com/acidanthera/OpenCorePkg" >CleanNvram</a>*          </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-3-2"  
-class="td11"><!--l. 5889--><p class="noindent" >Reset NVRAM alternative bundled as a standalone tool.                                              </p></td>
+class="td11"><!--l. 5904--><p class="noindent" >Reset NVRAM alternative bundled as a standalone tool.                                              </p></td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-5-4-"><td  style="white-space:normal; text-align:left;" id="TBL-5-4-1"  
-class="td11"><!--l. 5890--><p class="noindent" ><a 
+class="td11"><!--l. 5905--><p class="noindent" ><a 
 href="https://github.com/acidanthera/OpenCorePkg" >GopStop</a>*              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-4-2"  
-class="td11"><!--l. 5891--><p class="noindent" >Test GraphicsOutput protocol with a <a 
+class="td11"><!--l. 5906--><p class="noindent" >Test GraphicsOutput protocol with a <a 
 href="https://github.com/acidanthera/OpenCorePkg/tree/master/Application/GopStop" >simple scenario</a>.                                                  </p></td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-5-5-"><td  style="white-space:normal; text-align:left;" id="TBL-5-5-1"  
-class="td11"><!--l. 5893--><p class="noindent" ><a 
+class="td11"><!--l. 5908--><p class="noindent" ><a 
 href="https://github.com/acidanthera/OpenCorePkg" >KeyTester</a>*            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-5-2"  
-class="td11"><!--l. 5894--><p class="noindent" >Test keyboard input in SimpleText mode.                                                                 </p></td>
+class="td11"><!--l. 5909--><p class="noindent" >Test keyboard input in SimpleText mode.                                                                 </p></td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-5-6-"><td  style="white-space:normal; text-align:left;" id="TBL-5-6-1"  
-class="td11"><!--l. 5895--><p class="noindent" ><a 
+class="td11"><!--l. 5910--><p class="noindent" ><a 
 href="https://www.memtest86.com" >MemTest86</a>          </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-6-2"  
-class="td11"><!--l. 5896--><p class="noindent" >Memory testing utility.                                                                                          </p></td>
+class="td11"><!--l. 5911--><p class="noindent" >Memory testing utility.                                                                                          </p></td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-5-7-"><td  style="white-space:normal; text-align:left;" id="TBL-5-7-1"  
-class="td11"><!--l. 5897--><p class="noindent" ><a 
+class="td11"><!--l. 5912--><p class="noindent" ><a 
 href="https://github.com/acidanthera/OpenCorePkg" >OpenControl</a>*         </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-7-2"  
-class="td11"><!--l. 5898--><p class="noindent" >Unlock and lock back NVRAM protection for other tools to be able to get full NVRAM
+class="td11"><!--l. 5913--><p class="noindent" >Unlock and lock back NVRAM protection for other tools to be able to get full NVRAM
 access when launching from OpenCore.                                                                     </p></td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-5-8-"><td  style="white-space:normal; text-align:left;" id="TBL-5-8-1"  
-class="td11"><!--l. 5900--><p class="noindent" ><a 
+class="td11"><!--l. 5915--><p class="noindent" ><a 
 href="https://github.com/acidanthera/OpenCorePkg" >OpenShell</a>*            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-8-2"  
-class="td11"><!--l. 5901--><p class="noindent" >OpenCore-configured <a 
+class="td11"><!--l. 5916--><p class="noindent" >OpenCore-configured <a 
 href="http://github.com/tianocore/edk2" >UEFI Shell</a> for compatibility with a broad range of firmware.          </p></td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-5-9-"><td  style="white-space:normal; text-align:left;" id="TBL-5-9-1"  
-class="td11"><!--l. 5903--><p class="noindent" ><a 
+class="td11"><!--l. 5918--><p class="noindent" ><a 
 href="https://github.com/acidanthera/OpenCorePkg" >PavpProvision</a>      </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-9-2"  
-class="td11"><!--l. 5904--><p class="noindent" >Perform EPID provisioning (requires certificate data configuration).                               </p></td>
+class="td11"><!--l. 5919--><p class="noindent" >Perform EPID provisioning (requires certificate data configuration).                               </p></td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-5-10-"><td  style="white-space:normal; text-align:left;" id="TBL-5-10-1"  
-class="td11"><!--l. 5905--><p class="noindent" ><a 
+class="td11"><!--l. 5920--><p class="noindent" ><a 
 href="https://github.com/acidanthera/OpenCorePkg" >ResetSystem</a>*         </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-10-2"  
-class="td11"><!--l. 5906--><p class="noindent" >Utility               to               perform               system               reset.               Takes
+class="td11"><!--l. 5921--><p class="noindent" >Utility               to               perform               system               reset.               Takes
 reset type as an argument: <span class="sout">ColdReset</span><span class="uwave">coldreset</span>, <span class="sout">Firmware</span><span class="uwave">firmware</span>, <span class="sout">Shutdown</span><span class="uwave">shutdown</span>,
 <span class="sout">WarmReset</span><span class="uwave">warmreset</span>. Defaults to <span class="sout">ColdReset</span><span class="uwave">coldreset</span>.                                             </p></td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-5-11-"><td  style="white-space:normal; text-align:left;" id="TBL-5-11-1"  
-class="td11"><!--l. 5909--><p class="noindent" ><a 
+class="td11"><!--l. 5924--><p class="noindent" ><a 
 href="https://github.com/acidanthera/OpenCorePkg" >RtcRw</a>*                 </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-11-2"  
-class="td11"><!--l. 5910--><p class="noindent" >Utility to read and write RTC (CMOS) memory.                                                        </p></td>
+class="td11"><!--l. 5925--><p class="noindent" >Utility to read and write RTC (CMOS) memory.                                                        </p></td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-5-12-"><td  style="white-space:normal; text-align:left;" id="TBL-5-12-1"  
-class="td11"><!--l. 5911--><p class="noindent" ><a 
+class="td11"><!--l. 5926--><p class="noindent" ><a 
 href="https://github.com/acidanthera/OpenCorePkg" >ControlMsrE2</a>*       </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-12-2"  
-class="td11"><!--l. 5912--><p class="noindent" >Check CFG Lock (MSR 0xE2 write protection) consistency across all cores and change such
+class="td11"><!--l. 5927--><p class="noindent" >Check CFG Lock (MSR 0xE2 write protection) consistency across all cores and change such
 hidden options on selected platforms.                                                                       </p></td>
 </tr></table></div>
 <a 
  id="x1-65005r67"></a>
 <h4 class="subsectionHead"><span class="titlemark">11.4   </span> <a 
  id="x1-660004"></a>OpenCanopy</h4>
-<!--l. 5918--><p class="noindent" >OpenCanopy is a graphical OpenCore user interface that runs in External PickerMode and relies on <a 
+<!--l. 5933--><p class="noindent" >OpenCanopy is a graphical OpenCore user interface that runs in External PickerMode and relies on <a 
 href="https://github.com/acidanthera/OpenCorePkg" >OpenCorePkg</a>
 OcBootManagementLib similar to the builtin text interface.
-</p><!--l. 5923--><p class="noindent" >OpenCanopy requires graphical resources located in Resources directory to run. Sample resources (fonts and
+</p><!--l. 5938--><p class="noindent" >OpenCanopy requires graphical resources located in Resources directory to run. Sample resources (fonts and
 images) can be found in <a 
 href="https://github.com/acidanthera/OcBinaryData" >OcBinaryData repository</a>. Customised icons can be found over the internet (e.g. <a 
 href="https://github.com/blackosx/OpenCanopyIcons" >here</a> or
 <a 
 href="https://applelife.ru/threads/kastomizacija-opencanopy.2945020/" >there</a>).
-</p><!--l. 5928--><p class="noindent" >OpenCanopy provides full support for PickerAttributes and offers a configurable builtin icon set. The default chosen icon set
+</p><!--l. 5943--><p class="noindent" >OpenCanopy provides full support for PickerAttributes and offers a configurable builtin icon set. The default chosen icon set
 depends on the DefaultBackgroundColor variable value. For Light Gray Old icon set will be used, for other colours — the one
 without a prefix.
-</p><!--l. 5933--><p class="noindent" >Predefined icons are saved in the \EFI\OC\Resources\Image directory. A full list of supported icons (in .icns format) is
+</p><!--l. 5948--><p class="noindent" >Predefined icons are saved in the \EFI\OC\Resources\Image directory. A full list of supported icons (in .icns format) is
 provided below. When optional icons are missing, the closest available icon will be used. External entries will use Ext-prefixed
 icon if available (e.g. OldExtHardDrive.icns).
-</p><!--l. 5939--><p class="noindent" >Note: In the following all dimensions are normative for the 1x scaling level and shall be scaled accordingly for other
+</p><!--l. 5954--><p class="noindent" >Note: In the following all dimensions are normative for the 1x scaling level and shall be scaled accordingly for other
 levels.
 </p>
      <ul class="itemize1">
