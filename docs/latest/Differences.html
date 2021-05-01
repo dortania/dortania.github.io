@@ -21,16 +21,6 @@ width="160" height="160"  />
 </div>
                                                                                                   
                                                                                                   
-<!--l. 630--><p class="noindent" >Note: It is not guaranteed that paths longer than OC_STORAGE_SAFE_PATH_MAX (128 characters including the
-<br 
-class="newline" />0-terminator) will be accessible within OpenCore.
-<a 
- id="x1-9001r9"></a>
-</p>
-<h4 class="subsectionHead"><span class="titlemark">3.2   </span> <a 
- id="x1-100002"></a>Installation and Upgrade</h4>
-<!--l. 636--><p class="noindent" >To install OpenCore, replicate the ?? described in the previous section in the EFI volume of a GPT partition. While
-corresponding sections of this document provide some information regarding external resources such as ACPI tables, UEFI
 drivers, or kernel extensions (kexts), completeness of the matter is out of the scope of this document. Information about kernel
 extensions may be found in a separate <a 
 href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Kexts.md" >Kext List</a> document available in the OpenCore repository. Vaulting information is
@@ -97,8 +87,6 @@ href="https://www.sublimetext.com" >Sublime Text</a> with
 href="https://niosus.github.io/EasyClangComplete" >EasyClangComplete</a> plugin. Add .clang_complete file with similar content to the UDK root:
 </p>
 <!--l. 717-->
-                                                                                                  
-                                                                                                  
 <a 
  id="x1-11010r2"></a>
 <a 
@@ -143,75 +131,8 @@ class="content">ECC Configuration</span></figcaption><!--tex4ht:label?: x1-11010
 </div>
 <!--l. 755--><p class="noindent" >Warning: Tool developers modifying config.plist or any other OpenCore files must ensure that their tools check the
 opencore-version NVRAM variable (see the ?? section below) and warn users if the version listed is unsupported or
-prerelease. The OpenCore configuration may change across releases and such tools shall ensure that they carefully follow
-this document. Failure to do so may result in such tools being considered to be malware and blocked by any
-means.
-<a 
- id="x1-11046r11"></a>
-</p>
-<h4 class="subsectionHead"><span class="titlemark">3.4   </span> <a 
- id="x1-120004"></a>Coding conventions</h4>
-<!--l. 764--><p class="noindent" >As with any other project, we have conventions that we follow during development. All third-party contributors are advised to
-adhere to the conventions listed below before submitting patches. To minimise abortive work and the potential rejection of
-submissions, third-party contributors should initially raise issues to the <a 
-href="https://github.com/acidanthera/bugtracker" >Acidanthera Bugtracker</a> for feedback before submitting
-patches.
-</p><!--l. 771--><p class="noindent" >Organisation. The codebase is contained in the OpenCorePkg repository, which is the primary EDK II package.
-</p>
-     <ul class="itemize1">
-     <li class="itemize">Whenever changes are required in multiple repositories, separate pull requests should be sent to each.
-     </li>
-     <li class="itemize">Committing the changes should happen firstly to dependent repositories, secondly to primary repositories to
-     avoid automatic build errors.
-     </li>
-     <li class="itemize">Each unique commit should compile with XCODE5 and preferably with other toolchains. In the majority of the
-     cases it can be checked by accessing the <a 
-href="https://travis-ci.com/acidanthera" >CI interface</a>. Ensuring that static analysis finds no warnings is preferred.
-     </li>
-     <li class="itemize">External pull requests and tagged commits must be validated. That said, commits in master may build but may
-     not necessarily work.
-     </li>
-     <li class="itemize">Internal branches should be named as follows: author-name-date, e.g. vit9696-ballooning-20191026.
-     </li>
-     <li class="itemize">Commit messages should be prefixed with the primary module (e.g. library or code module) the changes were
-     made in. For example, OcGuardLib: Add OC_ALIGNED macro. For non-library changes Docs or Build prefixes
-     are used.</li></ul>
-<!--l. 792--><p class="noindent" >Design. The codebase is written in a subset of freestanding C11 (C17) supported by most modern toolchains used by EDK II.
-Applying common software development practices or requesting clarification is recommended if any particular case is not
-discussed below. </p>
-     <ul class="itemize1">
-     <li class="itemize">Never rely on undefined behaviour and try to avoid implementation defined behaviour unless explicitly covered
-     below (feel free to create an issue when a relevant case is not present).
-     </li>
-     <li class="itemize">Use OcGuardLib to ensure safe integral arithmetics avoiding overflows. Unsigned wraparound should be relied
-     on with care and reduced to the necessary amount.
-     </li>
-     <li class="itemize">Check  pointers  for  correct  alignment  with  OcGuardLib and  do  not  rely  on  the  architecture  being  able  to
-     dereference unaligned pointers.
-     </li>
-     <li class="itemize">Use flexible array members instead of zero-length or one-length arrays where necessary.
-     </li>
                                                                                                   
                                                                                                   
-         </p><!--l. 3274--><p class="noindent" >Note 2: Be aware that using a volume icon on any drive overrides the normal OpenCore picker behaviour for
-         that drive of selecting the appropriate icon depending on whether the drive is internal or external.
-         </p></li>
-         <li class="itemize">0x0002 — OC_ATTR_USE_DISK_LABEL_FILE, provides custom rendered titles for boot entries:
-             <ul class="itemize2">
-             <li class="itemize">.disk_label (.disk_label_2x) file near bootloader for all filesystems.
-             </li>
-             <li class="itemize">&#x003C;TOOL_NAME&#x003E;.lbl (&#x003C;TOOL_NAME&#x003E;.l2x) file near tool for Tools.</li></ul>
-         <!--l. 3285--><p class="noindent" >Prerendered labels can be generated via the disklabel utility or the bless command. When disabled
-         or missing text labels, (.contentDetails or .disk_label.contentDetails) are to be rendered
-         instead.
-         </p></li>
-         <li class="itemize">0x0004 — OC_ATTR_USE_GENERIC_LABEL_IMAGE, provides predefined label images for boot entries without custom
-         entries. This may however give less detail for the actual boot entry.
-         </li>
-         <li class="itemize">0x0008 — OC_ATTR_HIDE_THEMED_ICONS, prefers builtin icons for certain icon categories to match
-         the theme style. For example, this could force displaying the builtin Time Machine icon. Requires
-         OC_ATTR_USE_VOLUME_ICON.
-         </li>
          <li class="itemize">0x0010 — OC_ATTR_USE_POINTER_CONTROL, enables pointer control in the OpenCore picker when available. For
          example, this could make use of mouse or trackpad to control UI elements.
          </li>
@@ -247,338 +168,269 @@ class="newline" />Description: Enable modifier hotkey handling in the OpenCore p
      and for reliable detection of the Shift key when selecting the boot item, in order to work around the
      fact that hotkeys which are continuously held during boot cannot be reliably detected on many PS/2
      keyboards.
-                                                                                                  
-                                                                                                  
-         <li class="itemize">0x1D — LPDDR3
-         </li>
-         <li class="itemize">0x1E — LPDDR4</li></ul>
-     </li>
-     <li 
-  class="enumerate" id="x1-58016x8">TypeDetail<br 
-class="newline" />Type: plist integer, 16-bit<br 
-class="newline" />Failsafe: 0x4<br 
-class="newline" />SMBIOS: Memory Device (Type 17) — Type Detail<br 
-class="newline" />Description: Specifies additional memory type information.
+     </p><!--l. 3338--><p class="noindent" >This list of known modifier hotkeys includes: </p>
          <ul class="itemize1">
-         <li class="itemize">Bit 0 — Reserved, set to 0
+         <li class="itemize">CMD+C+MINUS — disable board compatibility checking.
          </li>
-         <li class="itemize">Bit 1 — Other
+         <li class="itemize">CMD+K — boot release kernel, similar to kcsuffix=release.
          </li>
-         <li class="itemize">Bit 2 — Unknown
+         <li class="itemize">CMD+S — single user mode.
          </li>
-         <li class="itemize">Bit 7 — Synchronous
+         <li class="itemize">CMD+S+MINUS — disable KASLR slide, requires disabled SIP.
          </li>
-         <li class="itemize">Bit 13 — Registered (buffered)
+         <li class="itemize">CMD+V — verbose mode.
          </li>
-         <li class="itemize">Bit 14 — Unbuffered (unregistered)</li></ul>
-     </li></ol>
-<a 
- id="x1-58017r1"></a>
-<h5 class="subsubsectionHead"><span class="titlemark">10.4.1   </span> <a 
- id="x1-590001"></a>Memory Device Properties</h5>
-     <ol  class="enumerate1" >
-     <li 
-  class="enumerate" id="x1-59002x1">AssetTag<br 
-class="newline" />Type: plist string<br 
-class="newline" />Failsafe: Unknown<br 
-class="newline" />SMBIOS: Memory Device (Type 17) — Asset Tag<br 
-class="newline" />Description: Specifies the asset tag of this memory device.
+         <li class="itemize">Shift+Enter, Shift+Index — safe mode, may be used in combination with CTRL+Enter, CTRL+Index.</li></ul>
      </li>
      <li 
-  class="enumerate" id="x1-59004x2">BankLocator<br 
-class="newline" />Type: plist string<br 
-class="newline" />Failsafe: Unknown<br 
-class="newline" />SMBIOS: Memory Device (Type 17) — Bank Locator<br 
-class="newline" />Description: Specifies the physically labeled bank where the memory device is located.
+  class="enumerate" id="x1-44018x9">ShowPicker<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Show a simple picker to allow boot entry selection.
      </li>
-     <li 
-  class="enumerate" id="x1-59006x3">DeviceLocator<br 
-class="newline" />Type: plist string<br 
-class="newline" />Failsafe: Unknown<br 
-class="newline" />SMBIOS: Memory Device (Type 17) — Device Locator<br 
-class="newline" />Description: Specifies the physically-labeled socket or board position where the memory device is located.
-     </li>
-     <li 
-  class="enumerate" id="x1-59008x4">Manufacturer<br 
-class="newline" />Type: plist string<br 
-class="newline" />Failsafe: Unknown<br 
-class="newline" />SMBIOS: Memory Device (Type 17) — Manufacturer<br 
-class="newline" />Description: Specifies the manufacturer of this memory device.
-     <!--l. 5395--><p class="noindent" ><span class="uwave">For empty slot this must be set to </span><span class="uwave">NO DIMM</span> <span class="uwave">for macOS System Profiler to correctly display memory slots on
-     certain Mac models, e.g. </span><span class="uwave">MacPro7,1</span><span class="uwave">. </span><span class="uwave">MacPro7,1</span> <span class="uwave">imposes additional requirements on the memory layout:
-     </span></p>
-         <ul class="itemize1">
                                                                                                   
                                                                                                   
-         <li class="itemize"><span class="uwave">The amount of installed sticks must one of the following: 4, 6, 8, 10, 12. Using any different value will cause
-         an error in the System Profiler. </span>
-         </li>
-         <li class="itemize"><span class="uwave">The amount of memory slots must equal to 12. Using any different value will cause an error in the System
-         Profiler. </span>
-         </li>
-         <li class="itemize"><span class="uwave">Memory sticks must be installed in dedicated memory slots as explained on the </span><a 
-href="https://support.apple.com/HT210103" ><span class="uwave">support page</span></a><span class="uwave">. SMBIOS
-         memory devices are mapped to the following slots: </span><span class="uwave">8, 7, 10, 9, 12, 11, 5, 6, 3, 4, 1, 2</span><span class="uwave">. </span></li></ul>
-     </li>
-     <li 
-  class="enumerate" id="x1-59010x5">PartNumber<br 
-class="newline" />Type: plist string<br 
-class="newline" />Failsafe: Unknown<br 
-class="newline" />SMBIOS: Memory Device (Type 17) — Part Number<br 
-class="newline" />Description: Specifies the part number of this memory device.
-     </li>
-     <li 
-  class="enumerate" id="x1-59012x6">SerialNumber<br 
-class="newline" />Type: plist string<br 
-class="newline" />Failsafe: Unknown<br 
-class="newline" />SMBIOS: Memory Device (Type 17) — Serial Number<br 
-class="newline" />Description: Specifies the serial number of this memory device.
-     </li>
-     <li 
-  class="enumerate" id="x1-59014x7">Size<br 
-class="newline" />Type: plist integer, 32-bit<br 
-class="newline" />Failsafe: 0<br 
-class="newline" />SMBIOS: Memory Device (Type 17) — Size<br 
-class="newline" />Description: Specifies the size of the memory device, in megabytes. 0 indicates this slot is not populated.
-     </li>
-     <li 
-  class="enumerate" id="x1-59016x8">Speed<br 
-class="newline" />Type: plist integer, 16-bit<br 
-class="newline" />Failsafe: 0<br 
-class="newline" />SMBIOS: Memory Device (Type 17) — Speed<br 
-class="newline" />Description: Specifies the maximum capable speed of the device, in megatransfers per second (MT/s). 0 indicates an
-     unknown speed.
-     </li></ol>
-<a 
- id="x1-59017r60"></a>
-<h4 class="subsectionHead"><span class="titlemark">10.5   </span> <a 
- id="x1-600005"></a>PlatformNVRAM Properties</h4>
-     <ol  class="enumerate1" >
-     <li 
-  class="enumerate" id="x1-60002x1">BID<br 
-class="newline" />Type: plist string<br 
-class="newline" />Failsafe: Empty (Not installed)<br 
-class="newline" />Description: Specifies the value of NVRAM variable 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:HW_BID.
-     </li>
-     <li 
-  class="enumerate" id="x1-60004x2">ROM<br 
-class="newline" />Type: plist data, 6 bytes<br 
-class="newline" />Failsafe: Empty (Not installed)<br 
-class="newline" />Description: Specifies the values of NVRAM variables 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:HW_ROM and
-     4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:ROM.
-     </li>
-     <li 
-  class="enumerate" id="x1-60006x3">MLB<br 
-class="newline" />Type: plist string<br 
-class="newline" />Failsafe: Empty (Not installed)<br 
-class="newline" />Description: Specifies the values of NVRAM variables 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:HW_MLB and
-     4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:MLB.
-                                                                                                  
-                                                                                                  
-</p><!--l. 5875--><p class="noindent" >To boot into OpenShell or any other tool directly save OpenShell.efi under the name of EFI\BOOT\BOOTX64.EFI on a FAT32
-partition. It is typically unimportant whether the partition scheme is GPT or MBR.
-</p><!--l. 5880--><p class="noindent" >While the previous approach works both on Macs and other computers, an alternative Mac-only approach to bless the tool on
-an HFS+ or APFS volume:
-</p>
-<!--l. 5884-->
-<a 
- id="x1-65001r3"></a>
-<a 
- id="x1-65002"></a>
-<div class="lstlisting" id="listing-16"><span class="label"><a 
- id="x1-65003r1"></a></span>sudo bless --verbose --file /Volumes/VOLNAME/DIR/OpenShell.efi \ <br /><span class="label"><a 
- id="x1-65004r2"></a></span>  --folder /Volumes/VOLNAME/DIR/ --setBoot
-<figcaption class="caption" ><span class="id">Listing 3:</span><span  
-class="content">Blessing tool</span></figcaption><!--tex4ht:label?: x1-65001r -->
-</div>
-<!--l. 5889--><p class="noindent" >Note 1: /System/Library/CoreServices/BridgeVersion.bin should be copied to /Volumes/VOLNAME/DIR.
-<br 
-class="newline" />Note 2: To be able to use the bless command, <a 
-href="https://developer.apple.com/library/archive/documentation/Security/Conceptual/System_Integrity_Protection_Guide/ConfiguringSystemIntegrityProtection/ConfiguringSystemIntegrityProtection.html" >disabling System Integrity Protection</a> is necessary. <br 
-class="newline" />Note 3: To be able to boot <a 
-href="https://support.apple.com/HT208330" >Secure Boot</a> might be disabled if present.
-</p><!--l. 5896--><p class="noindent" >Some of the known tools are listed below (builtin tools are marked with *):
-</p>
-<div class="tabular"> <table id="TBL-5" class="tabular" 
- 
-><colgroup id="TBL-5-1g"><col 
-id="TBL-5-1" /><col 
-id="TBL-5-2" /></colgroup><tr  
- style="vertical-align:baseline;" id="TBL-5-1-"><td  style="white-space:normal; text-align:left;" id="TBL-5-1-1"  
-class="td11"><!--l. 5899--><p class="noindent" ><a 
-href="https://github.com/acidanthera/OpenCorePkg" >BootKicker</a>*         </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-1-2"  
-class="td11"><!--l. 5900--><p class="noindent" >Enter Apple BootPicker menu (exclusive for Macs with compatible GPUs).                      </p></td>
-</tr><tr  
- style="vertical-align:baseline;" id="TBL-5-2-"><td  style="white-space:normal; text-align:left;" id="TBL-5-2-1"  
-class="td11"><!--l. 5901--><p class="noindent" ><a 
-href="https://github.com/acidanthera/OpenCorePkg" >ChipTune</a>*             </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-2-2"  
-class="td11"><!--l. 5902--><p class="noindent" >Test BeepGen protocol and generate audio signals of different style and length.                </p></td>
-</tr><tr  
- style="vertical-align:baseline;" id="TBL-5-3-"><td  style="white-space:normal; text-align:left;" id="TBL-5-3-1"  
-class="td11"><!--l. 5903--><p class="noindent" ><a 
-href="https://github.com/acidanthera/OpenCorePkg" >CleanNvram</a>*          </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-3-2"  
-class="td11"><!--l. 5904--><p class="noindent" >Reset NVRAM alternative bundled as a standalone tool.                                              </p></td>
-</tr><tr  
- style="vertical-align:baseline;" id="TBL-5-4-"><td  style="white-space:normal; text-align:left;" id="TBL-5-4-1"  
-class="td11"><!--l. 5905--><p class="noindent" ><a 
-href="https://github.com/acidanthera/OpenCorePkg" >GopStop</a>*              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-4-2"  
-class="td11"><!--l. 5906--><p class="noindent" >Test GraphicsOutput protocol with a <a 
-href="https://github.com/acidanthera/OpenCorePkg/tree/master/Application/GopStop" >simple scenario</a>.                                                  </p></td>
-</tr><tr  
- style="vertical-align:baseline;" id="TBL-5-5-"><td  style="white-space:normal; text-align:left;" id="TBL-5-5-1"  
-class="td11"><!--l. 5908--><p class="noindent" ><a 
-href="https://github.com/acidanthera/OpenCorePkg" >KeyTester</a>*            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-5-2"  
-class="td11"><!--l. 5909--><p class="noindent" >Test keyboard input in SimpleText mode.                                                                 </p></td>
-</tr><tr  
- style="vertical-align:baseline;" id="TBL-5-6-"><td  style="white-space:normal; text-align:left;" id="TBL-5-6-1"  
-class="td11"><!--l. 5910--><p class="noindent" ><a 
-href="https://www.memtest86.com" >MemTest86</a>          </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-6-2"  
-class="td11"><!--l. 5911--><p class="noindent" >Memory testing utility.                                                                                          </p></td>
-</tr><tr  
- style="vertical-align:baseline;" id="TBL-5-7-"><td  style="white-space:normal; text-align:left;" id="TBL-5-7-1"  
-class="td11"><!--l. 5912--><p class="noindent" ><a 
-href="https://github.com/acidanthera/OpenCorePkg" >OpenControl</a>*         </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-7-2"  
-class="td11"><!--l. 5913--><p class="noindent" >Unlock and lock back NVRAM protection for other tools to be able to get full NVRAM
-access when launching from OpenCore.                                                                     </p></td>
-</tr><tr  
- style="vertical-align:baseline;" id="TBL-5-8-"><td  style="white-space:normal; text-align:left;" id="TBL-5-8-1"  
-class="td11"><!--l. 5915--><p class="noindent" ><a 
-href="https://github.com/acidanthera/OpenCorePkg" >OpenShell</a>*            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-8-2"  
-class="td11"><!--l. 5916--><p class="noindent" >OpenCore-configured <a 
-href="http://github.com/tianocore/edk2" >UEFI Shell</a> for compatibility with a broad range of firmware.          </p></td>
-</tr><tr  
- style="vertical-align:baseline;" id="TBL-5-9-"><td  style="white-space:normal; text-align:left;" id="TBL-5-9-1"  
-class="td11"><!--l. 5918--><p class="noindent" ><a 
-href="https://github.com/acidanthera/OpenCorePkg" >PavpProvision</a>      </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-9-2"  
-class="td11"><!--l. 5919--><p class="noindent" >Perform EPID provisioning (requires certificate data configuration).                               </p></td>
-</tr><tr  
- style="vertical-align:baseline;" id="TBL-5-10-"><td  style="white-space:normal; text-align:left;" id="TBL-5-10-1"  
-class="td11"><!--l. 5920--><p class="noindent" ><a 
-href="https://github.com/acidanthera/OpenCorePkg" >ResetSystem</a>*         </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-10-2"  
-class="td11"><!--l. 5921--><p class="noindent" >Utility               to               perform               system               reset.               Takes
-reset type as an argument: <span class="sout">ColdReset</span><span class="uwave">coldreset</span>, <span class="sout">Firmware</span><span class="uwave">firmware</span>, <span class="sout">Shutdown</span><span class="uwave">shutdown</span>,
-<span class="sout">WarmReset</span><span class="uwave">warmreset</span>. Defaults to <span class="sout">ColdReset</span><span class="uwave">coldreset</span>.                                             </p></td>
-</tr><tr  
- style="vertical-align:baseline;" id="TBL-5-11-"><td  style="white-space:normal; text-align:left;" id="TBL-5-11-1"  
-class="td11"><!--l. 5924--><p class="noindent" ><a 
-href="https://github.com/acidanthera/OpenCorePkg" >RtcRw</a>*                 </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-11-2"  
-class="td11"><!--l. 5925--><p class="noindent" >Utility to read and write RTC (CMOS) memory.                                                        </p></td>
-</tr><tr  
- style="vertical-align:baseline;" id="TBL-5-12-"><td  style="white-space:normal; text-align:left;" id="TBL-5-12-1"  
-class="td11"><!--l. 5926--><p class="noindent" ><a 
-href="https://github.com/acidanthera/OpenCorePkg" >ControlMsrE2</a>*       </p></td><td  style="white-space:normal; text-align:left;" id="TBL-5-12-2"  
-class="td11"><!--l. 5927--><p class="noindent" >Check CFG Lock (MSR 0xE2 write protection) consistency across all cores and change such
-hidden options on selected platforms.                                                                       </p></td>
-</tr></table></div>
-<a 
- id="x1-65005r67"></a>
-<h4 class="subsectionHead"><span class="titlemark">11.4   </span> <a 
- id="x1-660004"></a>OpenCanopy</h4>
-<!--l. 5933--><p class="noindent" >OpenCanopy is a graphical OpenCore user interface that runs in External PickerMode and relies on <a 
-href="https://github.com/acidanthera/OpenCorePkg" >OpenCorePkg</a>
-OcBootManagementLib similar to the builtin text interface.
-</p><!--l. 5938--><p class="noindent" >OpenCanopy requires graphical resources located in Resources directory to run. Sample resources (fonts and
-images) can be found in <a 
-href="https://github.com/acidanthera/OcBinaryData" >OcBinaryData repository</a>. Customised icons can be found over the internet (e.g. <a 
-href="https://github.com/blackosx/OpenCanopyIcons" >here</a> or
-<a 
-href="https://applelife.ru/threads/kastomizacija-opencanopy.2945020/" >there</a>).
-</p><!--l. 5943--><p class="noindent" >OpenCanopy provides full support for PickerAttributes and offers a configurable builtin icon set. The default chosen icon set
-depends on the DefaultBackgroundColor variable value. For Light Gray Old icon set will be used, for other colours — the one
-without a prefix.
-</p><!--l. 5948--><p class="noindent" >Predefined icons are saved in the \EFI\OC\Resources\Image directory. A full list of supported icons (in .icns format) is
-provided below. When optional icons are missing, the closest available icon will be used. External entries will use Ext-prefixed
-icon if available (e.g. OldExtHardDrive.icns).
-</p><!--l. 5954--><p class="noindent" >Note: In the following all dimensions are normative for the 1x scaling level and shall be scaled accordingly for other
-levels.
+‘section’ the NVRAM variable belongs to. The macOS operating system makes use of several GUIDs, including but not limited
+to:
 </p>
      <ul class="itemize1">
-     <li class="itemize">Cursor — Mouse cursor (mandatory, up to 144x144).
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14 (APPLE_VENDOR_VARIABLE_GUID)
+     </li>
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82 (APPLE_BOOT_VARIABLE_GUID)
+     </li>
+     <li class="itemize"><span class="uwave">5EDDA193-A070-416A-85EB-2A1181F45B18</span> <span class="uwave">(Apple Hardware Configuration Storage for </span><span class="uwave">MacPro7,1</span><span class="uwave">) </span>
+     </li>
+     <li class="itemize">8BE4DF61-93CA-11D2-AA0D-00E098032B8C (EFI_GLOBAL_VARIABLE_GUID)
+     </li>
+     <li class="itemize">4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102 (OC_VENDOR_VARIABLE_GUID)</li></ul>
+<!--l. 4288--><p class="noindent" >Note: Some of the variables may be added by the ?? or ?? subsections of the <a 
+href="#x1-5400010">PlatformInfo</a> section. Please ensure that variables
+set in this section do not conflict with items in those subsections as the implementation behaviour is undefined
+otherwise.
+</p><!--l. 4295--><p class="noindent" >The OC_FIRMWARE_RUNTIME protocol implementation, currently offered as a part of the OpenRuntime driver, is often required
+for macOS to function properly. While this brings many benefits, there are some limitations that should be considered for
+certain use cases.
+     </p><ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-49002x1">Not all tools may be aware of protected namespaces.<br 
+class="newline" />When RequestBootVarRouting is used, Boot-prefixed variable access is restricted and protected in a separate
+     namespace. To access the original variables, tools must be aware of the OC_FIRMWARE_RUNTIME logic.</li></ol>
+<a 
+ id="x1-49003r51"></a>
+<h4 class="subsectionHead"><span class="titlemark">9.2   </span> <a 
+ id="x1-500002"></a>Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-50002x1">Add<br 
+class="newline" />Type: plist dict<br 
+class="newline" />Description: Sets NVRAM variables from a map (plist dict) of GUIDs to a map (plist dict) of variable
+     names and their values in plist multidata format. GUIDs must be provided in canonic string format in upper
+     or lower case (e.g. 8BE4DF61-93CA-11D2-AA0D-00E098032B8C).
+     <!--l. 4318--><p class="noindent" >The EFI_VARIABLE_BOOTSERVICE_ACCESS and EFI_VARIABLE_RUNTIME_ACCESS attributes of created variables
+     are set. Variables will only be set if not present or deleted. That is, to overwrite an existing variable value, add
+     the variable name to the Delete section. This approach enables the provision of default values until the operating
+     system takes the lead.
+     </p><!--l. 4323--><p class="noindent" >Note: The implementation behaviour is undefined when the plist key does not conform to the GUID format.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-50004x2">Delete<br 
+class="newline" />Type: plist dict<br 
+class="newline" />Description: Removes NVRAM variables from a map (plist dict) of GUIDs to an array (plist array) of
+     variable names in plist string format.
+     </li>
+     <li 
+  class="enumerate" id="x1-50006x3">LegacyEnable<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Enables loading a NVRAM variable file named nvram.plist from EFI volume root.
+     <!--l. 4340--><p class="noindent" >This file must have a root plist dictionary type and contain two fields: </p>
+         <ul class="itemize1">
+         <li class="itemize">Version — plist integer, file version, must be set to 1.
+         </li>
+         <li class="itemize">Add — plist dictionary, equivalent to Add from config.plist.</li></ul>
                                                                                                   
                                                                                                   
-     
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-            
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
+             <ul class="itemize3">
+             <li class="itemize">1 — AppleLoggingConOutOrErrSet/AppleLoggingConOutOrErrPrint (classical ConOut/StdErr)
+             </li>
+             <li class="itemize">2 — AppleLoggingStdErrSet/AppleLoggingStdErrPrint (StdErr or serial?)
+             </li>
+             <li class="itemize">4  —   AppleLoggingFileSet/AppleLoggingFilePrint   (BOOTER.LOG/BOOTER.OLD   file   on   EFI
+             partition)</li></ul>
+         </li>
+         <li class="itemize">debug=VALUE — deprecated starting from 10.15.
+             <ul class="itemize3">
+             <li class="itemize">1 — enables print something to BOOTER.LOG (stripped code implies there may be a crash)
+             </li>
+             <li class="itemize">2 — enables perf logging to /efi/debug-log in the device three
+             </li>
+             <li class="itemize">4 — enables timestamp printing for styled printf calls</li></ul>
+         </li>
+         <li class="itemize">level=VALUE — deprecated starting from 10.15. Verbosity level of DEBUG output. Everything but 0x80000000 is
+         stripped from the binary, and this is the default value.</li></ul>
+     <!--l. 4661--><p class="noindent" >Note: Enable the AppleDebug option to display verbose output from boot.efi on modern macOS versions. This will save
+     the log to the general OpenCore log file. For versions before 10.15.4, set bootercfg to log=1. This will print verbose
+     output onscreen.
+     </p></li>
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:bootercfg-once
+     Booter arguments override removed after first launch. Otherwise equivalent to bootercfg.
+     </li>
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:efiboot-perf-record
+     Enable performance log saving in boot.efi. Performance log is saved to physical memory and is pointed to by the
+     efiboot-perf-record-data and efiboot-perf-record-size variables. Starting from 10.15.4, it can also be saved to
+     the OpenCore log by setting the AppleDebug option.
+     </li>
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:fmm-computer-name
+     Current saved host name. ASCII string.
+     </li>
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:nvda_drv
+     NVIDIA Web Driver control variable. Takes ASCII digit 1 or 0 to enable or disable installed driver.
+     </li>
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:run-efi-updater
+     Override EFI firmware updating support in macOS (MultiUpdater, ThorUtil, and so on). Setting this to No or
+     alternative boolean-castable value will prevent any firmware updates in macOS starting with 10.10 at
+     least.
+     </li>
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:StartupMute
+     Mute startup chime sound in firmware audio support. 8-bit integer. The value of 0x00 means unmuted. Missing variable
+     or any other value means muted.
+     </li>
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:SystemAudioVolume
+     System audio volume level for firmware audio support. 8-bit integer. The bit of 0x80 means muted. Lower bits are used
+     to encode volume range specific to installed audio codec. The value is capped by MaximumBootBeepVolume AppleHDA
+     layout value to avoid too loud audio playback in the firmware.
+     </li>
+     <li class="itemize"><span class="uwave">5EDDA193-A070-416A-85EB-2A1181F45B18:PEXConf</span>
+     <span class="uwave">PCI expansion slot configuration for </span><span class="uwave">MacPro7,1</span><span class="uwave">. 8-byte sequence describing default PCI slot configuration. Each byte
+     refers to a configuration for a dedicated PCI slot. </span>
+         <ul class="itemize2">
+         <li class="itemize"><span class="uwave">Slot 1 resides at </span><span class="uwave">IOService:/AppleACPIPlatformExpert/PC01@0/AppleACPIPCI/BR1A@0</span> <span class="uwave">and its path is
+         hardcoded. This slot is not behind a muxer. </span>
+         </li>
                                                                                                   
                                                                                                   
-     
-     
-      
-     
-     
-      
-     
-         
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-     
-     
-      
-                                                                                                  
-
-
-</body>
+         <li class="itemize"><span class="uwave">Slot 3 resides at </span><span class="uwave">IOService:/AppleACPIPlatformExpert/PC03@0/AppleACPIPCI/BR3A@0</span> <span class="uwave">and its path is
+         hardcoded. This slot is not behind a muxer. </span>
+         </li>
+         <li class="itemize"><span class="uwave">Slots 2, 4-8 are dynamic and are matched based on </span><span class="uwave">AAPL,slot-name</span> <span class="uwave">property with </span><span class="uwave">Slot-N</span> <span class="uwave">value, where </span><span class="uwave">N</span>
+         <span class="uwave">is the slot number. All these slots are behind the muxer. </span></li></ul>
+     <!--l. 4722--><p class="noindent" ><span class="uwave">Refer to the </span><a 
+href="https://support.apple.com/HT210104" ><span class="uwave">support page</span></a> <span class="uwave">for more details on how </span><span class="uwave">MacPro7,1</span> <span class="uwave">slots are configured. </span>
+     </p></li>
+     <li class="itemize"><span class="uwave">5EDDA193-A070-416A-85EB-2A1181F45B18:SlotUtilPEXConf</span>
+     <span class="uwave">User PCI expansion slot configuration for </span><span class="uwave">MacPro7,1</span><span class="uwave">. 8-byte sequence describing user PCI slot configuration.
+     </span>
+     </li></ul>
+<a 
+ id="x1-53001r50"></a>
+<h3 class="sectionHead"><span class="titlemark">10   </span> <a 
+ id="x1-5400010"></a>PlatformInfo</h3>
+<!--l. 4737--><p class="noindent" >Platform information consists of several identification fields generated or filled manually to be compatible with macOS services.
+The base part of the configuration may be obtained from <a 
+href="https://github.com/acidanthera/OpenCorePkg/blob/master/AppleModels" >AppleModels</a>, which itself generates a set of interfaces based on a
+database in <a 
+href="https://yaml.org/spec/1.2/spec.html" >YAML</a> format. These fields are written to three destinations:
+</p>
+     <ul class="itemize1">
+     <li class="itemize"><a 
+href="https://www.dmtf.org/standards/smbios" >SMBIOS</a>
+     </li>
+     <li class="itemize"><a 
+href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Intel/Protocol/DataHub.h" >Data Hub</a>
+     </li>
+     <li class="itemize">NVRAM</li></ul>
+<!--l. 4756--><p class="noindent" >Most of the fields specify the overrides in SMBIOS, and their field names conform to EDK2 <a 
+href="https://github.com/acidanthera/audk/blob/master/MdePkg/Include/IndustryStandard/SmBios.h" >SmBios.h</a> header file. However,
+several important fields reside in Data Hub and NVRAM. Some of the values can be found in more than one field and/or
+destination, so there are two ways to control their update process: manual, where all the values are specified (the
+default), and semi-automatic, where (Automatic) only certain values are specified, and later used for system
+configuration.
+</p><!--l. 4766--><p class="noindent" >The <a 
+href="http://www.nongnu.org/dmidecode" >dmidecode</a> utility can be used to inspect SMBIOS contents and a version with macOS specific enhancements can be
+downloaded from <a 
+href="https://github.com/acidanthera/dmidecode/releases" >Acidanthera/dmidecode</a>.
+<a 
+ id="x1-54001r55"></a>
+</p>
+<h4 class="subsectionHead"><span class="titlemark">10.1   </span> <a 
+ id="x1-550001"></a>Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-55002x1">Automatic<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Generate PlatformInfo based on the Generic section instead of using values from the DataHub,
+     NVRAM, and SMBIOS sections.
+     <!--l. 4781--><p class="noindent" >Enabling this option is useful when Generic section is flexible enough: </p>
+         <ul class="itemize1">
+         <li class="itemize">When enabled SMBIOS, DataHub, and PlatformNVRAM data is unused.
+         </li>
+         <li class="itemize">When disabled Generic section is unused.</li></ul>
+     <!--l. 4790--><p class="noindent" >Warning: Setting this option to false is strongly discouraged when intending to update platform information. A false
+     setting is typically only valid for minor corrections to SMBIOS values on legacy Apple hardware. In all other
+     cases, setting Automatic to false may lead to hard-to-debug errors resulting from inconsistent or invalid
+     settings.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-55004x2">CustomMemory<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false                                    <br 
+class="newline" /> ype: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Some types of firmware reset screen resolutions to a failsafe value (such as 1024x768) on the
+     attempts to clear screen contents when large display (e.g. 2K or 4K) is used. This option attempts to apply a
+     workaround.
+     <!--l. 6965--><p class="noindent" >Note: This option only applies to the System renderer. On all known affected systems, ConsoleMode must be set to an
+     empty string for this option to work.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-73026x13">UgaPassThrough<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Provide UGA protocol instances on top of GOP protocol instances.
+     <!--l. 6975--><p class="noindent" >Some types of firmware do not implement the legacy UGA protocol but this may be required for screen output by older
+     EFI applications such as EfiBoot from 10.4.
+</p>
+     </li></ol>
+<a 
+ id="x1-73027r76"></a>
+<h4 class="subsectionHead"><span class="titlemark">11.12   </span> <a 
+ id="x1-7400012"></a>ProtocolOverrides Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-74002x1">AppleAudio<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces Apple audio protocols with builtin versions.
+     <!--l. 6992--><p class="noindent" >Apple audio protocols allow OpenCore and the macOS bootloader to play sounds and signals for screen reading
+     or audible error reporting. Supported protocols are beep generation and VoiceOver. The VoiceOver protocol
+     is specific to Gibraltar machines (T2) and is not supported before macOS High Sierra (10.13). Older macOS
+     versions use the AppleHDA protocol (which is not currently implemented) instead.
+     </p><!--l. 6999--><p class="noindent" >Only one set of audio protocols can be available at a time, so this setting should be enabled in order to enable
+     audio playback in the OpenCore user interface on Mac systems implementing some of these protocols.
+     </p><!--l. 7003--><p class="noindent" >Note: The backend audio driver needs to be configured in UEFI Audio section for these protocols to be able to
+     stream audio.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-74004x2">AppleBootPolicy<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces the Apple Boot Policy protocol with a builtin version. This may be used to ensure APFS
+     compatibility on VMs and legacy Macs.
+     <!--l. 7013--><p class="noindent" >Note: This option is advisable on certain Macs, such as the MacPro5,1, that are APFS compatible but on which
+     the Apple Boot Policy protocol has recovery detection issues.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-74006x3">AppleDebugLog<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces the Apple Debug Log protocol with a builtin version.
+     </li>
+     <li 
+  class="enumerate" id="x1-74008x4"><span class="sout">AppleEvent</span><span class="sout">Type</span><span class="sout">:  </span><span class="sout">plist boolean</span><span class="sout">Failsafe</span><span class="sout">:  </span><span class="sout">false</span><span class="sout">Description</span><span class="sout">:  Replaces  the  Apple  Event  protocol  with  a
+     builtin version. This may be used to ensure FileVault 2 compatibility on VMs and legacy Macs. </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-74010x5">AppleFramebufferInfo<br 
+class="newline" />Type: plist boolean                 </body>
 </html>
