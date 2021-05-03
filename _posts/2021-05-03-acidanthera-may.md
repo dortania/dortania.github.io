@@ -70,17 +70,17 @@ Overall we're extremely happy with the progress made, and with macOS 12 a little
 - Fixed fallback SMBIOS `Manufacturer` value to `NO DIMM` for empty slots
 - Fixed assertions when running OpenCanopy with low resolution, will fallbacks to builtin now
 
-#### [IntelMausi 1.0.6](https://github.com/acidanthera/OpenCorePkg/releases)
+#### [IntelMausi 1.0.6](https://github.com/acidanthera/IntelMausi/releases)
 
 - Fixed loading on 10.11 and earlier (regressed in 1.0.5)
 
-#### [VirtualSMC 1.2.3](https://github.com/acidanthera/OpenCorePkg/releases)
+#### [VirtualSMC 1.2.3](https://github.com/acidanthera/VirtualSMC/releases)
 
 - Fixed Intel NUC EC sensors not showing proper values on some platforms
 - Added `generic` EC sensor type
 - Added EC fan monitoring support on `HP Pavilion 14 CE2072NL`, thx @1alessandro1
 
-#### [AppleALC 1.6.0](https://github.com/acidanthera/OpenCorePkg/releases)
+#### [AppleALC 1.6.0](https://github.com/acidanthera/AppleALC/releases)
 
 - Added `use-layout-id` property to use `layout-id` as is on Macs
 - Added `use-apple-layout-id` property to use `apple-layout-id` as `layout-id` on Macs
@@ -93,24 +93,23 @@ Overall we're extremely happy with the progress made, and with macOS 12 a little
 
 - Added `DisableDeepSleep` to workaround ACPI S3 wakes on some Synaptics touchpads
 
-#### [NVMeFix 1.0.7](https://github.com/acidanthera/OpenCorePkg/releases)
+#### [NVMeFix 1.0.7](https://github.com/acidanthera/NVMeFix/releases)
 
 - Fixed symbol solving on macOS 11.3
 - Added `-nvmefaspm` boot argument to force ASPM L1 on all NVMe SSDs
 
-#### [RestrictEvents 1.0.1](https://github.com/acidanthera/OpenCorePkg/releases)
+#### [RestrictEvents 1.0.1](https://github.com/acidanthera/RestrictEvents/releases)
 
 - Disabled `MacPro7,1` RAM & PCI Expansion Slot UIs
 - Disabled `MacBookAir` memory view restrictions
 - Added CPU brand string patch
 
-#### [MaciASL 1.6.1](https://github.com/acidanthera/OpenCorePkg/releases)
+#### [MaciASL 1.6.1](https://github.com/acidanthera/MaciASL/releases)
 
 - Enabled codesigning and notarisation
 - Added native ARM builds for iasl compilers
 - Updated iasl compiler versions
 
-#### [Lilu 1.5.3](https://github.com/acidanthera/OpenCorePkg/releases)
+#### [Lilu 1.5.3](https://github.com/acidanthera/Lilu/releases)
 
 - Fixed kernel patcher support on 10.7
-
