@@ -42,7 +42,7 @@ This month's been a big release cycle for us including many long-awaited feature
   * Includes 3rd Party NVMe Patches, allowing for up-to 90% power reduction at idle on non-Apple drives
   * Sidecar Support for models excluded by Apple
 
-Overall we're extremely happy with the progress made, and with macOS 12 a little over a month away we early await to see what else Apple has for us to fix. Hope everyone enjoys the new releases!
+Overall we're extremely happy with the progress made, and with macOS 12 a little over a month away we eagerly await to see what else Apple has for us to fix. Hope everyone enjoys the new releases!
 
 ———Khronokernel
 
