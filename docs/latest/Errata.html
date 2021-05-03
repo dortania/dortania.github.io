@@ -1,0 +1,138 @@
+<!DOCTYPE html> 
+<html xml:lang='en-US' lang='en-US'> 
+<head><title>Errata</title> 
+<meta charset='utf-8' /> 
+<meta name='generator' content='TeX4ht (https://tug.org/tex4ht/)' /> 
+<meta name='viewport' content='width=device-width,initial-scale=1' /> 
+<link type='text/css' href='Errata.css' rel='stylesheet' /> 
+<meta name='src' content='Errata.tex' /> 
+<link rel="stylesheet" type="text/css" href="../main.css" /></head><body>
+<!-- l. 76 --><p class='noindent'>
+                                                                                                  
+                                                                                                  
+</p>
+<div class='center'>
+<!-- l. 77 --><p class='noindent'>
+</p><!-- l. 84 --><p class='noindent'> <img src='Logos/Logo-.png' alt='PIC' height='160' width='160' />
+</p><!-- l. 88 --><p class='noindent'><span class='ec-lmssbx-10x-x-248'>OpenCore</span>
+</p><!-- l. 92 --><p class='noindent'><span class='ec-lmss-17x-x-143'>Errata Sheet</span>
+</p><!-- l. 96 --><p class='noindent'><span class='ec-lmss-17x-x-143'>[2021.05.03]</span>
+</p><!-- l. 104 --><p class='noindent'>Copyright <span class='ts1-lmr10-'>©</span>2020-2021 vit9696
+</p>
+</div>
+                                                                                                  
+                                                                                                  
+<p><a id='x1-2r1'></a></p>
+                                                                                                  
+                                                                                                  
+<h3 class='sectionHead'><span class='titlemark'>1   </span> <a id='x1-10001'></a>Introduction</h3>
+<!-- l. 111 --><p class='noindent'>This document provides information on select issues discovered in the relesed versions of <a href='https://github.com/acidanthera/OpenCorePkg'>OpenCore</a> and provides workarounds
+whenever possible. This document is updated after OpenCore is released and is thus not contained in the binary
+packages.
+</p><!-- l. 116 --><p class='noindent'>This document contains issues considered causing significant impact on the end-user. More details on all known issues
+including feature requests and development version issues can be found at <a href='https://github.com/acidanthera/bugtracker'>Acidanthera Bugtracker</a>.
+<a id='x1-1001r1'></a>
+</p>
+<h3 class='sectionHead'><span class='titlemark'>2   </span> <a id='x1-20002'></a>Issue list</h3>
+     <ul class='itemize1'>
+     <li class='itemize'><span class='ec-lmbx-10'>Identifier</span>: <span class='ec-lmtt-10'>ERR059-1 </span><br class='newline' /><span class='ec-lmbx-10'>Published</span>: 2020-06-02 08:06 MSK <br class='newline' /><span class='ec-lmbx-10'>Updated</span>: 2020-06-21 18:22 MSK <br class='newline' /><span class='ec-lmbx-10'>Affected versions</span>: 0.5.9 <br class='newline' /><span class='ec-lmbx-10'>Resolved in</span>: 0.6.0 (<a href='https://github.com/acidanthera/OpenCorePkg/commit/9d5aa267a9133fd9390b62012c21428fc77681f2'>9d5aa267</a>) <br class='newline' /><span class='ec-lmbx-10'>Description</span>:
+     <!-- l. 131 --><p class='noindent'>Boot picker menu may not show when upgrading macOS with the following error:
+     </p><!-- l. 133 --><p class='noindent'><span class='ec-lmtt-10'>OCUI: Entry kind 16 unsupported for Icon</span><br class='newline' /><span class='ec-lmtt-10'>OCB: ShowMenu failed - Unsupported</span><br class='newline' /><span class='ec-lmtt-10'>Halting on critical error</span>
+     </p><!-- l. 137 --><p class='noindent'><span class='ec-lmbx-10'>Possible workarounds</span>: </p>
+         <ul class='itemize2'>
+         <li class='itemize'>Add <span class='ec-lmtt-10'>run-efi-updater </span>variable with <span class='ec-lmtt-10'>NO </span>string value <span class='ec-lmtt-10'>OR</span>
+         </li>
+         <li class='itemize'>Avoid using OpenCanopy <span class='ec-lmtt-10'>OR</span>
+         </li>
+         <li class='itemize'>Disable showing picker by setting <span class='ec-lmtt-10'>ShowPicker </span>to <span class='ec-lmtt-10'>false OR</span>
+         </li>
+         <li class='itemize'>Update to master version</li></ul>
+     </li>
+     <li class='itemize'><span class='ec-lmbx-10'>Identifier</span>: <span class='ec-lmtt-10'>ERR059-2 </span><br class='newline' /><span class='ec-lmbx-10'>Published</span>: 2020-06-02 08:06 MSK <br class='newline' /><span class='ec-lmbx-10'>Updated</span>: 2020-06-21 18:22 MSK <br class='newline' /><span class='ec-lmbx-10'>Affected versions</span>: 0.5.9 <br class='newline' /><span class='ec-lmbx-10'>Resolved in</span>: 0.6.0 (<a href='https://github.com/acidanthera/OpenCorePkg/commit/670d4e0c4f8538268367d16fc3ddef9b2ed13d46'>670d4e0c</a>) <br class='newline' /><span class='ec-lmbx-10'>Description</span>:
+     <!-- l. 155 --><p class='noindent'>Incorrect operating system may be selected as the default during macOS upgrade when Windows and macOS are
+     installed on the same disk. Reference: <a href='https://github.com/acidanthera/bugtracker/issues/948'>acidanthera/bugtracker#948</a>.
+     </p><!-- l. 159 --><p class='noindent'><span class='ec-lmbx-10'>Possible workarounds</span>: </p>
+         <ul class='itemize2'>
+         <li class='itemize'>Add <span class='ec-lmtt-10'>run-efi-updater </span>variable with <span class='ec-lmtt-10'>NO </span>string value <span class='ec-lmtt-10'>OR</span>
+         </li>
+         <li class='itemize'>Install Windows on a separate disk <span class='ec-lmtt-10'>OR</span>
+         </li>
+         <li class='itemize'>Update to master version</li></ul>
+     </li>
+     <li class='itemize'><span class='ec-lmbx-10'>Identifier</span>: <span class='ec-lmtt-10'>ERR059-3 </span><br class='newline' /><span class='ec-lmbx-10'>Published</span>: 2020-06-21 18:22 MSK <br class='newline' /><span class='ec-lmbx-10'>Updated</span>: 2020-06-21 18:22 MSK <br class='newline' /><span class='ec-lmbx-10'>Affected versions</span>: 0.5.9 <br class='newline' /><span class='ec-lmbx-10'>Resolved in</span>: 0.6.0 (<a href='https://github.com/acidanthera/OpenCorePkg/commit/2449e47cb2d110a288d491beee0b5b168d2bb480'>2449e47c</a>) <br class='newline' /><span class='ec-lmbx-10'>Description</span>:
+     <!-- l. 176 --><p class='noindent'>DEBUG builds may fail to load due to unaligned access assertion when accessing device paths. Reference:
+     <a href='https://github.com/acidanthera/bugtracker/issues/951'>acidanthera/bugtracker#951</a>.
+     </p><!-- l. 179 --><p class='noindent'><span class='ec-lmbx-10'>Possible workarounds</span>: </p>
+         <ul class='itemize2'>
+         <li class='itemize'>Avoid using DEBUG builds <span class='ec-lmtt-10'>OR</span>
+         </li>
+         <li class='itemize'>Update to master version</li></ul>
+     </li>
+     <li class='itemize'><span class='ec-lmbx-10'>Identifier</span>: <span class='ec-lmtt-10'>ERR059-4 </span><br class='newline' /><span class='ec-lmbx-10'>Published</span>: 2020-06-24 21:18 MSK <br class='newline' /><span class='ec-lmbx-10'>Updated</span>: 2020-07-05 23:20 MSK <br class='newline' /><span class='ec-lmbx-10'>Affected versions</span>: 0.5.9 <br class='newline' /><span class='ec-lmbx-10'>Resolved in</span>: 0.6.0 (<a href='https://github.com/acidanthera/OpenCorePkg/commit/d8ace476067ebb4b5abe17e4cdcd094fa3641689'>d8ace476</a>) <br class='newline' /><span class='ec-lmbx-10'>Description</span>:
+     <!-- l. 195 --><p class='noindent'>Driver injection into <span class='ec-lmtt-10'>kernel collections </span>normally used in macOS 11, and required for macOS 11 installer, is
+     unsupported.
+     </p><!-- l. 198 --><p class='noindent'><span class='ec-lmbx-10'>Possible workarounds</span>: </p>
+         <ul class='itemize2'>
+         <li class='itemize'>For <span class='ec-lmbx-10'>preview </span>version of KernelCollection injection code please update to commit <span class='ec-lmtt-10'>d8ace476 </span>and make sure
+         that variables forcing legacy kernel loading (<span class='ec-lmtt-10'>booter-fileset-kernel </span>and <span class='ec-lmtt-10'>booter-fileset-basesystem</span>)
+         are deleted from NVRAM.
+         </li>
+         <li class='itemize'>For <span class='ec-lmbx-10'>preinstalled </span>versions of macOS 11 add NVRAM variable <br class='newline' /><span class='ec-lmtt-10'>7C436110-AB2A-4BBB-A880-FE41995C9F82:booter-fileset-kernel </span>with  <span class='ec-lmtt-10'>00 </span>value;  for  some  EfiBoot
+         variants it may also be required to set <span class='ec-lmtt-10'>booter-fileset-basesystem </span>variable with <span class='ec-lmtt-10'>00 </span>value.</li></ul>
+     </li>
+     <li class='itemize'><span class='ec-lmbx-10'>Identifier</span>: <span class='ec-lmtt-10'>ERR059-5 </span><br class='newline' /><span class='ec-lmbx-10'>Published</span>: 2020-07-25 18:24 MSK <br class='newline' /><span class='ec-lmbx-10'>Updated</span>: 2020-07-25 18:24 MSK <br class='newline' /><span class='ec-lmbx-10'>Affected versions</span>: 0.0.3-0.5.9 <br class='newline' /><span class='ec-lmbx-10'>Resolved in</span>: 0.6.0 (<a href='https://github.com/acidanthera/OpenCorePkg/commit/426a5dbe09365d3fe1d18dbde9868fe12900c30c'>426a5dbe</a>) <br class='newline' /><span class='ec-lmbx-10'>Description</span>:
+     <!-- l. 220 --><p class='noindent'><span class='ec-lmtt-10'>OSXSAVE </span>CPUID feature may not be reported to macOS release kernels when emulating the CPUID causing crashes of
+     select programs relying on <span class='ec-lmtt-10'>Hypervisor.framework </span>like Docker. Reference: <a href='https://github.com/acidanthera/bugtracker/issues/1035'>acidanthera/bugtracker#1035</a>.
+     </p><!-- l. 224 --><p class='noindent'><span class='ec-lmbx-10'>Possible workarounds</span>: </p>
+         <ul class='itemize2'>
+         <li class='itemize'>Manually enable the <span class='ec-lmtt-10'>OSXSAVE </span>bit in <span class='ec-lmtt-10'>ECX </span>register <span class='ec-lmtt-10'>OR</span>
+         </li>
+         <li class='itemize'>Update to master version</li></ul>
+     </li>
+     <li class='itemize'><span class='ec-lmbx-10'>Identifier</span>: <span class='ec-lmtt-10'>ERR060-1 </span><br class='newline' /><span class='ec-lmbx-10'>Published</span>: 2020-08-22 03:10 MSK <br class='newline' /><span class='ec-lmbx-10'>Updated</span>: 2020-08-22 03:10 MSK <br class='newline' /><span class='ec-lmbx-10'>Affected versions</span>: 0.0.1-0.6.0 <br class='newline' /><span class='ec-lmbx-10'>Resolved in</span>: 0.6.1 (<a href='https://github.com/acidanthera/OpenCorePkg/commit/89be8ea5bb98dc8c9eb49a5e29c5343643535ae4'>89be8ea5</a>) <br class='newline' /><span class='ec-lmbx-10'>Description</span>:
+     <!-- l. 239 --><p class='noindent'>APFS-formatted macOS Recovery (e.g. Big Sur Recovery) will not load with a boot failure error. Reference:
+     <a href='https://github.com/acidanthera/bugtracker/issues/1078'>acidanthera/bugtracker#1078</a>.
+                                                                                                  
+                                                                                                  
+     </p><!-- l. 242 --><p class='noindent'><span class='ec-lmbx-10'>Possible workarounds</span>: </p>
+         <ul class='itemize2'>
+         <li class='itemize'>Enable <span class='ec-lmtt-10'>JumpstartHotPlug OR</span>
+         </li>
+         <li class='itemize'>Update to master version</li></ul>
+     </li>
+     <li class='itemize'><span class='ec-lmbx-10'>Identifier</span>: <span class='ec-lmtt-10'>ERR061-1 </span><br class='newline' /><span class='ec-lmbx-10'>Published</span>: 2020-09-11 14:55 MSK <br class='newline' /><span class='ec-lmbx-10'>Updated</span>: 2020-09-11 14:55 MSK <br class='newline' /><span class='ec-lmbx-10'>Affected versions</span>: 0.5.3-0.6.1 <br class='newline' /><span class='ec-lmbx-10'>Resolved in</span>: 0.6.2 (<a href='https://github.com/acidanthera/OpenCorePkg/commit/d3cf117c8661a4eda1863ca1fcdfae5c277974db'>d3cf117c</a>) <br class='newline' /><span class='ec-lmbx-10'>Description</span>:
+     <!-- l. 258 --><p class='noindent'>APFS-formatted drives previously made available with <span class='ec-lmtt-10'>ApfsImageLoader.efi </span>driver are no longer visible with OpenCore
+     builtin <span class='ec-lmtt-10'>EnableJumpstart </span>APFS functionality on platforms that need <span class='ec-lmtt-10'>UnblockFsConnect </span>quirk. Reference:
+     <a href='https://github.com/acidanthera/bugtracker/issues/1128'>acidanthera/bugtracker#1128</a>.
+     </p><!-- l. 263 --><p class='noindent'><span class='ec-lmbx-10'>Possible workarounds</span>: </p>
+         <ul class='itemize2'>
+         <li class='itemize'>Update to master version <span class='ec-lmtt-10'>OR</span>
+         </li>
+         <li class='itemize'>Disable  <span class='ec-lmtt-10'>ConnectDrivers </span>and  enable  <span class='ec-lmtt-10'>GlobalConnect </span>(may  cause  performance  and  compatibility  issues
+         depending on the driver use)
+         </li></ul>
+     </li>
+     <li class='itemize'><span class='ec-lmbx-10'>Identifier</span>: <span class='ec-lmtt-10'>ERR062-1 </span><br class='newline' /><span class='ec-lmbx-10'>Published</span>: 2020-10-25 01:22 MSK <br class='newline' /><span class='ec-lmbx-10'>Updated</span>: 2020-11-01 13:28 MSK <br class='newline' /><span class='ec-lmbx-10'>Affected versions</span>: 0.6.1-0.6.2 <br class='newline' /><span class='ec-lmbx-10'>Resolved in</span>: 0.6.3 (<a href='https://github.com/acidanthera/OpenCorePkg/commit/1b0041493d4693f9505aa6415d93079ea59f7ab0'>1b004149</a>) <br class='newline' /><span class='ec-lmbx-10'>Description</span>:
+     <!-- l. 281 --><p class='noindent'>Booting Big Sur beta 10 or newer will cause a kernel panic in <span class='ec-lmtt-10'>apfs.kext </span>with the <span class='ec-lmtt-10'>Rooting from the live fs of a
+     </span><span class='ec-lmtt-10'>sealed volume is not allowed on a RELEASE build </span>message. Reference: <a href='https://github.com/acidanthera/bugtracker/issues/1235'>acidanthera/bugtracker#1235</a>.
+     </p><!-- l. 286 --><p class='noindent'><span class='ec-lmbx-10'>Possible workarounds</span>: </p>
+         <ul class='itemize2'>
+         <li class='itemize'>Update to master version <span class='ec-lmtt-10'>OR</span>
+         </li>
+         <li class='itemize'>Set <span class='ec-lmtt-10'>SecureBootModel </span>to <span class='ec-lmtt-10'>Disabled</span>
+         </li></ul>
+     <!-- l. 295 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: On virtual machines <span class='ec-lmtt-10'>ForceSecureBootScheme </span>will also need to be enabled if <span class='ec-lmtt-10'>SecureBootModel </span>is different from
+     <span class='ec-lmtt-10'>x86legacy </span>or <span class='ec-lmtt-10'>Disabled</span>.
+     </p></li>
+     <li class='itemize'><span class='ec-lmbx-10'>Identifier</span>: <span class='ec-lmtt-10'>ERR067-1 </span><br class='newline' /><span class='ec-lmbx-10'>Published</span>: 2021-02-20 10:42 MSK <br class='newline' /><span class='ec-lmbx-10'>Updated</span>: 2021-02-20 10:42 MSK <br class='newline' /><span class='ec-lmbx-10'>Affected versions</span>: 0.6.6 <br class='newline' /><span class='ec-lmbx-10'>Resolved in</span>: 0.6.7 (<a href='https://github.com/acidanthera/OpenCorePkg/commit/b4449f48dd01703b5766352b6f29717415aff08b'>b4449f48</a>) <br class='newline' /><span class='ec-lmbx-10'>Description</span>:
+     <!-- l. 307 --><p class='noindent'>Loading OpenCore via bootstrap may fail on certain Mac firmwares. Reference: <a href='https://github.com/acidanthera/bugtracker/issues/1502'>acidanthera/bugtracker#1502</a>.
+     </p><!-- l. 310 --><p class='noindent'><span class='ec-lmbx-10'>Possible workarounds</span>: </p>
+         <ul class='itemize2'>
+         <li class='itemize'>Update to master version
+                                                                                                  
+                                                                                                  
+         </li></ul>
+     </li></ul>
+ 
+</body> 
+</html>
