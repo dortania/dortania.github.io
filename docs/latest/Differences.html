@@ -79,6 +79,187 @@ width="160" height="160"  />
          <li class="itemize">OCPI — OcFileLib, partition info
          </li>
                                                                                                   
+                                                                                                  
+     One-byte data defining boot.efi user interface scaling. Should be 01 for normal screens and 02 for HiDPI
+     screens.
+     </li>
+     <li class="itemize"><span class="uwave">7C436110-AB2A-4BBB-A880-FE41995C9F82:ForceDisplayRotationInEFI</span>
+     <span class="uwave">32-bit integer defining display rotation. Can be </span><span class="uwave">0</span> <span class="uwave">for no rotation or any of </span><span class="uwave">90</span><span class="uwave">, </span><span class="uwave">180</span><span class="uwave">, </span><span class="uwave">270</span> <span class="uwave">for matching rotation in
+     degrees. </span>
+     </li>
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:DefaultBackgroundColor
+     Four-byte BGRA data defining boot.efi user interface background colour. Standard colours include BF BF BF
+     00 (Light Gray) and 00 00 00 00 (Syrah Black). Other colours may be set at user’s preference.</li></ul>
+<a 
+ id="x1-52001r54"></a>
+<h4 class="subsectionHead"><span class="titlemark">9.5   </span> <a 
+ id="x1-530005"></a>Other Variables</h4>
+<!--l. 4509--><p class="noindent" >The following variables may be useful for certain configurations or troubleshooting:
+</p>
+     <ul class="itemize1">
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:boot-args
+     Kernel arguments, used to pass configuration to Apple kernel and drivers. There are many arguments, which
+     may be found by looking for the use of PE_parse_boot_argn function in the kernel or driver code. Some of the
+     known boot arguments include:
+         <ul class="itemize2">
+         <li class="itemize">acpi_layer=0xFFFFFFFF
+         </li>
+         <li class="itemize">acpi_level=0xFFFF5F (implies <a 
+href="https://github.com/acpica/acpica/blob/master/source/include/acoutput.h" >ACPI_ALL_COMPONENTS</a>)
+         </li>
+         <li class="itemize">arch=i386 (force kernel architecture to i386, see KernelArch)
+         </li>
+         <li class="itemize">batman=VALUE (AppleSmartBatteryManager debug mask)
+         </li>
+         <li class="itemize">batman-nosmc=1 (disable AppleSmartBatteryManager SMC interface)
+         </li>
+         <li class="itemize">cpus=VALUE (maximum number of CPUs used)
+         </li>
+         <li class="itemize">debug=VALUE (debug mask)
+         </li>
+         <li class="itemize">io=VALUE (IOKit debug mask)
+         </li>
+         <li class="itemize">ioaccel_debug=VALUE (IOAccelerator debug mask)
+         </li>
+         <li class="itemize">keepsyms=1 (show panic log debug symbols)
+         </li>
+         <li class="itemize">kextlog=VALUE (kernel extension loading debug mask)
+         </li>
+         <li class="itemize">nvram-log=1 (enables AppleEFINVRAM logs)
+         </li>
+         <li class="itemize">nv_disable=1 (disables NVIDIA GPU acceleration)
+         </li>
+         <li class="itemize">nvda_drv=1 (legacy way to enable NVIDIA web driver, removed in 10.12)
+         </li>
+         <li class="itemize">npci=0x2000 (<a 
+href="https://www.insanelymac.com/forum/topic/260539-1068-officially-released/?do=findComment&comment=1707972" >legacy</a>, disables kIOPCIConfiguratorPFM64)
+         </li>
+         <li class="itemize">lapic_dont_panic=1 (disable lapic spurious interrupt panic on AP cores)
+         </li>
+         <li class="itemize">panic_on_display_hang=1 (trigger panic on display hang)
+         </li>
+         <li class="itemize">panic_on_gpu_hang=1 (trigger panic on GPU hang)
+         </li>
+                                                                                                  
+                                                                                                  
+         <ul class="itemize1">
+         <li class="itemize">Set to WxH@Bpp (e.g. 1920x1080@32) or WxH (e.g. 1920x1080) formatted string to request custom resolution
+         from GOP if available.
+         </li>
+         <li class="itemize">Set to Max to attempt using the largest available screen resolution.</li></ul>
+     <!--l. 6799--><p class="noindent" >On HiDPI screens APPLE_VENDOR_VARIABLE_GUID UIScale NVRAM variable may need to be set to 02 to enable HiDPI
+     scaling in Builtin text renderer, FileVault 2 UEFI password interface, and boot screen logo. Refer to the ?? section for
+     details.
+     </p><!--l. 6805--><p class="noindent" >Note: This will fail when console handle has no GOP protocol. When the firmware does not provide it, it can be added
+     with ProvideConsoleGop set to true.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-73008x4">ForceResolution<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Forces Resolution to be set in cases where the desired resolution is not available by default, such as on
+     legacy Intel GMA and first generation Intel HD Graphics (Ironlake/Arrandale). Setting Resolution to Max will try to
+     pull the largest available resolution from the connected display’s EDID.
+     <!--l. 6819--><p class="noindent" >Note: This option depends on the <a 
+href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Acidanthera/Protocol/OcForceResolution.h" >OC_FORCE_RESOLUTION_PROTOCOL</a> protocol being present. This protocol is
+     currently only supported by OpenDuetPkg. The OpenDuetPkg implementation currently only supports Intel
+     iGPUs.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-73010x5">ClearScreenOnModeSwitch<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Some types of firmware only clear part of the screen when switching from graphics to text mode, leaving a
+     fragment of previously drawn images visible. This option fills the entire graphics screen with black colour before switching
+     to text mode.
+     <!--l. 6832--><p class="noindent" >Note: This option only applies to System renderer.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-73012x6">DirectGopRendering<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Use builtin graphics output protocol renderer for console.
+     <!--l. 6840--><p class="noindent" >On certain firmware, such as on the MacPro5,1, this may provide better performance or fix rendering issues. However,
+     this option is not recommended unless there is an obvious benefit as it may result in issues such as slower
+     scrolling.
+     </p><!--l. 6844--><p class="noindent" ><span class="uwave">This renderer fully supports </span><span class="uwave">AppleEg2Info</span> <span class="uwave">protocol and will provide screen rotation for all EFI applications.
+     </span>
+     </p></li>
+     <li 
+  class="enumerate" id="x1-73014x7">GopPassThrough<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Provide GOP protocol instances on top of UGA protocol instances.
+     <!--l. 6854--><p class="noindent" >This option provides the GOP protocol via a UGA-based proxy for firmware that do not implement the
+     protocol.
+     </p><!--l. 6857--><p class="noindent" >Note: This option requires ProvideConsoleGop to be enabled.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-73016x8">IgnoreTextInGraphics<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Some types of firmware output text onscreen in both graphics and text mode. This is typically unexpected
+                                                                                                  
+                                                                                                  
+<a 
+ id="x1-73027r76"></a>
+<h4 class="subsectionHead"><span class="titlemark">11.12   </span> <a 
+ id="x1-7400012"></a>ProtocolOverrides Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-74002x1">AppleAudio<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces Apple audio protocols with builtin versions.
+     <!--l. 6945--><p class="noindent" >Apple audio protocols allow OpenCore and the macOS bootloader to play sounds and signals for screen reading
+     or audible error reporting. Supported protocols are beep generation and VoiceOver. The VoiceOver protocol
+     is specific to Gibraltar machines (T2) and is not supported before macOS High Sierra (10.13). Older macOS
+     versions use the AppleHDA protocol (which is not currently implemented) instead.
+     </p><!--l. 6952--><p class="noindent" >Only one set of audio protocols can be available at a time, so this setting should be enabled in order to enable
+     audio playback in the OpenCore user interface on Mac systems implementing some of these protocols.
+     </p><!--l. 6956--><p class="noindent" >Note: The backend audio driver needs to be configured in UEFI Audio section for these protocols to be able to
+     stream audio.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-74004x2">AppleBootPolicy<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces the Apple Boot Policy protocol with a builtin version. This may be used to ensure APFS
+     compatibility on VMs and legacy Macs.
+     <!--l. 6966--><p class="noindent" >Note: This option is advisable on certain Macs, such as the MacPro5,1, that are APFS compatible but on which
+     the Apple Boot Policy protocol has recovery detection issues.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-74006x3">AppleDebugLog<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces the Apple Debug Log protocol with a builtin version<span class="uwave">. </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-74008x4"><span class="uwave">AppleEg2Info</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">false</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Replaces the Apple EFI Graphics 2 protocol with a builtin version. </span>
+     <!--l. 6986--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: This protocol allows newer </span><span class="uwave">EfiBoot</span> <span class="uwave">versions (at least 10.15) to expose screen rotation to macOS. Refer to
+     </span><span class="uwave">ForceDisplayRotationInEFI</span> <span class="uwave">variable description on how to set screen rotation angle</span>.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-74010x5">AppleFramebufferInfo<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces the Apple Framebuffer Info protocol with a builtin version. This may be used to override
+     framebuffer information on VMs and legacy Macs to improve compatibility with legacy EfiBoot such as the one
+     in macOS 10.4.
+     <!--l. 6998--><p class="noindent" >Note: The current implementation of this property results in it only being active when GOP is available (it is
+     always equivalent to false otherwise).
+     </p></li>
+     <li 
+  class="enumerate" id="x1-74012x6">AppleImageConversion<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces the Apple Image Conversion protocol with a builtin version.
+     </li>
+                                                                                                  
 
 
 </body>
