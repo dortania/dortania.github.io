@@ -15,7 +15,7 @@ src="Logos/Logo-.png" alt="PIC"
 width="160" height="160"  />
 </p><!--l. 153--><p class="noindent" >OpenCore
 </p><!--l. 157--><p class="noindent" >Reference Manual (<span class="sout">0.6.9</span><span class="uwave">0.7.0</span>)
-</p><!--l. 161--><p class="noindent" >[2021.05.08]
+</p><!--l. 161--><p class="noindent" >[2021.05.09]
 </p><!--l. 169--><p class="noindent" >Copyright ©2018-2021 vit9696
 </p>
 </div>
@@ -182,85 +182,21 @@ class="newline" />Description: Use builtin graphics output protocol renderer for
      <!--l. 6840--><p class="noindent" >On certain firmware, such as on the MacPro5,1, this may provide better performance or fix rendering issues. However,
      this option is not recommended unless there is an obvious benefit as it may result in issues such as slower
      scrolling.
-     </p><!--l. 6844--><p class="noindent" ><span class="uwave">This renderer fully supports </span><span class="uwave">AppleEg2Info</span> <span class="uwave">protocol and will provide screen rotation for all EFI applications.
-     </span>
+     </p><!--l. 6844--><p class="noindent" ><span class="uwave">This renderer fully supports </span><span class="uwave">AppleEg2Info</span> <span class="uwave">protocol and will provide screen rotation for all EFI applications. In order to
+     provide seamless rotation compatibility with </span><span class="uwave">EfiBoot</span><span class="uwave">, builtin </span><span class="uwave">AppleFramebufferInfo</span> <span class="uwave">should also be used, i.e. it may
+     need to be overridden on Mac EFI. </span>
      </p></li>
      <li 
   class="enumerate" id="x1-73014x7">GopPassThrough<br 
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Provide GOP protocol instances on top of UGA protocol instances.
-     <!--l. 6854--><p class="noindent" >This option provides the GOP protocol via a UGA-based proxy for firmware that do not implement the
+     <!--l. 6856--><p class="noindent" >This option provides the GOP protocol via a UGA-based proxy for firmware that do not implement the
      protocol.
-     </p><!--l. 6857--><p class="noindent" >Note: This option requires ProvideConsoleGop to be enabled.
+     </p><!--l. 6859--><p class="noindent" >Note: This option requires ProvideConsoleGop to be enabled.
      </p></li>
      <li 
   class="enumerate" id="x1-73016x8">IgnoreTextInGraphics<br 
 class="newline" />Type: plist boolean<br 
-class="newline" />Failsafe: false<br 
-class="newline" />Description: Some types of firmware output text onscreen in both graphics and text mode. This is typically unexpected
-                                                                                                  
-                                                                                                  
-<a 
- id="x1-73027r76"></a>
-<h4 class="subsectionHead"><span class="titlemark">11.12   </span> <a 
- id="x1-7400012"></a>ProtocolOverrides Properties</h4>
-     <ol  class="enumerate1" >
-     <li 
-  class="enumerate" id="x1-74002x1">AppleAudio<br 
-class="newline" />Type: plist boolean<br 
-class="newline" />Failsafe: false<br 
-class="newline" />Description: Replaces Apple audio protocols with builtin versions.
-     <!--l. 6945--><p class="noindent" >Apple audio protocols allow OpenCore and the macOS bootloader to play sounds and signals for screen reading
-     or audible error reporting. Supported protocols are beep generation and VoiceOver. The VoiceOver protocol
-     is specific to Gibraltar machines (T2) and is not supported before macOS High Sierra (10.13). Older macOS
-     versions use the AppleHDA protocol (which is not currently implemented) instead.
-     </p><!--l. 6952--><p class="noindent" >Only one set of audio protocols can be available at a time, so this setting should be enabled in order to enable
-     audio playback in the OpenCore user interface on Mac systems implementing some of these protocols.
-     </p><!--l. 6956--><p class="noindent" >Note: The backend audio driver needs to be configured in UEFI Audio section for these protocols to be able to
-     stream audio.
-     </p></li>
-     <li 
-  class="enumerate" id="x1-74004x2">AppleBootPolicy<br 
-class="newline" />Type: plist boolean<br 
-class="newline" />Failsafe: false<br 
-class="newline" />Description: Replaces the Apple Boot Policy protocol with a builtin version. This may be used to ensure APFS
-     compatibility on VMs and legacy Macs.
-     <!--l. 6966--><p class="noindent" >Note: This option is advisable on certain Macs, such as the MacPro5,1, that are APFS compatible but on which
-     the Apple Boot Policy protocol has recovery detection issues.
-     </p></li>
-     <li 
-  class="enumerate" id="x1-74006x3">AppleDebugLog<br 
-class="newline" />Type: plist boolean<br 
-class="newline" />Failsafe: false<br 
-class="newline" />Description: Replaces the Apple Debug Log protocol with a builtin version<span class="uwave">. </span>
-     </li>
-     <li 
-  class="enumerate" id="x1-74008x4"><span class="uwave">AppleEg2Info</span><br 
-class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
-class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">false</span><br 
-class="newline" /><span class="uwave">Description</span><span class="uwave">: Replaces the Apple EFI Graphics 2 protocol with a builtin version. </span>
-     <!--l. 6986--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: This protocol allows newer </span><span class="uwave">EfiBoot</span> <span class="uwave">versions (at least 10.15) to expose screen rotation to macOS. Refer to
-     </span><span class="uwave">ForceDisplayRotationInEFI</span> <span class="uwave">variable description on how to set screen rotation angle</span>.
-     </p></li>
-     <li 
-  class="enumerate" id="x1-74010x5">AppleFramebufferInfo<br 
-class="newline" />Type: plist boolean<br 
-class="newline" />Failsafe: false<br 
-class="newline" />Description: Replaces the Apple Framebuffer Info protocol with a builtin version. This may be used to override
-     framebuffer information on VMs and legacy Macs to improve compatibility with legacy EfiBoot such as the one
-     in macOS 10.4.
-     <!--l. 6998--><p class="noindent" >Note: The current implementation of this property results in it only being active when GOP is available (it is
-     always equivalent to false otherwise).
-     </p></li>
-     <li 
-  class="enumerate" id="x1-74012x6">AppleImageConversion<br 
-class="newline" />Type: plist boolean<br 
-class="newline" />Failsafe: false<br 
-class="newline" />Description: Replaces the Apple Image Conversion protocol with a builtin version.
-     </li>
-                                                                                                  
-
-
-</body>
+class="newline" />Failsafe: false     </body>
 </html>
