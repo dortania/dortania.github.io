@@ -21,6 +21,83 @@ width="160" height="160"  />
 </div>
                                                                                                   
                                                                                                   
+     <!--l. 2166--><p class="noindent" >Note: Refer to the <a 
+href="#kernmatch">Add MaxKernel description</a> for matching logic.
+</p>
+     </li></ol>
+<a 
+ id="x1-35013r37"></a>
+<h4 class="subsectionHead"><span class="titlemark">7.5   </span> <a 
+ id="x1-360005"></a>Emulate Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-36002x1">Cpuid1Data<br 
+class="newline" />Type: plist data, 16 bytes<br 
+class="newline" />Failsafe: All zero<br 
+class="newline" />Description: Sequence of EAX, EBX, ECX, EDX values to replace CPUID (1) call in XNU kernel.
+     <!--l. 2180--><p class="noindent" >This property primarily meets three requirements:
+</p>
+         <ul class="itemize1">
+         <li class="itemize">Enabling support for an unsupported CPU model (e.g. Intel Pentium).
+         </li>
+         <li class="itemize">Enabling support for a CPU model not yet supported by a specific version of macOS (typically old versions).
+         </li>
+         <li class="itemize">Enabling XCPM support for an unsupported CPU variant.</li></ul>
+     <!--l. 2189--><p class="noindent" >Note 1: It may also be the case that the CPU model is supported but there is no power management supported (e.g.
+     virtual machines). In this case, MinKernel and MaxKernel can be set to restrict CPU virtualisation and dummy power
+     management patches to the particular macOS kernel version.
+     </p><!--l. 2193--><p class="noindent" >Note 2: Only the value of EAX, which represents the full CPUID, typically needs to be accounted for and remaining bytes
+     should be left as zeroes. The byte order is Little Endian. For example, C3 06 03 00 stands for CPUID 0x0306C3
+     (Haswell).
+     </p><!--l. 2198--><p class="noindent" >Note 3: For XCPM support it is recommended to use the following combinations.
+</p>
+         <ul class="itemize1">
+         <li class="itemize">Haswell-E (0x0306F2) to Haswell (0x0306C3):<br 
+class="newline" />Cpuid1Data: C3 06 03 00 00 00 00 00 00 00 00 00 00 00 00 00<br 
+class="newline" />Cpuid1Mask: FF FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00
+         </li>
+         <li class="itemize">Broadwell-E (0x0406F1) to Broadwell (0x0306D4):<br 
+class="newline" />Cpuid1Data: D4 06 03 00 00 00 00 00 00 00 00 00 00 00 00 00<br 
+class="newline" />Cpuid1Mask: FF FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00
+         </li>
+         <li class="itemize">Rocket Lake (0x0A0670) to Comet Lake (0x0906EB):<br 
+class="newline" />Cpuid1Data: EB 06 09 00 00 00 00 00 00 00 00 00 00 00 00 00<br 
+class="newline" />Cpuid1Mask: FF FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00
+         </li>
+         <li class="itemize"><span class="uwave">Comet Lake U62 (</span><span class="uwave">0x0A0660</span><span class="uwave">) to Comet Lake U42 (</span><span class="uwave">0x0806EC</span><span class="uwave">):</span><br 
+class="newline" /><span class="uwave">Cpuid1Data</span><span class="uwave">: </span><span class="uwave">EC 06 08 00 00 00 00 00 00 00 00 00 00 00 00 00</span><br 
+class="newline" /><span class="uwave">Cpuid1Mask</span><span class="uwave">: </span><span class="uwave">FF FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00</span></li></ul>
+     <!--l. 2216--><p class="noindent" >Note 4: Be aware that the following configurations are unsupported by XCPM (at least out of the box):
+</p>
+         <ul class="itemize1">
+         <li class="itemize">Consumer Ivy Bridge (0x0306A9) as Apple disabled XCPM for Ivy Bridge and recommends legacy power
+         management for these CPUs. _xcpm_bootstrap should manually be patched to enforce XCPM on these
+         CPUs instead of this option.
+         </li>
+         <li class="itemize">Low-end CPUs (e.g. Haswell+ Pentium) as they are not supported properly by macOS. Legacy workarounds
+         for older models can be found in the Special NOTES section of <a 
+href="https://github.com/acidanthera/bugtracker/issues/365" >acidanthera/bugtracker#365</a>.</li></ul>
+                                                                                                  
+                                                                                                  
+         </li>
+         <li class="itemize">MMDD — MmapDump
+         </li>
+         <li class="itemize">OCPAVP — PavpProvision
+         </li>
+         <li class="itemize">OCRST — ResetSystem
+         </li>
+         <li class="itemize">OCUI — OpenCanopy
+         </li>
+         <li class="itemize">OC — OpenCore main, also OcMainLib
+         </li>
+         <li class="itemize">VMOPT — VerifyMemOpt</li></ul>
+     <!--l. 3658--><p class="noindent" >Libraries: </p>
+         <ul class="itemize1">
+         <li class="itemize">AAPL — OcDebugLogLib, Apple EfiBoot logging
+         </li>
+         <li class="itemize">OCABC — OcAfterBootCompatLib
+         </li>
+         <li class="itemize">OCAE — OcAppleEventLib
          </li>
          <li class="itemize">OCAK — OcAppleKernelLib
          </li>
@@ -58,28 +135,27 @@ width="160" height="160"  />
          </li>
          <li class="itemize">OCIC — OcImageConversionLib
          </li>
-         <li class="itemize">OCII — OcInputLib
-         </li>
-         <li class="itemize">OCJS — OcApfsLib
-         </li>
-         <li class="itemize">OCKM — OcAppleKeyMapLib
-         </li>
-         <li class="itemize">OCL — OcDebugLogLib
-         </li>
-         <li class="itemize">OCM — OcMiscLib
-         </li>
-         <li class="itemize">OCMCO — OcMachoLib
-         </li>
-         <li class="itemize">OCME — OcHeciLib
-         </li>
-         <li class="itemize">OCMM — OcMemoryLib
-         </li>
-         <li class="itemize">OCPE — OcPeCoffLib, OcPeCoffExtLib
-         </li>
-         <li class="itemize">OCPI — OcFileLib, partition info
-         </li>
                                                                                                   
                                                                                                   
+     </li>
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:SSN
+     Serial number. Present on newer Macs (2013+ at least).
+     </li>
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:prev-lang:kbd
+     ASCII string defining default keyboard layout. Format is lang-COUNTRY:keyboard, e.g. ru-RU:252 for Russian
+     locale and ABC keyboard. Also accepts short forms: ru:252 or ru:0 (U.S. keyboard, compatible with 10.9). Full
+     decoded keyboard list from AppleKeyboardLayouts-L.dat can be found <a 
+href="https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/AppleKeyboardLayouts" >here</a>. Using non-latin keyboard on 10.14
+     will not enable ABC keyboard, unlike previous and subsequent macOS versions, and is thus not recommended
+     in case 10.14 is needed.
+     </li>
+     <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:security-mode
+     ASCII  string  defining  FireWire  security  mode.  Legacy,  can  be  found  in  IOFireWireFamily  source  code  in
+     <a 
+href="https://opensource.apple.com/source/IOFireWireFamily/IOFireWireFamily-473/IOFireWireFamily.kmodproj/IOFireWireController.cpp.auto.html" >IOFireWireController.cpp</a>. It is recommended not to set this variable, which may speedup system startup. Setting
+     to full is equivalent to not setting the variable and none disables FireWire security.
+     </li>
+     <li class="itemize">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:UIScale
      One-byte data defining boot.efi user interface scaling. Should be 01 for normal screens and 02 for HiDPI
      screens.
      </li>
@@ -94,7 +170,7 @@ width="160" height="160"  />
  id="x1-52001r54"></a>
 <h4 class="subsectionHead"><span class="titlemark">9.5   </span> <a 
  id="x1-530005"></a>Other Variables</h4>
-<!--l. 4509--><p class="noindent" >The following variables may be useful for certain configurations or troubleshooting:
+<!--l. 4512--><p class="noindent" >The following variables may be useful for certain configurations or troubleshooting:
 </p>
      <ul class="itemize1">
      <li class="itemize">7C436110-AB2A-4BBB-A880-FE41995C9F82:boot-args
@@ -122,24 +198,6 @@ href="https://github.com/acpica/acpica/blob/master/source/include/acoutput.h" >A
          <li class="itemize">ioaccel_debug=VALUE (IOAccelerator debug mask)
          </li>
          <li class="itemize">keepsyms=1 (show panic log debug symbols)
-         </li>
-         <li class="itemize">kextlog=VALUE (kernel extension loading debug mask)
-         </li>
-         <li class="itemize">nvram-log=1 (enables AppleEFINVRAM logs)
-         </li>
-         <li class="itemize">nv_disable=1 (disables NVIDIA GPU acceleration)
-         </li>
-         <li class="itemize">nvda_drv=1 (legacy way to enable NVIDIA web driver, removed in 10.12)
-         </li>
-         <li class="itemize">npci=0x2000 (<a 
-href="https://www.insanelymac.com/forum/topic/260539-1068-officially-released/?do=findComment&comment=1707972" >legacy</a>, disables kIOPCIConfiguratorPFM64)
-         </li>
-         <li class="itemize">lapic_dont_panic=1 (disable lapic spurious interrupt panic on AP cores)
-         </li>
-         <li class="itemize">panic_on_display_hang=1 (trigger panic on display hang)
-         </li>
-         <li class="itemize">panic_on_gpu_hang=1 (trigger panic on GPU hang)
-         </li>
                                                                                                   
                                                                                                   
          <ul class="itemize1">
@@ -147,10 +205,10 @@ href="https://www.insanelymac.com/forum/topic/260539-1068-officially-released/?d
          from GOP if available.
          </li>
          <li class="itemize">Set to Max to attempt using the largest available screen resolution.</li></ul>
-     <!--l. 6799--><p class="noindent" >On HiDPI screens APPLE_VENDOR_VARIABLE_GUID UIScale NVRAM variable may need to be set to 02 to enable HiDPI
+     <!--l. 6802--><p class="noindent" >On HiDPI screens APPLE_VENDOR_VARIABLE_GUID UIScale NVRAM variable may need to be set to 02 to enable HiDPI
      scaling in Builtin text renderer, FileVault 2 UEFI password interface, and boot screen logo. Refer to the ?? section for
      details.
-     </p><!--l. 6805--><p class="noindent" >Note: This will fail when console handle has no GOP protocol. When the firmware does not provide it, it can be added
+     </p><!--l. 6808--><p class="noindent" >Note: This will fail when console handle has no GOP protocol. When the firmware does not provide it, it can be added
      with ProvideConsoleGop set to true.
      </p></li>
      <li 
@@ -160,7 +218,7 @@ class="newline" />Failsafe: false<br
 class="newline" />Description: Forces Resolution to be set in cases where the desired resolution is not available by default, such as on
      legacy Intel GMA and first generation Intel HD Graphics (Ironlake/Arrandale). Setting Resolution to Max will try to
      pull the largest available resolution from the connected display’s EDID.
-     <!--l. 6819--><p class="noindent" >Note: This option depends on the <a 
+     <!--l. 6822--><p class="noindent" >Note: This option depends on the <a 
 href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Acidanthera/Protocol/OcForceResolution.h" >OC_FORCE_RESOLUTION_PROTOCOL</a> protocol being present. This protocol is
      currently only supported by OpenDuetPkg. The OpenDuetPkg implementation currently only supports Intel
      iGPUs.
@@ -172,17 +230,17 @@ class="newline" />Failsafe: false<br
 class="newline" />Description: Some types of firmware only clear part of the screen when switching from graphics to text mode, leaving a
      fragment of previously drawn images visible. This option fills the entire graphics screen with black colour before switching
      to text mode.
-     <!--l. 6832--><p class="noindent" >Note: This option only applies to System renderer.
+     <!--l. 6835--><p class="noindent" >Note: This option only applies to System renderer.
      </p></li>
      <li 
   class="enumerate" id="x1-73012x6">DirectGopRendering<br 
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Use builtin graphics output protocol renderer for console.
-     <!--l. 6840--><p class="noindent" >On certain firmware, such as on the MacPro5,1, this may provide better performance or fix rendering issues. However,
+     <!--l. 6843--><p class="noindent" >On certain firmware, such as on the MacPro5,1, this may provide better performance or fix rendering issues. However,
      this option is not recommended unless there is an obvious benefit as it may result in issues such as slower
      scrolling.
-     </p><!--l. 6844--><p class="noindent" ><span class="uwave">This renderer fully supports </span><span class="uwave">AppleEg2Info</span> <span class="uwave">protocol and will provide screen rotation for all EFI applications. In order to
+     </p><!--l. 6847--><p class="noindent" ><span class="uwave">This renderer fully supports </span><span class="uwave">AppleEg2Info</span> <span class="uwave">protocol and will provide screen rotation for all EFI applications. In order to
      provide seamless rotation compatibility with </span><span class="uwave">EfiBoot</span><span class="uwave">, builtin </span><span class="uwave">AppleFramebufferInfo</span> <span class="uwave">should also be used, i.e. it may
      need to be overridden on Mac EFI. </span>
      </p></li>
@@ -191,9 +249,9 @@ class="newline" />Description: Use builtin graphics output protocol renderer for
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Provide GOP protocol instances on top of UGA protocol instances.
-     <!--l. 6856--><p class="noindent" >This option provides the GOP protocol via a UGA-based proxy for firmware that do not implement the
+     <!--l. 6859--><p class="noindent" >This option provides the GOP protocol via a UGA-based proxy for firmware that do not implement the
      protocol.
-     </p><!--l. 6859--><p class="noindent" >Note: This option requires ProvideConsoleGop to be enabled.
+     </p><!--l. 6862--><p class="noindent" >Note: This option requires ProvideConsoleGop to be enabled.
      </p></li>
      <li 
   class="enumerate" id="x1-73016x8">IgnoreTextInGraphics<br 
