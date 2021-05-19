@@ -79,18 +79,176 @@ class="newline" /><span class="uwave">Cpuid1Mask</span><span class="uwave">: </s
 href="https://github.com/acidanthera/bugtracker/issues/365" >acidanthera/bugtracker#365</a>.</li></ul>
                                                                                                   
                                                                                                   
-     </p><!--l. 3405--><p class="noindent" >The following actions are currently considered:
+     executing NVRAM resets prior to loading OpenCore will erase the boot option. Therefore, for significant implementation
+     updates, such as was the case with OpenCore 0.6.4, an NVRAM reset should be executed with Bootstrap disabled, after
+     which it can be re-enabled.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-44010x5">LauncherPath<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Default<br 
+class="newline" />Description: Launch path for the LauncherOption property.
+     <!--l. 3214--><p class="noindent" >Default points to OpenCore.efi. User specified paths, e.g. \EFI\SomeLauncher.efi, can be used to provide custom
+     loaders, which are supposed to load OpenCore.efi themselves.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-44012x6">PickerAttributes<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Sets specific attributes for the OpenCore picker.
+     <!--l. 3225--><p class="noindent" >Different OpenCore pickers may be configured through the attribute mask containing OpenCore-reserved (BIT0~BIT15)
+     and OEM-specific (BIT16~BIT31) values.
+     </p><!--l. 3229--><p class="noindent" >Current OpenCore values include:
 </p>
          <ul class="itemize1">
-         <li class="itemize">Default — this is the default option, and it lets the built-in OpenCore picker load the default boot option
-         as specified in the <a 
-href="https://support.apple.com/HT202796" >Startup Disk</a> preference pane.
+         <li class="itemize">0x0001 — OC_ATTR_USE_VOLUME_ICON, provides custom icons for boot entries:
+         <!--l. 3236--><p class="noindent" ><span class="sout">For </span><span class="sout">Tools</span><span class="sout">, </span>OpenCore will attempt loading a <span class="sout">custom icon and fallback to a default icon on failure:
+         </span></p>
+             <ul class="itemize2">
+             <li class="itemize"><span class="sout">ResetNVRAM</span> <span class="sout">— </span><span class="sout">Resources\Image\ResetNVRAM.icns</span> <span class="sout">— </span><span class="sout">ResetNVRAM.icns</span> <span class="sout">from icons directory. </span>
+             </li>
+             <li class="itemize"><span class="sout">Tools\&#x003C;TOOL_RELATIVE_PATH&#x003E;.icns</span> <span class="sout">— icon near the tool file with appended </span><span class="sout">.icns</span> <span class="sout">extension. </span></li></ul>
+         <!--l. 3260--><p class="noindent" ><span class="sout">For custom boot </span><span class="sout">Entries</span><span class="sout">, OpenCore will attempt loading a custom icon and fallback to the volume icon or the
+         default icon on failure: </span></p>
+             <ul class="itemize2">
+             <li class="itemize"><span class="sout">&#x003C;ENTRY_PATH&#x003E;.icns</span> <span class="sout">— icon near the entry file with appended </span><span class="sout">.icns</span> <span class="sout">extension. </span></li></ul>
+         <!--l. 3277--><p class="noindent" ><span class="sout">For all other entries, OpenCore will attempt loading a volume icon </span><span class="uwave">volume icon </span>by searching as follows, and will
+         fallback to the default icon on failure: </p>
+             <ul class="itemize2">
+             <li class="itemize">.VolumeIcon.icns       file           at           Preboot       volume           in           per-volume
+             directory (/System/Volumes/Preboot/{GUID}/ when mounted at the default location within macOS)
+             for APFS (if present).
+             </li>
+             <li class="itemize">.VolumeIcon.icns file at the Preboot volume root (/System/Volumes/Preboot/, when mounted at
+             the default location within macOS) for APFS (otherwise).
+             </li>
+             <li class="itemize">.VolumeIcon.icns file at the volume root for other filesystems.</li></ul>
+         <!--l. 3290--><p class="noindent" >Note 1: The Apple picker partially supports placing a volume icon file at the operating system’s Data volume root,
+         /System/Volumes/Data/, when mounted at the default location within macOS. This approach is flawed: the file is
+         neither accessible to OpenCanopy nor to the Apple picker when FileVault 2, which is meant to be the default choice,
+         is enabled. Therefore, OpenCanopy does not attempt supporting Apple’s approach. A volume icon file may be
+         placed at the root of the Preboot volume for compatibility with both OpenCanopy and the Apple picker, or use the
+         Preboot per-volume location as above with OpenCanopy as a preferred alternative to Apple’s approach.
+         </p><!--l. 3299--><p class="noindent" >Note 2: Be aware that using a volume icon on any drive overrides the normal OpenCore picker behaviour for
+         that drive of selecting the appropriate icon depending on whether the drive is internal or external.
+         </p></li>
+                                                                                                  
+                                                                                                  
+         <li class="itemize">0x0002 — OC_ATTR_USE_DISK_LABEL_FILE, provides custom rendered titles for boot entries:
+             <ul class="itemize2">
+             <li class="itemize">.disk_label (.disk_label_2x) file near bootloader for all filesystems.
+             </li>
+             <li class="itemize">&#x003C;TOOL_NAME&#x003E;.lbl (&#x003C;TOOL_NAME&#x003E;.l2x) file near tool for Tools.</li></ul>
+         <!--l. 3310--><p class="noindent" >Prerendered labels can be generated via the disklabel utility or the bless command. When disabled
+         or missing text labels, (.contentDetails or .disk_label.contentDetails) are to be rendered
+         instead.
+         </p></li>
+         <li class="itemize">0x0004 — OC_ATTR_USE_GENERIC_LABEL_IMAGE, provides predefined label images for boot entries without custom
+         entries. This may however give less detail for the actual boot entry.
          </li>
-         <li class="itemize">ShowPicker — this option forces the OpenCore picker to be displayed. This can typically be achieved by
-         holding the OPT key during boot. Setting ShowPicker to true will make ShowPicker the default option.
+         <li class="itemize">0x0008 — OC_ATTR_HIDE_THEMED_ICONS, prefers builtin icons for certain icon categories to match
+         the theme style. For example, this could force displaying the builtin Time Machine icon. Requires
+         OC_ATTR_USE_VOLUME_ICON.
          </li>
-         <li class="itemize">ResetNvram — this option erases certain UEFI variables and is normally executed by holding down the
-         CMD+OPT+P+R key combination during boot. Another way to erase UEFI variables is to choose Reset NVRAM
+         <li class="itemize">0x0010 — OC_ATTR_USE_POINTER_CONTROL, enables pointer control in the OpenCore picker when available. For
+         example, this could make use of mouse or trackpad to control UI elements.
+         </li>
+         <li class="itemize">0x0020 — OC_ATTR_SHOW_DEBUG_DISPLAY, enable display of additional timing and debug information, in Builtin
+         picker in DEBUG and NOOPT builds only.
+         </li>
+         <li class="itemize">0x0040 — OC_ATTR_USE_MINIMAL_UI, use minimal UI display, no Shutdown or Restart buttons, affects OpenCanopy
+         and builtin picker.
+         </li>
+         <li class="itemize"><span class="uwave">0x0080</span> <span class="uwave">— </span><span class="uwave">OC_ATTR_USE_FLAVOUR_ICON</span><span class="uwave">, provides flexible boot entry content description, suitable for picking the
+         best media across different content sets: </span>
+         <!--l. 3334--><p class="noindent" ><span class="uwave">When enabled, the entry icon in OpenCanopy and the audio assist entry sound in OpenCanopy and builtin boot
+         picker are chosen by something called content flavour. To determine content flavour the following algorithm is used:
+         </span>
+</p>
+             <ul class="itemize2">
+             <li class="itemize"><span class="uwave">For a Tool the value is read from </span><span class="uwave">Flavour</span> <span class="uwave">field. </span>
+             </li>
+             <li class="itemize"><span class="uwave">For an automatically discovered entry it is read from the </span><span class="uwave">.contentFlavour</span> <span class="uwave">file next to the bootloader,
+             if present. </span>
+             </li>
+             <li class="itemize"><span class="uwave">For a custom entry it is read from the </span><span class="uwave">.contentFlavour</span> <span class="uwave">file next to the bootloader if </span><span class="uwave">Flavour</span> <span class="uwave">is </span><span class="uwave">Auto</span><span class="uwave">,
+             otherwise specified via the </span><span class="uwave">Flavour</span> <span class="uwave">value itself. </span>
+             </li>
+             <li class="itemize"><span class="uwave">If read flavour is </span><span class="uwave">Auto</span> <span class="uwave">or there is no </span><span class="uwave">.contentFlavour</span><span class="uwave">, entry flavour is chosen based on the entry type
+             (e.g. Windows automatically gets Windows flavour). </span></li></ul>
+         <!--l. 3350--><p class="noindent" ><span class="uwave">The Flavour value is a sequence of </span><span class="uwave">:</span> <span class="uwave">separated names limited to 64 characters of printable 7-bit ASCII. This is
+         designed to support up to approximately five names. Each name refers to a flavour, with the first name having the
+         highest priority and the last name having the lowest priority. Such a structure allows describing an entry in a more
+         specific way, with icons selected flexibly depending on support by the audio-visual pack. A missing audio or icon file
+         means the next flavour should be tried, and if all are missing the choice happens based on the type of the
+         entry. Example flavour values: </span><span class="uwave">BigSur:Apple</span><span class="uwave">, </span><span class="uwave">Windows10:Windows</span><span class="uwave">. </span><span class="uwave">OpenShell:UEFIShell:Shell</span><span class="uwave">.
+         </span>
+         </p><!--l. 3361--><p class="noindent" ><span class="uwave">Using flavours means that you can switch between icon sets easily, with the flavour selecting the best available icons
+         from each set. E.g. specifying icon flavour </span><span class="uwave">Debian:Linux</span> <span class="uwave">will use the icon </span><span class="uwave">Debian.icns</span> <span class="uwave">if provided,
+         then will try </span><span class="uwave">Linux.icns</span><span class="uwave">, then will fall back to the default for an OS, which is </span><span class="uwave">HardDrive.icns</span><span class="uwave">.
+         </span>
+         </p><!--l. 3367--><p class="noindent" ><span class="uwave">Things to keep in mind: </span>
+</p>
+             <ul class="itemize2">
+                                                                                                  
+                                                                                                  
+             <li class="itemize"><span class="uwave">For  security  reasons  </span><span class="uwave">Ext&#x003C;Flavour&#x003E;.icns</span> <span class="uwave">and  </span><span class="uwave">&#x003C;Flavour&#x003E;.icns</span> <span class="uwave">are  both  supported,  and  only
+             </span><span class="uwave">Ext&#x003C;Flavour&#x003E;.icns</span> <span class="uwave">will be used if the entry is on an external drive (followed by default fallback
+             </span><span class="uwave">ExtHardDrive.icns</span><span class="uwave">). </span>
+             </li>
+             <li class="itemize"><span class="uwave">Where both apply </span><span class="uwave">.VolumeIcon.icns</span> <span class="uwave">takes precence over </span><span class="uwave">.contentFlavour</span><span class="uwave">. </span>
+             </li>
+             <li class="itemize"><span class="uwave">In order to allow icons and audio assist to work correctly for tools (e.g.  for UEFI Shell), system
+             default boot entry icons (see </span><span class="uwave">Docs/Flavours.md</span><span class="uwave">) specified in the </span><span class="uwave">Flavour</span> <span class="uwave">setting for </span><span class="uwave">Tools</span> <span class="uwave">or </span><span class="uwave">Entries</span>
+             <span class="uwave">will continue to apply even when flavour is disabled. Non-system icons will be ignored in this case.
+             In addition, the flavours </span><span class="uwave">UEFIShell</span> <span class="uwave">and </span><span class="uwave">NVRAMReset</span> <span class="uwave">are given special processing, identifying their
+             respective tools to apply correct audio-assist, default builtin labels, etc. </span>
+             </li>
+             <li class="itemize"><span class="uwave">A list of recommended flavours is provided in </span><span class="uwave">Docs/Flavours.md</span><span class="uwave">. </span></li></ul>
+         </li></ul>
+     </li>
+     <li 
+  class="enumerate" id="x1-44014x7">PickerAudioAssist<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Enable screen reader by default in the OpenCore picker.
+     <!--l. 3392--><p class="noindent" >For the macOS bootloader, screen reader preference is set in the preferences.efires archive in the
+     isVOEnabled.int32 file and is controlled by the operating system. For OpenCore screen reader support,
+     this option is an independent equivalent. Toggling screen reader support in both the OpenCore picker
+     and the macOS bootloader FileVault 2 login window can also be done by using the Command + F5 key
+     combination.
+     </p><!--l. 3399--><p class="noindent" >Note: The screen reader requires working audio support. Refer to the ?? section for details.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-44016x8">PollAppleHotKeys<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Enable modifier hotkey handling in the OpenCore picker.
+     <!--l. 3408--><p class="noindent" >In addition to action hotkeys, which are partially described in the PickerMode section and are typically handled by
+     Apple BDS, modifier keys handled by the operating system bootloader (boot.efi) also exist. These keys allow changing
+     the behaviour of the operating system by providing different boot modes.
+     </p><!--l. 3413--><p class="noindent" >On certain firmware, using modifier keys may be problematic due to driver incompatibilities. To workaround this
+     problem, this option allows registering certain hotkeys in a more permissive manner from within the OpenCore
+     picker. Such extensions include support for tapping on key combinations before selecting the boot item,
+     and for reliable detection of the Shift key when selecting the boot item, in order to work around the
+     fact that hotkeys which are continuously held during boot cannot be reliably detected on many PS/2
+     keyboards.
+     </p><!--l. 3420--><p class="noindent" >This list of known modifier hotkeys includes: </p>
+         <ul class="itemize1">
+         <li class="itemize">CMD+C+MINUS — disable board compatibility checking.
+         </li>
+         <li class="itemize">CMD+K — boot release kernel, similar to kcsuffix=release.
+         </li>
+         <li class="itemize">CMD+S — single user mode.
+         </li>
+         <li class="itemize">CMD+S+MINUS — disable KASLR slide, requires disabled SIP.
+         </li>
+         <li class="itemize">CMD+V — verbose mode.
+         </li>
+         <li class="itemize">Shift+Enter, Shift+Index — safe mode, may be used in combination with CTRL+Enter, CTRL+Index.</li></ul>
+     </li>
+                                                                                                  
+                                                                                                  
          in the OpenCore picker. This option requires AllowNvramReset to be set to true.
          </li>
          <li class="itemize">BootApple — this options performs booting to the first Apple operating system found unless the chosen
@@ -100,9 +258,9 @@ href="https://support.apple.com/HT202796" >Startup Disk</a> preference pane.
          This is either that related to the default chosen operating system, or first one found when the chosen default
          operating system is not from Apple or does not have a recovery partition. Hold the CMD+R key combination
          down to choose this option.</li></ul>
-     <!--l. 3428--><p class="noindent" >Note 1: On non-Apple firmware KeySupport, OpenUsbKbDxe, or similar drivers are required for key handling. However,
+     <!--l. 3510--><p class="noindent" >Note 1: On non-Apple firmware KeySupport, OpenUsbKbDxe, or similar drivers are required for key handling. However,
      not all of the key handling functions can be implemented on several types of firmware.
-     </p><!--l. 3432--><p class="noindent" >Note 2: In addition to OPT, OpenCore supports using both the Escape and Zero keys to enter the OpenCore picker when
+     </p><!--l. 3514--><p class="noindent" >Note 2: In addition to OPT, OpenCore supports using both the Escape and Zero keys to enter the OpenCore picker when
      ShowPicker is disabled. Escape exists to support co-existence with the Apple picker (including OpenCore Apple picker
      mode) and to support firmware that fails to report held OPT key, as on some PS/2 keyboards. In addition, Zero is
      provided to support systems on which Escape is already assigned to some other pre-boot firmware feature. In
@@ -111,7 +269,7 @@ href="https://support.apple.com/HT202796" >Startup Disk</a> preference pane.
      it is correctly configured for the system, i.e. with a long enough KeyForgetThreshold. If pressing and
      holding the key is not successful to reliably enter the picker, multiple repeated keypresses may be tried
      instead.
-     </p><!--l. 3443--><p class="noindent" >Note 3: On Macs with problematic GOP, it may be difficult to access the Apple picker. The BootKicker utility can be
+     </p><!--l. 3525--><p class="noindent" >Note 3: On Macs with problematic GOP, it may be difficult to access the Apple picker. The BootKicker utility can be
      blessed to workaround this problem even without loading OpenCore. On some Macs however, the BootKicker utility
      cannot be run from OpenCore.
      </p></li>
@@ -120,10 +278,10 @@ href="https://support.apple.com/HT202796" >Startup Disk</a> preference pane.
 class="newline" />Type: plist string<br 
 class="newline" />Failsafe: Auto<br 
 class="newline" />Description: Choose specific icon set to be used for boot management.
-     <!--l. 3453--><p class="noindent" ><span class="sout">The following values are supported</span><span class="uwave">An icon set is a directory path relative to </span><span class="uwave">Resources\Image</span><span class="uwave">, where the icons and an
+     <!--l. 3535--><p class="noindent" ><span class="sout">The following values are supported</span><span class="uwave">An icon set is a directory path relative to </span><span class="uwave">Resources\Image</span><span class="uwave">, where the icons and an
      optional manifest are located. It is recommended for the artists to use provide their sets in the </span><span class="uwave">Vendor\Set</span> <span class="uwave">format, e.g.
      </span><span class="uwave">Acidanthera\GoldenGate</span><span class="uwave">. </span>
-     </p><!--l. 3460--><p class="noindent" ><span class="uwave">Sample resources provided as a part of </span><a 
+     </p><!--l. 3542--><p class="noindent" ><span class="uwave">Sample resources provided as a part of </span><a 
 href="https://github.com/acidanthera/OcBinaryData" ><span class="uwave">OcBinaryData repository</span></a> <span class="uwave">provide the following icon set</span>: </p>
          <ul class="itemize1">
          <li class="itemize"><span class="sout">Auto</span><span class="uwave">Acidanthera\GoldenGate</span> — <span class="sout">Automatically select one setof icons based on the </span><span class="sout">DefaultBackground</span>
@@ -132,10 +290,8 @@ href="https://github.com/acidanthera/OcBinaryData" ><span class="uwave">OcBinary
          <li class="itemize"><span class="sout">Default</span><span class="uwave">Acidanthera\Syrah</span> — <span class="sout">Normal icon set(without prefix)</span><span class="uwave">macOS 10.10 styled icon set</span>.
          </li>
          <li class="itemize"><span class="sout">Old</span><span class="uwave">Acidanthera\Chardonnay</span> — <span class="sout">Vintage icon set(</span><span class="sout">Old</span> <span class="sout">filename prefix). </span><span class="uwave">macOS 10.4 styled icon set. </span></li></ul>
-     <!--l. 3474--><p class="noindent" ><span class="uwave">For convenience purposes there also are predefined aliases: </span></p>
+     <!--l. 3556--><p class="noindent" ><span class="uwave">For convenience purposes there also are predefined aliases: </span></p>
          <ul class="itemize1">
-                                                                                                  
-                                                                                                  
          <li class="itemize"><span class="sout">Modern</span><span class="uwave">Auto</span>      —          <span class="sout">Nouveau          icon          set          (</span><span class="uwave">Automatically          select          one
          set of icons based on the </span><span class="sout">Modern</span><span class="uwave">DefaultBackground</span> <span class="sout">filename prefix)</span><span class="uwave">colour: </span><span class="uwave">Acidanthera\GoldenGate</span> <span class="uwave">for
          Syrah Black and </span><span class="uwave">Acidanthera\Chardonnay</span> <span class="uwave">for Light Gray</span>.
@@ -148,53 +304,5 @@ href="https://github.com/acidanthera/OcBinaryData" ><span class="uwave">OcBinary
  id="x1-450004"></a>Debug Properties</h4>
      <ol  class="enumerate1" >
      <li 
-  class="enumerate" id="x1-45002x1">AppleDebug<br 
-class="newline" />Type: plist boolean<br 
-class="newline" />Failsafe: false<br 
-class="newline" />Description: Enable writing the boot.efi debug log to the OpenCore log.
-     <!--l. 3494--><p class="noindent" >Note: This option only applies to 10.15.4 and newer.
-     </p></li>
-     <li 
-  class="enumerate" id="x1-45004x2">ApplePanic<br 
-class="newline" />Type: plist boolean<br 
-class="newline" />Failsafe: false<br 
-class="newline" />Description: Save macOS kernel panic output to the OpenCore root partition.
-     <!--l. 3502--><p class="noindent" >The file is saved as panic-YYYY-MM-DD-HHMMSS.txt. It is strongly recommended to set the keepsyms=1 boot
-     argument to see debug symbols in the panic log. In cases where it is not present, the kpdescribe.sh utility
-     (bundled with OpenCore) may be used to partially recover the stacktrace.
-     </p><!--l. 3507--><p class="noindent" >Development and debug kernels produce more useful kernel panic logs. Consider downloading and installing the
-     KernelDebugKit from <a 
-href="https://developer.apple.com" >developer.apple.com</a> when debugging a problem. To activate a development kernel, the
-     boot argument kcsuffix=development should be added. Use the uname -a command to ensure that the current
-     loaded kernel is a development (or a debug) kernel.
-     </p><!--l. 3514--><p class="noindent" >In cases where the OpenCore kernel panic saving mechanism is not used, kernel panic logs may still be found in
-     the /Library/Logs/DiagnosticReports directory.
-     </p><!--l. 3517--><p class="noindent" >Starting with macOS Catalina, kernel panics are stored in JSON format and thus need to be preprocessed before
-     passing to kpdescribe.sh:
-</p>
-     <!--l. 3520-->
-<a 
- id="x1-450032"></a>
-     <div class="lstlisting" id="listing-5"><span class="label"><a 
- id="x1-45005r1"></a></span>cat Kernel.panic | grep macOSProcessedStackshotData | <br /><span class="label"><a 
- id="x1-45006r2"></a></span>  python -c &#x0027;import json,sys;print(json.load(sys.stdin)[&#x0022;macOSPanicString&#x0022;])&#x0027;
-     
-     </div>
-     </li>
-     <li 
-  class="enumerate" id="x1-45008x3">DisableWatchDog<br 
-class="newline" />Type: plist boolean<br 
-class="newline" />Failsafe: false<br 
-class="newline" />Description: Some types of firmware may not succeed in booting the operating system quickly, especially in
-     debug mode. This results in the watchdog timer aborting the process. This option turns off the watchdog
-     timer.
-     </li>
-     <li 
-  class="enumerate" id="x1-45010x4">DisplayDelay<br 
-class="newline" />Type: plist integer<br 
-class="newline" />Failsafe: 0<br 
-class="newline" />Description: Delay in microseconds executed after every printed line visible onscreen (i.e. console).
-     </li>
-     <li 
-  class="enumerate" id="x1-45012x5">DisplayLevel                     </body>
+  class="enumerate" id="x1-45002x1">AppleDebug                     </body>
 </html>
