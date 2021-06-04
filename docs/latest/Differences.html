@@ -660,5 +660,241 @@ href="https://support.apple.com/en-us/HT208330" >Full Security</a> of Apple
      </li>
      <li 
   class="enumerate" id="x1-46017x5">AuthRestart<br 
-class="newline" />Type: plist boolean                                             </body>
+class="newline" />Type: plist boolean                              <br 
+class="newline" /> escription: To be filled with plist dict values, describing memory areas exclusive to specific firmware and hardware
+     functioning, which should not be used by the operating system. Examples of such memory regions could be the second
+     256 MB corrupted by the Intel HD 3000 or an area with faulty RAM. Refer to the ?? section below for
+     details.
+     </li></ol>
+<a 
+ id="x1-68019r71"></a>
+<h4 class="subsectionHead"><span class="titlemark">11.7   </span> <a 
+ id="x1-690007"></a>APFS Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-69002x1">EnableJumpstart<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Load embedded APFS drivers from APFS containers.
+     <!--l. 6377--><p class="noindent" >An APFS EFI driver is bundled in all bootable APFS containers. This option performs the loading of signed
+     APFS drivers (consistent with the ScanPolicy). Refer to the “EFI Jumpstart” section of the <a 
+href="https://developer.apple.com/support/apple-file-system/Apple-File-System-Reference.pdf" >Apple File System
+     Reference</a> for details.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-69004x2">GlobalConnect<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Perform full device connection during APFS loading.
+     <!--l. 6389--><p class="noindent" >Every handle is connected recursively instead of the partition handle connection typically used for APFS driver
+     loading. This may result in additional time being taken but can sometimes be the only way to access APFS
+     partitions on certain firmware, such as those on older HP laptops.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-69006x3">HideVerbose<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Hide verbose output from APFS driver.
+     <!--l. 6400--><p class="noindent" >APFS verbose output can be useful for debugging.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-69008x4">JumpstartHotPlug<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Load APFS drivers for newly connected devices.
+     <!--l. 6408--><p class="noindent" >Permits  APFS  USB  hot  plug  which  enables  loading  APFS  drivers,  both  at  OpenCore  startup  and  during
+     OpenCore picker <span class="sout">dusplay</span><span class="uwave">display</span>. Disable if not required.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-69010x5">MinDate<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Minimal allowed APFS driver date.
+     <!--l. 6417--><p class="noindent" >The APFS driver date connects the APFS driver with the calendar release date. Apple ultimately drops support
+     for older macOS releases and APFS drivers from such releases may contain vulnerabilities that can be used to
+     compromise a computer if such drivers are used after support ends. This option permits restricting APFS drivers
+     to current macOS versions.
+</p>
+         <ul class="itemize1">
+         <li class="itemize">0 — require the default supported release date of APFS in OpenCore. The default release date will increase
+         with time and thus this setting is recommended. Currently set to 2018/06/21.
+         </li>
+         <li class="itemize">-1 — permit any release date to load (strongly discouraged).
+                                                                                                  
+                                                                                                  
+     </p><!--l. 6975--><p class="noindent" >Note: This field is best left empty on most types of firmware.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-73006x3">Resolution<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty (Maintain current screen resolution)<br 
+class="newline" />Description: Sets console output screen resolution.
+         <ul class="itemize1">
+         <li class="itemize">Set to WxH@Bpp (e.g. 1920x1080@32) or WxH (e.g. 1920x1080) formatted string to request custom resolution
+         from GOP if available.
+         </li>
+         <li class="itemize">Set to Max to attempt using the largest available screen resolution.</li></ul>
+     <!--l. 6992--><p class="noindent" >On HiDPI screens APPLE_VENDOR_VARIABLE_GUID UIScale NVRAM variable may need to be set to 02 to enable HiDPI
+     scaling in Builtin text renderer, FileVault 2 UEFI password interface, and boot screen logo. Refer to the ?? section for
+     details.
+     </p><!--l. 6998--><p class="noindent" >Note: This will fail when console handle has no GOP protocol. When the firmware does not provide it, it can be added
+     with ProvideConsoleGop set to true.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-73008x4">ForceResolution<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Forces Resolution to be set in cases where the desired resolution is not available by default, such as on
+     legacy Intel GMA and first generation Intel HD Graphics (Ironlake/Arrandale). Setting Resolution to Max will try to
+     pull the largest available resolution from the connected display’s EDID.
+     <!--l. 7012--><p class="noindent" >Note: This option depends on the <a 
+href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Acidanthera/Protocol/OcForceResolution.h" >OC_FORCE_RESOLUTION_PROTOCOL</a> protocol being present. This protocol is
+     currently only supported by OpenDuetPkg. The OpenDuetPkg implementation currently only supports Intel
+     iGPUs.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-73010x5">ClearScreenOnModeSwitch<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Some types of firmware only clear part of the screen when switching from graphics to text mode, leaving a
+     fragment of previously drawn images visible. This option fills the entire graphics screen with black colour before switching
+     to text mode.
+     <!--l. 7025--><p class="noindent" >Note: This option only applies to System renderer.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-73012x6">DirectGopRendering<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Use builtin graphics output protocol renderer for console.
+     <!--l. 7033--><p class="noindent" >On certain firmware, such as on the MacPro5,1, this may provide better performance or fix rendering issues. However,
+     this option is not recommended unless there is an obvious benefit as it may result in issues such as slower
+     scrolling.
+     </p><!--l. 7037--><p class="noindent" ><span class="uwave">This renderer fully supports </span><span class="uwave">AppleEg2Info</span> <span class="uwave">protocol and will provide screen rotation for all EFI applications. In order to
+     provide seamless rotation compatibility with </span><span class="uwave">EfiBoot</span><span class="uwave">, builtin </span><span class="uwave">AppleFramebufferInfo</span> <span class="uwave">should also be used, i.e. it may
+     need to be overridden on Mac EFI. </span>
+     </p></li>
+     <li 
+  class="enumerate" id="x1-73014x7">GopPassThrough<br 
+class="newline" />Type: plist <span class="sout">boolean</span><span class="uwave">string</span><br 
+class="newline" />Failsafe: <span class="sout">false</span><span class="uwave">Disabled</span><br 
+class="newline" />Description: Provide GOP protocol instances on top of UGA protocol instances.
+     <!--l. 7049--><p class="noindent" >This option provides the GOP protocol via a UGA-based proxy for firmware that do not implement the protocol. <span class="uwave">The
+                                                                                                  
+                                                                                                  
+     supported values for the option are as follows: </span>
+</p>
+         <ul class="itemize1">
+         <li class="itemize"><span class="uwave">Enabled</span> <span class="uwave">— provide GOP for all UGA protocols. </span>
+         </li>
+         <li class="itemize"><span class="uwave">Apple</span> <span class="uwave">— provide GOP for </span><span class="uwave">AppleFramebufferInfo</span><span class="uwave">-enabled protocols. </span>
+         </li>
+         <li class="itemize"><span class="uwave">Disabled</span> <span class="uwave">— do not provide GOP. </span></li></ul>
+     <!--l. 7061--><p class="noindent" >Note: This option requires ProvideConsoleGop to be enabled.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-73016x8">IgnoreTextInGraphics<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Some types of firmware output text onscreen in both graphics and text mode. This is typically unexpected
+     as random text may appear over graphical images and cause UI corruption. Setting this option to true will discard all
+     text output when console control is in a different mode from Text.
+     <!--l. 7072--><p class="noindent" >Note: This option only applies to the System renderer.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-73018x9">ReplaceTabWithSpace<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Some types of firmware do not print tab characters or everything that follows them, causing difficulties in
+     using the UEFI Shell’s builtin text editor to edit property lists and other documents. This option makes the console
+     output spaces instead of tabs.
+     <!--l. 7083--><p class="noindent" >Note: This option only applies to System renderer.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-73020x10">ProvideConsoleGop<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Ensure GOP (Graphics Output Protocol) on console handle.
+     <!--l. 7091--><p class="noindent" >macOS bootloader requires GOP or UGA (for 10.4 EfiBoot) to be present on console handle, yet the exact location of the
+     graphics protocol is not covered by the UEFI specification. This option will ensure GOP and UGA, if present, are
+     available on the console handle.
+     </p><!--l. 7096--><p class="noindent" >Note: This option will also replace incompatible implementations of GOP on the console handle, as may be the case on
+     the MacPro5,1 when using modern GPUs.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-73022x11">ReconnectOnResChange<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Reconnect console controllers after changing screen resolution.
+     <!--l. 7105--><p class="noindent" >On certain firmware, the controllers that produce the console protocols (simple text out) must be reconnected
+     when the screen resolution is changed via GOP. Otherwise, they will not produce text based on the new
+     resolution.
+     </p><!--l. 7109--><p class="noindent" >Note: On several boards this logic may result in black screen when launching OpenCore from Shell and thus it is
+     optional. In versions prior to 0.5.2 this option was mandatory and not configurable. Please do not use this unless
+     required.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-73024x12">SanitiseClearScreen<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Some types of firmware reset screen resolutions to a failsafe value (such as 1024x768) on the
+                                                                                                  
+                                                                                                  
+     attempts to clear screen contents when large display (e.g. 2K or 4K) is used. This option attempts to apply a
+     workaround.
+     <!--l. 7122--><p class="noindent" >Note: This option only applies to the System renderer. On all known affected systems, ConsoleMode must be set to an
+     empty string for this option to work.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-73026x13">UgaPassThrough<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Provide UGA protocol instances on top of GOP protocol instances.
+     <!--l. 7132--><p class="noindent" >Some types of firmware do not implement the legacy UGA protocol but this may be required for screen output by older
+     EFI applications such as EfiBoot from 10.4.
+</p>
+     </li></ol>
+<a 
+ id="x1-73027r76"></a>
+<h4 class="subsectionHead"><span class="titlemark">11.12   </span> <a 
+ id="x1-7400012"></a>ProtocolOverrides Properties</h4>
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-74002x1">AppleAudio<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces Apple audio protocols with builtin versions.
+     <!--l. 7149--><p class="noindent" >Apple audio protocols allow OpenCore and the macOS bootloader to play sounds and signals for screen reading
+     or audible error reporting. Supported protocols are beep generation and VoiceOver. The VoiceOver protocol
+     is specific to Gibraltar machines (T2) and is not supported before macOS High Sierra (10.13). Older macOS
+     versions use the AppleHDA protocol (which is not currently implemented) instead.
+     </p><!--l. 7156--><p class="noindent" >Only one set of audio protocols can be available at a time, so this setting should be enabled in order to enable
+     audio playback in the OpenCore user interface on Mac systems implementing some of these protocols.
+     </p><!--l. 7160--><p class="noindent" >Note: The backend audio driver needs to be configured in UEFI Audio section for these protocols to be able to
+     stream audio.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-74004x2">AppleBootPolicy<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces the Apple Boot Policy protocol with a builtin version. This may be used to ensure APFS
+     compatibility on VMs and legacy Macs.
+     <!--l. 7170--><p class="noindent" >Note: This option is advisable on certain Macs, such as the MacPro5,1, that are APFS compatible but on which
+     the Apple Boot Policy protocol has recovery detection issues.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-74006x3">AppleDebugLog<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces the Apple Debug Log protocol with a builtin version<span class="uwave">. </span>
+     </li>
+     <li 
+  class="enumerate" id="x1-74008x4"><span class="uwave">AppleEg2Info</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">false</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Replaces the Apple EFI Graphics 2 protocol with a builtin version. </span>
+     <!--l. 7190--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: This protocol allows newer </span><span class="uwave">EfiBoot</span> <span class="uwave">versions (at least 10.15) to expose screen rotation to macOS. Refer to
+     </span><span class="uwave">ForceDisplayRotationInEFI</span> <span class="uwave">variable description on how to set screen rotation angle</span>.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-74010x5">AppleFramebufferInfo</body>
 </html>
