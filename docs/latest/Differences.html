@@ -20,6 +20,67 @@ width="160" height="160"  />
 </p>
 </div>
                                                                                                   
+                                                                                                  
+     </p></li>
+     <li 
+  class="enumerate" id="x1-20004x2">NormalizeHeaders<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Cleanup ACPI header fields to workaround macOS ACPI implementation flaws that result in boot
+     crashes. Reference: <a 
+href="https://alextjam.es/debugging-appleacpiplatform/" >Debugging AppleACPIPlatform on 10.13</a> by Alex James (also known as theracermaster). The
+     issue was fixed in macOS Mojave (10.14).
+     </li>
+     <li 
+  class="enumerate" id="x1-20006x3">RebaseRegions<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Attempt to heuristically relocate ACPI memory regions. Not recommended.
+     <!--l. 1231--><p class="noindent" >ACPI  tables  are  often  generated  dynamically  by  the  underlying  firmware  implementation.  Among  the
+     position-independent code, ACPI tables may contain the physical addresses of MMIO areas used for device
+     configuration, typically grouped by region (e.g. OperationRegion). Changing firmware settings or hardware
+     configuration, upgrading or patching the firmware inevitably leads to changes in dynamically generated ACPI
+     code, which sometimes results in the shift of the addresses in the aforementioned OperationRegion constructions.
+     </p><!--l. 1241--><p class="noindent" >For this reason, the application of modifications to ACPI tables is extremely risky. The best approach is to make
+     as few changes as possible to ACPI tables and to avoid replacing any tables, particularly DSDT tables. When
+     this cannot be avoided, ensure that any custom DSDT tables are based on the most recent DSDT tables or
+     attempt to remove reads and writes for the affected areas.
+     </p><!--l. 1247--><p class="noindent" >When nothing else helps, this option could be tried to avoid stalls at PCI Configuration Begin phase of macOS
+     booting by attempting to fix the ACPI addresses. It is not a magic bullet however, and only works with the most
+     typical cases. Do not use unless absolutely required as it can have the opposite effect on certain platforms and
+     result in boot failures.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-20008x4">ResetHwSig<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Reset FACS table HardwareSignature value to 0.
+     <!--l. 1260--><p class="noindent" >This works around firmware that fail to maintain hardware signature across the reboots and cause issues with
+     waking from hibernation.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-20010x5">ResetLogoStatus<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Reset BGRT table Displayed status field to false.
+     <!--l. 1270--><p class="noindent" >This works around firmware that provide a BGRT table but fail to handle screen updates afterwards<span class="uwave">. </span>
+     </p></li>
+     <li 
+  class="enumerate" id="x1-20012x6"><span class="uwave">SyncTableIds</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">false</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Sync table identifiers with the </span><span class="uwave">SLIC</span> <span class="uwave">table. </span>
+     <!--l. 1281--><p class="noindent" ><span class="uwave">This works around patched tables becoming incompatible with the </span><span class="uwave">SLIC</span> <span class="uwave">table causing licensing issues in older
+     Windows operating systems</span>.
+</p>
+     </li></ol>
+<a 
+ id="x1-20013r16"></a>
+<h3 class="sectionHead"><span class="titlemark">5   </span> <a 
+ id="x1-210005"></a>Booter</h3>
+<a 
+ id="x1-21001r22"></a>
+                                                                                                  
 
 
 </body>
