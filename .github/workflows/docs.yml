@@ -45,7 +45,7 @@ jobs:
       - name: Get Latest MacTeX Version
         id: mactexversion
         run: |
-          echo "::set-output name=version::$(brew cask info mactex | head -1 | cut -c 9-)"
+          echo "::set-output name=version::$(brew info --cask mactex-no-gui | head -1 | cut -c 9-)"
       - name: Cache Brew Downloads
         uses: actions/cache@v2
         with:
@@ -53,10 +53,10 @@ jobs:
             ~/Library/Caches/Homebrew/downloads/*mactex*
             ~/Library/Caches/Homebrew/downloads/*ghostscript*
             ~/Library/Caches/Homebrew/*ghostscript*
-          key: ${{ runner.os }}-mactex-${{ steps.mactexversion.outputs.version }}
+          key: ${{ runner.os }}-mactex-no-gui-${{ steps.mactexversion.outputs.version }}
       - name: Install Dependencies
         run: |
-          brew install --cask mactex
+          brew install --cask mactex-no-gui
       - name: Refresh PATH
         run: eval "$(/usr/libexec/path_helper)"
       - name: Build Master Configuration
