@@ -58,11 +58,13 @@ jobs:
           brew install --cask basictex
       # - name: Refresh PATH
       #   run: eval "$(/usr/libexec/path_helper)"
+      - uses: shogo82148/actions-setup-perl@v1
       - name: Install LaTeX Dependencies
         run: |
           sudo tlmgr update --self
           sudo tlmgr update --all
           sudo tlmgr install titlesec pgf datetime fmtcount zref hyperref zlmtt
+          cpanm Algorithm::Diff
           git clone https://github.com/ftilmann/latexdiff.git --depth 1
           cd latexdiff && mkdir bin && mv latex* bin
           cd bin && echo "$(pwd)" >> $GITHUB_PATH
