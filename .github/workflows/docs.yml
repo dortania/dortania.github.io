@@ -63,7 +63,7 @@ jobs:
         run: |
           sudo tlmgr update --self
           sudo tlmgr update --all
-          sudo tlmgr install titlesec pgf datetime fmtcount zref hyperref zlmtt
+          sudo tlmgr install titlesec pgf datetime fmtcount zref hyperref zlmtt make4ht
           cpanm Algorithm::Diff
           git clone https://github.com/ftilmann/latexdiff.git --depth 1
           cd latexdiff && mkdir bin && mv latex* bin
