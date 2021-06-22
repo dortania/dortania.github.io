@@ -17,13 +17,11 @@ jobs:
       - name: Checkout Build Files
         uses: actions/checkout@v2
         with:
-          fetch-depth: '0'
           persist-credentials: false
           ref: docs
       - name: Checkout OpenCorePkg Master
         uses: actions/checkout@v2
         with:
-          fetch-depth: '0'
           persist-credentials: false
           repository: acidanthera/OpenCorePkg
           path: latest
@@ -37,15 +35,15 @@ jobs:
       - name: Checkout OpenCorePkg Release
         uses: actions/checkout@v2
         with:
-          fetch-depth: '0'
           persist-credentials: false
           repository: acidanthera/OpenCorePkg
           path: release
           ref: ${{ steps.releasetag.outputs.tag }}
+
       - name: Get Latest MacTeX Version
         id: mactexversion
         run: |
-          echo "::set-output name=version::$(brew info --cask mactex-no-gui | head -1 | cut -c 16-)"
+          echo "::set-output name=version::$(brew info --cask basictex | head -1 | cut -c 11-)"
       - name: Cache Brew Downloads
         uses: actions/cache@v2
         with:
@@ -54,12 +52,21 @@ jobs:
             ~/Library/Caches/Homebrew/downloads/*ghostscript*
             ~/Library/Caches/Homebrew/*tex*
             ~/Library/Caches/Homebrew/*ghostscript*
-          key: ${{ runner.os }}-mactex-no-gui-${{ steps.mactexversion.outputs.version }}
+          key: ${{ runner.os }}-basictex-${{ steps.mactexversion.outputs.version }}
       - name: Install Dependencies
         run: |
-          brew install --cask mactex-no-gui
-      - name: Refresh PATH
-        run: eval "$(/usr/libexec/path_helper)"
+          brew install --cask basictex
+      # - name: Refresh PATH
+      #   run: eval "$(/usr/libexec/path_helper)"
+      - name: Install LaTeX Dependencies
+        run: |
+          sudo tlmgr update --self
+          sudo tlmgr update --all
+          sudo tlmgr install titlesec pgf datetime fmtcount zref hyperref zlmtt
+          git clone https://github.com/ftilmann/latexdiff.git --depth 1
+          cd latexdiff && mkdir bin && mv latex* bin
+          cd bin && echo "$(pwd)" >> $GITHUB_PATH
+
       - name: Build Master Configuration
         run: |
           cd latest/Docs
@@ -73,6 +80,7 @@ jobs:
         run: |
           cd latest/Docs/Errata
           make4ht Errata.tex
+
       - name: Build Release Configuration
         run: |
           cd release/Docs
@@ -82,6 +90,7 @@ jobs:
         run: |
           cd release/Docs/Differences
           make4ht Differences.tex
+
       - name: Copy Files
         run: |
           mkdir -p Deploy/latest Deploy/release
@@ -94,15 +103,14 @@ jobs:
           ls Deploy
       - name: Post Build
         run: python3 postbuild.py ${{ steps.releasetag.outputs.tag }}
+
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+        uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: master
-          FOLDER: Deploy
-          TARGET_FOLDER: docs
-          BASE_BRANCH: master
-          CLEAN: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
+          folder: Deploy
+          target-folder: docs
       - name: Upload Latest Docs
         uses: actions/upload-artifact@v2.2.2
         with:
