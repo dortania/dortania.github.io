@@ -20,7 +20,75 @@ width="160" height="160"  />
 </p>
 </div>
                                                                                                   
-
-
-</body>
+                                                                                                  
+         <li class="itemize">
+         <!--l. 6542--><p class="noindent" >In   the   unlikely   event   that   you   still   get   frequent,   or   occasional,   double   key   responses   after
+         setting  KeySubsequentDelay equal  to  your  system’s  value  of  KeyForgetThreshold,  then  increase
+         KeySubsequentDelay by one or two more until this effect goes away.</p></li></ul>
+     </li>
+<li 
+  class="enumerate" id="x1-70010x5">
+     <!--l. 6548--><p class="noindent" ><span class="uwave">GraphicsInputMirroring</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">false</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Apple’s own implementation of AppleEvent prevents keyboard input during graphics applications from
+     appearing on the basic console input stream. </span>
+     </p><!--l. 6556--><p class="noindent" ><span class="uwave">With the default setting of </span><span class="uwave">false</span><span class="uwave">, OC’s builtin implementation of AppleEvent replicates this behaviour.
+     </span>
+     </p><!--l. 6561--><p class="noindent" ><span class="uwave">On non-Apple hardware this can stop keyboard input working in graphics-based applications such as Windows BitLocker
+     which use non-Apple key input methods. </span>
+     </p><!--l. 6563--><p class="noindent" ><span class="uwave">The recommended setting on all hardware is </span><span class="uwave">true</span><span class="uwave">. </span>
+     </p><!--l. 6566--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: AppleEvent’s default behaviour is intended to prevent unwanted queued keystrokes from appearing
+     after exiting graphics-based UEFI applications; this issue is already handled separately within OpenCore.
+     </span>
+</p>
+         <ul class="itemize1">
+         <li class="itemize">
+         <!--l. 6572--><p class="noindent" ><span class="uwave">true</span> <span class="uwave">— Allow keyboard input to reach graphics mode apps which are not using Apple input protocols. </span>
+         </p></li>
+         <li class="itemize">
+         <!--l. 6573--><p class="noindent" ><span class="uwave">false</span> <span class="uwave">— Prevent key input mirroring to non-Apple protocols when in graphics mode. </span></p></li></ul>
+     </li>
+<li 
+  class="enumerate" id="x1-70012x6">
+     <!--l. 6577--><p class="noindent" >PointerSpeedDiv<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 1<br 
+class="newline" />Description: Configure pointer speed divisor in OpenCore implementation of Apple Event protocol. Has no effect when
+     using the OEM Apple implementation (see AppleEvent setting).
+     </p><!--l. 6584--><p class="noindent" >Configures the divisor for pointer movements. The Apple OEM default value is 1. 0 is an invalid value for this
+     option.
+     </p><!--l. 6587--><p class="noindent" >Note: The recommended value for this option is 1. This value may optionally be modified in combination with
+     PointerSpeedMul, according to user preference, to achieve customised mouse movement scaling.
+     </p></li>
+<li 
+  class="enumerate" id="x1-70014x7">
+     <!--l. 6592--><p class="noindent" >PointerSpeedMul<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 1<br 
+class="newline" />Description: Configure pointer speed multiplier in OpenCore implementation of Apple Event protocol. Has no effect
+     when using the OEM Apple implementation (see AppleEvent setting).
+     </p><!--l. 6599--><p class="noindent" >Configures the multiplier for pointer movements. The Apple OEM default value is 1.
+     </p><!--l. 6601--><p class="noindent" >Note: The recommended value for this option is 1. This value may optionally be modified in combination with
+     PointerSpeedDiv, according to user preference, to achieve customised mouse movement scaling.
+                                                                                                  
+                                                                                                  
+     
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     </body>
 </html>
