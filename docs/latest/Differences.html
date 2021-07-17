@@ -21,55 +21,177 @@ width="160" height="160"  />
 </div>
                                                                                                   
                                                                                                   
+<li 
+  class="enumerate" id="x1-46006x3">
+     <!--l. 3839--><p class="noindent" >AllowToggleSip<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Enable entry for disabling and enabling System Integrity Protection in OpenCore picker.
+     </p><!--l. 3845--><p class="noindent" >This will toggle Apple NVRAM variable csr-active-config between 0 for SIP Enabled and a practical default
+     value for SIP Disabled (currently 0x26F).
+     </p><!--l. 3848--><p class="noindent" >Note 1: It is strongly recommended not to make a habit of running macOS with SIP disabled. Use of this boot
+     option may make it easier to quickly disable SIP protection when genuinely needed - it should be re-enabled
+     again afterwards.
+     </p><!--l. 3852--><p class="noindent" >Note 2: OC uses 0x26F even though csrutil disable on Big Sur sets 0x7F. To explain the choice: </p>
+         <ul class="itemize1">
          <li class="itemize">
-         <!--l. 6542--><p class="noindent" >In   the   unlikely   event   that   you   still   get   frequent,   or   occasional,   double   key   responses   after
+         <!--l. 3856--><p class="noindent" >csrutil disable --no-internal    actually       sets       0x6F,       and       this       is       preferable
+         because CSR_ALLOW_APPLE_INTERNAL (0x10) prevents updates (unless you are running an internal build of
+         macOS).
+         </p></li>
+         <li class="itemize">
+         <!--l. 3859--><p class="noindent" >CSR_ALLOW_UNAPPROVED_KEXTS (0x200) is generally useful, in the case where you do need to have SIP
+         disabled, as it allows installing unsigned kexts without manual approval in System Preferences.
+         </p></li>
+         <li class="itemize">
+         <!--l. 3862--><p class="noindent" >CSR_ALLOW_UNAUTHENTICATED_ROOT (0x800) is not practical as it prevents incremental (non-full) OTA
+         updates.</p></li></ul>
+     <!--l. 3866--><p class="noindent" >Note3: For any other value which you may need to use, it is possible to configure CsrUtil.efi as a TextMode Tools
+     entry to configure a different value, e.g. use toggle 0x6F in Arguments to toggle the SIP disabled value set by default by
+     csrutil disable --no-internal in Big Sur.
+     </p></li>
+<li 
+  class="enumerate" id="x1-46008x4">
+     <!--l. 3872--><p class="noindent" >ApECID<br 
+class="newline" />Type: plist integer, 64 bit<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Apple Enclave Identifier.
+     </p><!--l. 3877--><p class="noindent" >Setting this value to any non-zero 64-bit integer will allow using personalised Apple Secure Boot identifiers. To use this
+     setting, generate a random 64-bit number with a cryptographically secure random number generator. As an alternative,
+     the first 8 bytes of SystemUUID can be used for ApECID, this is found in macOS 11 for Macs without the T2
+     chip.
+     </p><!--l. 3884--><p class="noindent" >With this value set and SecureBootModel valid (and not Disabled), it is possible to achieve <a 
+href="https://support.apple.com/en-us/HT208330" >Full Security</a> of Apple
+     Secure Boot.
+     </p><!--l. 3889--><p class="noindent" >To start using personalised Apple Secure Boot, the operating system must be reinstalled or personalised. Unless the
+     operating system is personalised, macOS DMG recovery cannot be loaded. In cases where DMG recovery is missing, it
+     can be downloaded by using the macrecovery utility and saved in com.apple.recovery.boot as explained in
+     the ?? section. Note that <a 
+href="#x1-460217">DMG loading</a> needs to be set to Signed to use any DMG with Apple Secure
+     Boot.
+     </p><!--l. 3898--><p class="noindent" >To personalise an existing operating system, use the bless command after loading to macOS DMG recovery. Mount the
+     system volume partition, unless it has already been mounted, and execute the following command:
+</p>
+     <!--l. 3903-->
+<a 
+ id="x1-460074"></a>
+     <div class="lstlisting" id="listing-8"><span class="label"><a 
+ id="x1-46009r1"></a></span><span class="sout">bless</span><span class="sout"> </span><span class="sout">bless</span><span class="sout"> </span><span class="sout">-</span><span class="sout">-</span><span class="sout">folder</span><span class="sout"> </span><span class="sout">&#x0022;</span><span class="sout">/</span><span class="sout">Volumes</span><span class="sout">/</span><span class="sout">Macintosh</span><span class="sout"> </span><span class="sout">HD</span><span class="sout">/</span><span class="sout">System</span><span class="sout">/</span><span class="sout">Library</span><span class="sout">/</span><span class="sout">CoreServices</span><span class="sout">&#x0022;</span><span class="sout"> </span><span class="sout">\</span> <br /> 
+<span class="label"><a 
+ id="x1-46010r2"></a></span><span class="uwave">bless</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">-</span><span class="uwave">folder</span><span class="uwave"> </span><span class="uwave">&#x0022;</span><span class="uwave">/</span><span class="uwave">Volumes</span><span class="uwave">/</span><span class="uwave">Macintosh</span><span class="uwave"> </span><span class="uwave">HD</span><span class="uwave">/</span><span class="uwave">System</span><span class="uwave">/</span><span class="uwave">Library</span><span class="uwave">/</span><span class="uwave">CoreServices</span><span class="uwave">&#x0022;</span><span class="uwave"> </span><span class="uwave">\</span> <br /> 
+<span class="label"><a 
+ id="x1-46011r3"></a></span>  --bootefi --personalize
+                                                                                                  
+                                                                                                  
+     
+     </div>
+     <!--l. 3910--><p class="noindent" >On macOS versions before macOS 11, which introduced a dedicated x86legacy model for models without the T2 chip,
+     personalised Apple Secure Boot may not work as expected. When reinstalling the operating system, the macOS Installer
+     from macOS 10.15 and older will often run out of free memory on the /var/tmp partition when trying to install macOS
+     with the personalised Apple Secure Boot. Soon after downloading the macOS installer image, an Unable to verify
+     macOS error message will appear.
+     </p><!--l. 3918--><p class="noindent" >To workaround this issue, allocate a dedicated RAM disk of 2 MBs for macOS personalisation by entering the following
+     commands in the macOS recovery terminal before starting the installation:
+</p>
+     <!--l. 3921-->
+     <div class="lstlisting" id="listing-9"><span class="label"><a 
+ id="x1-46012r1"></a></span>disk=$(hdiutil attach -nomount ram://4096) <br /> 
+<span class="label"><a 
+ id="x1-46013r2"></a></span>diskutil erasevolume HFS+ SecureBoot $disk <br /> 
+<span class="label"><a 
+ id="x1-46014r3"></a></span>diskutil unmount $disk <br /> 
+<span class="label"><a 
+ id="x1-46015r4"></a></span>mkdir /var/tmp/OSPersonalizationTemp <br /> 
+<span class="label"><a 
+ id="x1-46016r5"></a></span>diskutil mount -mountpoint /var/tmp/OSPersonalizationTemp $disk
+     
+     </div>
+     </li>
+<li 
+  class="enumerate" id="x1-46018x5">
+     <!--l. 3930--><p class="noindent" >AuthRestart<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Enable VirtualSMC-compatible authenticated restart.
+     </p><!--l. 3935--><p class="noindent" >Authenticated restart is a way to reboot FileVault 2 enabled macOS without entering the password. A dedicated terminal
+     command can be used to perform authenticated restarts: sudo fdesetup authrestart. It is also used when installing
+     operating system updates.
+     </p><!--l. 3939--><p class="noindent" >VirtualSMC performs authenticated restarts by splitting and saving disk encryption keys between NVRAM and RTC,
+     which despite being removed as soon as OpenCore starts, may be considered a security risk and thus is
+     optional.
+     </p></li>
+<li 
+  class="enumerate" id="x1-46020x6">
+     <!--l. 3944--><p class="noindent" >BlacklistAppleUpdate<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Ignore boot options trying to update Apple peripheral firmware (e.g. MultiUpdater.efi).
+     </p><!--l. 3950--><p class="noindent" >Note: Certain operating systems, such as macOS Big Sur, are <a 
+href="https://github.com/acidanthera/bugtracker/issues/1255" >incapable</a> of disabling firmware updates by using the
+     run-efi-updater NVRAM variable.
+     </p></li>
+<li 
+  class="enumerate" id="x1-46022x7">
+     <!--l. 3954--><p class="noindent" ><a 
+ id="x1-460217"></a> DmgLoading<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Signed<br 
+class="newline" />Description: Define Disk Image (DMG) loading policy used for macOS Recovery.
+     </p><!--l. 3960--><p class="noindent" >Valid values:
+</p>
+         <ul class="itemize1">
+         <li class="itemize">
+                                                                                                  
+                                                                                                  
+         <li class="itemize">
+         <!--l. 6545--><p class="noindent" >In   the   unlikely   event   that   you   still   get   frequent,   or   occasional,   double   key   responses   after
          setting  KeySubsequentDelay equal  to  your  system’s  value  of  KeyForgetThreshold,  then  increase
          KeySubsequentDelay by one or two more until this effect goes away.</p></li></ul>
      </li>
 <li 
   class="enumerate" id="x1-70010x5">
-     <!--l. 6548--><p class="noindent" ><span class="uwave">GraphicsInputMirroring</span><br 
+     <!--l. 6551--><p class="noindent" ><span class="uwave">GraphicsInputMirroring</span><br 
 class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
 class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">false</span><br 
 class="newline" /><span class="uwave">Description</span><span class="uwave">: Apple’s own implementation of AppleEvent prevents keyboard input during graphics applications from
      appearing on the basic console input stream. </span>
-     </p><!--l. 6556--><p class="noindent" ><span class="uwave">With the default setting of </span><span class="uwave">false</span><span class="uwave">, OC’s builtin implementation of AppleEvent replicates this behaviour.
+     </p><!--l. 6559--><p class="noindent" ><span class="uwave">With the default setting of </span><span class="uwave">false</span><span class="uwave">, OC’s builtin implementation of AppleEvent replicates this behaviour.
      </span>
-     </p><!--l. 6561--><p class="noindent" ><span class="uwave">On non-Apple hardware this can stop keyboard input working in graphics-based applications such as Windows BitLocker
+     </p><!--l. 6564--><p class="noindent" ><span class="uwave">On non-Apple hardware this can stop keyboard input working in graphics-based applications such as Windows BitLocker
      which use non-Apple key input methods. </span>
-     </p><!--l. 6563--><p class="noindent" ><span class="uwave">The recommended setting on all hardware is </span><span class="uwave">true</span><span class="uwave">. </span>
-     </p><!--l. 6566--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: AppleEvent’s default behaviour is intended to prevent unwanted queued keystrokes from appearing
+     </p><!--l. 6566--><p class="noindent" ><span class="uwave">The recommended setting on all hardware is </span><span class="uwave">true</span><span class="uwave">. </span>
+     </p><!--l. 6569--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: AppleEvent’s default behaviour is intended to prevent unwanted queued keystrokes from appearing
      after exiting graphics-based UEFI applications; this issue is already handled separately within OpenCore.
      </span>
 </p>
          <ul class="itemize1">
          <li class="itemize">
-         <!--l. 6572--><p class="noindent" ><span class="uwave">true</span> <span class="uwave">— Allow keyboard input to reach graphics mode apps which are not using Apple input protocols. </span>
+         <!--l. 6575--><p class="noindent" ><span class="uwave">true</span> <span class="uwave">— Allow keyboard input to reach graphics mode apps which are not using Apple input protocols. </span>
          </p></li>
          <li class="itemize">
-         <!--l. 6573--><p class="noindent" ><span class="uwave">false</span> <span class="uwave">— Prevent key input mirroring to non-Apple protocols when in graphics mode. </span></p></li></ul>
+         <!--l. 6576--><p class="noindent" ><span class="uwave">false</span> <span class="uwave">— Prevent key input mirroring to non-Apple protocols when in graphics mode. </span></p></li></ul>
      </li>
 <li 
   class="enumerate" id="x1-70012x6">
-     <!--l. 6577--><p class="noindent" >PointerSpeedDiv<br 
+     <!--l. 6580--><p class="noindent" >PointerSpeedDiv<br 
 class="newline" />Type: plist integer<br 
 class="newline" />Failsafe: 1<br 
 class="newline" />Description: Configure pointer speed divisor in OpenCore implementation of Apple Event protocol. Has no effect when
      using the OEM Apple implementation (see AppleEvent setting).
-     </p><!--l. 6584--><p class="noindent" >Configures the divisor for pointer movements. The Apple OEM default value is 1. 0 is an invalid value for this
+     </p><!--l. 6587--><p class="noindent" >Configures the divisor for pointer movements. The Apple OEM default value is 1. 0 is an invalid value for this
      option.
-     </p><!--l. 6587--><p class="noindent" >Note: The recommended value for this option is 1. This value may optionally be modified in combination with
+     </p><!--l. 6590--><p class="noindent" >Note: The recommended value for this option is 1. This value may optionally be modified in combination with
      PointerSpeedMul, according to user preference, to achieve customised mouse movement scaling.
      </p></li>
 <li 
   class="enumerate" id="x1-70014x7">
-     <!--l. 6592--><p class="noindent" >PointerSpeedMul<br 
+     <!--l. 6595--><p class="noindent" >PointerSpeedMul<br 
 class="newline" />Type: plist integer<br 
 class="newline" />Failsafe: 1<br 
 class="newline" />Description: Configure pointer speed multiplier in OpenCore implementation of Apple Event protocol. Has no effect
      when using the OEM Apple implementation (see AppleEvent setting).
-     </p><!--l. 6599--><p class="noindent" >Configures the multiplier for pointer movements. The Apple OEM default value is 1.
-     </p><!--l. 6601--><p class="noindent" >Note: The recommended value for this option is 1. This value may optionally be modified in combination with
+     </p><!--l. 6602--><p class="noindent" >Configures the multiplier for pointer movements. The Apple OEM default value is 1.
+     </p><!--l. 6604--><p class="noindent" >Note: The recommended value for this option is 1. This value may optionally be modified in combination with
      PointerSpeedDiv, according to user preference, to achieve customised mouse movement scaling.
                                                                                                   
                                                                                                   
