@@ -19,10 +19,6 @@ On the kernel side @Goldfish64 pioneered with 32-bit kernel extension support, e
 
 — Vit
 
-# Dortania Updates
-
-WIP
-
 # Changelogs
 
 #### [OpenCore 0.7.2](https://github.com/acidanthera/OpenCorePkg/releases)
@@ -44,7 +40,8 @@ WIP
 
 #### [AppleALC 1.6.3](https://github.com/acidanthera/AppleALC/releases)
 
-*
+* Update ALC289 layout-id 87 by GitNaufal
+* Update ALC235 layout-id 18 for AsRock 310 BB by viorel78
 
 #### [VirtualSMC 1.2.6](https://github.com/acidanthera/VirtualSMC/releases)
 
