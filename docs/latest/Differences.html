@@ -1,0 +1,372 @@
+<!DOCTYPE html> 
+<html lang="en-US" xml:lang="en-US" > 
+<head><title>Differences</title> 
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="Differences.css" /> 
+<meta name="src" content="Differences.tex" /> 
+<link rel="stylesheet" type="text/css" href="../main.css" /></head><body 
+><div class="center" 
+>
+<!--l. 142--><p class="noindent" >
+</p><!--l. 149--><p class="noindent" > <img 
+src="Logos/Logo-.png" alt="PIC"  
+width="160" height="160"  />
+</p><!--l. 153--><p class="noindent" >OpenCore
+</p><!--l. 157--><p class="noindent" >Reference Manual (0.7<span class="sout">.1</span><span class="uwave">.2</span>)
+</p><!--l. 161--><p class="noindent" >[2021.08.02]
+</p><!--l. 169--><p class="noindent" >Copyright ©2018-2021 vit9696
+</p>
+</div>
+                                                                                                  
+                                                                                                  
+<li 
+  class="enumerate" id="x1-46006x3">
+     <!--l. 3839--><p class="noindent" >AllowToggleSip<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Enable entry for disabling and enabling System Integrity Protection in OpenCore picker.
+     </p><!--l. 3845--><p class="noindent" >This will toggle Apple NVRAM variable csr-active-config between 0 for SIP Enabled and a practical default
+     value for SIP Disabled (currently 0x26F).
+     </p><!--l. 3848--><p class="noindent" >Note 1: It is strongly recommended not to make a habit of running macOS with SIP disabled. Use of this boot
+     option may make it easier to quickly disable SIP protection when genuinely needed - it should be re-enabled
+     again afterwards.
+     </p><!--l. 3852--><p class="noindent" >Note 2: OC uses 0x26F even though csrutil disable on Big Sur sets 0x7F. To explain the choice: </p>
+         <ul class="itemize1">
+         <li class="itemize">
+         <!--l. 3856--><p class="noindent" >csrutil disable --no-internal    actually       sets       0x6F,       and       this       is       preferable
+         because CSR_ALLOW_APPLE_INTERNAL (0x10) prevents updates (unless you are running an internal build of
+         macOS).
+         </p></li>
+         <li class="itemize">
+         <!--l. 3859--><p class="noindent" >CSR_ALLOW_UNAPPROVED_KEXTS (0x200) is generally useful, in the case where you do need to have SIP
+         disabled, as it allows installing unsigned kexts without manual approval in System Preferences.
+         </p></li>
+         <li class="itemize">
+         <!--l. 3862--><p class="noindent" >CSR_ALLOW_UNAUTHENTICATED_ROOT (0x800) is not practical as it prevents incremental (non-full) OTA
+         updates.</p></li></ul>
+     <!--l. 3866--><p class="noindent" >Note3: For any other value which you may need to use, it is possible to configure CsrUtil.efi as a TextMode Tools
+     entry to configure a different value, e.g. use toggle 0x6F in Arguments to toggle the SIP disabled value set by default by
+     csrutil disable --no-internal in Big Sur.
+     </p></li>
+<li 
+  class="enumerate" id="x1-46008x4">
+     <!--l. 3872--><p class="noindent" >ApECID<br 
+class="newline" />Type: plist integer, 64 bit<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Apple Enclave Identifier.
+     </p><!--l. 3877--><p class="noindent" >Setting this value to any non-zero 64-bit integer will allow using personalised Apple Secure Boot identifiers. To use this
+     setting, generate a random 64-bit number with a cryptographically secure random number generator. As an alternative,
+     the first 8 bytes of SystemUUID can be used for ApECID, this is found in macOS 11 for Macs without the T2
+     chip.
+     </p><!--l. 3884--><p class="noindent" >With this value set and SecureBootModel valid (and not Disabled), it is possible to achieve <a 
+href="https://support.apple.com/en-us/HT208330" >Full Security</a> of Apple
+     Secure Boot.
+     </p><!--l. 3889--><p class="noindent" >To start using personalised Apple Secure Boot, the operating system must be reinstalled or personalised. Unless the
+     operating system is personalised, macOS DMG recovery cannot be loaded. In cases where DMG recovery is missing, it
+     can be downloaded by using the macrecovery utility and saved in com.apple.recovery.boot as explained in
+     the ?? section. Note that <a 
+href="#x1-460217">DMG loading</a> needs to be set to Signed to use any DMG with Apple Secure
+     Boot.
+     </p><!--l. 3898--><p class="noindent" >To personalise an existing operating system, use the bless command after loading to macOS DMG recovery. Mount the
+     system volume partition, unless it has already been mounted, and execute the following command:
+</p>
+     <!--l. 3903-->
+<a 
+ id="x1-460074"></a>
+     <div class="lstlisting" id="listing-8"><span class="label"><a 
+ id="x1-46009r1"></a></span><span class="sout">bless</span><span class="sout"> </span><span class="sout">bless</span><span class="sout"> </span><span class="sout">-</span><span class="sout">-</span><span class="sout">folder</span><span class="sout"> </span><span class="sout">&#x0022;</span><span class="sout">/</span><span class="sout">Volumes</span><span class="sout">/</span><span class="sout">Macintosh</span><span class="sout"> </span><span class="sout">HD</span><span class="sout">/</span><span class="sout">System</span><span class="sout">/</span><span class="sout">Library</span><span class="sout">/</span><span class="sout">CoreServices</span><span class="sout">&#x0022;</span><span class="sout"> </span><span class="sout">\</span> <br /> 
+<span class="label"><a 
+ id="x1-46010r2"></a></span><span class="uwave">bless</span><span class="uwave"> </span><span class="uwave">-</span><span class="uwave">-</span><span class="uwave">folder</span><span class="uwave"> </span><span class="uwave">&#x0022;</span><span class="uwave">/</span><span class="uwave">Volumes</span><span class="uwave">/</span><span class="uwave">Macintosh</span><span class="uwave"> </span><span class="uwave">HD</span><span class="uwave">/</span><span class="uwave">System</span><span class="uwave">/</span><span class="uwave">Library</span><span class="uwave">/</span><span class="uwave">CoreServices</span><span class="uwave">&#x0022;</span><span class="uwave"> </span><span class="uwave">\</span> <br /> 
+<span class="label"><a 
+ id="x1-46011r3"></a></span>  --bootefi --personalize
+                                                                                                  
+                                                                                                  
+     
+     </div>
+     <!--l. 3910--><p class="noindent" >On macOS versions before macOS 11, which introduced a dedicated x86legacy model for models without the T2 chip,
+     personalised Apple Secure Boot may not work as expected. When reinstalling the operating system, the macOS Installer
+     from macOS 10.15 and older will often run out of free memory on the /var/tmp partition when trying to install macOS
+     with the personalised Apple Secure Boot. Soon after downloading the macOS installer image, an Unable to verify
+     macOS error message will appear.
+     </p><!--l. 3918--><p class="noindent" >To workaround this issue, allocate a dedicated RAM disk of 2 MBs for macOS personalisation by entering the following
+     commands in the macOS recovery terminal before starting the installation:
+</p>
+     <!--l. 3921-->
+     <div class="lstlisting" id="listing-9"><span class="label"><a 
+ id="x1-46012r1"></a></span>disk=$(hdiutil attach -nomount ram://4096) <br /> 
+<span class="label"><a 
+ id="x1-46013r2"></a></span>diskutil erasevolume HFS+ SecureBoot $disk <br /> 
+<span class="label"><a 
+ id="x1-46014r3"></a></span>diskutil unmount $disk <br /> 
+<span class="label"><a 
+ id="x1-46015r4"></a></span>mkdir /var/tmp/OSPersonalizationTemp <br /> 
+<span class="label"><a 
+ id="x1-46016r5"></a></span>diskutil mount -mountpoint /var/tmp/OSPersonalizationTemp $disk
+     
+     </div>
+     </li>
+<li 
+  class="enumerate" id="x1-46018x5">
+     <!--l. 3930--><p class="noindent" >AuthRestart<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Enable VirtualSMC-compatible authenticated restart.
+     </p><!--l. 3935--><p class="noindent" >Authenticated restart is a way to reboot FileVault 2 enabled macOS without entering the password. A dedicated terminal
+     command can be used to perform authenticated restarts: sudo fdesetup authrestart. It is also used when installing
+     operating system updates.
+     </p><!--l. 3939--><p class="noindent" >VirtualSMC performs authenticated restarts by splitting and saving disk encryption keys between NVRAM and RTC,
+     which despite being removed as soon as OpenCore starts, may be considered a security risk and thus is
+     optional.
+     </p></li>
+<li 
+  class="enumerate" id="x1-46020x6">
+     <!--l. 3944--><p class="noindent" >BlacklistAppleUpdate<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Ignore boot options trying to update Apple peripheral firmware (e.g. MultiUpdater.efi).
+     </p><!--l. 3950--><p class="noindent" >Note: Certain operating systems, such as macOS Big Sur, are <a 
+href="https://github.com/acidanthera/bugtracker/issues/1255" >incapable</a> of disabling firmware updates by using the
+     run-efi-updater NVRAM variable.
+     </p></li>
+<li 
+  class="enumerate" id="x1-46022x7">
+     <!--l. 3954--><p class="noindent" ><a 
+ id="x1-460217"></a> DmgLoading<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Signed<br 
+class="newline" />Description: Define Disk Image (DMG) loading policy used for macOS Recovery.
+     </p><!--l. 3960--><p class="noindent" >Valid values:
+</p>
+         <ul class="itemize1">
+         <li class="itemize">
+                                                                                                  
+                                                                                                  
+     </p><!--l. 4217--><p class="noindent" >Sets Apple Secure Boot hardware model and policy. Specifying this value defines which operating systems will be
+     bootable. Operating systems shipped before the specified model was released will not boot.
+     </p><!--l. 4222--><p class="noindent" >Valid values:
+</p>
+         <ul class="itemize1">
+         <li class="itemize">
+         <!--l. 4226--><p class="noindent" >Default — Recent available model, currently set to <span class="sout">j137</span><span class="uwave">x86legacy</span>.
+         </p></li>
+         <li class="itemize">
+         <!--l. 4227--><p class="noindent" >Disabled — No model, Secure Boot will be disabled.
+         </p></li>
+         <li class="itemize">
+         <!--l. 4228--><p class="noindent" >j137 — iMacPro1,1 (December 2017). Minimum macOS 10.13.2 (17C2111)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4229--><p class="noindent" >j680 — MacBookPro15,1 (July 2018). Minimum macOS 10.13.6 (17G2112)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4230--><p class="noindent" >j132 — MacBookPro15,2 (July 2018). Minimum macOS 10.13.6 (17G2112)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4231--><p class="noindent" >j174 — Macmini8,1 (October 2018). Minimum macOS 10.14 (18A2063)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4232--><p class="noindent" >j140k — MacBookAir8,1 (October 2018). Minimum macOS 10.14.1 (18B2084)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4233--><p class="noindent" >j780 — MacBookPro15,3 (May 2019). Minimum macOS 10.14.5 (18F132)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4234--><p class="noindent" >j213 — MacBookPro15,4 (July 2019). Minimum macOS 10.14.5 (18F2058)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4235--><p class="noindent" >j140a — MacBookAir8,2 (July 2019). Minimum macOS 10.14.5 (18F2058)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4236--><p class="noindent" >j152f — MacBookPro16,1 (November 2019). Minimum macOS 10.15.1 (19B2093)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4237--><p class="noindent" >j160 — MacPro7,1 (December 2019). Minimum macOS 10.15.1 (19B88)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4238--><p class="noindent" >j230k — MacBookAir9,1 (March 2020). Minimum macOS 10.15.3 (19D2064)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4239--><p class="noindent" >j214k — MacBookPro16,2 (May 2020). Minimum macOS 10.15.4 (19E2269)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4240--><p class="noindent" >j223 — MacBookPro16,3 (May 2020). Minimum macOS 10.15.4 (19E2265)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4241--><p class="noindent" >j215 — MacBookPro16,4 (June 2020). Minimum macOS 10.15.5 (19F96)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4242--><p class="noindent" >j185 — iMac20,1 (August 2020). Minimum macOS 10.15.6 (19G2005)
+         </p></li>
+                                                                                                  
+                                                                                                  
+         <li class="itemize">
+         <!--l. 4243--><p class="noindent" >j185f — iMac20,2 (August 2020). Minimum macOS 10.15.6 (19G2005)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4244--><p class="noindent" >x86legacy — Macs without T2 chip and VMs. Minimum macOS 11.0.1 (20B29)</p></li></ul>
+     <!--l. 4247--><p class="noindent" ><span class="uwave">Warning</span><span class="uwave">: Not all </span>Apple Secure Boot <span class="uwave">models are supported on all hardware configurations. Starting with macOS 12
+     </span><span class="uwave">x86legacy</span> <span class="uwave">is the only Apple Secure Boot model compatible with software update on hardware without T2 chips.
+     </span>
+     </p><!--l. 4252--><p class="noindent" ><span class="uwave">Apple Secure Boot </span>appeared in macOS 10.13 on models with T2 chips. Since PlatformInfo and SecureBootModel are
+     independent, Apple Secure Boot can be used with any SMBIOS with and without T2. Setting SecureBootModel to any
+     valid value but Disabled is equivalent to <a 
+href="https://support.apple.com/en-us/HT208330" >Medium Security</a> of Apple Secure Boot. The ApECID value must also be
+     specified to achieve Full Security. Check ForceSecureBootScheme when using Apple Secure Boot on a virtual
+     machine.
+     </p><!--l. 4262--><p class="noindent" >Note that enabling Apple Secure Boot is demanding on invalid configurations, faulty macOS installations, and on
+     unsupported setups.
+     </p><!--l. 4265--><p class="noindent" >Things to consider:
+         </p><ol  class="enumerate2" >
+<li 
+  class="enumerate" id="x1-46053x1">
+         <!--l. 4269--><p class="noindent" >As with T2 Macs, all unsigned kernel extensions as well as several signed kernel extensions, including
+         NVIDIA Web Drivers, cannot be installed.
+         </p></li>
+<li 
+  class="enumerate" id="x1-46055x2">
+         <!--l. 4271--><p class="noindent" >The list of cached kernel extensions may be different, resulting in a need to change the list of Added or
+         Forced kernel extensions. For example, IO80211Family cannot be injected in this case.
+         </p></li>
+<li 
+  class="enumerate" id="x1-46057x3">
+         <!--l. 4274--><p class="noindent" >System volume alterations on operating systems with sealing, such as macOS 11, may result in the operating
+         system being unbootable. Do not try to disable system volume encryption unless Apple Secure Boot is
+         disabled.
+         </p></li>
+<li 
+  class="enumerate" id="x1-46059x4">
+         <!--l. 4277--><p class="noindent" >Boot failures might occur when the platform requires certain settings, but they have not been enabled
+         because the associated issues were not discovered earlier. Be extra careful with IgnoreInvalidFlexRatio
+         or HashServices.
+         </p></li>
+<li 
+  class="enumerate" id="x1-46061x5">
+         <!--l. 4280--><p class="noindent" >Operating systems released before Apple Secure Boot was released (e.g. macOS 10.12 or earlier), will still
+         boot until UEFI Secure Boot is enabled. This is so because Apple Secure Boot treats these as incompatible
+         and they are then handled by the firmware (as Microsoft Windows is).
+         </p></li>
+<li 
+  class="enumerate" id="x1-46063x6">
+         <!--l. 4284--><p class="noindent" >On older CPUs (e.g. before Sandy Bridge), enabling Apple Secure Boot might cause slightly slower loading
+         (by up to 1 second).
+         </p></li>
+<li 
+  class="enumerate" id="x1-46065x7">
+         <!--l. 4286--><p class="noindent" >As the Default value will increase with time to support the latest major released operating system, it is
+         not recommended to use the ApECID and the Default settings together.
+         </p></li>
+                                                                                                  
+                                                                                                  
+     <!--l. 6384--><p class="noindent" >MinDate<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Minimal allowed APFS driver date.
+     </p><!--l. 6389--><p class="noindent" >The APFS driver date connects the APFS driver with the calendar release date. Apple ultimately drops support
+     for older macOS releases and APFS drivers from such releases may contain vulnerabilities that can be used to
+     compromise a computer if such drivers are used after support ends. This option permits restricting APFS drivers
+     to current macOS versions.
+</p>
+         <ul class="itemize1">
+         <li class="itemize">
+         <!--l. 6397--><p class="noindent" >0 — require the default supported release date of APFS in OpenCore. The default release date will increase
+         with time and thus this setting is recommended. Currently set to <span class="sout">2018</span><span class="uwave">2021</span>/<span class="sout">06</span><span class="uwave">01</span>/<span class="sout">21. </span><span class="uwave">01. </span>
+         </p></li>
+         <li class="itemize">
+         <!--l. 6401--><p class="noindent" >-1 — permit any release date to load (strongly discouraged).
+         </p></li>
+         <li class="itemize">
+         <!--l. 6402--><p class="noindent" >Other — use custom minimal APFS release date, e.g. 20200401 for 2020/04/01. APFS release dates can be
+         found in OpenCore boot log and <a 
+href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Acidanthera/Library/OcApfsLib.h" >OcApfsLib</a>.</p></li></ul>
+     </li>
+<li 
+  class="enumerate" id="x1-69012x6">
+     <!--l. 6408--><p class="noindent" >MinVersion<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Minimal allowed APFS driver version.
+     </p><!--l. 6413--><p class="noindent" >The APFS driver version connects the APFS driver with the macOS release. Apple ultimately drops support for older
+     macOS releases and APFS drivers from such releases may contain vulnerabilities that can be used to compromise a
+     computer if such drivers are used after support ends. This option permits restricting APFS drivers to current macOS
+     versions.
+</p>
+         <ul class="itemize1">
+         <li class="itemize">
+         <!--l. 6421--><p class="noindent" >0 — require the default supported version of APFS in OpenCore. The default version will increase with
+         time and thus this setting is recommended. Currently set to <span class="sout">the latest point release from High Sierra from
+         App Store (</span><span class="uwave">allow macOS Big Sur and newer (</span><span class="sout">748077008000000</span><span class="uwave">1600000000000000</span>).
+         </p></li>
+         <li class="itemize">
+         <!--l. 6426--><p class="noindent" >-1 — permit any version to load (strongly discouraged).
+         </p></li>
+         <li class="itemize">
+         <!--l. 6427--><p class="noindent" >Other — use custom minimal APFS version, e.g. 1412101001000000 from macOS Catalina 10.15.4. APFS
+         versions can be found in OpenCore boot log and <a 
+href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Acidanthera/Library/OcApfsLib.h" >OcApfsLib</a>.</p></li></ul>
+     </li></ol>
+<a 
+ id="x1-69013r72"></a>
+<h4 class="subsectionHead"><span class="titlemark">11.8   </span> <a 
+ id="x1-700008"></a>AppleInput Properties</h4>
+     <ol  class="enumerate1" >
+<li 
+  class="enumerate" id="x1-70002x1">
+     <!--l. 6439--><p class="noindent" >AppleEvent<br 
+class="newline" />Type: plist string  <br 
+class="newline" /> ype: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces the Apple EFI Graphics 2 protocol with a builtin version.
+     </p><!--l. 7189--><p class="noindent" >Note 1: This protocol allows newer EfiBoot versions (at least 10.15) to expose screen rotation to macOS. Refer
+     to ForceDisplayRotationInEFI variable description on how to set screen rotation angle.
+     </p><!--l. 7193--><p class="noindent" >Note 2: On systems without native support for ForceDisplayRotationInEFI, DirectGopRendering=true is
+     also required for this setting to have <span class="sout">a visible </span><span class="uwave">an </span>effect.
+     </p></li>
+<li 
+  class="enumerate" id="x1-74010x5">
+     <!--l. 7198--><p class="noindent" >AppleFramebufferInfo<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces the Apple Framebuffer Info protocol with a builtin version. This may be used to override
+     framebuffer information on VMs and legacy Macs to improve compatibility with legacy EfiBoot such as the one
+     in macOS 10.4.
+     </p><!--l. 7205--><p class="noindent" >Note: The current implementation of this property results in it only being active when GOP is available (it is
+     always equivalent to false otherwise).
+     </p></li>
+<li 
+  class="enumerate" id="x1-74012x6">
+     <!--l. 7209--><p class="noindent" >AppleImageConversion<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces the Apple Image Conversion protocol with a builtin version.
+     </p></li>
+<li 
+  class="enumerate" id="x1-74014x7">
+     <!--l. 7216--><p class="noindent" >AppleImg4Verification<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces the Apple IMG4 Verification protocol with a builtin version. This protocol is used to
+     verify im4m manifest files used by Apple Secure Boot.
+     </p></li>
+<li 
+  class="enumerate" id="x1-74016x8">
+     <!--l. 7224--><p class="noindent" >AppleKeyMap<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces Apple Key Map protocols with builtin versions.
+     </p></li>
+<li 
+  class="enumerate" id="x1-74018x9">
+     <!--l. 7231--><p class="noindent" >AppleRtcRam<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Replaces the Apple RTC RAM protocol with a builtin version.
+     </p><!--l. 7237--><p class="noindent" >Note: Builtin version of Apple RTC RAM protocol may filter out I/O attempts to certain RTC memory addresses.
+     The list of addresses can be specified in 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:rtc-blacklist variable as
+     a data array.
+                                                                                                  
+
+
+</body>
+</html>
