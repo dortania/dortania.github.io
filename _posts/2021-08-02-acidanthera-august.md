@@ -1,12 +1,11 @@
 ---
 layout: post
 title: "Acidanthera Updates: August 2021"
-date: 2021-08-02 14:45:00 -0400
+date: 2021-08-02 14:30:00 -0400
 categories: Hackintosh updates
 ---
 
 * [A message from vit9696](#a-message-from-vit9696)
-* [Dortania Updates][#dortania-updates]
 * [Changelogs](#changelogs)
 
 # A message from vit9696
