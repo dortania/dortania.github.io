@@ -234,6 +234,66 @@ href="https://travis-ci.com/acidanthera" >CI interface</a>. Ensuring that static
      </p></li>
      <li class="itemize">
                                                                                                   
+                                                                                                  
+     
+     </div>
+     <!--l. 3911--><p class="noindent" ><span class="uwave">On macOS 11 and newer the dedicated </span><span class="uwave">x86legacy</span> <span class="uwave">model always uses </span><span class="uwave">ApECID</span><span class="uwave">. When this configuration setting is left as </span><span class="uwave">0</span>
+     <span class="uwave">first 8 bytes of </span><span class="uwave">system-id</span> <span class="uwave">variable are used instead. </span>
+     </p><!--l. 3916--><p class="noindent" >On macOS versions before macOS 11, which introduced a dedicated x86legacy model for models without the T2 chip,
+     personalised Apple Secure Boot may not work as expected. When reinstalling the operating system, the macOS Installer
+     from macOS 10.15 and older will often run out of free memory on the /var/tmp partition when trying to install macOS
+     with the personalised Apple Secure Boot. Soon after downloading the macOS installer image, an Unable to verify
+     macOS error message will appear.
+     </p><!--l. 3924--><p class="noindent" >To workaround this issue, allocate a dedicated RAM disk of 2 MBs for macOS personalisation by entering the following
+     commands in the macOS recovery terminal before starting the installation:
+</p>
+     <!--l. 3927-->
+     <div class="lstlisting" id="listing-9"><span class="label"><a 
+ id="x1-46011r1"></a></span>disk=$(hdiutil attach -nomount ram://4096) <br /> 
+<span class="label"><a 
+ id="x1-46012r2"></a></span>diskutil erasevolume HFS+ SecureBoot $disk <br /> 
+<span class="label"><a 
+ id="x1-46013r3"></a></span>diskutil unmount $disk <br /> 
+<span class="label"><a 
+ id="x1-46014r4"></a></span>mkdir /var/tmp/OSPersonalizationTemp <br /> 
+<span class="label"><a 
+ id="x1-46015r5"></a></span>diskutil mount -mountpoint /var/tmp/OSPersonalizationTemp $disk
+     
+     </div>
+     </li>
+<li 
+  class="enumerate" id="x1-46017x5">
+     <!--l. 3936--><p class="noindent" >AuthRestart<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Enable VirtualSMC-compatible authenticated restart.
+     </p><!--l. 3941--><p class="noindent" >Authenticated restart is a way to reboot FileVault 2 enabled macOS without entering the password. A dedicated terminal
+     command can be used to perform authenticated restarts: sudo fdesetup authrestart. It is also used when installing
+     operating system updates.
+     </p><!--l. 3945--><p class="noindent" >VirtualSMC performs authenticated restarts by splitting and saving disk encryption keys between NVRAM and RTC,
+     which despite being removed as soon as OpenCore starts, may be considered a security risk and thus is
+     optional.
+     </p></li>
+<li 
+  class="enumerate" id="x1-46019x6">
+     <!--l. 3950--><p class="noindent" >BlacklistAppleUpdate<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Ignore boot options trying to update Apple peripheral firmware (e.g. MultiUpdater.efi).
+     </p><!--l. 3956--><p class="noindent" >Note: Certain operating systems, such as macOS Big Sur, are <a 
+href="https://github.com/acidanthera/bugtracker/issues/1255" >incapable</a> of disabling firmware updates by using the
+     run-efi-updater NVRAM variable.
+     </p></li>
+<li 
+  class="enumerate" id="x1-46021x7">
+     <!--l. 3960--><p class="noindent" ><a 
+ id="x1-460207"></a> DmgLoading<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Signed<br 
+class="newline" />Description: Define Disk Image (DMG) loading policy used for macOS Recovery.
+     </p><!--l. 3966--><p class="noindent" >Valid values:
+</p>
+                                                                                                  
 
 
 </body>
