@@ -447,52 +447,7 @@ href="https://systemd.io/BOOT_LOADER_SPECIFICATION/" ><span class="uwave">Boot L
      
                                                                                                   
                                                                                                   
-     </p></li>
-<li 
-  class="enumerate" id="x1-72014x7">
-     <!--l. 6914--><p class="noindent" > esetTrafficClass<br 
-class="newline" />Type: plist boolean<br 
-class="newline" />Failsafe: false<br 
-class="newline" />Description: Set HDA Traffic Class Select Register to TC0.
-     </p><!--l. 6919--><p class="noindent" >AppleHDA kext will function correctly only if TCSEL register is configured to use TC0 traffic class. Refer to Intel I/O
-     Controller Hub 9 (ICH9) Family Datasheet (or any other ICH datasheet) for more details about this
-     register.
-     </p><!--l. 6923--><p class="noindent" >Note: This option is independent from AudioSupport. If AppleALC is used it is preferred to use AppleALC alctsel
-     property instead.
-     </p></li>
-<li 
-  class="enumerate" id="x1-72016x8">
-     <!--l. 6927--><p class="noindent" >SetupDelay<br 
-class="newline" />Type: plist integer<br 
-class="newline" />Failsafe: 0<br 
-class="newline" />Description: Audio codec reconfiguration delay in microseconds.
-     </p><!--l. 6932--><p class="noindent" >Some codecs require a vendor-specific delay after the reconfiguration (e.g. volume setting). This option makes it
-     configurable. A typical delay can be up to 0.5 seconds.
-     </p></li>
-<li 
-  class="enumerate" id="x1-72018x9">
-     <!--l. 6937--><p class="noindent" >VolumeAmplifier<br 
-class="newline" />Type: plist integer<br 
-class="newline" />Failsafe: 0<br 
-class="newline" />Description: Multiplication coefficient for system volume to raw volume linear translation from 0 to
-     1000.
-     </p><!--l. 6943--><p class="noindent" >Volume level range read from SystemAudioVolume varies depending on the codec. To transform read
-     value in [0, 127] range into raw volume range [0, 100] the read value is scaled to VolumeAmplifier
-     percents:
-     </p><table 
-class="align-star">
-                 <tr><td 
-class="align-odd">RawV olume</td>                 <td 
-class="align-even"> = MIN(<img 
-src="Differences4x.svg" alt="SystemAudioV  olume ∗ VolumeAmplif ier
-------------------------------------
-                100"  class="frac" align="middle" />,100)</td>                 <td 
-class="align-label"></td>                 <td 
-class="align-label"></td></tr></table>
-                                                                                                  
-                                                                                                  
-     <!--l. 6949--><p class="noindent" >Note: the transformation used in macOS is not linear, but it is very close and this nuance is thus ignored<span class="uwave">.
-     </span>
+     <!--l. 6949--><p class="noindent" > ote: the transformation used in macOS is not linear, but it is very close and this nuance is thus ignored.
 </p>
      </li></ol>
 <a 
@@ -502,24 +457,24 @@ class="align-label"></td></tr></table>
      <ol  class="enumerate1" >
 <li 
   class="enumerate" id="x1-73002x1">
-     <!--l. 6960--><p class="noindent" ><span class="uwave">Path</span><br 
+     <!--l. 6959--><p class="noindent" ><span class="uwave">Path</span><br 
 class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist string</span><br 
 class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: Empty</span><br 
 class="newline" /><span class="uwave">Description</span><span class="uwave">: Path of file to be loaded as a UEFI driver from </span><span class="uwave">OC/Drivers</span> <span class="uwave">directory. </span>
      </p></li>
 <li 
   class="enumerate" id="x1-73004x2">
-     <!--l. 6968--><p class="noindent" ><span class="uwave">Enabled</span><br 
+     <!--l. 6967--><p class="noindent" ><span class="uwave">Enabled</span><br 
 class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
 class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">false</span><br 
 class="newline" /><span class="uwave">Description</span><span class="uwave">: If </span><span class="uwave">false</span> <span class="uwave">this driver entry will be ignored. </span>
      </p></li>
 <li 
   class="enumerate" id="x1-73006x3">
-     <!--l. 6975--><p class="noindent" ><span class="uwave">Arguments</span><br 
+     <!--l. 6974--><p class="noindent" ><span class="uwave">Arguments</span><br 
 class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist string</span><br 
 class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: Empty</span><br 
-class="newline" /><span class="uwave">Description</span><span class="uwave">: Some OC plugins accept optional additional arguments which may be specified as a string here</span>.
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Some OC plugins accept optional additional arguments which may be specified as a string here. </span>
 </p>
      </li></ol>
 <a 
@@ -544,8 +499,21 @@ class="newline" />Type: plist integer<br
 class="newline" />Failsafe: 0<br 
 class="newline" />Description: Treat duplicate key presses as held keys if they arrive during this timeout, in 10 ms units. Only
      applies to systems using KeySupport.
+     </p><!--l. 7006--><p class="noindent" >AppleKeyMapAggregator protocol is supposed to contain a fixed length buffer of currently pressed keys. However,
                                                                                                   
-
-
-</body>
+                                                                                                  
+     
+        
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     </body>
 </html>
