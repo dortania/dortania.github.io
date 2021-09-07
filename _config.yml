@@ -14,4 +14,5 @@ header_pages:
 plugins:
   - jekyll-feed
   - jekyll-mentions
-  
+disqus:
+  shortname: placeholder # this is a placeholder to enable comments
