@@ -1,0 +1,519 @@
+<!DOCTYPE html> 
+<html lang="en-US" xml:lang="en-US" > 
+<head><title>Differences</title> 
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="Differences.css" /> 
+<meta name="src" content="Differences.tex" /> 
+<link rel="stylesheet" type="text/css" href="../main.css" /></head><body 
+><div class="center" 
+>
+<!--l. 142--><p class="noindent" >
+</p><!--l. 149--><p class="noindent" > <img 
+src="Logos/Logo-.png" alt="PIC"  
+width="160" height="160"  />
+</p><!--l. 153--><p class="noindent" >OpenCore
+</p><!--l. 157--><p class="noindent" >Reference Manual (0.7<span class="sout">.2</span><span class="uwave">.3</span>)
+</p><!--l. 161--><p class="noindent" >[2021.09.07]
+</p><!--l. 169--><p class="noindent" >Copyright ©2018-2021 vit9696
+</p>
+</div>
+                                                                                                  
+                                                                                                  
+     <!--l. 628--><p class="noindent" >nvram.plist <br 
+class="newline" />OpenCore variable import file.
+     </p></li>
+     <li class="itemize">
+     <!--l. 631--><p class="noindent" >opencore-YYYY-MM-DD-HHMMSS.txt <br 
+class="newline" />OpenCore log file.
+     </p></li>
+     <li class="itemize">
+     <!--l. 634--><p class="noindent" >panic-YYYY-MM-DD-HHMMSS.txt <br 
+class="newline" />Kernel panic log file.</p></li></ul>
+<!--l. 638--><p class="noindent" >Note: It is not guaranteed that paths longer than OC_STORAGE_SAFE_PATH_MAX (128 characters including the
+<br 
+class="newline" />0-terminator) will be accessible within OpenCore.
+<a 
+ id="x1-9001r9"></a>
+</p>
+<h4 class="subsectionHead"><span class="titlemark">3.2   </span> <a 
+ id="x1-100002"></a>Installation and Upgrade</h4>
+<!--l. 644--><p class="noindent" >To install OpenCore, replicate the ?? described in the previous section in the EFI volume of a GPT partition. While
+corresponding sections of this document provide some information regarding external resources such as ACPI tables, UEFI
+drivers, or kernel extensions (kexts), completeness of the matter is out of the scope of this document. Information about kernel
+extensions may be found in a separate <a 
+href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Kexts.md" >Kext List</a> document available in the OpenCore repository. Vaulting information is
+provided in the ?? section of this document.
+</p><!--l. 656--><p class="noindent" >The OC config file, as with any property list file, can be edited with any text editor, such as nano or vim. However, specialised
+software may provide a better experience. On macOS, the preferred GUI application is <a 
+href="https://developer.apple.com/xcode" >Xcode</a>. For a lightweight cross-platform
+and open-source alternative, the <a 
+href="https://github.com/corpnewt/ProperTree" >ProperTree</a> editor can be utilised.
+</p><!--l. 664--><p class="noindent" >It is strongly advised not to use any software that is aware of the internal configration structure as it constantly gets out of
+date and will cause incorrect configuration to be generated. If it is a must desprite the warning one should make sure to only
+use stable versions of OpenCore with explicit support for the particular version in the app. The choice of open-source
+implementations with transparent binary generation is encouraged (e.g. <a 
+href="https://github.com/ic005k/QtOpenCoreConfig" >OCAT</a>), since other tools may contain malware.
+Remember that a configuration made for a different hardware setup shall never be used on another hardware
+setup.
+</p><!--l. 675--><p class="noindent" >For BIOS booting, a third-party UEFI environment provider is required and OpenDuetPkg is one such UEFI environment
+provider for legacy systems. To run OpenCore on such a legacy system, OpenDuetPkg can be installed with a dedicated tool —
+BootInstall (bundled with OpenCore). <a 
+href="https://github.com/corpnewt/gibMacOS" >Third-party utilities</a> can be used to perform this on systems other than
+macOS.
+</p><!--l. 682--><p class="noindent" >For upgrade purposes, refer to the Differences.pdf document which provides information about changes to the configuration
+(as compared to the previous release) as well as to the Changelog.md document (which contains a list of modifications across
+all published updates).
+<a 
+ id="x1-10001r10"></a>
+</p>
+<h4 class="subsectionHead"><span class="titlemark">3.3   </span> <a 
+ id="x1-110003"></a>Contribution</h4>
+<!--l. 689--><p class="noindent" >OpenCore can be compiled as a standard <a 
+href="https://github.com/tianocore/tianocore.github.io/wiki/EDK-II" >EDK II</a> package and requires the <a 
+href="https://github.com/tianocore/tianocore.github.io/wiki/EDK-II#stable-tags" >EDK II Stable</a> package. The currently supported
+EDK II release is hosted in <a 
+href="https://github.com/acidanthera/audk" >acidanthera/audk</a>. Required patches for this package can be found in the Patches
+directory.
+</p><!--l. 697--><p class="noindent" >The only officially supported toolchain is XCODE5. Other toolchains might work but are neither supported nor recommended.
+Contributions of clean patches are welcome. Please do follow <a 
+href="https://github.com/tianocore/tianocore.github.io/wiki/Code-Style-C" >EDK II C Codestyle</a>.
+</p><!--l. 702--><p class="noindent" >To compile with XCODE5, besides <a 
+href="https://developer.apple.com/xcode" >Xcode</a>, users should also install <a 
+href="https://www.nasm.us" >NASM</a> and <a 
+href="https://github.com/acidanthera/ocbuild/tree/master/external" >MTOC</a>. The latest Xcode version is recommended
+for use despite the toolchain name. An example command sequence is as follows:
+</p>
+<!--l. 709-->
+<a 
+ id="x1-11001r1"></a>
+<a 
+ id="x1-11002"></a>
+                                                                                                  
+                                                                                                  
+<div class="lstlisting" id="listing-1"><span class="label"><a 
+ id="x1-11003r1"></a></span>git clone --depth=1 https://github.com/acidanthera/audk UDK <br /> 
+<span class="label"><a 
+ id="x1-11004r2"></a></span>cd UDK <br /> 
+<span class="label"><a 
+ id="x1-11005r3"></a></span>git submodule update --init --recommend-shallow <br /> 
+<span class="label"><a 
+ id="x1-11006r4"></a></span>git clone --depth=1 https://github.com/acidanthera/OpenCorePkg <br /> 
+<span class="label"><a 
+ id="x1-11007r5"></a></span><span class="sout">source</span><span class="sout"> </span><span class="sout">edksetup</span><span class="sout">.</span><span class="sout">sh</span> <br /> 
+<span class="label"><a 
+ id="x1-11008r6"></a></span><span class="uwave">.</span><span class="uwave"> </span><span class="uwave">./</span><span class="uwave">edksetup</span><span class="uwave">.</span><span class="uwave">sh</span> <br /> 
+<span class="label"><a 
+ id="x1-11009r7"></a></span>make -C BaseTools <br /> 
+<span class="label"><a 
+ id="x1-11010r8"></a></span>build -a X64 -b RELEASE -t XCODE5 -p OpenCorePkg/OpenCorePkg.dsc
+<figcaption class="caption" ><span class="id">Listing 1:</span><span  
+class="content">Compilation Commands</span></figcaption><!--tex4ht:label?: x1-11001r -->
+</div>
+<!--l. 721--><p class="noindent" >For IDE usage Xcode projects are available in the root of the repositories. Another approach could be using <a 
+href="https://microsoft.github.io/language-server-protocol" >Language Server
+Protocols</a>. For example, <a 
+href="https://www.sublimetext.com" >Sublime Text</a> with <a 
+href="https://lsp.sublimetext.io" >LSP for Sublime Text</a> plugin. Add compile_flags.txt file with similar content to
+the UDK root:
+</p>
+<!--l. 726-->
+<a 
+ id="x1-11011r2"></a>
+<a 
+ id="x1-11012"></a>
+<div class="lstlisting" id="listing-2"><span class="label"><a 
+ id="x1-11013r1"></a></span>-I/UefiPackages/MdePkg <br /> 
+<span class="label"><a 
+ id="x1-11014r2"></a></span>-I/UefiPackages/MdePkg/Include <br /> 
+<span class="label"><a 
+ id="x1-11015r3"></a></span>-I/UefiPackages/MdePkg/Include/X64 <br /> 
+<span class="label"><a 
+ id="x1-11016r4"></a></span>-I/UefiPackages/MdeModulePkg <br /> 
+<span class="label"><a 
+ id="x1-11017r5"></a></span>-I/UefiPackages/MdeModulePkg/Include <br /> 
+<span class="label"><a 
+ id="x1-11018r6"></a></span>-I/UefiPackages/MdeModulePkg/Include/X64 <br /> 
+<span class="label"><a 
+ id="x1-11019r7"></a></span>-I/UefiPackages/OpenCorePkg/Include/AMI <br /> 
+<span class="label"><a 
+ id="x1-11020r8"></a></span>-I/UefiPackages/OpenCorePkg/Include/Acidanthera <br /> 
+<span class="label"><a 
+ id="x1-11021r9"></a></span>-I/UefiPackages/OpenCorePkg/Include/Apple <br /> 
+<span class="label"><a 
+ id="x1-11022r10"></a></span>-I/UefiPackages/OpenCorePkg/Include/Apple/X64 <br /> 
+<span class="label"><a 
+ id="x1-11023r11"></a></span>-I/UefiPackages/OpenCorePkg/Include/Duet <br /> 
+<span class="label"><a 
+ id="x1-11024r12"></a></span>-I/UefiPackages/OpenCorePkg/Include/Generic <br /> 
+<span class="label"><a 
+ id="x1-11025r13"></a></span>-I/UefiPackages/OpenCorePkg/Include/Intel <br /> 
+<span class="label"><a 
+ id="x1-11026r14"></a></span>-I/UefiPackages/OpenCorePkg/Include/Microsoft <br /> 
+<span class="label"><a 
+ id="x1-11027r15"></a></span>-I/UefiPackages/OpenCorePkg/Include/Nvidia <br /> 
+<span class="label"><a 
+ id="x1-11028r16"></a></span>-I/UefiPackages/OpenCorePkg/Include/VMware <br /> 
+<span class="label"><a 
+ id="x1-11029r17"></a></span>-I/UefiPackages/OvmfPkg/Include <br /> 
+<span class="label"><a 
+ id="x1-11030r18"></a></span>-I/UefiPackages/ShellPkg/Include <br /> 
+<span class="label"><a 
+ id="x1-11031r19"></a></span>-I/UefiPackages/UefiCpuPkg/Include <br /> 
+<span class="label"><a 
+ id="x1-11032r20"></a></span>-IInclude <br /> 
+<span class="label"><a 
+ id="x1-11033r21"></a></span>-include <br /> 
+<span class="label"><a 
+ id="x1-11034r22"></a></span>/UefiPackages/MdePkg/Include/Uefi.h <br /> 
+<span class="label"><a 
+ id="x1-11035r23"></a></span>-fshort-wchar <br /> 
+<span class="label"><a 
+ id="x1-11036r24"></a></span>-Wall <br /> 
+<span class="label"><a 
+ id="x1-11037r25"></a></span>-Wextra <br /> 
+<span class="label"><a 
+ id="x1-11038r26"></a></span>-Wno-unused-parameter <br /> 
+<span class="label"><a 
+ id="x1-11039r27"></a></span>-Wno-missing-braces <br /> 
+<span class="label"><a 
+ id="x1-11040r28"></a></span>-Wno-missing-field-initializers <br /> 
+<span class="label"><a 
+ id="x1-11041r29"></a></span>-Wno-tautological-compare <br /> 
+<span class="label"><a 
+ id="x1-11042r30"></a></span>-Wno-sign-compare <br /> 
+<span class="label"><a 
+ id="x1-11043r31"></a></span>-Wno-varargs <br /> 
+<span class="label"><a 
+ id="x1-11044r32"></a></span>-Wno-unused-const-variable <br /> 
+<span class="label"><a 
+ id="x1-11045r33"></a></span>-DOC_TARGET_NOOPT=1 <br /> 
+<span class="label"><a 
+ id="x1-11046r34"></a></span>-DNO_MSABI_VA_FUNCS=1
+<figcaption class="caption" ><span class="id">Listing 2:</span><span  
+class="content">ECC Configuration</span></figcaption><!--tex4ht:label?: x1-11011r -->
+</div>
+<!--l. 763--><p class="noindent" >Note: /UefiPackages in the sample file denotes an absolute path.
+</p><!--l. 765--><p class="noindent" >Warning: Tool developers modifying config.plist or any other OpenCore files must ensure that their tools check the
+opencore-version NVRAM variable (see the ?? section below) and warn users if the version listed is unsupported or
+prerelease. The OpenCore configuration may change across releases and such tools shall ensure that they carefully follow
+this document. Failure to do so may result in such tools being considered to be malware and blocked by any
+means.
+<a 
+ id="x1-11047r11"></a>
+</p>
+<h4 class="subsectionHead"><span class="titlemark">3.4   </span> <a 
+ id="x1-120004"></a>Coding conventions</h4>
+<!--l. 774--><p class="noindent" >As with any other project, we have conventions that we follow during development. All third-party contributors are advised to
+adhere to the conventions listed below before submitting patches. To minimise abortive work and the potential rejection of
+submissions, third-party contributors should initially raise issues to the <a 
+href="https://github.com/acidanthera/bugtracker" >Acidanthera Bugtracker</a> for feedback before submitting
+patches.
+</p><!--l. 781--><p class="noindent" >Organisation. The codebase is contained in the OpenCorePkg repository, which is the primary EDK II package.
+</p>
+     <ul class="itemize1">
+     <li class="itemize">
+     <!--l. 785--><p class="noindent" >Whenever changes are required in multiple repositories, separate pull requests should be sent to each.
+     </p></li>
+     <li class="itemize">
+     <!--l. 787--><p class="noindent" >Committing the changes should happen firstly to dependent repositories, secondly to primary repositories to
+     avoid automatic build errors.
+     </p></li>
+     <li class="itemize">
+     <!--l. 789--><p class="noindent" >Each unique commit should compile with XCODE5 and preferably with other toolchains. In the majority of the
+     cases it can be checked by accessing the <a 
+href="https://travis-ci.com/acidanthera" >CI interface</a>. Ensuring that static analysis finds no warnings is preferred.
+     </p></li>
+     <li class="itemize">
+     <!--l. 793--><p class="noindent" >External pull requests and tagged commits must be validated. That said, commits in master may build but may
+     not necessarily work.
+     </p></li>
+     <li class="itemize">
+     <!--l. 795--><p class="noindent" >Internal branches should be named as follows: author-name-date, e.g. vit9696-ballooning-20191026.
+     </p></li>
+     <li class="itemize">
+                                                                                                  
+                                                                                                  
+     memory. Using the non-volatile flag will cause the log to be written to NVRAM flash after every printed
+     line.
+     </p><!--l. 3711--><p class="noindent" >To obtain UEFI variable logs, use the following command in macOS: </p><!--l. 3712-->
+     <div class="lstlisting" id="listing-7"><span class="label"><a 
+ id="x1-45020r1"></a></span>nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:boot-log | <br /> 
+<span class="label"><a 
+ id="x1-45021r2"></a></span>  awk &#x0027;{gsub(/%0d%0a%00/,&#x0022;&#x0022;);gsub(/%0d%0a/,&#x0022;\n&#x0022;)}1&#x0027;
+     
+     </div>
+     <!--l. 3717--><p class="noindent" >Warning: Certain firmware appear to have defective NVRAM garbage collection. As a result, they may not be able to
+     always free space after variable deletion. Do not enable non-volatile NVRAM logging on such devices unless specifically
+     required.
+     </p><!--l. 3721--><p class="noindent" >While the OpenCore boot log already contains basic version information including build type and date, this
+     information may also be found in the opencore-version NVRAM variable even when boot logging is
+     disabled.
+     </p><!--l. 3725--><p class="noindent" >File logging will create a file named opencore-YYYY-MM-DD-HHMMSS.txt (in UTC) under the EFI volume root with log
+     contents (the upper case letter sequence is replaced with date and time from the firmware). Please be warned
+     that some file system drivers present in firmware are not reliable and may corrupt data when writing
+     files through UEFI. Log writing is attempted in the safest manner and thus, is very slow. Ensure that
+     DisableWatchDog is set to true when a slow drive is used. Try to avoid frequent use of this option when dealing
+     with flash drives as large I/O amounts may speed up memory wear and render the flash drive unusable
+     quicker.
+     </p><!--l. 3734--><p class="noindent" >When interpreting the log, note that the lines are prefixed with a tag describing the relevant location (module) of the log
+     line allowing better attribution of the line to the functionality.
+     </p><!--l. 3738--><p class="noindent" >The list of currently used tags is as follows.
+     </p><!--l. 3740--><p class="noindent" >Drivers and tools: </p>
+         <ul class="itemize1">
+         <li class="itemize">
+         <!--l. 3743--><p class="noindent" >BMF — OpenCanopy, bitmap font
+         </p></li>
+         <li class="itemize">
+         <!--l. 3744--><p class="noindent" >BS — Bootstrap
+         </p></li>
+         <li class="itemize">
+         <!--l. 3745--><p class="noindent" >GSTT — GoptStop
+         </p></li>
+         <li class="itemize">
+         <!--l. 3746--><p class="noindent" >HDA — AudioDxe
+         </p></li>
+         <li class="itemize">
+         <!--l. 3747--><p class="noindent" >KKT — KeyTester
+         </p></li>
+         <li class="itemize">
+         <!--l. 3748--><p class="noindent" ><span class="uwave">LNX</span> <span class="uwave">— OpenLinuxBoot </span>
+         </p></li>
+         <li class="itemize">
+         <!--l. 3749--><p class="noindent" >MMDD — MmapDump
+         </p></li>
+         <li class="itemize">
+         <!--l. 3750--><p class="noindent" >OCPAVP — PavpProvision
+         </p></li>
+         <li class="itemize">
+         <!--l. 3751--><p class="noindent" >OCRST — ResetSystem
+                                                                                                  
+                                                                                                  
+<a 
+ id="x1-460074"></a>
+     <div class="lstlisting" id="listing-8"><span class="label"><a 
+ id="x1-46009r1"></a></span>bless --folder &#x0022;/Volumes/Macintosh HD/System/Library/CoreServices&#x0022; \ <br /> 
+<span class="label"><a 
+ id="x1-46010r2"></a></span>  --bootefi --personalize
+     
+     </div>
+     <!--l. 3911--><p class="noindent" >On macOS <span class="uwave">11 and newer the dedicated </span><span class="uwave">x86legacy</span> <span class="uwave">model always uses </span><span class="uwave">ApECID</span><span class="uwave">. When this configuration setting is left as </span><span class="uwave">0</span>
+     <span class="uwave">first 8 bytes of </span><span class="uwave">system-id</span> <span class="uwave">variable are used instead. </span>
+     </p><!--l. 3916--><p class="noindent" ><span class="uwave">On macOS </span>versions before macOS 11, which introduced a dedicated x86legacy model for models without the T2 chip,
+     personalised Apple Secure Boot may not work as expected. When reinstalling the operating system, the macOS Installer
+     from macOS 10.15 and older will often run out of free memory on the /var/tmp partition when trying to install macOS
+     with the personalised Apple Secure Boot. Soon after downloading the macOS installer image, an Unable to verify
+     macOS error message will appear.
+     </p><!--l. 3924--><p class="noindent" >To workaround this issue, allocate a dedicated RAM disk of 2 MBs for macOS personalisation by entering the following
+     commands in the macOS recovery terminal before starting the installation:
+</p>
+     <!--l. 3927-->
+     <div class="lstlisting" id="listing-9"><span class="label"><a 
+ id="x1-46011r1"></a></span>disk=$(hdiutil attach -nomount ram://4096) <br /> 
+<span class="label"><a 
+ id="x1-46012r2"></a></span>diskutil erasevolume HFS+ SecureBoot $disk <br /> 
+<span class="label"><a 
+ id="x1-46013r3"></a></span>diskutil unmount $disk <br /> 
+<span class="label"><a 
+ id="x1-46014r4"></a></span>mkdir /var/tmp/OSPersonalizationTemp <br /> 
+<span class="label"><a 
+ id="x1-46015r5"></a></span>diskutil mount -mountpoint /var/tmp/OSPersonalizationTemp $disk
+     
+     </div>
+     </li>
+<li 
+  class="enumerate" id="x1-46017x5">
+     <!--l. 3936--><p class="noindent" >AuthRestart<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Enable VirtualSMC-compatible authenticated restart.
+     </p><!--l. 3941--><p class="noindent" >Authenticated restart is a way to reboot FileVault 2 enabled macOS without entering the password. A dedicated terminal
+     command can be used to perform authenticated restarts: sudo fdesetup authrestart. It is also used when installing
+     operating system updates.
+     </p><!--l. 3945--><p class="noindent" >VirtualSMC performs authenticated restarts by splitting and saving disk encryption keys between NVRAM and RTC,
+     which despite being removed as soon as OpenCore starts, may be considered a security risk and thus is
+     optional.
+     </p></li>
+<li 
+  class="enumerate" id="x1-46019x6">
+     <!--l. 3950--><p class="noindent" >BlacklistAppleUpdate<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Ignore boot options trying to update Apple peripheral firmware (e.g. MultiUpdater.efi).
+     </p><!--l. 3956--><p class="noindent" >Note: Certain operating systems, such as macOS Big Sur, are <a 
+href="https://github.com/acidanthera/bugtracker/issues/1255" >incapable</a> of disabling firmware updates by using the
+     run-efi-updater NVRAM variable.
+     </p></li>
+<li 
+  class="enumerate" id="x1-46021x7">
+     <!--l. 3960--><p class="noindent" ><a 
+ id="x1-460207"></a> DmgLoading<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Signed<br 
+class="newline" />Description: Define Disk Image (DMG) loading policy used for macOS Recovery.
+                                                                                                  
+                                                                                                  
+     OpenCore.efi and BOOTx64.efi with a custom key. More details on customising secure boot on modern firmware can be
+     found in the <a 
+href="https://habr.com/post/273497/" >Taming UEFI SecureBoot</a> paper (in Russian).
+     </p><!--l. 4131--><p class="noindent" >Note 2: vault.plist and vault.sig are used regardless of this option when vault.plist is present or a public key is
+     embedded into OpenCore.efi. Setting this option will only ensure configuration sanity, and abort the boot process
+     otherwise.
+     </p></li>
+<li 
+  class="enumerate" id="x1-46048x14">
+     <!--l. 4137--><p class="noindent" >ScanPolicy<br 
+class="newline" />Type: plist integer, 32 bit<br 
+class="newline" />Failsafe: 0x10F0103<br 
+class="newline" />Description: Define operating system detection policy.
+     </p><!--l. 4142--><p class="noindent" >This value allows preventing scanning (and booting) untrusted sources based on a bitmask (sum) of a set of flags. As it is
+     not possible to reliably detect every file system or device type, this feature cannot be fully relied upon in open
+     environments, and additional measures are to be applied.
+     </p><!--l. 4148--><p class="noindent" >Third party drivers may introduce additional security (and performance) consideratons following the provided scan
+     policy. The active Scan policy is exposed in the scan-policy variable of 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102
+     GUID for UEFI Boot Services only.
+</p>
+         <ul class="itemize1">
+         <li class="itemize">
+         <!--l. 4155--><p class="noindent" >0x00000001 (bit 0) — OC_SCAN_FILE_SYSTEM_LOCK, restricts scanning to only known file systems defined
+         as a part of this policy. File system drivers may not be aware of this policy. Hence, to avoid mounting of
+         undesired file systems, drivers for such file systems should not be loaded. This bit does not affect DMG
+         mounting, which may have any file system. Known file systems are prefixed with OC_SCAN_ALLOW_FS_.
+         </p></li>
+         <li class="itemize">
+         <!--l. 4161--><p class="noindent" >0x00000002 (bit 1) — OC_SCAN_DEVICE_LOCK, restricts scanning to only known device types defined as a
+         part of this policy. It is not always possible to detect protocol tunneling, so be aware that on some systems,
+         it may be possible for e.g. USB HDDs to be recognised as SATA instead. Cases like this must be reported.
+         Known device types are prefixed with OC_SCAN_ALLOW_DEVICE_.
+         </p></li>
+         <li class="itemize">
+         <!--l. 4166--><p class="noindent" >0x00000100 (bit 8) — OC_SCAN_ALLOW_FS_APFS, allows scanning of APFS file system.
+         </p></li>
+         <li class="itemize">
+         <!--l. 4168--><p class="noindent" >0x00000200 (bit 9) — OC_SCAN_ALLOW_FS_HFS, allows scanning of HFS file system.
+         </p></li>
+         <li class="itemize">
+         <!--l. 4170--><p class="noindent" >0x00000400 (bit 10) — OC_SCAN_ALLOW_FS_ESP, allows scanning of EFI System Partition file system.
+         </p></li>
+         <li class="itemize">
+         <!--l. 4172--><p class="noindent" >0x00000800 (bit 11) — OC_SCAN_ALLOW_FS_NTFS, allows scanning of NTFS (Msft Basic Data) file system.
+         </p></li>
+         <li class="itemize">
+         <!--l. 4174--><p class="noindent" >0x00001000 (bit 12) — OC_SCAN_ALLOW_FS_<span class="sout">EXT</span><span class="uwave">LINUX_ROOT</span>, allows scanning of <span class="sout">EXT (Linux Root </span><span class="uwave">Linux
+         Root file systems. </span>
+         </p></li>
+         <li class="itemize">
+         <!--l. 4176--><p class="noindent" ><span class="uwave">0x00002000</span> <span class="uwave">(bit </span><span class="uwave">13</span><span class="uwave">) — </span><span class="uwave">OC_SCAN_ALLOW_FS_LINUX_DATA</span><span class="uwave">, allows scanning of Linux Data file systems. </span>
+         </p></li>
+         <li class="itemize">
+         <!--l. 4178--><p class="noindent" ><span class="uwave">0x00004000</span><span class="uwave">(bit </span><span class="uwave">14</span>) <span class="sout">file system</span><span class="uwave">— </span><span class="uwave">OC_SCAN_ALLOW_FS_XBOOTLDR</span><span class="uwave">, allows scanning the Extended Boot Loader
+         Partition as defined by the </span><a 
+href="https://systemd.io/BOOT_LOADER_SPECIFICATION/" ><span class="uwave">Boot Loader Specification</span></a>.
+                                                                                                  
+                                                                                                  
+     
+     
+     
+     
+     
+      
+     
+     
+     
+      
+     
+     
+                                             
+
+
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     
+                                                                                                  
+                                                                                                  
+     <!--l. 6949--><p class="noindent" > ote: the transformation used in macOS is not linear, but it is very close and this nuance is thus ignored.
+</p>
+     </li></ol>
+<a 
+ id="x1-72019r75"></a>
+<h4 class="subsectionHead"><span class="titlemark">11.11   </span> <a 
+ id="x1-7300011"></a><span class="uwave">Drivers Properties</span></h4>
+     <ol  class="enumerate1" >
+<li 
+  class="enumerate" id="x1-73002x1">
+     <!--l. 6959--><p class="noindent" ><span class="uwave">Path</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist string</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: Empty</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Path of file to be loaded as a UEFI driver from </span><span class="uwave">OC/Drivers</span> <span class="uwave">directory. </span>
+     </p></li>
+<li 
+  class="enumerate" id="x1-73004x2">
+     <!--l. 6967--><p class="noindent" ><span class="uwave">Enabled</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist boolean</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">false</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: If </span><span class="uwave">false</span> <span class="uwave">this driver entry will be ignored. </span>
+     </p></li>
+<li 
+  class="enumerate" id="x1-73006x3">
+     <!--l. 6974--><p class="noindent" ><span class="uwave">Arguments</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist string</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: Empty</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Some OC plugins accept optional additional arguments which may be specified as a string here. </span>
+</p>
+     </li></ol>
+<a 
+ id="x1-73007r76"></a>
+<h4 class="subsectionHead"><span class="titlemark">11.12   </span> <a 
+ id="x1-7400012"></a>Input Properties</h4>
+     <ol  class="enumerate1" >
+<li 
+  class="enumerate" id="x1-74002x1">
+     <!--l. 6989--><p class="noindent" >KeyFiltering<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Enable keyboard input sanity checking.
+     </p><!--l. 6994--><p class="noindent" >Apparently some boards such as the GA Z77P-D3 may return uninitialised data in EFI_INPUT_KEY with all input
+     protocols. This option discards keys that are neither ASCII, nor are defined in the UEFI specification (see tables
+     107 and 108 in version 2.8).
+     </p></li>
+<li 
+  class="enumerate" id="x1-74004x2">
+     <!--l. 7000--><p class="noindent" >KeyForgetThreshold<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Treat duplicate key presses as held keys if they arrive during this timeout, in 10 ms units. Only
+     applies to systems using KeySupport.
+     </p><!--l. 7006--><p class="noindent" >AppleKeyMapAggregator protocol is supposed to contain a fixed length buffer of currently pressed keys. However,
+                                                                                                  
+                                                                                                  
+     
+        
+      
+     
+     
+      
+     
+     
+      
+     
+     
+      
+     
+     </body>
+</html>
