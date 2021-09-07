@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Acidanthera Updates: August 2021"
+title: "Acidanthera Updates: September 2021"
 date: 2021-09-06 19:00:00 -0400
 categories: Hackintosh updates
 ---
