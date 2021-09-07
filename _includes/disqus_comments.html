@@ -1,0 +1,18 @@
+{%- if page.comments != false and jekyll.environment == "production" -%}
+
+  <div id="giscus_thread">
+    <script src="https://giscus.app/client.js"
+      data-repo="dortania/dortania.github.io"
+      data-repo-id="MDEwOlJlcG9zaXRvcnkxODI0MjU4MDM="
+      data-category="Comments"
+      data-category-id="DIC_kwDOCt-Yy84B-9kn"
+      data-mapping="pathname"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-theme="light"
+      crossorigin="anonymous"
+      async>
+    </script>
+  </div>
+  <noscript>Please enable JavaScript to view the <a href="https://giscus.app" rel="nofollow">comments powered by giscus.</a></noscript>
+{%- endif -%}
