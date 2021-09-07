@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Acidanthera Updates: August 2021"
-date: 2021-08-02 19:00:00 -0400
+date: 2021-09-06 19:00:00 -0400
 categories: Hackintosh updates
 ---
 
