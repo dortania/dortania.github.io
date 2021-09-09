@@ -20,6 +20,77 @@ width="160" height="160"  />
 </p>
 </div>
                                                                                                   
+                                                                                                  
+     <!--l. 628--><p class="noindent" >nvram.plist <br 
+class="newline" />OpenCore variable import file.
+     </p></li>
+     <li class="itemize">
+     <!--l. 631--><p class="noindent" >opencore-YYYY-MM-DD-HHMMSS.txt <br 
+class="newline" />OpenCore log file.
+     </p></li>
+     <li class="itemize">
+     <!--l. 634--><p class="noindent" >panic-YYYY-MM-DD-HHMMSS.txt <br 
+class="newline" />Kernel panic log file.</p></li></ul>
+<!--l. 638--><p class="noindent" >Note: It is not guaranteed that paths longer than OC_STORAGE_SAFE_PATH_MAX (128 characters including the
+<br 
+class="newline" />0-terminator) will be accessible within OpenCore.
+<a 
+ id="x1-9001r9"></a>
+</p>
+<h4 class="subsectionHead"><span class="titlemark">3.2   </span> <a 
+ id="x1-100002"></a>Installation and Upgrade</h4>
+<!--l. 644--><p class="noindent" >To install OpenCore, replicate the ?? described in the previous section in the EFI volume of a GPT partition. While
+corresponding sections of this document provide some information regarding external resources such as ACPI tables, UEFI
+drivers, or kernel extensions (kexts), completeness of the matter is out of the scope of this document. Information about kernel
+extensions may be found in a separate <a 
+href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Kexts.md" >Kext List</a> document available in the OpenCore repository. Vaulting information is
+provided in the ?? section of this document.
+</p><!--l. 656--><p class="noindent" >The OC config file, as with any property list file, can be edited with any text editor, such as nano or vim. However, specialised
+software may provide a better experience. On macOS, the preferred GUI application is <a 
+href="https://developer.apple.com/xcode" >Xcode</a>. <span class="sout">For a lightweight</span><span class="uwave">The
+</span><a 
+href="https://github.com/corpnewt/ProperTree" ><span class="uwave">ProperTree</span></a> <span class="uwave">editor is a lightweight, </span>cross-platform and open-source alternative<span class="sout">, the </span><a 
+href="https://github.com/corpnewt/ProperTree" ><span class="sout">ProperTree</span></a> <span class="sout">editor can be
+utilised</span>.
+</p><!--l. 666--><p class="noindent" >It is strongly <span class="sout">advised not to use any software that is </span><span class="uwave">recommended to avoid configuration creation tools that are </span>aware of the
+internal <span class="sout">configration structure as it constantly gets out of date and will cause incorrect configuration to be generated. If it is a
+must desprite the warning one should make sure to only use </span><span class="uwave">configuration structure as this may result in invalid
+configurations (since the structure gets constantly updated). If such tools are to be used despite this warning,
+ensure that only </span>stable versions of OpenCore <span class="sout">with explicit support for the particular version in the app. The
+choice </span><span class="uwave">explicitly supported by such tools are used. In such cases, the use </span>of open-source implementations with
+transparent binary generation <span class="sout">is encouraged (e.g. </span><span class="uwave">(such as </span><a 
+href="https://github.com/ic005k/QtOpenCoreConfig" >OCAT</a>) <span class="sout">, since </span><span class="uwave">is encouraged, given that </span>other tools
+may contain malware. <span class="sout">Remember that a configuration made for a different hardware setup shall </span><span class="uwave">In addition,
+configurations created for a specific hardware setup should </span>never be used on <span class="sout">another hardware setup</span><span class="uwave">different hardware
+setups</span>.
+</p><!--l. 681--><p class="noindent" >For BIOS booting, a third-party UEFI environment provider is required and OpenDuetPkg is one such UEFI environment
+provider for legacy systems. To run OpenCore on such a legacy system, OpenDuetPkg can be installed with a dedicated tool —
+BootInstall (bundled with OpenCore). <a 
+href="https://github.com/corpnewt/gibMacOS" >Third-party utilities</a> can be used to perform this on systems other than
+macOS.
+</p><!--l. 688--><p class="noindent" >For upgrade purposes, refer to the Differences.pdf document which provides information about changes to the configuration
+(as compared to the previous release) as well as to the Changelog.md document (which contains a list of modifications across
+all published updates).
+<a 
+ id="x1-10001r10"></a>
+</p>
+<h4 class="subsectionHead"><span class="titlemark">3.3   </span> <a 
+ id="x1-110003"></a>Contribution</h4>
+<!--l. 695--><p class="noindent" >OpenCore can be compiled as a standard <a 
+href="https://github.com/tianocore/tianocore.github.io/wiki/EDK-II" >EDK II</a> package and requires the <a 
+href="https://github.com/tianocore/tianocore.github.io/wiki/EDK-II#stable-tags" >EDK II Stable</a> package. The currently supported
+EDK II release is hosted in <a 
+href="https://github.com/acidanthera/audk" >acidanthera/audk</a>. Required patches for this package can be found in the Patches
+directory.
+</p><!--l. 703--><p class="noindent" >The only officially supported toolchain is XCODE5. Other toolchains might work but are neither supported nor recommended.
+Contributions of clean patches are welcome. Please do follow <a 
+href="https://github.com/tianocore/tianocore.github.io/wiki/Code-Style-C" >EDK II C Codestyle</a>.
+</p><!--l. 708--><p class="noindent" >To compile with XCODE5, besides <a 
+href="https://developer.apple.com/xcode" >Xcode</a>, users should also install <a 
+href="https://www.nasm.us" >NASM</a> and <a 
+href="https://github.com/acidanthera/ocbuild/tree/master/external" >MTOC</a>. The latest Xcode version is recommended
+for use despite the toolchain name. An example command sequence is as follows:
+                                                                                                  
 
 
 </body>
