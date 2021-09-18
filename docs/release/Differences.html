@@ -107,10 +107,9 @@ for use despite the toolchain name. An example command sequence is as follows:
 <span class="label"><a 
  id="x1-11009r7"></a></span>make -C BaseTools <br /> 
 <span class="label"><a 
- id="x1-11010r8"></a></span>build -a X64 -b RELEASE -t XCODE5 -p OpenCorePkg/OpenCorePkg.dsc
+ id="x1-11010r8"></a></span>build -a X64 -b RELEASE -t XCODE5 -p OpenCorePkg/OpenCorePkg.dsc</div>
 <figcaption class="caption" ><span class="id">Listing 1:</span><span  
 class="content">Compilation Commands</span></figcaption><!--tex4ht:label?: x1-11001r -->
-</div>
 <!--l. 721--><p class="noindent" >For IDE usage Xcode projects are available in the root of the repositories. Another approach could be using <a 
 href="https://microsoft.github.io/language-server-protocol" >Language Server
 Protocols</a>. For example, <a 
@@ -190,10 +189,9 @@ the UDK root:
 <span class="label"><a 
  id="x1-11045r33"></a></span>-DOC_TARGET_NOOPT=1 <br /> 
 <span class="label"><a 
- id="x1-11046r34"></a></span>-DNO_MSABI_VA_FUNCS=1
+ id="x1-11046r34"></a></span>-DNO_MSABI_VA_FUNCS=1</div>
 <figcaption class="caption" ><span class="id">Listing 2:</span><span  
 class="content">ECC Configuration</span></figcaption><!--tex4ht:label?: x1-11011r -->
-</div>
 <!--l. 763--><p class="noindent" >Note: /UefiPackages in the sample file denotes an absolute path.
 </p><!--l. 765--><p class="noindent" >Warning: Tool developers modifying config.plist or any other OpenCore files must ensure that their tools check the
 opencore-version NVRAM variable (see the ?? section below) and warn users if the version listed is unsupported or
@@ -233,30 +231,11 @@ href="https://travis-ci.com/acidanthera" >CI interface</a>. Ensuring that static
      <!--l. 795--><p class="noindent" >Internal branches should be named as follows: author-name-date, e.g. vit9696-ballooning-20191026.
      </p></li>
      <li class="itemize">
+     <!--l. 797--><p class="noindent" >Commit messages should be prefixed with the primary module (e.g. library or code module) the changes were
+     made in. For example, OcGuardLib: Add OC_ALIGNED macro. For non-library changes Docs or Build prefixes
+     are used.</p></li></ul>
                                                                                                   
                                                                                                   
-     memory. Using the non-volatile flag will cause the log to be written to NVRAM flash after every printed
-     line.
-     </p><!--l. 3711--><p class="noindent" >To obtain UEFI variable logs, use the following command in macOS: </p><!--l. 3712-->
-     <div class="lstlisting" id="listing-7"><span class="label"><a 
- id="x1-45020r1"></a></span>nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:boot-log | <br /> 
-<span class="label"><a 
- id="x1-45021r2"></a></span>  awk &#x0027;{gsub(/%0d%0a%00/,&#x0022;&#x0022;);gsub(/%0d%0a/,&#x0022;\n&#x0022;)}1&#x0027;
-     
-     </div>
-     <!--l. 3717--><p class="noindent" >Warning: Certain firmware appear to have defective NVRAM garbage collection. As a result, they may not be able to
-     always free space after variable deletion. Do not enable non-volatile NVRAM logging on such devices unless specifically
-     required.
-     </p><!--l. 3721--><p class="noindent" >While the OpenCore boot log already contains basic version information including build type and date, this
-     information may also be found in the opencore-version NVRAM variable even when boot logging is
-     disabled.
-     </p><!--l. 3725--><p class="noindent" >File logging will create a file named opencore-YYYY-MM-DD-HHMMSS.txt (in UTC) under the EFI volume root with log
-     contents (the upper case letter sequence is replaced with date and time from the firmware). Please be warned
-     that some file system drivers present in firmware are not reliable and may corrupt data when writing
-     files through UEFI. Log writing is attempted in the safest manner and thus, is very slow. Ensure that
-     DisableWatchDog is set to true when a slow drive is used. Try to avoid frequent use of this option when dealing
-     with flash drives as large I/O amounts may speed up memory wear and render the flash drive unusable
-     quicker.
      </p><!--l. 3734--><p class="noindent" >When interpreting the log, note that the lines are prefixed with a tag describing the relevant location (module) of the log
      line allowing better attribution of the line to the functionality.
      </p><!--l. 3738--><p class="noindent" >The list of currently used tags is as follows.
@@ -288,16 +267,69 @@ href="https://travis-ci.com/acidanthera" >CI interface</a>. Ensuring that static
          </p></li>
          <li class="itemize">
          <!--l. 3751--><p class="noindent" >OCRST — ResetSystem
+         </p></li>
+         <li class="itemize">
+         <!--l. 3752--><p class="noindent" >OCUI — OpenCanopy
+         </p></li>
+         <li class="itemize">
+         <!--l. 3753--><p class="noindent" >OC — OpenCore main, also OcMainLib
+         </p></li>
+         <li class="itemize">
+         <!--l. 3754--><p class="noindent" >VMOPT — VerifyMemOpt</p></li></ul>
+     <!--l. 3757--><p class="noindent" >Libraries: </p>
+         <ul class="itemize1">
+         <li class="itemize">
+         <!--l. 3760--><p class="noindent" >AAPL — OcDebugLogLib, Apple EfiBoot logging
+         </p></li>
+         <li class="itemize">
+         <!--l. 3761--><p class="noindent" >OCABC — OcAfterBootCompatLib
+         </p></li>
+         <li class="itemize">
+         <!--l. 3762--><p class="noindent" >OCAE — OcAppleEventLib
+         </p></li>
+         <li class="itemize">
+         <!--l. 3763--><p class="noindent" >OCAK — OcAppleKernelLib
+         </p></li>
+         <li class="itemize">
                                                                                                   
                                                                                                   
+         </p></li>
+         <li class="itemize">
+         <!--l. 3866--><p class="noindent" >CSR_ALLOW_UNAUTHENTICATED_ROOT (0x800) is not practical as it prevents incremental (non-full) OTA
+         updates.</p></li></ul>
+     <!--l. 3870--><p class="noindent" >Note3: For any other value which you may need to use, it is possible to configure CsrUtil.efi as a TextMode Tools
+     entry to configure a different value, e.g. use toggle 0x6F in Arguments to toggle the SIP disabled value set by default by
+     csrutil disable --no-internal in Big Sur.
+     </p></li>
+<li 
+  class="enumerate" id="x1-46008x4">
+     <!--l. 3876--><p class="noindent" >ApECID<br 
+class="newline" />Type: plist integer, 64 bit<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Apple Enclave Identifier.
+     </p><!--l. 3881--><p class="noindent" >Setting this value to any non-zero 64-bit integer will allow using personalised Apple Secure Boot identifiers. To use this
+     setting, generate a random 64-bit number with a cryptographically secure random number generator. As an alternative,
+     the first 8 bytes of SystemUUID can be used for ApECID, this is found in macOS 11 for Macs without the T2
+     chip.
+     </p><!--l. 3888--><p class="noindent" >With this value set and SecureBootModel valid (and not Disabled), it is possible to achieve <a 
+href="https://support.apple.com/en-us/HT208330" >Full Security</a> of Apple
+     Secure Boot.
+     </p><!--l. 3893--><p class="noindent" >To start using personalised Apple Secure Boot, the operating system must be reinstalled or personalised. Unless the
+     operating system is personalised, macOS DMG recovery cannot be loaded. In cases where DMG recovery is
+     missing, it can be downloaded by using the macrecovery utility and saved in com.apple.recovery.boot as
+     explained in the ?? section. Note that ?? needs to be set to Signed to use any DMG with Apple Secure
+     Boot.
+     </p><!--l. 3902--><p class="noindent" >To personalise an existing operating system, use the bless command after loading to macOS DMG recovery. Mount the
+     system volume partition, unless it has already been mounted, and execute the following command:
+</p>
+     <!--l. 3906-->
 <a 
  id="x1-460074"></a>
      <div class="lstlisting" id="listing-8"><span class="label"><a 
  id="x1-46009r1"></a></span>bless --folder &#x0022;/Volumes/Macintosh HD/System/Library/CoreServices&#x0022; \ <br /> 
 <span class="label"><a 
- id="x1-46010r2"></a></span>  --bootefi --personalize
+ id="x1-46010r2"></a></span>  --bootefi --personalize</div>
      
-     </div>
      <!--l. 3911--><p class="noindent" >On macOS <span class="uwave">11 and newer the dedicated </span><span class="uwave">x86legacy</span> <span class="uwave">model always uses </span><span class="uwave">ApECID</span><span class="uwave">. When this configuration setting is left as </span><span class="uwave">0</span>
      <span class="uwave">first 8 bytes of </span><span class="uwave">system-id</span> <span class="uwave">variable are used instead. </span>
      </p><!--l. 3916--><p class="noindent" ><span class="uwave">On macOS </span>versions before macOS 11, which introduced a dedicated x86legacy model for models without the T2 chip,
@@ -318,74 +350,13 @@ href="https://travis-ci.com/acidanthera" >CI interface</a>. Ensuring that static
 <span class="label"><a 
  id="x1-46014r4"></a></span>mkdir /var/tmp/OSPersonalizationTemp <br /> 
 <span class="label"><a 
- id="x1-46015r5"></a></span>diskutil mount -mountpoint /var/tmp/OSPersonalizationTemp $disk
+ id="x1-46015r5"></a></span>diskutil mount -mountpoint /var/tmp/OSPersonalizationTemp $disk</div>
      
-     </div>
      </li>
 <li 
   class="enumerate" id="x1-46017x5">
-     <!--l. 3936--><p class="noindent" >AuthRestart<br 
-class="newline" />Type: plist boolean<br 
-class="newline" />Failsafe: false<br 
-class="newline" />Description: Enable VirtualSMC-compatible authenticated restart.
-     </p><!--l. 3941--><p class="noindent" >Authenticated restart is a way to reboot FileVault 2 enabled macOS without entering the password. A dedicated terminal
-     command can be used to perform authenticated restarts: sudo fdesetup authrestart. It is also used when installing
-     operating system updates.
-     </p><!--l. 3945--><p class="noindent" >VirtualSMC performs authenticated restarts by splitting and saving disk encryption keys between NVRAM and RTC,
-     which despite being removed as soon as OpenCore starts, may be considered a security risk and thus is
-     optional.
-     </p></li>
-<li 
-  class="enumerate" id="x1-46019x6">
-     <!--l. 3950--><p class="noindent" >BlacklistAppleUpdate<br 
-class="newline" />Type: plist boolean<br 
-class="newline" />Failsafe: false<br 
-class="newline" />Description: Ignore boot options trying to update Apple peripheral firmware (e.g. MultiUpdater.efi).
-     </p><!--l. 3956--><p class="noindent" >Note: Certain operating systems, such as macOS Big Sur, are <a 
-href="https://github.com/acidanthera/bugtracker/issues/1255" >incapable</a> of disabling firmware updates by using the
-     run-efi-updater NVRAM variable.
-     </p></li>
-<li 
-  class="enumerate" id="x1-46021x7">
-     <!--l. 3960--><p class="noindent" ><a 
- id="x1-460207"></a> DmgLoading<br 
-class="newline" />Type: plist string<br 
-class="newline" />Failsafe: Signed<br 
-class="newline" />Description: Define Disk Image (DMG) loading policy used for macOS Recovery.
                                                                                                   
                                                                                                   
-     OpenCore.efi and BOOTx64.efi with a custom key. More details on customising secure boot on modern firmware can be
-     found in the <a 
-href="https://habr.com/post/273497/" >Taming UEFI SecureBoot</a> paper (in Russian).
-     </p><!--l. 4131--><p class="noindent" >Note 2: vault.plist and vault.sig are used regardless of this option when vault.plist is present or a public key is
-     embedded into OpenCore.efi. Setting this option will only ensure configuration sanity, and abort the boot process
-     otherwise.
-     </p></li>
-<li 
-  class="enumerate" id="x1-46048x14">
-     <!--l. 4137--><p class="noindent" >ScanPolicy<br 
-class="newline" />Type: plist integer, 32 bit<br 
-class="newline" />Failsafe: 0x10F0103<br 
-class="newline" />Description: Define operating system detection policy.
-     </p><!--l. 4142--><p class="noindent" >This value allows preventing scanning (and booting) untrusted sources based on a bitmask (sum) of a set of flags. As it is
-     not possible to reliably detect every file system or device type, this feature cannot be fully relied upon in open
-     environments, and additional measures are to be applied.
-     </p><!--l. 4148--><p class="noindent" >Third party drivers may introduce additional security (and performance) consideratons following the provided scan
-     policy. The active Scan policy is exposed in the scan-policy variable of 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102
-     GUID for UEFI Boot Services only.
-</p>
-         <ul class="itemize1">
-         <li class="itemize">
-         <!--l. 4155--><p class="noindent" >0x00000001 (bit 0) — OC_SCAN_FILE_SYSTEM_LOCK, restricts scanning to only known file systems defined
-         as a part of this policy. File system drivers may not be aware of this policy. Hence, to avoid mounting of
-         undesired file systems, drivers for such file systems should not be loaded. This bit does not affect DMG
-         mounting, which may have any file system. Known file systems are prefixed with OC_SCAN_ALLOW_FS_.
-         </p></li>
-         <li class="itemize">
-         <!--l. 4161--><p class="noindent" >0x00000002 (bit 1) — OC_SCAN_DEVICE_LOCK, restricts scanning to only known device types defined as a
-         part of this policy. It is not always possible to detect protocol tunneling, so be aware that on some systems,
-         it may be possible for e.g. USB HDDs to be recognised as SATA instead. Cases like this must be reported.
-         Known device types are prefixed with OC_SCAN_ALLOW_DEVICE_.
          </p></li>
          <li class="itemize">
          <!--l. 4166--><p class="noindent" >0x00000100 (bit 8) — OC_SCAN_ALLOW_FS_APFS, allows scanning of APFS file system.
@@ -410,6 +381,39 @@ class="newline" />Description: Define operating system detection policy.
          <!--l. 4178--><p class="noindent" ><span class="uwave">0x00004000</span><span class="uwave">(bit </span><span class="uwave">14</span>) <span class="sout">file system</span><span class="uwave">— </span><span class="uwave">OC_SCAN_ALLOW_FS_XBOOTLDR</span><span class="uwave">, allows scanning the Extended Boot Loader
          Partition as defined by the </span><a 
 href="https://systemd.io/BOOT_LOADER_SPECIFICATION/" ><span class="uwave">Boot Loader Specification</span></a>.
+         </p></li>
+         <li class="itemize">
+         <!--l. 4181--><p class="noindent" >0x00010000 (bit 16) — OC_SCAN_ALLOW_DEVICE_SATA, allow scanning SATA devices.
+         </p></li>
+         <li class="itemize">
+         <!--l. 4183--><p class="noindent" >0x00020000 (bit 17) — OC_SCAN_ALLOW_DEVICE_SASEX, allow scanning SAS and Mac NVMe devices.
+         </p></li>
+         <li class="itemize">
+         <!--l. 4185--><p class="noindent" >0x00040000 (bit 18) — OC_SCAN_ALLOW_DEVICE_SCSI, allow scanning SCSI devices.
+         </p></li>
+         <li class="itemize">
+         <!--l. 4187--><p class="noindent" >0x00080000 (bit 19) — OC_SCAN_ALLOW_DEVICE_NVME, allow scanning NVMe devices.
+         </p></li>
+         <li class="itemize">
+         <!--l. 4189--><p class="noindent" >0x00100000 (bit 20) — OC_SCAN_ALLOW_DEVICE_ATAPI, allow scanning CD/DVD devices and old SATA.
+         </p></li>
+         <li class="itemize">
+         <!--l. 4191--><p class="noindent" >0x00200000 (bit 21) — OC_SCAN_ALLOW_DEVICE_USB, allow scanning USB devices.
+         </p></li>
+         <li class="itemize">
+         <!--l. 4193--><p class="noindent" >0x00400000 (bit 22) — OC_SCAN_ALLOW_DEVICE_FIREWIRE, allow scanning FireWire devices.
+         </p></li>
+         <li class="itemize">
+         <!--l. 4195--><p class="noindent" >0x00800000 (bit 23) — OC_SCAN_ALLOW_DEVICE_SDCARD, allow scanning card reader devices.
+         </p></li>
+         <li class="itemize">
+         <!--l. 4197--><p class="noindent" >0x01000000 (bit 24) — OC_SCAN_ALLOW_DEVICE_PCI, allow scanning devices directly connected to PCI bus
+         (e.g. VIRTIO).</p></li></ul>
+     <!--l. 4201--><p class="noindent" >Note: Given the above description, a value of 0xF0103 is expected to do the following:
+</p>
+         <ul class="itemize1">
+         <li class="itemize">
+         <!--l. 4205--><p class="noindent" >Permit scanning SATA, SAS, SCSI, and NVMe devices with APFS file systems.
                                                                                                   
                                                                                                   
      
