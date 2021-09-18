@@ -401,8 +401,9 @@ for use despite the toolchain name. An example command sequence is as follows:
 <span class='label'><a id='x1-11006r4'></a></span><span class='ec-lmtk-10'>git</span><span class='ec-lmtt-10'> clone --depth=1 https://github.com/acidanthera/OpenCorePkg </span><br /> 
 <span class='label'><a id='x1-11007r5'></a></span><span class='ec-lmtt-10'>. ./edksetup.sh </span><br /> 
 <span class='label'><a id='x1-11008r6'></a></span><span class='ec-lmtk-10'>make</span><span class='ec-lmtt-10'> -C BaseTools </span><br /> 
-<span class='label'><a id='x1-11009r7'></a></span><span class='ec-lmtk-10'>build</span><span class='ec-lmtt-10'> -a X64 -b RELEASE -t XCODE5 -p OpenCorePkg/OpenCorePkg.dsc</span></div>
+<span class='label'><a id='x1-11009r7'></a></span><span class='ec-lmtk-10'>build</span><span class='ec-lmtt-10'> -a X64 -b RELEASE -t XCODE5 -p OpenCorePkg/OpenCorePkg.dsc</span>
 <figcaption class='caption'><span class='id'>Listing 1:</span><span class='content'>Compilation Commands</span></figcaption><!-- tex4ht:label?: x1-11001r  -->
+</div>
 <!-- l. 655 --><p class='noindent'>For IDE usage Xcode projects are available in the root of the repositories. Another approach could be using <a href='https://microsoft.github.io/language-server-protocol'>Language Server
 Protocols</a>. For example, <a href='https://www.sublimetext.com'>Sublime Text</a> with <a href='https://lsp.sublimetext.io'>LSP for Sublime Text</a> plugin. Add <span class='ec-lmtt-10'>compile_flags.txt </span>file with similar content to
 the UDK root:
@@ -443,8 +444,9 @@ the UDK root:
 <span class='label'><a id='x1-11042r31'></a></span><span class='ec-lmtt-10'>-Wno-varargs </span><br /> 
 <span class='label'><a id='x1-11043r32'></a></span><span class='ec-lmtt-10'>-Wno-unused-const-variable </span><br /> 
 <span class='label'><a id='x1-11044r33'></a></span><span class='ec-lmtt-10'>-DOC_TARGET_NOOPT=1 </span><br /> 
-<span class='label'><a id='x1-11045r34'></a></span><span class='ec-lmtt-10'>-DNO_MSABI_VA_FUNCS=1</span></div>
+<span class='label'><a id='x1-11045r34'></a></span><span class='ec-lmtt-10'>-DNO_MSABI_VA_FUNCS=1</span>
 <figcaption class='caption'><span class='id'>Listing 2:</span><span class='content'>ECC Configuration</span></figcaption><!-- tex4ht:label?: x1-11010r  -->
+</div>
 <!-- l. 697 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: <span class='ec-lmtt-10'>/UefiPackages </span>in the sample file denotes an absolute path.
 </p><!-- l. 699 --><p class='noindent'><span class='ec-lmbx-10'>Warning</span>: Tool developers modifying <span class='ec-lmtt-10'>config.plist </span>or any other OpenCore files must ensure that their tools check the
 <span class='ec-lmtt-10'>opencore-version </span>NVRAM variable (see the <a href='#x1-450004'>Debug Properties</a> section below) and warn users if the version listed is
@@ -473,11 +475,11 @@ patches.
      not necessarily work.
      </li>
      <li class='itemize'>Internal branches should be named as follows: <span class='ec-lmtt-10'>author-name-date</span>, e.g. <span class='ec-lmtt-10'>vit9696-ballooning-20191026</span>.
+                                                                                                  
+                                                                                                  
      </li>
      <li class='itemize'>Commit messages should be prefixed with the primary module (e.g. library or code module) the changes were
      made in. For example, <span class='ec-lmtt-10'>OcGuardLib: Add OC_ALIGNED macro</span>. For non-library changes <span class='ec-lmtt-10'>Docs </span>or <span class='ec-lmtt-10'>Build </span>prefixes
-                                                                                                  
-                                                                                                  
      are used.</li></ul>
 <!-- l. 736 --><p class='noindent'><span class='ec-lmbx-10'>Design</span>. The codebase is written in a subset of freestanding C11 (C17) supported by most modern toolchains used by EDK II.
 Applying common software development practices or requesting clarification is recommended if any particular case is not
@@ -518,11 +520,11 @@ discussed below. </p>
      <li class='itemize'>Use <span class='ec-lmtt-10'>EFIAPI</span>, force UEFI calling convention, only in protocols, external callbacks between modules, and functions
      with variadic arguments.
      </li>
+                                                                                                  
+                                                                                                  
      <li class='itemize'>Provide inline documentation to every added function, at least describing its inputs, outputs, precondition,
      postcondition, and giving a brief description.
      </li>
-                                                                                                  
-                                                                                                  
      <li class='itemize'>Do not use <span class='ec-lmtt-10'>RETURN_STATUS</span>. Assume <span class='ec-lmtt-10'>EFI_STATUS </span>to be a matching superset that is to be always used when
      <span class='ec-lmtt-10'>BOOLEAN </span>is not enough.
      </li>
@@ -560,11 +562,11 @@ discussed below. </p>
      <span class='ec-lmtt-10'>EXIT_BOOT_SERVICES</span>.
      </li>
      <li class='itemize'>Use <span class='ec-lmtt-10'>DEBUG_VERBOSE </span>debug level to leave debug messages for future debugging of the code, which are currently
+                                                                                                  
+                                                                                                  
      not necessary. By default <span class='ec-lmtt-10'>DEBUG_VERBOSE </span>messages are ignored even in <span class='ec-lmtt-10'>DEBUG </span>builds.
      </li>
      <li class='itemize'>Use <span class='ec-lmtt-10'>DEBUG_INFO </span>debug level for all non critical messages (including errors) and <span class='ec-lmtt-10'>DEBUG_BULK_INFO </span>for extensive
-                                                                                                  
-                                                                                                  
      messages that should not appear in NVRAM log that is heavily limited in size. These messages are ignored in
      <span class='ec-lmtt-10'>RELEASE </span>builds.
      </li>
@@ -607,11 +609,11 @@ exotic cases, there are several alternatives such as <a href='https://github.com
 errors.
 <a id='x1-15001r17'></a>
 </p>
+                                                                                                  
+                                                                                                  
 <h4 class='subsectionHead'><span class='titlemark'>4.2   </span> <a id='x1-160002'></a>Properties</h4>
      <ol class='enumerate1'>
 <li class='enumerate' id='x1-16002x1'>
-                                                                                                  
-                                                                                                  
      <!-- l. 871 --><p class='noindent'><span class='ec-lmtt-10'>Add</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist array</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Load selected tables from the <span class='ec-lmtt-10'>OC/ACPI </span>directory.
      </p><!-- l. 877 --><p class='noindent'>To be filled with <span class='ec-lmtt-10'>plist dict </span>values, describing each add entry. Refer to the <a href='#x1-170003'>Add Properties</a> section below for
      details.
@@ -635,8 +637,6 @@ errors.
      is used is implementation defined.
      </li>
 <li class='enumerate' id='x1-17004x2'><span class='ec-lmtt-10'>Enabled</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Set to <span class='ec-lmtt-10'>true </span>to add this ACPI table.
-                                                                                                  
-                                                                                                  
      </li>
 <li class='enumerate' id='x1-17006x3'>
      <!-- l. 924 --><p class='noindent'><span class='ec-lmtt-10'>Path</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>:   File   paths   meant   to   be   loaded   as   ACPI   tables.   Example   values   include   <span class='ec-lmtt-10'>DSDT.aml</span>,
@@ -658,6 +658,8 @@ errors.
      </li>
 <li class='enumerate' id='x1-18008x4'><span class='ec-lmtt-10'>OemTableId</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist data</span>, 8 bytes<br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: All zero (Match any table OEM ID)<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Match table OEM ID equal to this value.
      </li>
+                                                                                                  
+                                                                                                  
 <li class='enumerate' id='x1-18010x5'><span class='ec-lmtt-10'>TableLength</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0 </span>(Match any table size)<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Match table size equal to this value.
      </li>
 <li class='enumerate' id='x1-18012x6'>
@@ -684,8 +686,6 @@ errors.
      </li>
 <li class='enumerate' id='x1-19008x4'><span class='ec-lmtt-10'>Count</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0 </span>(Apply patch to all occurrences found)<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Number of occurrences to patch.
      </li>
-                                                                                                  
-                                                                                                  
 <li class='enumerate' id='x1-19010x5'><span class='ec-lmtt-10'>Enabled</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Set to <span class='ec-lmtt-10'>true </span>to apply this ACPI patch.
      </li>
 <li class='enumerate' id='x1-19012x6'>
@@ -702,8 +702,6 @@ errors.
 <li class='enumerate' id='x1-19020x10'><span class='ec-lmtt-10'>Replace</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist data</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Replacement data of one or more bytes.
      </li>
 <li class='enumerate' id='x1-19022x11'><span class='ec-lmtt-10'>ReplaceMask</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist data</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty (Ignored)<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Data bitwise mask used during replacement. Allows fuzzy replacement by updating masked (set
-                                                                                                  
-                                                                                                  
      to non-zero) bits. Must be equal to <span class='ec-lmtt-10'>Replace </span>in size if set.
      </li>
 <li class='enumerate' id='x1-19024x12'><span class='ec-lmtt-10'>Skip</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0 </span>(Do not skip any occurrences)<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Number of found occurrences to skip before replacements are applied.
@@ -732,8 +730,6 @@ errors.
      <li class='itemize'>Avoid making ad hoc changes such as renaming <span class='ec-lmtt-10'>_PRW </span>or <span class='ec-lmtt-10'>_DSM </span>whenever possible.</li></ul>
 <!-- l. 1124 --><p class='noindent'>Some cases where patching is actually useful include:
 </p>
-                                                                                                  
-                                                                                                  
      <ul class='itemize1'>
      <li class='itemize'>Refreshing <span class='ec-lmtt-10'>HPET </span>(or another device) method header to avoid compatibility checks by <span class='ec-lmtt-10'>_OSI </span>on legacy hardware.
      <span class='ec-lmtt-10'>_STA </span>method  with  <span class='ec-lmtt-10'>if ((OSFL () == Zero)) { If (HPTE) ... Return (Zero) </span>content  may  be  forced  to
@@ -765,12 +761,12 @@ remaining area could be considered.
      position-independent code, ACPI tables may contain the physical addresses of MMIO areas used for device
      configuration, typically grouped by region (e.g. <span class='ec-lmtt-10'>OperationRegion</span>). Changing firmware settings or hardware
      configuration, upgrading or patching the firmware inevitably leads to changes in dynamically generated ACPI
+                                                                                                  
+                                                                                                  
      code, which sometimes results in the shift of the addresses in the aforementioned <span class='ec-lmtt-10'>OperationRegion </span>constructions.
      </p><!-- l. 1188 --><p class='noindent'>For this reason, the application of modifications to ACPI tables is extremely risky. The best approach is to make
      as few changes as possible to ACPI tables and to avoid replacing any tables, particularly DSDT tables. When
      this cannot be avoided, ensure that any custom DSDT tables are based on the most recent DSDT tables or
-                                                                                                  
-                                                                                                  
      attempt to remove reads and writes for the affected areas.
      </p><!-- l. 1194 --><p class='noindent'>When nothing else helps, this option could be tried to avoid stalls at <span class='ec-lmtt-10'>PCI Configuration Begin </span>phase of macOS
      booting by attempting to fix the ACPI addresses. It is not a magic bullet however, and only works with the most
@@ -806,8 +802,6 @@ maintained. Refer to the <a href='#x1-890005'>Tips and Tricks</a> section for in
      <li class='itemize'>Most up-to-date UEFI firmware (check the motherboard vendor website).
      </li>
      <li class='itemize'><span class='ec-lmtt-10'>Fast Boot </span>and <span class='ec-lmtt-10'>Hardware Fast Boot </span>disabled in firmware settings if present.
-                                                                                                  
-                                                                                                  
      </li>
      <li class='itemize'><span class='ec-lmtt-10'>Above 4G Decoding </span>or  similar  enabled  in  firmware  settings  if  present.  Note  that  on  some  motherboards,
      notably the ASUS WS-X299-PRO, this option results in adverse effects and must be disabled. While no other
@@ -839,7 +833,8 @@ typically be looked at first.
 commands in Terminal: </p><!-- l. 1286 -->
 <div class='lstlisting' id='listing-3'><span class='label'><a id='x1-22001r1'></a></span><span class='ec-lmtk-10'>sudo</span><span class='ec-lmtt-10'> pmset autopoweroff 0 </span><br /> 
 <span class='label'><a id='x1-22002r2'></a></span><span class='ec-lmtk-10'>sudo</span><span class='ec-lmtt-10'> pmset powernap 0 </span><br /> 
-<span class='label'><a id='x1-22003r3'></a></span><span class='ec-lmtk-10'>sudo</span><span class='ec-lmtt-10'> pmset standby 0</span></div>
+<span class='label'><a id='x1-22003r3'></a></span><span class='ec-lmtk-10'>sudo</span><span class='ec-lmtt-10'> pmset standby 0</span>
+</div>
 <!-- l. 1292 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: These settings may be reset by hardware changes and in certain other circumstances. To view their current state, use the
 <span class='ec-lmtt-10'>pmset -g </span>command in Terminal.
 <a id='x1-22004r24'></a>
@@ -850,8 +845,6 @@ commands in Terminal: </p><!-- l. 1286 -->
      functioning when <span class='ec-lmtt-10'>DevirtualiseMmio </span>quirk is in use. Refer to the <a href='#x1-240003'>MmioWhitelist Properties</a> section below for
      details.
      </li>
-                                                                                                  
-                                                                                                  
 <li class='enumerate' id='x1-23004x2'>
      <!-- l. 1308 --><p class='noindent'><span class='ec-lmtt-10'>Patch</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist array</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Perform binary patches in booter.
      </p><!-- l. 1313 --><p class='noindent'>To be filled with <span class='ec-lmtt-10'>plist dictionary </span>values, describing each patch. Refer to the <a href='#x1-250004'>Patch Properties</a> section below
@@ -877,8 +870,6 @@ commands in Terminal: </p><!-- l. 1286 -->
 <p><a id='x1-24007r26'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>5.4   </span> <a id='x1-250004'></a>Patch Properties</h4>
      <ol class='enumerate1'>
-                                                                                                  
-                                                                                                  
 <li class='enumerate' id='x1-25002x1'><span class='ec-lmtt-10'>Arch</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Any </span>(Apply to any supported architecture)<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Booter patch architecture (<span class='ec-lmtt-10'>i386</span>, <span class='ec-lmtt-10'>x86_64</span>).
      </li>
 <li class='enumerate' id='x1-25004x2'><span class='ec-lmtt-10'>Comment</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Arbitrary ASCII string used to provide human readable reference for the entry. Whether this value
@@ -894,8 +885,6 @@ commands in Terminal: </p><!-- l. 1286 -->
      for a specific booter.
      </li>
 <li class='enumerate' id='x1-25014x7'><span class='ec-lmtt-10'>Limit</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0 </span>(Search the entire booter)<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Maximum number of bytes to search for.
-                                                                                                  
-                                                                                                  
      </li>
 <li class='enumerate' id='x1-25016x8'><span class='ec-lmtt-10'>Mask</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist data</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty (Ignored)<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Data bitwise mask used during find comparison. Allows fuzzy search by ignoring not masked (set
      to zero) bits. Must be equal to <span class='ec-lmtt-10'>Find </span>in size if set.
@@ -918,10 +907,10 @@ commands in Terminal: </p><!-- l. 1286 -->
      all the other addresses pointing to the relocation block are also carefully adjusted. The relocation block can be
      used when:
 </p>
+                                                                                                  
+                                                                                                  
          <ul class='itemize1'>
          <li class='itemize'>No better slide exists (all the memory is used)
-                                                                                                  
-                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>slide=0 </span>is forced (by an argument or safe mode)
          </li>
@@ -956,10 +945,10 @@ commands in Terminal: </p><!-- l. 1286 -->
      <!-- l. 1501 --><p class='noindent'><span class='ec-lmtt-10'>DisableSingleUser</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Disable single user mode.
      </p><!-- l. 1506 --><p class='noindent'>This is a security option that restricts the activation of single user mode by ignoring the <span class='ec-lmtt-10'>CMD+S </span>hotkey and the <span class='ec-lmtt-10'>-s </span>boot
      argument. The behaviour with this quirk enabled is supposed to match T2-based model behaviour. Refer to this <a href='https://web.archive.org/web/20200517125051/https://support.apple.com/en-us/HT201573'>archived
+                                                                                                  
+                                                                                                  
      article</a> to understand how to use single user mode with this quirk enabled.
      </p></li>
-                                                                                                  
-                                                                                                  
 <li class='enumerate' id='x1-26010x5'>
      <!-- l. 1514 --><p class='noindent'><span class='ec-lmtt-10'>DisableVariableWrite</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Protect from macOS NVRAM write access.
      </p><!-- l. 1519 --><p class='noindent'>This is a security option that restricts NVRAM access in macOS. This quirk requires <span class='ec-lmtt-10'>OC_FIRMWARE_RUNTIME </span>protocol
@@ -992,8 +981,6 @@ commands in Terminal: </p><!-- l. 1286 -->
      </p></li>
 <li class='enumerate' id='x1-26016x8'>
      <!-- l. 1565 --><p class='noindent'><span class='ec-lmtt-10'>EnableWriteUnprotector</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Permit write access to UEFI runtime services code.
-                                                                                                  
-                                                                                                  
      </p><!-- l. 1570 --><p class='noindent'>This option bypasses <span class='ec-lmtt-10'>R</span><span class='accenthat'><span class='ec-lmtt-10'>X</span></span> permissions in code pages of UEFI runtime services by removing write protection (<span class='ec-lmtt-10'>WP</span>) bit from
      <span class='ec-lmtt-10'>CR0 </span>register during their execution. This quirk requires <span class='ec-lmtt-10'>OC_FIRMWARE_RUNTIME </span>protocol implemented in
      <span class='ec-lmtt-10'>OpenRuntime.efi</span>.
@@ -1027,10 +1014,10 @@ commands in Terminal: </p><!-- l. 1286 -->
          be accessible at runtime for NVRAM support.</li></ul>
      <!-- l. 1621 --><p class='noindent'>This quirk attempts to fix the types of these regions, e.g. ACPI NVS for CSM or MMIO for MMIO.
      </p><!-- l. 1624 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: The need for this quirk is determined by artifacts, sleep wake issues, and boot failures. This quirk is typically only
+                                                                                                  
+                                                                                                  
      required by very old firmware.
      </p></li>
-                                                                                                  
-                                                                                                  
 <li class='enumerate' id='x1-26024x12'>
      <!-- l. 1629 --><p class='noindent'><span class='ec-lmtt-10'>ProtectSecureBoot</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Protect UEFI Secure Boot variables from being written.
      </p><!-- l. 1634 --><p class='noindent'>Reports security violation during attempts to write to <span class='ec-lmtt-10'>db</span>, <span class='ec-lmtt-10'>dbx</span>, <span class='ec-lmtt-10'>PK</span>, and <span class='ec-lmtt-10'>KEK </span>variables from the operating
@@ -1063,10 +1050,10 @@ commands in Terminal: </p><!-- l. 1286 -->
      </p><!-- l. 1679 --><p class='noindent'>This option overrides the maximum slide of 255 by a user specified value between 1 and 254 (inclusive) when
      <span class='ec-lmtt-10'>ProvideCustomSlide </span>is enabled. It is assumed that modern firmware allocates pool memory from top
      to bottom, effectively resulting in free memory when slide scanning is used later as temporary memory
+                                                                                                  
+                                                                                                  
      during kernel loading. When such memory is not available, this option stops the evaluation of higher
      slides.
-                                                                                                  
-                                                                                                  
      </p><!-- l. 1685 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: The need for this quirk is determined by random boot failures when <span class='ec-lmtt-10'>ProvideCustomSlide </span>is enabled
      and the randomized slide falls into the unavailable range. When <span class='ec-lmtt-10'>AppleDebug </span>is enabled, the debug log
      typically contains messages such as <span class='ec-lmtt-10'>AAPL: [EB|‘LD:LKC] } Err(0x9)</span>. To find the optimal value, append
@@ -1104,8 +1091,6 @@ commands in Terminal: </p><!-- l. 1286 -->
      </p></li>
 <li class='enumerate' id='x1-26036x18'>
      <!-- l. 1741 --><p class='noindent'><span class='ec-lmtt-10'>SignalAppleOS</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Report macOS being loaded through OS Info for any OS.
-                                                                                                  
-                                                                                                  
      </p><!-- l. 1746 --><p class='noindent'>This quirk is useful on Mac firmware, which loads different operating systems with different hardware configurations.
      For example, it is supposed to enable Intel GPU in Windows and Linux in some dual-GPU MacBook
      models.
@@ -1137,16 +1122,17 @@ serialised map of DevicePaths to a map of property names and their values.
 <div class='lstlisting' id='listing-4'><span class='label'><a id='x1-28001r1'></a></span><span class='ec-lmtk-10'>ioreg</span><span class='ec-lmtt-10'> -lw0 -p IODeviceTree -n efi -r -x | </span><span class='ec-lmtk-10'>grep</span><span class='ec-lmtt-10'> device-properties | </span><br /> 
 <span class='label'><a id='x1-28002r2'></a></span><span class='ec-lmtt-10'>  </span><span class='ec-lmtk-10'>sed</span><span class='ec-lmtt-10'> </span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'>s/.*&lt;//;s/&gt;.*//</span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'> &gt; /tmp/device-properties.hex &amp;&amp; </span><br /> 
 <span class='label'><a id='x1-28003r3'></a></span><span class='ec-lmtt-10'>  </span><span class='ec-lmtk-10'>gfxutil</span><span class='ec-lmtt-10'> /tmp/device-properties.hex /tmp/device-properties.plist &amp;&amp; </span><br /> 
-<span class='label'><a id='x1-28004r4'></a></span><span class='ec-lmtt-10'>  </span><span class='ec-lmtk-10'>cat</span><span class='ec-lmtt-10'> /tmp/device-properties.plist</span></div>
+<span class='label'><a id='x1-28004r4'></a></span><span class='ec-lmtt-10'>  </span><span class='ec-lmtk-10'>cat</span><span class='ec-lmtt-10'> /tmp/device-properties.plist</span>
+</div>
 <!-- l. 1793 --><p class='noindent'>Device properties are part of the <span class='ec-lmtt-10'>IODeviceTree </span>(<span class='ec-lmtt-10'>gIODT</span>) plane of the macOS I/O Registry. This plane has several construction
 stages relevant for the platform initialisation. While the early construction stage is performed by the XNU kernel in the
 <span class='ec-lmtt-10'>IODeviceTreeAlloc </span>method, the majority of the construction is performed by the platform expert, implemented in
 <span class='ec-lmtt-10'>AppleACPIPlatformExpert.kext</span>.
 </p><!-- l. 1800 --><p class='noindent'>AppleACPIPlatformExpert incorporates two stages of <span class='ec-lmtt-10'>IODeviceTree </span>construction implemented by calling <br class='newline' /><span class='ec-lmtt-10'>AppleACPIPlatformExpert::mergeDeviceProperties</span>:
+                                                                                                  
+                                                                                                  
      </p><ol class='enumerate1'>
 <li class='enumerate' id='x1-28006x1'>During ACPI table initialisation through the recursive ACPI namespace scanning by the calls to <br class='newline' /><span class='ec-lmtt-10'>AppleACPIPlatformExpert::createDTNubs</span>.
-                                                                                                  
-                                                                                                  
      </li>
 <li class='enumerate' id='x1-28008x2'>During IOService registration (<span class='ec-lmtt-10'>IOServices::registerService</span>) callbacks implemented as a part of <br class='newline' /><span class='ec-lmtt-10'>AppleACPIPlatformExpert::platformAdjustService </span>function and its private worker method <br class='newline' /><span class='ec-lmtt-10'>AppleACPIPlatformExpert::platformAdjustPCIDevice </span>specific to the PCI devices.</li></ol>
 <!-- l. 1817 --><p class='noindent'>The application of the stages depends on the device presence in ACPI tables. The first stage applies very early but exclusively
@@ -1181,11 +1167,11 @@ repeat the first stage if the device was not present in ACPI.
      <ul class='itemize1'>
      <li class='itemize'><span class='ec-lmtt-10'>device-id</span>
      User-specified device identifier used for I/O Kit matching. Has 4 byte data type.
+                                                                                                  
+                                                                                                  
      </li>
      <li class='itemize'><span class='ec-lmtt-10'>vendor-id</span>
      User-specified vendor identifier used for I/O Kit matching. Has 4 byte data type.
-                                                                                                  
-                                                                                                  
      </li>
      <li class='itemize'><span class='ec-lmtt-10'>AAPL,ig-platform-id</span>
      Intel GPU framebuffer identifier used for framebuffer selection on Ivy Bridge and newer. Has 4 byte data type.
@@ -1220,9 +1206,9 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
      </p><!-- l. 1927 --><p class='noindent'>To be filled with <span class='ec-lmtt-10'>plist dictionary </span>values, describing each blocked kext. Refer to the <a href='#x1-350004'>Block Properties</a> section
      below for details.
      </p></li>
+                                                                                                  
+                                                                                                  
 <li class='enumerate' id='x1-33006x3'><span class='ec-lmtt-10'>Emulate</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist dict</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Emulate certain hardware in kernelspace via parameters described in the <a href='#x1-360005'>Emulate Properties</a>
-                                                                                                  
-                                                                                                  
      section below.
      </li>
 <li class='enumerate' id='x1-33008x4'>
@@ -1249,6 +1235,8 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
      below.
 </li></ol>
 <p><a id='x1-33015r35'></a></p>
+                                                                                                  
+                                                                                                  
 <h4 class='subsectionHead'><span class='titlemark'>7.3   </span> <a id='x1-340003'></a>Add Properties</h4>
      <ol class='enumerate1'>
 <li class='enumerate' id='x1-34002x1'><span class='ec-lmtt-10'>Arch</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Any </span>(Apply to any supported architecture)<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Kext architecture (<span class='ec-lmtt-10'>i386</span>, <span class='ec-lmtt-10'>x86_64</span>).
@@ -1281,8 +1269,8 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
    </td></tr><tr><td class='align-odd'><span class='lmmi-10'>β</span></td>   <td class='align-even'> <span class='rm-lmr-10'>= </span><img align='middle' alt='{
  P arseDarwinV  ersion(MaxKernel),               If MaxKernel is valid
  ∞                                            Otherwise' class='left' src='Configuration2x.svg' /></td>            <td class='align-label'></td>   <td class='align-label'>
-   </td></tr><tr><td class='align-odd'><span class='lmmi-10'>γ</span></td>   <td class='align-even'> <span class='rm-lmr-10'>= </span><img align='middle' alt='{P arseDarwinV  ersion(FindDarwinV ersion()),    If valid &quot;Darwin Kernel Version&quot; is found
-
+   </td></tr><tr><td class='align-odd'><span class='lmmi-10'>γ</span></td>   <td class='align-even'> <span class='rm-lmr-10'>= </span><img align='middle' alt='{
+ P arseDarwinV  ersion(FindDarwinV ersion()),    If valid &quot;Darwin Kernel Version&quot; is found
  ∞                                            Otherwise' class='left' src='Configuration3x.svg' /></td>   <td class='align-label'></td>   <td class='align-label'>
    </td></tr><tr><td class='align-odd'></td>    <td class='align-even'><span class='lmmi-10'>                                         f</span><span class='rm-lmr-10'>(</span><span class='lmmi-10'>α,β,γ</span><span class='rm-lmr-10'>) = </span><span class='lmmi-10'>α </span><span class='lmsy-10'>≤ </span><span class='lmmi-10'>γ </span><span class='lmsy-10'>≤ </span><span class='lmmi-10'>β</span></td>                                      <td class='align-label'></td>   <td class='align-label'></td></tr></table>
      <!-- l. 2058 --><p class='noindent'>Here <span class='lmmi-10'>ParseDarwinV ersion </span>argument is assumed to be 3 integers obtained by splitting Darwin kernel version string from
@@ -1290,11 +1278,11 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
      </span><span class='ec-lmtt-10'>Version </span><span class='lmmi-10'>κ</span><span class='ec-lmtt-10'>.</span><span class='lmmi-10'>λ</span><span class='ec-lmtt-10'>.</span><span class='lmmi-10'>μ</span><span class='ec-lmtt-10'>" </span>string in the kernel image.
      </p></li>
 <li class='enumerate' id='x1-34014x7'>
+                                                                                                  
+                                                                                                  
      <!-- l. 2064 --><p class='noindent'><span class='ec-lmtt-10'>MinKernel</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Adds kernel extension on specified macOS version or newer.
      </p><!-- l. 2069 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: Refer to the <a href='#kernmatch'><span class='ec-lmtt-10'>Add MaxKernel </span>description</a> for matching logic.
      </p></li>
-                                                                                                  
-                                                                                                  
 <li class='enumerate' id='x1-34016x8'><span class='ec-lmtt-10'>PlistPath</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Kext <span class='ec-lmtt-10'>Info.plist </span>path relative to bundle (e.g. <span class='ec-lmtt-10'>Contents/Info.plist</span>).
 </li></ol>
 <p><a id='x1-34017r36'></a></p>
@@ -1314,8 +1302,6 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
      </p><!-- l. 2115 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: Refer to the <a href='#kernmatch'><span class='ec-lmtt-10'>Add MaxKernel </span>description</a> for matching logic.
      </p></li>
 <li class='enumerate' id='x1-35012x6'>
-                                                                                                  
-                                                                                                  
      <!-- l. 2118 --><p class='noindent'><span class='ec-lmtt-10'>MinKernel</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Blocks kernel extension on specified macOS version or newer.
      </p><!-- l. 2123 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: Refer to the <a href='#kernmatch'><span class='ec-lmtt-10'>Add MaxKernel </span>description</a> for matching logic.
 </p>
@@ -1374,11 +1360,11 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
 <li class='enumerate' id='x1-36008x4'>
      <!-- l. 2210 --><p class='noindent'><span class='ec-lmtt-10'>MaxKernel</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Emulates CPUID and applies <span class='ec-lmtt-10'>DummyPowerManagement </span>on specified macOS version or older.
      </p><!-- l. 2215 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: Refer to the <a href='#kernmatch'><span class='ec-lmtt-10'>Add MaxKernel </span>description</a> for matching logic.
+                                                                                                  
+                                                                                                  
      </p></li>
 <li class='enumerate' id='x1-36010x5'>
      <!-- l. 2218 --><p class='noindent'><span class='ec-lmtt-10'>MinKernel</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Emulates CPUID and applies <span class='ec-lmtt-10'>DummyPowerManagement </span>on specified macOS version or newer.
-                                                                                                  
-                                                                                                  
      </p><!-- l. 2223 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: Refer to the <a href='#kernmatch'><span class='ec-lmtt-10'>Add MaxKernel </span>description</a> for matching logic.
 </p>
      </li></ol>
@@ -1397,10 +1383,10 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
      </li>
 <li class='enumerate' id='x1-37010x5'><span class='ec-lmtt-10'>ExecutablePath</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Kext executable path relative to bundle (e.g. <span class='ec-lmtt-10'>Contents/MacOS/IONetworkingFamily</span>).
      </li>
+                                                                                                  
+                                                                                                  
 <li class='enumerate' id='x1-37012x6'><span class='ec-lmtt-10'>Identifier</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>:       Kext       identifier       to       perform       presence       checking       before       adding
      (e.g. <span class='ec-lmtt-10'>com.apple.iokit.IONetworkingFamily</span>). Only drivers which identifiers are not be found in the cache will
-                                                                                                  
-                                                                                                  
      be added.
      </li>
 <li class='enumerate' id='x1-37014x7'>
@@ -1420,6 +1406,8 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
      </li>
 <li class='enumerate' id='x1-38004x2'><span class='ec-lmtt-10'>Base</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty (Ignored)<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Selects symbol-matched base for patch lookup (or immediate replacement) by obtaining the address
      of the provided symbol name.
+                                                                                                  
+                                                                                                  
      </li>
 <li class='enumerate' id='x1-38006x3'><span class='ec-lmtt-10'>Comment</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Arbitrary ASCII string used to provide human readable reference for the entry. Whether this value
      is used is implementation defined.
@@ -1436,6 +1424,8 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
      </li>
 <li class='enumerate' id='x1-38018x9'><span class='ec-lmtt-10'>Mask</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist data</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty (Ignored)<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Data bitwise mask used during find comparison. Allows fuzzy search by ignoring not masked (set
      to zero) bits. Must be equal to <span class='ec-lmtt-10'>Replace </span>in size if set.
+                                                                                                  
+                                                                                                  
      </li>
 <li class='enumerate' id='x1-38020x10'>
      <!-- l. 2364 --><p class='noindent'><span class='ec-lmtt-10'>MaxKernel</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Patches data on specified macOS version or older.
@@ -1457,13 +1447,13 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
      <ol class='enumerate1'>
 <li class='enumerate' id='x1-39002x1'>
      <!-- l. 2407 --><p class='noindent'><span class='ec-lmtt-10'>AppleCpuPmCfgLock</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Requirement</span>: 10.4<br class='newline' /><span class='ec-lmbx-10'>Description</span>:                 Disables                 <span class='ec-lmtt-10'>PKG_CST_CONFIG_CONTROL           </span>(<span class='ec-lmtt-10'>0xE2</span>)                 MSR
+                                                                                                  
+                                                                                                  
      modification in AppleIntelCPUPowerManagement.kext, commonly causing early kernel panic, when it is locked
      from writing.
      </p><!-- l. 2415 --><p class='noindent'>Some types of firmware lock the <span class='ec-lmtt-10'>PKG_CST_CONFIG_CONTROL </span>MSR register and the bundled <span class='ec-lmtt-10'>ControlMsrE2 </span>tool
      can be used to check its state. Note that some types of firmware only have this register locked on some cores.
      As modern firmware provide a <span class='ec-lmtt-10'>CFG Lock </span>setting that allows configuring the <span class='ec-lmtt-10'>PKG_CST_CONFIG_CONTROL </span>MSR
-                                                                                                  
-                                                                                                  
      register lock, this option should be avoided whenever possible.
      </p><!-- l. 2422 --><p class='noindent'>On APTIO firmware that do not provide a <span class='ec-lmtt-10'>CFG Lock </span>setting in the GUI, it is possible to access the option
      directly:
@@ -1493,11 +1483,11 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
      <!-- l. 2457 --><p class='noindent'><span class='ec-lmtt-10'>AppleXcpmCfgLock</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Requirement</span>: 10.8 (not required for older)<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Disables <span class='ec-lmtt-10'>PKG_CST_CONFIG_CONTROL </span>(<span class='ec-lmtt-10'>0xE2</span>) MSR modification in XNU kernel, commonly causing early
      kernel panic, when it is locked from writing (XCPM power management).
      </p><!-- l. 2465 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This option should be avoided whenever possible. Refer to the <span class='ec-lmtt-10'>AppleCpuPmCfgLock </span>description for
+                                                                                                  
+                                                                                                  
      details.
      </p></li>
 <li class='enumerate' id='x1-39020x3'>
-                                                                                                  
-                                                                                                  
      <!-- l. 2469 --><p class='noindent'><span class='ec-lmtt-10'>AppleXcpmExtraMsrs</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Requirement</span>: 10.8 (not required for older)<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Disables multiple MSR access critical for certain CPUs, which have no native XCPM support.
      </p><!-- l. 2476 --><p class='noindent'>This is typically used in conjunction with the <span class='ec-lmtt-10'>Emulate </span>section on Haswell-E, Broadwell-E, Skylake-SP, and similar CPUs.
      More details on the XCPM patches are outlined in <a href='https://github.com/acidanthera/bugtracker/issues/365'>acidanthera/bugtracker#365</a>.
@@ -1523,6 +1513,8 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
      instance, an ethernet adapter may cycle in link-up link-down state infinitely and a Wi-Fi adapter may fail to discover
      networks. Gigabyte is one of the most common OEMs with these issues.
      </p></li>
+                                                                                                  
+                                                                                                  
 <li class='enumerate' id='x1-39028x7'>
      <!-- l. 2523 --><p class='noindent'><span class='ec-lmtt-10'>DisableLinkeditJettison</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Requirement</span>: 11<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Disables <span class='ec-lmtt-10'>__LINKEDIT </span>jettison code.
      </p><!-- l. 2529 --><p class='noindent'>This option lets <span class='ec-lmtt-10'>Lilu.kext</span>, and possibly other kexts, function in macOS Big Sur at their best performance levels
@@ -1549,10 +1541,10 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
 <li class='enumerate' id='x1-39036x11'>
      <!-- l. 2572 --><p class='noindent'><span class='ec-lmtt-10'>ForceSecureBootScheme</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Requirement</span>: 11<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Force <span class='ec-lmtt-10'>x86 </span>scheme for IMG4 verification.
      </p><!-- l. 2578 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This option is required on virtual machines when using <span class='ec-lmtt-10'>SecureBootModel </span>different from <span class='ec-lmtt-10'>x86legacy</span>.
+                                                                                                  
+                                                                                                  
      </p></li>
 <li class='enumerate' id='x1-39038x12'>
-                                                                                                  
-                                                                                                  
      <!-- l. 2582 --><p class='noindent'><span class='ec-lmtt-10'>IncreasePciBarSize</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Requirement</span>: 10.10<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Increases 32-bit PCI bar size in IOPCIFamily from 1 to 4 GBs.
      </p><!-- l. 2588 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This option should be avoided whenever possible. A need for this option indicates misconfigured or defective
      firmware.
@@ -1573,6 +1565,8 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
      wake up. For debug kernels <span class='ec-lmtt-10'>setpowerstate_panic=0 </span>boot argument should be used, which is otherwise equivalent to this
      quirk.
      </p></li>
+                                                                                                  
+                                                                                                  
 <li class='enumerate' id='x1-39048x17'>
      <!-- l. 2630 --><p class='noindent'><span class='ec-lmtt-10'>ProvideCurrentCpuInfo</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Requirement</span>: 10.8<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Provides current CPU info to the kernel.
      </p><!-- l. 2636 --><p class='noindent'>This quirk currently provides the correct TSC and FSB values to the kernel, as well as disables CPU topology
@@ -1610,10 +1604,10 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
      on modern macOS version there is a dedicated built-in utility called <span class='ec-lmtt-10'>trimforce</span>. Starting from 10.15
      this utility creates <span class='ec-lmtt-10'>EnableTRIM </span>variable in <span class='ec-lmtt-10'>APPLE_BOOT_VARIABLE_GUID </span>namespace with <span class='ec-lmtt-10'>01 00 00 00</span>
      value.
+                                                                                                  
+                                                                                                  
      </p></li>
 <li class='enumerate' id='x1-39054x20'>
-                                                                                                  
-                                                                                                  
      <!-- l. 2700 --><p class='noindent'><span class='ec-lmtt-10'>XhciPortLimit</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Requirement</span>: 10.11 (not required for older)<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Patch various kexts (AppleUSBXHCI.kext, AppleUSBXHCIPCI.kext, IOUSBHostFamily.kext) to remove
      USB port count limit of 15 ports.
      </p><!-- l. 2707 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This option should be avoided whenever possible. USB port limit is imposed by the amount of used bits in
@@ -1645,6 +1639,8 @@ on how to install and troubleshoot such macOS installations.
      <!-- l. 2749 --><p class='noindent'><span class='ec-lmtt-10'>KernelArch</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Auto </span>(Choose the preferred architecture automatically)<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Prefer specified kernel architecture (<span class='ec-lmtt-10'>i386</span>, <span class='ec-lmtt-10'>i386-user32</span>, <span class='ec-lmtt-10'>x86_64</span>) when available.
      </p><!-- l. 2755 --><p class='noindent'>On macOS 10.7 and earlier, the XNU kernel can boot with architectures different from the usual <span class='ec-lmtt-10'>x86_64</span>. This
      setting will use the specified architecture to boot macOS when it is supported by the macOS and the configuration:
+                                                                                                  
+                                                                                                  
 </p>
          <ul class='itemize1'>
          <li class='itemize'><span class='ec-lmtt-10'>i386 </span>— Use <span class='ec-lmtt-10'>i386 </span>(32-bit) kernel when available.
@@ -1687,8 +1683,6 @@ on how to install and troubleshoot such macOS installations.
 <li class='enumerate' id='x1-40016x5'>Board identifier (from SMBIOS) based on EfiBoot version disables <span class='ec-lmtt-10'>x86_64 </span>support on an unsupported
          model if any <span class='ec-lmtt-10'>i386 </span>variant is supported. <span class='ec-lmtt-10'>Auto </span>is not consulted here as the list is not overridable in
          EfiBoot.
-                                                                                                  
-                                                                                                  
          </li>
 <li class='enumerate' id='x1-40018x6'><span class='ec-lmtt-10'>KernelArch </span>restricts the support to the explicitly specified architecture (when not set to <span class='ec-lmtt-10'>Auto</span>) if the architecture
          remains present in the capabilities.
@@ -1729,9 +1723,9 @@ on how to install and troubleshoot such macOS installations.
 </p>
      <div class='center'>
 <!-- l. 2860 --><p class='noindent'>
+                                                                                                  
+                                                                                                  
 </p>
-                                                                                                  
-                                                                                                  
 <div class='tabular'> <table class='tabular' id='TBL-3'><colgroup id='TBL-3-1g'><col id='TBL-3-1' /></colgroup><colgroup id='TBL-3-2g'><col id='TBL-3-2' /></colgroup><colgroup id='TBL-3-3g'><col id='TBL-3-3' /></colgroup><colgroup id='TBL-3-4g'><col id='TBL-3-4' /></colgroup><colgroup id='TBL-3-5g'><col id='TBL-3-5' /></colgroup><colgroup id='TBL-3-6g'><col id='TBL-3-6' /></colgroup><colgroup id='TBL-3-7g'><col id='TBL-3-7' /></colgroup><colgroup id='TBL-3-8g'><col id='TBL-3-8' /></colgroup><tr class='hline'><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr id='TBL-3-1-' style='vertical-align:baseline;'><td class='td11' id='TBL-3-1-1' style='white-space:normal; text-align:left;'><!-- l. 2863 --><p class='noindent'><span class='ec-lmbx-10'>macOS</span>   </p></td><td class='td11' id='TBL-3-1-2' style='white-space:nowrap; text-align:center;'><span class='ec-lmbx-10'>i386 NC</span></td><td class='td11' id='TBL-3-1-3' style='white-space:nowrap; text-align:center;'><span class='ec-lmbx-10'>i386 MK</span></td><td class='td11' id='TBL-3-1-4' style='white-space:nowrap; text-align:center;'><span class='ec-lmbx-10'>i386 PK</span></td><td class='td11' id='TBL-3-1-5' style='white-space:nowrap; text-align:center;'><span class='ec-lmbx-10'>x86_64 NC</span></td><td class='td11' id='TBL-3-1-6' style='white-space:nowrap; text-align:center;'><span class='ec-lmbx-10'>x86_64 MK</span></td><td class='td11' id='TBL-3-1-7' style='white-space:nowrap; text-align:center;'><span class='ec-lmbx-10'>x86_64 PK</span></td><td class='td11' id='TBL-3-1-8' style='white-space:nowrap; text-align:center;'><span class='ec-lmbx-10'>x86_64 KC</span></td>
 </tr><tr class='hline'><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr id='TBL-3-2-' style='vertical-align:baseline;'><td class='td11' id='TBL-3-2-1' style='white-space:normal; text-align:left;'><!-- l. 2865 --><p class='noindent'>10.4          </p></td><td class='td11' id='TBL-3-2-2' style='white-space:nowrap; text-align:center;'>  YES   </td><td class='td11' id='TBL-3-2-3' style='white-space:nowrap; text-align:center;'>YES (V1)</td><td class='td11' id='TBL-3-2-4' style='white-space:nowrap; text-align:center;'> NO (V1) </td><td class='td11' id='TBL-3-2-5' style='white-space:nowrap; text-align:center;'>     —       </td><td class='td11' id='TBL-3-2-6' style='white-space:nowrap; text-align:center;'>     —        </td><td class='td11' id='TBL-3-2-7' style='white-space:nowrap; text-align:center;'>     —       </td><td class='td11' id='TBL-3-2-8' style='white-space:nowrap; text-align:center;'>     —       </td>
 </tr><tr class='hline'><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr id='TBL-3-3-' style='vertical-align:baseline;'><td class='td11' id='TBL-3-3-1' style='white-space:normal; text-align:left;'><!-- l. 2867 --><p class='noindent'>10.5          </p></td><td class='td11' id='TBL-3-3-2' style='white-space:nowrap; text-align:center;'>  YES   </td><td class='td11' id='TBL-3-3-3' style='white-space:nowrap; text-align:center;'>YES (V1)</td><td class='td11' id='TBL-3-3-4' style='white-space:nowrap; text-align:center;'> NO (V1) </td><td class='td11' id='TBL-3-3-5' style='white-space:nowrap; text-align:center;'>     —       </td><td class='td11' id='TBL-3-3-6' style='white-space:nowrap; text-align:center;'>     —        </td><td class='td11' id='TBL-3-3-7' style='white-space:nowrap; text-align:center;'>     —       </td><td class='td11' id='TBL-3-3-8' style='white-space:nowrap; text-align:center;'>     —       </td>
@@ -1777,9 +1771,9 @@ installed on the media, while alternate options represent recovery options for t
 <!-- l. 2921 --><p class='noindent'>The algorithm to determine boot options behaves as follows:
      </p><ol class='enumerate1'>
 <li class='enumerate' id='x1-42002x1'>Obtain all available partition handles filtered based on the <span class='ec-lmtt-10'>Scan policy </span>(and driver availability).
+                                                                                                  
+                                                                                                  
      </li>
-                                                                                                  
-                                                                                                  
 <li class='enumerate' id='x1-42004x2'>Obtain all available boot options from the <span class='ec-lmtt-10'>BootOrder </span>UEFI variable.
      </li>
 <li class='enumerate' id='x1-42006x3'>
@@ -1817,8 +1811,6 @@ installed on the media, while alternate options represent recovery options for t
          </li>
          <li class='itemize'>If a partition already has any primary options of the “Apple Recovery” type, proceed to the next handle.
          </li>
-                                                                                                  
-                                                                                                  
          <li class='itemize'>Lookup alternate entries by “bless” recovery option list retrieval and predefined paths.
          </li>
          <li class='itemize'>Register the resulting entries as alternate auxiliary options and determine their types if found.</li></ul>
@@ -1856,10 +1848,10 @@ scanning algorithm.
 <!-- l. 2989 --><p class='noindent'><span class='ec-lmri-10'>Note 1</span>: This process will only work reliably when the <span class='ec-lmtt-10'>RequestBootVarRouting </span>option is enabled or the firmware does not
 control UEFI boot options (<span class='ec-lmtt-10'>OpenDuetPkg </span>or custom BDS). When <span class='ec-lmtt-10'>LauncherOption </span>is not enabled, other operating systems
 may overwrite OpenCore settings and this property should therefore be enabled when planning to use other operating
+                                                                                                  
+                                                                                                  
 systems.
 </p><!-- l. 2995 --><p class='noindent'><span class='ec-lmri-10'>Note 2</span>: UEFI variable boot options boot arguments will be removed, if present, as they may contain arguments that can
-                                                                                                  
-                                                                                                  
 compromise the operating system, which is undesirable when secure boot is enabled.
 </p><!-- l. 2999 --><p class='noindent'><span class='ec-lmri-10'>Note 3</span>: Some operating systems, such as Windows, may create a boot option and mark it as the topmost option upon first
 boot or after NVRAM resets from within OpenCore. When this happens, the default boot entry choice will remain changed
@@ -1888,6 +1880,8 @@ until the next manual reconfiguration.
 <li class='enumerate' id='x1-43010x5'><span class='ec-lmtt-10'>Security</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist dict</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Apply the security configuration described in the <a href='#x1-460005'>Security Properties</a> section below.
      </li>
 <li class='enumerate' id='x1-43012x6'>
+                                                                                                  
+                                                                                                  
      <!-- l. 3047 --><p class='noindent'><span class='ec-lmtt-10'>Tools</span><a id='x1-430116'></a><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist array</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Add tool entries to the OpenCore picker.
      </p><!-- l. 3051 --><p class='noindent'>To be filled with <span class='ec-lmtt-10'>plist dict </span>values, describing each load entry. Refer to the <a href='#x1-470006'>Entry Properties</a> section below for
      details.
@@ -1925,6 +1919,8 @@ until the next manual reconfiguration.
          <li class='itemize'><span class='ec-lmtt-10'>0x08 </span>— <span class='ec-lmtt-10'>EFI_DARKGRAY</span>
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x09 </span>— <span class='ec-lmtt-10'>EFI_LIGHTBLUE</span>
+                                                                                                  
+                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x0A </span>— <span class='ec-lmtt-10'>EFI_LIGHTGREEN</span>
          </li>
@@ -1961,6 +1957,8 @@ until the next manual reconfiguration.
 </p>
          <ul class='itemize1'>
          <li class='itemize'><span class='ec-lmtt-10'>None </span>— Ignore hibernation state.
+                                                                                                  
+                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>Auto </span>— Use RTC and NVRAM detection.
          </li>
@@ -1998,8 +1996,6 @@ until the next manual reconfiguration.
              <ul class='itemize2'>
              <li class='itemize'>For this option to work, <span class='ec-lmtt-10'>RequestBootVarRouting </span>is required to be enabled.</li></ul>
          </li>
-                                                                                                  
-                                                                                                  
          <li class='itemize'>
          <!-- l. 3162 --><p class='noindent'><span class='ec-lmtt-10'>Short </span>— create a short boot option instead of a complete one. </p>
              <ul class='itemize2'>
@@ -2039,10 +2035,10 @@ until the next manual reconfiguration.
          <ul class='itemize1'>
          <li class='itemize'>
          <!-- l. 3218 --><p class='noindent'><span class='ec-lmtt-10'>0x0001 </span>— <span class='ec-lmtt-10'>OC_ATTR_USE_VOLUME_ICON</span>, provides custom icons for boot entries:
+                                                                                                  
+                                                                                                  
          </p><!-- l. 3221 --><p class='noindent'>OpenCore will attempt loading a volume icon by searching as follows, and will fallback to the default icon on failure:
          </p>
-                                                                                                  
-                                                                                                  
              <ul class='itemize2'>
              <li class='itemize'><span class='ec-lmtt-10'>.VolumeIcon.icns       </span>file           at           <span class='ec-lmtt-10'>Preboot       </span>volume           in           per-volume
              directory (<span class='ec-lmtt-10'>/System/Volumes/Preboot/{GUID}/ </span>when mounted at the default location within macOS)
@@ -2086,10 +2082,10 @@ until the next manual reconfiguration.
          <li class='itemize'>
          <!-- l. 3268 --><p class='noindent'><span class='ec-lmtt-10'>0x0080 </span>— <span class='ec-lmtt-10'>OC_ATTR_USE_FLAVOUR_ICON</span><a id='x1-440116'></a>, provides flexible boot entry content description, suitable for picking the
          best media across different content sets:
+                                                                                                  
+                                                                                                  
          </p><!-- l. 3272 --><p class='noindent'>When enabled, the entry icon in OpenCanopy and the audio assist entry sound in OpenCanopy and builtin boot
          picker are chosen by something called content flavour. To determine content flavour the following algorithm is
-                                                                                                  
-                                                                                                  
          used:
 </p>
              <ul class='itemize2'>
@@ -2166,9 +2162,9 @@ until the next manual reconfiguration.
          <li class='itemize'><span class='ec-lmtt-10'>Shift+Enter</span>, <span class='ec-lmtt-10'>Shift+Index </span>— safe mode, may be used in combination with <span class='ec-lmtt-10'>CTRL+Enter</span>, <span class='ec-lmtt-10'>CTRL+Index</span>.</li></ul>
      </li>
 <li class='enumerate' id='x1-44018x9'><span class='ec-lmtt-10'>ShowPicker</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Show a simple picker to allow boot entry selection.
+                                                                                                  
+                                                                                                  
      </li>
-                                                                                                  
-                                                                                                  
 <li class='enumerate' id='x1-44020x10'>
      <!-- l. 3377 --><p class='noindent'><span class='ec-lmtt-10'>TakeoffDelay</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span>, 32 bit<br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Delay in microseconds executed before handling the OpenCore picker startup and <span class='ec-lmtt-10'>action
      </span><span class='ec-lmtt-10'>hotkeys</span>.
@@ -2203,8 +2199,6 @@ until the next manual reconfiguration.
          <ul class='itemize1'>
          <li class='itemize'><span class='ec-lmtt-10'>Default </span>— this is the default option, and it lets the built-in OpenCore picker load the default boot option
          as specified in the <a href='https://support.apple.com/HT202796'>Startup Disk</a> preference pane.
-                                                                                                  
-                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>ShowPicker </span>— this option forces the OpenCore picker to be displayed. This can typically be achieved by
          holding the <span class='ec-lmtt-10'>OPT </span>key during boot. Setting <span class='ec-lmtt-10'>ShowPicker </span>to <span class='ec-lmtt-10'>true </span>will make <span class='ec-lmtt-10'>ShowPicker </span>the default option.
@@ -2246,9 +2240,9 @@ until the next manual reconfiguration.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>Acidanthera\Syrah </span>— macOS 10.10 styled icon set.
          </li>
+                                                                                                  
+                                                                                                  
          <li class='itemize'><span class='ec-lmtt-10'>Acidanthera\Chardonnay </span>— macOS 10.4 styled icon set.</li></ul>
-                                                                                                  
-                                                                                                  
      <!-- l. 3488 --><p class='noindent'>For convenience purposes there also are predefined aliases: </p>
          <ul class='itemize1'>
          <li class='itemize'><span class='ec-lmtt-10'>Auto  </span>—   Automatically   select   one   set   of   icons   based   on   the   <span class='ec-lmtt-10'>DefaultBackground  </span>colour:
@@ -2280,12 +2274,11 @@ until the next manual reconfiguration.
      <!-- l. 3535 -->
 <a id='x1-450032'></a>
      <div class='lstlisting' id='listing-5'><span class='label'><a id='x1-45005r1'></a></span><span class='ec-lmtk-10'>cat</span><span class='ec-lmtt-10'> Kernel.panic | </span><span class='ec-lmtk-10'>grep</span><span class='ec-lmtt-10'> macOSProcessedStackshotData | </span><br /> 
-<span class='label'><a id='x1-45006r2'></a></span><span class='ec-lmtt-10'>  </span><span class='ec-lmtk-10'>python</span><span class='ec-lmtt-10'> -c </span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'>import json,sys;print(json.load(sys.stdin)["macOSPanicString"])</span><span class='ts1-lmtt10-'>'</span></div>
+<span class='label'><a id='x1-45006r2'></a></span><span class='ec-lmtt-10'>  </span><span class='ec-lmtk-10'>python</span><span class='ec-lmtt-10'> -c </span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'>import json,sys;print(json.load(sys.stdin)["macOSPanicString"])</span><span class='ts1-lmtt10-'>'</span>
      
+     </div>
      </li>
 <li class='enumerate' id='x1-45008x3'><span class='ec-lmtt-10'>DisableWatchDog</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Some types of firmware may not succeed in booting the operating system quickly, especially in
-                                                                                                  
-                                                                                                  
      debug mode. This results in the watchdog timer aborting the process. This option turns off the watchdog
      timer.
      </li>
@@ -2317,8 +2310,6 @@ until the next manual reconfiguration.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>PcdSerialLineControl </span>— Line control: no parity, 8 data bits, 1 stop bit.</li></ul>
      <!-- l. 3595 --><p class='noindent'>Refer to the <a href='#x1-880004'><span class='ec-lmtt-10'>Debugging</span></a> section for details.
-                                                                                                  
-                                                                                                  
      </p></li>
 <li class='enumerate' id='x1-45016x7'>
      <!-- l. 3598 --><p class='noindent'><span class='ec-lmtt-10'>SysReport</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Produce system report on ESP folder.
@@ -2352,18 +2343,20 @@ until the next manual reconfiguration.
      </p><!-- l. 3635 --><p class='noindent'>To obtain Data Hub logs, use the following command in macOS (Note that Data Hub logs do not log kernel and kext
      patches): </p><!-- l. 3637 -->
 <a id='x1-450178'></a>
-     <div class='lstlisting' id='listing-6'><span class='label'><a id='x1-45019r1'></a></span><span class='ec-lmtk-10'>ioreg</span><span class='ec-lmtt-10'> -lw0 -p IODeviceTree | </span><span class='ec-lmtk-10'>grep</span><span class='ec-lmtt-10'> boot-log | </span><span class='ec-lmtk-10'>sort</span><span class='ec-lmtt-10'> | </span><span class='ec-lmtk-10'>sed</span><span class='ec-lmtt-10'> </span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'>s/.*&lt;\(.*\)&gt;.*/\1/</span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'> | xxd -r -p</span></div>
+     <div class='lstlisting' id='listing-6'><span class='label'><a id='x1-45019r1'></a></span><span class='ec-lmtk-10'>ioreg</span><span class='ec-lmtt-10'> -lw0 -p IODeviceTree | </span><span class='ec-lmtk-10'>grep</span><span class='ec-lmtt-10'> boot-log | </span><span class='ec-lmtk-10'>sort</span><span class='ec-lmtt-10'> | </span><span class='ec-lmtk-10'>sed</span><span class='ec-lmtt-10'> </span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'>s/.*&lt;\(.*\)&gt;.*/\1/</span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'> | xxd -r -p</span>
      
+                                                                                                  
+                                                                                                  
+     </div>
      <!-- l. 3641 --><p class='noindent'>UEFI variable log does not include some messages and has no performance data. To maintain system integrity, the log
      size is limited to 32 kilobytes. Some types of firmware may truncate it much earlier or drop completely if they have no
-                                                                                                  
-                                                                                                  
      memory. Using the <span class='ec-lmtt-10'>non-volatile </span>flag will cause the log to be written to NVRAM flash after every printed
      line.
      </p><!-- l. 3646 --><p class='noindent'>To obtain UEFI variable logs, use the following command in macOS: </p><!-- l. 3647 -->
      <div class='lstlisting' id='listing-7'><span class='label'><a id='x1-45020r1'></a></span><span class='ec-lmtk-10'>nvram</span><span class='ec-lmtt-10'> 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:boot-log | </span><br /> 
-<span class='label'><a id='x1-45021r2'></a></span><span class='ec-lmtt-10'>  </span><span class='ec-lmtk-10'>awk</span><span class='ec-lmtt-10'> </span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'>{gsub(/%0d%0a%00/,"");gsub(/%0d%0a/,"\n")}1</span><span class='ts1-lmtt10-'>'</span></div>
+<span class='label'><a id='x1-45021r2'></a></span><span class='ec-lmtt-10'>  </span><span class='ec-lmtk-10'>awk</span><span class='ec-lmtt-10'> </span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'>{gsub(/%0d%0a%00/,"");gsub(/%0d%0a/,"\n")}1</span><span class='ts1-lmtt10-'>'</span>
      
+     </div>
      <!-- l. 3652 --><p class='noindent'><span class='ec-lmbx-10'>Warning</span>: Certain firmware appear to have defective NVRAM garbage collection. As a result, they may not be able to
      always free space after variable deletion. Do not enable <span class='ec-lmtt-10'>non-volatile </span>NVRAM logging on such devices unless specifically
      required.
@@ -2397,12 +2390,12 @@ until the next manual reconfiguration.
          <li class='itemize'><span class='ec-lmtt-10'>MMDD </span>— MmapDump
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>OCPAVP </span>— PavpProvision
+                                                                                                  
+                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>OCRST </span>— ResetSystem
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>OCUI </span>— OpenCanopy
-                                                                                                  
-                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>OC </span>— OpenCore main, also OcMainLib
          </li>
@@ -2437,12 +2430,12 @@ until the next manual reconfiguration.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>OCDH </span>— OcDataHubLib
          </li>
+                                                                                                  
+                                                                                                  
          <li class='itemize'><span class='ec-lmtt-10'>OCDI </span>— OcAppleDiskImageLib
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>OCDM </span>— OcDeviceMiscLib
          </li>
-                                                                                                  
-                                                                                                  
          <li class='itemize'><span class='ec-lmtt-10'>OCFS </span>— OcFileLib
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>OCFV </span>— OcFirmwareVolumeLib
@@ -2477,12 +2470,12 @@ until the next manual reconfiguration.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>OCRAM </span>— OcAppleRamDiskLib
          </li>
+                                                                                                  
+                                                                                                  
          <li class='itemize'><span class='ec-lmtt-10'>OCRTC </span>— OcRtcLib
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>OCSB </span>— OcAppleSecureBootLib
          </li>
-                                                                                                  
-                                                                                                  
          <li class='itemize'><span class='ec-lmtt-10'>OCSMB </span>— OcSmbiosLib
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>OCSMC </span>— OcSmcLib
@@ -2513,12 +2506,12 @@ until the next manual reconfiguration.
      <!-- l. 3763 --><p class='noindent'><span class='ec-lmtt-10'>AllowSetDefault</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Allow <span class='ec-lmtt-10'>CTRL+Enter </span>and <span class='ec-lmtt-10'>CTRL+Index </span>handling to set the default boot option in the OpenCore
      picker.
      </p><!-- l. 3769 --><p class='noindent'><span class='ec-lmri-10'>Note 1</span>: May be used in combination with <span class='ec-lmtt-10'>Shift+Enter </span>or <span class='ec-lmtt-10'>Shift+Index </span>when <span class='ec-lmtt-10'>PollAppleHotKeys </span>is enabled.
+                                                                                                  
+                                                                                                  
      </p><!-- l. 3773 --><p class='noindent'><span class='ec-lmri-10'>Note 2</span>: In order to support systems with unresponsive modifiers during preboot (which includes <span class='ec-lmtt-10'>V1 </span>and <span class='ec-lmtt-10'>V2
      </span><span class='ec-lmtt-10'>KeySupport </span>mode on some firmware) OpenCore also allows holding the <span class='ec-lmtt-10'>=/+ </span>key in order to trigger ‘set default’
      mode.
      </p></li>
-                                                                                                  
-                                                                                                  
 <li class='enumerate' id='x1-46006x3'>
      <!-- l. 3778 --><p class='noindent'><span class='ec-lmtt-10'>AllowToggleSip</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Enable entry for disabling and enabling System Integrity Protection in OpenCore picker.
      </p><!-- l. 3784 --><p class='noindent'>This will toggle Apple NVRAM variable <span class='ec-lmtt-10'>csr-active-config </span>between <span class='ec-lmtt-10'>0 </span>for SIP Enabled and a practical default
@@ -2555,15 +2548,16 @@ until the next manual reconfiguration.
      and Tricks</a> section. Note that <a href='#x1-460207'>DMG loading</a> needs to be set to <span class='ec-lmtt-10'>Signed </span>to use any DMG with Apple Secure
      Boot.
      </p><!-- l. 3837 --><p class='noindent'>To personalise an existing operating system, use the <span class='ec-lmtt-10'>bless </span>command after loading to macOS DMG recovery. Mount the
+                                                                                                  
+                                                                                                  
      system volume partition, unless it has already been mounted, and execute the following command:
 </p>
      <!-- l. 3841 -->
 <a id='x1-460074'></a>
      <div class='lstlisting' id='listing-8'><span class='label'><a id='x1-46009r1'></a></span><span class='ec-lmtt-10'>bless --folder "/Volumes/Macintosh HD/System/Library/CoreServices" \ </span><br /> 
-<span class='label'><a id='x1-46010r2'></a></span><span class='ec-lmtt-10'>  --bootefi --personalize</span></div>
-                                                                                                  
-                                                                                                  
+<span class='label'><a id='x1-46010r2'></a></span><span class='ec-lmtt-10'>  --bootefi --personalize</span>
      
+     </div>
      <!-- l. 3846 --><p class='noindent'>On macOS 11 and newer the dedicated <span class='ec-lmtt-10'>x86legacy </span>model always uses <span class='ec-lmtt-10'>ApECID</span>. When this configuration setting is left as <span class='ec-lmtt-10'>0</span>
      first 8 bytes of <span class='ec-lmtt-10'>system-id </span>variable are used instead.
      </p><!-- l. 3850 --><p class='noindent'>On macOS versions before macOS 11, which introduced a dedicated <span class='ec-lmtt-10'>x86legacy </span>model for models without the T2 chip,
@@ -2579,8 +2573,9 @@ until the next manual reconfiguration.
 <span class='label'><a id='x1-46012r2'></a></span><span class='ec-lmtk-10'>diskutil</span><span class='ec-lmtt-10'> erasevolume HFS+ SecureBoot $disk </span><br /> 
 <span class='label'><a id='x1-46013r3'></a></span><span class='ec-lmtk-10'>diskutil</span><span class='ec-lmtt-10'> unmount $disk </span><br /> 
 <span class='label'><a id='x1-46014r4'></a></span><span class='ec-lmtt-10'>mkdir /var/tmp/OSPersonalizationTemp </span><br /> 
-<span class='label'><a id='x1-46015r5'></a></span><span class='ec-lmtk-10'>diskutil</span><span class='ec-lmtt-10'> mount -mountpoint /var/tmp/OSPersonalizationTemp $disk</span></div>
+<span class='label'><a id='x1-46015r5'></a></span><span class='ec-lmtk-10'>diskutil</span><span class='ec-lmtt-10'> mount -mountpoint /var/tmp/OSPersonalizationTemp $disk</span>
      
+     </div>
      </li>
 <li class='enumerate' id='x1-46017x5'>
      <!-- l. 3870 --><p class='noindent'><span class='ec-lmtt-10'>AuthRestart</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Enable <span class='ec-lmtt-10'>VirtualSMC</span>-compatible authenticated restart.
@@ -2597,6 +2592,8 @@ until the next manual reconfiguration.
      <span class='ec-lmtt-10'>run-efi-updater </span>NVRAM variable.
      </p></li>
 <li class='enumerate' id='x1-46021x7'>
+                                                                                                  
+                                                                                                  
      <!-- l. 3894 --><p class='noindent'><a id='x1-460207'></a> <span class='ec-lmtt-10'>DmgLoading</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Signed</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Define Disk Image (DMG) loading policy used for macOS Recovery.
      </p><!-- l. 3900 --><p class='noindent'>Valid values:
 </p>
@@ -2632,25 +2629,29 @@ until the next manual reconfiguration.
          <li class='itemize'><span class='ec-lmtt-10'>0x04 </span>— Expose the OpenCore version in the OpenCore picker menu title.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x08 </span>— Expose OEM information as a set of UEFI variables.</li></ul>
+                                                                                                  
+                                                                                                  
      <!-- l. 3948 --><p class='noindent'>The exposed booter path points to OpenCore.efi or its booter depending on the load order. To obtain the booter path,
      use the following command in macOS: </p><!-- l. 3950 -->
 <a id='x1-460249'></a>
-     <div class='lstlisting' id='listing-10'><span class='label'><a id='x1-46026r1'></a></span><span class='ec-lmtk-10'>nvram</span><span class='ec-lmtt-10'> 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:boot-path</span></div>
+     <div class='lstlisting' id='listing-10'><span class='label'><a id='x1-46026r1'></a></span><span class='ec-lmtk-10'>nvram</span><span class='ec-lmtt-10'> 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:boot-path</span>
      
+     </div>
      <!-- l. 3954 --><p class='noindent'>To use a booter path to mount a booter volume, use the following command in macOS: </p><!-- l. 3955 -->
-                                                                                                  
-                                                                                                  
      <div class='lstlisting' id='listing-11'><span class='label'><a id='x1-46027r1'></a></span><span class='ec-lmtt-10'>u=$(</span><span class='ec-lmtk-10'>nvram</span><span class='ec-lmtt-10'> 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:boot-path | </span><span class='ec-lmtk-10'>sed</span><span class='ec-lmtt-10'> </span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'>s/.*GPT,\([^,]*\),.*/\1/</span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'>); \ </span><br /> 
-<span class='label'><a id='x1-46028r2'></a></span><span class='ec-lmtt-10'>  </span><span class='ec-lmtk-10'>if</span><span class='ec-lmtt-10'> [ "$u" != "" ]; </span><span class='ec-lmtk-10'>then</span><span class='ec-lmtt-10'> </span><span class='ec-lmtk-10'>sudo</span><span class='ec-lmtt-10'> </span><span class='ec-lmtk-10'>diskutil</span><span class='ec-lmtt-10'> mount $u ; fi</span></div>
+<span class='label'><a id='x1-46028r2'></a></span><span class='ec-lmtt-10'>  </span><span class='ec-lmtk-10'>if</span><span class='ec-lmtt-10'> [ "$u" != "" ]; </span><span class='ec-lmtk-10'>then</span><span class='ec-lmtt-10'> </span><span class='ec-lmtk-10'>sudo</span><span class='ec-lmtt-10'> </span><span class='ec-lmtk-10'>diskutil</span><span class='ec-lmtt-10'> mount $u ; fi</span>
      
+     </div>
      <!-- l. 3960 --><p class='noindent'>To obtain the current OpenCore version, use the following command in macOS: </p><!-- l. 3961 -->
-     <div class='lstlisting' id='listing-12'><span class='label'><a id='x1-46029r1'></a></span><span class='ec-lmtk-10'>nvram</span><span class='ec-lmtt-10'> 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:opencore-version</span></div>
+     <div class='lstlisting' id='listing-12'><span class='label'><a id='x1-46029r1'></a></span><span class='ec-lmtk-10'>nvram</span><span class='ec-lmtt-10'> 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:opencore-version</span>
      
+     </div>
      <!-- l. 3965 --><p class='noindent'>To obtain OEM information, use the following commands in macOS: </p><!-- l. 3966 -->
      <div class='lstlisting' id='listing-13'><span class='label'><a id='x1-46030r1'></a></span><span class='ec-lmtk-10'>nvram</span><span class='ec-lmtt-10'> 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:oem-product </span><span class='ec-lmtti-10'># SMBIOS Type1 ProductName</span><span class='ec-lmtt-10'> </span><br /> 
 <span class='label'><a id='x1-46031r2'></a></span><span class='ec-lmtk-10'>nvram</span><span class='ec-lmtt-10'> 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:oem-vendor  </span><span class='ec-lmtti-10'># SMBIOS Type2 Manufacturer</span><span class='ec-lmtt-10'> </span><br /> 
-<span class='label'><a id='x1-46032r3'></a></span><span class='ec-lmtk-10'>nvram</span><span class='ec-lmtt-10'> 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:oem-board   </span><span class='ec-lmtti-10'># SMBIOS Type2 ProductName</span></div>
+<span class='label'><a id='x1-46032r3'></a></span><span class='ec-lmtk-10'>nvram</span><span class='ec-lmtt-10'> 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:oem-board   </span><span class='ec-lmtti-10'># SMBIOS Type2 ProductName</span>
      
+     </div>
      </li>
 <li class='enumerate' id='x1-46034x10'><span class='ec-lmtt-10'>HaltLevel</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span>, 64 bit<br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0x80000000 </span>(<span class='ec-lmtt-10'>DEBUG_ERROR</span>)<br class='newline' /><span class='ec-lmbx-10'>Description</span>: EDK II debug level bitmask (sum) causing CPU to halt (stop execution) after obtaining a message of
      <span class='ec-lmtt-10'>HaltLevel</span>. Possible values match <span class='ec-lmtt-10'>DisplayLevel </span>values.
@@ -2660,6 +2661,8 @@ until the next manual reconfiguration.
 <li class='enumerate' id='x1-46038x12'><span class='ec-lmtt-10'>PasswordSalt</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist data</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Password salt used when <span class='ec-lmtt-10'>EnabledPassword </span>is set.
      </li>
 <li class='enumerate' id='x1-46040x13'>
+                                                                                                  
+                                                                                                  
      <!-- l. 3992 --><p class='noindent'><a id='x1-4603913'></a> <span class='ec-lmtt-10'>Vault</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Secure</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Enables the OpenCore vaulting mechanism.
      </p><!-- l. 3998 --><p class='noindent'>Valid values:
 </p>
@@ -2668,8 +2671,6 @@ until the next manual reconfiguration.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>Basic </span>— require <span class='ec-lmtt-10'>vault.plist </span>file present in <span class='ec-lmtt-10'>OC </span>directory. This provides basic filesystem integrity verification
          and may protect from unintentional filesystem corruption.
-                                                                                                  
-                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>Secure </span>— require <span class='ec-lmtt-10'>vault.sig </span>signature file for <span class='ec-lmtt-10'>vault.plist </span>in <span class='ec-lmtt-10'>OC </span>directory. This includes <span class='ec-lmtt-10'>Basic </span>integrity
          checking but also attempts to build a trusted bootchain.</li></ul>
@@ -2705,8 +2706,11 @@ until the next manual reconfiguration.
 <span class='label'><a id='x1-46043r3'></a></span><span class='ec-lmtt-10'>/path/to/RsaTool -sign vault.plist vault.sig vault.pub </span><br /> 
 <span class='label'><a id='x1-46044r4'></a></span><span class='ec-lmtt-10'>off=$(($(</span><span class='ec-lmtk-10'>strings</span><span class='ec-lmtt-10'> -a -t d OpenCore.efi | </span><span class='ec-lmtk-10'>grep</span><span class='ec-lmtt-10'> "=BEGIN OC VAULT=" | </span><span class='ec-lmtk-10'>cut</span><span class='ec-lmtt-10'> -f1 -d</span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'> </span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'>)+16)) </span><br /> 
 <span class='label'><a id='x1-46045r5'></a></span><span class='ec-lmtk-10'>dd</span><span class='ec-lmtt-10'> of=OpenCore.efi </span><span class='ec-lmtk-10'>if</span><span class='ec-lmtt-10'>=vault.pub bs=1 seek=$off count=528 conv=notrunc </span><br /> 
-<span class='label'><a id='x1-46046r6'></a></span><span class='ec-lmtt-10'>rm vault.pub</span></div>
+<span class='label'><a id='x1-46046r6'></a></span><span class='ec-lmtt-10'>rm vault.pub</span>
      
+                                                                                                  
+                                                                                                  
+     </div>
      <!-- l. 4057 --><p class='noindent'><span class='ec-lmri-10'>Note 1</span>: While it may appear obvious, an external method is required to verify <span class='ec-lmtt-10'>OpenCore.efi </span>and <span class='ec-lmtt-10'>BOOTx64.efi </span>for
      secure boot path. For this, it is recommended to enable UEFI SecureBoot using a custom certificate and to sign
      <span class='ec-lmtt-10'>OpenCore.efi </span>and <span class='ec-lmtt-10'>BOOTx64.efi </span>with a custom key. More details on customising secure boot on modern firmware can be
@@ -2758,8 +2762,6 @@ until the next manual reconfiguration.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x00080000 </span>(bit <span class='ec-lmtt-10'>19</span>) — <span class='ec-lmtt-10'>OC_SCAN_ALLOW_DEVICE_NVME</span>, allow scanning NVMe devices.
          </li>
-                                                                                                  
-                                                                                                  
          <li class='itemize'><span class='ec-lmtt-10'>0x00100000 </span>(bit <span class='ec-lmtt-10'>20</span>) — <span class='ec-lmtt-10'>OC_SCAN_ALLOW_DEVICE_ATAPI</span>, allow scanning CD/DVD devices and old SATA.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x00200000 </span>(bit <span class='ec-lmtt-10'>21</span>) — <span class='ec-lmtt-10'>OC_SCAN_ALLOW_DEVICE_USB</span>, allow scanning USB devices.
@@ -2788,6 +2790,8 @@ until the next manual reconfiguration.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>OC_SCAN_ALLOW_DEVICE_SATA</span>
          </li>
+                                                                                                  
+                                                                                                  
          <li class='itemize'><span class='ec-lmtt-10'>OC_SCAN_ALLOW_DEVICE_SASEX</span>
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>OC_SCAN_ALLOW_DEVICE_SCSI</span>
@@ -2824,6 +2828,8 @@ until the next manual reconfiguration.
          <li class='itemize'><span class='ec-lmtt-10'>j152f </span>— <span class='ec-lmtt-10'>MacBookPro16,1 (November 2019). Minimum macOS 10.15.1 (19B2093)</span>
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>j160 </span>— <span class='ec-lmtt-10'>MacPro7,1 (December 2019). Minimum macOS 10.15.1 (19B88)</span>
+                                                                                                  
+                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>j230k </span>— <span class='ec-lmtt-10'>MacBookAir9,1 (March 2020). Minimum macOS 10.15.3 (19D2064)</span>
          </li>
@@ -2834,8 +2840,6 @@ until the next manual reconfiguration.
          <li class='itemize'><span class='ec-lmtt-10'>j215 </span>— <span class='ec-lmtt-10'>MacBookPro16,4 (June 2020). Minimum macOS 10.15.5 (19F96)</span>
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>j185 </span>— <span class='ec-lmtt-10'>iMac20,1 (August 2020). Minimum macOS 10.15.6 (19G2005)</span>
-                                                                                                  
-                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>j185f </span>— <span class='ec-lmtt-10'>iMac20,2 (August 2020). Minimum macOS 10.15.6 (19G2005)</span>
          </li>
@@ -2866,6 +2870,8 @@ until the next manual reconfiguration.
          because the associated issues were not discovered earlier. Be extra careful with <span class='ec-lmtt-10'>IgnoreInvalidFlexRatio</span>
          or <span class='ec-lmtt-10'>HashServices</span>.
          </li>
+                                                                                                  
+                                                                                                  
 <li class='enumerate' id='x1-46060x5'>Operating systems released before Apple Secure Boot was released (e.g. macOS 10.12 or earlier), will still
          boot until UEFI Secure Boot is enabled. This is so because Apple Secure Boot treats these as incompatible
          and they are then handled by the firmware (as Microsoft Windows is).
@@ -2875,8 +2881,6 @@ until the next manual reconfiguration.
          </li>
 <li class='enumerate' id='x1-46064x7'>As the <span class='ec-lmtt-10'>Default </span>value will increase with time to support the latest major released operating system, it is
          not recommended to use the <span class='ec-lmtt-10'>ApECID </span>and the <span class='ec-lmtt-10'>Default </span>settings together.
-                                                                                                  
-                                                                                                  
          </li>
 <li class='enumerate' id='x1-46066x8'>Installing macOS with Apple Secure Boot enabled is not possible while using HFS+ target volumes. This
          may include HFS+ formatted drives when no spare APFS drive is available.</li></ol>
@@ -2904,8 +2908,6 @@ until the next manual reconfiguration.
      </li>
 <li class='enumerate' id='x1-47008x4'><span class='ec-lmtt-10'>Enabled</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Set to <span class='ec-lmtt-10'>true </span>activate this entry.
      </li>
-                                                                                                  
-                                                                                                  
 <li class='enumerate' id='x1-47010x5'><span class='ec-lmtt-10'>Flavour</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Auto</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Specify the content flavour for this entry. See <a href='#x1-440116'><span class='ec-lmtt-10'>OC_ATTR_USE_FLAVOUR_ICON</span></a> flag for documentation.
      </li>
 <li class='enumerate' id='x1-47012x6'><span class='ec-lmtt-10'>Name</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Human readable entry name displayed in the OpenCore picker.
@@ -2924,6 +2926,8 @@ until the next manual reconfiguration.
      <!-- l. 4315 --><p class='noindent'><span class='ec-lmtt-10'>RealPath</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Pass full path to the tool when launching.
      </p><!-- l. 4320 --><p class='noindent'>This should typically be disabled as passing the tool directory may be unsafe with tools that accidentally attempt to
      access files without checking their integrity. Reasons to enable this property may include cases where tools cannot work
+                                                                                                  
+                                                                                                  
      without external files or may need them for enhanced functionality such as <span class='ec-lmtt-10'>memtest86 </span>(for logging and configuration), or
      <span class='ec-lmtt-10'>Shell </span>(for automatic script execution).
      </p><!-- l. 4327 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This property is only valid for <span class='ec-lmtt-10'>Tools </span>and cannot be specified for <span class='ec-lmtt-10'>Entries </span>(is always <span class='ec-lmtt-10'>true</span>).
@@ -2933,8 +2937,6 @@ until the next manual reconfiguration.
      </p><!-- l. 4336 --><p class='noindent'>This setting may be beneficial for some older tools that require text output as all the tools are launched in graphics mode
      by default. Refer to the <a href='#x1-7500013'>Output Properties</a> section below for information on text modes.
 </p>
-                                                                                                  
-                                                                                                  
      </li></ol>
 <p><a id='x1-47019r43'></a></p>
 <h3 class='sectionHead'><span class='titlemark'>9   </span> <a id='x1-480009'></a>NVRAM</h3>
@@ -2975,8 +2977,6 @@ certain use cases.
      names and their values in <span class='ec-lmtt-10'>plist multidata </span>format. GUIDs must be provided in canonic string format in upper
      or lower case (e.g. <span class='ec-lmtt-10'>8BE4DF61-93CA-11D2-AA0D-00E098032B8C</span>).
      </p><!-- l. 4407 --><p class='noindent'>The <span class='ec-lmtt-10'>EFI_VARIABLE_BOOTSERVICE_ACCESS </span>and <span class='ec-lmtt-10'>EFI_VARIABLE_RUNTIME_ACCESS </span>attributes of created variables
-                                                                                                  
-                                                                                                  
      are set. Variables will only be set if not present or deleted. That is, to overwrite an existing variable value, add
      the variable name to the <span class='ec-lmtt-10'>Delete </span>section. This approach enables the provision of default values until the operating
      system takes the lead.
@@ -3002,6 +3002,8 @@ certain use cases.
      incompatible.
      </p></li>
 <li class='enumerate' id='x1-50008x4'>
+                                                                                                  
+                                                                                                  
      <!-- l. 4451 --><p class='noindent'><span class='ec-lmtt-10'>LegacyOverwrite</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Permits overwriting firmware variables from <span class='ec-lmtt-10'>nvram.plist</span>.
      </p><!-- l. 4456 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: Only variables accessible from the operating system will be overwritten.
      </p></li>
@@ -3009,8 +3011,6 @@ certain use cases.
      <!-- l. 4459 --><p class='noindent'><span class='ec-lmtt-10'>LegacySchema</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist dict</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Allows setting certain NVRAM variables from a map (<span class='ec-lmtt-10'>plist dict</span>) of GUIDs to an array (<span class='ec-lmtt-10'>plist array</span>)
      of variable names in <span class='ec-lmtt-10'>plist string </span>format.
      </p><!-- l. 4465 --><p class='noindent'><span class='ec-lmtt-10'>* </span>value can be used to accept all variables for certain GUID.
-                                                                                                  
-                                                                                                  
      </p><!-- l. 4467 --><p class='noindent'><span class='ec-lmbx-10'>WARNING</span>: Choose variables carefully, as the nvram.plist file is not vaulted. For instance, do not include <span class='ec-lmtt-10'>boot-args </span>or
      <span class='ec-lmtt-10'>csr-active-config</span>, as these can be used to bypass SIP.
      </p></li>
@@ -3040,6 +3040,8 @@ variables separated by a <span class='ec-lmtt-10'>: </span>symbol. For example, 
      <li class='itemize'><span class='ec-lmtt-10'>4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:MLB
      </span><span class='ec-lmtt-10'>BoardSerialNumber</span>. Present on newer Macs (2013+ at least) to avoid extra parsing of SMBIOS tables, especially
      in <span class='ec-lmtt-10'>boot.efi</span>.
+                                                                                                  
+                                                                                                  
      </li>
      <li class='itemize'><span class='ec-lmtt-10'>4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:ROM</span>
      Primary network adapter MAC address or replacement value. Present on newer Macs (2013+ at least) to avoid
@@ -3097,8 +3099,6 @@ variables separated by a <span class='ec-lmtt-10'>: </span>symbol. For example, 
      Four-byte <span class='ec-lmtt-10'>BGRA </span>data defining <span class='ec-lmtt-10'>boot.efi </span>user interface background colour. Standard colours include <span class='ec-lmbx-10'>BF BF BF
      </span><span class='ec-lmbx-10'>00 </span>(Light Gray) and <span class='ec-lmbx-10'>00 00 00 00 </span>(Syrah Black). Other colours may be set at user’s preference.</li></ul>
 <p><a id='x1-52001r54'></a></p>
-                                                                                                  
-                                                                                                  
 <h4 class='subsectionHead'><span class='titlemark'>9.5   </span> <a id='x1-530005'></a>Other Variables</h4>
 <!-- l. 4600 --><p class='noindent'>The following variables may be useful for certain configurations or troubleshooting:
 </p>
@@ -3140,8 +3140,6 @@ variables separated by a <span class='ec-lmtt-10'>: </span>symbol. For example, 
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>npci=0x2000 </span>(<a href='https://www.insanelymac.com/forum/topic/260539-1068-officially-released/?do=findComment&amp;comment=1707972'>legacy</a>, disables <span class='ec-lmtt-10'>kIOPCIConfiguratorPFM64</span>)
          </li>
-                                                                                                  
-                                                                                                  
          <li class='itemize'><span class='ec-lmtt-10'>lapic_dont_panic=1 </span>(disable lapic spurious interrupt panic on AP cores)
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>panic_on_display_hang=1 </span>(trigger panic on display hang)
@@ -3173,6 +3171,8 @@ variables separated by a <span class='ec-lmtt-10'>: </span>symbol. For example, 
      values with or without <span class='ec-lmtt-10'>0x</span>. At different stages <span class='ec-lmtt-10'>boot.efi </span>will request different debugging (logging) modes (e.g. after
      <span class='ec-lmtt-10'>ExitBootServices </span>it will only print to serial). Several booter arguments control whether these requests will succeed. The
      list of known requests is covered below:
+                                                                                                  
+                                                                                                  
 </p>
          <ul class='itemize2'>
          <li class='itemize'><span class='ec-lmtt-10'>0x00 </span>– <span class='ec-lmtt-10'>INIT</span>.
@@ -3183,8 +3183,6 @@ variables separated by a <span class='ec-lmtt-10'>: </span>symbol. For example, 
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x03 </span>– <span class='ec-lmtt-10'>RESET:OK</span>.
          </li>
-                                                                                                  
-                                                                                                  
          <li class='itemize'><span class='ec-lmtt-10'>0x04 </span>– <span class='ec-lmtt-10'>RESET:FAIL </span>(e.g. unknown <span class='ec-lmtt-10'>board-id</span>, hibernate mismatch, panic loop, etc.).
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x05 </span>– <span class='ec-lmtt-10'>RESET:RECOVERY</span>.
@@ -3216,6 +3214,8 @@ variables separated by a <span class='ec-lmtt-10'>: </span>symbol. For example, 
              </li>
              <li class='itemize'><span class='ec-lmtt-10'>2 </span>— (default).
              </li>
+                                                                                                  
+                                                                                                  
              <li class='itemize'><span class='ec-lmtt-10'>3</span>
              </li>
              <li class='itemize'><span class='ec-lmtt-10'>4 </span>— (save to file).</li></ul>
@@ -3226,8 +3226,6 @@ variables separated by a <span class='ec-lmtt-10'>: </span>symbol. For example, 
              <li class='itemize'><span class='ec-lmtt-10'>0 </span>— disabled.
              </li>
              <li class='itemize'><span class='ec-lmtt-10'>1</span>
-                                                                                                  
-                                                                                                  
              </li>
              <li class='itemize'><span class='ec-lmtt-10'>2 </span>— (default).
              </li>
@@ -3260,6 +3258,8 @@ variables separated by a <span class='ec-lmtt-10'>: </span>symbol. For example, 
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>kc-read-size=VALUE </span>— Chunk size used for buffered I/O from network or disk for prelinkedkernel reading and
          related. Set to 1MB (0x100000) by default, can be tuned for faster booting.
+                                                                                                  
+                                                                                                  
          </li>
          <li class='itemize'>
          <!-- l. 4718 --><p class='noindent'><span class='ec-lmtt-10'>log-level=VALUE </span>— log level bitmask. </p>
@@ -3359,8 +3359,6 @@ variables separated by a <span class='ec-lmtt-10'>: </span>symbol. For example, 
      <!-- l. 4820 --><p class='noindent'>Refer to the <a href='https://support.apple.com/HT210104'>support page</a> for more details on how <span class='ec-lmtt-10'>MacPro7,1 </span>slots are configured.
      </p></li>
      <li class='itemize'><span class='ec-lmtt-10'>5EDDA193-A070-416A-85EB-2A1181F45B18:SlotUtilPEXConf</span>
-                                                                                                  
-                                                                                                  
      User PCI expansion slot configuration for <span class='ec-lmtt-10'>MacPro7,1</span>. 8-byte sequence describing user PCI slot configuration.
 </li></ul>
 <p><a id='x1-53001r50'></a></p>
@@ -3391,6 +3389,8 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
      <span class='ec-lmtt-10'>NVRAM</span>, and <span class='ec-lmtt-10'>SMBIOS </span>sections.
      </p><!-- l. 4877 --><p class='noindent'>Enabling this option is useful when <span class='ec-lmtt-10'>Generic </span>section is flexible enough: </p>
          <ul class='itemize1'>
+                                                                                                  
+                                                                                                  
          <li class='itemize'>When enabled <span class='ec-lmtt-10'>SMBIOS</span>, <span class='ec-lmtt-10'>DataHub</span>, and <span class='ec-lmtt-10'>PlatformNVRAM </span>data is unused.
          </li>
          <li class='itemize'>When disabled <span class='ec-lmtt-10'>Generic </span>section is unused.</li></ul>
@@ -3422,6 +3422,8 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
 <li class='enumerate' id='x1-55010x5'><span class='ec-lmtt-10'>UpdateSMBIOS</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Update SMBIOS fields. These fields are read from the <span class='ec-lmtt-10'>Generic </span>or <span class='ec-lmtt-10'>SMBIOS </span>sections depending on the
      setting of the <span class='ec-lmtt-10'>Automatic </span>property.
      </li>
+                                                                                                  
+                                                                                                  
 <li class='enumerate' id='x1-55012x6'>
      <!-- l. 4937 --><p class='noindent'><span class='ec-lmtt-10'>UpdateSMBIOSMode</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Create</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Update SMBIOS fields approach:
 </p>
@@ -3460,6 +3462,8 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
 </p>
          <ul class='itemize1'>
          <li class='itemize'>Apple uses the <span class='ec-lmtt-10'>Big Endian </span>format everywhere but it ignores SMBIOS UUID within macOS.
+                                                                                                  
+                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>dmidecode </span>uses the <span class='ec-lmtt-10'>Big Endian </span>format for SMBIOS 2.5.x or lower and the <span class='ec-lmtt-10'>Little Endian </span>format for 2.6
          and newer. Acidanthera <a href='https://github.com/acidanthera/dmidecode'>dmidecode</a> prints all three.
@@ -3471,8 +3475,6 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
      </span><span class='ec-lmtt-10'>Endian </span>format is used.
      </p><!-- l. 5010 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This preference does not affect UUIDs used in DataHub and NVRAM as they are not standardised and are added
      by Apple. Unlike SMBIOS, they are always stored in the <span class='ec-lmtt-10'>Big Endian </span>format.
-                                                                                                  
-                                                                                                  
      </p></li>
 <li class='enumerate' id='x1-55016x8'>
      <!-- l. 5015 --><p class='noindent'><span class='ec-lmtt-10'>Generic</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist dictionary</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Update all fields in <span class='ec-lmtt-10'>Automatic </span>mode.
@@ -3494,6 +3496,8 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
      <!-- l. 5043 --><p class='noindent'><span class='ec-lmtt-10'>SMBIOS</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist dictionary</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Update SMBIOS fields in non-<span class='ec-lmtt-10'>Automatic </span>mode.
      </p><!-- l. 5047 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This section is ignored and may be removed when <span class='ec-lmtt-10'>Automatic </span>is <span class='ec-lmtt-10'>true</span>.</p></li></ol>
 <p><a id='x1-55025r57'></a></p>
+                                                                                                  
+                                                                                                  
 <h4 class='subsectionHead'><span class='titlemark'>10.2   </span> <a id='x1-560002'></a>Generic Properties</h4>
      <ol class='enumerate1'>
 <li class='enumerate' id='x1-56002x1'>
@@ -3501,8 +3505,6 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
      </p><!-- l. 5060 --><p class='noindent'>It can be dangerous to use “Apple” in SMBIOS vendor fields for reasons outlined in the <span class='ec-lmtt-10'>SystemManufacturer</span>
      description. However, certain firmware may not provide valid values otherwise, which could obstruct the operation
      of some software.
-                                                                                                  
-                                                                                                  
      </p></li>
 <li class='enumerate' id='x1-56004x2'>
      <!-- l. 5065 --><p class='noindent'><span class='ec-lmtt-10'>AdviseFeatures</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Updates <span class='ec-lmtt-10'>FirmwareFeatures </span>with supported bits.
@@ -3525,6 +3527,8 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
      </li>
 <li class='enumerate' id='x1-56008x4'>
      <!-- l. 5095 --><p class='noindent'><span class='ec-lmtt-10'>SystemMemoryStatus</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Auto</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Indicates whether system memory is upgradable in <span class='ec-lmtt-10'>PlatformFeature</span>. This controls the visibility of the
+                                                                                                  
+                                                                                                  
      Memory tab in “About This Mac”.
      </p><!-- l. 5101 --><p class='noindent'>Valid values:
 </p>
@@ -3534,8 +3538,6 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
          <li class='itemize'><span class='ec-lmtt-10'>Upgradable </span>— explicitly unset <span class='ec-lmtt-10'>PT_FEATURE_HAS_SOLDERED_SYSTEM_MEMORY </span>(<span class='ec-lmtt-10'>0x2</span>) in <span class='ec-lmtt-10'>PlatformFeature</span>.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>Soldered </span>— explicitly set <span class='ec-lmtt-10'>PT_FEATURE_HAS_SOLDERED_SYSTEM_MEMORY </span>(<span class='ec-lmtt-10'>0x2</span>) in <span class='ec-lmtt-10'>PlatformFeature</span>.</li></ul>
-                                                                                                  
-                                                                                                  
      <!-- l. 5112 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: On certain Mac models, such as the <span class='ec-lmtt-10'>MacBookPro10,x </span>and any <span class='ec-lmtt-10'>MacBookAir</span>, SPMemoryReporter.spreporter will
      ignore <span class='ec-lmtt-10'>PT_FEATURE_HAS_SOLDERED_SYSTEM_MEMORY </span>and assume that system memory is non-upgradable.
      </p></li>
@@ -3555,6 +3557,8 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
      applicable to some setups, and may provide unexpected results. It is highly recommended to specify the UUID explicitly.
      Refer to <span class='ec-lmtt-10'>UseRawUuidEncoding </span>to determine how SMBIOS value is parsed.
      </p></li>
+                                                                                                  
+                                                                                                  
 <li class='enumerate' id='x1-56018x9'>
      <!-- l. 5148 --><p class='noindent'><span class='ec-lmtt-10'>MLB</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty (OEM specified or not installed)<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Refer to SMBIOS <span class='ec-lmtt-10'>BoardSerialNumber</span>.
      </p><!-- l. 5153 --><p class='noindent'>Specify special string value <span class='ec-lmtt-10'>OEM </span>to extract current value from NVRAM (<span class='ec-lmtt-10'>MLB </span>variable) or SMBIOS and use it throughout
@@ -3578,6 +3582,8 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
      SMBIOS <span class='ec-lmtt-10'>SystemSerialNumber </span>in Unicode.
      </li>
 <li class='enumerate' id='x1-57008x4'><span class='ec-lmtt-10'>SystemUUID</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span>, GUID<br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty (Not installed)<br class='newline' /><span class='ec-lmbx-10'>Description</span>:  Sets  <span class='ec-lmtt-10'>system-id </span>in  <span class='ec-lmtt-10'>gEfiMiscSubClassGuid</span>.  The  value  found  on  Macs  is  equal  to  SMBIOS
+                                                                                                  
+                                                                                                  
      <span class='ec-lmtt-10'>SystemUUID </span>(with swapped byte order).
      </li>
 <li class='enumerate' id='x1-57010x5'><span class='ec-lmtt-10'>BoardProduct</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty (Not installed)<br class='newline' /><span class='ec-lmbx-10'>Description</span>:  Sets  <span class='ec-lmtt-10'>board-id </span>in  <span class='ec-lmtt-10'>gEfiMiscSubClassGuid</span>.  The  value  found  on  Macs  is  equal  to  SMBIOS
@@ -3609,6 +3615,8 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x00010000 </span>— Wake cause was a ME Wake event (Same as PRSTS bit 0, <span class='ec-lmtt-10'>ME_WAKE_STS</span>)
          </li>
+                                                                                                  
+                                                                                                  
          <li class='itemize'><span class='ec-lmtt-10'>0x00020000 </span>— Cold Reboot was ME Induced event (Same as <span class='ec-lmtt-10'>PRSTS </span>bit 1 <span class='ec-lmtt-10'>ME_HRST_COLD_STS</span>)
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x00040000 </span>— Warm Reboot was ME Induced event (Same as <span class='ec-lmtt-10'>PRSTS </span>bit 2 <span class='ec-lmtt-10'>ME_HRST_WARM_STS</span>)
@@ -3618,8 +3626,6 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
          <li class='itemize'><span class='ec-lmtt-10'>0x00100000 </span>— Global reset ME Watchdog Timer event (Same as <span class='ec-lmtt-10'>PRSTS </span>bit 6)
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x00200000 </span>— Global reset PowerManagement Watchdog Timer event (Same as <span class='ec-lmtt-10'>PRSTS </span>bit 15)</li></ul>
-                                                                                                  
-                                                                                                  
      </li>
 <li class='enumerate' id='x1-57016x8'><span class='ec-lmtt-10'>InitialTSC</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span>, 64-bit<br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Sets <span class='ec-lmtt-10'>InitialTSC </span>in <span class='ec-lmtt-10'>gEfiProcessorSubClassGuid</span>. Sets initial TSC value, normally 0.
      </li>
@@ -3646,8 +3652,6 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
 <li class='enumerate' id='x1-57024x12'><span class='ec-lmtt-10'>SmcRevision</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist data</span>, 6 bytes<br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty (Not installed)<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Sets <span class='ec-lmtt-10'>REV </span>in <span class='ec-lmtt-10'>gEfiMiscSubClassGuid</span>. Custom property read by <span class='ec-lmtt-10'>VirtualSMC </span>or <span class='ec-lmtt-10'>FakeSMC </span>to generate SMC
      <span class='ec-lmtt-10'>REV </span>key.
      </li>
-                                                                                                  
-                                                                                                  
 <li class='enumerate' id='x1-57026x13'><span class='ec-lmtt-10'>SmcBranch</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist data</span>, 8 bytes<br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty (Not installed)<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Sets <span class='ec-lmtt-10'>RBr </span>in <span class='ec-lmtt-10'>gEfiMiscSubClassGuid</span>. Custom property read by <span class='ec-lmtt-10'>VirtualSMC </span>or <span class='ec-lmtt-10'>FakeSMC </span>to generate SMC
      <span class='ec-lmtt-10'>RBr </span>key.
      </li>
@@ -3665,6 +3669,8 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
      Properties</a> section below. This should include all memory slots, even if unpopulated.
      </p></li>
 <li class='enumerate' id='x1-58006x3'>
+                                                                                                  
+                                                                                                  
      <!-- l. 5362 --><p class='noindent'><span class='ec-lmtt-10'>ErrorCorrection</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span>, 8-bit<br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0x03</span><br class='newline' /><span class='ec-lmbx-10'>SMBIOS</span>: Physical Memory Array (Type 16) — Memory Error Correction<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Specifies the primary hardware error correction or detection method supported by the memory.
 </p>
          <ul class='itemize1'>
@@ -3699,13 +3705,13 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
          <li class='itemize'><span class='ec-lmtt-10'>0x09 </span>— DIMM
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x0D </span>— SODIMM
+                                                                                                  
+                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x0F </span>— FB-DIMM</li></ul>
      </li>
 <li class='enumerate' id='x1-58010x5'><span class='ec-lmtt-10'>MaxCapacity</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span>, 64-bit<br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>SMBIOS</span>: Physical Memory Array (Type 16) — Maximum Capacity<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Specifies the maximum amount of memory, in bytes, supported by the system.
      </li>
-                                                                                                  
-                                                                                                  
 <li class='enumerate' id='x1-58012x6'><span class='ec-lmtt-10'>TotalWidth</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span>, 16-bit<br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0xFFFF </span>(unknown)<br class='newline' /><span class='ec-lmbx-10'>SMBIOS</span>: Memory Device (Type 17) — Total Width<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Specifies the total width, in bits, of the memory, including any check or error-correction bits. If there are
      no error-correction bits, this value should be equal to <span class='ec-lmtt-10'>DataWidth</span>.
      </li>
@@ -3729,6 +3735,8 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x1A </span>— DDR4
          </li>
+                                                                                                  
+                                                                                                  
          <li class='itemize'><span class='ec-lmtt-10'>0x1B </span>— LPDDR
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x1C </span>— LPDDR2
@@ -3738,8 +3746,6 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
          <li class='itemize'><span class='ec-lmtt-10'>0x1E </span>— LPDDR4</li></ul>
      </li>
 <li class='enumerate' id='x1-58016x8'>
-                                                                                                  
-                                                                                                  
      <!-- l. 5472 --><p class='noindent'><span class='ec-lmtt-10'>TypeDetail</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span>, 16-bit<br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0x4</span><br class='newline' /><span class='ec-lmbx-10'>SMBIOS</span>: Memory Device (Type 17) — Type Detail<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Specifies additional memory type information.
 </p>
          <ul class='itemize1'>
@@ -3764,8 +3770,6 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
      </li>
 <li class='enumerate' id='x1-59006x3'><span class='ec-lmtt-10'>DeviceLocator</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Unknown</span><br class='newline' /><span class='ec-lmbx-10'>SMBIOS</span>: Memory Device (Type 17) — Device Locator<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Specifies the physically-labeled socket or board position where the memory device is located.
      </li>
-                                                                                                  
-                                                                                                  
 <li class='enumerate' id='x1-59008x4'>
      <!-- l. 5523 --><p class='noindent'><span class='ec-lmtt-10'>Manufacturer</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Unknown</span><br class='newline' /><span class='ec-lmbx-10'>SMBIOS</span>: Memory Device (Type 17) — Manufacturer<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Specifies the manufacturer of this memory device.
      </p><!-- l. 5529 --><p class='noindent'>For empty slot this must be set to <span class='ec-lmtt-10'>NO DIMM </span>for macOS System Profiler to correctly display memory slots on
@@ -3785,6 +3789,8 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
      </li>
 <li class='enumerate' id='x1-59012x6'><span class='ec-lmtt-10'>SerialNumber</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Unknown</span><br class='newline' /><span class='ec-lmbx-10'>SMBIOS</span>: Memory Device (Type 17) — Serial Number<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Specifies the serial number of this memory device.
      </li>
+                                                                                                  
+                                                                                                  
 <li class='enumerate' id='x1-59014x7'><span class='ec-lmtt-10'>Size</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span>, 32-bit<br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>SMBIOS</span>: Memory Device (Type 17) — Size<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Specifies the size of the memory device, in megabytes. <span class='ec-lmtt-10'>0 </span>indicates this slot is not populated.
      </li>
 <li class='enumerate' id='x1-59016x8'><span class='ec-lmtt-10'>Speed</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span>, 16-bit<br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>SMBIOS</span>: Memory Device (Type 17) — Speed<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Specifies the maximum capable speed of the device, in megatransfers per second (MT/s). <span class='ec-lmtt-10'>0 </span>indicates an
@@ -3804,6 +3810,8 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
 <li class='enumerate' id='x1-60008x4'>
      <!-- l. 5603 --><p class='noindent'><span class='ec-lmtt-10'>FirmwareFeatures</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist data</span>, 8 bytes<br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty (Not installed)<br class='newline' /><span class='ec-lmbx-10'>Description</span>: This variable comes in pair with <span class='ec-lmtt-10'>FirmwareFeaturesMask</span>. Specifies the values of NVRAM variables:
      </p>
+                                                                                                  
+                                                                                                  
          <ul class='itemize1'>
          <li class='itemize'><span class='ec-lmtt-10'>4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:FirmwareFeatures</span>
          </li>
@@ -3811,8 +3819,6 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
      </li>
 <li class='enumerate' id='x1-60010x5'>
      <!-- l. 5615 --><p class='noindent'><span class='ec-lmtt-10'>FirmwareFeaturesMask</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist data</span>, 8 bytes<br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty (Not installed)<br class='newline' /><span class='ec-lmbx-10'>Description</span>: This variable comes in pair with <span class='ec-lmtt-10'>FirmwareFeatures</span>. Specifies the values of NVRAM variables:
-                                                                                                  
-                                                                                                  
      </p>
          <ul class='itemize1'>
          <li class='itemize'><span class='ec-lmtt-10'>4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:FirmwareFeaturesMask</span>
@@ -3831,6 +3837,8 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
 <li class='enumerate' id='x1-61002x1'><span class='ec-lmtt-10'>BIOSVendor</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty (OEM specified)<br class='newline' /><span class='ec-lmbx-10'>SMBIOS</span>: BIOS Information (Type 0) — Vendor<br class='newline' /><span class='ec-lmbx-10'>Description</span>: BIOS Vendor. All rules of <span class='ec-lmtt-10'>SystemManufacturer </span>do apply.
      </li>
 <li class='enumerate' id='x1-61004x2'>
+                                                                                                  
+                                                                                                  
      <!-- l. 5656 --><p class='noindent'><span class='ec-lmtt-10'>BIOSVersion</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty (OEM specified)<br class='newline' /><span class='ec-lmbx-10'>SMBIOS</span>: BIOS Information (Type 0) — BIOS Version<br class='newline' /><span class='ec-lmbx-10'>Description</span>:  Firmware  version.  This  value  gets  updated  and  takes  part  in  update  delivery  configuration
      and  macOS  version  compatibility.  This  value  could  look  like  <span class='ec-lmtt-10'>MM71.88Z.0234.B00.1809171422 </span>in  older
      firmware   and   is   described   in   <a href='https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/Guid/BiosId.h'>BiosId.h</a>.   In   newer   firmware,   it   should   look   like   <span class='ec-lmtt-10'>236.0.0.0.0  </span>or
@@ -4050,7 +4058,8 @@ OpenCore compilation can be taken, but choose a corresponding package: </p><!-- 
 <span class='label'><a id='x1-64004r3'></a></span><span class='ec-lmtk-10'>source</span><span class='ec-lmtt-10'> edksetup.sh </span><br /> 
 <span class='label'><a id='x1-64005r4'></a></span><span class='ec-lmtk-10'>make</span><span class='ec-lmtt-10'> -C BaseTools </span><br /> 
 <span class='label'><a id='x1-64006r5'></a></span><span class='ec-lmtk-10'>build</span><span class='ec-lmtt-10'> -a X64 -b RELEASE -t XCODE5 -p FatPkg/FatPkg.dsc </span><br /> 
-<span class='label'><a id='x1-64007r6'></a></span><span class='ec-lmtk-10'>build</span><span class='ec-lmtt-10'> -a X64 -b RELEASE -t XCODE5 -p MdeModulePkg/MdeModulePkg.dsc</span></div>
+<span class='label'><a id='x1-64007r6'></a></span><span class='ec-lmtk-10'>build</span><span class='ec-lmtt-10'> -a X64 -b RELEASE -t XCODE5 -p MdeModulePkg/MdeModulePkg.dsc</span>
+</div>
 <p><a id='x1-64008r66'></a></p>
 <h4 class='subsectionHead'><span class='titlemark'>11.3   </span> <a id='x1-650003'></a>Tools and Applications</h4>
 <!-- l. 6015 --><p class='noindent'>Standalone tools may help to debug firmware and hardware. Some of the known tools are listed below. While some tools can be
@@ -4065,8 +4074,9 @@ an HFS+ or APFS volume:
 <p><a id='x1-65001r3'></a></p>
 <p><a id='x1-65002'></a></p>
 <div class='lstlisting' id='listing-16'><span class='label'><a id='x1-65003r1'></a></span><span class='ec-lmtk-10'>sudo</span><span class='ec-lmtt-10'> bless --verbose --file /Volumes/VOLNAME/DIR/OpenShell.efi \ </span><br /> 
-<span class='label'><a id='x1-65004r2'></a></span><span class='ec-lmtt-10'>  --folder /Volumes/VOLNAME/DIR/ --setBoot</span></div>
+<span class='label'><a id='x1-65004r2'></a></span><span class='ec-lmtt-10'>  --folder /Volumes/VOLNAME/DIR/ --setBoot</span>
 <figcaption class='caption'><span class='id'>Listing 3:</span><span class='content'>Blessing tool</span></figcaption><!-- tex4ht:label?: x1-65001r  -->
+</div>
 <!-- l. 6033 --><p class='noindent'><span class='ec-lmri-10'>Note 1</span>: <span class='ec-lmtt-10'>/System/Library/CoreServices/BridgeVersion.bin </span>should be copied to <span class='ec-lmtt-10'>/Volumes/VOLNAME/DIR</span>.
 <br class='newline' /><span class='ec-lmri-10'>Note 2</span>: To be able to use the <span class='ec-lmtt-10'>bless </span>command, <a href='https://developer.apple.com/library/archive/documentation/Security/Conceptual/System_Integrity_Protection_Guide/ConfiguringSystemIntegrityProtection/ConfiguringSystemIntegrityProtection.html'>disabling System Integrity Protection</a> is necessary. <br class='newline' /><span class='ec-lmri-10'>Note 3</span>: To be able to boot <a href='https://support.apple.com/HT208330'>Secure Boot</a> might be disabled if present.
 </p><!-- l. 6040 --><p class='noindent'>Some of the known tools are listed below (builtin tools are marked with <span class='ec-lmbx-10'>*</span>):
@@ -5226,7 +5236,8 @@ as shown below:
 <span class='label'><a id='x1-83015r15'></a></span><span class='ec-lmtt-10'>cp DS_STORE RW/.DS_Store </span><br /> 
 <span class='label'><a id='x1-83016r16'></a></span><span class='ec-lmtt-10'>hdiutil detach RW -force </span><br /> 
 <span class='label'><a id='x1-83017r17'></a></span><span class='ec-lmtt-10'>rm -rf DS_STORE RW </span><br /> 
-<span class='label'><a id='x1-83018r18'></a></span><span class='ec-lmtt-10'>hdiutil convert ReadWrite.dmg -format UDZO -o ReadOnly.dmg</span></div>
+<span class='label'><a id='x1-83018r18'></a></span><span class='ec-lmtt-10'>hdiutil convert ReadWrite.dmg -format UDZO -o ReadOnly.dmg</span>
+</div>
 <p><a id='x1-83019r86'></a></p>
 <h5 class='subsubsectionHead'><span class='titlemark'>12.1.4   </span> <a id='x1-840004'></a>macOS 10.5</h5>
      <ul class='itemize1'>
@@ -5244,6 +5255,8 @@ as shown below:
      can be found <a href='https://archive.org/details/10.5.7-9-j-3050'>here</a> (<a href='https://mega.nz/folder/inRBTarD#zanf7fUbviwz3WHBU5xpCg'>MEGA Mirror</a>), assuming macOS 10.5 is legally owned. Refer to the <span class='ec-lmtt-10'>DIGEST.txt </span>file for
      details. Note that this is the earliest tested version of macOS 10.5 with OpenCore.</li></ul>
 <p><a id='x1-84001r87'></a></p>
+                                                                                                  
+                                                                                                  
 <h5 class='subsubsectionHead'><span class='titlemark'>12.1.5   </span> <a id='x1-850005'></a>macOS 10.4</h5>
      <ul class='itemize1'>
      <li class='itemize'>All previous issues apply.
@@ -5279,6 +5292,8 @@ settings as explained below:
      </li>
 <li class='enumerate' id='x1-86010x5'>Make sure that <span class='ec-lmtt-10'>ScanPolicy </span>restricts loading from undesired devices. It is a good idea to prohibit all removable
      drivers or unknown filesystems.
+                                                                                                  
+                                                                                                  
      </li>
 <li class='enumerate' id='x1-86012x6'>Sign all the installed drivers and tools with the private key. Do not sign tools that provide administrative access
      to the computer, such as UEFI Shell.
@@ -5313,8 +5328,6 @@ Windows 7, might work with some extra precautions. Things to consider:
      </li>
      <li class='itemize'>macOS requires the first partition to be EFI System Partition, and does not support the default Windows layout.
      While OpenCore does have a <a href='https://github.com/acidanthera/bugtracker/issues/327'>workaround</a> for this, it is highly recommend not to rely on it and install properly.
-                                                                                                  
-                                                                                                  
      </li>
      <li class='itemize'>Windows may need to be reactivated. To avoid it consider setting SystemUUID to the original firmware UUID.
      Be aware that it may be invalid on old firmware, i.e., not random. If there still are issues, consider using HWID
@@ -5383,14 +5396,15 @@ utility. Reference example:
 <span class='label'><a id='x1-87030r28'></a></span><span class='ec-lmtt-10'>Do you want to proceed? (Y/N): Y </span><br /> 
 <span class='label'><a id='x1-87031r29'></a></span><span class='ec-lmtt-10'>OK; writing new GUID partition table (GPT) to \\.\physicaldrive0. </span><br /> 
 <span class='label'><a id='x1-87032r30'></a></span><span class='ec-lmtt-10'>Disk synchronization succeeded! The computer should now use the new partition table. </span><br /> 
-<span class='label'><a id='x1-87033r31'></a></span><span class='ec-lmtt-10'>The operation has completed successfully.</span></div>
+<span class='label'><a id='x1-87033r31'></a></span><span class='ec-lmtt-10'>The operation has completed successfully.</span>
 <figcaption class='caption'><span class='id'>Listing 4:</span><span class='content'>Relabeling Windows volume</span></figcaption><!-- tex4ht:label?: x1-87001r  -->
+</div>
+                                                                                                  
+                                                                                                  
 <!-- l. 8009 --><p class='noindent'><span class='ec-lmbx-10'>How do I choose Windows BOOTCAMP with custom NTFS drivers?</span>
 </p><!-- l. 8011 --><p class='noindent'>Third-party drivers providing NTFS support, such as <a href='https://www.tuxera.com/community/open-source-ntfs-3g'>NTFS-3G</a>, Paragon NTFS, Tuxera NTFS or <a href='https://www.seagate.com/support/software/paragon'>Seagate Paragon Driver</a>
 disrupt certain macOS functionality, including the <a href='https://support.apple.com/HT202796'>Startup Disk</a> preference pane normally used for operating system selection.
 While the recommended option remains not to use such drivers as they commonly corrupt the filesystem, and prefer the driver
-                                                                                                  
-                                                                                                  
 bundled with macOS with optional write support ( <a href='http://osxdaily.com/2013/10/02/enable-ntfs-write-support-mac-os-x'>command</a> or <a href='https://mounty.app'>GUI</a>), there still exist vendor-specific workarounds for their
 products: <a href='https://www.tuxera.com/products/tuxera-ntfs-for-mac/faq'>Tuxera</a>, <a href='https://kb.paragon-software.com/article/6604'>Paragon</a>, etc.
 <a id='x1-87034r90'></a>
@@ -5431,11 +5445,11 @@ To additionally enable XNU kernel serial output <span class='ec-lmtt-10'>debug=0
          </li>
          <li class='itemize'>Boot Picker (entry selector) is enabled: <span class='ec-lmtt-10'>Misc </span><span class='lmsy-10'>→ </span><span class='ec-lmtt-10'>Boot </span><span class='lmsy-10'>→ </span><span class='ec-lmtt-10'>ShowPicker </span><span class='rm-lmr-10'>= </span><span class='ec-lmtt-10'>true</span>.</li></ul>
      <!-- l. 8081 --><p class='noindent'>If there is no obvious error, check the available workarounds in the <span class='ec-lmtt-10'>Quirks </span>sections one by one. For early boot
+                                                                                                  
+                                                                                                  
      troubleshooting, for instance, when OpenCore menu does not appear, using <span class='ec-lmtt-10'>UEFI Shell </span>(bundled with OpenCore) may
      help to see early debug messages.
      </p></li>
-                                                                                                  
-                                                                                                  
 <li class='enumerate' id='x1-89004x2'>
      <!-- l. 8087 --><p class='noindent'><span class='ec-lmbx-10'>How do I debug macOS boot failures?</span>
 </p>
@@ -5474,11 +5488,11 @@ To additionally enable XNU kernel serial output <span class='ec-lmtt-10'>debug=0
      with OpenCore. Load the OpenCore picker and choose the entry, it will have a <span class='ec-lmtt-10'>(dmg) </span>suffix. Custom name may be
      created by providing <span class='ec-lmtt-10'>.contentDetails </span>file.
      </p><!-- l. 8131 --><p class='noindent'>To download recovery online <a href='https://github.com/acidanthera/OpenCorePkg/blob/master/Utilities/macrecovery/macrecovery.py'>macrecovery.py</a> can be used.
+                                                                                                  
+                                                                                                  
      </p><!-- l. 8135 --><p class='noindent'>For offline installation refer to <a href='https://support.apple.com/HT201372'>How to create a bootable installer for macOS</a> article. Apart from App Store and
      <span class='ec-lmtt-10'>softwareupdate </span>utility there also are <a href='https://github.com/corpnewt/gibMacOS'>third-party utilities</a> to download an offline image.
      </p></li>
-                                                                                                  
-                                                                                                  
 <li class='enumerate' id='x1-89012x6'>
      <!-- l. 8141 --><p class='noindent'><span class='ec-lmbx-10'>Why do online recovery images (</span><span class='ec-lmtk-10'>*.dmg</span><span class='ec-lmbx-10'>) fail to load?</span>
      </p><!-- l. 8143 --><p class='noindent'>This may be caused by missing HFS+ driver, as all presently known recovery volumes have HFS+ filesystem.
@@ -5518,8 +5532,6 @@ To additionally enable XNU kernel serial output <span class='ec-lmtt-10'>debug=0
          <li class='itemize'><span class='ec-lmtt-10'>ProvideCustomSlide</span>
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>RebuildAppleMemoryMap</span>
-                                                                                                  
-                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>SetupVirtualMap</span></li></ul>
      <!-- l. 8184 --><p class='noindent'>However, as of today, such set is strongly discouraged as some of these quirks are not necessary to be enabled or need
