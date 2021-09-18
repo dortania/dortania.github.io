@@ -25,7 +25,6 @@ permalink: /forums/
 ### Discord Communities
 
 * [Official r/hackintosh Discord](https://discord.gg/Wxam8aH)
-   * Discord specializing in AMD hardware
   * A discord for all things hackintosh
   * Mainly specializing in Intel hardware
 * [AMD-OSX's Discord](https://discord.gg/qudxDed)
