@@ -92,10 +92,179 @@ href="https://github.com/acidanthera/ocbuild/tree/master/external" >MTOC</a>. Th
 for use despite the toolchain name. An example command sequence is as follows:
                                                                                                   
                                                                                                   
-     
-     
-     
-     
-                                 
+     </p></li>
+<li 
+  class="enumerate" id="x1-26038x19">
+     <!--l. 1820--><p class="noindent" >SyncRuntimePermissions<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Update memory permissions for the runtime environment.
+     </p><!--l. 1825--><p class="noindent" >Some types of firmware fail to properly handle runtime permissions: </p>
+         <ul class="itemize1">
+         <li class="itemize">
+         <!--l. 1828--><p class="noindent" >They incorrectly mark OpenRuntime as not executable in the memory map.
+         </p></li>
+         <li class="itemize">
+         <!--l. 1829--><p class="noindent" >They incorrectly mark OpenRuntime as not executable in the memory attributes table.
+         </p></li>
+         <li class="itemize">
+         <!--l. 1831--><p class="noindent" >They lose entries from the memory attributes table after OpenRuntime is loaded.
+         </p></li>
+         <li class="itemize">
+         <!--l. 1833--><p class="noindent" >They mark items in the memory attributes table as read-write-execute.</p></li></ul>
+     <!--l. 1836--><p class="noindent" >This quirk attempts to update the memory map and memory attributes table to correct this.
+     </p><!--l. 1838--><p class="noindent" >Note: The need for this quirk is indicated by early boot failures <span class="sout">. </span><span class="uwave">(e.g. halts at black screen), particularly in early boot of
+     the Linux kernel. </span>Only firmware released after 2017 is typically affected.
+</p>
+     </li></ol>
+<a 
+ id="x1-26039r23"></a>
+<h3 class="sectionHead"><span class="titlemark">6   </span> <a 
+ id="x1-270006"></a>DeviceProperties</h3>
+<a 
+ id="x1-27001r28"></a>
+<h4 class="subsectionHead"><span class="titlemark">6.1   </span> <a 
+ id="x1-280001"></a>Introduction</h4>
+<!--l. 1849--><p class="noindent" >Device configuration is provided to macOS with a dedicated buffer, called EfiDevicePathPropertyDatabase. This buffer is a
+serialised map of DevicePaths to a map of property names and their values.
+</p><!--l. 1853--><p class="noindent" >Property data can be debugged with <a 
+href="https://github.com/acidanthera/gfxutil" >gfxutil</a>. To obtain current property data, use the following command in macOS:
+</p><!--l. 1856-->
+<div class="lstlisting" id="listing-4"><span class="label"><a 
+ id="x1-28001r1"></a></span>ioreg -lw0 -p IODeviceTree -n efi -r -x | grep device-properties | <br /> 
+<span class="label"><a 
+ id="x1-28002r2"></a></span>  sed &#x0027;s/.*&#x003C;//;s/&#x003E;.*//&#x0027; &#x003E; /tmp/device-properties.hex &#x0026;&#x0026; <br /> 
+<span class="label"><a 
+ id="x1-28003r3"></a></span>  gfxutil /tmp/device-properties.hex /tmp/device-properties.plist &#x0026;&#x0026; <br /> 
+<span class="label"><a 
+ id="x1-28004r4"></a></span>  cat /tmp/device-properties.plist</div>
+<!--l. 1863--><p class="noindent" >Device properties are part of the IODeviceTree (gIODT) plane of the macOS I/O Registry. This plane has several construction
+stages relevant for the platform initialisation. While the early construction stage is performed by the XNU kernel in the
+IODeviceTreeAlloc method, the majority of the construction is performed by the platform expert, implemented in
+AppleACPIPlatformExpert.kext.
+</p><!--l. 1870--><p class="noindent" >AppleACPIPlatformExpert incorporates two stages of IODeviceTree construction implemented by calling <br 
+class="newline" />AppleACPIPlatformExpert::mergeDeviceProperties:
+     </p><ol  class="enumerate1" >
+<li 
+  class="enumerate" id="x1-28006x1">
+     <!--l. 1876--><p class="noindent" >During ACPI table initialisation through the recursive ACPI namespace scanning by the calls to <br 
+class="newline" />AppleACPIPlatformExpert::createDTNubs.
+     </p></li>
+<li 
+  class="enumerate" id="x1-28008x2">
+                                                                                                  
+                                                                                                  
+</p><!--l. 6267--><p class="noindent" >For distributions which do not use either of the above schemes, OpenLinuxBoot will autodetect and boot {boot}/vmlinuz*
+kernel files directly, after linking these automatically – based on the kernel version in the filename – to their associated
+{boot}/init* ramdisk files, and after searching in /etc/default/grub for kernel boot options and /etc/os-release
+for the distro name. This layout applies to most Debian-related distros, including Debian itself, Ubuntu and
+variants.
+</p><!--l. 6274--><p class="noindent" >The method of starting the kernel relies on it being compiled with EFISTUB, however this applies to almost all modern
+distros, particularly those which use systemd. Most modern distros use systemd as their system manager (even though at the
+same time most do not use systemd-boot as their bootloader).
+</p><!--l. 6279--><p class="noindent" >The latest kernel version of a given install is always shown in the boot menu. Additional versions, recovery versions, etc. are
+added as auxiliary boot entries, so depending on OpenCore’s HideAuxiliary setting may not be shown until the space key is
+pressed.
+</p><!--l. 6283--><p class="noindent" >Note 1: OpenLinuxBoot requires filesystem drivers that may not be available in firmware such as EXT4 and BTRFS drivers.
+These drivers can be obtained from external sources. Drivers tested in basic scenarios can be downloaded from <a 
+href="https://github.com/acidanthera/OcBinaryData" >OcBinaryData</a>.
+Be aware that these drivers are neither tested for reliability in all scenarious, nor underwent any tamper-resistance testing,
+therefore have may carry potential security or data-loss risks.
+</p><!--l. 6289--><p class="noindent" >Most Linux distributions keep their boot files on <span class="sout">the </span><span class="uwave">an </span>EXT4 <span class="sout">file system </span><span class="uwave">partition </span>even when the distribution’s <span class="sout">main </span><span class="uwave">root
+</span>filesystem is something else<span class="uwave">, </span>such as BTRFS, therefore <span class="sout">a suitable UEFI </span><span class="uwave">only an </span>EXT4 <span class="sout">file system </span>driver such as <a 
+href="https://github.com/acidanthera/OcBinaryData" >ext4_x64</a>
+is normally required. A BTRFS driver such as <a 
+href="https://github.com/acidanthera/OcBinaryData" >btrfs_x64</a> will be required in <span class="sout">a </span><span class="uwave">the currently </span>somewhat less
+standard <span class="sout">setup </span><span class="uwave">situation </span>where the boot files are on a BTRFS partition, e.g. as <span class="uwave">is currently done </span>by default in
+openSUSE.
+</p><!--l. 6297--><p class="noindent" >Pure Boot Loader Spec (e.g. as implemented by systemd-boot) keeps all kernel and ramdisk images directly on the EFI System
+Partition (or an Extended Boot Loader Partition), therefore it requires no additional filesystem driver - but it is not widely
+used except in Arch Linux.
+</p><!--l. 6301--><p class="noindent" >Note 2: <span class="uwave">OpenLinuxBoot</span> <span class="uwave">does not attempt to read and interpret the layout of Linux installation media (which can be highly
+variable). Installation media should be booted directly either from the machine’s own EFI boot menu or from the
+OpenCore boot menu. In some cases, e.g. Apple T2 hardware, then – depending on OpenCore’s security settings –
+OpenCore may be able to start some Linux installers which the machine’s own bootloader will refuse to boot.
+</span>
+</p><!--l. 6308--><p class="noindent" ><span class="uwave">Note 3</span><span class="uwave">: </span>systemd-boot users (probably almost exclusively Arch Linux users) should be aware that OpenLinuxBoot does not
+support the systemd-boot–specific <a 
+href="https://systemd.io/BOOT_LOADER_INTERFACE/" >Boot Loader Interface</a>; therefore use efibootmgr rather than bootctl for any low-level
+Linux command line interaction with the boot menu.
+</p><!--l. 6313--><p class="noindent" ><span class="uwave">Note 4</span><span class="uwave">: Be aware of the </span><span class="uwave">SyncRuntimePermissions</span> <span class="uwave">quirk, which may need to be set to avoid early boot failure
+(i.e. halts with black screen) of the Linux kernel due to a firmware bug of some firmware released after 2017.
+</span>
+</p><!--l. 6317--><p class="noindent" >The default parameter values should work well, but if you need to parameterise this driver the following options may be
+specified in UEFI/Drivers/Arguments:
+</p>
+     <ul class="itemize1">
+     <li class="itemize">
+     <!--l. 6322--><p class="noindent" >flags - Default: all flags except LINUX_BOOT_ADD_DEBUG_INFO are set.
+     </p><!--l. 6324--><p class="noindent" >Available flags are:
+</p>
+         <ul class="itemize2">
+         <li class="itemize">
+         <!--l. 6328--><p class="noindent" >0x00000001 (bit 0) — LINUX_BOOT_SCAN_ESP, Allows scanning for entries on EFI System Partition.
+         </p></li>
+         <li class="itemize">
+         <!--l. 6330--><p class="noindent" >0x00000002 (bit 1) — LINUX_BOOT_SCAN_XBOOTLDR, Allows scanning for entries on Extended Boot Loader
+         Partition.
+         </p></li>
+         <li class="itemize">
+                                                                                                  
+                                                                                                  
+         <!--l. 6332--><p class="noindent" >0x00000004 (bit  2)  —  LINUX_BOOT_SCAN_LINUX_ROOT,  Allows  scanning  for  entries  on  Linux  Root
+         filesystems.
+         </p></li>
+         <li class="itemize">
+         <!--l. 6334--><p class="noindent" >0x00000008 (bit  3)  —  LINUX_BOOT_SCAN_LINUX_DATA,  Allows  scanning  for  entries  on  Linux  Data
+         filesystems.
+         </p></li>
+         <li class="itemize">
+         <!--l. 6336--><p class="noindent" >0x00000080 (bit 7) — LINUX_BOOT_SCAN_OTHER, Allows scanning for entries on file systems not matched
+         by any of the above.
+         </p><!--l. 6339--><p class="noindent" >The following notes apply to all of the above options:
+         </p><!--l. 6341--><p class="noindent" >Note 1: Apple filesystems APFS and HFS are never scanned.
+         </p><!--l. 6344--><p class="noindent" >Note 2: Regardless of the above flags, a file system must first be allowed by Misc/Security/ScanPolicy
+         before it can be seen by OpenLinuxBoot or any other OC_BOOT_ENTRY_PROTOCOL driver.
+         </p><!--l. 6349--><p class="noindent" >Note 3: It is recommended to enable scanning LINUX_ROOT and LINUX_DATA in both OpenLinuxBoot flags
+         and Misc/Security/ScanPolicy in order to be sure to detect all valid Linux installs.
+         </p></li>
+         <li class="itemize">
+         <!--l. 6354--><p class="noindent" >0x00000100 (bit 8) — LINUX_BOOT_ALLOW_AUTODETECT, If set allows autodetecting and linking vmlinuz*
+         and init* ramdisk files when loader/entries files are not found.
+         </p></li>
+         <li class="itemize">
+         <!--l. 6357--><p class="noindent" >0x00000200 (bit 9) — LINUX_BOOT_USE_LATEST, When a Linux entry generated by OpenLinuxBoot is
+         selected as the default boot entry in OpenCore, automatically switch to the latest kernel when a new version
+         is installed.
+         </p><!--l. 6361--><p class="noindent" >When this option is set, an internal menu entry id is shared between kernel versions from the same install
+         of Linux. Linux boot options are always sorted highest kernel version first, so this means that the latest
+         kernel version of the same install always shows as the default, with this option set.
+         </p><!--l. 6365--><p class="noindent" >Note: This option is recommended on all systems.
+         </p></li>
+         <li class="itemize">
+         <!--l. 6367--><p class="noindent" >0x00000400 (bit  10)  —  LINUX_BOOT_ADD_RO,  This  option  applies  to  autodetected  Linux  only  (i.e.  to
+         Debian-style distrubutions, not to BLSpec and Fedora-style distributions with /loader/entries/*.conf
+         files). Some distrubtions run a filesystem check on loading which requires the root filesystem to initially
+         be mounted read-only via the ro kernel option. Set this bit to add this option on autodetected distros;
+         should be harmless but very slightly slow down boot time (due to requried remount as read-write) on distros
+         which do not require it. To specify this option for specific distros only, use partuuidopts:{partuuid}+=ro
+         instead of this flag<span class="uwave">. </span>
+         </p></li>
+         <li class="itemize">
+         <!--l. 6375--><p class="noindent" ><span class="uwave">0x00004000</span> <span class="uwave">(bit </span><span class="uwave">14</span><span class="uwave">) — </span><span class="uwave">LINUX_BOOT_LOG_VERBOSE</span><span class="uwave">, Add additional debug log info about files encountered
+         and autodetect options added while scanning for Linux boot entries</span>.
+         </p></li>
+         <li class="itemize">
+         <!--l. 6378--><p class="noindent" >0x00008000 (bit 15) — LINUX_BOOT_ADD_DEBUG_INFO, Adds a human readable file system type, followed
+         by the first eight characters of the partition’s unique partition uuid, to each generated entry name. Can
+         help with debugging the origin of entries generated by the driver when there are multiple Linux installs on
+         one system.</p></li></ul>
+     <!--l. 6385--><p class="noindent" >Flag values can be specified in hexadecimal beginning with 0x or in decimal, e.g. flags=0x80 or flags=128.
+     </p></li>
+     <li class="itemize">
+     <!--l. 6388--><p class="noindent" >partuuidopts:{partuuid}[+]=&#x0022;{options}&#x0022; - Default: not set.
+                                                                                                  
+
+
 </body>
 </html>
