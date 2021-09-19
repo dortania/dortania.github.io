@@ -248,11 +248,11 @@ specified in UEFI/Drivers/Arguments:
          be mounted read-only via the ro kernel option. Set this bit to add this option on autodetected distros;
          should be harmless but very slightly slow down boot time (due to requried remount as read-write) on distros
          which do not require it. To specify this option for specific distros only, use partuuidopts:{partuuid}+=ro
-         instead of this flag<span class="uwave">. </span>
+         instead of this flag.
          </p></li>
          <li class="itemize">
          <!--l. 6375--><p class="noindent" ><span class="uwave">0x00004000</span> <span class="uwave">(bit </span><span class="uwave">14</span><span class="uwave">) — </span><span class="uwave">LINUX_BOOT_LOG_VERBOSE</span><span class="uwave">, Add additional debug log info about files encountered
-         and autodetect options added while scanning for Linux boot entries</span>.
+         and autodetect options added while scanning for Linux boot entries. </span>
          </p></li>
          <li class="itemize">
          <!--l. 6378--><p class="noindent" >0x00008000 (bit 15) — LINUX_BOOT_ADD_DEBUG_INFO, Adds a human readable file system type, followed
@@ -263,6 +263,60 @@ specified in UEFI/Drivers/Arguments:
      </p></li>
      <li class="itemize">
      <!--l. 6388--><p class="noindent" >partuuidopts:{partuuid}[+]=&#x0022;{options}&#x0022; - Default: not set.
+                                                                                                  
+                                                                                                  
+     </p><table 
+class="align-star">
+                 <tr><td 
+class="align-odd">RawV olume</td>                 <td 
+class="align-even"> = MIN(<img 
+src="Differences4x.svg" alt="SystemAudioV  olume ∗ VolumeAmplif ier
+----------------100-----------------"  class="frac" align="middle" />,100)</td>                 <td 
+class="align-label"></td>                 <td 
+class="align-label"></td></tr></table>
+     <!--l. 6949--><p class="noindent" >Note: the transformation used in macOS is not linear, but it is very close and this nuance is thus ignored.
+</p>
+     </li></ol>
+<a 
+ id="x1-72019r75"></a>
+<h4 class="subsectionHead"><span class="titlemark">11.11   </span> <a 
+ id="x1-7300011"></a>Drivers Properties</h4>
+     <ol  class="enumerate1" >
+<li 
+  class="enumerate" id="x1-73002x1">
+     <!--l. 6960--><p class="noindent" ><span class="uwave">Comment</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist string</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: Empty</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Arbitrary ASCII string used to provide human readable reference for the entry. Whether this value
+     is used is implementation defined. </span>
+     </p></li>
+<li 
+  class="enumerate" id="x1-73004x2">
+     <!--l. 6968--><p class="noindent" >Path<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty<br 
+class="newline" />Description: Path of file to be loaded as a UEFI driver from OC/Drivers directory.
+     </p></li>
+<li 
+  class="enumerate" id="x1-73006x3">
+     <!--l. 6975--><p class="noindent" >Enabled<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: If false this driver entry will be ignored.
+     </p></li>
+<li 
+  class="enumerate" id="x1-73008x4">
+     <!--l. 6981--><p class="noindent" >Arguments<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty<br 
+class="newline" />Description: Some OC plugins accept optional additional arguments which may be specified as a string here.
+</p>
+     </li></ol>
+<a 
+ id="x1-73009r76"></a>
+<h4 class="subsectionHead"><span class="titlemark">11.12   </span> <a 
+ id="x1-7400012"></a>Input Properties</h4>
+     <ol  class="enumerate1" >
                                                                                                   
 
 
