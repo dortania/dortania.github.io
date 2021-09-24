@@ -96,7 +96,6 @@ img.math{vertical-align:middle;}
 div.par-math-display, div.math-display{text-align:center;}
 li p.indent { text-indent: 0em }
 li p:first-child{ margin-top:0em; }
-li p:first-child{ margin-bottom; }
 li p:last-child, li div:last-child { margin-bottom:0.5em; }
 li p:first-child{ margin-bottom:0; }
 li p~ul:last-child, li p~ol:last-child{ margin-bottom:0.5em; }
