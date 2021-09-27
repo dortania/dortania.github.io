@@ -147,7 +147,6 @@ table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }
 .hline hr, .cline hr{ height : 0px; margin:0px; }
 .hline td, .cline td{ padding: 0; }
 .hline hr, .cline hr{border:none;border-top:1px solid black;}
-.hline {border-top: 1px solid black;}
 .tabbing-right {text-align:right;}
 div.float, div.figure {margin-left: auto; margin-right: auto;}
 div.float img {text-align:center;}
