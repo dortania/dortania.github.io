@@ -268,42 +268,222 @@ class="newline" />Description: Apply the security configuration described in the
 <li 
   class="enumerate" id="x1-43012x6">
      <!--l. 3120--><p class="noindent" >Tools<a 
- id="x1-430116"></a>                                      <br 
-class="newline" /> escription: Sets SMBIOS vendor fields to Acidanthera.
-     </p><!--l. 5154--><p class="noindent" >It can be dangerous to use “Apple” in SMBIOS vendor fields for reasons outlined in the SystemManufacturer
+ id="x1-430116"></a>                                                        <br 
+class="newline" /> ype: plist string<br 
+class="newline" />Failsafe: Default<br 
+class="newline" />Description: Apple Secure Boot hardware model.
+     </p><!--l. 4243--><p class="noindent" >Sets Apple Secure Boot hardware model and policy. Specifying this value defines which operating systems will be
+     bootable. Operating systems shipped before the specified model was released will not boot.
+     </p><!--l. 4248--><p class="noindent" >Valid values:
+</p>
+         <ul class="itemize1">
+         <li class="itemize">
+         <!--l. 4252--><p class="noindent" >Default — <span class="sout">Recent available model , currently set to </span><span class="sout">x86legacy</span><span class="uwave">Matching model for current SMBIOS</span>.
+         </p></li>
+         <li class="itemize">
+         <!--l. 4254--><p class="noindent" >Disabled — No model, Secure Boot will be disabled.
+         </p></li>
+         <li class="itemize">
+         <!--l. 4255--><p class="noindent" >j137 — iMacPro1,1 (December 2017). Minimum macOS 10.13.2 (17C2111)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4256--><p class="noindent" >j680 — MacBookPro15,1 (July 2018). Minimum macOS 10.13.6 (17G2112)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4257--><p class="noindent" >j132 — MacBookPro15,2 (July 2018). Minimum macOS 10.13.6 (17G2112)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4258--><p class="noindent" >j174 — Macmini8,1 (October 2018). Minimum macOS 10.14 (18A2063)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4259--><p class="noindent" >j140k — MacBookAir8,1 (October 2018). Minimum macOS 10.14.1 (18B2084)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4260--><p class="noindent" >j780 — MacBookPro15,3 (May 2019). Minimum macOS 10.14.5 (18F132)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4261--><p class="noindent" >j213 — MacBookPro15,4 (July 2019). Minimum macOS 10.14.5 (18F2058)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4262--><p class="noindent" >j140a — MacBookAir8,2 (July 2019). Minimum macOS 10.14.5 (18F2058)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4263--><p class="noindent" >j152f — MacBookPro16,1 (November 2019). Minimum macOS 10.15.1 (19B2093)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4264--><p class="noindent" >j160 — MacPro7,1 (December 2019). Minimum macOS 10.15.1 (19B88)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4265--><p class="noindent" >j230k — MacBookAir9,1 (March 2020). Minimum macOS 10.15.3 (19D2064)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4266--><p class="noindent" >j214k — MacBookPro16,2 (May 2020). Minimum macOS 10.15.4 (19E2269)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4267--><p class="noindent" >j223 — MacBookPro16,3 (May 2020). Minimum macOS 10.15.4 (19E2265)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4268--><p class="noindent" >j215 — MacBookPro16,4 (June 2020). Minimum macOS 10.15.5 (19F96)
+         </p></li>
+                                                                                                  
+                                                                                                  
+         <li class="itemize">
+         <!--l. 4269--><p class="noindent" >j185 — iMac20,1 (August 2020). Minimum macOS 10.15.6 (19G2005)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4270--><p class="noindent" >j185f — iMac20,2 (August 2020). Minimum macOS 10.15.6 (19G2005)
+         </p></li>
+         <li class="itemize">
+         <!--l. 4271--><p class="noindent" >x86legacy — Macs without T2 chip and VMs. Minimum macOS 11.0.1 (20B29)</p></li></ul>
+     <!--l. 4274--><p class="noindent" >Warning: Not all Apple Secure Boot models are supported on all hardware configurations. <span class="sout">Starting with macOS 12
+     </span><span class="sout">x86legacy</span> <span class="sout">is the only Apple Secure Boot model compatible with software update on hardware without T2 chips.
+     </span>
+     </p><!--l. 4280--><p class="noindent" >Apple Secure Boot appeared in macOS 10.13 on models with T2 chips. <span class="sout">Since </span><span class="uwave">Prior to macOS 12 </span>PlatformInfo and
+     SecureBootModel <span class="sout">are independent, </span><span class="uwave">were independent, allowing </span>Apple Secure Boot can be used with any SMBIOS with
+     and without T2. <span class="uwave">Starting with macOS 12 </span><span class="uwave">SecureBootModel</span> <span class="uwave">must match the SMBIOS Mac model. </span><span class="uwave">Default</span> <span class="uwave">model
+     derives the model based on SMBIOS board identifier, either set automatically via the </span><span class="uwave">Generic</span> <span class="uwave">section or set manually
+     via the </span><span class="uwave">SMBIOS</span> <span class="uwave">section. If there is no board identifier override the model will be derived heuristically from OEM
+     SMBIOS. </span>
+     </p><!--l. 4290--><p class="noindent" >Setting SecureBootModel to any valid value but Disabled is equivalent to <a 
+href="https://support.apple.com/en-us/HT208330" >Medium Security</a> of Apple Secure Boot. The
+     ApECID value must also be specified to achieve Full Security. Check ForceSecureBootScheme when using Apple Secure
+     Boot on a virtual machine.
+     </p><!--l. 4297--><p class="noindent" >Note that enabling Apple Secure Boot is demanding on invalid configurations, faulty macOS installations, and on
+     unsupported setups.
+     </p><!--l. 4300--><p class="noindent" >Things to consider:
+         </p><ol  class="enumerate2" >
+<li 
+  class="enumerate" id="x1-46052x1">
+         <!--l. 4304--><p class="noindent" >As with T2 Macs, all unsigned kernel extensions as well as several signed kernel extensions, including
+         NVIDIA Web Drivers, cannot be installed.
+         </p></li>
+<li 
+  class="enumerate" id="x1-46054x2">
+         <!--l. 4306--><p class="noindent" >The list of cached kernel extensions may be different, resulting in a need to change the list of Added or
+         Forced kernel extensions. For example, IO80211Family cannot be injected in this case.
+         </p></li>
+<li 
+  class="enumerate" id="x1-46056x3">
+         <!--l. 4309--><p class="noindent" >System volume alterations on operating systems with sealing, such as macOS 11, may result in the operating
+         system being unbootable. Do not try to disable system volume encryption unless Apple Secure Boot is
+         disabled.
+         </p></li>
+<li 
+  class="enumerate" id="x1-46058x4">
+         <!--l. 4312--><p class="noindent" >Boot failures might occur when the platform requires certain settings, but they have not been enabled
+         because the associated issues were not discovered earlier. Be extra careful with IgnoreInvalidFlexRatio
+         or HashServices.
+         </p></li>
+<li 
+  class="enumerate" id="x1-46060x5">
+         <!--l. 4315--><p class="noindent" >Operating systems released before Apple Secure Boot was released (e.g. macOS 10.12 or earlier), will still
+         boot until UEFI Secure Boot is enabled. This is so because Apple Secure Boot treats these as incompatible
+         and they are then handled by the firmware (as Microsoft Windows is).
+         </p></li>
+<li 
+  class="enumerate" id="x1-46062x6">
+                                                                                                  
+                                                                                                  
+     <ul class="itemize1">
+     <li class="itemize">
+     <!--l. 4622--><p class="noindent" ><span class="uwave">4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:BridgeOSHardwareModel</span>
+     <span class="uwave">Bridge OS hardware model variable used to propagate to IODT bridge-model by </span><span class="uwave">EfiBoot</span><span class="uwave">. Read by </span><span class="uwave">hw.target
+     sysctl</span><span class="uwave">, used by SoftwareUpdateCoreSupport. </span>
+     </p></li>
+     <li class="itemize">
+     <!--l. 4628--><p class="noindent" >7C436110-AB2A-4BBB-A880-FE41995C9F82:csr-active-config
+     32-bit System Integrity Protection bitmask. Declared in XNU source code in <a 
+href="https://opensource.apple.com/source/xnu/xnu-4570.71.2/bsd/sys/csr.h.auto.html" >csr.h</a>.
+     </p></li>
+     <li class="itemize">
+     <!--l. 4633--><p class="noindent" >4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:ExtendedFirmwareFeatures
+     Combined FirmwareFeatures and ExtendedFirmwareFeatures. Present on newer Macs to avoid extra parsing
+     of SMBIOS tables.
+     </p></li>
+     <li class="itemize">
+     <!--l. 4638--><p class="noindent" >4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:ExtendedFirmwareFeaturesMask
+     Combined FirmwareFeaturesMask and ExtendedFirmwareFeaturesMask. Present on newer Macs to avoid extra
+     parsing of SMBIOS tables.
+     </p></li>
+     <li class="itemize">
+     <!--l. 4643--><p class="noindent" >4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:HW_BID
+     Hardware BoardProduct (e.g. Mac-35C1E88140C3E6CF). Not present on real Macs, but used to avoid extra
+     parsing of SMBIOS tables, especially in boot.efi.
+     </p></li>
+     <li class="itemize">
+     <!--l. 4648--><p class="noindent" >4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:HW_MLB
+     Hardware BoardSerialNumber. Override for MLB. Present on newer Macs (2013+ at least).
+     </p></li>
+     <li class="itemize">
+     <!--l. 4652--><p class="noindent" >4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:HW_ROM
+     Hardware ROM. Override for ROM. Present on newer Macs (2013+ at least).
+     </p></li>
+     <li class="itemize">
+     <!--l. 4656--><p class="noindent" >4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:SSN
+     Serial number. Present on newer Macs (2013+ at least).
+     </p></li>
+     <li class="itemize">
+     <!--l. 4660--><p class="noindent" >7C436110-AB2A-4BBB-A880-FE41995C9F82:prev-lang:kbd
+     ASCII string defining default keyboard layout. Format is lang-COUNTRY:keyboard, e.g. ru-RU:252 for Russian
+     locale and ABC keyboard. Also accepts short forms: ru:252 or ru:0 (U.S. keyboard, compatible with 10.9). Full
+     decoded keyboard list from AppleKeyboardLayouts-L.dat can be found <a 
+href="https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/AppleKeyboardLayouts" >here</a>. Using non-latin keyboard on 10.14
+     will not enable ABC keyboard, unlike previous and subsequent macOS versions, and is thus not recommended
+     in case 10.14 is needed.
+     </p></li>
+     <li class="itemize">
+     <!--l. 4669--><p class="noindent" >7C436110-AB2A-4BBB-A880-FE41995C9F82:security-mode
+     ASCII  string  defining  FireWire  security  mode.  Legacy,  can  be  found  in  IOFireWireFamily  source  code  in
+     <a 
+href="https://opensource.apple.com/source/IOFireWireFamily/IOFireWireFamily-473/IOFireWireFamily.kmodproj/IOFireWireController.cpp.auto.html" >IOFireWireController.cpp</a>. It is recommended not to set this variable, which may speedup system startup. Setting
+     to full is equivalent to not setting the variable and none disables FireWire security.
+     </p></li>
+     <li class="itemize">
+     <!--l. 4678--><p class="noindent" >4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:UIScale
+     One-byte data defining boot.efi user interface scaling. Should be 01 for normal screens and 02 for HiDPI
+     screens.
+     </p></li>
+     <li class="itemize">
+                                                                                                  
+                                                                                                  
+     <!--l. 5152--><p class="noindent" >SpoofVendor<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Sets SMBIOS vendor fields to Acidanthera.
+     </p><!--l. 5157--><p class="noindent" >It can be dangerous to use “Apple” in SMBIOS vendor fields for reasons outlined in the SystemManufacturer
      description. However, certain firmware may not provide valid values otherwise, which could obstruct the operation
      of some software.
      </p></li>
 <li 
   class="enumerate" id="x1-56004x2">
-     <!--l. 5159--><p class="noindent" >AdviseFeatures<br 
+     <!--l. 5162--><p class="noindent" >AdviseFeatures<br 
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Updates FirmwareFeatures with supported bits.
-     </p><!--l. 5164--><p class="noindent" >Added bits to FirmwareFeatures:
+     </p><!--l. 5167--><p class="noindent" >Added bits to FirmwareFeatures:
 </p>
          <ul class="itemize1">
          <li class="itemize">
-         <!--l. 5167--><p class="noindent" >FW_FEATURE_SUPPORTS_CSM_LEGACY_MODE (0x1) - Without this bit, it is not possible to reboot to Windows
+         <!--l. 5170--><p class="noindent" >FW_FEATURE_SUPPORTS_CSM_LEGACY_MODE (0x1) - Without this bit, it is not possible to reboot to Windows
          installed on a drive with an EFI partition that is not the first partition on the disk.
          </p></li>
          <li class="itemize">
-         <!--l. 5170--><p class="noindent" >FW_FEATURE_SUPPORTS_UEFI_WINDOWS_BOOT (0x20000000) - Without this bit, it is not possible to reboot
+         <!--l. 5173--><p class="noindent" >FW_FEATURE_SUPPORTS_UEFI_WINDOWS_BOOT (0x20000000) - Without this bit, it is not possible to reboot
          to Windows installed on a drive with an EFI partition that is the first partition on the disk.
          </p></li>
          <li class="itemize">
-         <!--l. 5173--><p class="noindent" >FW_FEATURE_SUPPORTS_APFS (0x00080000) - Without this bit, it is not possible to install macOS on an
+         <!--l. 5176--><p class="noindent" >FW_FEATURE_SUPPORTS_APFS (0x00080000) - Without this bit, it is not possible to install macOS on an
          APFS disk.
          </p></li>
          <li class="itemize">
-         <!--l. 5175--><p class="noindent" ><span class="uwave">FW_FEATURE_SUPPORTS_LARGE_BASESYSTEM</span> <span class="uwave">(</span><span class="uwave">0x800000000</span><span class="uwave">) - Without this bit, it is not possible to install
+         <!--l. 5178--><p class="noindent" ><span class="uwave">FW_FEATURE_SUPPORTS_LARGE_BASESYSTEM</span> <span class="uwave">(</span><span class="uwave">0x800000000</span><span class="uwave">) - Without this bit, it is not possible to install
          macOS versions with large BaseSystem images, such as macOS 12. </span></p></li></ul>
-     <!--l. 5180--><p class="noindent" >Note: On most newer firmwares these bits are already set, the option may be necessary when &#x0022;upgrading&#x0022; the firmware
+     <!--l. 5183--><p class="noindent" >Note: On most newer firmwares these bits are already set, the option may be necessary when &#x0022;upgrading&#x0022; the firmware
      with new features.
      </p></li>
 <li 
   class="enumerate" id="x1-56006x3">
-     <!--l. 5184--><p class="noindent" >MaxBIOSVersion<br 
+     <!--l. 5187--><p class="noindent" >MaxBIOSVersion<br 
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Sets BIOSVersion to 9999.999.999.999.999, recommended for legacy Macs when using Automatic
@@ -311,103 +491,101 @@ class="newline" />Description: Sets BIOSVersion to 9999.999.999.999.999, recomme
      </p></li>
 <li 
   class="enumerate" id="x1-56008x4">
-     <!--l. 5192--><p class="noindent" >SystemMemoryStatus<br 
+     <!--l. 5195--><p class="noindent" >SystemMemoryStatus<br 
 class="newline" />Type: plist string<br 
 class="newline" />Failsafe: Auto<br 
 class="newline" />Description: Indicates whether system memory is upgradable in PlatformFeature. This controls the visibility of the
-     Memory tab in “About This Mac”.
-     </p><!--l. 5198--><p class="noindent" >Valid values:
                                                                                                   
                                                                                                   
-</p><!--l. 6294--><p class="noindent" >For distributions which do not use either of the above schemes, OpenLinuxBoot will autodetect and boot {boot}/vmlinuz*
+</p><!--l. 6297--><p class="noindent" >For distributions which do not use either of the above schemes, OpenLinuxBoot will autodetect and boot {boot}/vmlinuz*
 kernel files directly, after linking these automatically – based on the kernel version in the filename – to their associated
 {boot}/init* ramdisk files, and after searching in /etc/default/grub for kernel boot options and /etc/os-release
 for the distro name. This layout applies to most Debian-related distros, including Debian itself, Ubuntu and
 variants.
-</p><!--l. 6301--><p class="noindent" >The method of starting the kernel relies on it being compiled with EFISTUB, however this applies to almost all modern
+</p><!--l. 6304--><p class="noindent" >The method of starting the kernel relies on it being compiled with EFISTUB, however this applies to almost all modern
 distros, particularly those which use systemd. Most modern distros use systemd as their system manager (even though at the
 same time most do not use systemd-boot as their bootloader).
-</p><!--l. 6306--><p class="noindent" >The latest kernel version of a given install is always shown in the boot menu. Additional versions, recovery versions, etc. are
+</p><!--l. 6309--><p class="noindent" >The latest kernel version of a given install is always shown in the boot menu. Additional versions, recovery versions, etc. are
 added as auxiliary boot entries, so depending on OpenCore’s HideAuxiliary setting may not be shown until the space key is
 pressed.
-</p><!--l. 6310--><p class="noindent" >Note 1: OpenLinuxBoot requires filesystem drivers that may not be available in firmware such as EXT4 and BTRFS drivers.
+</p><!--l. 6313--><p class="noindent" >Note 1: OpenLinuxBoot requires filesystem drivers that may not be available in firmware such as EXT4 and BTRFS drivers.
 These drivers can be obtained from external sources. Drivers tested in basic scenarios can be downloaded from <a 
 href="https://github.com/acidanthera/OcBinaryData" >OcBinaryData</a>.
 Be aware that these drivers are neither tested for reliability in all scenarious, nor underwent any tamper-resistance testing,
 therefore have may carry potential security or data-loss risks.
-</p><!--l. 6316--><p class="noindent" >Most Linux distributions keep their boot files on <span class="sout">the </span><span class="uwave">an </span>EXT4 <span class="sout">file system </span><span class="uwave">partition </span>even when the distribution’s <span class="sout">main </span><span class="uwave">root
+</p><!--l. 6319--><p class="noindent" >Most Linux distributions keep their boot files on <span class="sout">the </span><span class="uwave">an </span>EXT4 <span class="sout">file system </span><span class="uwave">partition </span>even when the distribution’s <span class="sout">main </span><span class="uwave">root
 </span>filesystem is something else<span class="uwave">, </span>such as BTRFS, therefore <span class="sout">a suitable UEFI </span><span class="uwave">only an </span>EXT4 <span class="sout">file system </span>driver such as <a 
 href="https://github.com/acidanthera/OcBinaryData" >ext4_x64</a>
 is normally required. A BTRFS driver such as <a 
 href="https://github.com/acidanthera/OcBinaryData" >btrfs_x64</a> will be required in <span class="sout">a </span><span class="uwave">the currently </span>somewhat less
 standard <span class="sout">setup </span><span class="uwave">situation </span>where the boot files are on a BTRFS partition, e.g. as <span class="uwave">is currently done </span>by default in
 openSUSE.
-</p><!--l. 6324--><p class="noindent" >Pure Boot Loader Spec (e.g. as implemented by systemd-boot) keeps all kernel and ramdisk images directly on the EFI System
+</p><!--l. 6327--><p class="noindent" >Pure Boot Loader Spec (e.g. as implemented by systemd-boot) keeps all kernel and ramdisk images directly on the EFI System
 Partition (or an Extended Boot Loader Partition), therefore it requires no additional filesystem driver - but it is not widely
 used except in Arch Linux.
-</p><!--l. 6328--><p class="noindent" >Note 2: <span class="uwave">OpenLinuxBoot</span> <span class="uwave">does not attempt to read and interpret the layout of Linux installation media (which can be highly
+</p><!--l. 6331--><p class="noindent" >Note 2: <span class="uwave">OpenLinuxBoot</span> <span class="uwave">does not attempt to read and interpret the layout of Linux installation media (which can be highly
 variable). Installation media should be booted directly either from the machine’s own EFI boot menu or from the
 OpenCore boot menu. In some cases, e.g. Apple T2 hardware, then – depending on OpenCore’s security settings –
 OpenCore may be able to start some Linux installers which the machine’s own bootloader will refuse to boot.
 </span>
-</p><!--l. 6335--><p class="noindent" ><span class="uwave">Note 3</span><span class="uwave">: </span>systemd-boot users (probably almost exclusively Arch Linux users) should be aware that OpenLinuxBoot does not
+</p><!--l. 6338--><p class="noindent" ><span class="uwave">Note 3</span><span class="uwave">: </span>systemd-boot users (probably almost exclusively Arch Linux users) should be aware that OpenLinuxBoot does not
 support the systemd-boot–specific <a 
 href="https://systemd.io/BOOT_LOADER_INTERFACE/" >Boot Loader Interface</a>; therefore use efibootmgr rather than bootctl for any low-level
 Linux command line interaction with the boot menu.
-</p><!--l. 6340--><p class="noindent" ><span class="uwave">Note 4</span><span class="uwave">: Be aware of the </span><span class="uwave">SyncRuntimePermissions</span> <span class="uwave">quirk, which may need to be set to avoid early boot failure
+</p><!--l. 6343--><p class="noindent" ><span class="uwave">Note 4</span><span class="uwave">: Be aware of the </span><span class="uwave">SyncRuntimePermissions</span> <span class="uwave">quirk, which may need to be set to avoid early boot failure
 (i.e. halts with black screen) of the Linux kernel due to a firmware bug of some firmware released after 2017.
 </span>
-</p><!--l. 6344--><p class="noindent" >The default parameter values should work well, but if you need to parameterise this driver the following options may be
+</p><!--l. 6347--><p class="noindent" >The default parameter values should work well, but if you need to parameterise this driver the following options may be
 specified in UEFI/Drivers/Arguments:
 </p>
      <ul class="itemize1">
      <li class="itemize">
-     <!--l. 6349--><p class="noindent" >flags - Default: all flags except LINUX_BOOT_ADD_DEBUG_INFO are set.
-     </p><!--l. 6351--><p class="noindent" >Available flags are:
+     <!--l. 6352--><p class="noindent" >flags - Default: all flags except LINUX_BOOT_ADD_DEBUG_INFO are set.
+     </p><!--l. 6354--><p class="noindent" >Available flags are:
 </p>
          <ul class="itemize2">
          <li class="itemize">
-         <!--l. 6355--><p class="noindent" >0x00000001 (bit 0) — LINUX_BOOT_SCAN_ESP, Allows scanning for entries on EFI System Partition.
+         <!--l. 6358--><p class="noindent" >0x00000001 (bit 0) — LINUX_BOOT_SCAN_ESP, Allows scanning for entries on EFI System Partition.
          </p></li>
          <li class="itemize">
-         <!--l. 6357--><p class="noindent" >0x00000002 (bit 1) — LINUX_BOOT_SCAN_XBOOTLDR, Allows scanning for entries on Extended Boot Loader
+         <!--l. 6360--><p class="noindent" >0x00000002 (bit 1) — LINUX_BOOT_SCAN_XBOOTLDR, Allows scanning for entries on Extended Boot Loader
          Partition.
          </p></li>
          <li class="itemize">
                                                                                                   
                                                                                                   
-         <!--l. 6359--><p class="noindent" >0x00000004 (bit  2)  —  LINUX_BOOT_SCAN_LINUX_ROOT,  Allows  scanning  for  entries  on  Linux  Root
+         <!--l. 6362--><p class="noindent" >0x00000004 (bit  2)  —  LINUX_BOOT_SCAN_LINUX_ROOT,  Allows  scanning  for  entries  on  Linux  Root
          filesystems.
          </p></li>
          <li class="itemize">
-         <!--l. 6361--><p class="noindent" >0x00000008 (bit  3)  —  LINUX_BOOT_SCAN_LINUX_DATA,  Allows  scanning  for  entries  on  Linux  Data
+         <!--l. 6364--><p class="noindent" >0x00000008 (bit  3)  —  LINUX_BOOT_SCAN_LINUX_DATA,  Allows  scanning  for  entries  on  Linux  Data
          filesystems.
          </p></li>
          <li class="itemize">
-         <!--l. 6363--><p class="noindent" >0x00000080 (bit 7) — LINUX_BOOT_SCAN_OTHER, Allows scanning for entries on file systems not matched
+         <!--l. 6366--><p class="noindent" >0x00000080 (bit 7) — LINUX_BOOT_SCAN_OTHER, Allows scanning for entries on file systems not matched
          by any of the above.
-         </p><!--l. 6366--><p class="noindent" >The following notes apply to all of the above options:
-         </p><!--l. 6368--><p class="noindent" >Note 1: Apple filesystems APFS and HFS are never scanned.
-         </p><!--l. 6371--><p class="noindent" >Note 2: Regardless of the above flags, a file system must first be allowed by Misc/Security/ScanPolicy
+         </p><!--l. 6369--><p class="noindent" >The following notes apply to all of the above options:
+         </p><!--l. 6371--><p class="noindent" >Note 1: Apple filesystems APFS and HFS are never scanned.
+         </p><!--l. 6374--><p class="noindent" >Note 2: Regardless of the above flags, a file system must first be allowed by Misc/Security/ScanPolicy
          before it can be seen by OpenLinuxBoot or any other OC_BOOT_ENTRY_PROTOCOL driver.
-         </p><!--l. 6376--><p class="noindent" >Note 3: It is recommended to enable scanning LINUX_ROOT and LINUX_DATA in both OpenLinuxBoot flags
+         </p><!--l. 6379--><p class="noindent" >Note 3: It is recommended to enable scanning LINUX_ROOT and LINUX_DATA in both OpenLinuxBoot flags
          and Misc/Security/ScanPolicy in order to be sure to detect all valid Linux installs.
          </p></li>
          <li class="itemize">
-         <!--l. 6381--><p class="noindent" >0x00000100 (bit 8) — LINUX_BOOT_ALLOW_AUTODETECT, If set allows autodetecting and linking vmlinuz*
+         <!--l. 6384--><p class="noindent" >0x00000100 (bit 8) — LINUX_BOOT_ALLOW_AUTODETECT, If set allows autodetecting and linking vmlinuz*
          and init* ramdisk files when loader/entries files are not found.
          </p></li>
          <li class="itemize">
-         <!--l. 6384--><p class="noindent" >0x00000200 (bit 9) — LINUX_BOOT_USE_LATEST, When a Linux entry generated by OpenLinuxBoot is
+         <!--l. 6387--><p class="noindent" >0x00000200 (bit 9) — LINUX_BOOT_USE_LATEST, When a Linux entry generated by OpenLinuxBoot is
          selected as the default boot entry in OpenCore, automatically switch to the latest kernel when a new version
          is installed.
-         </p><!--l. 6388--><p class="noindent" >When this option is set, an internal menu entry id is shared between kernel versions from the same install
+         </p><!--l. 6391--><p class="noindent" >When this option is set, an internal menu entry id is shared between kernel versions from the same install
          of Linux. Linux boot options are always sorted highest kernel version first, so this means that the latest
          kernel version of the same install always shows as the default, with this option set.
-         </p><!--l. 6392--><p class="noindent" >Note: This option is recommended on all systems.
+         </p><!--l. 6395--><p class="noindent" >Note: This option is recommended on all systems.
          </p></li>
          <li class="itemize">
-         <!--l. 6394--><p class="noindent" >0x00000400 (bit  10)  —  LINUX_BOOT_ADD_RO,  This  option  applies  to  autodetected  Linux  only  (i.e.  to
+         <!--l. 6397--><p class="noindent" >0x00000400 (bit  10)  —  LINUX_BOOT_ADD_RO,  This  option  applies  to  autodetected  Linux  only  (i.e.  to
          Debian-style distrubutions, not to BLSpec and Fedora-style distributions with /loader/entries/*.conf
          files). Some distrubtions run a filesystem check on loading which requires the root filesystem to initially
          be mounted read-only via the ro kernel option. Set this bit to add this option on autodetected distros;
@@ -416,41 +594,41 @@ specified in UEFI/Drivers/Arguments:
          instead of this flag.
          </p></li>
          <li class="itemize">
-         <!--l. 6402--><p class="noindent" ><span class="uwave">0x00004000</span> <span class="uwave">(bit </span><span class="uwave">14</span><span class="uwave">) — </span><span class="uwave">LINUX_BOOT_LOG_VERBOSE</span><span class="uwave">, Add additional debug log info about files encountered
+         <!--l. 6405--><p class="noindent" ><span class="uwave">0x00004000</span> <span class="uwave">(bit </span><span class="uwave">14</span><span class="uwave">) — </span><span class="uwave">LINUX_BOOT_LOG_VERBOSE</span><span class="uwave">, Add additional debug log info about files encountered
          and autodetect options added while scanning for Linux boot entries. </span>
          </p></li>
          <li class="itemize">
-         <!--l. 6405--><p class="noindent" >0x00008000 (bit 15) — LINUX_BOOT_ADD_DEBUG_INFO, Adds a human readable file system type, followed
+         <!--l. 6408--><p class="noindent" >0x00008000 (bit 15) — LINUX_BOOT_ADD_DEBUG_INFO, Adds a human readable file system type, followed
          by the first eight characters of the partition’s unique partition uuid, to each generated entry name. Can
          help with debugging the origin of entries generated by the driver when there are multiple Linux installs on
          one system.</p></li></ul>
-     <!--l. 6412--><p class="noindent" >Flag values can be specified in hexadecimal beginning with 0x or in decimal, e.g. flags=0x80 or flags=128.
+     <!--l. 6415--><p class="noindent" >Flag values can be specified in hexadecimal beginning with 0x or in decimal, e.g. flags=0x80 or flags=128.
      </p></li>
      <li class="itemize">
-     <!--l. 6415--><p class="noindent" >partuuidopts:{partuuid}[+]=&#x0022;{options}&#x0022; - Default: not set.
+     <!--l. 6418--><p class="noindent" >partuuidopts:{partuuid}[+]=&#x0022;{options}&#x0022; - Default: not set.
                                                                                                   
                                                                                                   
-     </p><!--l. 6483--><p class="noindent" >Audio file path is determined by audio type, audio localisation, and audio path. Each filename looks as follows:
+     </p><!--l. 6486--><p class="noindent" >Audio file path is determined by audio type, audio localisation, and audio path. Each filename looks as follows:
      [audio type]_[audio localisation]_[audio path].[audio ext].  For  unlocalised  files  filename  does  not
      include the language code and looks as follows: [audio type]_[audio path].[audio ext]. Audio extension
      can either be mp3 or wav.
 </p>
          <ul class="itemize1">
          <li class="itemize">
-         <!--l. 6491--><p class="noindent" >Audio type can be OCEFIAudio for OpenCore audio files or AXEFIAudio for macOS bootloader audio files.
+         <!--l. 6494--><p class="noindent" >Audio type can be OCEFIAudio for OpenCore audio files or AXEFIAudio for macOS bootloader audio files.
          </p></li>
          <li class="itemize">
-         <!--l. 6493--><p class="noindent" >Audio localisation is a two letter language code (e.g. en) with an exception for Chinese, Spanish, and
+         <!--l. 6496--><p class="noindent" >Audio localisation is a two letter language code (e.g. en) with an exception for Chinese, Spanish, and
          Portuguese. Refer to <a 
 href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/Protocol/AppleVoiceOver.h" >APPLE_VOICE_OVER_LANGUAGE_CODE definition</a> for the list of all supported localisations.
          </p></li>
          <li class="itemize">
-         <!--l. 6497--><p class="noindent" >Audio path is the base filename corresponding to a file identifier. For macOS bootloader audio paths refer to
+         <!--l. 6500--><p class="noindent" >Audio path is the base filename corresponding to a file identifier. For macOS bootloader audio paths refer to
          <a 
 href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/Protocol/AppleVoiceOver.h" >APPLE_VOICE_OVER_AUDIO_FILE definition</a>. For OpenCore audio paths refer to <a 
 href="https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Acidanthera/Protocol/OcAudio.h" >OC_VOICE_OVER_AUDIO_FILE
          definition</a>. The only exception is OpenCore boot chime file, which is OCEFIAudio_VoiceOver_Boot.mp3.</p></li></ul>
-     <!--l. 6504--><p class="noindent" >Audio localisation is determined separately for macOS bootloader and OpenCore. For macOS bootloader it is set in
+     <!--l. 6507--><p class="noindent" >Audio localisation is determined separately for macOS bootloader and OpenCore. For macOS bootloader it is set in
      preferences.efires archive in systemLanguage.utf8 file and is controlled by the operating system. For
      OpenCore the value of prev-lang:kbd variable is used. When native audio localisation of a particular file is
      missing, English language (en) localisation is used. Sample audio files can be found in <a 
@@ -459,29 +637,29 @@ href="https://github.com/acidanthera/OcBinaryData" >OcBinaryData
      </p></li>
 <li 
   class="enumerate" id="x1-69006x3">
-     <!--l. 6513--><p class="noindent" >ConnectDrivers<br 
+     <!--l. 6516--><p class="noindent" >ConnectDrivers<br 
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Perform UEFI controller connection after driver loading.
-     </p><!--l. 6518--><p class="noindent" >This option is useful for loading drivers following UEFI driver model as they may not start by themselves. Examples of
+     </p><!--l. 6521--><p class="noindent" >This option is useful for loading drivers following UEFI driver model as they may not start by themselves. Examples of
      such drivers are filesystem or audio drivers. While effective, this option may not be necessary for drivers performing
      automatic connection, and may slightly slowdown the boot.
-     </p><!--l. 6523--><p class="noindent" >Note: Some types of firmware, particularly those made by Apple, only connect the boot drive to speed
+     </p><!--l. 6526--><p class="noindent" >Note: Some types of firmware, particularly those made by Apple, only connect the boot drive to speed
      up the boot process. Enable this option to be able to see all the boot options when running multiple
      drives.
      </p></li>
 <li 
   class="enumerate" id="x1-69008x4">
-     <!--l. 6528--><p class="noindent" >Drivers<br 
+     <!--l. 6531--><p class="noindent" >Drivers<br 
 class="newline" />Type: plist <span class="sout">dict</span><span class="uwave">array</span><br 
 class="newline" />Failsafe: <span class="sout">None</span><span class="uwave">Empty</span><br 
 class="newline" />Description: Load selected drivers from OC/Drivers directory<span class="sout">using the settings specified in the </span><span class="uwave">. </span>
-     </p><!--l. 6535--><p class="noindent" ><span class="uwave">To be filled with </span><span class="uwave">plist dict</span> <span class="uwave">values, describing each driver. Refer to the </span><a 
+     </p><!--l. 6538--><p class="noindent" ><span class="uwave">To be filled with </span><span class="uwave">plist dict</span> <span class="uwave">values, describing each driver. Refer to the </span><a 
 href="#x1-7300011">Drivers Properties</a> section below.
      </p></li>
 <li 
   class="enumerate" id="x1-69010x5">
-     <!--l. 6539--><p class="noindent" >Input<br 
+     <!--l. 6542--><p class="noindent" >Input<br 
 class="newline" />Type: plist dict<br 
 class="newline" />Failsafe: None<br 
 class="newline" />Description: Apply individual settings designed for input (keyboard and mouse) in the <a 
@@ -492,29 +670,29 @@ href="#x1-7400012">Input Properties</a> section
      </p></li>
 <li 
   class="enumerate" id="x1-69012x6">
-     <!--l. 6546--><p class="noindent" >Output<br 
+     <!--l. 6549--><p class="noindent" >Output<br 
 class="newline" />Type: plist dict<br 
 class="newline" />Failsafe: None<br 
 class="newline" />Description: Apply individual settings designed for output (text and graphics) in the ?? section below.
      </p></li>
 <li 
   class="enumerate" id="x1-69014x7">
-     <!--l. 6553--><p class="noindent" >ProtocolOverrides<br 
+     <!--l. 6556--><p class="noindent" >ProtocolOverrides<br 
 class="newline" />Type: plist dict<br 
 class="newline" />Failsafe: None<br 
 class="newline" />Description: Force builtin versions of certain protocols described in the ?? section below.
-     </p><!--l. 6559--><p class="noindent" >Note: all protocol instances are installed prior to driver loading.
+     </p><!--l. 6562--><p class="noindent" >Note: all protocol instances are installed prior to driver loading.
      </p></li>
 <li 
   class="enumerate" id="x1-69016x8">
-     <!--l. 6562--><p class="noindent" >Quirks<br 
+     <!--l. 6565--><p class="noindent" >Quirks<br 
 class="newline" />Type: plist dict<br 
 class="newline" />Failsafe: None<br 
 class="newline" />Description: Apply individual firmware quirks described in the ?? section below.
      </p></li>
 <li 
   class="enumerate" id="x1-69018x9">
-     <!--l. 6569--><p class="noindent" >ReservedMemory<br 
+     <!--l. 6572--><p class="noindent" >ReservedMemory<br 
 class="newline" />Type: plist array<br 
 class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: Empty</span><br 
 class="newline" />Description: To be filled with plist dict values, describing memory areas exclusive to specific firmware and hardware
@@ -530,16 +708,16 @@ class="newline" />Description: To be filled with plist dict values, describing 
      <ol  class="enumerate1" >
 <li 
   class="enumerate" id="x1-70002x1">
-     <!--l. 6585--><p class="noindent" >EnableJumpstart<br 
+     <!--l. 6588--><p class="noindent" >EnableJumpstart<br 
 class="newline" />Type: plist boolean<br 
 class="newline" />Failsafe: false<br 
 class="newline" />Description: Load embedded APFS drivers from APFS containers.
-     </p><!--l. 6590--><p class="noindent" >An APFS EFI driver is bundled in all bootable APFS containers. This option performs the loading of signed
+     </p><!--l. 6593--><p class="noindent" >An APFS EFI driver is bundled in all bootable APFS containers. This option performs the loading of signed
      APFS drivers (consistent with the ScanPolicy). Refer to the “EFI Jumpstart” section of the <a 
 href="https://developer.apple.com/support/apple-file-system/Apple-File-System-Reference.pdf" >Apple File System
      Reference</a> for details.
      </p></li>
 <li 
   class="enumerate" id="x1-70004x2">
-     <!--l. 6597--><p class="noindent" >GlobalConnect   </body>
+     <!--l. 6600--><p class="noindent" >GlobalConnect   </body>
 </html>
