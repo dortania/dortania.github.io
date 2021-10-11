@@ -6,15 +6,15 @@ permalink: /docs/
 ---
 Note: these files are automatically generated and are unofficial versions of Acidanthera documents (although they should be the same word for word). The official Acidanthera documents (found in the OpenCorePkg repository) are the authoritative documentation for OpenCore.
 
-## For commit [e70048cc](https://github.com/acidanthera/OpenCorePkg/tree/e70048cc76bbcb40cd361a72b2a817f16ba57b96) (master)
+## For commit [e9f49c08](https://github.com/acidanthera/OpenCorePkg/tree/e9f49c0886888ca9cfaa595a399159c7f21b173f) (master)
 
 If the commit does not match up with the latest commit in master branch, wait for about an hour and check again.
 
-[Configuration](latest/Configuration.html) ([original PDF](https://github.com/acidanthera/OpenCorePkg/blob/e70048cc76bbcb40cd361a72b2a817f16ba57b96/Docs/Configuration.pdf))
+[Configuration](latest/Configuration.html) ([original PDF](https://github.com/acidanthera/OpenCorePkg/blob/e9f49c0886888ca9cfaa595a399159c7f21b173f/Docs/Configuration.pdf))
 <br>
-[Differences](latest/Differences.html) ([original PDF](https://github.com/acidanthera/OpenCorePkg/blob/e70048cc76bbcb40cd361a72b2a817f16ba57b96/Docs/Differences/Differences.pdf))
+[Differences](latest/Differences.html) ([original PDF](https://github.com/acidanthera/OpenCorePkg/blob/e9f49c0886888ca9cfaa595a399159c7f21b173f/Docs/Differences/Differences.pdf))
 <br>
-[Errata](latest/Errata.html) ([original PDF](https://github.com/acidanthera/OpenCorePkg/blob/e70048cc76bbcb40cd361a72b2a817f16ba57b96/Docs/Errata/Errata.pdf))
+[Errata](latest/Errata.html) ([original PDF](https://github.com/acidanthera/OpenCorePkg/blob/e9f49c0886888ca9cfaa595a399159c7f21b173f/Docs/Errata/Errata.pdf))
 
 ## For release [0.7.4](https://github.com/acidanthera/OpenCorePkg/tree/0.7.4)
 
@@ -22,7 +22,7 @@ If the commit does not match up with the latest commit in master branch, wait fo
 <br>
 [Differences](release/Differences.html) ([original PDF](https://github.com/acidanthera/OpenCorePkg/blob/0.7.4/Docs/Differences/Differences.pdf))
 
-#### Documentation compiled at 2021-10-11 02:33:01 (UTC)
+#### Documentation compiled at 2021-10-11 02:57:15 (UTC)
 
 ## Known Issues
 
