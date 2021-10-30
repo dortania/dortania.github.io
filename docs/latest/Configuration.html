@@ -1136,8 +1136,9 @@ commands in Terminal: </p><!-- l. 1286 -->
                                                                                                   
                                                                                                   
      <!-- l. 1803 --><p class='noindent'>This quirk attempts to update the memory map and memory attributes table to correct this.
-     </p><!-- l. 1805 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: The need for this quirk is indicated by early boot failures (e.g. halts at black screen), particularly in early boot of
-     the Linux kernel. Only firmware released after 2017 is typically affected.
+     </p><!-- l. 1805 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: The need for this quirk is indicated by early boot failures (note: includes halt at black screen as well as more
+     obvious crash). Particularly likely to affect early boot of Windows or Linux (but not always both) on affected systems.
+     Only firmware released after 2017 is typically affected.
 </p>
      </li></ol>
 <p><a id='x1-26041r23'></a></p>
@@ -1174,9 +1175,9 @@ repeat the first stage if the device was not present in ACPI.
      <ol class='enumerate1'>
 <li class='enumerate' id='x1-29002x1'>
      <!-- l. 1869 --><p class='noindent'><span class='ec-lmtt-10'>Add</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist dict</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Sets device properties from a map (<span class='ec-lmtt-10'>plist dict</span>) of device paths to a map (<span class='ec-lmtt-10'>plist dict</span>) of variable
+                                                                                                  
+                                                                                                  
      names and their values in <span class='ec-lmtt-10'>plist multidata </span>format.
-                                                                                                  
-                                                                                                  
      </p><!-- l. 1875 --><p class='noindent'><span class='ec-lmri-10'>Note     1</span>:      Device      paths      must      be      provided      in      canonic      string      format      (e.g.
      <span class='ec-lmtt-10'>PciRoot(0x0)/Pci(0x1,0x0)/Pci(0x0,0x0)</span>).
      </p><!-- l. 1878 --><p class='noindent'><span class='ec-lmri-10'>Note 2</span>: Existing properties will not be changed unless deleted in the <span class='ec-lmtt-10'>DeviceProperties Delete </span>section.
@@ -1217,9 +1218,9 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
 </p>
 <h4 class='subsectionHead'><span class='titlemark'>7.2   </span> <a id='x1-330002'></a>Properties</h4>
      <ol class='enumerate1'>
+                                                                                                  
+                                                                                                  
 <li class='enumerate' id='x1-33002x1'>
-                                                                                                  
-                                                                                                  
      <!-- l. 1938 --><p class='noindent'><span class='ec-lmtt-10'>Add</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist array</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Load selected kernel extensions (kexts) from the <span class='ec-lmtt-10'>OC/Kexts </span>directory.
      </p><!-- l. 1943 --><p class='noindent'>To be filled with <span class='ec-lmtt-10'>plist dict </span>values, describing each kext. Refer to the <a href='#x1-340003'>Add Properties</a> section below for details.
      </p><!-- l. 1946 --><p class='noindent'><span class='ec-lmri-10'>Note 1</span>: The load order is based on the order in which the kexts appear in the array. Hence, dependencies must
@@ -1251,6 +1252,8 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
      </p><!-- l. 1993 --><p class='noindent'><span class='ec-lmri-10'>Note 4</span>: This feature may not work on encrypted partitions in newer operating systems.
      </p></li>
 <li class='enumerate' id='x1-33010x5'>
+                                                                                                  
+                                                                                                  
      <!-- l. 1996 --><p class='noindent'><span class='ec-lmtt-10'>Patch</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist array</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Perform binary patches in kernel and drivers prior to driver addition and removal.
      </p><!-- l. 2002 --><p class='noindent'>To be filled with <span class='ec-lmtt-10'>plist dictionary </span>values, describing each patch. Refer to the <a href='#x1-380007'>Patch Properties</a> section below
      for details.
