@@ -21,6 +21,59 @@ width="160" height="160"  />
 </div>
                                                                                                   
                                                                                                   
+     unable to write variables to NVRAM and results in operating system failures.
+     </p></li>
+<li 
+  class="enumerate" id="x1-26012x6">
+     <!--l. 1589--><p class="noindent" >DiscardHibernateMap<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Reuse original hibernate memory map.
+     </p><!--l. 1594--><p class="noindent" >This option forces the XNU kernel to ignore a newly supplied memory map and assume that it did not change after
+     waking from hibernation. This behaviour is required by Windows to work. Windows mandates <a 
+href="https://docs.microsoft.com/en-us/windows-hardware/design/device-experiences/oem-uefi#hibernation-state-s4-transition-requirements" >preserving</a> runtime
+     memory size and location after S4 wake.
+     </p><!--l. 1600--><p class="noindent" >Note: This may be used to workaround defective memory map implementations on older, rare legacy hardware. Examples
+     of such hardware are Ivy Bridge laptops with Insyde firmware such as the Acer V3-571G. Do not use this option without
+     a full understanding of the implications.
+     </p></li>
+<li 
+  class="enumerate" id="x1-26014x7">
+     <!--l. 1605--><p class="noindent" >EnableSafeModeSlide<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Patch bootloader to have KASLR enabled in safe mode.
+     </p><!--l. 1610--><p class="noindent" >This option is relevant to users with issues booting to safe mode (e.g. by holding shift or with using the -x boot
+     argument). By default, safe mode forces 0 slide as if the system was launched with the slide=0 boot
+     argument.
+</p>
+         <ul class="itemize1">
+         <li class="itemize">
+         <!--l. 1617--><p class="noindent" >This quirk attempts to patch the boot.efi file to remove this limitation and to allow using other values
+         (from 1 to 255 inclusive).
+         </p></li>
+         <li class="itemize">
+         <!--l. 1619--><p class="noindent" >This quirk requires enabling ProvideCustomSlide.</p></li></ul>
+     <!--l. 1622--><p class="noindent" >Note: The need for this option is dependent on the availability of safe mode. It can be enabled when booting to safe mode
+     fails.
+     </p></li>
+<li 
+  class="enumerate" id="x1-26016x8">
+     <!--l. 1626--><p class="noindent" >EnableWriteUnprotector<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Permit write access to UEFI runtime services code.
+     </p><!--l. 1631--><p class="noindent" >This option bypasses <span class="sout">R<span class='accenthat'>X</span></span><span class="uwave">W^X</span> permissions in code pages of UEFI runtime services by removing write protection (WP) bit
+     from CR0 register during their execution. This quirk requires OC_FIRMWARE_RUNTIME protocol implemented in
+     OpenRuntime.efi.
+     </p><!--l. 1636--><p class="noindent" >Note: This quirk may potentially weaken firmware security. Please use RebuildAppleMemoryMap if the firmware supports
+     memory attributes table (MAT). Refer to the OCABC: MAT support is 1/0 log entry to determine whether MAT is
+     supported.
+     </p></li>
+<li 
+  class="enumerate" id="x1-26018x9">
+                                                                                                  
+                                                                                                  
      
      
      

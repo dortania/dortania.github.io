@@ -990,7 +990,7 @@ commands in Terminal: </p><!-- l. 1286 -->
      </p></li>
 <li class='enumerate' id='x1-26016x8'>
      <!-- l. 1566 --><p class='noindent'><span class='ec-lmtt-10'>EnableWriteUnprotector</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Permit write access to UEFI runtime services code.
-     </p><!-- l. 1571 --><p class='noindent'>This option bypasses <span class='ec-lmtt-10'>R</span><span class='accenthat'><span class='ec-lmtt-10'>X</span></span> permissions in code pages of UEFI runtime services by removing write protection (<span class='ec-lmtt-10'>WP</span>) bit from
+     </p><!-- l. 1571 --><p class='noindent'>This option bypasses <span class='ec-lmtt-10'>W^X </span>permissions in code pages of UEFI runtime services by removing write protection (<span class='ec-lmtt-10'>WP</span>) bit from
      <span class='ec-lmtt-10'>CR0 </span>register during their execution. This quirk requires <span class='ec-lmtt-10'>OC_FIRMWARE_RUNTIME </span>protocol implemented in
      <span class='ec-lmtt-10'>OpenRuntime.efi</span>.
      </p><!-- l. 1576 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This quirk may potentially weaken firmware security. Please use <span class='ec-lmtt-10'>RebuildAppleMemoryMap </span>if the firmware supports
