@@ -88,7 +88,6 @@ p + div, p + pre {margin-top:1em;}
 div + p, pre + p {margin-top:1em;}
 a { overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; hyphens: auto; }
 @media print {div.crosslinks {visibility:hidden;}}
-table.tabular{border-collapse: collapse; border-spacing: 0;}
 a img { border-top: 0; border-left: 0; border-right: 0; }
 center { margin-top:1em; margin-bottom:1em; }
 td center { margin-top:0em; margin-bottom:0em; }
@@ -172,6 +171,7 @@ span.pmatrix img{vertical-align:middle;}
 div.pmatrix {text-align:center;}
 table.pmatrix {width:100%;}
 span.bar-css {text-decoration:overline;}
+table.tabular{border-collapse: collapse; border-spacing: 0;}
 img.cdots{vertical-align:middle;}
 .partToc a, .partToc, .likepartToc a, .likepartToc {line-height: 200%; font-weight:bold; font-size:110%;}
 .index-item, .index-subitem, .index-subsubitem {display:block}
