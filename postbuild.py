@@ -45,8 +45,9 @@ for directory in ["latest", "release"]:
     differences = differences.replace("</head>", """<link rel="stylesheet" type="text/css" href="../main.css" /></head>""")
 
     # Fix logo
-    errata = errata.replace("../Logos/Logo-.png", "Logos/Logo-.png")
-    differences = differences.replace("../Logos/Logo-.png", "Logos/Logo-.png")
+    configuration = configuration.replace("Logos/Logo-.png", "Logos/Logo.png")
+    errata = errata.replace("../Logos/Logo-.png", "Logos/Logo.png")
+    differences = differences.replace("../Logos/Logo-.png", "Logos/Logo.png")
 
     # Write back to file
     configuration_path.write_text(configuration)
