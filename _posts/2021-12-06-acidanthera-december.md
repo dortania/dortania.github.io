@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Acidanthera Updates: December 2021"
-date: 2021-12-06 11:50:00 -0500
+date: 2021-12-06 23:50:00 -0500
 categories: Hackintosh updates
 ---
 
