@@ -76,29 +76,29 @@ href="https://github.com/tianocore/tianocore.github.io/wiki/EDK-II#stable-tags" 
 EDK II release is hosted in <a 
 href="https://github.com/acidanthera/audk" >acidanthera/audk</a>. Required patches for this package can be found in the Patches
 directory.
-</p><!--l. 695--><p class="noindent" ><span class="uwave">When updating the LaTeX documentation (e.g. </span><span class="uwave">Configuration.tex</span><span class="uwave">) please do </span><span class="uwave">not</span> <span class="uwave">rebuild the PDF files till merging to
+</p><!--l. 694--><p class="noindent" ><span class="uwave">When updating the LaTeX documentation (e.g. </span><span class="uwave">Configuration.tex</span><span class="uwave">) please do </span><span class="uwave">not</span> <span class="uwave">rebuild the PDF files till merging to
 master happens. This avoids unnecessary merge conflicts: </span></p>
      <ul class="itemize1">
      <li class="itemize">
-     <!--l. 700--><p class="noindent" ><span class="uwave">External contributors using the pull-request approach should request the maintainers to handle the PDF rebuild
+     <!--l. 699--><p class="noindent" ><span class="uwave">External contributors using the pull-request approach should request the maintainers to handle the PDF rebuild
      in the pull-request message. </span>
      </p></li>
      <li class="itemize">
-     <!--l. 702--><p class="noindent" ><span class="uwave">Internal contributors should rebuild the documentation at merge time in the same or in a separate commit. One
+     <!--l. 701--><p class="noindent" ><span class="uwave">Internal contributors should rebuild the documentation at merge time in the same or in a separate commit. One
                                                                                                   
                                                                                                   
      can ask another maintainer to rebuild the documentation when lacking the necessary tools in the pull-request
      message. </span></p></li></ul>
-<!--l. 709--><p class="noindent" >The only officially supported toolchain is XCODE5. Other toolchains might work but are neither supported nor recommended.
+<!--l. 707--><p class="noindent" >The only officially supported toolchain is XCODE5. Other toolchains might work but are neither supported nor recommended.
 Contributions of clean patches are welcome. Please do follow <a 
 href="https://github.com/tianocore/tianocore.github.io/wiki/Code-Style-C" >EDK II C Codestyle</a>.
-</p><!--l. 714--><p class="noindent" >To compile with XCODE5, besides <a 
+</p><!--l. 712--><p class="noindent" >To compile with XCODE5, besides <a 
 href="https://developer.apple.com/xcode" >Xcode</a>, users should also install <a 
 href="https://www.nasm.us" >NASM</a> and <a 
 href="https://github.com/acidanthera/ocbuild/tree/master/external" >MTOC</a>. The latest Xcode version is recommended
 for use despite the toolchain name. An example command sequence is as follows:
 </p>
-<!--l. 720-->
+<!--l. 718-->
 <a 
  id="x1-11001r1"></a>
 <a 
@@ -119,14 +119,14 @@ for use despite the toolchain name. An example command sequence is as follows:
  id="x1-11009r7"></a></span>build -a X64 -b RELEASE -t XCODE5 -p OpenCorePkg/OpenCorePkg.dsc</div>
 <figcaption class="caption" ><span class="id">Listing 1:</span><span  
 class="content">Compilation Commands</span></figcaption><!--tex4ht:label?: x1-11001r -->
-<!--l. 730--><p class="noindent" >For IDE usage Xcode projects are available in the root of the repositories. Another approach could be using <a 
+<!--l. 728--><p class="noindent" >For IDE usage Xcode projects are available in the root of the repositories. Another approach could be using <a 
 href="https://microsoft.github.io/language-server-protocol" >Language Server
 Protocols</a>. For example, <a 
 href="https://www.sublimetext.com" >Sublime Text</a> with <a 
 href="https://lsp.sublimetext.io" >LSP for Sublime Text</a> plugin. Add compile_flags.txt file with similar content to
 the UDK root:
 </p>
-<!--l. 735-->
+<!--l. 733-->
 <a 
  id="x1-11010r2"></a>
 <a 
@@ -201,8 +201,8 @@ the UDK root:
  id="x1-11045r34"></a></span>-DNO_MSABI_VA_FUNCS=1</div>
 <figcaption class="caption" ><span class="id">Listing 2:</span><span  
 class="content">ECC Configuration</span></figcaption><!--tex4ht:label?: x1-11010r -->
-<!--l. 772--><p class="noindent" >Note: /UefiPackages in the sample file denotes an absolute path.
-</p><!--l. 774--><p class="noindent" >Warning: Tool developers modifying config.plist or any other OpenCore files must ensure that their tools check the
+<!--l. 770--><p class="noindent" >Note: /UefiPackages in the sample file denotes an absolute path.
+</p><!--l. 772--><p class="noindent" >Warning: Tool developers modifying config.plist or any other OpenCore files must ensure that their tools check the
 opencore-version NVRAM variable (see the ?? section below) and warn users if the version listed is unsupported or
 prerelease. The OpenCore configuration may change across releases and such tools shall ensure that they carefully follow
 this document. Failure to do so may result in such tools being considered to be malware and blocked by any
@@ -212,25 +212,81 @@ means.
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.4   </span> <a 
  id="x1-120004"></a>Coding conventions</h4>
-<!--l. 783--><p class="noindent" >As with any other project, we have conventions that we follow during development. All third-party contributors are advised to
+<!--l. 781--><p class="noindent" >As with any other project, we have conventions that we follow during development. All third-party contributors are advised to
 adhere to the conventions listed below before submitting patches. To minimise abortive work and the potential rejection of
 submissions, third-party contributors should initially raise issues to the <a 
 href="https://github.com/acidanthera/bugtracker" >Acidanthera Bugtracker</a> for feedback before submitting
 patches.
-</p><!--l. 790--><p class="noindent" >Organisation. The codebase is contained in the OpenCorePkg repository, which is the primary EDK II package.
+</p><!--l. 788--><p class="noindent" >Organisation. The codebase is contained in the OpenCorePkg repository, which is the primary EDK II package.
 </p>
      <ul class="itemize1">
      <li class="itemize">
-     <!--l. 794--><p class="noindent" >Whenever changes are required in multiple repositories, separate pull requests should be sent to each.
+     <!--l. 792--><p class="noindent" >Whenever changes are required in multiple repositories, separate pull requests should be sent to each.
      </p></li>
      <li class="itemize">
-     <!--l. 796--><p class="noindent" >Committing the changes should happen firstly to dependent repositories, secondly to primary repositories to
+     <!--l. 794--><p class="noindent" >Committing the changes should happen firstly to dependent repositories, secondly to primary repositories to
      avoid automatic build errors.
      </p></li>
      <li class="itemize">
-     <!--l. 798--><p class="noindent" >Each unique commit should compile with XCODE5 and preferably with other toolchains. In the majority of the
+     <!--l. 796--><p class="noindent" >Each unique commit should compile with XCODE5 and preferably with other toolchains. In the majority of the
      cases it can be checked by accessing the <a 
 href="https://travis-ci.com/acidanthera" >CI interface</a>. Ensuring that static analysis finds no warnings is preferred.
+                                                                                                  
+                                                                                                  
+         <li class="itemize">
+         <!--l. 2254--><p class="noindent" >Enabling support for an unsupported CPU model (e.g. Intel Pentium).
+         </p></li>
+         <li class="itemize">
+         <!--l. 2255--><p class="noindent" >Enabling support for a CPU model not yet supported by a specific version of macOS (typically old versions).
+         </p></li>
+         <li class="itemize">
+         <!--l. 2256--><p class="noindent" >Enabling XCPM support for an unsupported CPU variant.</p></li></ul>
+     <!--l. 2259--><p class="noindent" >Note 1: It may also be the case that the CPU model is supported but there is no power management supported (e.g.
+     virtual machines). In this case, MinKernel and MaxKernel can be set to restrict CPU virtualisation and dummy power
+     management patches to the particular macOS kernel version.
+     </p><!--l. 2263--><p class="noindent" >Note 2: Only the value of EAX, which represents the full CPUID, typically needs to be accounted for and remaining bytes
+     should be left as zeroes. The byte order is Little Endian. For example, C3 06 03 00 stands for CPUID 0x0306C3
+     (Haswell).
+     </p><!--l. 2268--><p class="noindent" >Note 3: For XCPM support it is recommended to use the following combinations.
+</p>
+         <ul class="itemize1">
+         <li class="itemize">
+         <!--l. 2272--><p class="noindent" >Haswell-E (0x0306F2) to Haswell (0x0306C3):<br 
+class="newline" />Cpuid1Data: C3 06 03 00 00 00 00 00 00 00 00 00 00 00 00 00<br 
+class="newline" />Cpuid1Mask: FF FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00
+         </p></li>
+         <li class="itemize">
+         <!--l. 2275--><p class="noindent" >Broadwell-E (0x0406F1) to Broadwell (0x0306D4):<br 
+class="newline" />Cpuid1Data: D4 06 03 00 00 00 00 00 00 00 00 00 00 00 00 00<br 
+class="newline" />Cpuid1Mask: FF FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00
+         </p></li>
+         <li class="itemize">
+         <!--l. 2278--><p class="noindent" ><span class="uwave">Comet Lake U62 (</span><span class="uwave">0x0A0660</span><span class="uwave">) to Comet Lake U42 (</span><span class="uwave">0x0806EC</span><span class="uwave">):</span><br 
+class="newline" /><span class="uwave">Cpuid1Data</span><span class="uwave">: </span><span class="uwave">EC 06 08 00 00 00 00 00 00 00 00 00 00 00 00 00</span><br 
+class="newline" /><span class="uwave">Cpuid1Mask</span><span class="uwave">: </span><span class="uwave">FF FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00</span>
+         </p></li>
+         <li class="itemize">
+         <!--l. 2281--><p class="noindent" >Rocket Lake (0x0A0670) to Comet Lake (0x0906EB):<br 
+class="newline" />Cpuid1Data: EB 06 09 00 00 00 00 00 00 00 00 00 00 00 00 00<br 
+class="newline" />Cpuid1Mask: FF FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00
+         </p></li>
+         <li class="itemize">
+         <!--l. 2284--><p class="noindent" ><span class="sout">Comet Lake U62 (</span><span class="uwave">Alder Lake (</span><span class="sout">0x0A0660</span><span class="uwave">0x090672</span>) to Comet Lake <span class="sout">U42 (</span><span class="uwave">(</span><span class="sout">0x0806EC</span><span class="uwave">0x0906EB</span>):<br 
+class="newline" />Cpuid1Data: <span class="sout">EC </span><span class="uwave">EB </span>06 <span class="sout">08 </span><span class="uwave">09 </span>00 00 00 00 00 00 00 00 00 00 00 00 00<br 
+class="newline" />Cpuid1Mask: FF FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00</p></li></ul>
+     <!--l. 2289--><p class="noindent" >Note 4: Be aware that the following configurations are unsupported by XCPM (at least out of the box):
+</p>
+         <ul class="itemize1">
+         <li class="itemize">
+         <!--l. 2293--><p class="noindent" >Consumer Ivy Bridge (0x0306A9) as Apple disabled XCPM for Ivy Bridge and recommends legacy power
+         management for these CPUs. _xcpm_bootstrap should manually be patched to enforce XCPM on these
+         CPUs instead of this option.
+         </p></li>
+         <li class="itemize">
+         <!--l. 2296--><p class="noindent" >Low-end CPUs (e.g. Haswell+ Pentium) as they are not supported properly by macOS. Legacy workarounds
+         for older models can be found in the Special NOTES section of <a 
+href="https://github.com/acidanthera/bugtracker/issues/365" >acidanthera/bugtracker#365</a>.</p></li></ul>
+     </li>
                                                                                                   
 
 
