@@ -247,48 +247,65 @@ href="https://travis-ci.com/acidanthera" >CI interface</a>. Ensuring that static
      </p><!--l. 2263--><p class="noindent" >Note 2: Only the value of EAX, which represents the full CPUID, typically needs to be accounted for and remaining bytes
      should be left as zeroes. The byte order is Little Endian. For example, C3 06 03 00 stands for CPUID 0x0306C3
      (Haswell).
-     </p><!--l. 2268--><p class="noindent" >Note 3: For XCPM support it is recommended to use the following combinations.
+     </p><!--l. 2268--><p class="noindent" >Note 3: For XCPM support it is recommended to use the following combinations. <span class="uwave">Be warned that one is required to set
+     the correct </span><a 
+href="https://github.com/dortania/bugtracker/issues/190" ><span class="uwave">frequency vectors</span></a> <span class="uwave">matching the installed CPU. </span>
 </p>
          <ul class="itemize1">
          <li class="itemize">
-         <!--l. 2272--><p class="noindent" >Haswell-E (0x0306F2) to Haswell (0x0306C3):<br 
+         <!--l. 2276--><p class="noindent" >Haswell-E (0x0306F2) to Haswell (0x0306C3):<br 
 class="newline" />Cpuid1Data: C3 06 03 00 00 00 00 00 00 00 00 00 00 00 00 00<br 
 class="newline" />Cpuid1Mask: FF FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00
          </p></li>
          <li class="itemize">
-         <!--l. 2275--><p class="noindent" >Broadwell-E (0x0406F1) to Broadwell (0x0306D4):<br 
+         <!--l. 2279--><p class="noindent" >Broadwell-E (0x0406F1) to Broadwell (0x0306D4):<br 
 class="newline" />Cpuid1Data: D4 06 03 00 00 00 00 00 00 00 00 00 00 00 00 00<br 
 class="newline" />Cpuid1Mask: FF FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00
          </p></li>
          <li class="itemize">
-         <!--l. 2278--><p class="noindent" ><span class="uwave">Comet Lake U62 (</span><span class="uwave">0x0A0660</span><span class="uwave">) to Comet Lake U42 (</span><span class="uwave">0x0806EC</span><span class="uwave">):</span><br 
+         <!--l. 2282--><p class="noindent" ><span class="uwave">Comet Lake U62 (</span><span class="uwave">0x0A0660</span><span class="uwave">) to Comet Lake U42 (</span><span class="uwave">0x0806EC</span><span class="uwave">):</span><br 
 class="newline" /><span class="uwave">Cpuid1Data</span><span class="uwave">: </span><span class="uwave">EC 06 08 00 00 00 00 00 00 00 00 00 00 00 00 00</span><br 
 class="newline" /><span class="uwave">Cpuid1Mask</span><span class="uwave">: </span><span class="uwave">FF FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00</span>
          </p></li>
          <li class="itemize">
-         <!--l. 2281--><p class="noindent" >Rocket Lake (0x0A0670) to Comet Lake (0x0906EB):<br 
+         <!--l. 2285--><p class="noindent" >Rocket Lake (0x0A0670) to Comet Lake (0x0906EB):<br 
 class="newline" />Cpuid1Data: EB 06 09 00 00 00 00 00 00 00 00 00 00 00 00 00<br 
 class="newline" />Cpuid1Mask: FF FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00
          </p></li>
          <li class="itemize">
-         <!--l. 2284--><p class="noindent" ><span class="sout">Comet Lake U62 (</span><span class="uwave">Alder Lake (</span><span class="sout">0x0A0660</span><span class="uwave">0x090672</span>) to Comet Lake <span class="sout">U42 (</span><span class="uwave">(</span><span class="sout">0x0806EC</span><span class="uwave">0x0906EB</span>):<br 
+         <!--l. 2288--><p class="noindent" ><span class="sout">Comet Lake U62 (</span><span class="uwave">Alder Lake (</span><span class="sout">0x0A0660</span><span class="uwave">0x090672</span>) to Comet Lake <span class="sout">U42 (</span><span class="uwave">(</span><span class="sout">0x0806EC</span><span class="uwave">0x0906EB</span>):<br 
 class="newline" />Cpuid1Data: <span class="sout">EC </span><span class="uwave">EB </span>06 <span class="sout">08 </span><span class="uwave">09 </span>00 00 00 00 00 00 00 00 00 00 00 00 00<br 
 class="newline" />Cpuid1Mask: FF FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00</p></li></ul>
-     <!--l. 2289--><p class="noindent" >Note 4: Be aware that the following configurations are unsupported by XCPM (at least out of the box):
+     <!--l. 2293--><p class="noindent" >Note 4: Be aware that the following configurations are unsupported by XCPM (at least out of the box):
 </p>
          <ul class="itemize1">
          <li class="itemize">
-         <!--l. 2293--><p class="noindent" >Consumer Ivy Bridge (0x0306A9) as Apple disabled XCPM for Ivy Bridge and recommends legacy power
+         <!--l. 2297--><p class="noindent" >Consumer Ivy Bridge (0x0306A9) as Apple disabled XCPM for Ivy Bridge and recommends legacy power
          management for these CPUs. _xcpm_bootstrap should manually be patched to enforce XCPM on these
          CPUs instead of this option.
          </p></li>
          <li class="itemize">
-         <!--l. 2296--><p class="noindent" >Low-end CPUs (e.g. Haswell+ Pentium) as they are not supported properly by macOS. Legacy workarounds
+         <!--l. 2300--><p class="noindent" >Low-end CPUs (e.g. Haswell+ Pentium) as they are not supported properly by macOS. Legacy workarounds
          for older models can be found in the Special NOTES section of <a 
 href="https://github.com/acidanthera/bugtracker/issues/365" >acidanthera/bugtracker#365</a>.</p></li></ul>
      </li>
                                                                                                   
-
-
-</body>
+                                                                                                  
+     
+     
+     
+     
+     
+      
+     
+     
+     
+      
+     
+     
+     
+      
+     
+     
+     </body>
 </html>
