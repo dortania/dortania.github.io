@@ -4697,7 +4697,7 @@ command line interaction with the boot menu.
      The list of recognised audio controllers can be found in the debug log (marked in bold-italic):
      </p><!-- l. 6892 --><p class='noindent'><span class='ec-lmtt-10'>OCAU: 1/3 </span><span class='ec-lmtko-10'>PciRoot(0x0)/Pci(0x1,0x0)/Pci(0x0,0x1)</span><span class='ec-lmtt-10'>/VenMsg(&lt;redacted&gt;,00000000) (4 outputs)</span><br class='newline' /><span class='ec-lmtt-10'>OCAU: 2/3 </span><span class='ec-lmtko-10'>PciRoot(0x0)/Pci(0x3,0x0)</span><span class='ec-lmtt-10'>/VenMsg(&lt;redacted&gt;,00000000) (1 outputs)</span><br class='newline' /><span class='ec-lmtt-10'>OCAU: 3/3 </span><span class='ec-lmtko-10'>PciRoot(0x0)/Pci(0x1B,0x0)</span><span class='ec-lmtt-10'>/VenMsg(&lt;redacted&gt;,02000000) (7 outputs)</span>
      </p><!-- l. 6896 --><p class='noindent'>If using <span class='ec-lmtt-10'>AudioDxe</span>, the required device path is also output as:
-     </p><!-- l. 6898 --><p class='noindent'><span class='ec-lmtt-10'>HDA: Connecting controller </span><span class='ec-lmtko-10'>PciRoot(0x0)/Pci(0x1B,0x0)</span>
+     </p><!-- l. 6898 --><p class='noindent'><span class='ec-lmtt-10'>HDA: Connecting controller - </span><span class='ec-lmtko-10'>PciRoot(0x0)/Pci(0x1B,0x0)</span>
      </p><!-- l. 6900 --><p class='noindent'>Finally, <span class='ec-lmtt-10'>gfxutil -f HDEF </span>command can be used in macOS to obtain the device path.
      </p><!-- l. 6902 --><p class='noindent'>Specifying an empty device path will result in the first available audio controller being used, and can be a
      convenient option to get UEFI audio working if only one audio controller is present.
