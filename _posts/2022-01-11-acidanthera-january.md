@@ -24,7 +24,7 @@ Have a nice winter,
 
 # Changelogs
 
-#### [OpenCore 0.7.6](https://github.com/acidanthera/OpenCorePkg/releases)
+#### [OpenCore 0.7.7](https://github.com/acidanthera/OpenCorePkg/releases)
 
 - Fixed rare crash caused by register corruption in the entry point
 - Added `ProvideCurrentCpuInfo` support for Intel Alder Lake
