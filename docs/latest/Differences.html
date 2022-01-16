@@ -41,8 +41,8 @@ href="https://github.com/acidanthera/bugtracker/issues/1222" >acidanthera/bugtra
      </p><!--l. 3318--><p class="noindent" >Note 2: While NVRAM resets executed from OpenCore would not typically erase the boot option created in Bootstrap,
      executing NVRAM resets prior to loading OpenCore will erase the boot option. Therefore, for significant implementation
      updates, such as was the case with OpenCore 0.6.4, an NVRAM reset should be executed with Bootstrap disabled, after
-     which it can be re-enabled<span class="uwave">. </span>
-     </p><!--l. 3324--><p class="noindent" ><span class="uwave">Note 3</span><span class="uwave">: Some versions of Intel Visual BIOS (e.g. on Intel NUC) have an unfortunate bug whereby if any boot option is
+     which it can be re-enabled.
+     </p><!--l. 3323--><p class="noindent" ><span class="uwave">Note 3</span><span class="uwave">: Some versions of Intel Visual BIOS (e.g. on Intel NUC) have an unfortunate bug whereby if any boot option is
      added referring to a path on a USB drive, from then on that is the only boot option which will be shown when any USB
      drive is inserted. If OpenCore is started from a USB drive on this firmware with </span><span class="uwave">LauncherOption</span> <span class="uwave">set to </span><span class="uwave">Full</span> <span class="uwave">or
      </span><span class="uwave">Short</span><span class="uwave">, this applies and only the OpenCore boot entry will be seen afterwards, when any other USB is
@@ -52,30 +52,137 @@ href="https://github.com/acidanthera/bugtracker/issues/1222" >acidanthera/bugtra
      </span></p>
          <ul class="itemize1">
          <li class="itemize">
-         <!--l. 3334--><p class="noindent" ><span class="uwave">Enable the system UEFI Shell in Intel Visual BIOS </span>
+         <!--l. 3333--><p class="noindent" ><span class="uwave">Enable the system UEFI Shell in Intel Visual BIOS </span>
          </p></li>
          <li class="itemize">
-         <!--l. 3335--><p class="noindent" ><span class="uwave">With power off, insert an OpenCore USB </span>
+         <!--l. 3334--><p class="noindent" ><span class="uwave">With power off, insert an OpenCore USB </span>
          </p></li>
          <li class="itemize">
-         <!--l. 3336--><p class="noindent" ><span class="uwave">Power up and select the system UEFI Shell </span>
+         <!--l. 3335--><p class="noindent" ><span class="uwave">Power up and select the system UEFI Shell </span>
          </p></li>
          <li class="itemize">
-         <!--l. 3337--><p class="noindent" ><span class="uwave">Since the system shell does not include </span><span class="uwave">bcfg</span><span class="uwave">, use the system shell to start OpenCore’s OpenShell (e.g. by
+         <!--l. 3336--><p class="noindent" ><span class="uwave">Since the system shell does not include </span><span class="uwave">bcfg</span><span class="uwave">, use the system shell to start OpenCore’s OpenShell (e.g. by
          entering the command </span><span class="uwave">FS2:\EFI\OC\Tools\OpenShell.efi</span> <span class="uwave">, but you will need to work out which drive is
          correct for OpenCore and modify the drive number </span><span class="uwave">FS#:</span> <span class="uwave">accordingly) </span>
          </p></li>
          <li class="itemize">
-         <!--l. 3340--><p class="noindent" ><span class="uwave">Within OpenShell, use </span><span class="uwave">bcfg boot dump</span> <span class="uwave">to display the NVRAM boot options and then use </span><span class="uwave">bcfg boot rm
+         <!--l. 3339--><p class="noindent" ><span class="uwave">Within OpenShell, use </span><span class="uwave">bcfg boot dump</span> <span class="uwave">to display the NVRAM boot options and then use </span><span class="uwave">bcfg boot rm
          #</span> <span class="uwave">(where </span><span class="uwave">#</span> <span class="uwave">is the number of the OpenCore boot entry) to remove the OpenCore entry </span></p></li></ul>
-     <!--l. 3344--><p class="noindent" ><span class="uwave">It is alteratively possible to start OpenShell directly from the OpenCore boot menu, if you have a working configured
+     <!--l. 3343--><p class="noindent" ><span class="uwave">It is alteratively possible to start OpenShell directly from the OpenCore boot menu, if you have a working configured
      OpenCore for the system. In that case, and if OpenCore has </span><span class="uwave">RequestBootVarRouting</span> <span class="uwave">enabled, it will be necessary to run
      the command </span><span class="uwave">\EFI\OC\Tools\OpenControl.efi disable</span> <span class="uwave">before using </span><span class="uwave">bcfg</span><span class="uwave">. (After </span><span class="uwave">OpenControl disable</span><span class="uwave">, it is
      necessary to either reboot or run </span><span class="uwave">OpenControl restore</span><span class="uwave">, before booting an operating system.) It is also possible to use
      </span><span class="uwave">efibootmgr</span> <span class="uwave">within Linux to remove the offending entry, if you have a working version of Linux on the machine. Linux
-     must be started either not via OpenCore, or via OpenCore with </span><span class="uwave">RequestBootVarRouting</span> <span class="uwave">disabled for this to
-     work</span>.
+     must be started either not via OpenCore, or via OpenCore with </span><span class="uwave">RequestBootVarRouting</span> <span class="uwave">disabled for this to work.
+     </span>
      </p></li>
+                                                                                                  
+                                                                                                  
+<li 
+  class="enumerate" id="x1-44010x5">
+     <!--l. 3353--><p class="noindent" >LauncherPath<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Default<br 
+class="newline" />Description: Launch path for the LauncherOption property.
+     </p><!--l. 3358--><p class="noindent" >Default points to OpenCore.efi. User specified paths, e.g. \EFI\SomeLauncher.efi, can be used to provide custom
+     loaders, which are supposed to load OpenCore.efi themselves.
+     </p></li>
+<li 
+  class="enumerate" id="x1-44012x6">
+     <!--l. 3364--><p class="noindent" >PickerAttributes<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: Sets specific attributes for the OpenCore picker.
+     </p><!--l. 3369--><p class="noindent" >Different OpenCore pickers may be configured through the attribute mask containing OpenCore-reserved (BIT0~BIT15)
+     and OEM-specific (BIT16~BIT31) values.
+     </p><!--l. 3373--><p class="noindent" >Current OpenCore values include:
+</p>
+         <ul class="itemize1">
+         <li class="itemize">
+         <!--l. 3377--><p class="noindent" >0x0001 — OC_ATTR_USE_VOLUME_ICON, provides custom icons for boot entries:
+         </p><!--l. 3380--><p class="noindent" >OpenCore will attempt loading a volume icon by searching as follows, and will fallback to the default icon on failure:
+         </p>
+             <ul class="itemize2">
+             <li class="itemize">
+             <!--l. 3384--><p class="noindent" >.VolumeIcon.icns       file           at           Preboot       volume           in           per-volume
+             directory (/System/Volumes/Preboot/{GUID}/ when mounted at the default location within macOS)
+             for APFS (if present).
+             </p></li>
+             <li class="itemize">
+             <!--l. 3387--><p class="noindent" >.VolumeIcon.icns file at the Preboot volume root (/System/Volumes/Preboot/, when mounted at
+             the default location within macOS) for APFS (otherwise).
+             </p></li>
+             <li class="itemize">
+             <!--l. 3390--><p class="noindent" >.VolumeIcon.icns file at the volume root for other filesystems.</p></li></ul>
+         <!--l. 3393--><p class="noindent" >Note 1: The Apple picker partially supports placing a volume icon file at the operating system’s Data volume root,
+         /System/Volumes/Data/, when mounted at the default location within macOS. This approach is flawed: the file is
+         neither accessible to OpenCanopy nor to the Apple picker when FileVault 2, which is meant to be the default choice,
+         is enabled. Therefore, OpenCanopy does not attempt supporting Apple’s approach. A volume icon file may be
+         placed at the root of the Preboot volume for compatibility with both OpenCanopy and the Apple picker, or use the
+         Preboot per-volume location as above with OpenCanopy as a preferred alternative to Apple’s approach.
+         </p><!--l. 3402--><p class="noindent" >Note 2: Be aware that using a volume icon on any drive overrides the normal OpenCore picker behaviour for
+         that drive of selecting the appropriate icon depending on whether the drive is internal or external.
+         </p></li>
+         <li class="itemize">
+         <!--l. 3406--><p class="noindent" >0x0002 — OC_ATTR_USE_DISK_LABEL_FILE, provides custom prerendered titles for boot entries from .disk_label
+         (.disk_label_2x) file next to the bootloader for all filesystems. Prerendered labels can be generated via the
+         disklabel utility or the bless command. When disabled or missing, label text in (.contentDetails or
+         .disk_label.contentDetails) will be rendered if present instead, otherwise the entry name itself will be
+         rendered.
+                                                                                                  
+                                                                                                  
+<li 
+  class="enumerate" id="x1-46002x1">
+     <!--l. 3906--><p class="noindent" >AllowNvramReset<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Allow CMD+OPT+P+R handling and enable showing NVRAM Reset entry in OpenCore picker.
+     </p><!--l. 3912--><p class="noindent" >Note 1: It is known that some Lenovo laptops have a firmware bug, which makes them unbootable after performing
+     NVRAM reset. Refer to <a 
+href="https://github.com/acidanthera/bugtracker/issues/995" >acidanthera/bugtracker#995</a> for details.
+     </p><!--l. 3917--><p class="noindent" >Note 2: Resetting NVRAM will also erase any boot options not backed up using the bless command. For example,
+     Linux installations to custom locations not specified in BlessOverride
+     </p></li>
+<li 
+  class="enumerate" id="x1-46004x2">
+     <!--l. 3922--><p class="noindent" >AllowSetDefault<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Allow CTRL+Enter and CTRL+Index handling to set the default boot option in the OpenCore
+     picker.
+     </p><!--l. 3928--><p class="noindent" >Note 1: May be used in combination with Shift+Enter or Shift+Index when PollAppleHotKeys is enabled.
+     </p><!--l. 3932--><p class="noindent" >Note 2: In order to support systems with unresponsive modifiers during preboot (which includes V1 and V2
+     KeySupport mode on some firmware) OpenCore also allows holding the =/+ key in order to trigger ‘set default’
+     mode.
+     </p></li>
+<li 
+  class="enumerate" id="x1-46006x3">
+     <!--l. 3937--><p class="noindent" >AllowToggleSip<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Enable entry for disabling and enabling System Integrity Protection in OpenCore picker.
+     </p><!--l. 3943--><p class="noindent" >This will toggle Apple NVRAM variable csr-active-config between 0 for SIP Enabled and a practical default
+     value for SIP Disabled<span class="sout">(currently </span><span class="sout">0x26F</span><span class="sout">)</span>.
+     </p><!--l. 3947--><p class="noindent" >Note 1: It is strongly recommended not to make a habit of running macOS with SIP disabled. Use of this boot
+     option may make it easier to quickly disable SIP protection when genuinely needed - it should be re-enabled
+     again afterwards.
+     </p><!--l. 3951--><p class="noindent" >Note 2: OpenCore uses <span class="sout">0x26F</span><span class="uwave">0x27F</span> <span class="sout">even though </span><span class="uwave">while </span>csrutil disable on <span class="sout">Big Sur </span><span class="uwave">macOS Big Sur and Monterey </span>sets
+     0x7F. <span class="sout">To explain the choice: </span></p>
+         <ul class="itemize1">
+         <li class="itemize">
+         <!--l. 3957--><p class="noindent" ><span class="sout">csrutil disable -</span><span class="sout">-no-internal</span>    <span class="sout">actually       sets       </span><span class="sout">0x6F</span><span class="sout">,       and       this       is       preferable
+         because </span><span class="sout">CSR_ALLOW_APPLE_INTERNAL</span> <span class="sout">(</span><span class="sout">0x10</span><span class="sout">) prevents updates (unless you are running an internal build of
+         macOS). </span>
+         </p></li>
+         <li class="itemize">
+         <!--l. 3967--><p class="noindent" >CSR_ALLOW_UNAPPROVED_KEXTS (0x200) is generally useful, in the case where you do need to have SIP
+         disabled <span class="uwave">anyway</span>, as it allows installing unsigned kexts without manual approval in System Preferences.
+         </p></li>
+         <li class="itemize">
+         <!--l. 3970--><p class="noindent" >CSR_ALLOW_UNAUTHENTICATED_ROOT (0x800) is not <span class="sout">practical as it prevents incremental (non-full) </span><span class="uwave">included,
+         as it is very easy when using it to inadvertently break OS seal and prevent incremental </span>OTA updates.</p></li></ul>
+     <!--l. 3975--><p class="noindent" >Note3: For any other value which you may need to use, it is possible to configure CsrUtil.efi as a TextMode Tools
+     entry to configure a different value, e.g. use toggle <span class="sout">0x6F</span><span class="uwave">0x77</span> in Arguments to toggle the SIP disabled value set by
                                                                                                   
 
 
