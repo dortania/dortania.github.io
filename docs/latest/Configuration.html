@@ -418,7 +418,7 @@ for use despite the toolchain name. An example command sequence is as follows:
 <span class='label'><a id='x1-11007r5'></a></span><span class='ec-lmtt-10'>. ./edksetup.sh </span><br /> 
 <span class='label'><a id='x1-11008r6'></a></span><span class='ec-lmtk-10'>make</span><span class='ec-lmtt-10'> -C BaseTools </span><br /> 
 <span class='label'><a id='x1-11009r7'></a></span><span class='ec-lmtk-10'>build</span><span class='ec-lmtt-10'> -a X64 -b RELEASE -t XCODE5 -p OpenCorePkg/OpenCorePkg.dsc</span></div>
-<figcaption class='caption'><span class='id'>Listing 1: </span><span class='content'>Compilation Commands</span></figcaption><!-- tex4ht:label?: x1-11001r  -->
+<figcaption class='caption'><span class='id'>Listing 1:</span><span class='content'>Compilation Commands</span></figcaption><!-- tex4ht:label?: x1-11001r  -->
 <!-- l. 668 --><p class='noindent'>For IDE usage Xcode projects are available in the root of the repositories. Another approach could be using <a href='https://microsoft.github.io/language-server-protocol'>Language Server
 Protocols</a>. For example, <a href='https://www.sublimetext.com'>Sublime Text</a> with <a href='https://lsp.sublimetext.io'>LSP for Sublime Text</a> plugin. Add <span class='ec-lmtt-10'>compile_flags.txt </span>file with similar content to
 the UDK root:
@@ -460,7 +460,7 @@ the UDK root:
 <span class='label'><a id='x1-11043r32'></a></span><span class='ec-lmtt-10'>-Wno-unused-const-variable </span><br /> 
 <span class='label'><a id='x1-11044r33'></a></span><span class='ec-lmtt-10'>-DOC_TARGET_NOOPT=1 </span><br /> 
 <span class='label'><a id='x1-11045r34'></a></span><span class='ec-lmtt-10'>-DNO_MSABI_VA_FUNCS=1</span></div>
-<figcaption class='caption'><span class='id'>Listing 2: </span><span class='content'>ECC Configuration</span></figcaption><!-- tex4ht:label?: x1-11010r  -->
+<figcaption class='caption'><span class='id'>Listing 2:</span><span class='content'>ECC Configuration</span></figcaption><!-- tex4ht:label?: x1-11010r  -->
 <!-- l. 710 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: <span class='ec-lmtt-10'>/UefiPackages </span>in the sample file denotes an absolute path.
 </p><!-- l. 712 --><p class='noindent'><span class='ec-lmbx-10'>Warning</span>: Tool developers modifying <span class='ec-lmtt-10'>config.plist </span>or any other OpenCore files must ensure that their tools check the
 <span class='ec-lmtt-10'>opencore-version </span>NVRAM variable (see the <a href='#x1-450004'>Debug Properties</a> section below) and warn users if the version listed is
@@ -4170,7 +4170,7 @@ an HFS+ or APFS volume:
 <p><a id='x1-65002'></a></p>
 <div class='lstlisting' id='listing-16'><span class='label'><a id='x1-65003r1'></a></span><span class='ec-lmtk-10'>sudo</span><span class='ec-lmtt-10'> bless --verbose --file /Volumes/VOLNAME/DIR/OpenShell.efi \ </span><br /> 
 <span class='label'><a id='x1-65004r2'></a></span><span class='ec-lmtt-10'>  --folder /Volumes/VOLNAME/DIR/ --setBoot</span></div>
-<figcaption class='caption'><span class='id'>Listing 3: </span><span class='content'>Blessing tool</span></figcaption><!-- tex4ht:label?: x1-65001r  -->
+<figcaption class='caption'><span class='id'>Listing 3:</span><span class='content'>Blessing tool</span></figcaption><!-- tex4ht:label?: x1-65001r  -->
 <!-- l. 6165 --><p class='noindent'><span class='ec-lmri-10'>Note 1</span>: <span class='ec-lmtt-10'>/System/Library/CoreServices/BridgeVersion.bin </span>should be copied to <span class='ec-lmtt-10'>/Volumes/VOLNAME/DIR</span>.
 <br class='newline' /><span class='ec-lmri-10'>Note 2</span>: To be able to use the <span class='ec-lmtt-10'>bless </span>command, <a href='https://developer.apple.com/library/archive/documentation/Security/Conceptual/System_Integrity_Protection_Guide/ConfiguringSystemIntegrityProtection/ConfiguringSystemIntegrityProtection.html'>disabling System Integrity Protection</a> is necessary. <br class='newline' /><span class='ec-lmri-10'>Note 3</span>: To be able to boot <a href='https://support.apple.com/HT208330'>Secure Boot</a> might be disabled if present.
 </p><!-- l. 6172 --><p class='noindent'>Some of the known tools are listed below (builtin tools are marked with <span class='ec-lmbx-10'>*</span>):
@@ -5726,7 +5726,7 @@ utility. Reference example:
 <span class='label'><a id='x1-91031r29'></a></span><span class='ec-lmtt-10'>OK; writing new GUID partition table (GPT) to \\.\physicaldrive0. </span><br /> 
 <span class='label'><a id='x1-91032r30'></a></span><span class='ec-lmtt-10'>Disk synchronization succeeded! The computer should now use the new partition table. </span><br /> 
 <span class='label'><a id='x1-91033r31'></a></span><span class='ec-lmtt-10'>The operation has completed successfully.</span></div>
-<figcaption class='caption'><span class='id'>Listing 4: </span><span class='content'>Relabeling Windows volume</span></figcaption><!-- tex4ht:label?: x1-91001r  -->
+<figcaption class='caption'><span class='id'>Listing 4:</span><span class='content'>Relabeling Windows volume</span></figcaption><!-- tex4ht:label?: x1-91001r  -->
 <!-- l. 8494 --><p class='noindent'><span class='ec-lmbx-10'>How do I choose Windows BOOTCAMP with custom NTFS drivers?</span>
 </p><!-- l. 8496 --><p class='noindent'>Third-party drivers providing NTFS support, such as <a href='https://www.tuxera.com/community/open-source-ntfs-3g'>NTFS-3G</a>, Paragon NTFS, Tuxera NTFS or <a href='https://www.seagate.com/support/software/paragon'>Seagate Paragon Driver</a>
 disrupt certain macOS functionality, including the <a href='https://support.apple.com/HT202796'>Startup Disk</a> preference pane normally used for operating system selection.
