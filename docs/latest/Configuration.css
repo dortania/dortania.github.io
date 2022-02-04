@@ -220,41 +220,23 @@ div.lstlisting{font-family: monospace,monospace; white-space: nowrap; margin-top
 div.lstinputlisting{ font-family: monospace,monospace; white-space: nowrap; }
 .lstinputlisting .label{margin-right:0.5em;}
 .rotatebox{display: inline-block;}
-#TBL-1 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-1{border-collapse:collapse;}
-#TBL-1 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-1{border-collapse:collapse;}
-#TBL-1 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-1{border-collapse:collapse;}
-#TBL-2 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-2{border-collapse:collapse;}
-#TBL-2 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-2{border-collapse:collapse;}
-#TBL-2 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-2{border-collapse:collapse;}
-#TBL-2 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-2{border-collapse:collapse;}
-#TBL-2 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-2{border-collapse:collapse;}
-#TBL-2 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-2{border-collapse:collapse;}
-#TBL-3 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-3{border-collapse:collapse;}
-#TBL-3 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-3{border-collapse:collapse;}
-#TBL-3 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-3{border-collapse:collapse;}
-#TBL-3 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-3{border-collapse:collapse;}
-#TBL-3 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-3{border-collapse:collapse;}
-#TBL-3 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-3{border-collapse:collapse;}
-#TBL-3 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-3{border-collapse:collapse;}
-#TBL-3 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-3{border-collapse:collapse;}
-#TBL-3 colgroup{border-left: 1px solid black;border-right:1px solid black;}
-#TBL-3{border-collapse:collapse;}
+#TBL-1-1{border-left: 1px solid black;}
+#TBL-1-1{border-right:1px solid black;}
+#TBL-1-2{border-right:1px solid black;}
+#TBL-2-1{border-left: 1px solid black;}
+#TBL-2-1{border-right:1px solid black;}
+#TBL-2-2{border-right:1px solid black;}
+#TBL-2-3{border-right:1px solid black;}
+#TBL-2-4{border-right:1px solid black;}
+#TBL-2-5{border-right:1px solid black;}
+#TBL-3-1{border-left: 1px solid black;}
+#TBL-3-1{border-right:1px solid black;}
+#TBL-3-2{border-right:1px solid black;}
+#TBL-3-3{border-right:1px solid black;}
+#TBL-3-4{border-right:1px solid black;}
+#TBL-3-5{border-right:1px solid black;}
+#TBL-3-6{border-right:1px solid black;}
+#TBL-3-7{border-right:1px solid black;}
+#TBL-3-8{border-right:1px solid black;}
 /* end css.sty */
 
