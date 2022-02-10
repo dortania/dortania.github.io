@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Acidanthera Updates: February 2022"
-date: 2022-02-10 13:30:00 -0500
+date: 2022-02-10 12:00:00 -0500
 categories: Hackintosh updates
 ---
 
