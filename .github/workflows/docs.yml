@@ -62,6 +62,7 @@ jobs:
       - name: Install LaTeX Dependencies
         run: |
           sudo tlmgr update --self
+          sudo fmutil-sys --all
           sudo tlmgr update --all
           sudo tlmgr install titlesec pgf datetime fmtcount zref hyperref zlmtt make4ht luaxml tex4ht
           cpanm Algorithm::Diff
