@@ -1,0 +1,316 @@
+<!DOCTYPE html> 
+<html lang="en-US" xml:lang="en-US" > 
+<head><title>Differences</title> 
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="Differences.css" /> 
+<meta name="src" content="Differences.tex" /> 
+<link rel="stylesheet" type="text/css" href="../main.css" /></head><body 
+><div class="center" 
+>
+<!--l. 142--><p class="noindent" >
+</p><!--l. 149--><p class="noindent" > <img 
+src="Logos/Logo.png" alt="PIC"  
+width="160" height="160"  />
+</p><!--l. 153--><p class="noindent" >OpenCore
+</p><!--l. 157--><p class="noindent" >Reference Manual (0.7<span class="sout">.8</span><span class="uwave">.9</span>)
+</p><!--l. 161--><p class="noindent" >[2022.02.26]
+</p><!--l. 169--><p class="noindent" >Copyright ©2018-2022 vit9696
+</p>
+</div>
+                                                                                                  
+                                                                                                  
+     <!--l. 2203--><p class="noindent" >Comment<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty<br 
+class="newline" />Description: Arbitrary ASCII string used to provide human readable reference for the entry. Whether this value
+     is used is implementation defined.
+     </p></li>
+<li 
+  class="enumerate" id="x1-35006x3">
+     <!--l. 2210--><p class="noindent" >Enabled<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Set to true to block this kernel extension.
+     </p></li>
+<li 
+  class="enumerate" id="x1-35008x4">
+     <!--l. 2216--><p class="noindent" >Identifier<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty<br 
+class="newline" />Description: Kext bundle identifier (e.g. com.apple.driver.AppleTyMCEDriver).
+     </p></li>
+<li 
+  class="enumerate" id="x1-35010x5">
+     <!--l. 2223--><p class="noindent" >MaxKernel<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty<br 
+class="newline" />Description: Blocks kernel extension on specified macOS version or older.
+     </p><!--l. 2228--><p class="noindent" >Note: Refer to the <a 
+href="#kernmatch">Add MaxKernel description</a> for matching logic.
+     </p></li>
+<li 
+  class="enumerate" id="x1-35012x6">
+     <!--l. 2231--><p class="noindent" >MinKernel<br 
+class="newline" />Type: plist string<br 
+class="newline" />Failsafe: Empty<br 
+class="newline" />Description: Blocks kernel extension on specified macOS version or newer.
+     </p><!--l. 2236--><p class="noindent" >Note: Refer to the <a 
+href="#kernmatch">Add MaxKernel description</a> for matching logic.
+     </p></li>
+<li 
+  class="enumerate" id="x1-35014x7">
+     <!--l. 2239--><p class="noindent" ><span class="uwave">Strategy</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist string</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">Disable</span> <span class="uwave">(Forcibly make the kernel driver kmod startup code return failure)</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Determines the behaviour of kernel driver blocking. </span>
+     </p><!--l. 2246--><p class="noindent" ><span class="uwave">Valid values: </span>
+</p>
+         <ul class="itemize1">
+         <li class="itemize">
+         <!--l. 2250--><p class="noindent" ><span class="uwave">Disable</span> <span class="uwave">— Forcibly make the kernel driver kmod startup code return failure. </span>
+         </p></li>
+         <li class="itemize">
+         <!--l. 2251--><p class="noindent" ><span class="uwave">Exclude</span> <span class="uwave">— Remove the kernel driver from the kernel cache by dropping plist entry and filling in zeroes. </span></p></li></ul>
+                                                                                                  
+                                                                                                  
+     <!--l. 2254--><p class="noindent" ><span class="uwave">Note</span><span class="uwave">: It is risky to </span><span class="uwave">Exclude</span> <span class="uwave">a kext that is a dependency of others. </span>
+     </p><!--l. 2257--><p class="noindent" ><span class="uwave">Note 2</span><span class="uwave">: At this moment </span><span class="uwave">Exclude</span> <span class="uwave">is only applied to </span><span class="uwave">prelinkedkernel</span> <span class="uwave">and newer mechanisms. </span>
+     </p><!--l. 2260--><p class="noindent" ><span class="uwave">Note 3</span><span class="uwave">: In most cases strategy </span><span class="uwave">Exclude</span> <span class="uwave">requires the new kext to be injected as a replacement. </span>
+</p>
+     </li></ol>
+<a 
+ id="x1-35015r37"></a>
+<h4 class="subsectionHead"><span class="titlemark">7.5   </span> <a 
+ id="x1-360005"></a>Emulate Properties</h4>
+     <ol  class="enumerate1" >
+<li 
+  class="enumerate" id="x1-36002x1">
+     <!--l. 2269--><p class="noindent" >Cpuid1Data<br 
+class="newline" />Type: plist data, 16 bytes<br 
+class="newline" />Failsafe: All zero<br 
+class="newline" />Description: Sequence of EAX, EBX, ECX, EDX values to replace CPUID (1) call in XNU kernel.
+     </p><!--l. 2275--><p class="noindent" >This property primarily meets three requirements:
+</p>
+         <ul class="itemize1">
+         <li class="itemize">
+         <!--l. 2279--><p class="noindent" >Enabling support for an unsupported CPU model (e.g. Intel Pentium).
+         </p></li>
+         <li class="itemize">
+         <!--l. 2280--><p class="noindent" >Enabling support for a CPU model not yet supported by a specific version of macOS (typically old versions).
+         </p></li>
+         <li class="itemize">
+         <!--l. 2281--><p class="noindent" >Enabling XCPM support for an unsupported CPU variant.</p></li></ul>
+     <!--l. 2284--><p class="noindent" >Note 1: It may also be the case that the CPU model is supported but there is no power management supported (e.g.
+     virtual machines). In this case, MinKernel and MaxKernel can be set to restrict CPU virtualisation and dummy power
+     management patches to the particular macOS kernel version.
+     </p><!--l. 2288--><p class="noindent" >Note 2: Only the value of EAX, which represents the full CPUID, typically needs to be accounted for and remaining bytes
+     should be left as zeroes. The byte order is Little Endian. For example, C3 06 03 00 stands for CPUID 0x0306C3
+     (Haswell).
+     </p><!--l. 2293--><p class="noindent" >Note 3: For XCPM support it is recommended to use the following combinations. Be warned that one is required to set
+     the correct <a 
+href="https://github.com/dortania/bugtracker/issues/190" >frequency vectors</a> matching the installed CPU.
+</p>
+         <ul class="itemize1">
+         <li class="itemize">
+         <!--l. 2300--><p class="noindent" >Haswell-E (0x0306F2) to Haswell (0x0306C3):<br 
+class="newline" />Cpuid1Data: C3 06 03 00 00 00 00 00 00 00 00 00 00 00 00 00<br 
+class="newline" />Cpuid1Mask: FF FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00
+         </p></li>
+         <li class="itemize">
+         <!--l. 2303--><p class="noindent" >Broadwell-E (0x0406F1) to Broadwell (0x0306D4):<br 
+class="newline" />Cpuid1Data: D4 06 03 00 00 00 00 00 00 00 00 00 00 00 00 00<br 
+class="newline" />Cpuid1Mask: FF FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00
+         </p></li>
+         <li class="itemize">
+         <!--l. 2306--><p class="noindent" >Comet Lake U62 (0x0A0660) to Comet Lake U42 (0x0806EC):<br 
+class="newline" />Cpuid1Data: EC 06 08 00 00 00 00 00 00 00 00 00 00 00 00 00<br 
+class="newline" />Cpuid1Mask: FF FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00
+         </p></li>
+         <li class="itemize">
+                                                                                                  
+                                                                                                  
+     <!--l. 2777--><p class="noindent" >ProvideCurrentCpuInfo<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Requirement: 10.8 (10.14)<br 
+class="newline" />Description: Provides current CPU info to the kernel.
+     </p><!--l. 2783--><p class="noindent" >This quirk works differently depending on the CPU:
+</p>
+         <ul class="itemize1">
+         <li class="itemize">
+         <!--l. 2787--><p class="noindent" >For Microsoft Hyper-V it provides the correct TSC and FSB values to the kernel, as well as disables CPU
+         topology validation (10.8+).
+         </p></li>
+         <li class="itemize">
+         <!--l. 2789--><p class="noindent" >For <span class="uwave">KVM and other hypervisors it provides precomputed MSR 35h values solving kernel panic with </span><span class="uwave">-cpu
+         host</span><span class="uwave">. </span>
+         </p></li>
+         <li class="itemize">
+         <!--l. 2791--><p class="noindent" ><span class="uwave">For </span>Intel CPUs it adds support for asymmetrical SMP systems (e.g. Intel Alder Lake) by patching core
+         count to thread count along with the supplemental required changes (10.14+).</p></li></ul>
+     </li>
+<li 
+  class="enumerate" id="x1-39050x18">
+     <!--l. 2797--><p class="noindent" >SetApfsTrimTimeout<br 
+class="newline" />Type: plist integer<br 
+class="newline" />Failsafe: -1<br 
+class="newline" />Requirement: 10.14 (not required for older)<br 
+class="newline" />Description: Set trim timeout in microseconds for APFS filesystems on SSDs.
+     </p><!--l. 2803--><p class="noindent" >The APFS filesystem is designed in a way that the space controlled via the spaceman structure is either used or free.
+     This may be different in other filesystems where the areas can be marked as used, free, and unmapped. All free
+     space is trimmed (unmapped/deallocated) at macOS startup. The trimming procedure for NVMe drives
+     happens in LBA ranges due to the nature of the DSM command with up to 256 ranges per command.
+     The more fragmented the memory on the drive is, the more commands are necessary to trim all the free
+     space.
+     </p><!--l. 2813--><p class="noindent" >Depending on the SSD controller and the level of drive fragmenation, the trim procedure may take a considerable amount
+     of time, causing noticeable boot slowdown. The APFS driver explicitly ignores previously unmapped areas and
+     repeatedly trims them on boot. To mitigate against such boot slowdowns, the macOS driver introduced a timeout
+     (9.999999 seconds) that stops the trim operation when not finished in time.
+     </p><!--l. 2820--><p class="noindent" >On several controllers, such as Samsung, where the deallocation process is relatively slow, this timeout can be reached
+     very quickly. Essentially, it means that the level of fragmentation is high, thus macOS will attempt to trim the same
+     lower blocks that have previously been deallocated, but never have enough time to deallocate higher blocks. The outcome
+     is that trimming on such SSDs will be non-functional soon after installation, resulting in additional wear on the
+     flash.
+     </p><!--l. 2827--><p class="noindent" >One way to workaround the problem is to increase the timeout to an extremely high value, which at the cost of slow boot
+     times (extra minutes) will ensure that all the blocks are trimmed. Set this option to a high value, such as
+     4294967295, to ensure that all blocks are trimmed. Alternatively, use over-provisioning, if supported, or create a
+     dedicated unmapped partition where the reserve blocks can be found by the controller. Conversely, the
+     trim operation can be disabled by setting a very low timeout value. e.g. 999. Refer to this <a 
+href="https://interface31.ru/tech_it/2015/04/mozhno-li-effektivno-ispolzovat-ssd-bez-podderzhki-trim.html" >article</a> for
+     details.
+     </p><!--l. 2839--><p class="noindent" ><span class="uwave">On macOS 12+, it is no longer possible to set trim timeout for APFS filesystems. However, trim can be disabled when
+     the timeout value is set to </span><span class="uwave">0</span><span class="uwave">. </span>
+     </p></li>
+                                                                                                  
+                                                                                                  
+     </p></li>
+<li 
+  class="enumerate" id="x1-45012x5">
+     <!--l. 3747--><p class="noindent" >DisplayLevel<br 
+class="newline" />Type: plist integer, 64 bit<br 
+class="newline" />Failsafe: 0<br 
+class="newline" />Description: EDK II debug level bitmask (sum) showed onscreen. Unless Target enables console (onscreen) printing,
+     onscreen debug output will not be visible.
+     </p><!--l. 3754--><p class="noindent" >The following levels are supported (discover more in <a 
+href="https://github.com/acidanthera/audk/blob/master/MdePkg/Include/Library/DebugLib.h" >DebugLib.h</a>):
+</p>
+         <ul class="itemize1">
+         <li class="itemize">
+         <!--l. 3759--><p class="noindent" >0x00000002 (bit 1) — DEBUG_WARN in DEBUG, NOOPT, RELEASE.
+         </p></li>
+         <li class="itemize">
+         <!--l. 3761--><p class="noindent" >0x00000040 (bit 6) — DEBUG_INFO in DEBUG, NOOPT.
+         </p></li>
+         <li class="itemize">
+         <!--l. 3763--><p class="noindent" >0x00400000 (bit 22) — DEBUG_VERBOSE in custom builds.
+         </p></li>
+         <li class="itemize">
+         <!--l. 3764--><p class="noindent" >0x80000000 (bit 31) — DEBUG_ERROR in DEBUG, NOOPT, RELEASE.</p></li></ul>
+     </li>
+<li 
+  class="enumerate" id="x1-45014x6">
+     <!--l. 3769--><p class="noindent" ><span class="uwave">LogModules</span><br 
+class="newline" /><span class="uwave">Type</span><span class="uwave">: </span><span class="uwave">plist string</span><br 
+class="newline" /><span class="uwave">Failsafe</span><span class="uwave">: </span><span class="uwave">*</span><br 
+class="newline" /><span class="uwave">Description</span><span class="uwave">: Filter log entries by module. </span>
+     </p><!--l. 3777--><p class="noindent" ><span class="uwave">This option filters logging generated by specific modules, both in the log and onscreen. Two modes are supported:
+     </span></p>
+         <ul class="itemize1">
+         <li class="itemize">
+         <!--l. 3779--><p class="noindent" ><span class="uwave">+</span> <span class="uwave">— Positive filtering: Only present selected modules. </span>
+         </p></li>
+         <li class="itemize">
+         <!--l. 3780--><p class="noindent" ><span class="uwave">-</span> <span class="uwave">— Negative filtering: Exclude selected modules. </span></p></li></ul>
+     <!--l. 3782--><p class="noindent" ><span class="uwave">When multiple ones are selected, comma (</span><span class="uwave">,</span><span class="uwave">) should be used as the splitter. For instance, </span><span class="uwave">+OCCPU,OCA,OCB</span> <span class="uwave">means </span><span class="uwave">only</span>
+     <span class="uwave">OCCPU</span><span class="uwave">, </span><span class="uwave">OCA</span><span class="uwave">, </span><span class="uwave">OCB</span> <span class="uwave">being printed, while </span><span class="uwave">-OCCPU,OCA,OCB</span> <span class="uwave">indicates these modules being filtered out (i.e. </span><span class="uwave">not</span> <span class="uwave">logged).
+     When no symbol is specified, positive filtering (</span><span class="uwave">+</span><span class="uwave">) will be used. </span><span class="uwave">*</span> <span class="uwave">indicates all modules being logged.
+     </span>
+     </p><!--l. 3789--><p class="noindent" ><span class="uwave">Note 1</span><span class="uwave">: Acronyms of libraries can be found in the </span><a 
+href="#x1-45023r9">Libraries</a> <span class="uwave">section below. </span>
+     </p><!--l. 3793--><p class="noindent" ><span class="uwave">Note 2</span><span class="uwave">: Messages printed before the configuration of log protocol cannot be filtered. </span>
+     </p></li>
+<li 
+  class="enumerate" id="x1-45016x7">
+     <!--l. 3798--><p class="noindent" >SerialInit<br 
+class="newline" />Type: plist boolean<br 
+class="newline" />Failsafe: false<br 
+class="newline" />Description: Perform serial port initialisation.
+     </p><!--l. 3803--><p class="noindent" >This option will perform serial port initialisation within OpenCore prior to enabling (any) debug logging.
+                                                                                                  
+                                                                                                  
+         </p></li>
+         <li class="itemize">
+         <!--l. 3904--><p class="noindent" >MMDD — MmapDump
+         </p></li>
+         <li class="itemize">
+         <!--l. 3905--><p class="noindent" >OCPAVP — PavpProvision
+         </p></li>
+         <li class="itemize">
+         <!--l. 3906--><p class="noindent" >OCRST — ResetSystem
+         </p></li>
+         <li class="itemize">
+         <!--l. 3907--><p class="noindent" >OCUI — OpenCanopy
+         </p></li>
+         <li class="itemize">
+         <!--l. 3908--><p class="noindent" >OC — OpenCore main, also OcMainLib
+         </p></li>
+         <li class="itemize">
+         <!--l. 3909--><p class="noindent" >VMOPT — VerifyMemOpt</p></li></ul>
+     <!--l. 3913--><p class="noindent" >Libraries: </p>
+         <ul class="itemize1">
+         <li class="itemize">
+         <!--l. 3916--><p class="noindent" >AAPL — OcDebugLogLib, Apple EfiBoot logging
+         </p></li>
+         <li class="itemize">
+         <!--l. 3917--><p class="noindent" >OCABC — OcAfterBootCompatLib
+         </p></li>
+         <li class="itemize">
+         <!--l. 3918--><p class="noindent" >OCAE — OcAppleEventLib
+         </p></li>
+         <li class="itemize">
+         <!--l. 3919--><p class="noindent" >OCAK — OcAppleKernelLib
+         </p></li>
+         <li class="itemize">
+         <!--l. 3920--><p class="noindent" >OCAU — OcAudioLib
+         </p></li>
+         <li class="itemize">
+         <!--l. 3921--><p class="noindent" >OCA —- OcAcpiLib
+         </p></li>
+         <li class="itemize">
+         <!--l. 3922--><p class="noindent" >OCBP — OcAppleBootPolicyLib
+         </p></li>
+         <li class="itemize">
+         <!--l. 3923--><p class="noindent" >OCB — OcBootManagementLib
+         </p></li>
+         <li class="itemize">
+         <!--l. 3924--><p class="noindent" >OCLBT — OcBlitLib
+         </p></li>
+         <li class="itemize">
+         <!--l. 3925--><p class="noindent" >OCCL — OcAppleChunkListLib
+         </p></li>
+         <li class="itemize">
+         <!--l. 3926--><p class="noindent" >OCCPU — OcCpuLib
+         </p></li>
+         <li class="itemize">
+         <!--l. 3927--><p class="noindent" >OCC — OcConsoleLib
+         </p></li>
+                                                                                                  
+                                                                                                  
+     
+     
+     
+      
+     
+       
+      
+     
+     
+      
+     
+     
+      
+     
+     </body>
+</html>
