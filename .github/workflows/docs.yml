@@ -72,7 +72,7 @@ jobs:
       - name: Build Master Configuration
         run: |
           cd latest/Docs
-          sed -i 's/-s ONLYCHANGEDPAGE //' BuildDocs.tool
+          sed -i '' 's/-s ONLYCHANGEDPAGE //' BuildDocs.tool
           ./BuildDocs.tool
           make4ht Configuration.tex
       - name: Build Master Differences
@@ -87,7 +87,7 @@ jobs:
       - name: Build Release Configuration
         run: |
           cd release/Docs
-          sed -i 's/-s ONLYCHANGEDPAGE //' BuildDocs.tool
+          sed -i '' 's/-s ONLYCHANGEDPAGE //' BuildDocs.tool
           ./BuildDocs.tool
           make4ht Configuration.tex
       - name: Build Release Differences
