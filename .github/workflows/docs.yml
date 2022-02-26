@@ -56,8 +56,10 @@ jobs:
       - name: Install Dependencies
         run: |
           brew install --cask basictex
-      # - name: Refresh PATH
-      #   run: eval "$(/usr/libexec/path_helper)"
+      - name: Refresh PATH
+        run: |
+          eval "$(/usr/libexec/path_helper)"
+          echo "$PATH" >> $GITHUB_PATH
       - uses: shogo82148/actions-setup-perl@v1
       - name: Install LaTeX Dependencies
         run: |
