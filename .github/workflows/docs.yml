@@ -109,9 +109,9 @@ jobs:
         run: python3 postbuild.py ${{ steps.releasetag.outputs.tag }}
 
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v4
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           branch: master
           folder: Deploy
           target-folder: docs
