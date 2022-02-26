@@ -64,15 +64,13 @@ jobs:
       - name: Install LaTeX Dependencies
         run: |
           sudo tlmgr update --self
-          sudo tlmgr install titlesec pgf datetime fmtcount zref hyperref zlmtt make4ht luaxml tex4ht
+          sudo tlmgr install titlesec pgf datetime fmtcount zref hyperref zlmtt make4ht luaxml tex4ht context latexdiff
           cpanm Algorithm::Diff
-          git clone https://github.com/ftilmann/latexdiff.git --depth 1
-          cd latexdiff && mkdir bin && mv latex* bin
-          cd bin && echo "$(pwd)" >> $GITHUB_PATH
 
       - name: Build Master Configuration
         run: |
           cd latest/Docs
+          sed -i 's/-s ONLYCHANGEDPAGE //' BuildDocs.tool
           ./BuildDocs.tool
           make4ht Configuration.tex
       - name: Build Master Differences
@@ -87,6 +85,7 @@ jobs:
       - name: Build Release Configuration
         run: |
           cd release/Docs
+          sed -i 's/-s ONLYCHANGEDPAGE //' BuildDocs.tool
           ./BuildDocs.tool
           make4ht Configuration.tex
       - name: Build Release Differences
