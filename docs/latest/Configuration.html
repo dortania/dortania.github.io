@@ -5378,29 +5378,31 @@ specified in <span class='ec-lmtt-10'>UEFI/Drivers/Arguments</span>:
      </p><!-- l. 7989 --><p class='noindent'>Older boards like ICH6 may not always have HPET setting in the firmware preferences, this option tries to force
      enable it.
      </p></li>
-<li class='enumerate' id='x1-81004x2'><span class='ec-lmtt-10'>EnableVectorAcceleration</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Enable AVX vector acceleration of SHA-512 and SHA-384 hashing algorithms.
-     </li>
+<li class='enumerate' id='x1-81004x2'>
+     <!-- l. 7993 --><p class='noindent'><span class='ec-lmtt-10'>EnableVectorAcceleration</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Enable AVX vector acceleration of SHA-512 and SHA-384 hashing algorithms.
+     </p><!-- l. 7998 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This option may cause issues on certain laptop firmwares, including Lenovo.
+     </p></li>
 <li class='enumerate' id='x1-81006x3'>
-     <!-- l. 7999 --><p class='noindent'><span class='ec-lmtt-10'>EnableVmx</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Enable Intel virtual machine extensions.
-     </p><!-- l. 8004 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: Required to allow virtualization in Windows on some Mac hardware. VMX is enabled or disabled and
+     <!-- l. 8001 --><p class='noindent'><span class='ec-lmtt-10'>EnableVmx</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Enable Intel virtual machine extensions.
+     </p><!-- l. 8006 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: Required to allow virtualization in Windows on some Mac hardware. VMX is enabled or disabled and
      locked by BIOS before OpenCore starts on most firmware. Use BIOS to enable virtualization where possible.
      </p></li>
 <li class='enumerate' id='x1-81008x4'>
-     <!-- l. 8009 --><p class='noindent'><span class='ec-lmtt-10'>DisableSecurityPolicy</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Disable platform security policy.
-     </p><!-- l. 8014 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This setting disables various security features of the firmware, defeating the purpose of any kind of Secure
+     <!-- l. 8011 --><p class='noindent'><span class='ec-lmtt-10'>DisableSecurityPolicy</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Disable platform security policy.
+     </p><!-- l. 8016 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This setting disables various security features of the firmware, defeating the purpose of any kind of Secure
      Boot. Do NOT enable if using UEFI Secure Boot.
      </p></li>
 <li class='enumerate' id='x1-81010x5'>
-     <!-- l. 8019 --><p class='noindent'><span class='ec-lmtt-10'>ExitBootServicesDelay</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Adds delay in microseconds after <span class='ec-lmtt-10'>EXIT_BOOT_SERVICES </span>event.
-     </p><!-- l. 8025 --><p class='noindent'>This is a very rough workaround to circumvent the <span class='ec-lmtt-10'>Still waiting for root device </span>message on some APTIO
+     <!-- l. 8021 --><p class='noindent'><span class='ec-lmtt-10'>ExitBootServicesDelay</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Adds delay in microseconds after <span class='ec-lmtt-10'>EXIT_BOOT_SERVICES </span>event.
+     </p><!-- l. 8027 --><p class='noindent'>This is a very rough workaround to circumvent the <span class='ec-lmtt-10'>Still waiting for root device </span>message on some APTIO
      IV firmware (ASUS Z87-Pro) particularly when using FileVault 2. It appears that for some reason, they execute
      code in parallel to <span class='ec-lmtt-10'>EXIT_BOOT_SERVICES</span>, which results in the SATA controller being inaccessible from macOS. A
      better approach is required and Acidanthera is open to suggestions. Expect 3 to 5 seconds to be adequate when
      this quirk is needed.
      </p></li>
 <li class='enumerate' id='x1-81012x6'>
-     <!-- l. 8032 --><p class='noindent'><span class='ec-lmtt-10'>ForceOcWriteFlash</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Enables writing to flash memory for all OpenCore-managed NVRAM system variables.
-     </p><!-- l. 8037 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This value should be disabled on most types of firmware but is left configurable to account for firmware
+     <!-- l. 8034 --><p class='noindent'><span class='ec-lmtt-10'>ForceOcWriteFlash</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Enables writing to flash memory for all OpenCore-managed NVRAM system variables.
+     </p><!-- l. 8039 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This value should be disabled on most types of firmware but is left configurable to account for firmware
      that may have issues with volatile variable storage overflows or similar. Boot issues across multiple OSes can be
      observed on e.g. Lenovo Thinkpad T430 and T530 without this quirk. Apple variables related to Secure Boot
      and hibernation are exempt from this for security reasons. Furthermore, some OpenCore variables are exempt
@@ -5408,14 +5410,16 @@ specified in <span class='ec-lmtt-10'>UEFI/Drivers/Arguments</span>:
      issues. When toggling this option, a NVRAM reset may be required to ensure full functionality.
      </p></li>
 <li class='enumerate' id='x1-81014x7'>
-     <!-- l. 8048 --><p class='noindent'><span class='ec-lmtt-10'>ForgeUefiSupport</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Implement partial UEFI 2.x support on EFI 1.x firmware.
-     </p><!-- l. 8053 --><p class='noindent'>This setting allows running some software written for UEFI 2.x firmware like NVIDIA GOP Option ROMs on
+                                                                                                  
+                                                                                                  
+     <!-- l. 8050 --><p class='noindent'><span class='ec-lmtt-10'>ForgeUefiSupport</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Implement partial UEFI 2.x support on EFI 1.x firmware.
+     </p><!-- l. 8055 --><p class='noindent'>This setting allows running some software written for UEFI 2.x firmware like NVIDIA GOP Option ROMs on
      hardware with older EFI 1.x firmware like <span class='ec-lmtt-10'>MacPro5,1</span>.
      </p></li>
 <li class='enumerate' id='x1-81016x8'>
-     <!-- l. 8057 --><p class='noindent'><span class='ec-lmtt-10'>IgnoreInvalidFlexRatio</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Some types of firmware (such as APTIO IV) may contain invalid values in the <span class='ec-lmtt-10'>MSR_FLEX_RATIO</span>
+     <!-- l. 8059 --><p class='noindent'><span class='ec-lmtt-10'>IgnoreInvalidFlexRatio</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Some types of firmware (such as APTIO IV) may contain invalid values in the <span class='ec-lmtt-10'>MSR_FLEX_RATIO</span>
      (<span class='ec-lmtt-10'>0x194</span>) MSR register. These values may cause macOS boot failures on Intel platforms.
-     </p><!-- l. 8064 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: While the option is not expected to harm unaffected firmware, its use is recommended only when specifically
+     </p><!-- l. 8066 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: While the option is not expected to harm unaffected firmware, its use is recommended only when specifically
      required.
      </p></li>
 <li class='enumerate' id='x1-81018x9'><span class='ec-lmtt-10'>ReleaseUsbOwnership</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Attempt to detach USB controller ownership from the firmware driver. While most types of
@@ -5423,22 +5427,20 @@ specified in <span class='ec-lmtt-10'>UEFI/Drivers/Arguments</span>:
      system may freeze upon boot. Not recommended unless specifically required.
      </li>
 <li class='enumerate' id='x1-81020x10'>
-     <!-- l. 8077 --><p class='noindent'><span class='ec-lmtt-10'>ReloadOptionRoms</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Query PCI devices and reload their Option ROMs if available.
-     </p><!-- l. 8082 --><p class='noindent'>For example, this option allows reloading NVIDIA GOP Option ROM on older Macs after the firmware version
+     <!-- l. 8079 --><p class='noindent'><span class='ec-lmtt-10'>ReloadOptionRoms</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Query PCI devices and reload their Option ROMs if available.
+     </p><!-- l. 8084 --><p class='noindent'>For example, this option allows reloading NVIDIA GOP Option ROM on older Macs after the firmware version
      is upgraded via <span class='ec-lmtt-10'>ForgeUefiSupport</span>.
      </p></li>
 <li class='enumerate' id='x1-81022x11'>
-     <!-- l. 8086 --><p class='noindent'><span class='ec-lmtt-10'>RequestBootVarRouting</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Request redirect of all <span class='ec-lmtt-10'>Boot </span>prefixed variables from <span class='ec-lmtt-10'>EFI_GLOBAL_VARIABLE_GUID </span>to <br class='newline' /><span class='ec-lmtt-10'>OC_VENDOR_VARIABLE_GUID</span>.
-     </p><!-- l. 8092 --><p class='noindent'>This quirk requires <span class='ec-lmtt-10'>OC_FIRMWARE_RUNTIME </span>protocol implemented in <span class='ec-lmtt-10'>OpenRuntime.efi</span>. The quirk lets default
+     <!-- l. 8088 --><p class='noindent'><span class='ec-lmtt-10'>RequestBootVarRouting</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Request redirect of all <span class='ec-lmtt-10'>Boot </span>prefixed variables from <span class='ec-lmtt-10'>EFI_GLOBAL_VARIABLE_GUID </span>to <br class='newline' /><span class='ec-lmtt-10'>OC_VENDOR_VARIABLE_GUID</span>.
+     </p><!-- l. 8094 --><p class='noindent'>This quirk requires <span class='ec-lmtt-10'>OC_FIRMWARE_RUNTIME </span>protocol implemented in <span class='ec-lmtt-10'>OpenRuntime.efi</span>. The quirk lets default
      boot entry preservation at times when the firmware deletes incompatible boot entries. In summary, this quirk is
      required to reliably use the <a href='https://support.apple.com/HT202796'>Startup Disk</a> preference pane in firmware that is not compatible with macOS boot
      entries by design.
-     </p><!-- l. 8099 --><p class='noindent'>By redirecting <span class='ec-lmtt-10'>Boot </span>prefixed variables to a separate GUID namespace with the help of <span class='ec-lmtt-10'>RequestBootVarRouting </span>quirk we
+     </p><!-- l. 8101 --><p class='noindent'>By redirecting <span class='ec-lmtt-10'>Boot </span>prefixed variables to a separate GUID namespace with the help of <span class='ec-lmtt-10'>RequestBootVarRouting </span>quirk we
      achieve multiple goals: </p>
          <ul class='itemize1'>
          <li class='itemize'>Operating systems are jailed and only controlled by OpenCore boot environment to enhance security.
-                                                                                                  
-                                                                                                  
          </li>
          <li class='itemize'>Operating systems do not mess with OpenCore boot priority, and guarantee fluent updates and hibernation
          wakes for cases that require reboots with OpenCore in the middle.
@@ -5446,79 +5448,79 @@ specified in <span class='ec-lmtt-10'>UEFI/Drivers/Arguments</span>:
          <li class='itemize'>Potentially incompatible boot entries, such as macOS entries, are not deleted or corrupted in any way.</li></ul>
      </li>
 <li class='enumerate' id='x1-81024x12'>
-     <!-- l. 8113 --><p class='noindent'><span class='ec-lmtt-10'>ResizeGpuBars</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>-1</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Configure GPU PCI BAR sizes.
-     </p><!-- l. 8118 --><p class='noindent'>This quirk sets GPU PCI BAR sizes as specified or chooses the largest available below the <span class='ec-lmtt-10'>ResizeGpuBars </span>value. The
+     <!-- l. 8115 --><p class='noindent'><span class='ec-lmtt-10'>ResizeGpuBars</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>-1</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Configure GPU PCI BAR sizes.
+     </p><!-- l. 8120 --><p class='noindent'>This quirk sets GPU PCI BAR sizes as specified or chooses the largest available below the <span class='ec-lmtt-10'>ResizeGpuBars </span>value. The
      specified value follows PCI Resizable BAR spec. Use <span class='ec-lmtt-10'>0 </span>for 1 MB, <span class='ec-lmtt-10'>1 </span>for 2 MB, <span class='ec-lmtt-10'>2 </span>for 4 MB, and so on up to <span class='ec-lmtt-10'>19 </span>for 512
      GB.
-     </p><!-- l. 8124 --><p class='noindent'>Resizable BAR technology allows to ease PCI device programming by mapping a configurable memory
+     </p><!-- l. 8126 --><p class='noindent'>Resizable BAR technology allows to ease PCI device programming by mapping a configurable memory
      region, BAR, into CPU address space (e.g. VRAM to RAM) as opposed to a fixed memory region. This
      technology is necessary, because one cannot map the largest memory region by default, for the reasons
      of backwards compatibility with older hardware not supporting 64-bit BARs. Consequentially devices
      of the last decade use BARs up to 256 MB by default (4 remaining bits are used by other data) but
      generally allow resizing them to both smaller and larger powers of two (e.g. from 1 MB up to VRAM
      size).
-     </p><!-- l. 8133 --><p class='noindent'>Operating systems targeting x86 platforms generally do not control PCI address space, letting UEFI firmware decide on
+     </p><!-- l. 8135 --><p class='noindent'>Operating systems targeting x86 platforms generally do not control PCI address space, letting UEFI firmware decide on
      the BAR addresses and sizes. This illicit practice resulted in Resizable BAR technology being unused
      up until 2020 despite being standardised in 2008 and becoming widely available in the hardware soon
      after.
-     </p><!-- l. 8138 --><p class='noindent'>Modern UEFI firmware allow the use of Resizable BAR technology but generally restrict the configurable options to
+     </p><!-- l. 8140 --><p class='noindent'>Modern UEFI firmware allow the use of Resizable BAR technology but generally restrict the configurable options to
      failsafe default (<span class='ec-lmtt-10'>OFF</span>) and maximum available (<span class='ec-lmtt-10'>ON</span>). This quirk allows to fine-tune this value for testing and development
      purposes.
-     </p><!-- l. 8143 --><p class='noindent'>Consider a GPU with 2 BARs: </p>
+     </p><!-- l. 8145 --><p class='noindent'>Consider a GPU with 2 BARs: </p>
          <ul class='itemize1'>
          <li class='itemize'><span class='ec-lmtt-10'>BAR0 </span>supports sizes from 256 MB to 8 GB. Its value is 4 GB.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>BAR1 </span>supports sizes from 2 MB to 256 MB. Its value is 256 MB.</li></ul>
-     <!-- l. 8150 --><p class='noindent'><span class='ec-lmri-10'>Example 1</span>: Setting <span class='ec-lmtt-10'>ResizeGpuBars </span>to 1 GB will change <span class='ec-lmtt-10'>BAR0 </span>to 1 GB and leave <span class='ec-lmtt-10'>BAR1 </span>unchanged. <br class='newline' /><span class='ec-lmri-10'>Example 2</span>: Setting <span class='ec-lmtt-10'>ResizeGpuBars </span>to 1 MB will change <span class='ec-lmtt-10'>BAR0 </span>to 256 MB and <span class='ec-lmtt-10'>BAR0 </span>to 2 MB. <br class='newline' /><span class='ec-lmri-10'>Example 3</span>: Setting <span class='ec-lmtt-10'>ResizeGpuBars </span>to 16 GB will change <span class='ec-lmtt-10'>BAR0 </span>to 8 GB and leave <span class='ec-lmtt-10'>BAR1 </span>unchanged.
-     </p><!-- l. 8159 --><p class='noindent'><span class='ec-lmri-10'>Note 1</span>: This quirk shall not be used to workaround macOS limitation to address BARs over 1 GB. <span class='ec-lmtt-10'>ResizeAppleGpuBars</span>
+     <!-- l. 8152 --><p class='noindent'><span class='ec-lmri-10'>Example 1</span>: Setting <span class='ec-lmtt-10'>ResizeGpuBars </span>to 1 GB will change <span class='ec-lmtt-10'>BAR0 </span>to 1 GB and leave <span class='ec-lmtt-10'>BAR1 </span>unchanged. <br class='newline' /><span class='ec-lmri-10'>Example 2</span>: Setting <span class='ec-lmtt-10'>ResizeGpuBars </span>to 1 MB will change <span class='ec-lmtt-10'>BAR0 </span>to 256 MB and <span class='ec-lmtt-10'>BAR0 </span>to 2 MB. <br class='newline' /><span class='ec-lmri-10'>Example 3</span>: Setting <span class='ec-lmtt-10'>ResizeGpuBars </span>to 16 GB will change <span class='ec-lmtt-10'>BAR0 </span>to 8 GB and leave <span class='ec-lmtt-10'>BAR1 </span>unchanged.
+     </p><!-- l. 8161 --><p class='noindent'><span class='ec-lmri-10'>Note 1</span>: This quirk shall not be used to workaround macOS limitation to address BARs over 1 GB. <span class='ec-lmtt-10'>ResizeAppleGpuBars</span>
      should be used instead.
-     </p><!-- l. 8162 --><p class='noindent'><span class='ec-lmri-10'>Note 2</span>: While this quirk can increase GPU PCI BAR sizes, this will not work on most firmware as is, because the quirk
+     </p><!-- l. 8164 --><p class='noindent'><span class='ec-lmri-10'>Note 2</span>: While this quirk can increase GPU PCI BAR sizes, this will not work on most firmware as is, because the quirk
      does not relocate BARs in memory, and they will likely overlap. Contributions to improve this feature are
      welcome.
      </p></li>
 <li class='enumerate' id='x1-81026x13'>
-     <!-- l. 8167 --><p class='noindent'><span class='ec-lmtt-10'>TscSyncTimeout</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Attempts to perform TSC synchronisation with a specified timeout.
-     </p><!-- l. 8172 --><p class='noindent'>The primary purpose of this quirk is to enable early bootstrap TSC synchronisation on some server and laptop models
+     <!-- l. 8169 --><p class='noindent'><span class='ec-lmtt-10'>TscSyncTimeout</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Attempts to perform TSC synchronisation with a specified timeout.
+     </p><!-- l. 8174 --><p class='noindent'>The primary purpose of this quirk is to enable early bootstrap TSC synchronisation on some server and laptop models
      when running a debug XNU kernel. For the debug kernel the TSC needs to be kept in sync across the
      cores before any kext could kick in rendering all other solutions problematic. The timeout is specified in
      microseconds and depends on the amount of cores present on the platform, the recommended starting value is
      <span class='ec-lmtt-10'>500000</span>.
-     </p><!-- l. 8178 --><p class='noindent'>This is an experimental quirk, which should only be used for the aforementioned problem. In all other cases, the quirk
+     </p><!-- l. 8180 --><p class='noindent'>This is an experimental quirk, which should only be used for the aforementioned problem. In all other cases, the quirk
      may render the operating system unstable and is not recommended. The recommended solution in the other cases is to
      install a kernel extension such as <a href='https://github.com/RehabMan/VoodooTSCSync'>VoodooTSCSync</a>, <a href='https://github.com/interferenc/TSCAdjustReset'>TSCAdjustReset</a>, or <a href='https://github.com/lvs1974/CpuTscSync'>CpuTscSync</a> (a more specialised variant of
      VoodooTSCSync for newer laptops).
-     </p><!-- l. 8186 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This quirk cannot replace the kernel extension because it cannot operate in ACPI S3 (sleep wake) mode and
+     </p><!-- l. 8188 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This quirk cannot replace the kernel extension because it cannot operate in ACPI S3 (sleep wake) mode and
      because the UEFI firmware only provides very limited multicore support which prevents precise updates of the MSR
      registers.
      </p></li>
 <li class='enumerate' id='x1-81028x14'>
-     <!-- l. 8191 --><p class='noindent'><span class='ec-lmtt-10'>UnblockFsConnect</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Some types of firmware block partition handles by opening them in <span class='ec-lmtt-10'>By Driver </span>mode, resulting in an
+     <!-- l. 8193 --><p class='noindent'><span class='ec-lmtt-10'>UnblockFsConnect</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Some types of firmware block partition handles by opening them in <span class='ec-lmtt-10'>By Driver </span>mode, resulting in an
      inability to install File System protocols.
-     </p><!-- l. 8197 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This quirk is useful in cases where unsuccessful drive detection results in an absence of boot entries.
+     </p><!-- l. 8199 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This quirk is useful in cases where unsuccessful drive detection results in an absence of boot entries.
 </p>
      </li></ol>
 <p><a id='x1-81029r84'></a>
 </p><h4 class='subsectionHead' id='reservedmemory-properties'><span class='titlemark'>11.17   </span> <a id='x1-8200017'></a>ReservedMemory Properties</h4>
      <ol class='enumerate1'>
 <li class='enumerate' id='x1-82002x1'>
-     <!-- l. 8207 --><p class='noindent'><span class='ec-lmtt-10'>Address</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Start address of the reserved memory region, which should be allocated as reserved effectively
+     <!-- l. 8209 --><p class='noindent'><span class='ec-lmtt-10'>Address</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Start address of the reserved memory region, which should be allocated as reserved effectively
      marking the memory of this type inaccessible to the operating system.
-     </p><!-- l. 8213 --><p class='noindent'>The addresses written here must be part of the memory map, have a <span class='ec-lmtt-10'>EfiConventionalMemory </span>type, and be
+     </p><!-- l. 8215 --><p class='noindent'>The addresses written here must be part of the memory map, have a <span class='ec-lmtt-10'>EfiConventionalMemory </span>type, and be
      page-aligned (4 KBs).
-     </p><!-- l. 8216 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: Some types of firmware may not allocate memory areas used by S3 (sleep) and S4 (hibernation) code unless
+     </p><!-- l. 8218 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: Some types of firmware may not allocate memory areas used by S3 (sleep) and S4 (hibernation) code unless
      CSM is enabled causing wake failures. After comparing the memory maps with CSM disabled and enabled, these
      areas can be found in the lower memory and can be fixed up by doing the reservation. Refer to the <span class='ec-lmtt-10'>Sample.plist</span>
      file for details.
      </p></li>
 <li class='enumerate' id='x1-82004x2'><span class='ec-lmtt-10'>Comment</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Arbitrary ASCII string used to provide human readable reference for the entry. Whether this value
      is used is implementation defined.
+                                                                                                  
+                                                                                                  
      </li>
-                                                                                                  
-                                                                                                  
 <li class='enumerate' id='x1-82006x3'><span class='ec-lmtt-10'>Size</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Size of the reserved memory region, must be page-aligned (4 KBs).
      </li>
 <li class='enumerate' id='x1-82008x4'>
-     <!-- l. 8235 --><p class='noindent'><span class='ec-lmtt-10'>Type</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Reserved</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Memory region type matching the UEFI specification memory descriptor types. Mapping:
+     <!-- l. 8237 --><p class='noindent'><span class='ec-lmtt-10'>Type</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Reserved</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Memory region type matching the UEFI specification memory descriptor types. Mapping:
 </p>
          <ul class='itemize1'>
          <li class='itemize'><span class='ec-lmtt-10'>Reserved </span>— <span class='ec-lmtt-10'>EfiReservedMemoryType</span>
@@ -5547,6 +5549,8 @@ specified in <span class='ec-lmtt-10'>UEFI/Drivers/Arguments</span>:
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>MemoryMappedIO </span>— <span class='ec-lmtt-10'>EfiMemoryMappedIO</span>
          </li>
+                                                                                                  
+                                                                                                  
          <li class='itemize'><span class='ec-lmtt-10'>MemoryMappedIOPortSpace </span>— <span class='ec-lmtt-10'>EfiMemoryMappedIOPortSpace</span>
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>PalCode </span>— <span class='ec-lmtt-10'>EfiPalCode</span></li></ul>
@@ -5557,11 +5561,11 @@ specified in <span class='ec-lmtt-10'>UEFI/Drivers/Arguments</span>:
 </p><h3 class='sectionHead' id='troubleshooting'><span class='titlemark'>12   </span> <a id='x1-8300012'></a>Troubleshooting</h3>
 <p><a id='x1-83001r85'></a>
 </p><h4 class='subsectionHead' id='legacy-apple-os'><span class='titlemark'>12.1   </span> <a id='x1-840001'></a>Legacy Apple OS</h4>
-<!-- l. 8272 --><p class='noindent'>Older operating systems may be more complicated to install, but are sometimes necessary for various reasons. While a
+<!-- l. 8274 --><p class='noindent'>Older operating systems may be more complicated to install, but are sometimes necessary for various reasons. While a
 compatible board identifier and CPUID are the obvious requirements for proper functioning of an older operating system, there
 are many other less obvious things to consider. This section covers a common set of issues relevant to installing older macOS
 operating systems.
-</p><!-- l. 8279 --><p class='noindent'>While newer operating systems can be downloaded over the internet, older operating systems did not have
+</p><!-- l. 8281 --><p class='noindent'>While newer operating systems can be downloaded over the internet, older operating systems did not have
 installation media for every minor release. For compatible distributions of such, download a device-specific image
 and modify it if necessary. Visit this archived Apple Support <a href='https://web.archive.org/web/20170705003629/https://support.apple.com/en-us/HT204319'>article</a> for a list of the bundled device-specific
 builds for legacy operating systems. However, as this may not always be accurate, the latest versions are listed
@@ -5583,6 +5587,8 @@ below.
      </li>
      <li class='itemize'><span class='ec-lmtt-10'>SSSE3 </span>support (not to be confused with <span class='ec-lmtt-10'>SSE3 </span>support) is a hard requirement for macOS 10.7 kernel.
      </li>
+                                                                                                  
+                                                                                                  
      <li class='itemize'>Many kexts, including <span class='ec-lmtt-10'>Lilu </span>when 32-bit kernel is used and a lot of <span class='ec-lmtt-10'>Lilu </span>plugins, are unsupported on macOS 10.7
      and older as they require newer kernel APIs, which are not part of the macOS 10.7 SDK.
      </li>
@@ -5601,12 +5607,12 @@ below.
      <span class='ec-lmtt-10'>-no_compat_check </span>boot argument support. Modified images (with <span class='ec-lmtt-10'>ACDT </span>suffix) without model restrictions can
      be found <a href='https://archive.org/details/10.6.7-10j3250-disk-images'>here</a> (<a href='https://mega.nz/folder/z5YUhYTb#gA_IRY5KMuYpnNCg7kR3ug'>MEGA Mirror</a>), assuming macOS 10.6 is legally owned. Refer to the <span class='ec-lmtt-10'>DIGEST.txt </span>file for details.
      Note that these are the earliest tested versions of macOS 10.6 with OpenCore.</li></ul>
-<!-- l. 8338 --><p class='noindent'>Model checking may also be erased by editing <span class='ec-lmtt-10'>OSInstall.mpkg </span>with e.g. <span class='ec-lmtt-10'>Flat Package Editor </span>by making <span class='ec-lmtt-10'>Distribution</span>
+<!-- l. 8340 --><p class='noindent'>Model checking may also be erased by editing <span class='ec-lmtt-10'>OSInstall.mpkg </span>with e.g. <span class='ec-lmtt-10'>Flat Package Editor </span>by making <span class='ec-lmtt-10'>Distribution</span>
 script to always return <span class='ec-lmtt-10'>true </span>in <span class='ec-lmtt-10'>hwbeModelCheck </span>function. Since updating the only file in the image and not corrupting other
 files can be difficult and may cause slow booting due to kernel cache date changes, it is recommended to script image rebuilding
 as shown below:
 </p>
-<!-- l. 8345 -->
+<!-- l. 8347 -->
 <pre class='lstlisting' id='listing-17'><span class='label'><a id='x1-87001r1'></a></span><span style='color:#000000'><span class='ec-lmtti-10'>#</span></span><span style='color:#000000'><span class='ec-lmtti-10'>!/</span></span><span style='color:#000000'><span class='ec-lmtti-10'>bin</span></span><span style='color:#000000'><span class='ec-lmtti-10'>/</span></span><span style='color:#000000'><span class='ec-lmtti-10'>bash</span></span><span class='ec-lmtt-10'> </span><br /> 
 <span class='label'><a id='x1-87002r2'></a></span><span style='color:#000000'><span class='ec-lmtti-10'>#</span></span><span style='color:#000000'> <span class='ec-lmtti-10'>Original.dmg </span><span class='ec-lmtti-10'>is </span><span class='ec-lmtti-10'>original </span><span class='ec-lmtti-10'>image, </span><span class='ec-lmtti-10'>OSInstall.mpkg </span><span class='ec-lmtti-10'>is </span><span class='ec-lmtti-10'>patched </span><span class='ec-lmtti-10'>package</span></span><span class='ec-lmtt-10'> </span><br /> 
 <span class='label'><a id='x1-87003r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>mkdir</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>RO</span></span><span class='ec-lmtt-10'> </span><br /> 
@@ -5636,6 +5642,8 @@ as shown below:
      the kext tools. This nuance renders <span class='ec-lmtt-10'>prelinkedkernel </span>kext injection impossible in OpenCore. <span class='ec-lmtt-10'>Mkext </span>kext injection
      will still work without noticeable performance drain and will be chosen automatically when <span class='ec-lmtt-10'>KernelCache </span>is set
      to <span class='ec-lmtt-10'>Auto</span>.
+                                                                                                  
+                                                                                                  
      </li>
      <li class='itemize'>Last released installer image for macOS 10.5 is macOS 10.5.7 build <span class='ec-lmtt-10'>9J3050 </span>(for <span class='ec-lmtt-10'>MacBookPro5,3</span>). Unlike the
      others, this image is not limited to the target model identifiers and can be used as is. The original <span class='ec-lmtt-10'>9J3050 </span>image
@@ -5656,7 +5664,7 @@ as shown below:
      tested versions of macOS 10.4 with OpenCore.</li></ul>
 <p><a id='x1-89001r87'></a>
 </p><h4 class='subsectionHead' id='uefi-secure-boot'><span class='titlemark'>12.2   </span> <a id='x1-900002'></a>UEFI Secure Boot</h4>
-<!-- l. 8411 --><p class='noindent'>OpenCore is designed to provide a secure boot chain between firmware and operating system. On most x86 platforms trusted
+<!-- l. 8413 --><p class='noindent'>OpenCore is designed to provide a secure boot chain between firmware and operating system. On most x86 platforms trusted
 loading is implemented via <a href='https://en.wikipedia.org/wiki/UEFI_Secure_Boot'>UEFI Secure Boot</a> model. Not only OpenCore fully supports this model, but it also extends its
 capabilities to ensure sealed configuration via <a href='#x1-46040x13'>vaulting</a> and provide trusted loading to the operating systems using custom
 verification, such as <a href='#x1-46050x15'>Apple Secure Boot</a>. Proper secure boot chain requires several steps and careful configuration of certain
@@ -5674,8 +5682,6 @@ settings as explained below:
      driver manually.
      </li>
 <li class='enumerate' id='x1-90008x4'>Make sure that <span class='ec-lmtt-10'>Force </span>driver loading is not needed and all the operating systems are still bootable.
-                                                                                                  
-                                                                                                  
      </li>
 <li class='enumerate' id='x1-90010x5'>Make sure that <span class='ec-lmtt-10'>ScanPolicy </span>restricts loading from undesired devices. It is a good idea to prohibit all removable
      drivers or unknown filesystems.
@@ -5700,13 +5706,15 @@ settings as explained below:
      user’s knowledge.</li></ol>
 <p><a id='x1-90023r93'></a>
 </p><h4 class='subsectionHead' id='windows-support'><span class='titlemark'>12.3   </span> <a id='x1-910003'></a>Windows support</h4>
-<!-- l. 8463 --><p class='noindent'><span class='ec-lmbx-10'>Can I install Windows?</span>
-</p><!-- l. 8465 --><p class='noindent'>While no official Windows support is provided, 64-bit UEFI Windows installations (Windows 8 and above) prepared with Boot
+<!-- l. 8465 --><p class='noindent'><span class='ec-lmbx-10'>Can I install Windows?</span>
+</p><!-- l. 8467 --><p class='noindent'>While no official Windows support is provided, 64-bit UEFI Windows installations (Windows 8 and above) prepared with Boot
 Camp are supposed to work. Third-party UEFI installations as well as systems partially supporting UEFI boot, such as
 Windows 7, might work with some extra precautions. Things to consider:
 </p>
      <ul class='itemize1'>
      <li class='itemize'>MBR (Master Boot Record) installations are legacy and will not be supported.
+                                                                                                  
+                                                                                                  
      </li>
      <li class='itemize'>All the modifications applied (to ACPI, NVRAM, SMBIOS, etc.) are supposed to be operating system agnostic,
      i.e. apply equally regardless of the OS booted. This enables Boot Camp software experience on Windows.
@@ -5718,19 +5726,19 @@ Windows 7, might work with some extra precautions. Things to consider:
      Be aware that it may be invalid on old firmware, i.e., not random. If there still are issues, consider using HWID
      or KMS38 license or making the use <span class='ec-lmtt-10'>Custom UpdateSMBIOSMode</span>. Other nuances of Windows activation are out
      of the scope of this document and can be found online.</li></ul>
-<!-- l. 8487 --><p class='noindent'><span class='ec-lmbx-10'>What additional software do I need?</span>
-</p><!-- l. 8489 --><p class='noindent'>To enable operating system switching and install relevant drivers in the majority of cases Windows support software from <a href='https://support.apple.com/boot-camp'>Boot
+<!-- l. 8489 --><p class='noindent'><span class='ec-lmbx-10'>What additional software do I need?</span>
+</p><!-- l. 8491 --><p class='noindent'>To enable operating system switching and install relevant drivers in the majority of cases Windows support software from <a href='https://support.apple.com/boot-camp'>Boot
 Camp</a> is required. For simplicity of the download process or when configuring an already installed Windows version a
 third-party utility, <a href='https://github.com/timsutton/brigadier'>Brigadier</a>, can be used successfully. Note, that <a href='https://www.7-zip.org'>7-Zip</a> may be downloaded and installed prior to using
 Brigadier.
-</p><!-- l. 8497 --><p class='noindent'>Remember to always use the latest version of Windows support software from Boot Camp, as versions prior to 6.1 do
+</p><!-- l. 8499 --><p class='noindent'>Remember to always use the latest version of Windows support software from Boot Camp, as versions prior to 6.1 do
 not support APFS, and thus will not function correctly. To download newest software pass most recent Mac
 model to Brigadier, for example <span class='ec-lmtt-10'>./brigadier.exe -m iMac19,1</span>. To install Boot Camp on an unsupported Mac
 model afterwards run PowerShell as Administrator and enter <span class='ec-lmtt-10'>msiexec /i BootCamp.msi</span>. If there is a previous
 version of Boot Camp installed it should be removed first by running <span class='ec-lmtt-10'>msiexec /x BootCamp.msi </span>command.
 <span class='ec-lmtt-10'>BootCamp.msi </span>file is located in <span class='ec-lmtt-10'>BootCamp/Drivers/Apple </span>directory and can be reached through Windows
 Explorer.
-</p><!-- l. 8507 --><p class='noindent'>While Windows support software from Boot Camp solves most of compatibility problems, the rest may still have to be
+</p><!-- l. 8509 --><p class='noindent'>While Windows support software from Boot Camp solves most of compatibility problems, the rest may still have to be
 addressed manually:
 </p>
      <ul class='itemize1'>
@@ -5743,12 +5751,14 @@ addressed manually:
      known utilities are: <a href='https://forums.macrumors.com/threads/apple-hfs-windows-driver-download.1368010/'>Apple HFS+ driver</a> (<a href='https://forums.macrumors.com/threads/apple-hfs-windows-driver-download.1368010/post-24180079'>workaround for Windows 10</a>), <a href='http://www.catacombae.org/hfsexplorer'>HFSExplorer</a>, MacDrive, Paragon APFS,
      Paragon HFS+, TransMac, etc. Remember to never ever attempt to modify Apple file systems from Windows
      as this often leads to irrecoverable data loss.</li></ul>
-<!-- l. 8525 --><p class='noindent'><span class='ec-lmbx-10'>Why do I see </span><span class='ec-lmtk-10'>Basic data partition </span><span class='ec-lmbx-10'>in the Boot Camp Startup Disk control panel?</span>
-</p><!-- l. 8527 --><p class='noindent'>The Boot Camp control panel uses the GPT partition table to obtain each boot option name. After installing Windows
+<!-- l. 8527 --><p class='noindent'><span class='ec-lmbx-10'>Why do I see </span><span class='ec-lmtk-10'>Basic data partition </span><span class='ec-lmbx-10'>in the Boot Camp Startup Disk control panel?</span>
+</p><!-- l. 8529 --><p class='noindent'>The Boot Camp control panel uses the GPT partition table to obtain each boot option name. After installing Windows
 separately, the partition has to be relabelled manually. This can be done with many utilities including the open-source <a href='https://sourceforge.net/projects/gptfdisk'>gdisk</a>
 utility. Reference example:
 </p>
-<!-- l. 8532 -->
+<!-- l. 8534 -->
+                                                                                                  
+                                                                                                  
 <p id='-relabeling-windows-volume'><a id='x1-91001r4'></a>
 <a id='x1-91002'></a>
 </p><pre class='lstlisting' id='listing-18'><span class='label'><a id='x1-91003r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>PS</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>C:\gdisk&gt; </span><span class='ec-lmtt-10'>.\gdisk64.exe </span><span class='ec-lmtt-10'>\\.\physicaldrive0</span></span><span class='ec-lmtt-10'> </span><br /> 
@@ -5782,11 +5792,9 @@ utility. Reference example:
 <span class='label'><a id='x1-91031r29'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>OK</span></span><span style='color:#000000'><span class='ec-lmtt-10'>;</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>writing </span><span class='ec-lmtt-10'>new </span><span class='ec-lmtt-10'>GUID </span><span class='ec-lmtt-10'>partition </span><span class='ec-lmtt-10'>table </span><span class='ec-lmtt-10'>(GPT) </span><span class='ec-lmtt-10'>to </span><span class='ec-lmtt-10'>\\.\physicaldrive0.</span></span><span class='ec-lmtt-10'> </span><br /> 
 <span class='label'><a id='x1-91032r30'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Disk</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>synchronization </span><span class='ec-lmtt-10'>succeeded! </span><span class='ec-lmtt-10'>The </span><span class='ec-lmtt-10'>computer </span><span class='ec-lmtt-10'>should </span><span class='ec-lmtt-10'>now </span><span class='ec-lmtt-10'>use </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>new </span><span class='ec-lmtt-10'>partition </span><span class='ec-lmtt-10'>table.</span></span><span class='ec-lmtt-10'> </span><br /> 
 <span class='label'><a id='x1-91033r31'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>The</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>operation </span><span class='ec-lmtt-10'>has </span><span class='ec-lmtt-10'>completed </span><span class='ec-lmtt-10'>successfully.</span></span></pre>
-                                                                                                  
-                                                                                                  
 <figcaption class='caption'><span class='id'>Listing 4: </span><span class='content'>Relabeling Windows volume</span></figcaption><!-- tex4ht:label?: x1-91033r  -->
-<!-- l. 8567 --><p class='noindent'><span class='ec-lmbx-10'>How do I choose Windows BOOTCAMP with custom NTFS drivers?</span>
-</p><!-- l. 8569 --><p class='noindent'>Third-party drivers providing NTFS support, such as <a href='https://www.tuxera.com/community/open-source-ntfs-3g'>NTFS-3G</a>, Paragon NTFS, Tuxera NTFS or <a href='https://www.seagate.com/support/software/paragon'>Seagate Paragon Driver</a>
+<!-- l. 8569 --><p class='noindent'><span class='ec-lmbx-10'>How do I choose Windows BOOTCAMP with custom NTFS drivers?</span>
+</p><!-- l. 8571 --><p class='noindent'>Third-party drivers providing NTFS support, such as <a href='https://www.tuxera.com/community/open-source-ntfs-3g'>NTFS-3G</a>, Paragon NTFS, Tuxera NTFS or <a href='https://www.seagate.com/support/software/paragon'>Seagate Paragon Driver</a>
 disrupt certain macOS functionality, including the <a href='https://support.apple.com/HT202796'>Startup Disk</a> preference pane normally used for operating system selection.
 While the recommended option remains not to use such drivers as they commonly corrupt the filesystem, and prefer the driver
 bundled with macOS with optional write support ( <a href='http://osxdaily.com/2013/10/02/enable-ntfs-write-support-mac-os-x'>command</a> or <a href='https://mounty.app'>GUI</a>), there still exist vendor-specific workarounds for their
@@ -5794,27 +5802,27 @@ products: <a href='https://www.tuxera.com/products/tuxera-ntfs-for-mac/faq'>Tuxe
 <a id='x1-91034r94'></a>
 </p>
 <h4 class='subsectionHead' id='debugging1'><span class='titlemark'>12.4   </span> <a id='x1-920004'></a>Debugging</h4>
-<!-- l. 8585 --><p class='noindent'>Similar to other projects working with hardware OpenCore supports auditing and debugging. The use of <span class='ec-lmtt-10'>NOOPT </span>or <span class='ec-lmtt-10'>DEBUG </span>build
+<!-- l. 8587 --><p class='noindent'>Similar to other projects working with hardware OpenCore supports auditing and debugging. The use of <span class='ec-lmtt-10'>NOOPT </span>or <span class='ec-lmtt-10'>DEBUG </span>build
 modes instead of <span class='ec-lmtt-10'>RELEASE </span>can produce a lot more debug output. With <span class='ec-lmtt-10'>NOOPT </span>source level debugging with GDB or IDA Pro is
 also available. For GDB check <a href='https://github.com/acidanthera/OpenCorePkg/tree/master/Debug'>OpenCore Debug</a> page. For IDA Pro, version 7.3 or newer is needed, and <a href='https://www.hex-rays.com/products/ida/support/tutorials/index.shtml'>Debugging the XNU
 Kernel with IDA Pro</a> may also help.
-</p><!-- l. 8594 --><p class='noindent'>To obtain the log during boot serial port debugging can be used. Serial port debugging is enabled in <span class='ec-lmtt-10'>Target</span>,
+</p><!-- l. 8596 --><p class='noindent'>To obtain the log during boot serial port debugging can be used. Serial port debugging is enabled in <span class='ec-lmtt-10'>Target</span>,
 e.g. <span class='ec-lmtt-10'>0xB </span>for onscreen with serial. To initialise serial within OpenCore use <span class='ec-lmtt-10'>SerialInit </span>configuration option.
 For macOS the best choice is CP2102-based UART devices. Connect motherboard <span class='ec-lmtt-10'>TX </span>to USB UART <span class='ec-lmtt-10'>RX</span>, and
 motherboard <span class='ec-lmtt-10'>GND </span>to USB UART <span class='ec-lmtt-10'>GND</span>. Use <span class='ec-lmtt-10'>screen </span>utility to get the output, or download GUI software, such as
 <a href='https://freeware.the-meiers.org'>CoolTerm</a>.
-</p><!-- l. 8602 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: On several motherboards (and possibly USB UART dongles) PIN naming may be incorrect. It is very common to have
+</p><!-- l. 8604 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: On several motherboards (and possibly USB UART dongles) PIN naming may be incorrect. It is very common to have
 <span class='ec-lmtt-10'>GND </span>swapped with <span class='ec-lmtt-10'>RX</span>, thus, motherboard “<span class='ec-lmtt-10'>TX</span>” must be connected to USB UART <span class='ec-lmtt-10'>GND</span>, and motherboard “<span class='ec-lmtt-10'>GND</span>” to USB UART
 <span class='ec-lmtt-10'>RX</span>.
-</p><!-- l. 8607 --><p class='noindent'>Remember to enable <span class='ec-lmtt-10'>COM </span>port in firmware settings, and never use USB cables longer than 1 meter to avoid output corruption.
+</p><!-- l. 8609 --><p class='noindent'>Remember to enable <span class='ec-lmtt-10'>COM </span>port in firmware settings, and never use USB cables longer than 1 meter to avoid output corruption.
 To additionally enable XNU kernel serial output <span class='ec-lmtt-10'>debug=0x8 </span>boot argument is needed.
 <a id='x1-92001r96'></a>
 </p>
 <h4 class='subsectionHead' id='tips-and-tricks'><span class='titlemark'>12.5   </span> <a id='x1-930005'></a>Tips and Tricks</h4>
      <ol class='enumerate1'>
 <li class='enumerate' id='x1-93002x1'>
-     <!-- l. 8615 --><p class='noindent'><span class='ec-lmbx-10'>How do I debug boot failures?</span>
-     </p><!-- l. 8617 --><p class='noindent'>Obtaining the actual error message is usually adequate. For this, ensure that: </p>
+     <!-- l. 8617 --><p class='noindent'><span class='ec-lmbx-10'>How do I debug boot failures?</span>
+     </p><!-- l. 8619 --><p class='noindent'>Obtaining the actual error message is usually adequate. For this, ensure that: </p>
          <ul class='itemize1'>
          <li class='itemize'>A <span class='ec-lmtt-10'>DEBUG </span>or <span class='ec-lmtt-10'>NOOPT </span>version of OpenCore is used.
          </li>
@@ -5824,18 +5832,18 @@ To additionally enable XNU kernel serial output <span class='ec-lmtt-10'>debug=0
          (<span class='ec-lmtt-10'>0x00000040</span>) levels are visible onscreen: <span class='ec-lmtt-10'>Misc </span><span class='lmsy-10'>→ </span><span class='ec-lmtt-10'>Debug </span><span class='lmsy-10'>→ </span><span class='ec-lmtt-10'>DisplayLevel </span><span class='rm-lmr-10'>= </span><span class='ec-lmtt-10'>0x80000042</span>.
          </li>
          <li class='itemize'>Critical error messages, such as <span class='ec-lmtt-10'>DEBUG_ERROR</span>, stop booting: <span class='ec-lmtt-10'>Misc</span><span class='lmsy-10'>→</span><span class='ec-lmtt-10'>Security</span><span class='lmsy-10'>→</span><span class='ec-lmtt-10'>HaltLevel </span><span class='rm-lmr-10'>= </span><span class='ec-lmtt-10'>0x80000000</span>.
+                                                                                                  
+                                                                                                  
          </li>
          <li class='itemize'>Watch Dog is disabled to prevent automatic reboot: <span class='ec-lmtt-10'>Misc </span><span class='lmsy-10'>→ </span><span class='ec-lmtt-10'>Debug </span><span class='lmsy-10'>→ </span><span class='ec-lmtt-10'>DisableWatchDog </span><span class='rm-lmr-10'>= </span><span class='ec-lmtt-10'>true</span>.
-                                                                                                  
-                                                                                                  
          </li>
          <li class='itemize'>Boot Picker (entry selector) is enabled: <span class='ec-lmtt-10'>Misc </span><span class='lmsy-10'>→ </span><span class='ec-lmtt-10'>Boot </span><span class='lmsy-10'>→ </span><span class='ec-lmtt-10'>ShowPicker </span><span class='rm-lmr-10'>= </span><span class='ec-lmtt-10'>true</span>.</li></ul>
-     <!-- l. 8639 --><p class='noindent'>If there is no obvious error, check the available workarounds in the <span class='ec-lmtt-10'>Quirks </span>sections one by one. For early boot
+     <!-- l. 8641 --><p class='noindent'>If there is no obvious error, check the available workarounds in the <span class='ec-lmtt-10'>Quirks </span>sections one by one. For early boot
      troubleshooting, for instance, when OpenCore menu does not appear, using <span class='ec-lmtt-10'>UEFI Shell </span>(bundled with OpenCore) may
      help to see early debug messages.
      </p></li>
 <li class='enumerate' id='x1-93004x2'>
-     <!-- l. 8645 --><p class='noindent'><span class='ec-lmbx-10'>How do I debug macOS boot failures?</span>
+     <!-- l. 8647 --><p class='noindent'><span class='ec-lmbx-10'>How do I debug macOS boot failures?</span>
 </p>
          <ul class='itemize1'>
          <li class='itemize'>Refer to <span class='ec-lmtt-10'>boot-args </span>values such as <span class='ec-lmtt-10'>debug=0x100</span>, <span class='ec-lmtt-10'>keepsyms=1</span>, <span class='ec-lmtt-10'>-v</span>, and similar.
@@ -5851,14 +5859,14 @@ To additionally enable XNU kernel serial output <span class='ec-lmtt-10'>debug=0
          <li class='itemize'>Always read the logs carefully.</li></ul>
      </li>
 <li class='enumerate' id='x1-93006x3'>
-     <!-- l. 8660 --><p class='noindent'><span class='ec-lmbx-10'>How do I customise boot entries?</span>
-     </p><!-- l. 8662 --><p class='noindent'>OpenCore follows standard Apple Bless model and extracts the entry name from <span class='ec-lmtt-10'>.contentDetails </span>and
+     <!-- l. 8662 --><p class='noindent'><span class='ec-lmbx-10'>How do I customise boot entries?</span>
+     </p><!-- l. 8664 --><p class='noindent'>OpenCore follows standard Apple Bless model and extracts the entry name from <span class='ec-lmtt-10'>.contentDetails </span>and
      <span class='ec-lmtt-10'>.disk_label.contentDetails </span>files in the booter directory if present. These files contain an ASCII string with an entry
      title, which may then be customised by the user.
      </p></li>
 <li class='enumerate' id='x1-93008x4'>
-     <!-- l. 8668 --><p class='noindent'><span class='ec-lmbx-10'>How do I choose the default boot entry?</span>
-     </p><!-- l. 8670 --><p class='noindent'>OpenCore uses the primary UEFI boot option to select the default entry. This choice can be altered from UEFI Setup,
+     <!-- l. 8670 --><p class='noindent'><span class='ec-lmbx-10'>How do I choose the default boot entry?</span>
+     </p><!-- l. 8672 --><p class='noindent'>OpenCore uses the primary UEFI boot option to select the default entry. This choice can be altered from UEFI Setup,
      with the macOS <a href='https://support.apple.com/HT202796'>Startup Disk</a> preference, or the Windows <a href='https://support.apple.com/guide/bootcamp-control-panel/start-up-your-mac-in-windows-or-macos-bcmp29b8ac66/mac'>Boot Camp</a> Control Panel. Since choosing OpenCore’s
      <span class='ec-lmtt-10'>BOOTx64.EFI </span>as a primary boot option limits this functionality in addition to several types of firmware deleting
      incompatible boot options, potentially including those created by macOS, users are strongly encouraged to
@@ -5867,35 +5875,35 @@ To additionally enable XNU kernel serial output <span class='ec-lmtt-10'>debug=0
      functioning.
      </p></li>
 <li class='enumerate' id='x1-93010x5'>
-     <!-- l. 8681 --><p class='noindent'> <span class='ec-lmbx-10'>What is the simplest way to install macOS?</span>
-     </p><!-- l. 8684 --><p class='noindent'>Copy online recovery image (<span class='ec-lmtt-10'>*.dmg </span>and <span class='ec-lmtt-10'>*.chunklist </span>files) to <span class='ec-lmtt-10'>com.apple.recovery.boot </span>directory on a FAT32 partition
                                                                                                   
                                                                                                   
+     <!-- l. 8683 --><p class='noindent'> <span class='ec-lmbx-10'>What is the simplest way to install macOS?</span>
+     </p><!-- l. 8686 --><p class='noindent'>Copy online recovery image (<span class='ec-lmtt-10'>*.dmg </span>and <span class='ec-lmtt-10'>*.chunklist </span>files) to <span class='ec-lmtt-10'>com.apple.recovery.boot </span>directory on a FAT32 partition
      with OpenCore. Load the OpenCore picker and choose the entry, it will have a <span class='ec-lmtt-10'>(dmg) </span>suffix. Custom name may be
      created by providing <span class='ec-lmtt-10'>.contentDetails </span>file.
-     </p><!-- l. 8689 --><p class='noindent'>To download recovery online <a href='https://github.com/acidanthera/OpenCorePkg/blob/master/Utilities/macrecovery/macrecovery.py'>macrecovery.py</a> can be used.
-     </p><!-- l. 8693 --><p class='noindent'>For offline installation refer to <a href='https://support.apple.com/HT201372'>How to create a bootable installer for macOS</a> article. Apart from App Store and
+     </p><!-- l. 8691 --><p class='noindent'>To download recovery online <a href='https://github.com/acidanthera/OpenCorePkg/blob/master/Utilities/macrecovery/macrecovery.py'>macrecovery.py</a> can be used.
+     </p><!-- l. 8695 --><p class='noindent'>For offline installation refer to <a href='https://support.apple.com/HT201372'>How to create a bootable installer for macOS</a> article. Apart from App Store and
      <span class='ec-lmtt-10'>softwareupdate </span>utility there also are <a href='https://github.com/corpnewt/gibMacOS'>third-party utilities</a> to download an offline image.
      </p></li>
 <li class='enumerate' id='x1-93012x6'>
-     <!-- l. 8699 --><p class='noindent'><span class='ec-lmbx-10'>Why do online recovery images (</span><span class='ec-lmtk-10'>*.dmg</span><span class='ec-lmbx-10'>) fail to load?</span>
-     </p><!-- l. 8701 --><p class='noindent'>This may be caused by missing HFS+ driver, as all presently known recovery volumes have HFS+ filesystem.
+     <!-- l. 8701 --><p class='noindent'><span class='ec-lmbx-10'>Why do online recovery images (</span><span class='ec-lmtk-10'>*.dmg</span><span class='ec-lmbx-10'>) fail to load?</span>
+     </p><!-- l. 8703 --><p class='noindent'>This may be caused by missing HFS+ driver, as all presently known recovery volumes have HFS+ filesystem.
      </p></li>
 <li class='enumerate' id='x1-93014x7'>
-     <!-- l. 8705 --><p class='noindent'><span class='ec-lmbx-10'>Can I use this on Apple hardware or virtual machines?</span>
-     </p><!-- l. 8707 --><p class='noindent'>Sure, most relatively modern Mac models including <span class='ec-lmtt-10'>MacPro5,1 </span>and virtual machines are fully supported. Even though
+     <!-- l. 8707 --><p class='noindent'><span class='ec-lmbx-10'>Can I use this on Apple hardware or virtual machines?</span>
+     </p><!-- l. 8709 --><p class='noindent'>Sure, most relatively modern Mac models including <span class='ec-lmtt-10'>MacPro5,1 </span>and virtual machines are fully supported. Even though
      there are little to none specific details relevant to Mac hardware, some ongoing instructions can be found on
      <a href='https://forums.macrumors.com/threads/opencore-on-the-mac-pro.2207814'>MacRumors.com</a>.
      </p></li>
 <li class='enumerate' id='x1-93016x8'>
-     <!-- l. 8713 --><p class='noindent'><span class='ec-lmbx-10'>Why must Find&amp;Replace patches be equal in size?</span>
-     </p><!-- l. 8715 --><p class='noindent'>For machine code (x86 code) it is not possible to do differently sized replacements due to <a href='https://en.wikipedia.org/w/index.php?title=Relative_addressing'>relative addressing</a>. For ACPI
+     <!-- l. 8715 --><p class='noindent'><span class='ec-lmbx-10'>Why must Find&amp;Replace patches be equal in size?</span>
+     </p><!-- l. 8717 --><p class='noindent'>For machine code (x86 code) it is not possible to do differently sized replacements due to <a href='https://en.wikipedia.org/w/index.php?title=Relative_addressing'>relative addressing</a>. For ACPI
      code this is risky, and is technically equivalent to ACPI table replacement, thus not implemented. More detailed
      explanation can be found on <a href='https://applelife.ru/posts/819790'>AppleLife.ru</a> or in the ACPI section of this document.
      </p></li>
 <li class='enumerate' id='x1-93018x9'>
-     <!-- l. 8722 --><p class='noindent'><span class='ec-lmbx-10'>How can I decide which </span><span class='ec-lmtk-10'>Booter </span><span class='ec-lmbx-10'>quirks to use?</span>
-     </p><!-- l. 8724 --><p class='noindent'>These quirks originate from <span class='ec-lmtt-10'>AptioMemoryFix </span>driver but provide a wider set of changes specific to modern systems. Note,
+     <!-- l. 8724 --><p class='noindent'><span class='ec-lmbx-10'>How can I decide which </span><span class='ec-lmtk-10'>Booter </span><span class='ec-lmbx-10'>quirks to use?</span>
+     </p><!-- l. 8726 --><p class='noindent'>These quirks originate from <span class='ec-lmtt-10'>AptioMemoryFix </span>driver but provide a wider set of changes specific to modern systems. Note,
      that <span class='ec-lmtt-10'>OpenRuntime </span>driver is required for most configurations. To get a configuration similar to <span class='ec-lmtt-10'>AptioMemoryFix </span>the
      following set of quirks should be enabled: </p>
          <ul class='itemize1'>
@@ -5908,10 +5916,10 @@ To additionally enable XNU kernel serial output <span class='ec-lmtt-10'>debug=0
          <li class='itemize'><span class='ec-lmtt-10'>EnableSafeModeSlide</span>
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>EnableWriteUnprotector</span>
+                                                                                                  
+                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>ForceExitBootServices</span>
-                                                                                                  
-                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>ProtectMemoryRegions</span>
          </li>
@@ -5920,10 +5928,10 @@ To additionally enable XNU kernel serial output <span class='ec-lmtt-10'>debug=0
          <li class='itemize'><span class='ec-lmtt-10'>RebuildAppleMemoryMap</span>
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>SetupVirtualMap</span></li></ul>
-     <!-- l. 8742 --><p class='noindent'>However, as of today, such set is strongly discouraged as some of these quirks are not necessary to be enabled or need
+     <!-- l. 8744 --><p class='noindent'>However, as of today, such set is strongly discouraged as some of these quirks are not necessary to be enabled or need
      additional quirks. For example, <span class='ec-lmtt-10'>DevirtualiseMmio </span>and <span class='ec-lmtt-10'>ProtectUefiServices </span>are often required, while
      <span class='ec-lmtt-10'>DiscardHibernateMap </span>and <span class='ec-lmtt-10'>ForceExitBootServices </span>are rarely necessary.
-     </p><!-- l. 8748 --><p class='noindent'>Unfortunately for some quirks such as <span class='ec-lmtt-10'>RebuildAppleMemoryMap</span>, <span class='ec-lmtt-10'>EnableWriteUnprotector</span>, <span class='ec-lmtt-10'>ProtectMemoryRegions</span>,
+     </p><!-- l. 8750 --><p class='noindent'>Unfortunately for some quirks such as <span class='ec-lmtt-10'>RebuildAppleMemoryMap</span>, <span class='ec-lmtt-10'>EnableWriteUnprotector</span>, <span class='ec-lmtt-10'>ProtectMemoryRegions</span>,
      <span class='ec-lmtt-10'>SetupVirtualMap</span>, and <span class='ec-lmtt-10'>SyncRuntimePermissions </span>there is no definite approach even on similar systems, so trying all
      their combinations may be required for optimal setup. Refer to individual quirk descriptions in this document for
      details.
