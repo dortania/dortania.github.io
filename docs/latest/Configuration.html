@@ -3253,9 +3253,9 @@ certain use cases.
          <li class='itemize'><span class='ec-lmtt-10'>Add </span>— <span class='ec-lmtt-10'>plist dictionary</span>, equivalent to <span class='ec-lmtt-10'>Add </span>from <span class='ec-lmtt-10'>config.plist</span>.</li></ul>
      <!-- l. 4718 --><p class='noindent'>Variable loading happens prior to the <span class='ec-lmtt-10'>Delete </span>(and <span class='ec-lmtt-10'>Add</span>) phases. Unless <span class='ec-lmtt-10'>LegacyOverwrite </span>is enabled, it will not overwrite
      any existing variable. Variables allowed to be set must be specified in <span class='ec-lmtt-10'>LegacySchema</span>.
-     </p><!-- l. 4722 --><p class='noindent'>Third-party scripts may be used to create <span class='ec-lmtt-10'>nvram.plist </span>file. An example of such script can be found in <span class='ec-lmtt-10'>Utilities</span>. The
-     use of third-party scripts may require <span class='ec-lmtt-10'>ExposeSensitiveData </span>set to <span class='ec-lmtt-10'>0x3 </span>to provide <span class='ec-lmtt-10'>boot-path </span>variable with the
-     OpenCore EFI partition UUID.
+     </p><!-- l. 4722 --><p class='noindent'>Third-party scripts may be used to create <span class='ec-lmtt-10'>nvram.plist </span>file. An example of such script can be found in
+     <span class='ec-lmtt-10'>Utilities/LogoutHook</span>. The use of third-party scripts may require <span class='ec-lmtt-10'>ExposeSensitiveData </span>set to <span class='ec-lmtt-10'>0x3 </span>to provide
+     <span class='ec-lmtt-10'>boot-path </span>variable with the OpenCore EFI partition UUID.
      </p><!-- l. 4727 --><p class='noindent'><span class='ec-lmbx-10'>Warning</span>: This feature can be dangerous, as it passes unprotected data to firmware variable services. Only use when no
      hardware NVRAM implementation is provided by the firmware or when the NVRAM implementation is
      incompatible.
