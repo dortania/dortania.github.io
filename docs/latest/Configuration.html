@@ -268,7 +268,7 @@ applicable:
 </tr><tr class='hline'><td></td><td></td></tr><tr id='TBL-1-4-' style='vertical-align:baseline;'><td class='td11' id='TBL-1-4-1' style='white-space:nowrap; text-align:left;'><span class='ec-lmtt-10'>plist integer </span></td><td class='td11' id='TBL-1-4-2' style='white-space:nowrap; text-align:left;'>0 (<span class='ec-lmtt-10'>&lt;integer&gt;0&lt;/integer&gt;</span>)           </td>
 </tr><tr class='hline'><td></td><td></td></tr><tr id='TBL-1-5-' style='vertical-align:baseline;'><td class='td11' id='TBL-1-5-1' style='white-space:nowrap; text-align:left;'><span class='ec-lmtt-10'>plist boolean </span></td><td class='td11' id='TBL-1-5-2' style='white-space:nowrap; text-align:left;'>False (<span class='ec-lmtt-10'>&lt;false/&gt;</span>)                         </td>
 </tr><tr class='hline'><td></td><td></td></tr><tr id='TBL-1-6-' style='vertical-align:baseline;'><td class='td11' id='TBL-1-6-1' style='white-space:nowrap; text-align:left;'><span class='ec-lmtt-10'>plist tristate</span></td><td class='td11' id='TBL-1-6-2' style='white-space:nowrap; text-align:left;'>False (<span class='ec-lmtt-10'>&lt;false/&gt;</span>)                         </td>
-</tr><tr class='hline'><td></td><td></td></tr></table></div></div>
+</tr><tr class='hline'><td></td><td></td></tr></table>                                                                                                  </div></div>
 <!-- l. 351 --><p class='noindent'>
 </p>
 <h4 class='subsectionHead' id='configuration-structure'><span class='titlemark'>2.3   </span> <a id='x1-70002.3'></a>Configuration Structure</h4>
@@ -1356,8 +1356,8 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
    </td></tr><tr><td class='align-odd'><span class='lmmi-10'>β</span></td>   <td class='align-even'> <span class='rm-lmr-10'>= </span><img align='middle' alt='{
  P arseDarwinV  ersion(MaxKernel),               If MaxKernel is valid
  ∞                                            Otherwise' class='left' src='Configuration2x.svg' /></td>            <td class='align-label'></td>   <td class='align-label'>
-   </td></tr><tr><td class='align-odd'><span class='lmmi-10'>γ</span></td>   <td class='align-even'> <span class='rm-lmr-10'>= </span><img align='middle' alt='{P arseDarwinV  ersion(FindDarwinV ersion()),    If valid &quot;Darwin Kernel Version&quot; is found
-
+   </td></tr><tr><td class='align-odd'><span class='lmmi-10'>γ</span></td>   <td class='align-even'> <span class='rm-lmr-10'>= </span><img align='middle' alt='{
+ P arseDarwinV  ersion(FindDarwinV ersion()),    If valid &quot;Darwin Kernel Version&quot; is found
  ∞                                            Otherwise' class='left' src='Configuration3x.svg' /></td>   <td class='align-label'></td>   <td class='align-label'>
    </td></tr><tr><td class='align-odd'></td>    <td class='align-even'><span class='lmmi-10'>                                         f</span><span class='rm-lmr-10'>(</span><span class='lmmi-10'>α,β,γ</span><span class='rm-lmr-10'>) = </span><span class='lmmi-10'>α </span><span class='lmsy-10'>≤ </span><span class='lmmi-10'>γ </span><span class='lmsy-10'>≤ </span><span class='lmmi-10'>β</span></td>                                      <td class='align-label'></td>   <td class='align-label'></td></tr></table>
      <!-- l. 2111 --><p class='noindent'>Here <span class='lmmi-10'>ParseDarwinV ersion </span>argument is assumed to be 3 integers obtained by splitting Darwin kernel version string from
@@ -1875,7 +1875,7 @@ on how to install and troubleshoot such macOS installations.
 </tr><tr class='hline'><td></td><td></td><td></td><td></td><td></td></tr><tr id='TBL-2-6-' style='vertical-align:baseline;'><td class='td11' id='TBL-2-6-1' style='white-space:normal; text-align:left;'><!-- l. 2987 --><p class='noindent'>iMac              </p></td><td class='td11' id='TBL-2-6-2' style='white-space:nowrap; text-align:center;'>8,x (Early 2008)</td><td class='td11' id='TBL-2-6-3' style='white-space:nowrap; text-align:center;'>12,x (Mid 2011)</td><td class='td11' id='TBL-2-6-4' style='white-space:nowrap; text-align:center;'>12,x (Mid 2011)</td><td class='td11' id='TBL-2-6-5' style='white-space:nowrap; text-align:center;'> 7,x (Mid 2007) </td>
 </tr><tr class='hline'><td></td><td></td><td></td><td></td><td></td></tr><tr id='TBL-2-7-' style='vertical-align:baseline;'><td class='td11' id='TBL-2-7-1' style='white-space:normal; text-align:left;'><!-- l. 2989 --><p class='noindent'>MacPro          </p></td><td class='td11' id='TBL-2-7-2' style='white-space:nowrap; text-align:center;'>3,x (Early 2008)</td><td class='td11' id='TBL-2-7-3' style='white-space:nowrap; text-align:center;'> 5,x (Mid 2010) </td><td class='td11' id='TBL-2-7-4' style='white-space:nowrap; text-align:center;'>3,x (Early 2008)</td><td class='td11' id='TBL-2-7-5' style='white-space:nowrap; text-align:center;'>3,x (Early 2008)</td>
 </tr><tr class='hline'><td></td><td></td><td></td><td></td><td></td></tr><tr id='TBL-2-8-' style='vertical-align:baseline;'><td class='td11' id='TBL-2-8-1' style='white-space:normal; text-align:left;'><!-- l. 2991 --><p class='noindent'>Xserve            </p></td><td class='td11' id='TBL-2-8-2' style='white-space:nowrap; text-align:center;'>2,x (Early 2008)</td><td class='td11' id='TBL-2-8-3' style='white-space:nowrap; text-align:center;'>2,x (Early 2008)</td><td class='td11' id='TBL-2-8-4' style='white-space:nowrap; text-align:center;'>2,x (Early 2008)</td><td class='td11' id='TBL-2-8-5' style='white-space:nowrap; text-align:center;'>2,x (Early 2008)</td>
-</tr><tr class='hline'><td></td><td></td><td></td><td></td><td></td></tr></table></div></div>
+</tr><tr class='hline'><td></td><td></td><td></td><td></td><td></td></tr></table>                                                                                                  </div></div>
      <!-- l. 2996 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: <span class='ec-lmtt-10'>3+2 </span>and <span class='ec-lmtt-10'>6+4 </span>hotkeys to choose the preferred architecture are unsupported as they are handled by EfiBoot and
      hence, difficult to detect.
      </p></li>
@@ -1898,7 +1898,7 @@ on how to install and troubleshoot such macOS installations.
 </tr><tr class='hline'><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr id='TBL-3-6-' style='vertical-align:baseline;'><td class='td11' id='TBL-3-6-1' style='white-space:normal; text-align:left;'><!-- l. 3026 --><p class='noindent'>10.8-10.9    </p></td><td class='td11' id='TBL-3-6-2' style='white-space:nowrap; text-align:center;'>   —     </td><td class='td11' id='TBL-3-6-3' style='white-space:nowrap; text-align:center;'>   —     </td><td class='td11' id='TBL-3-6-4' style='white-space:nowrap; text-align:center;'>   —     </td><td class='td11' id='TBL-3-6-5' style='white-space:nowrap; text-align:center;'>    YES      </td><td class='td11' id='TBL-3-6-6' style='white-space:nowrap; text-align:center;'>     —        </td><td class='td11' id='TBL-3-6-7' style='white-space:nowrap; text-align:center;'> YES (V3)  </td><td class='td11' id='TBL-3-6-8' style='white-space:nowrap; text-align:center;'>     —       </td>
 </tr><tr class='hline'><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr id='TBL-3-7-' style='vertical-align:baseline;'><td class='td11' id='TBL-3-7-1' style='white-space:normal; text-align:left;'><!-- l. 3028 --><p class='noindent'>10.10-10.15 </p></td><td class='td11' id='TBL-3-7-2' style='white-space:nowrap; text-align:center;'>   —     </td><td class='td11' id='TBL-3-7-3' style='white-space:nowrap; text-align:center;'>   —     </td><td class='td11' id='TBL-3-7-4' style='white-space:nowrap; text-align:center;'>   —     </td><td class='td11' id='TBL-3-7-5' style='white-space:nowrap; text-align:center;'>     —       </td><td class='td11' id='TBL-3-7-6' style='white-space:nowrap; text-align:center;'>     —        </td><td class='td11' id='TBL-3-7-7' style='white-space:nowrap; text-align:center;'> YES (V3)  </td><td class='td11' id='TBL-3-7-8' style='white-space:nowrap; text-align:center;'>     —       </td>
 </tr><tr class='hline'><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr id='TBL-3-8-' style='vertical-align:baseline;'><td class='td11' id='TBL-3-8-1' style='white-space:normal; text-align:left;'><!-- l. 3030 --><p class='noindent'>11+          </p></td><td class='td11' id='TBL-3-8-2' style='white-space:nowrap; text-align:center;'>   —     </td><td class='td11' id='TBL-3-8-3' style='white-space:nowrap; text-align:center;'>   —     </td><td class='td11' id='TBL-3-8-4' style='white-space:nowrap; text-align:center;'>   —     </td><td class='td11' id='TBL-3-8-5' style='white-space:nowrap; text-align:center;'>     —       </td><td class='td11' id='TBL-3-8-6' style='white-space:nowrap; text-align:center;'>     —        </td><td class='td11' id='TBL-3-8-7' style='white-space:nowrap; text-align:center;'> YES (V3)  </td><td class='td11' id='TBL-3-8-8' style='white-space:nowrap; text-align:center;'>    YES      </td>
-</tr><tr class='hline'><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div></div>
+</tr><tr class='hline'><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table>                                                                                                  </div></div>
      <!-- l. 3035 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: The first version (V1) of the 32-bit <span class='ec-lmtt-10'>prelinkedkernel </span>is unsupported due to the corruption of kext symbol tables
      by the tools. On this version, the <span class='ec-lmtt-10'>Auto </span>setting will block <span class='ec-lmtt-10'>prelinkedkernel </span>booting. This also results in the <span class='ec-lmtt-10'>keepsyms=1</span>
      boot argument being non-functional for kext frames on these systems.
@@ -1923,9 +1923,9 @@ details.
 </p><!-- l. 3060 --><p class='noindent'>The scan process starts with enumerating all available partitions, filtered based on the <span class='ec-lmtt-10'>Scan policy</span>. Each
 partition may generate multiple primary and alternate options. Primary options represent operating systems
 installed on the media, while alternate options represent recovery options for the operating systems on the media.
-                                                                                                  
-                                                                                                  
 </p>
+                                                                                                  
+                                                                                                  
      <ul class='itemize1'>
      <li class='itemize'>Alternate options may exist without primary options and vice versa.
      </li>
@@ -1965,6 +1965,8 @@ installed on the media, while alternate options represent recovery options for t
          </li>
          <li class='itemize'>Mark device handle as <span class='ec-lmri-10'>used </span>in the list of partition handles if any.
          </li>
+                                                                                                  
+                                                                                                  
          <li class='itemize'>Register the resulting entries as primary options and determine their types. <br class='newline' />The option will become auxiliary for some types (e.g. Apple HFS recovery).</li></ul>
      </li>
 <li class='enumerate' id='x1-42008x4'>
@@ -1999,9 +2001,9 @@ scanning algorithm.
      </li>
      <li class='itemize'>Custom entries, tools, and system entries will be added after all other options.
      </li>
-                                                                                                  
-                                                                                                  
      <li class='itemize'>Auxiliary options will only be displayed upon entering “Extended Mode” in the OpenCore picker (typically by
+                                                                                                  
+                                                                                                  
      pressing the <span class='ec-lmtt-10'>Space </span>key).</li></ul>
 <!-- l. 3132 --><p class='noindent'>The boot process is as follows: </p>
      <ul class='itemize1'>
@@ -2036,9 +2038,9 @@ until the next manual reconfiguration.
      <span class='ec-lmtt-10'>\EFI\debian\grubx64.efi </span>for the Debian bootloader. This allows non-standard boot paths to be automatically
      discovered  by  the  OpenCore  picker.  Designwise,  they  are  equivalent  to  predefined  blessed  paths,  such  as
      <span class='ec-lmtt-10'>\System\Library\CoreServices\boot.efi </span>or  <span class='ec-lmtt-10'>\EFI\Microsoft\Boot\bootmgfw.efi</span>,  but  unlike  predefined
-                                                                                                  
-                                                                                                  
      bless paths, they have the highest priority.
+                                                                                                  
+                                                                                                  
      </p></li>
 <li class='enumerate' id='x1-43006x3'><span class='ec-lmtt-10'>Debug</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist dict</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Apply debug configuration described in the <a href='#debug-properties'>Debug Properties</a> section below.
      </li>
@@ -2068,10 +2070,10 @@ until the next manual reconfiguration.
      </p><!-- l. 3228 --><p class='noindent'>To be filled with <span class='ec-lmtt-10'>plist dict </span>values, describing each load entry. Refer to the <a href='#entry-properties'>Entry Properties</a> section below for
      details.
      </p><!-- l. 3231 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: Certain UEFI tools, such as UEFI Shell, can be very dangerous and <span class='ec-lmbx-10'>MUST NOT </span>appear in production
-                                                                                                  
-                                                                                                  
      configurations, paticularly in vaulted configurations as well as those protected by secure boot, as such tools can
      be used to bypass the secure boot chain. Refer to the <a href='#tools-and-applications'>UEFI</a> section for examples of UEFI tools.
+                                                                                                  
+                                                                                                  
 </p>
      </li></ol>
 <!-- l. 3239 --><p class='noindent'>
@@ -2105,8 +2107,6 @@ until the next manual reconfiguration.
          <li class='itemize'><span class='ec-lmtt-10'>0x08 </span>— <span class='ec-lmtt-10'>EFI_DARKGRAY</span>
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x09 </span>— <span class='ec-lmtt-10'>EFI_LIGHTBLUE</span>
-                                                                                                  
-                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x0A </span>— <span class='ec-lmtt-10'>EFI_LIGHTGREEN</span>
          </li>
@@ -2144,6 +2144,8 @@ until the next manual reconfiguration.
          <ul class='itemize1'>
          <li class='itemize'><span class='ec-lmtt-10'>None </span>— Ignore hibernation state.
          </li>
+                                                                                                  
+                                                                                                  
          <li class='itemize'><span class='ec-lmtt-10'>Auto </span>— Use RTC and NVRAM detection.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>RTC </span>— Use RTC detection.
@@ -2175,10 +2177,10 @@ until the next manual reconfiguration.
          <li class='itemize'><span class='ec-lmtt-10'>Disabled </span>— do nothing.
          </li>
          <li class='itemize'>
-                                                                                                  
-                                                                                                  
          <!-- l. 3333 --><p class='noindent'><span class='ec-lmtt-10'>Full </span>— create or update the top priority boot option in UEFI variable storage at bootloader startup.
          </p>
+                                                                                                  
+                                                                                                  
              <ul class='itemize2'>
              <li class='itemize'>For this option to work, <span class='ec-lmtt-10'>RequestBootVarRouting </span>is required to be enabled.</li></ul>
          </li>
@@ -2224,10 +2226,10 @@ until the next manual reconfiguration.
          <li class='itemize'>Since the system shell does not include <span class='ec-lmtt-10'>bcfg</span>, use the system shell to start OpenCore’s OpenShell (e.g. by
          entering the command <span class='ec-lmtt-10'>FS2:\EFI\OC\Tools\OpenShell.efi </span>, but you will need to work out which drive is
          correct for OpenCore and modify the drive number <span class='ec-lmtt-10'>FS#: </span>accordingly)
-                                                                                                  
-                                                                                                  
          </li>
          <li class='itemize'>Within OpenShell, use <span class='ec-lmtt-10'>bcfg boot dump </span>to display the NVRAM boot options and then use <span class='ec-lmtt-10'>bcfg boot rm
+                                                                                                  
+                                                                                                  
          </span><span class='ec-lmtt-10'># </span>(where <span class='ec-lmtt-10'># </span>is the number of the OpenCore boot entry) to remove the OpenCore entry</li></ul>
      <!-- l. 3389 --><p class='noindent'>It is alternatively possible to start OpenShell directly from the OpenCore boot menu, if you have a working configured
      OpenCore for the system. In that case, and if OpenCore has <span class='ec-lmtt-10'>RequestBootVarRouting </span>enabled, it will be necessary to run
@@ -2265,11 +2267,11 @@ until the next manual reconfiguration.
          <!-- l. 3439 --><p class='noindent'><span class='ec-lmri-10'>Note 1</span>: The Apple picker partially supports placing a volume icon file at the operating system’s <span class='ec-lmtt-10'>Data </span>volume root,
          <span class='ec-lmtt-10'>/System/Volumes/Data/</span>, when mounted at the default location within macOS. This approach is flawed: the file is
          neither accessible to OpenCanopy nor to the Apple picker when FileVault 2, which is meant to be the default choice,
-                                                                                                  
-                                                                                                  
          is enabled. Therefore, OpenCanopy does not attempt supporting Apple’s approach. A volume icon file may be
          placed at the root of the <span class='ec-lmtt-10'>Preboot </span>volume for compatibility with both OpenCanopy and the Apple picker, or use the
          <span class='ec-lmtt-10'>Preboot </span>per-volume location as above with OpenCanopy as a preferred alternative to Apple’s approach.
+                                                                                                  
+                                                                                                  
          </p><!-- l. 3448 --><p class='noindent'><span class='ec-lmri-10'>Note 2</span>: Be aware that using a volume icon on any drive overrides the normal OpenCore picker behaviour for
          that drive of selecting the appropriate icon depending on whether the drive is internal or external.
          </p></li>
@@ -2312,10 +2314,10 @@ until the next manual reconfiguration.
              <li class='itemize'>For a custom entry specified in the <span class='ec-lmtt-10'>Entries </span>section it is read from the <span class='ec-lmtt-10'>.contentFlavour </span>file next to
              the bootloader if <span class='ec-lmtt-10'>Flavour </span>is <span class='ec-lmtt-10'>Auto</span>, otherwise it is specified via the <span class='ec-lmtt-10'>Flavour </span>value itself.
              </li>
-                                                                                                  
-                                                                                                  
              <li class='itemize'>If read flavour is <span class='ec-lmtt-10'>Auto </span>or there is no <span class='ec-lmtt-10'>.contentFlavour</span>, entry flavour is chosen based on the entry type
              (e.g. Windows automatically gets Windows flavour).</li></ul>
+                                                                                                  
+                                                                                                  
          <!-- l. 3496 --><p class='noindent'>The Flavour value is a sequence of <span class='ec-lmtt-10'>: </span>separated names limited to 64 characters of printable 7-bit ASCII. This is
          designed to support up to approximately five names. Each name refers to a flavour, with the first name having the
          highest priority and the last name having the lowest priority. Such a structure allows describing an entry in a more
@@ -2354,8 +2356,6 @@ until the next manual reconfiguration.
      details.
      </p></li>
 <li class='enumerate' id='x1-44016x8'>
-                                                                                                  
-                                                                                                  
      <!-- l. 3548 --><p class='noindent'><span class='ec-lmtt-10'>PollAppleHotKeys</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Enable <span class='ec-lmtt-10'>modifier hotkey </span>handling in the OpenCore picker.
      </p><!-- l. 3553 --><p class='noindent'>In addition to <span class='ec-lmtt-10'>action hotkeys</span>, which are partially described in the <span class='ec-lmtt-10'>PickerMode </span>section and are typically handled by
      Apple BDS, modifier keys handled by the operating system bootloader (<span class='ec-lmtt-10'>boot.efi</span>) also exist. These keys allow changing
@@ -2389,8 +2389,6 @@ until the next manual reconfiguration.
      mode. On some platforms, setting this option to a minimum of <span class='ec-lmtt-10'>5000-10000 </span>microseconds may be required to access
      <span class='ec-lmtt-10'>action hotkeys </span>due to the nature of the keyboard driver.
      </p></li>
-                                                                                                  
-                                                                                                  
 <li class='enumerate' id='x1-44022x11'><span class='ec-lmtt-10'>Timeout</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span>, 32 bit<br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Timeout in seconds in the OpenCore picker before automatic booting of the default boot entry. Set to <span class='ec-lmtt-10'>0 </span>to
      disable.
      </li>
@@ -2425,11 +2423,11 @@ until the next manual reconfiguration.
          <li class='itemize'><span class='ec-lmtt-10'>ResetNvram </span>— this option erases certain UEFI variables and is normally executed by holding down the
          <span class='ec-lmtt-10'>CMD+OPT+P+R </span>key combination during boot. Another way to erase UEFI variables is to choose <span class='ec-lmtt-10'>Reset NVRAM</span>
          in the OpenCore picker. This option requires <span class='ec-lmtt-10'>AllowNvramReset </span>to be set to <span class='ec-lmtt-10'>true</span>.
-                                                                                                  
-                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>BootApple </span>— this options performs booting to the first Apple operating system found unless the chosen
          default operating system is one from Apple. Hold the <span class='ec-lmtt-10'>X </span>key down to choose this option.
+                                                                                                  
+                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>BootAppleRecovery </span>— this option performs booting into the Apple operating system recovery partition.
          This is either that related to the default chosen operating system, or first one found when the chosen default
@@ -2468,9 +2466,9 @@ until the next manual reconfiguration.
          <span class='ec-lmtt-10'>Acidanthera\GoldenGate </span>for Syrah Black and <span class='ec-lmtt-10'>Acidanthera\Chardonnay </span>for Light Gray.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>Default </span>— <span class='ec-lmtt-10'>Acidanthera\GoldenGate</span>.</li></ul>
-                                                                                                  
-                                                                                                  
      </li></ol>
+                                                                                                  
+                                                                                                  
 <!-- l. 3706 --><p class='noindent'>
 </p>
 <h4 class='subsectionHead' id='debug-properties'><span class='titlemark'>8.4   </span> <a id='x1-450008.4'></a>Debug Properties</h4>
@@ -2503,8 +2501,6 @@ until the next manual reconfiguration.
      debug mode. This results in the watchdog timer aborting the process. This option turns off the watchdog
      timer.
      </li>
-                                                                                                  
-                                                                                                  
 <li class='enumerate' id='x1-45010x4'><span class='ec-lmtt-10'>DisplayDelay</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Delay in microseconds executed after every printed line visible onscreen (i.e. console).
      </li>
 <li class='enumerate' id='x1-45012x5'>
@@ -2536,8 +2532,6 @@ until the next manual reconfiguration.
      </p><!-- l. 3803 --><p class='noindent'><span class='ec-lmri-10'>Note 1</span>: Acronyms of libraries can be found in the <a href='#x1-45021r8'><span class='ec-lmtt-10'>Libraries</span></a> section below.
      </p><!-- l. 3806 --><p class='noindent'><span class='ec-lmri-10'>Note 2</span>: Messages printed before the configuration of log protocol cannot be filtered.
      </p></li>
-                                                                                                  
-                                                                                                  
 <li class='enumerate' id='x1-45016x7'>
      <!-- l. 3810 --><p class='noindent'><span class='ec-lmtt-10'>SysReport</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Produce system report on ESP folder.
      </p><!-- l. 3815 --><p class='noindent'>This option will create a <span class='ec-lmtt-10'>SysReport </span>directory in the ESP partition unless already present. The directory will
@@ -2573,11 +2567,11 @@ until the next manual reconfiguration.
      
      <!-- l. 3853 --><p class='noindent'>UEFI variable log does not include some messages and has no performance data. To maintain system integrity, the log
      size is limited to 32 kilobytes. Some types of firmware may truncate it much earlier or drop completely if they have no
-                                                                                                  
-                                                                                                  
      memory. Using the <span class='ec-lmtt-10'>non-volatile </span>flag will cause the log to be written to NVRAM flash after every printed
      line.
      </p><!-- l. 3858 --><p class='noindent'>To obtain UEFI variable logs, use the following command in macOS: </p><!-- l. 3859 -->
+                                                                                                  
+                                                                                                  
      <pre class='lstlisting' id='listing-7'><span class='label'><a id='x1-45020r1'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>nvram</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:boot-log </span><span class='ec-lmtt-10'>|</span> 
 </span><span class='label'><a id='x1-45021r2'></a></span><span style='color:#000000'>  <span class='ec-lmtk-10'>awk </span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'>{gsub(/%0d%0a%00/,"");gsub(/%0d%0a/,"\n")}1</span><span class='ts1-lmtt10-'>'</span></span></pre>
      
@@ -2618,8 +2612,6 @@ until the next manual reconfiguration.
          <li class='itemize'><span class='ec-lmtt-10'>OCRST </span>— ResetSystem
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>OCUI </span>— OpenCanopy
-                                                                                                  
-                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>OC </span>— OpenCore main, also OcMainLib
          </li>
@@ -2658,11 +2650,11 @@ until the next manual reconfiguration.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>OCDM </span>— OcDeviceMiscLib
          </li>
-                                                                                                  
-                                                                                                  
          <li class='itemize'><span class='ec-lmtt-10'>OCFS </span>— OcFileLib
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>OCFV </span>— OcFirmwareVolumeLib
+                                                                                                  
+                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>OCHS </span>— OcHashServicesLib
          </li>
@@ -2698,11 +2690,11 @@ until the next manual reconfiguration.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>OCSB </span>— OcAppleSecureBootLib
          </li>
-                                                                                                  
-                                                                                                  
          <li class='itemize'><span class='ec-lmtt-10'>OCSMB </span>— OcSmbiosLib
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>OCSMC </span>— OcSmcLib
+                                                                                                  
+                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>OCST </span>— OcStorageLib
          </li>
@@ -2733,12 +2725,12 @@ until the next manual reconfiguration.
      picker.
      </p><!-- l. 3982 --><p class='noindent'><span class='ec-lmri-10'>Note 1</span>: May be used in combination with <span class='ec-lmtt-10'>Shift+Enter </span>or <span class='ec-lmtt-10'>Shift+Index </span>when <span class='ec-lmtt-10'>PollAppleHotKeys </span>is enabled.
      </p><!-- l. 3986 --><p class='noindent'><span class='ec-lmri-10'>Note 2</span>: In order to support systems with unresponsive modifiers during preboot (which includes <span class='ec-lmtt-10'>V1 </span>and <span class='ec-lmtt-10'>V2
-                                                                                                  
-                                                                                                  
      </span><span class='ec-lmtt-10'>KeySupport </span>mode on some firmware) OpenCore also allows holding the <span class='ec-lmtt-10'>=/+ </span>key in order to trigger ‘set default’
      mode.
      </p></li>
 <li class='enumerate' id='x1-46006x3'>
+                                                                                                  
+                                                                                                  
      <!-- l. 3991 --><p class='noindent'><span class='ec-lmtt-10'>AllowToggleSip</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Enable entry for disabling and enabling System Integrity Protection in OpenCore picker.
      </p><!-- l. 3997 --><p class='noindent'>This will toggle Apple NVRAM variable <span class='ec-lmtt-10'>csr-active-config </span>between <span class='ec-lmtt-10'>0 </span>for SIP Enabled and a practical default
      value for SIP Disabled.
@@ -2776,13 +2768,13 @@ until the next manual reconfiguration.
      <pre class='lstlisting' id='listing-8'><span class='label'><a id='x1-46009r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>bless</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>--folder </span><span class='ec-lmtt-10'>"/Volumes/Macintosh </span><span class='ec-lmtt-10'>HD/System/Library/CoreServices" </span><span class='ec-lmtt-10'>\</span> 
 </span><span class='label'><a id='x1-46010r2'></a></span><span style='color:#000000'>  <span class='ec-lmtt-10'>--bootefi </span><span class='ec-lmtt-10'>--personalize</span></span></pre>
      
-                                                                                                  
-                                                                                                  
      <!-- l. 4056 --><p class='noindent'>On macOS 11 and newer the dedicated <span class='ec-lmtt-10'>x86legacy </span>model always uses <span class='ec-lmtt-10'>ApECID</span>. When this configuration setting is left as <span class='ec-lmtt-10'>0</span>
      first 8 bytes of <span class='ec-lmtt-10'>system-id </span>variable are used instead.
      </p><!-- l. 4060 --><p class='noindent'>On macOS versions before macOS 11, which introduced a dedicated <span class='ec-lmtt-10'>x86legacy </span>model for models without the T2 chip,
      personalised Apple Secure Boot may not work as expected. When reinstalling the operating system, the macOS Installer
      from macOS 10.15 and older will often run out of free memory on the <span class='ec-lmtt-10'>/var/tmp </span>partition when trying to install macOS
+                                                                                                  
+                                                                                                  
      with the personalised Apple Secure Boot. Soon after downloading the macOS installer image, an <span class='ec-lmtt-10'>Unable to verify
      </span><span class='ec-lmtt-10'>macOS </span>error message will appear.
      </p><!-- l. 4068 --><p class='noindent'>To workaround this issue, allocate a dedicated RAM disk of 2 MBs for macOS personalisation by entering the following
@@ -2817,13 +2809,13 @@ until the next manual reconfiguration.
          <ul class='itemize1'>
          <li class='itemize'><span class='ec-lmtt-10'>Disabled </span>— loading DMG images will fail. The <span class='ec-lmtt-10'>Disabled </span>policy will still let the macOS Recovery load in
          most cases as typically, there are <span class='ec-lmtt-10'>boot.efi </span>files compatible with Apple Secure Boot. Manually downloaded
-                                                                                                  
-                                                                                                  
          DMG images stored in <span class='ec-lmtt-10'>com.apple.recovery.boot </span>directories will not load, however.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>Signed </span>— only Apple-signed DMG images will load. Due to the design of Apple Secure Boot, the <span class='ec-lmtt-10'>Signed</span>
          policy will let any Apple-signed macOS Recovery load regardless of the Apple Secure Boot state, which may
          not always be desired. While using signed DMG images is more desirable, verifying the image signature
+                                                                                                  
+                                                                                                  
          may slightly slow the boot time down (by up to 1 second).
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>Any </span>— any DMG images will mount as normal filesystems. The <span class='ec-lmtt-10'>Any </span>policy is strongly discouraged and will
@@ -2856,11 +2848,11 @@ until the next manual reconfiguration.
      <pre class='lstlisting' id='listing-11'><span class='label'><a id='x1-46027r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>u</span></span><span style='color:#000000'><span class='ec-lmtt-10'>=</span></span><span style='color:#000000'><span class='ec-lmtt-10'>$</span></span><span style='color:#000000'><span class='ec-lmtt-10'>(</span></span><span style='color:#000000'><span class='ec-lmtk-10'>nvram</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:boot-path </span><span class='ec-lmtt-10'>| </span><span class='ec-lmtk-10'>sed </span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'>s/.*GPT,\([^,]*\),.*/\1/</span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'>); </span><span class='ec-lmtt-10'>\</span> 
 </span><span class='label'><a id='x1-46028r2'></a></span><span style='color:#000000'>  <span class='ec-lmtk-10'>if </span><span class='ec-lmtt-10'>[ </span><span class='ec-lmtt-10'>"$u" </span><span class='ec-lmtt-10'>!= </span><span class='ec-lmtt-10'>"" </span><span class='ec-lmtt-10'>]; </span><span class='ec-lmtk-10'>then </span><span class='ec-lmtk-10'>sudo </span><span class='ec-lmtk-10'>diskutil </span><span class='ec-lmtt-10'>mount </span><span class='ec-lmtt-10'>$u </span><span class='ec-lmtt-10'>; </span><span class='ec-lmtt-10'>fi</span></span></pre>
      
-                                                                                                  
-                                                                                                  
      <!-- l. 4170 --><p class='noindent'>To obtain the current OpenCore version, use the following command in macOS: </p><!-- l. 4171 -->
      <pre class='lstlisting' id='listing-12'><span class='label'><a id='x1-46029r1'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>nvram</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:opencore-version</span></span></pre>
      
+                                                                                                  
+                                                                                                  
      <!-- l. 4174 --><p class='noindent'>If the OpenCore version is not exposed the variable will contain <span class='ec-lmtt-10'>UNK-000-0000-00-00 </span>sequence.
      </p><!-- l. 4177 --><p class='noindent'>To obtain OEM information, use the following commands in macOS: </p><!-- l. 4178 -->
      <pre class='lstlisting' id='listing-13'><span class='label'><a id='x1-46030r1'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>nvram</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:oem-product </span><span class='ec-lmtti-10'># </span><span class='ec-lmtti-10'>SMBIOS </span><span class='ec-lmtti-10'>Type1 </span><span class='ec-lmtti-10'>ProductName</span> 
@@ -2887,11 +2879,11 @@ until the next manual reconfiguration.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>Secure </span>— require <span class='ec-lmtt-10'>vault.sig </span>signature file for <span class='ec-lmtt-10'>vault.plist </span>in <span class='ec-lmtt-10'>OC </span>directory. This includes <span class='ec-lmtt-10'>Basic </span>integrity
          checking but also attempts to build a trusted bootchain.</li></ul>
-                                                                                                  
-                                                                                                  
      <!-- l. 4223 --><p class='noindent'>The <span class='ec-lmtt-10'>vault.plist </span>file should contain SHA-256 hashes for all files used by OpenCore. The presence of this file is
      highly recommended to ensure that unintentional file modifications (including filesystem corruption) do
      not go unnoticed. To create this file automatically, use the <a href='https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/CreateVault'><span class='ec-lmtt-10'>create_vault.sh</span></a> script. Notwithstanding
+                                                                                                  
+                                                                                                  
      the underlying file system, the path names and cases between <span class='ec-lmtt-10'>config.plist </span>and <span class='ec-lmtt-10'>vault.plist </span>must
      match.
      </p><!-- l. 4230 --><p class='noindent'>The <span class='ec-lmtt-10'>vault.sig </span>file should contain a raw 256 byte RSA-2048 signature from a SHA-256 hash of <span class='ec-lmtt-10'>vault.plist</span>. The
@@ -2934,6 +2926,8 @@ until the next manual reconfiguration.
      </p></li>
 <li class='enumerate' id='x1-46048x14'>
      <!-- l. 4284 --><p class='noindent'><span class='ec-lmtt-10'>ScanPolicy</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span>, 32 bit<br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0x10F0103</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Define operating system detection policy.
+                                                                                                  
+                                                                                                  
      </p><!-- l. 4289 --><p class='noindent'>This value allows preventing scanning (and booting) untrusted sources based on a bitmask (sum) of a set of flags. As it is
      not possible to reliably detect every file system or device type, this feature cannot be fully relied upon in open
      environments, and additional measures are to be applied.
@@ -3010,8 +3004,6 @@ until the next manual reconfiguration.
          <li class='itemize'><span class='ec-lmtt-10'>OC_SCAN_ALLOW_DEVICE_NVME</span></li></ul>
      </li>
 <li class='enumerate' id='x1-46050x15'>
-                                                                                                  
-                                                                                                  
      <!-- l. 4369 --><p class='noindent'> <span class='ec-lmtt-10'>SecureBootModel</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Default</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Apple Secure Boot hardware model.
      </p><!-- l. 4375 --><p class='noindent'>Sets Apple Secure Boot hardware model and policy. Specifying this value defines which operating systems will be
      bootable. Operating systems shipped before the specified model was released will not boot.
@@ -3048,10 +3040,10 @@ until the next manual reconfiguration.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>j223 </span>— <span class='ec-lmtt-10'>MacBookPro16,3 (May 2020). Minimum macOS 10.15.4 (19E2265)</span>
          </li>
-                                                                                                  
-                                                                                                  
          <li class='itemize'><span class='ec-lmtt-10'>j215 </span>— <span class='ec-lmtt-10'>MacBookPro16,4 (June 2020). Minimum macOS 10.15.5 (19F96)</span>
          </li>
+                                                                                                  
+                                                                                                  
          <li class='itemize'><span class='ec-lmtt-10'>j185 </span>— <span class='ec-lmtt-10'>iMac20,1 (August 2020). Minimum macOS 10.15.6 (19G2005)</span>
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>j185f </span>— <span class='ec-lmtt-10'>iMac20,2 (August 2020). Minimum macOS 10.15.6 (19G2005)</span>
@@ -3090,9 +3082,9 @@ until the next manual reconfiguration.
          boot until UEFI Secure Boot is enabled. This is so because Apple Secure Boot treats these as incompatible
          and they are then handled by the firmware (as Microsoft Windows is).
          </li>
-                                                                                                  
-                                                                                                  
 <li class='enumerate' id='x1-46062x6'>On older CPUs (e.g. before Sandy Bridge), enabling Apple Secure Boot might cause slightly slower loading
+                                                                                                  
+                                                                                                  
          (by up to 1 second).
          </li>
 <li class='enumerate' id='x1-46064x7'>As the <span class='ec-lmtt-10'>Default </span>value will increase with time to support the latest major released operating system, it is
@@ -3126,9 +3118,9 @@ until the next manual reconfiguration.
      </p><!-- l. 4487 --><p class='noindent'>This option will perform serial port initialisation within OpenCore prior to enabling (any) debug logging.
      </p><!-- l. 4490 --><p class='noindent'>Refer to the <a href='#debugging1'><span class='ec-lmtt-10'>Debugging</span></a> section for details.
      </p></li>
-                                                                                                  
-                                                                                                  
 <li class='enumerate' id='x1-47006x3'>
+                                                                                                  
+                                                                                                  
      <!-- l. 4493 --><p class='noindent'><span class='ec-lmtt-10'>Override</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Override serial port properties. When this option is set to <span class='ec-lmtt-10'>false</span>, no keys from <span class='ec-lmtt-10'>Custom </span>will be
      overridden.
      </p><!-- l. 4499 --><p class='noindent'>This option will override serial port properties listed in the <a href='#serial-custom-properties'><span class='ec-lmtt-10'>Serial Custom Properties</span></a> section below.
@@ -4477,7 +4469,7 @@ access when launching from OpenCore.                                            
 hidden options on selected platforms.                                                                       </p></td>
 </tr><tr id='TBL-5-14-' style='vertical-align:baseline;'><td class='td11' id='TBL-5-14-1' style='white-space:normal; text-align:left;'><!-- l. 6484 --><p class='noindent'><a href='https://github.com/acidanthera/OpenCorePkg'><span class='ec-lmtt-10'>TpmInfo</span></a><span class='ec-lmbx-10'>*</span>              </p></td><td class='td11' id='TBL-5-14-2' style='white-space:normal; text-align:left;'><!-- l. 6485 --><p class='noindent'>Check Intel PTT (Platform Trust Technology) capability on the platform, which allows using
 fTPM 2.0 if enabled. The tool does not check whether fTPM 2.0 is actually enabled.         </p></td>
-</tr></table></div>
+</tr></table>                                                                                                   </div>
 <!-- l. 6490 --><p class='noindent'>
 </p>
 <h4 class='subsectionHead' id='opencanopy'><span class='titlemark'>11.4   </span> <a id='x1-6800011.4'></a>OpenCanopy</h4>
@@ -4502,6 +4494,8 @@ levels.
      <li class='itemize'><span class='ec-lmtt-10'>Selector </span>— Selecting item (mandatory, up to 144x40).
      </li>
      <li class='itemize'><span class='ec-lmtt-10'>SetDefault </span>— Selecting default (mandatory, up to 144x40; must be same width as <span class='ec-lmtt-10'>Selector</span>).
+                                                                                                  
+                                                                                                  
      </li>
      <li class='itemize'><span class='ec-lmtt-10'>Left </span>— Scrolling left (mandatory, 40x40).
      </li>
@@ -4539,9 +4533,9 @@ scaling level. Full list of labels is provided below. All labels are mandatory.
      <li class='itemize'><span class='ec-lmtt-10'>AppleTM </span>— Apple Time Machine.
      </li>
      <li class='itemize'><span class='ec-lmtt-10'>Windows </span>— Windows.
-                                                                                                  
-                                                                                                  
      </li>
+                                                                                                  
+                                                                                                  
      <li class='itemize'><span class='ec-lmtt-10'>Other </span>— Custom entry (see <span class='ec-lmtt-10'>Entries</span>).
      </li>
      <li class='itemize'><span class='ec-lmtt-10'>ResetNVRAM </span>— Reset NVRAM system action or tool.

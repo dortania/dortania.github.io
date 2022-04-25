@@ -268,7 +268,7 @@ applicable:
 </tr><tr class='hline'><td></td><td></td></tr><tr id='TBL-1-4-' style='vertical-align:baseline;'><td class='td11' id='TBL-1-4-1' style='white-space:nowrap; text-align:left;'><span class='ec-lmtt-10'>plist integer </span></td><td class='td11' id='TBL-1-4-2' style='white-space:nowrap; text-align:left;'>0 (<span class='ec-lmtt-10'>&lt;integer&gt;0&lt;/integer&gt;</span>)           </td>
 </tr><tr class='hline'><td></td><td></td></tr><tr id='TBL-1-5-' style='vertical-align:baseline;'><td class='td11' id='TBL-1-5-1' style='white-space:nowrap; text-align:left;'><span class='ec-lmtt-10'>plist boolean </span></td><td class='td11' id='TBL-1-5-2' style='white-space:nowrap; text-align:left;'>False (<span class='ec-lmtt-10'>&lt;false/&gt;</span>)                         </td>
 </tr><tr class='hline'><td></td><td></td></tr><tr id='TBL-1-6-' style='vertical-align:baseline;'><td class='td11' id='TBL-1-6-1' style='white-space:nowrap; text-align:left;'><span class='ec-lmtt-10'>plist tristate</span></td><td class='td11' id='TBL-1-6-2' style='white-space:nowrap; text-align:left;'>False (<span class='ec-lmtt-10'>&lt;false/&gt;</span>)                         </td>
-</tr><tr class='hline'><td></td><td></td></tr></table></div></div>
+</tr><tr class='hline'><td></td><td></td></tr></table>                                                                                                  </div></div>
 <!-- l. 351 --><p class='noindent'>
 </p>
 <h4 class='subsectionHead' id='configuration-structure'><span class='titlemark'>2.3   </span> <a id='x1-70002.3'></a>Configuration Structure</h4>
@@ -1356,8 +1356,8 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
    </td></tr><tr><td class='align-odd'><span class='lmmi-10'>β</span></td>   <td class='align-even'> <span class='rm-lmr-10'>= </span><img align='middle' alt='{
  P arseDarwinV  ersion(MaxKernel),               If MaxKernel is valid
  ∞                                            Otherwise' class='left' src='Configuration2x.svg' /></td>            <td class='align-label'></td>   <td class='align-label'>
-   </td></tr><tr><td class='align-odd'><span class='lmmi-10'>γ</span></td>   <td class='align-even'> <span class='rm-lmr-10'>= </span><img align='middle' alt='{P arseDarwinV  ersion(FindDarwinV ersion()),    If valid &quot;Darwin Kernel Version&quot; is found
-
+   </td></tr><tr><td class='align-odd'><span class='lmmi-10'>γ</span></td>   <td class='align-even'> <span class='rm-lmr-10'>= </span><img align='middle' alt='{
+ P arseDarwinV  ersion(FindDarwinV ersion()),    If valid &quot;Darwin Kernel Version&quot; is found
  ∞                                            Otherwise' class='left' src='Configuration3x.svg' /></td>   <td class='align-label'></td>   <td class='align-label'>
    </td></tr><tr><td class='align-odd'></td>    <td class='align-even'><span class='lmmi-10'>                                         f</span><span class='rm-lmr-10'>(</span><span class='lmmi-10'>α,β,γ</span><span class='rm-lmr-10'>) = </span><span class='lmmi-10'>α </span><span class='lmsy-10'>≤ </span><span class='lmmi-10'>γ </span><span class='lmsy-10'>≤ </span><span class='lmmi-10'>β</span></td>                                      <td class='align-label'></td>   <td class='align-label'></td></tr></table>
      <!-- l. 2111 --><p class='noindent'>Here <span class='lmmi-10'>ParseDarwinV ersion </span>argument is assumed to be 3 integers obtained by splitting Darwin kernel version string from
@@ -1871,7 +1871,7 @@ on how to install and troubleshoot such macOS installations.
 </tr><tr class='hline'><td></td><td></td><td></td><td></td><td></td></tr><tr id='TBL-2-6-' style='vertical-align:baseline;'><td class='td11' id='TBL-2-6-1' style='white-space:normal; text-align:left;'><!-- l. 2979 --><p class='noindent'>iMac              </p></td><td class='td11' id='TBL-2-6-2' style='white-space:nowrap; text-align:center;'>8,x (Early 2008)</td><td class='td11' id='TBL-2-6-3' style='white-space:nowrap; text-align:center;'>12,x (Mid 2011)</td><td class='td11' id='TBL-2-6-4' style='white-space:nowrap; text-align:center;'>12,x (Mid 2011)</td><td class='td11' id='TBL-2-6-5' style='white-space:nowrap; text-align:center;'> 7,x (Mid 2007) </td>
 </tr><tr class='hline'><td></td><td></td><td></td><td></td><td></td></tr><tr id='TBL-2-7-' style='vertical-align:baseline;'><td class='td11' id='TBL-2-7-1' style='white-space:normal; text-align:left;'><!-- l. 2981 --><p class='noindent'>MacPro          </p></td><td class='td11' id='TBL-2-7-2' style='white-space:nowrap; text-align:center;'>3,x (Early 2008)</td><td class='td11' id='TBL-2-7-3' style='white-space:nowrap; text-align:center;'> 5,x (Mid 2010) </td><td class='td11' id='TBL-2-7-4' style='white-space:nowrap; text-align:center;'>3,x (Early 2008)</td><td class='td11' id='TBL-2-7-5' style='white-space:nowrap; text-align:center;'>3,x (Early 2008)</td>
 </tr><tr class='hline'><td></td><td></td><td></td><td></td><td></td></tr><tr id='TBL-2-8-' style='vertical-align:baseline;'><td class='td11' id='TBL-2-8-1' style='white-space:normal; text-align:left;'><!-- l. 2983 --><p class='noindent'>Xserve            </p></td><td class='td11' id='TBL-2-8-2' style='white-space:nowrap; text-align:center;'>2,x (Early 2008)</td><td class='td11' id='TBL-2-8-3' style='white-space:nowrap; text-align:center;'>2,x (Early 2008)</td><td class='td11' id='TBL-2-8-4' style='white-space:nowrap; text-align:center;'>2,x (Early 2008)</td><td class='td11' id='TBL-2-8-5' style='white-space:nowrap; text-align:center;'>2,x (Early 2008)</td>
-</tr><tr class='hline'><td></td><td></td><td></td><td></td><td></td></tr></table></div></div>
+</tr><tr class='hline'><td></td><td></td><td></td><td></td><td></td></tr></table>                                                                                                  </div></div>
      <!-- l. 2988 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: <span class='ec-lmtt-10'>3+2 </span>and <span class='ec-lmtt-10'>6+4 </span>hotkeys to choose the preferred architecture are unsupported as they are handled by EfiBoot and
      hence, difficult to detect.
      </p></li>
@@ -1896,7 +1896,7 @@ on how to install and troubleshoot such macOS installations.
 </tr><tr class='hline'><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr id='TBL-3-6-' style='vertical-align:baseline;'><td class='td11' id='TBL-3-6-1' style='white-space:normal; text-align:left;'><!-- l. 3018 --><p class='noindent'>10.8-10.9    </p></td><td class='td11' id='TBL-3-6-2' style='white-space:nowrap; text-align:center;'>   —     </td><td class='td11' id='TBL-3-6-3' style='white-space:nowrap; text-align:center;'>   —     </td><td class='td11' id='TBL-3-6-4' style='white-space:nowrap; text-align:center;'>   —     </td><td class='td11' id='TBL-3-6-5' style='white-space:nowrap; text-align:center;'>    YES      </td><td class='td11' id='TBL-3-6-6' style='white-space:nowrap; text-align:center;'>     —        </td><td class='td11' id='TBL-3-6-7' style='white-space:nowrap; text-align:center;'> YES (V3)  </td><td class='td11' id='TBL-3-6-8' style='white-space:nowrap; text-align:center;'>     —       </td>
 </tr><tr class='hline'><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr id='TBL-3-7-' style='vertical-align:baseline;'><td class='td11' id='TBL-3-7-1' style='white-space:normal; text-align:left;'><!-- l. 3020 --><p class='noindent'>10.10-10.15 </p></td><td class='td11' id='TBL-3-7-2' style='white-space:nowrap; text-align:center;'>   —     </td><td class='td11' id='TBL-3-7-3' style='white-space:nowrap; text-align:center;'>   —     </td><td class='td11' id='TBL-3-7-4' style='white-space:nowrap; text-align:center;'>   —     </td><td class='td11' id='TBL-3-7-5' style='white-space:nowrap; text-align:center;'>     —       </td><td class='td11' id='TBL-3-7-6' style='white-space:nowrap; text-align:center;'>     —        </td><td class='td11' id='TBL-3-7-7' style='white-space:nowrap; text-align:center;'> YES (V3)  </td><td class='td11' id='TBL-3-7-8' style='white-space:nowrap; text-align:center;'>     —       </td>
 </tr><tr class='hline'><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr id='TBL-3-8-' style='vertical-align:baseline;'><td class='td11' id='TBL-3-8-1' style='white-space:normal; text-align:left;'><!-- l. 3022 --><p class='noindent'>11+          </p></td><td class='td11' id='TBL-3-8-2' style='white-space:nowrap; text-align:center;'>   —     </td><td class='td11' id='TBL-3-8-3' style='white-space:nowrap; text-align:center;'>   —     </td><td class='td11' id='TBL-3-8-4' style='white-space:nowrap; text-align:center;'>   —     </td><td class='td11' id='TBL-3-8-5' style='white-space:nowrap; text-align:center;'>     —       </td><td class='td11' id='TBL-3-8-6' style='white-space:nowrap; text-align:center;'>     —        </td><td class='td11' id='TBL-3-8-7' style='white-space:nowrap; text-align:center;'> YES (V3)  </td><td class='td11' id='TBL-3-8-8' style='white-space:nowrap; text-align:center;'>    YES      </td>
-</tr><tr class='hline'><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div></div>
+</tr><tr class='hline'><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table>                                                                                                  </div></div>
      <!-- l. 3027 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: The first version (V1) of the 32-bit <span class='ec-lmtt-10'>prelinkedkernel </span>is unsupported due to the corruption of kext symbol tables
      by the tools. On this version, the <span class='ec-lmtt-10'>Auto </span>setting will block <span class='ec-lmtt-10'>prelinkedkernel </span>booting. This also results in the <span class='ec-lmtt-10'>keepsyms=1</span>
      boot argument being non-functional for kext frames on these systems.
@@ -1926,6 +1926,8 @@ installed on the media, while alternate options represent recovery options for t
      <li class='itemize'>Alternate options may exist without primary options and vice versa.
      </li>
      <li class='itemize'>Options may not necessarily represent operating systems on the same partition.
+                                                                                                  
+                                                                                                  
      </li>
      <li class='itemize'>
      <!-- l. 3059 --><p class='noindent'>Each primary and alternate option can be an auxiliary option or not. </p>
@@ -1963,9 +1965,9 @@ installed on the media, while alternate options represent recovery options for t
          </li>
          <li class='itemize'>Register the resulting entries as primary options and determine their types. <br class='newline' />The option will become auxiliary for some types (e.g. Apple HFS recovery).</li></ul>
      </li>
-                                                                                                  
-                                                                                                  
 <li class='enumerate' id='x1-42008x4'>
+                                                                                                  
+                                                                                                  
      <!-- l. 3092 --><p class='noindent'>For each partition handle: </p>
          <ul class='itemize1'>
          <li class='itemize'>If the partition handle is marked as <span class='ec-lmri-10'>unused</span>, execute “bless” primary option list retrieval. <br class='newline' />In case a <span class='ec-lmtt-10'>BlessOverride </span>list is set, both standard and custom “bless” paths will be found.
@@ -2002,6 +2004,8 @@ scanning algorithm.
 <!-- l. 3124 --><p class='noindent'>The boot process is as follows: </p>
      <ul class='itemize1'>
      <li class='itemize'>Look up the first valid primary option in the <span class='ec-lmtt-10'>BootNext </span>UEFI variable.
+                                                                                                  
+                                                                                                  
      </li>
      <li class='itemize'>On failure, look up the first valid primary option in the <span class='ec-lmtt-10'>BootOrder </span>UEFI variable.
      </li>
@@ -2035,6 +2039,8 @@ until the next manual reconfiguration.
      bless paths, they have the highest priority.
      </p></li>
 <li class='enumerate' id='x1-43006x3'><span class='ec-lmtt-10'>Debug</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist dict</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Apply debug configuration described in the <a href='#debug-properties'>Debug Properties</a> section below.
+                                                                                                  
+                                                                                                  
      </li>
 <li class='enumerate' id='x1-43008x4'>
      <!-- l. 3179 --><p class='noindent'><span class='ec-lmtt-10'>Entries</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist array</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Add boot entries to OpenCore picker.
@@ -4468,7 +4474,7 @@ access when launching from OpenCore.                                            
 hidden options on selected platforms.                                                                       </p></td>
 </tr><tr id='TBL-5-14-' style='vertical-align:baseline;'><td class='td11' id='TBL-5-14-1' style='white-space:normal; text-align:left;'><!-- l. 6467 --><p class='noindent'><a href='https://github.com/acidanthera/OpenCorePkg'><span class='ec-lmtt-10'>TpmInfo</span></a><span class='ec-lmbx-10'>*</span>              </p></td><td class='td11' id='TBL-5-14-2' style='white-space:normal; text-align:left;'><!-- l. 6468 --><p class='noindent'>Check Intel PTT (Platform Trust Technology) capability on the platform, which allows using
 fTPM 2.0 if enabled. The tool does not check whether fTPM 2.0 is actually enabled.         </p></td>
-</tr></table></div>
+</tr></table>                                                                                                   </div>
 <!-- l. 6473 --><p class='noindent'>
 </p>
 <h4 class='subsectionHead' id='opencanopy'><span class='titlemark'>11.4   </span> <a id='x1-6800011.4'></a>OpenCanopy</h4>
@@ -4493,6 +4499,8 @@ levels.
      <li class='itemize'><span class='ec-lmtt-10'>Selector </span>— Selecting item (mandatory, up to 144x40).
      </li>
      <li class='itemize'><span class='ec-lmtt-10'>SetDefault </span>— Selecting default (mandatory, up to 144x40; must be same width as <span class='ec-lmtt-10'>Selector</span>).
+                                                                                                  
+                                                                                                  
      </li>
      <li class='itemize'><span class='ec-lmtt-10'>Left </span>— Scrolling left (mandatory, 40x40).
      </li>
@@ -4530,9 +4538,9 @@ scaling level. Full list of labels is provided below. All labels are mandatory.
      <li class='itemize'><span class='ec-lmtt-10'>AppleTM </span>— Apple Time Machine.
      </li>
      <li class='itemize'><span class='ec-lmtt-10'>Windows </span>— Windows.
-                                                                                                  
-                                                                                                  
      </li>
+                                                                                                  
+                                                                                                  
      <li class='itemize'><span class='ec-lmtt-10'>Other </span>— Custom entry (see <span class='ec-lmtt-10'>Entries</span>).
      </li>
      <li class='itemize'><span class='ec-lmtt-10'>ResetNVRAM </span>— Reset NVRAM system action or tool.
