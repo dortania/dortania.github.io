@@ -24,8 +24,8 @@
 <!-- l. 125 --><p class='noindent'>
 </p><!-- l. 132 --><p class='noindent'> <img alt='PIC' height='160' src='Logos/Logo.png' width='160' />
 </p><!-- l. 136 --><p class='noindent'><span class='ec-lmssbx-10x-x-248'>OpenCore</span>
-</p><!-- l. 140 --><p class='noindent'><span class='ec-lmss-17x-x-143'>Reference Manual (0.8</span><span class='sout'><span class='ec-lmss-17x-x-143'>.0</span></span><span class='uwave'><span class='ec-lmss-17x-x-143'>.1</span></span><span class='ec-lmss-17x-x-143'>)</span>
-</p><!-- l. 144 --><p class='noindent'><span class='ec-lmss-17x-x-143'>[2022.04.28]</span>
+</p><!-- l. 140 --><p class='noindent'><span class='ec-lmss-17x-x-143'>Reference Manual (0.8</span><span class='sout'>.0</span><span class='uwave'>.1</span><span class='ec-lmss-17x-x-143'>)</span>
+</p><!-- l. 144 --><p class='noindent'><span class='ec-lmss-17x-x-143'>[2022.04.29]</span>
 </p><!-- l. 152 --><p class='noindent'>Copyright <span class='ts1-lmr10-'>©</span>2018-2022 vit9696
 </p>
 </div>
@@ -1689,9 +1689,9 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
      be dropped, and <span class='ec-lmtt-10'>VT-d </span>must be enabled in BIOS.
      </p><!-- l. 2737 --><p class='noindent'><span class='ec-lmri-10'>Note 2</span>: While this patch should enable ethernet support for all Aquantia AQtion series, it has only been tested on
      AQC-107s based 10GbE network cards.
-     </p><!-- l. 2740 --><p class='noindent'><span class='uwave'><span class='ec-lmri-10'>Note 3</span></span><span class='uwave'>: To address <span class='ec-lmtt-10'>AppleVTD</span> </span><span class='uwave'>incompatibilities after applying this quirk, the <span class='ec-lmtt-10'>Reserved Memory Region</span> </span><span class='uwave'>section of the
-     corresponding device in the <span class='ec-lmtt-10'>DMAR</span> </span><span class='uwave'>ACPI table might be removed. This table should be disassembled and edited, then
-     recompiled to <span class='ec-lmtt-10'>AML</span> </span><span class='uwave'>with tool <span class='ec-lmtt-10'>iASL</span>. For the patched <span class='ec-lmtt-10'>DMAR</span> </span><span class='uwave'>table to be </span><a href='#add-properties'>added</a><span class='uwave'>, the original one should be </span><a href='#delete-properties'>deleted</a><span class='uwave'>. More
+     </p><!-- l. 2740 --><p class='noindent'><span class='uwave'>Note 3: To address AppleVTD </span><span class='uwave'>incompatibilities after applying this quirk, the Reserved Memory Region </span><span class='uwave'>section of the
+     corresponding device in the DMAR </span><span class='uwave'>ACPI table might be removed. This table should be disassembled and edited, then
+     recompiled to AML </span><span class='uwave'>with tool iASL. For the patched DMAR </span><span class='uwave'>table to be </span><a href='#add-properties'>added</a><span class='uwave'>, the original one should be </span><a href='#delete-properties'>deleted</a><span class='uwave'>. More
      details can be found at </span><a href='https://github.com/acidanthera/OpenCorePkg/commit/24414555f2c07e06a3674ec7a2aa1ce4860bbcc7#commitcomment-70530145'><span class='uwave'>comment on commit 2441455</span></a><span class='uwave'>. </span>
      </p></li>
 <li class='enumerate' id='x1-39040x13'>
@@ -3151,8 +3151,8 @@ until the next manual reconfiguration.
      </span><a href='https://github.com/acidanthera/audk/blob/master/MdeModulePkg/MdeModulePkg.dec'><span class='uwave'>MdeModulePkg.dec</span></a><span class='uwave'>. </span>
      </p></li>
 <li class='enumerate' id='x1-48006x3'>
-     <!-- l. 4571 --><p class='noindent'><span class='uwave'><span class='ec-lmtt-10'>DetectCable</span></span><br class='newline' /><span class='uwave'><span class='ec-lmbx-10'>Type</span></span><span class='uwave'>: <span class='ec-lmtt-10'>plist boolean</span></span><br class='newline' /><span class='uwave'><span class='ec-lmbx-10'>Failsafe</span></span><span class='uwave'>: <span class='ec-lmtt-10'>false</span></span><br class='newline' /><span class='uwave'><span class='ec-lmbx-10'>Description</span></span><span class='uwave'>: Enable serial port cable detection. </span>
-     </p><!-- l. 4577 --><p class='noindent'><span class='uwave'>This option will override the value of <span class='ec-lmtt-10'>gEfiMdeModulePkgTokenSpaceGuid.PcdSerialDetectCable</span></span> defined in
+     <!-- l. 4571 --><p class='noindent'><span class='uwave'>DetectCable</span><br class='newline' /><span class='uwave'>Type: plist boolean</span><br class='newline' /><span class='uwave'>Failsafe: false</span><br class='newline' /><span class='uwave'>Description: Enable serial port cable detection. </span>
+     </p><!-- l. 4577 --><p class='noindent'><span class='uwave'>This option will override the value of gEfiMdeModulePkgTokenSpaceGuid.PcdSerialDetectCable</span> defined in
      <a href='https://github.com/acidanthera/audk/blob/master/MdeModulePkg/MdeModulePkg.dec'>MdeModulePkg.dec</a>.
      </p></li>
 <li class='enumerate' id='x1-48008x4'>
