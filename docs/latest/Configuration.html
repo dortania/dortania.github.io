@@ -2399,10 +2399,10 @@ until the next manual reconfiguration.
      driver.
      </p><!-- l. 3600 --><p class='noindent'>If the boot chime is configured (see audio configuration options) then at the expense of slower startup, an even longer
      delay of half to one second (<span class='ec-lmtt-10'>500000-1000000</span>) may be used to create behaviour similar to a real Mac, where the chime
-     itself can be used as a signal for when hotkeys can be pressed. The boot chime is inevitable later in the boot sequence
-     in OpenCore than on Apple hardware, due to the fact that non-native drivers have to be loaded and
-     connected first. This longer additional delay can also be useful in systems where fast boot time and/or
-     slow monitor signal synchronisation may cause the boot logo not to be shown at all on some boots or
+     itself can be used as a signal for when hotkeys can be pressed. The boot chime is inevitably later in the boot sequence in
+     OpenCore than on Apple hardware, due to the fact that non-native drivers have to be loaded and connected first.
+     Configuring the boot chime and adding this longer additional delay can also be useful in systems where fast boot time
+     and/or slow monitor signal synchronisation may cause the boot logo not to be shown at all on some boots or
      reboots.
      </p></li>
 <li class='enumerate' id='x1-44022x11'><span class='ec-lmtt-10'>Timeout</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span>, 32 bit<br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Timeout in seconds in the OpenCore picker before automatic booting of the default boot entry. Set to <span class='ec-lmtt-10'>0 </span>to
