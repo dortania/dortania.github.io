@@ -1473,7 +1473,7 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
                                                                                                   
      </p></li>
 <li class='enumerate' id='x1-36006x3'>
-     <!-- l. 2317 --><p class='noindent'><span class='ec-lmtt-10'>DummyPowerManagement</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Requirement</span>: 10.4<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Disables <span class='ec-lmtt-10'>AppleIntelCpuPowerManagement</span>.
+     <!-- l. 2317 --><p class='noindent'><span class='ec-lmtt-10'>DummyPowerManagement</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Requirement</span>: 10.4<span class='uwave'>-12</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Disables <span class='ec-lmtt-10'>AppleIntelCpuPowerManagement</span>.
      </p><!-- l. 2323 --><p class='noindent'><span class='ec-lmri-10'>Note 1</span>: This option is a preferred alternative to <span class='ec-lmtt-10'>NullCpuPowerManagement.kext </span>for CPUs without native power
      management driver in macOS.
      </p><!-- l. 2327 --><p class='noindent'><span class='ec-lmri-10'>Note 2</span>: While this option is typically needed to disable <span class='ec-lmtt-10'>AppleIntelCpuPowerManagement </span>on unsupported platforms, it
@@ -1568,7 +1568,7 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
 <!-- l. 2526 --><p class='noindent'>
      </p><ol class='enumerate1'>
 <li class='enumerate' id='x1-39002x1'>
-     <!-- l. 2529 --><p class='noindent'><span class='ec-lmtt-10'>AppleCpuPmCfgLock</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Requirement</span>: 10.4<br class='newline' /><span class='ec-lmbx-10'>Description</span>:                 Disables                 <span class='ec-lmtt-10'>PKG_CST_CONFIG_CONTROL           </span>(<span class='ec-lmtt-10'>0xE2</span>)                 MSR
+     <!-- l. 2529 --><p class='noindent'><span class='ec-lmtt-10'>AppleCpuPmCfgLock</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Requirement</span>: 10.4<span class='uwave'>-12</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>:                 Disables                 <span class='ec-lmtt-10'>PKG_CST_CONFIG_CONTROL           </span>(<span class='ec-lmtt-10'>0xE2</span>)                 MSR
      modification in AppleIntelCPUPowerManagement.kext, commonly causing early kernel panic, when it is locked
      from writing.
      </p><!-- l. 2537 --><p class='noindent'>Some types of firmware lock the <span class='ec-lmtt-10'>PKG_CST_CONFIG_CONTROL </span>MSR register and the bundled <span class='ec-lmtt-10'>ControlMsrE2 </span>tool
