@@ -4887,8 +4887,8 @@ specified in <span class='ec-lmtt-10'>UEFI/Drivers/Arguments</span>:
      <li class='itemize'>
      <!-- l. 6948 --><p class='noindent'><span class='ec-lmtt-10'>--restore-nosnoop </span>- Boolean flag, enabled if present.
      </p><!-- l. 6950 --><p class='noindent'>AudioDxe clears the Intel HDA No Snoop Enable (NSNPEN) bit. On some systems, this change must be reversed on exit
-     in order to avoid breaking sound in Windows. If so, this flag should be added to AudioDxe driver arguments. Not enabled
-     by default, since restoring the flag can prevent sound from working in macOS on some other systems.
+     in order to avoid breaking sound in Windows or Linux. If so, this flag should be added to AudioDxe driver arguments.
+     Not enabled by default, since restoring the flag can prevent sound from working in macOS on some other systems.
      </p></li></ul>
 <!-- l. 6957 --><p class='noindent'>
 </p>
