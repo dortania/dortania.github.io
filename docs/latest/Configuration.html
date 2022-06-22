@@ -1756,8 +1756,8 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
      details.
      </p><!-- l. 2831 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: The failsafe value <span class='ec-lmtt-10'>-1 </span>indicates that this patch will not be applied, such that <span class='ec-lmtt-10'>apfs.kext </span>will remain
      untouched.
-     </p><!-- l. 2834 --><p class='noindent'><span class='ec-lmri-10'>Note 2</span>: On macOS 12.0 and above, it is no longer possible to specify trim timeout. However, it can be disabled by setting
-     <span class='ec-lmtt-10'>0</span>.
+     </p><!-- l. 2834 --><p class='noindent'><span class='ec-lmri-10'>Note 2</span>: On macOS 12.0 and above, it is no longer possible to specify trim timeout. However, trim can be disabled by
+     setting <span class='ec-lmtt-10'>0</span>.
      </p><!-- l. 2837 --><p class='noindent'><span class='ec-lmri-10'>Note 3</span>: Trim operations are <span class='ec-lmri-10'>only </span>affected at booting phase when the startup volume is mounted. Either specifying
      timeout, or completely disabling trim with <span class='ec-lmtt-10'>0</span>, will not affect normal macOS running.
      </p></li>
