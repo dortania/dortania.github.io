@@ -24,7 +24,7 @@
 <!-- l. 125 --><p class='noindent'>
 </p><!-- l. 132 --><p class='noindent'> <img alt='PIC' height='160' src='Logos/Logo.png' width='160' />
 </p><!-- l. 136 --><p class='noindent'><span class='ec-lmssbx-10x-x-248'>OpenCore</span>
-</p><!-- l. 140 --><p class='noindent'><span class='ec-lmss-17x-x-143'>Reference Manual (0.8</span><span class='sout'>.1</span><span class='uwave'>.2</span><span class='ec-lmss-17x-x-143'>)</span>
+</p><!-- l. 140 --><p class='noindent'><span class='ec-lmss-17x-x-143'>Reference Manual (0.8</span><span class='sout'>.2</span><span class='uwave'>.3</span><span class='ec-lmss-17x-x-143'>)</span>
 </p><!-- l. 144 --><p class='noindent'><span class='ec-lmss-17x-x-143'>[2022.07.05]</span>
 </p><!-- l. 152 --><p class='noindent'>Copyright <span class='ts1-lmr10-'>©</span>2018-2022 vit9696
 </p>
@@ -1473,7 +1473,7 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
                                                                                                   
      </p></li>
 <li class='enumerate' id='x1-36006x3'>
-     <!-- l. 2317 --><p class='noindent'><span class='ec-lmtt-10'>DummyPowerManagement</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Requirement</span>: 10.4<span class='uwave'>-12</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Disables <span class='ec-lmtt-10'>AppleIntelCpuPowerManagement</span>.
+     <!-- l. 2317 --><p class='noindent'><span class='ec-lmtt-10'>DummyPowerManagement</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Requirement</span>: 10.4-12<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Disables <span class='ec-lmtt-10'>AppleIntelCpuPowerManagement</span>.
      </p><!-- l. 2323 --><p class='noindent'><span class='ec-lmri-10'>Note 1</span>: This option is a preferred alternative to <span class='ec-lmtt-10'>NullCpuPowerManagement.kext </span>for CPUs without native power
      management driver in macOS.
      </p><!-- l. 2327 --><p class='noindent'><span class='ec-lmri-10'>Note 2</span>: While this option is typically needed to disable <span class='ec-lmtt-10'>AppleIntelCpuPowerManagement </span>on unsupported platforms, it
@@ -1568,7 +1568,7 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
 <!-- l. 2526 --><p class='noindent'>
      </p><ol class='enumerate1'>
 <li class='enumerate' id='x1-39002x1'>
-     <!-- l. 2529 --><p class='noindent'><span class='ec-lmtt-10'>AppleCpuPmCfgLock</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Requirement</span>: 10.4<span class='uwave'>-12</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>:                 Disables                 <span class='ec-lmtt-10'>PKG_CST_CONFIG_CONTROL           </span>(<span class='ec-lmtt-10'>0xE2</span>)                 MSR
+     <!-- l. 2529 --><p class='noindent'><span class='ec-lmtt-10'>AppleCpuPmCfgLock</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Requirement</span>: 10.4-12<br class='newline' /><span class='ec-lmbx-10'>Description</span>:                 Disables                 <span class='ec-lmtt-10'>PKG_CST_CONFIG_CONTROL           </span>(<span class='ec-lmtt-10'>0xE2</span>)                 MSR
      modification in AppleIntelCPUPowerManagement.kext, commonly causing early kernel panic, when it is locked
      from writing.
      </p><!-- l. 2537 --><p class='noindent'>Some types of firmware lock the <span class='ec-lmtt-10'>PKG_CST_CONFIG_CONTROL </span>MSR register and the bundled <span class='ec-lmtt-10'>ControlMsrE2 </span>tool
@@ -1765,7 +1765,7 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
      details.
      </p><!-- l. 2874 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: The failsafe value <span class='ec-lmtt-10'>-1 </span>indicates that this patch will not be applied, such that <span class='ec-lmtt-10'>apfs.kext </span>will remain
      untouched.
-     </p><!-- l. 2877 --><p class='noindent'><span class='ec-lmri-10'>Note 2</span>: On macOS 12.0 and above, it is no longer possible to specify trim timeout. However, <span class='sout'>it </span><span class='uwave'>trim </span>can be disabled by
+     </p><!-- l. 2877 --><p class='noindent'><span class='ec-lmri-10'>Note 2</span>: On macOS 12.0 and above, it is no longer possible to specify trim timeout. However, trim can be disabled by
      setting <span class='ec-lmtt-10'>0</span>.
      </p><!-- l. 2880 --><p class='noindent'><span class='ec-lmri-10'>Note 3</span>: Trim operations are <span class='ec-lmri-10'>only </span>affected at booting phase when the startup volume is mounted. Either specifying
      timeout, or completely disabling trim with <span class='ec-lmtt-10'>0</span>, will not affect normal macOS running.
@@ -4896,7 +4896,7 @@ specified in <span class='ec-lmtt-10'>UEFI/Drivers/Arguments</span>:
      <li class='itemize'>
      <!-- l. 6991 --><p class='noindent'><span class='ec-lmtt-10'>--restore-nosnoop </span>- Boolean flag, enabled if present.
      </p><!-- l. 6993 --><p class='noindent'>AudioDxe clears the Intel HDA No Snoop Enable (NSNPEN) bit. On some systems, this change must be reversed on exit
-     in order to avoid breaking sound in Windows <span class='uwave'>or Linux</span>. If so, this flag should be added to AudioDxe driver arguments.
+     in order to avoid breaking sound in Windows or Linux. If so, this flag should be added to AudioDxe driver arguments.
      Not enabled by default, since restoring the flag can prevent sound from working in macOS on some other systems.
      </p></li></ul>
 <!-- l. 7000 --><p class='noindent'>
