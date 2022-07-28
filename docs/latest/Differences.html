@@ -4989,10 +4989,10 @@ following: </span>
 <!-- l. 7270 --><p class='noindent'><span class='uwave'>Recommended configuration settings for this driver: </span>
 </p>
      <ul class='itemize1'>
-     <li class='itemize'><span class='uwave'>OpenVariableRuntimeDxe.efi </span><span class='uwave'>loaded using Load=Early </span><span class='uwave'>(not required with OpenDuet). </span>
+     <li class='itemize'><span class='uwave'>OpenVariableRuntimeDxe.efi </span><span class='uwave'>loaded using LoadEarly=true </span><span class='uwave'>(not required with OpenDuet). </span>
      </li>
      <li class='itemize'><span class='uwave'>OpenRuntime.efi </span><span class='uwave'>specified  after  OpenVariableRuntimeDxe.efi </span><span class='uwave'>in  the  Drivers </span><span class='uwave'>list  and  loaded  using
-     Load=Early </span><span class='uwave'>(not required with OpenDuet). </span>
+     LoadEarly=true </span><span class='uwave'>(not required with OpenDuet). </span>
      </li>
      <li class='itemize'><span class='uwave'>LegacySchema </span><span class='uwave'>populated. </span>
      </li>
@@ -5508,20 +5508,16 @@ within macOS Recovery, or from an installation USB), please refer to this </span
                                                                                                   
                                                                                                   
      </li>
-<li class='enumerate' id='x1-84004x2'><span class='ec-lmtt-10'>Path</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Path of file to be loaded as a UEFI driver from <span class='ec-lmtt-10'>OC/Drivers </span>directory.
+<li class='enumerate' id='x1-84004x2'><span class='uwave'>Enabled</span><br class='newline' /><span class='uwave'>Type: plist boolean</span><br class='newline' /><span class='uwave'>Failsafe: false</span><br class='newline' /><span class='uwave'>Description: If false </span><span class='uwave'>this driver entry will be ignored. </span>
      </li>
-<li class='enumerate' id='x1-84006x3'>
-     <!-- l. 8067 --><p class='noindent'><span class='sout'>Enabled</span><span class='uwave'>Load</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist </span><span class='sout'>boolean</span><span class='uwave'>string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='sout'>false</span><span class='uwave'>Disabled</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: <span class='sout'>If false </span><span class='sout'>this driverentry will be ignored</span><span class='uwave'>When and whether to load this driver. </span>
-</p>
-         <ul class='itemize1'>
-         <li class='itemize'><span class='uwave'>Disabled </span><span class='uwave'>— Do not load this driver. </span>
-         </li>
-         <li class='itemize'><span class='uwave'>Enabled </span><span class='uwave'>— Load the driver normally. </span>
-         </li>
-         <li class='itemize'><span class='uwave'>Early </span><span class='uwave'>— Load the driver early in the OpenCore boot process, before NVRAM setup. </span></li></ul>
-     <!-- l. 8081 --><p class='noindent'><span class='uwave'>Note: Do not use the Early </span><span class='uwave'>option unless specifically recommended to do so for a given driver and purpose</span>.
+<li class='enumerate' id='x1-84006x3'><span class='ec-lmtt-10'>Path</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Path of file to be loaded as a UEFI driver from <span class='ec-lmtt-10'>OC/Drivers </span>directory.
+     </li>
+<li class='enumerate' id='x1-84008x4'>
+     <!-- l. 8074 --><p class='noindent'><span class='sout'>Enabled</span><span class='uwave'>LoadEarly</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: <span class='sout'>If false </span><span class='sout'>this driver entry will be ignored</span><span class='uwave'>Load the driver early in the OpenCore boot process,
+     before NVRAM setup. </span>
+     </p><!-- l. 8081 --><p class='noindent'><span class='uwave'>Note: Do not enable this option unless specifically recommended to do so for a given driver and purpose</span>.
      </p></li>
-<li class='enumerate' id='x1-84008x4'><span class='ec-lmtt-10'>Arguments</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Some OpenCore plugins accept optional additional arguments which may be specified as a string
+<li class='enumerate' id='x1-84010x5'><span class='ec-lmtt-10'>Arguments</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Some OpenCore plugins accept optional additional arguments which may be specified as a string
      here.
 </li></ol>
 <!-- l. 8094 --><p class='noindent'>
@@ -5531,11 +5527,11 @@ within macOS Recovery, or from an installation USB), please refer to this </span
      </p><ol class='enumerate1'>
 <li class='enumerate' id='x1-85002x1'>
      <!-- l. 8099 --><p class='noindent'><span class='ec-lmtt-10'>KeyFiltering</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Enable keyboard input sanity checking.
-                                                                                                  
-                                                                                                  
      </p><!-- l. 8104 --><p class='noindent'>Apparently some boards such as the GA Z77P-D3 may return uninitialised data in <span class='ec-lmtt-10'>EFI_INPUT_KEY </span>with all input
      protocols. This option discards keys that are neither ASCII, nor are defined in the UEFI specification (see tables
      107 and 108 in version 2.8).
+                                                                                                  
+                                                                                                  
      </p></li>
 <li class='enumerate' id='x1-85004x2'>
      <!-- l. 8110 --><p class='noindent'><span class='ec-lmtt-10'>KeyForgetThreshold</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Treat duplicate key presses as held keys if they arrive during this timeout, in 10 ms units. Only
@@ -5577,11 +5573,11 @@ within macOS Recovery, or from an installation USB), please refer to this </span
 <li class='enumerate' id='x1-85006x3'>
      <!-- l. 8169 --><p class='noindent'><span class='ec-lmtt-10'>KeySupport</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Enable internal keyboard input translation to <span class='ec-lmtt-10'>AppleKeyMapAggregator </span>protocol.
      </p><!-- l. 8175 --><p class='noindent'>This option activates the internal keyboard interceptor driver, based on <span class='ec-lmtt-10'>AppleGenericInput</span>, also known as
-                                                                                                  
-                                                                                                  
      <span class='ec-lmtt-10'>AptioInputFix</span>, to fill the <span class='ec-lmtt-10'>AppleKeyMapAggregator </span>database for input functioning. In cases where a separate
      driver such as <span class='ec-lmtt-10'>OpenUsbKbDxe </span>is used, this option should never be enabled. Additionally, this option is not required
      and should not be enabled with Apple firmware.
+                                                                                                  
+                                                                                                  
      </p></li>
 <li class='enumerate' id='x1-85008x4'>
      <!-- l. 8183 --><p class='noindent'><span class='ec-lmtt-10'>KeySupportMode</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Auto</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Set internal keyboard input translation to <span class='ec-lmtt-10'>AppleKeyMapAggregator </span>protocol mode.
@@ -5609,11 +5605,11 @@ within macOS Recovery, or from an installation USB), please refer to this </span
      </p></li>
 <li class='enumerate' id='x1-85014x7'>
      <!-- l. 8220 --><p class='noindent'><span class='ec-lmtt-10'>PointerSupportMode</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Set OEM protocol used for internal pointer driver.
-                                                                                                  
-                                                                                                  
      </p><!-- l. 8225 --><p class='noindent'>Currently the only supported variant is <span class='ec-lmtt-10'>ASUS</span>, using specialised protocol available on certain Z87 and Z97 ASUS boards.
      More details can be found in <a href='https://github.com/LongSoft/UEFITool/pull/116'><span class='ec-lmtt-10'>LongSoft/UefiTool#116</span></a>. The value of this property cannot be empty if <span class='ec-lmtt-10'>PointerSupport </span>is
      enabled.
+                                                                                                  
+                                                                                                  
      </p></li>
 <li class='enumerate' id='x1-85016x8'>
      <!-- l. 8231 --><p class='noindent'><span class='ec-lmtt-10'>TimerResolution</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Set architecture timer resolution.
@@ -5646,8 +5642,6 @@ within macOS Recovery, or from an installation USB), please refer to this </span
          <li class='itemize'><span class='ec-lmtt-10'>BuiltinGraphics </span>— Switch to <span class='ec-lmtt-10'>Graphics </span>mode and use <span class='ec-lmtt-10'>Builtin </span>renderer with custom <span class='ec-lmtt-10'>ConsoleControl</span>.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>BuiltinText </span>— Switch to <span class='ec-lmtt-10'>Text </span>mode and use <span class='ec-lmtt-10'>Builtin </span>renderer with custom <span class='ec-lmtt-10'>ConsoleControl</span>.
-                                                                                                  
-                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>SystemGraphics </span>— Switch to <span class='ec-lmtt-10'>Graphics </span>mode and use <span class='ec-lmtt-10'>System </span>renderer with custom <span class='ec-lmtt-10'>ConsoleControl</span>.
          </li>
@@ -5684,8 +5678,6 @@ within macOS Recovery, or from an installation USB), please refer to this </span
      Variables</a> section for details.
      </p><!-- l. 8344 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This will fail when console handle has no GOP protocol. When the firmware does not provide it, it can be added
      with <span class='ec-lmtt-10'>ProvideConsoleGop </span>set to <span class='ec-lmtt-10'>true</span>.
-                                                                                                  
-                                                                                                  
      </p></li>
 <li class='enumerate' id='x1-86008x4'>
      <!-- l. 8349 --><p class='noindent'><span class='ec-lmtt-10'>ForceResolution</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Forces <span class='ec-lmtt-10'>Resolution </span>to be set in cases where the desired resolution is not available by default, such as on
@@ -5717,12 +5709,12 @@ within macOS Recovery, or from an installation USB), please refer to this </span
 </p>
          <ul class='itemize1'>
          <li class='itemize'><span class='ec-lmtt-10'>Enabled </span>— provide GOP for all UGA protocols.
-                                                                                                  
-                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>Apple </span>— provide GOP for <span class='ec-lmtt-10'>AppleFramebufferInfo</span>-enabled protocols.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>Disabled </span>— do not provide GOP.</li></ul>
+                                                                                                  
+                                                                                                  
      <!-- l. 8405 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This option requires <span class='ec-lmtt-10'>ProvideConsoleGop </span>to be enabled.
      </p></li>
 <li class='enumerate' id='x1-86016x8'>
@@ -5751,8 +5743,6 @@ within macOS Recovery, or from an installation USB), please refer to this </span
      providing better screen resolution options on legacy machines, or a driver supporting <span class='ec-lmtt-10'>ForceResolution</span>. This
      option attempts to disconnect all currently connected graphics drivers before connecting newly loaded
      drivers.
-                                                                                                  
-                                                                                                  
      </p><!-- l. 8455 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This option requires <span class='ec-lmtt-10'>ConnectDrivers </span>to be enabled.
      </p></li>
 <li class='enumerate' id='x1-86024x12'>
@@ -5787,10 +5777,10 @@ within macOS Recovery, or from an installation USB), please refer to this </span
      </p><!-- l. 8502 --><p class='noindent'><span class='ec-lmri-10'>Note 2</span>: When switching from manually specified NVRAM variable to this preference an NVRAM reset may be
      needed.
      </p></li>
-                                                                                                  
-                                                                                                  
 <li class='enumerate' id='x1-86030x15'>
      <!-- l. 8505 --><p class='noindent'><span class='ec-lmtt-10'>UgaPassThrough</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Provide UGA protocol instances on top of GOP protocol instances.
+                                                                                                  
+                                                                                                  
      </p><!-- l. 8510 --><p class='noindent'>Some types of firmware do not implement the legacy UGA protocol but this may be required for screen output by older
      EFI applications such as EfiBoot from 10.4.
 </p>
@@ -5847,6 +5837,8 @@ within macOS Recovery, or from an installation USB), please refer to this </span
      </p><!-- l. 8616 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: Builtin version of Apple RTC RAM protocol may filter out I/O attempts to certain RTC memory addresses.
      The list of addresses can be specified in <span class='ec-lmtt-10'>4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:rtc-blacklist </span>variable as
      a data array.
+                                                                                                  
+                                                                                                  
      </p></li>
 <li class='enumerate' id='x1-87020x10'><span class='ec-lmtt-10'>AppleSecureBoot</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Replaces the Apple Secure Boot protocol with a builtin version.
      </li>
@@ -5869,10 +5861,10 @@ within macOS Recovery, or from an installation USB), please refer to this </span
      operation of the system must be specified in the configuration file.
      </p></li>
 <li class='enumerate' id='x1-87030x15'>
-                                                                                                  
-                                                                                                  
      <!-- l. 8668 --><p class='noindent'><span class='ec-lmtt-10'>FirmwareVolume</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Wraps Firmware Volume protocols, or installs a new version, to support custom cursor images for
      FileVault 2. Set to <span class='ec-lmtt-10'>true </span>to ensure FileVault 2 compatibility on anything other than on VMs and legacy Macs.
+                                                                                                  
+                                                                                                  
      </p><!-- l. 8675 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: Several virtual machines, including VMware, may have corrupted cursor images in HiDPI mode and thus,
      may also require enabling this setting.
      </p></li>
@@ -5896,8 +5888,6 @@ within macOS Recovery, or from an installation USB), please refer to this </span
      <!-- l. 8712 --><p class='noindent'><span class='ec-lmtt-10'>ActivateHpetSupport</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Activates HPET support.
      </p><!-- l. 8717 --><p class='noindent'>Older boards like ICH6 may not always have HPET setting in the firmware preferences, this option tries to force
      enable it.
-                                                                                                  
-                                                                                                  
      </p></li>
 <li class='enumerate' id='x1-88004x2'>
      <!-- l. 8721 --><p class='noindent'><span class='ec-lmtt-10'>EnableVectorAcceleration</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Enable AVX vector acceleration of SHA-512 and SHA-384 hashing algorithms.
@@ -5928,8 +5918,6 @@ within macOS Recovery, or from an installation USB), please refer to this </span
      observed on e.g. Lenovo Thinkpad T430 and T530 without this quirk. Apple variables related to Secure Boot
      and hibernation are exempt from this for security reasons. Furthermore, some OpenCore variables are exempt
      for different reasons, such as the boot log due to an available user option, and the TSC frequency due to timing
-                                                                                                  
-                                                                                                  
      issues. When toggling this option, a NVRAM reset may be required to ensure full functionality.
      </p></li>
 <li class='enumerate' id='x1-88014x7'>
@@ -5958,12 +5946,12 @@ within macOS Recovery, or from an installation USB), please refer to this </span
      boot entry preservation at times when the firmware deletes incompatible boot entries. In summary, this quirk is
      required to reliably use the <a href='https://support.apple.com/HT202796'>Startup Disk</a> preference pane in firmware that is not compatible with macOS boot
      entries by design.
-                                                                                                  
-                                                                                                  
      </p><!-- l. 8829 --><p class='noindent'>By redirecting <span class='ec-lmtt-10'>Boot </span>prefixed variables to a separate GUID namespace with the help of <span class='ec-lmtt-10'>RequestBootVarRouting </span>quirk we
      achieve multiple goals: </p>
          <ul class='itemize1'>
          <li class='itemize'>Operating systems are jailed and only controlled by OpenCore boot environment to enhance security.
+                                                                                                  
+                                                                                                  
          </li>
          <li class='itemize'>Operating systems do not mess with OpenCore boot priority, and guarantee fluent updates and hibernation
          wakes for cases that require reboots with OpenCore in the middle.
@@ -6000,8 +5988,6 @@ within macOS Recovery, or from an installation USB), please refer to this </span
      </p><!-- l. 8892 --><p class='noindent'><span class='ec-lmri-10'>Note 2</span>: While this quirk can increase GPU PCI BAR sizes, this will not work on most firmware as is, because the quirk
      does not relocate BARs in memory, and they will likely overlap. Contributions to improve this feature are
      welcome.
-                                                                                                  
-                                                                                                  
      </p></li>
 <li class='enumerate' id='x1-88026x13'>
      <!-- l. 8897 --><p class='noindent'><span class='ec-lmtt-10'>TscSyncTimeout</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Attempts to perform TSC synchronisation with a specified timeout.
@@ -6038,8 +6024,6 @@ within macOS Recovery, or from an installation USB), please refer to this </span
      CSM is enabled causing wake failures. After comparing the memory maps with CSM disabled and enabled, these
      areas can be found in the lower memory and can be fixed up by doing the reservation. Refer to the <span class='ec-lmtt-10'>Sample.plist</span>
      file for details.
-                                                                                                  
-                                                                                                  
      </p></li>
 <li class='enumerate' id='x1-89004x2'><span class='ec-lmtt-10'>Comment</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Arbitrary ASCII string used to provide human readable reference for the entry. Whether this value
      is used is implementation defined.
@@ -6069,10 +6053,10 @@ within macOS Recovery, or from an installation USB), please refer to this </span
          <li class='itemize'><span class='ec-lmtt-10'>Persistent </span>— <span class='ec-lmtt-10'>EfiPersistentMemory</span>
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>UnusableMemory </span>— <span class='ec-lmtt-10'>EfiUnusableMemory</span>
-                                                                                                  
-                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>ACPIReclaimMemory </span>— <span class='ec-lmtt-10'>EfiACPIReclaimMemory</span>
+                                                                                                  
+                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>ACPIMemoryNVS </span>— <span class='ec-lmtt-10'>EfiACPIMemoryNVS</span>
          </li>
@@ -6102,8 +6086,6 @@ below.
 </p><!-- l. 9017 --><p class='noindent'>
 </p>
 <h5 class='subsubsectionHead' id='macos-and-'><span class='titlemark'>12.1.1   </span> <a id='x1-9200012.1.1'></a>macOS 10.8 and 10.9</h5>
-                                                                                                  
-                                                                                                  
      <ul class='itemize1'>
      <li class='itemize'>Disk images on these systems use the Apple Partitioning Scheme and require the <span class='ec-lmtt-10'>OpenPartitionDxe </span>driver to
      run DMG recovery and installation (included in OpenDuet). It is possible to set <span class='ec-lmtt-10'>DmgLoading </span>to <span class='ec-lmtt-10'>Disabled </span>to run
@@ -6137,6 +6119,8 @@ below.
      <span class='ec-lmtt-10'>10J4139 </span>(for <span class='ec-lmtt-10'>iMac12,x</span>), without Xcode). These images are limited to their target model identifiers and have no
      <span class='ec-lmtt-10'>-no_compat_check </span>boot argument support. Modified images (with <span class='ec-lmtt-10'>ACDT </span>suffix) without model restrictions can
      be found <a href='https://archive.org/details/10.6.7-10j3250-disk-images'>here</a> (<a href='https://mega.nz/folder/z5YUhYTb#gA_IRY5KMuYpnNCg7kR3ug'>MEGA Mirror</a>), assuming macOS 10.6 is legally owned. Refer to the <span class='ec-lmtt-10'>DIGEST.txt </span>file for details.
+                                                                                                  
+                                                                                                  
      Note that these are the earliest tested versions of macOS 10.6 with OpenCore.</li></ul>
 <!-- l. 9068 --><p class='noindent'>Model checking may also be erased by editing <span class='ec-lmtt-10'>OSInstall.mpkg </span>with e.g. <span class='ec-lmtt-10'>Flat Package Editor </span>by making <span class='ec-lmtt-10'>Distribution</span>
 script to always return <span class='ec-lmtt-10'>true </span>in <span class='ec-lmtt-10'>hwbeModelCheck </span>function. Since updating the only file in the image and not corrupting other
@@ -6184,11 +6168,11 @@ as shown below:
 <h5 class='subsubsectionHead' id='macos-3'><span class='titlemark'>12.1.5   </span> <a id='x1-9600012.1.5'></a>macOS 10.4</h5>
      <ul class='itemize1'>
      <li class='itemize'>All previous issues apply.
-                                                                                                  
-                                                                                                  
      </li>
      <li class='itemize'>This  macOS  version  has  a  hard  requirement  to  access  all  the  optional  packages  on  the  second  DVD  disk
      installation media, requiring either two disks or USB media installation.
+                                                                                                  
+                                                                                                  
      </li>
      <li class='itemize'>Last released installer images for macOS 10.4 are macOS 10.4.10 builds <span class='ec-lmtt-10'>8R4061a </span>(for <span class='ec-lmtt-10'>MacBookPro3,1</span>) and
      <span class='ec-lmtt-10'>8R4088 </span>(for <span class='ec-lmtt-10'>iMac7,1</span>)). These images are limited to their target model identifiers as on newer macOS versions.
@@ -6220,11 +6204,11 @@ settings as explained below:
      </li>
 <li class='enumerate' id='x1-97010x5'>Make sure that <span class='ec-lmtt-10'>ScanPolicy </span>restricts loading from undesired devices. It is a good idea to prohibit all removable
      drivers or unknown filesystems.
-                                                                                                  
-                                                                                                  
      </li>
 <li class='enumerate' id='x1-97012x6'>Sign all the installed drivers and tools with the private key. Do not sign tools that provide administrative access
      to the computer, such as UEFI Shell.
+                                                                                                  
+                                                                                                  
      </li>
 <li class='enumerate' id='x1-97014x7'>Vault the configuration as explained <a href='#x1-46036x11'>Vaulting</a> section.
      </li>
@@ -6293,8 +6277,6 @@ separately, the partition has to be relabelled manually. This can be done with m
 utility. Reference example:
 </p>
 <!-- l. 9262 -->
-                                                                                                  
-                                                                                                  
 <p id='-relabeling-windows-volume'><a id='x1-98001r4'></a>
 <a id='x1-98002'></a>
 </p><pre class='lstlisting' id='listing-18'><span class='label'><a id='x1-98003r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>PS</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>C:\gdisk&gt; </span><span class='ec-lmtt-10'>.\gdisk64.exe </span><span class='ec-lmtt-10'>\\.\physicaldrive0</span> 
@@ -6329,6 +6311,8 @@ utility. Reference example:
 </span><span class='label'><a id='x1-98032r30'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Disk</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>synchronization </span><span class='ec-lmtt-10'>succeeded! </span><span class='ec-lmtt-10'>The </span><span class='ec-lmtt-10'>computer </span><span class='ec-lmtt-10'>should </span><span class='ec-lmtt-10'>now </span><span class='ec-lmtt-10'>use </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>new </span><span class='ec-lmtt-10'>partition </span><span class='ec-lmtt-10'>table.</span> 
 </span><span class='label'><a id='x1-98033r31'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>The</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>operation </span><span class='ec-lmtt-10'>has </span><span class='ec-lmtt-10'>completed </span><span class='ec-lmtt-10'>successfully.</span></span></pre>
 <figcaption class='caption'><span class='id'>Listing 4: </span><span class='content'>Relabeling Windows volume</span></figcaption><!-- tex4ht:label?: x1-98033r12.3  -->
+                                                                                                  
+                                                                                                  
 <!-- l. 9297 --><p class='noindent'><span class='ec-lmbx-10'>How do I choose Windows BOOTCAMP with custom NTFS drivers?</span>
 </p><!-- l. 9299 --><p class='noindent'>Third-party drivers providing NTFS support, such as <a href='https://www.tuxera.com/community/open-source-ntfs-3g'>NTFS-3G</a>, Paragon NTFS, Tuxera NTFS or <a href='https://www.seagate.com/support/software/paragon'>Seagate Paragon Driver</a>
 disrupt certain macOS functionality, including the <a href='https://support.apple.com/HT202796'>Startup Disk</a> preference pane normally used for operating system selection.
@@ -6364,13 +6348,13 @@ To additionally enable XNU kernel serial output <span class='ec-lmtt-10'>debug=0
          <li class='itemize'>A <span class='ec-lmtt-10'>DEBUG </span>or <span class='ec-lmtt-10'>NOOPT </span>version of OpenCore is used.
          </li>
          <li class='itemize'>Logging is enabled (<span class='ec-lmtt-10'>1</span>) and shown onscreen (<span class='ec-lmtt-10'>2</span>): <span class='ec-lmtt-10'>Misc </span><span class='lmsy-10'>→ </span><span class='ec-lmtt-10'>Debug </span><span class='lmsy-10'>→ </span><span class='ec-lmtt-10'>Target </span><span class='rm-lmr-10'>= </span><span class='ec-lmtt-10'>3</span>.
-                                                                                                  
-                                                                                                  
          </li>
          <li class='itemize'>Logged messages from at least <span class='ec-lmtt-10'>DEBUG_ERROR </span>(<span class='ec-lmtt-10'>0x80000000</span>), <span class='ec-lmtt-10'>DEBUG_WARN </span>(<span class='ec-lmtt-10'>0x00000002</span>), and <span class='ec-lmtt-10'>DEBUG_INFO</span>
          (<span class='ec-lmtt-10'>0x00000040</span>) levels are visible onscreen: <span class='ec-lmtt-10'>Misc </span><span class='lmsy-10'>→ </span><span class='ec-lmtt-10'>Debug </span><span class='lmsy-10'>→ </span><span class='ec-lmtt-10'>DisplayLevel </span><span class='rm-lmr-10'>= </span><span class='ec-lmtt-10'>0x80000042</span>.
          </li>
          <li class='itemize'>Critical error messages, such as <span class='ec-lmtt-10'>DEBUG_ERROR</span>, stop booting: <span class='ec-lmtt-10'>Misc</span><span class='lmsy-10'>→</span><span class='ec-lmtt-10'>Security</span><span class='lmsy-10'>→</span><span class='ec-lmtt-10'>HaltLevel </span><span class='rm-lmr-10'>= </span><span class='ec-lmtt-10'>0x80000000</span>.
+                                                                                                  
+                                                                                                  
          </li>
          <li class='itemize'>Watch Dog is disabled to prevent automatic reboot: <span class='ec-lmtt-10'>Misc </span><span class='lmsy-10'>→ </span><span class='ec-lmtt-10'>Debug </span><span class='lmsy-10'>→ </span><span class='ec-lmtt-10'>DisableWatchDog </span><span class='rm-lmr-10'>= </span><span class='ec-lmtt-10'>true</span>.
          </li>
@@ -6405,14 +6389,14 @@ To additionally enable XNU kernel serial output <span class='ec-lmtt-10'>debug=0
      title, which may then be customised by the user.
      </p></li>
 <li class='enumerate' id='x1-100008x4'>
-                                                                                                  
-                                                                                                  
      <!-- l. 9400 --><p class='noindent'><span class='ec-lmbx-10'>How do I choose the default boot entry?</span>
      </p><!-- l. 9402 --><p class='noindent'>OpenCore uses the primary UEFI boot option to select the default entry. This choice can be altered from UEFI Setup,
      with the macOS <a href='https://support.apple.com/HT202796'>Startup Disk</a> preference, or the Windows <a href='https://support.apple.com/guide/bootcamp-control-panel/start-up-your-mac-in-windows-or-macos-bcmp29b8ac66/mac'>Boot Camp</a> Control Panel. Since choosing OpenCore’s
      <span class='ec-lmtt-10'>BOOTx64.EFI </span>as a primary boot option limits this functionality in addition to several types of firmware deleting
      incompatible boot options, potentially including those created by macOS, users are strongly encouraged to
      use the <span class='ec-lmtt-10'>RequestBootVarRouting </span>quirk, which will preserve the selection made in the operating system
+                                                                                                  
+                                                                                                  
      within the OpenCore variable space. Note, that <span class='ec-lmtt-10'>RequestBootVarRouting </span>requires a separate driver for
      functioning.
      </p></li>
@@ -6448,12 +6432,12 @@ To additionally enable XNU kernel serial output <span class='ec-lmtt-10'>debug=0
      following set of quirks should be enabled: </p>
          <ul class='itemize1'>
          <li class='itemize'><span class='ec-lmtt-10'>ProvideConsoleGop </span>(UEFI quirk)
-                                                                                                  
-                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>AvoidRuntimeDefrag</span>
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>DiscardHibernateMap</span>
+                                                                                                  
+                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>EnableSafeModeSlide</span>
          </li>
