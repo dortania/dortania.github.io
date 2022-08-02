@@ -5,8 +5,8 @@ date: 2022-08-02 03:00:00 -0400
 categories: Hackintosh updates
 ---
 
-* [A message from PMheart](#acidanthera-updates-a-message-from-pmheart)
-* [A message from dhinakg](#dortania-updates-a-message-from-dhinakg)
+* [Acidanthera Updates: A message from PMheart](#acidanthera-updates-a-message-from-pmheart)
+* [Dortania Updates: A message from dhinakg](#dortania-updates-a-message-from-dhinakg)
 * [Changelogs](#changelogs)
 
 # Acidanthera Updates: A message from PMheart
