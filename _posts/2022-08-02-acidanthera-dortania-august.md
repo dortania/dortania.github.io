@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Acidanthera Updates: August 2022"
+title: "Acidanthera and Dortania Updates: August 2022"
 date: 2022-08-02 03:00:00 -0400
 categories: Hackintosh updates
 ---
@@ -9,7 +9,7 @@ categories: Hackintosh updates
 * [A message from dhinakg](#a-message-from-dhinakg)
 * [Changelogs](#changelogs)
 
-# A message from PMheart
+# Acidanthera Updates: A message from PMheart
 
 Howdy! We wish you enjoyed this summer as life is getting back to normal. It has been a while since the last message from @vit9696 in [February 2022](https://dortania.github.io/hackintosh/updates/2022/02/10/acidanthera-february.html), but the monthly greeting is back now.
 
@@ -25,7 +25,7 @@ Enjoy the last spot of summer,
 
 — PMheart
 
-# A message from dhinakg
+# Dortania Updates: A message from dhinakg
 
 Hello everyone! It's been a while since I've posted one of these, and it's about time that I posted.
 
