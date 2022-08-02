@@ -1,30 +1,42 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<html lang="{{ page.lang | default: site.lang | default: " en" }}">
 
-  {%- include head.html -%}
+{%- include head.html -%}
 
-  <body>
+<body>
 
     {%- include header.html -%}
 
     <main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        <div class="builds_container">
-            <select name="product" id="product">
-                <option value="initial">Select a product...</option>
-            </select>
-            <select name="version" id="version">
-                <option value="initial">Select version...</option>
-            </select>
-            <select name="sha" id="sha">
-                <option value="initial">Select commit...</option>
-            </select>
-            <input type="checkbox" name="viewall" id="viewall" checked>View all
-            <br>
-            <div class="info" style="white-space: pre-line"></div>
-            <table class="builds_viewcontainer"></table>
+        <div class="wrapper">
+            <article class="post">
+
+                <header class="post-header">
+                    <h1 class="post-title">{{ page.title | escape }}</h1>
+                </header>
+
+                <div class="post-content">
+                    <div class="builds_container">
+                        <select name="product" id="product">
+                            <option value="initial">Select a product...</option>
+                        </select>
+                        <select name="version" id="version">
+                            <option value="initial">Select version...</option>
+                        </select>
+                        <select name="sha" id="sha">
+                            <option value="initial">Select commit...</option>
+                        </select>
+                        <input type="checkbox" name="viewall" id="viewall" checked>View all
+                        <br>
+                        <div class="info" style="white-space: pre-line"></div>
+                        <table class="builds_viewcontainer"></table>
+
+                    </div>
+                </div>
+
+            </article>
+
         </div>
-      </div>
     </main>
 
     {%- include footer.html -%}
@@ -231,10 +243,10 @@
             $("#version").change(resetSha)
             $("#sha").change(resetInfo)
             $("#viewall").change(handleViewContainer)
-            let handleParameter = function(value, key) {
+            let handleParameter = function (value, key) {
                 if (key == "viewall") {
                     $("#viewall")[0].checked = (value == "true")
-                } else  if (key == "sha") {
+                } else if (key == "sha") {
                     Array.from($("#sha")[0].children).forEach(element => {
                         console.log(element.innerText)
                         if (element.innerText.includes(value)) {
@@ -248,15 +260,15 @@
                 } else {
                     console.log(key);
                     //$("#" + key).val(value).change()
-                $("#" + key).val(value).change()
+                    $("#" + key).val(value).change()
                 }
             }
             parameters.forEach((value, key) => {
-                setTimeout(function() {handleParameter(value, key)}, 100)
+                setTimeout(function () { handleParameter(value, key) }, 100)
             });
-            
+
         })
     </script>
-  </body>
+</body>
 
 </html>
