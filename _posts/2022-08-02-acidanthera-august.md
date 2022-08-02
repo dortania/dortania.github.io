@@ -55,4 +55,21 @@ Thank you all,
 
 # Changelogs
 
-TODO
+#### [OpenCorePkg 0.8.4](https://github.com/acidanthera/OpenCorePkg/releases)
+
+* Added checks for `Driver` -> `LoadEarly` in ocvalidate
+
+#### [Lilu 1.6.2](https://github.com/acidanthera/Lilu/releases)
+
+* Fixed KC segment name, which also fixed kernel panic on macOS 13 b3
+* Disable EFI64 runtime APIs when `-legacy` is used on 32-bit kernels
+
+#### [AppleALC 1.7.4](https://github.com/acidanthera/AppleALC/releases)
+
+* ALC294 layout-id 15 corrected incorrect pinconfig by wern-apfel
+* Added ALC1220 layout-id 25 for MSI GE73 Raider RGB 8RF by Ardhi9696
+
+#### [WhateverGreen 1.6.1](https://github.com/acidanthera/WhateverGreen/releases)
+
+* Improved Skylake graphics spoofing support by removing profile 2 from VTSupportedProfileArray on macOS 13+, thanks @abenraj and @dhinakg
+
