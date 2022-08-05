@@ -3222,19 +3222,17 @@ until the next manual reconfiguration.
 <li class='enumerate' id='x1-49006x3'><span class='ec-lmtt-10'>Comment</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Arbitrary ASCII string used to provide a human readable reference for the entry. Whether this
      value is used is implementation defined.
      </li>
-<li class='enumerate' id='x1-49008x4'>
-     <!-- l. 4650 --><p class='noindent'><span class='ec-lmtt-10'>DisableFirmwareRuntime</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Disable firmware runtime during usage of a tool.
-     </p><!-- l. 4655 --><p class='noindent'>This disables all of the firmware runtime protections provided by <span class='ec-lmtt-10'>OpenRuntime.efi </span>during the time a tool is in
-     use. It should normally be avoided, but may be required for instance if a tool needs to access NVRAM directly
-     without the redirections put in place by <span class='ec-lmtt-10'>RequestBootVarRouting</span>.
-     </p><!-- l. 4661 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This option is only valid for <span class='ec-lmtt-10'>Tools </span>and cannot be specified for <span class='ec-lmtt-10'>Entries </span>(is always <span class='ec-lmtt-10'>false</span>).
+<li class='enumerate' id='x1-49008x4'><span class='ec-lmtt-10'>Enabled</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Set to <span class='ec-lmtt-10'>true </span>activate this entry.
+     </li>
+<li class='enumerate' id='x1-49010x5'><span class='ec-lmtt-10'>Flavour</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Auto</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Specify the content flavour for this entry. See <a href='#x1-44012x6'><span class='ec-lmtt-10'>OC_ATTR_USE_FLAVOUR_ICON</span></a> flag for documentation.
+     </li>
+<li class='enumerate' id='x1-49012x6'>
+     <!-- l. 4663 --><p class='noindent'><span class='ec-lmtt-10'>FullNvramAccess</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Disable <span class='ec-lmtt-10'>OpenRuntime </span>NVRAM protection during usage of a tool.
+     </p><!-- l. 4668 --><p class='noindent'>This disables all of the NVRAM protections provided by <span class='ec-lmtt-10'>OpenRuntime.efi</span>, during the time a tool is in use. It
+     should normally be avoided, but may be required for instance if a tool needs to access NVRAM directly without
+     the redirections put in place by <span class='ec-lmtt-10'>RequestBootVarRouting</span>.
+     </p><!-- l. 4674 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This option is only valid for <span class='ec-lmtt-10'>Tools </span>and cannot be specified for <span class='ec-lmtt-10'>Entries </span>(is always <span class='ec-lmtt-10'>false</span>).
      </p></li>
-<li class='enumerate' id='x1-49010x5'><span class='ec-lmtt-10'>Enabled</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Set to <span class='ec-lmtt-10'>true </span>activate this entry.
-                                                                                                  
-                                                                                                  
-     </li>
-<li class='enumerate' id='x1-49012x6'><span class='ec-lmtt-10'>Flavour</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Auto</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Specify the content flavour for this entry. See <a href='#x1-44012x6'><span class='ec-lmtt-10'>OC_ATTR_USE_FLAVOUR_ICON</span></a> flag for documentation.
-     </li>
 <li class='enumerate' id='x1-49014x7'><span class='ec-lmtt-10'>Name</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Human readable entry name displayed in the OpenCore picker.
      </li>
 <li class='enumerate' id='x1-49016x8'>
@@ -3257,10 +3255,10 @@ until the next manual reconfiguration.
      </p></li>
 <li class='enumerate' id='x1-49020x10'>
      <!-- l. 4716 --><p class='noindent'><span class='ec-lmtt-10'>TextMode</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Run the entry in text mode instead of graphics mode.
-                                                                                                  
-                                                                                                  
      </p><!-- l. 4721 --><p class='noindent'>This setting may be beneficial for some older tools that require text output as all the tools are launched in graphics mode
      by default. Refer to the <a href='#output-properties'>Output Properties</a> section below for information on text modes.
+                                                                                                  
+                                                                                                  
 </p>
      </li></ol>
 <!-- l. 4727 --><p class='noindent'>
@@ -3297,6 +3295,8 @@ certain use cases.
      </p><ol class='enumerate1'>
 <li class='enumerate' id='x1-51002x1'>Not all tools may be aware of protected namespaces.<br class='newline' />When <span class='ec-lmtt-10'>RequestBootVarRouting </span>is used, <span class='ec-lmtt-10'>Boot</span>-prefixed variable access is restricted and protected in a separate
      namespace. To access the original variables, tools must be aware of the <span class='ec-lmtt-10'>OC_FIRMWARE_RUNTIME </span>logic.</li></ol>
+                                                                                                  
+                                                                                                  
 <!-- l. 4781 --><p class='noindent'>
 </p>
 <h4 class='subsectionHead' id='properties5'><span class='titlemark'>9.2   </span> <a id='x1-520009.2'></a>Properties</h4>
@@ -3327,8 +3327,6 @@ certain use cases.
      <span class='ec-lmtt-10'>boot-args </span>or <span class='ec-lmtt-10'>csr-active-config</span>, as these can be used to bypass SIP.
      </p></li>
 <li class='enumerate' id='x1-52010x5'>
-                                                                                                  
-                                                                                                  
      <!-- l. 4829 --><p class='noindent'><span class='ec-lmtt-10'>WriteFlash</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Enables writing to flash memory for all added variables.
      </p><!-- l. 4834 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This value should be enabled on most types of firmware but is left configurable to account for firmware
      that may have issues with NVRAM variable storage garbage collection or similar.
@@ -3366,6 +3364,8 @@ variables separated by a <span class='ec-lmtt-10'>: </span>symbol. For example, 
      <ul class='itemize1'>
      <li class='itemize'><span class='ec-lmtt-10'>4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:BridgeOSHardwareModel</span>
      Bridge OS hardware model variable used to propagate to IODT bridge-model by <span class='ec-lmtt-10'>EfiBoot</span>. Read by <span class='ec-lmtt-10'>hw.target
+                                                                                                  
+                                                                                                  
      </span><span class='ec-lmtt-10'>sysctl</span>, used by SoftwareUpdateCoreSupport.
      </li>
      <li class='itemize'><span class='ec-lmtt-10'>7C436110-AB2A-4BBB-A880-FE41995C9F82:csr-active-config</span>
@@ -3410,10 +3410,10 @@ variables separated by a <span class='ec-lmtt-10'>: </span>symbol. For example, 
      </li>
      <li class='itemize'><span class='ec-lmtt-10'>7C436110-AB2A-4BBB-A880-FE41995C9F82:ForceDisplayRotationInEFI</span>
      32-bit integer defining display rotation. Can be <span class='ec-lmbx-10'>0 </span>for no rotation or any of <span class='ec-lmtt-10'>90</span>, <span class='ec-lmtt-10'>180</span>, <span class='ec-lmtt-10'>270 </span>for matching rotation in
-                                                                                                  
-                                                                                                  
      degrees.
      </li>
+                                                                                                  
+                                                                                                  
      <li class='itemize'><span class='ec-lmtt-10'>4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:DefaultBackgroundColor</span>
      Four-byte <span class='ec-lmtt-10'>BGRA </span>data defining <span class='ec-lmtt-10'>boot.efi </span>user interface background colour. Standard colours include <span class='ec-lmbx-10'>BF BF BF
      </span><span class='ec-lmbx-10'>00 </span>(Light Gray) and <span class='ec-lmbx-10'>00 00 00 00 </span>(Syrah Black). Other colours may be set at user’s preference.</li></ul>
@@ -3451,8 +3451,6 @@ variables separated by a <span class='ec-lmtt-10'>: </span>symbol. For example, 
          <li class='itemize'><span class='ec-lmtt-10'>keepsyms=1 </span>(show panic log debug symbols)
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>kextlog=VALUE </span>(kernel extension loading debug mask)
-                                                                                                  
-                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>nvram-log=1 </span>(enables AppleEFINVRAM logs)
          </li>
@@ -3492,8 +3490,6 @@ variables separated by a <span class='ec-lmtt-10'>: </span>symbol. For example, 
          <li class='itemize'><span class='ec-lmtt-10'>-nehalem_error_disable </span>(disables the AppleTyMCEDriver)
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>-no_compat_check </span>(disable model checking on 10.7+)
-                                                                                                  
-                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>-s </span>(single mode)
          </li>
@@ -3536,6 +3532,8 @@ variables separated by a <span class='ec-lmtt-10'>: </span>symbol. For example, 
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x0C </span>– <span class='ec-lmtt-10'>UNKNOWN</span>.</li></ul>
      <!-- l. 5048 --><p class='noindent'>In 10.15, debugging support was defective up to the 10.15.4 release due to refactoring issues as well as the introduction of
+                                                                                                  
+                                                                                                  
      a <a href='https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/Protocol/AppleDebugLog.h'>new debug protocol</a>. Some of the arguments and their values below may not be valid for versions prior to 10.15.4. The
      list of known arguments is covered below:
 </p>
@@ -3577,8 +3575,6 @@ variables separated by a <span class='ec-lmtt-10'>: </span>symbol. For example, 
          <!-- l. 5076 --><p class='noindent'><span class='ec-lmtt-10'>console=VALUE </span>— enables console logging. </p>
              <ul class='itemize3'>
              <li class='itemize'><span class='ec-lmtt-10'>0 </span>— disables console logging.
-                                                                                                  
-                                                                                                  
              </li>
              <li class='itemize'><span class='ec-lmtt-10'>1 </span>— enables console logging when debug protocol is missing (default).
              </li>
@@ -3624,6 +3620,8 @@ variables separated by a <span class='ec-lmtt-10'>: </span>symbol. For example, 
              <ul class='itemize3'>
              <li class='itemize'><span class='ec-lmtt-10'>1 </span>— AppleLoggingConOutOrErrSet/AppleLoggingConOutOrErrPrint (classical ConOut/StdErr)
              </li>
+                                                                                                  
+                                                                                                  
              <li class='itemize'><span class='ec-lmtt-10'>2 </span>— AppleLoggingStdErrSet/AppleLoggingStdErrPrint (StdErr or serial?)
              </li>
              <li class='itemize'><span class='ec-lmtt-10'>4  </span>—   AppleLoggingFileSet/AppleLoggingFilePrint   (BOOTER.LOG/BOOTER.OLD   file   on   EFI
@@ -3665,8 +3663,6 @@ variables separated by a <span class='ec-lmtt-10'>: </span>symbol. For example, 
      Override EFI firmware updating support in macOS (MultiUpdater, ThorUtil, and so on). Setting this to <span class='ec-lmtt-10'>No </span>or
      alternative boolean-castable value will prevent any firmware updates in macOS starting with 10.10 at
      least.
-                                                                                                  
-                                                                                                  
      </li>
      <li class='itemize'><span class='ec-lmtt-10'>7C436110-AB2A-4BBB-A880-FE41995C9F82:StartupMute</span>
      Mute startup chime sound in firmware audio support. 8-bit integer. The value of <span class='ec-lmtt-10'>0x00 </span>means unmuted. Missing variable
@@ -3712,10 +3708,10 @@ variables separated by a <span class='ec-lmtt-10'>: </span>symbol. For example, 
 </p>
 <h3 class='sectionHead' id='platforminfo'><span class='titlemark'>10   </span> <a id='x1-5600010'></a>PlatformInfo</h3>
 <!-- l. 5221 --><p class='noindent'>Platform information consists of several identification fields generated or filled manually to be compatible with macOS services.
-                                                                                                  
-                                                                                                  
 The base part of the configuration may be obtained from <a href='https://github.com/acidanthera/OpenCorePkg/blob/master/AppleModels'><span class='ec-lmtt-10'>AppleModels</span></a>, which itself generates a set of interfaces based on a
 database in <a href='https://yaml.org/spec/1.2/spec.html'>YAML</a> format. These fields are written to three destinations:
+                                                                                                  
+                                                                                                  
 </p>
      <ul class='itemize1'>
      <li class='itemize'><a href='https://www.dmtf.org/standards/smbios'>SMBIOS</a>
@@ -3749,6 +3745,8 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
      settings.
      </p></li>
 <li class='enumerate' id='x1-57004x2'><span class='ec-lmtt-10'>CustomMemory</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Use custom memory configuration defined in the <span class='ec-lmtt-10'>Memory </span>section. This completely replaces any existing
+                                                                                                  
+                                                                                                  
      memory configuration in SMBIOS, and is only active when <span class='ec-lmtt-10'>UpdateSMBIOS </span>is set to <span class='ec-lmtt-10'>true</span>.
      </li>
 <li class='enumerate' id='x1-57006x3'>
@@ -3780,6 +3778,8 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>Create </span>—  Replace  the  tables  with  newly  allocated  EfiReservedMemoryType  at  AllocateMaxAddress
          without any fallbacks.
+                                                                                                  
+                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>Overwrite </span>— Overwrite existing gEfiSmbiosTableGuid and gEfiSmbiosTable3Guid data if it fits new size.
          Abort with unspecified state otherwise.
@@ -3817,10 +3817,10 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
          values.</li></ul>
      <!-- l. 5393 --><p class='noindent'>OpenCore always sets a recent SMBIOS version (currently 3.2) when generating the modified DMI tables. If
      <span class='ec-lmtt-10'>UseRawUuidEncoding </span>is enabled, the <span class='ec-lmtt-10'>Big Endian </span>format is used to store the <span class='ec-lmtt-10'>SystemUUID </span>data. Otherwise, the <span class='ec-lmtt-10'>Little
-                                                                                                  
-                                                                                                  
      </span><span class='ec-lmtt-10'>Endian </span>format is used.
      </p><!-- l. 5398 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This preference does not affect UUIDs used in DataHub and NVRAM as they are not standardised and are added
+                                                                                                  
+                                                                                                  
      by Apple. Unlike SMBIOS, they are always stored in the <span class='ec-lmtt-10'>Big Endian </span>format.
      </p></li>
 <li class='enumerate' id='x1-57016x8'>
@@ -3848,8 +3848,6 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
 <!-- l. 5441 --><p class='noindent'>
      </p><ol class='enumerate1'>
 <li class='enumerate' id='x1-58002x1'>
-                                                                                                  
-                                                                                                  
      <!-- l. 5443 --><p class='noindent'><span class='ec-lmtt-10'>SpoofVendor</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Sets SMBIOS vendor fields to <span class='ec-lmtt-10'>Acidanthera</span>.
      </p><!-- l. 5448 --><p class='noindent'>It can be dangerous to use “Apple” in SMBIOS vendor fields for reasons outlined in the <span class='ec-lmtt-10'>SystemManufacturer</span>
      description. However, certain firmware may not provide valid values otherwise, which could obstruct the operation
@@ -3879,6 +3877,8 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
      </li>
 <li class='enumerate' id='x1-58008x4'>
      <!-- l. 5486 --><p class='noindent'><span class='ec-lmtt-10'>SystemMemoryStatus</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Auto</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Indicates whether system memory is upgradable in <span class='ec-lmtt-10'>PlatformFeature</span>. This controls the visibility of the
+                                                                                                  
+                                                                                                  
      Memory tab in “About This Mac”.
      </p><!-- l. 5492 --><p class='noindent'>Valid values:
 </p>
@@ -3905,9 +3905,9 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
      </p><!-- l. 5532 --><p class='noindent'>Specify special string value <span class='ec-lmtt-10'>OEM </span>to extract current value from NVRAM (<span class='ec-lmtt-10'>system-id </span>variable) or SMBIOS and use it
      throughout the sections. Since not every firmware implementation has valid (and unique) values, this feature is not
      applicable to some setups, and may provide unexpected results. It is highly recommended to specify the UUID explicitly.
-                                                                                                  
-                                                                                                  
      Refer to <span class='ec-lmtt-10'>UseRawUuidEncoding </span>to determine how SMBIOS value is parsed.
+                                                                                                  
+                                                                                                  
      </p></li>
 <li class='enumerate' id='x1-58018x9'>
      <!-- l. 5539 --><p class='noindent'><span class='ec-lmtt-10'>MLB</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty (OEM specified or not installed)<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Refer to SMBIOS <span class='ec-lmtt-10'>BoardSerialNumber</span>.
@@ -3931,9 +3931,9 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
      <span class='ec-lmtt-10'>SystemProductName </span>in Unicode.
      </li>
 <li class='enumerate' id='x1-59006x3'><span class='ec-lmtt-10'>SystemSerialNumber</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty (Not installed)<br class='newline' /><span class='ec-lmbx-10'>Description</span>:  Sets  <span class='ec-lmtt-10'>SystemSerialNumber </span>in  <span class='ec-lmtt-10'>gEfiMiscSubClassGuid</span>.  The  value  found  on  Macs  is  equal  to
-                                                                                                  
-                                                                                                  
      SMBIOS <span class='ec-lmtt-10'>SystemSerialNumber </span>in Unicode.
+                                                                                                  
+                                                                                                  
      </li>
 <li class='enumerate' id='x1-59008x4'><span class='ec-lmtt-10'>SystemUUID</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span>, GUID<br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty (Not installed)<br class='newline' /><span class='ec-lmbx-10'>Description</span>:  Sets  <span class='ec-lmtt-10'>system-id </span>in  <span class='ec-lmtt-10'>gEfiMiscSubClassGuid</span>.  The  value  found  on  Macs  is  equal  to  SMBIOS
      <span class='ec-lmtt-10'>SystemUUID </span>(with swapped byte order).
@@ -3960,6 +3960,8 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
          <li class='itemize'><span class='ec-lmtt-10'>0x00000010 </span>— Power Failure (Same as <span class='ec-lmtt-10'>GEN_PMCON_3 </span>bit 1 <span class='ec-lmtt-10'>PWR_FLR</span>)
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x00000020 </span>— Loss of RTC Well Power (Same as <span class='ec-lmtt-10'>GEN_PMCON_3 </span>bit 2 <span class='ec-lmtt-10'>RTC_PWR_STS</span>)
+                                                                                                  
+                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x00000040 </span>— General Reset Status (Same as <span class='ec-lmtt-10'>GEN_PMCON_3 </span>bit 9 <span class='ec-lmtt-10'>GEN_RST_STS</span>)
          </li>
@@ -3991,9 +3993,9 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
      </p><!-- l. 5686 --><p class='noindent'>This value contains CPU ART frequency, also known as crystal clock frequency. Its existence is exclusive to the Skylake
      generation and newer. The value is specified in Hz, and is normally 24 MHz for the client Intel segment, 25 MHz for the
      server Intel segment, and 19.2 MHz for Intel Atom CPUs. macOS till 10.15 inclusive assumes 24 MHz by
-                                                                                                  
-                                                                                                  
      default.
+                                                                                                  
+                                                                                                  
      </p><!-- l. 5691 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: On Intel Skylake X ART frequency may be a little less (approx. 0.25%) than 24 or 25 MHz due to special
      EMI-reduction circuit as described in <a href='https://github.com/acidanthera/bugtracker/issues/448#issuecomment-524914166'>Acidanthera Bugtracker</a>.
      </p></li>
@@ -4015,9 +4017,9 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
 <!-- l. 5731 --><p class='noindent'>
      </p><ol class='enumerate1'>
 <li class='enumerate' id='x1-60002x1'><span class='ec-lmtt-10'>DataWidth</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span>, 16-bit<br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0xFFFF </span>(unknown)<br class='newline' /><span class='ec-lmbx-10'>SMBIOS</span>: Memory Device (Type 17) — Data Width<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Specifies the data width, in bits, of the memory. A <span class='ec-lmtt-10'>DataWidth </span>of <span class='ec-lmtt-10'>0 </span>and a <span class='ec-lmtt-10'>TotalWidth </span>of <span class='ec-lmtt-10'>8 </span>indicates
-                                                                                                  
-                                                                                                  
      that the device is being used solely to provide 8 error-correction bits.
+                                                                                                  
+                                                                                                  
      </li>
 <li class='enumerate' id='x1-60004x2'>
      <!-- l. 5743 --><p class='noindent'><span class='ec-lmtt-10'>Devices</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist array</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Specifies the custom memory devices to be added.
@@ -4047,9 +4049,9 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
      Commonly used form factors are listed below.
      </p><!-- l. 5787 --><p class='noindent'>When <span class='ec-lmtt-10'>CustomMemory </span>is <span class='ec-lmtt-10'>false</span>, this value is automatically set based on Mac product name.
      </p><!-- l. 5790 --><p class='noindent'>When <span class='ec-lmtt-10'>Automatic </span>is <span class='ec-lmtt-10'>true</span>, the original value from the the corresponding Mac model will be set if available. Otherwise, the
-                                                                                                  
-                                                                                                  
      value from <span class='ec-lmtt-10'>OcMacInfoLib </span>will be set. When <span class='ec-lmtt-10'>Automatic </span>is <span class='ec-lmtt-10'>false</span>, a user-specified value will be set if available.
+                                                                                                  
+                                                                                                  
      Otherwise, the original value from the firmware will be set. If no value is provided, the failsafe value will be
      set.
 </p>
@@ -4076,6 +4078,8 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
          <li class='itemize'><span class='ec-lmtt-10'>0x01 </span>— Other
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x02 </span>— Unknown
+                                                                                                  
+                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x0F </span>— SDRAM
          </li>
@@ -4110,6 +4114,8 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
          <li class='itemize'><span class='ec-lmtt-10'>Bit 7 </span>— Synchronous
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>Bit 13 </span>— Registered (buffered)
+                                                                                                  
+                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>Bit 14 </span>— Unbuffered (unregistered)</li></ul>
      </li></ol>
