@@ -72,7 +72,7 @@ pre.verbatim {font-family: monospace,monospace; text-align:left; clear:both; }
 .fbox {padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }
 div.fbox {display:table}
 div.center div.fbox {text-align:center; clear:both; padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }
-div.minipage{width:100%;}
+div.minipage{width:100\%;}
 div.center, div.center div.center {text-align: center; margin-left:1em; margin-right:1em;}
 div.center div {text-align: left;}
 div.flushright, div.flushright div.flushright {text-align: right;}
@@ -85,7 +85,7 @@ div.flushleft {text-align: left;}
 .framebox-l {text-align:left;}
 .framebox-r {text-align:right;}
 span.thank-mark{ vertical-align: super }
-span.footnote-mark sup.textsuperscript, span.footnote-mark a sup.textsuperscript{ font-size:80%; }
+span.footnote-mark sup.textsuperscript, span.footnote-mark a sup.textsuperscript{ font-size:80\%; }
 div.tabular, div.center div.tabular {text-align: center; margin-top:0.5em; margin-bottom:0.5em; }
 table.tabular td p{margin-top:0em;}
 table.tabular {margin-left: auto; margin-right: auto;}
@@ -109,27 +109,27 @@ table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }
 div.float, div.figure {margin-left: auto; margin-right: auto;}
 div.float img {text-align:center;}
 div.figure img {text-align:center;}
-.marginpar,.reversemarginpar {width:20%; float:right; text-align:left; margin-left:auto; margin-top:0.5em; font-size:85%; text-decoration:underline;}
+.marginpar,.reversemarginpar {width:20\%; float:right; text-align:left; margin-left:auto; margin-top:0.5em; font-size:85\%; text-decoration:underline;}
 .marginpar p,.reversemarginpar p{margin-top:0.4em; margin-bottom:0.4em;}
 .reversemarginpar{float:left;}
-table.equation {width:100%;}
+table.equation {width:100\%;}
 .equation td{text-align:center; }
 td.equation { margin-top:1em; margin-bottom:1em; } 
-td.equation-label { width:5%; text-align:center; }
-td.eqnarray4 { width:5%; white-space: normal; }
-td.eqnarray2 { width:5%; }
-table.eqnarray-star, table.eqnarray {width:100%;}
+td.equation-label { width:5\%; text-align:center; }
+td.eqnarray4 { width:5\%; white-space: normal; }
+td.eqnarray2 { width:5\%; }
+table.eqnarray-star, table.eqnarray {width:100\%;}
 div.eqnarray{text-align:center;}
 div.array {text-align:center;}
 div.pmatrix {text-align:center;}
-table.pmatrix {width:100%;}
+table.pmatrix {width:100\%;}
 span.pmatrix img{vertical-align:middle;}
 div.pmatrix {text-align:center;}
-table.pmatrix {width:100%;}
+table.pmatrix {width:100\%;}
 span.bar-css {text-decoration:overline;}
 img.cdots{vertical-align:middle;}
-.partToc a, .partToc, .likepartToc a, .likepartToc {line-height: 200%; font-weight:bold; font-size:110%;}
-.chapterToc a, .chapterToc, .likechapterToc a, .likechapterToc, .appendixToc a, .appendixToc {line-height: 200%; font-weight:bold;}
+.partToc a, .partToc, .likepartToc a, .likepartToc {line-height: 200\%; font-weight:bold; font-size:110\%;}
+.chapterToc a, .chapterToc, .likechapterToc a, .likechapterToc, .appendixToc a, .appendixToc {line-height: 200\%; font-weight:bold;}
 .index-item, .index-subitem, .index-subsubitem {display:block}
 div.caption {text-indent:-2em; margin-left:3em; margin-right:1em; text-align:left;}
 div.caption span.id{font-weight: bold; white-space: nowrap; }
@@ -143,10 +143,10 @@ div.maketitle {text-align:center;}
 h2.titleHead{text-align:center;}
 div.maketitle{ margin-bottom: 2em; }
 div.author, div.date {text-align:center;}
-div.thanks{text-align:left; margin-left:10%; font-size:85%; font-style:italic; }
+div.thanks{text-align:left; margin-left:10\%; font-size:85\%; font-style:italic; }
 div.author{white-space: nowrap;}
-div.abstract p {margin-left:5%; margin-right:5%;}
-div.abstract {width:100%;}
+div.abstract p {margin-left:5\%; margin-right:5\%;}
+div.abstract {width:100\%;}
 .abstracttitle{text-align:center;margin-bottom:1em;}
 figure.float, div.figure {margin-left: auto; margin-right: auto;}
 figure.figure {text-align:center;}
@@ -156,16 +156,16 @@ p + figcaption, img + figcaption{margin-top: 1em;}
 .abstract{margin:1em;}
 .equation td{text-align:center; }
 .equation-star td{text-align:center; }
-table.equation-star { width:100%; }
-table.equation { width:100%; }
-table.align, table.alignat, table.xalignat, table.xxalignat, table.flalign {width:95%; margin-left:5%; white-space: nowrap;}
+table.equation-star { width:100\%; }
+table.equation { width:100\%; }
+table.align, table.alignat, table.xalignat, table.xxalignat, table.flalign {width:95\%; margin-left:5\%; white-space: nowrap;}
 table.align-star, table.alignat-star, table.xalignat-star, table.flalign-star {margin-left:auto; margin-right:auto; white-space: nowrap;}
-td.align-label { width:5%; text-align:center; }
+td.align-label { width:5\%; text-align:center; }
 td.align-odd { text-align:right; padding-right:0.3em;}
 td.align-even { text-align:left; padding-right:0.6em;}
-table.multline, table.multline-star {width:100%;}
+table.multline, table.multline-star {width:100\%;}
 td.gather {text-align:center; }
-table.gather {width:100%;}
+table.gather {width:100\%;}
 div.gather-star {text-align:center;}
 table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }
 table.longtable{border-collapse: collapse; border-spacing: 0;}
