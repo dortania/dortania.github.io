@@ -1,53 +1,85 @@
-2}{Patch Properties}{subsection.7.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.8}Quirks Properties}{33}{subsection.7.8}\protected@file@percent }
-\newlabel{kernelpropsquirks}{{7.8}{33}{Quirks Properties}{subsection.7.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.9}Scheme Properties}{38}{subsection.7.9}\protected@file@percent }
-\newlabel{kernelpropsscheme}{{7.9}{38}{Scheme Properties}{subsection.7.9}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Misc}{41}{section.8}\protected@file@percent }
-\newlabel{misc}{{8}{41}{Misc}{section.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Introduction}{41}{subsection.8.1}\protected@file@percent }
-\newlabel{miscintro}{{8.1}{41}{Introduction}{subsection.8.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Properties}{42}{subsection.8.2}\protected@file@percent }
-\newlabel{miscprops}{{8.2}{42}{Properties}{subsection.8.2}{}}
-\newlabel{misctools}{{7}{43}{Properties}{Item.177}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Boot Properties}{43}{subsection.8.3}\protected@file@percent }
-\newlabel{miscbootprops}{{8.3}{43}{Boot Properties}{subsection.8.3}{}}
-\newlabel{oc-attr-use-flavour-icon}{{6}{46}{Boot Properties}{Item.183}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.4}Debug Properties}{49}{subsection.8.4}\protected@file@percent }
-\newlabel{miscdebugprops}{{8.4}{49}{Debug Properties}{subsection.8.4}{}}
-\newlabel{kpanic}{{2}{49}{}{lstlisting.-3}{}}
-\newlabel{dhublog}{{8}{50}{}{lstlisting.-4}{}}
-\newlabel{nvramlog}{{8}{50}{}{lstlisting.-5}{}}
-\newlabel{oc-mod-libs}{{8}{51}{Debug Properties}{lstnumber.-5.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.5}Security Properties}{52}{subsection.8.5}\protected@file@percent }
-\newlabel{miscsecurityprops}{{8.5}{52}{Security Properties}{subsection.8.5}{}}
-\newlabel{blesspersona}{{2}{52}{}{lstlisting.-6}{}}
-\newlabel{secureboot}{{2}{53}{}{lstlisting.-7}{}}
-\newlabel{securedmgloading}{{5}{53}{Security Properties}{Item.203}{}}
-\newlabel{nvrampath}{{7}{54}{}{lstlisting.-8}{}}
-\newlabel{nvrampathmount}{{7}{54}{}{lstlisting.-9}{}}
-\newlabel{nvramver}{{7}{54}{}{lstlisting.-10}{}}
-\newlabel{nvramoem}{{7}{54}{}{lstlisting.-11}{}}
-\newlabel{securevaulting}{{11}{54}{Security Properties}{Item.209}{}}
-\newlabel{createvault}{{11}{55}{}{lstlisting.-12}{}}
-\newlabel{secureapplesb}{{13}{56}{Security Properties}{Item.211}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.6}Serial Properties}{58}{subsection.8.6}\protected@file@percent }
-\newlabel{miscserialprops}{{8.6}{58}{Serial Properties}{subsection.8.6}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.6.1}Serial Custom Properties}{58}{subsubsection.8.6.1}\protected@file@percent }
-\newlabel{miscserialcustprops}{{8.6.1}{58}{Serial Custom Properties}{subsubsection.8.6.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.7}Entry Properties}{60}{subsection.8.7}\protected@file@percent }
-\newlabel{miscentryprops}{{8.7}{60}{Entry Properties}{subsection.8.7}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {9}NVRAM}{62}{section.9}\protected@file@percent }
-\newlabel{nvram}{{9}{62}{NVRAM}{section.9}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.1}Introduction}{62}{subsection.9.1}\protected@file@percent }
-\newlabel{nvramintro}{{9.1}{62}{Introduction}{subsection.9.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}Properties}{62}{subsection.9.2}\protected@file@percent }
-\newlabel{nvramprops}{{9.2}{62}{Properties}{subsection.9.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.3}Mandatory Variables}{63}{subsection.9.3}\protected@file@percent }
-\newlabel{nvramvars}{{9.3}{63}{Mandatory Variables}{subsection.9.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.4}Recommended Variables}{63}{subsection.9.4}\protected@file@percent }
-\newlabel{nvramvarsrec}{{9.4}{63}{Recommended Variables}{subsection.9.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.5}Other Variables}{64}{subsection.9.style: oblique; font-family: monospace,monospace;}
+ 
+/* start css.sty */
+.ec-lmr-17x-x-143{font-size:243%;}
+.ec-lmss-17x-x-143{font-size:243%; font-family: sans-serif;}
+.ec-lmss-17x-x-143{ font-family: sans-serif;}
+.ec-lmss-17x-x-143{ font-family: sans-serif;}
+.ec-lmss-17x-x-143{ font-family: sans-serif;}
+.ec-lmss-17x-x-143{ font-family: sans-serif;}
+.ec-lmss-17x-x-143{ font-family: sans-serif;}
+.ec-lmss-17x-x-143{ font-family: sans-serif;}
+.ec-lmss-17x-x-143{ font-family: sans-serif;}
+.ec-lmss-17x-x-143{ font-family: sans-serif;}
+.ec-lmss-17x-x-143{ font-family: sans-serif;}
+.ec-lmssbx-10x-x-248{font-size:248%; font-family: sans-serif; font-weight: bold;}
+.ec-lmssbx-10x-x-248{ font-family: sans-serif; font-weight: bold;}
+.ec-lmssbx-10x-x-248{ font-family: sans-serif; font-weight: bold;}
+.ec-lmssbx-10x-x-248{ font-family: sans-serif; font-weight: bold;}
+.ec-lmssbx-10x-x-248{ font-family: sans-serif; font-weight: bold;}
+.ec-lmssbx-10x-x-248{ font-family: sans-serif; font-weight: bold;}
+.ec-lmssbx-10x-x-248{ font-family: sans-serif; font-weight: bold;}
+.ec-lmssbx-10x-x-248{ font-family: sans-serif; font-weight: bold;}
+.ec-lmssbx-10x-x-248{ font-family: sans-serif; font-weight: bold;}
+.ec-lmssbx-10x-x-248{ font-family: sans-serif; font-weight: bold;}
+.ec-lmtt-10{ font-family: monospace,monospace;}
+.ec-lmtt-10{ font-family: monospace,monospace;}
+.ec-lmtt-10{ font-family: monospace,monospace;}
+.ec-lmtt-10{ font-family: monospace,monospace;}
+.ec-lmtt-10{ font-family: monospace,monospace;}
+.ec-lmtt-10{ font-family: monospace,monospace;}
+.ec-lmtt-10{ font-family: monospace,monospace;}
+.ec-lmtt-10{ font-family: monospace,monospace;}
+.ec-lmtt-10{ font-family: monospace,monospace;}
+.ec-lmtt-10{ font-family: monospace,monospace;}
+.ec-lmri-10{ font-style:italic;}
+.ec-lmri-10{ font-style:italic;}
+.ec-lmri-10{ font-style:italic;}
+.ec-lmri-10{ font-style:italic;}
+.ec-lmri-10{ font-style:italic;}
+.ec-lmri-10{ font-style:italic;}
+.ec-lmri-10{ font-style:italic;}
+.ec-lmri-10{ font-style:italic;}
+.ec-lmri-10{ font-style:italic;}
+.ec-lmri-10{ font-style:italic;}
+.ec-lmbx-10{ font-weight: bold;}
+.ec-lmbx-10{ font-weight: bold;}
+.ec-lmbx-10{ font-weight: bold;}
+.ec-lmbx-10{ font-weight: bold;}
+.ec-lmbx-10{ font-weight: bold;}
+.ec-lmbx-10{ font-weight: bold;}
+.ec-lmbx-10{ font-weight: bold;}
+.ec-lmbx-10{ font-weight: bold;}
+.ec-lmbx-10{ font-weight: bold;}
+.ec-lmbx-10{ font-weight: bold;}
+.ec-lmtk-10{ font-family: monospace,monospace;}
+.ec-lmtk-10{ font-family: monospace,monospace;}
+.ec-lmtk-10{ font-family: monospace,monospace;}
+.ec-lmtk-10{ font-family: monospace,monospace;}
+.ec-lmtk-10{ font-family: monospace,monospace;}
+.ec-lmtk-10{ font-family: monospace,monospace;}
+.ec-lmtk-10{ font-family: monospace,monospace;}
+.ec-lmtk-10{ font-family: monospace,monospace;}
+.ec-lmtk-10{ font-family: monospace,monospace;}
+.ec-lmtk-10{ font-family: monospace,monospace;}
+.ec-lmtti-10{ font-family: monospace,monospace; font-style:italic;}
+.ec-lmtti-10{ font-family: monospace,monospace; font-style:italic;}
+.ec-lmtti-10{ font-family: monospace,monospace; font-style:italic;}
+.ec-lmtti-10{ font-family: monospace,monospace; font-style:italic;}
+.ec-lmtti-10{ font-family: monospace,monospace; font-style:italic;}
+.ec-lmtti-10{ font-family: monospace,monospace; font-style:italic;}
+.ec-lmtti-10{ font-family: monospace,monospace; font-style:italic;}
+.ec-lmtti-10{ font-family: monospace,monospace; font-style:italic;}
+.ec-lmtti-10{ font-family: monospace,monospace; font-style:italic;}
+.ec-lmtti-10{ font-family: monospace,monospace; font-style:italic;}
+.ec-lmtko-10{ font-style: oblique; font-family: monospace,monospace;}
+.ec-lmtko-10{ font-style: oblique; font-family: monospace,monospace;}
+.ec-lmtko-10{ font-style: oblique; font-family: monospace,monospace;}
+.ec-lmtko-10{ font-style: oblique; font-family: monospace,monospace;}
+.ec-lmtko-10{ font-style: oblique; font-family: monospace,monospace;}
+.ec-lmtko-10{ font-style: oblique; font-family: monospace,monospace;}
+.ec-lmtko-10{ font-style: oblique; font-family: monospace,monospace;}
+.ec-lmtko-10{ font-style: oblique; font-family: monospace,monospace;}
+.ec-lmtko-10{ font-style: oblique; font-family: monospace,monospace;}
 .ec-lmtko-10{ font-style: oblique; font-family: monospace,monospace;}
 p{margin-top:0;margin-bottom:0}
 p.indent{text-indent:0;}
