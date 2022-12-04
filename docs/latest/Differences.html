@@ -5976,8 +5976,8 @@ options.
      </p></li>
 <li class='enumerate' id='x1-88014x7'>
      <!-- l. 8652 --><p class='noindent'><span class='ec-lmtt-10'>ForgeUefiSupport</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Implement partial UEFI 2.x support on EFI 1.x firmware.
-     </p><!-- l. 8657 --><p class='noindent'>This setting allows running some software written for UEFI 2.x firmware like NVIDIA GOP Option ROMs on
-     hardware with older EFI 1.x firmware like <span class='ec-lmtt-10'>MacPro5,1</span>.
+     </p><!-- l. 8657 --><p class='noindent'>This setting allows running some software written for UEFI 2.x firmware<span class='sout'>like </span><span class='uwave'>, such as </span>NVIDIA GOP Option
+     ROMs<span class='uwave'>, </span>on hardware with older EFI 1.x firmware <span class='sout'>like </span><span class='uwave'>(e.g. </span><span class='ec-lmtt-10'>MacPro5,1</span><span class='uwave'>)</span>.
      </p></li>
 <li class='enumerate' id='x1-88016x8'>
      <!-- l. 8661 --><p class='noindent'><span class='ec-lmtt-10'>IgnoreInvalidFlexRatio</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Some types of firmware (such as APTIO IV) may contain invalid values in the <span class='ec-lmtt-10'>MSR_FLEX_RATIO</span>
@@ -6473,19 +6473,19 @@ To additionally enable XNU kernel serial output <span class='ec-lmtt-10'>debug=0
      </p></li>
 <li class='enumerate' id='x1-100014x7'>
      <!-- l. 9311 --><p class='noindent'><span class='ec-lmbx-10'>Can I use this on Apple hardware or virtual machines?</span>
-     </p><!-- l. 9313 --><p class='noindent'>Sure, most relatively modern Mac models including <span class='ec-lmtt-10'>MacPro5,1 </span>and virtual machines are fully supported. Even though
-     there are little to none specific details relevant to Mac hardware, some ongoing instructions can be found on
-     <a href='https://forums.macrumors.com/threads/opencore-on-the-mac-pro.2207814'>MacRumors.com</a>.
+     </p><!-- l. 9313 --><p class='noindent'><span class='sout'>Sure, </span><span class='uwave'>Yes. Virtual machines and </span>most relatively modern Mac models<span class='sout'>including </span><span class='uwave'>, as far back as the </span><span class='sout'>MacPro5</span><span class='uwave'>MacPro3</span><span class='ec-lmtt-10'>,1</span><span class='sout'>and
+     virtual machines </span><span class='uwave'>, </span>are fully supported. <span class='sout'>Even though there are little to none specific details </span><span class='uwave'>While specific detail </span>relevant
+     to Mac hardware <span class='uwave'>is often limited</span>, some ongoing instructions can be found on <a href='https://forums.macrumors.com/threads/2207814'>MacRumors.com</a>.
      </p></li>
 <li class='enumerate' id='x1-100016x8'>
-     <!-- l. 9319 --><p class='noindent'><span class='ec-lmbx-10'>Why must Find&amp;Replace patches be equal in size?</span>
-     </p><!-- l. 9321 --><p class='noindent'>For machine code (x86 code) it is not possible to do differently sized replacements due to <a href='https://en.wikipedia.org/w/index.php?title=Relative_addressing'>relative addressing</a>. For ACPI
+     <!-- l. 9321 --><p class='noindent'><span class='ec-lmbx-10'>Why must Find&amp;Replace patches be equal in size?</span>
+     </p><!-- l. 9323 --><p class='noindent'>For machine code (x86 code) it is not possible to do differently sized replacements due to <a href='https://en.wikipedia.org/w/index.php?title=Relative_addressing'>relative addressing</a>. For ACPI
      code this is risky, and is technically equivalent to ACPI table replacement, thus not implemented. More detailed
      explanation can be found on <a href='https://applelife.ru/posts/819790'>AppleLife.ru</a> or in the ACPI section of this document.
      </p></li>
 <li class='enumerate' id='x1-100018x9'>
-     <!-- l. 9328 --><p class='noindent'><span class='ec-lmbx-10'>How can I decide which </span><span class='ec-lmtk-10'>Booter </span><span class='ec-lmbx-10'>quirks to use?</span>
-     </p><!-- l. 9330 --><p class='noindent'>These quirks originate from <span class='ec-lmtt-10'>AptioMemoryFix </span>driver but provide a wider set of changes specific to modern systems. Note,
+     <!-- l. 9330 --><p class='noindent'><span class='ec-lmbx-10'>How can I decide which </span><span class='ec-lmtk-10'>Booter </span><span class='ec-lmbx-10'>quirks to use?</span>
+     </p><!-- l. 9332 --><p class='noindent'>These quirks originate from <span class='ec-lmtt-10'>AptioMemoryFix </span>driver but provide a wider set of changes specific to modern systems. Note,
      that <span class='ec-lmtt-10'>OpenRuntime </span>driver is required for most configurations. To get a configuration similar to <span class='ec-lmtt-10'>AptioMemoryFix </span>the
      following set of quirks should be enabled: </p>
          <ul class='itemize1'>
@@ -6508,10 +6508,10 @@ To additionally enable XNU kernel serial output <span class='ec-lmtt-10'>debug=0
          <li class='itemize'><span class='ec-lmtt-10'>RebuildAppleMemoryMap</span>
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>SetupVirtualMap</span></li></ul>
-     <!-- l. 9348 --><p class='noindent'>However, as of today, such set is strongly discouraged as some of these quirks are not necessary to be enabled or need
+     <!-- l. 9350 --><p class='noindent'>However, as of today, such set is strongly discouraged as some of these quirks are not necessary to be enabled or need
      additional quirks. For example, <span class='ec-lmtt-10'>DevirtualiseMmio </span>and <span class='ec-lmtt-10'>ProtectUefiServices </span>are often required, while
      <span class='ec-lmtt-10'>DiscardHibernateMap </span>and <span class='ec-lmtt-10'>ForceExitBootServices </span>are rarely necessary.
-     </p><!-- l. 9354 --><p class='noindent'>Unfortunately for some quirks such as <span class='ec-lmtt-10'>RebuildAppleMemoryMap</span>, <span class='ec-lmtt-10'>EnableWriteUnprotector</span>, <span class='ec-lmtt-10'>ProtectMemoryRegions</span>,
+     </p><!-- l. 9356 --><p class='noindent'>Unfortunately for some quirks such as <span class='ec-lmtt-10'>RebuildAppleMemoryMap</span>, <span class='ec-lmtt-10'>EnableWriteUnprotector</span>, <span class='ec-lmtt-10'>ProtectMemoryRegions</span>,
      <span class='ec-lmtt-10'>SetupVirtualMap</span>, and <span class='ec-lmtt-10'>SyncRuntimePermissions </span>there is no definite approach even on similar systems, so trying all
      their combinations may be required for optimal setup. Refer to individual quirk descriptions in this document for
      details.
