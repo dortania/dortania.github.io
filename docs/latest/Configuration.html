@@ -16,7 +16,7 @@
 </p><!-- l. 89 --><p class='noindent'> <img alt='PIC' height='160' src='Logos/Logo.png' width='160' />
 </p><!-- l. 93 --><p class='noindent'><span class='ec-lmssbx-10x-x-248'>OpenCore</span>
 </p><!-- l. 97 --><p class='noindent'><span class='ec-lmss-17x-x-143'>Reference Manual (0.8.7)</span>
-</p><!-- l. 101 --><p class='noindent'><span class='ec-lmss-17x-x-143'>[2022.12.05]</span>
+</p><!-- l. 101 --><p class='noindent'><span class='ec-lmss-17x-x-143'>[2022.12.06]</span>
 </p><!-- l. 109 --><p class='noindent'>Copyright <span class='ts1-lmr10-'>©</span>2018-2022 vit9696
 </p>
 </div>
@@ -2176,8 +2176,22 @@ until the next manual reconfiguration.
                                                                                                   
                                                                                                   
 <li class='enumerate' id='x1-44006x3'>
-     <!-- l. 3332 --><p class='noindent'><span class='ec-lmtt-10'>HideAuxiliary</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Set to <span class='ec-lmtt-10'>true </span>to hide auxiliary entries from the picker menu.
-     </p><!-- l. 3337 --><p class='noindent'>An entry is considered auxiliary when at least one of the following applies:
+     <!-- l. 3332 --><p class='noindent'><span class='ec-lmtt-10'>HibernateSkipsPicker</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Do not show picker if waking from macOS hibernation.
+     </p><!-- l. 3337 --><p class='noindent'>Limitations: </p>
+         <ul class='itemize1'>
+         <li class='itemize'>Only supports macOS hibernation wake, Windows and Linux are currently out of scope.
+         </li>
+         <li class='itemize'>Should only be used on systems with reliable hibernation wake in macOS, otherwise users may not be able
+         to visually see boot loops that may occur.
+         </li>
+         <li class='itemize'>Highly recommended to pair this option with <span class='ec-lmtt-10'>PollAppleHotKeys</span>, allows to enter picker in case of issues
+         with hibernation wake.
+         </li>
+         <li class='itemize'>Visual indication for hibernation wake is currently out of scope.</li></ul>
+     </li>
+<li class='enumerate' id='x1-44008x4'>
+     <!-- l. 3348 --><p class='noindent'><span class='ec-lmtt-10'>HideAuxiliary</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Set to <span class='ec-lmtt-10'>true </span>to hide auxiliary entries from the picker menu.
+     </p><!-- l. 3353 --><p class='noindent'>An entry is considered auxiliary when at least one of the following applies:
 </p>
          <ul class='itemize1'>
          <li class='itemize'>Entry is macOS recovery.
@@ -2187,49 +2201,47 @@ until the next manual reconfiguration.
          <li class='itemize'>Entry is explicitly marked as <span class='ec-lmtt-10'>Auxiliary</span>.
          </li>
          <li class='itemize'>Entry is system (e.g. <span class='ec-lmtt-10'>Reset NVRAM</span>).</li></ul>
-     <!-- l. 3347 --><p class='noindent'>To display all entries, the picker menu can be reloaded into “Extended Mode” by pressing the <span class='ec-lmtt-10'>Spacebar </span>key. Hiding
+     <!-- l. 3363 --><p class='noindent'>To display all entries, the picker menu can be reloaded into “Extended Mode” by pressing the <span class='ec-lmtt-10'>Spacebar </span>key. Hiding
      auxiliary entries may increase boot performance on multi-disk systems.
      </p></li>
-<li class='enumerate' id='x1-44008x4'>
-     <!-- l. 3351 --><p class='noindent'><span class='ec-lmtt-10'>LauncherOption</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Disabled</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Register the launcher option in the firmware preferences for persistence.
-     </p><!-- l. 3356 --><p class='noindent'>Valid values:
+<li class='enumerate' id='x1-44010x5'>
+     <!-- l. 3367 --><p class='noindent'><span class='ec-lmtt-10'>LauncherOption</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Disabled</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Register the launcher option in the firmware preferences for persistence.
+     </p><!-- l. 3372 --><p class='noindent'>Valid values:
 </p>
          <ul class='itemize1'>
          <li class='itemize'><span class='ec-lmtt-10'>Disabled </span>— do nothing.
          </li>
          <li class='itemize'>
-         <!-- l. 3361 --><p class='noindent'><span class='ec-lmtt-10'>Full </span>— create or update the top priority boot option in UEFI variable storage at bootloader startup.
+         <!-- l. 3377 --><p class='noindent'><span class='ec-lmtt-10'>Full </span>— create or update the top priority boot option in UEFI variable storage at bootloader startup.
          </p>
              <ul class='itemize2'>
              <li class='itemize'>For this option to work, <span class='ec-lmtt-10'>RequestBootVarRouting </span>is required to be enabled.</li></ul>
          </li>
          <li class='itemize'>
-         <!-- l. 3367 --><p class='noindent'><span class='ec-lmtt-10'>Short </span>— create a short boot option instead of a complete one. </p>
+         <!-- l. 3383 --><p class='noindent'><span class='ec-lmtt-10'>Short </span>— create a short boot option instead of a complete one. </p>
              <ul class='itemize2'>
              <li class='itemize'>This variant is useful for some older types of firmware, typically from Insyde, that are unable to manage
              full device paths.</li></ul>
          </li>
          <li class='itemize'>
-         <!-- l. 3373 --><p class='noindent'><span class='ec-lmtt-10'>System </span>— create no boot option but assume specified custom option is blessed. </p>
-                                                                                                  
-                                                                                                  
+         <!-- l. 3389 --><p class='noindent'><span class='ec-lmtt-10'>System </span>— create no boot option but assume specified custom option is blessed. </p>
              <ul class='itemize2'>
              <li class='itemize'>This variant is useful when relying on <span class='ec-lmtt-10'>ForceBooterSignature </span>quirk and OpenCore launcher path
              management happens through <span class='ec-lmtt-10'>bless </span>utilities without involving OpenCore.</li></ul>
          </li></ul>
-     <!-- l. 3382 --><p class='noindent'>This option allows integration with third-party operating system installation and upgrades (which may overwrite the
+     <!-- l. 3398 --><p class='noindent'>This option allows integration with third-party operating system installation and upgrades (which may overwrite the
      <span class='ec-lmtt-10'>\EFI\BOOT\BOOTx64.efi </span>file). The BOOTx64.efi file is no longer used for bootstrapping OpenCore if a custom
      option is created. The custom path used for bootstrapping can be specified by using the <span class='ec-lmtt-10'>LauncherPath</span>
      option.
-     </p><!-- l. 3387 --><p class='noindent'><span class='ec-lmri-10'>Note 1</span>: Some types of firmware may have NVRAM implementation flaws, no boot option support, or other
+     </p><!-- l. 3403 --><p class='noindent'><span class='ec-lmri-10'>Note 1</span>: Some types of firmware may have NVRAM implementation flaws, no boot option support, or other
      incompatibilities. While unlikely, the use of this option may result in boot failures and should only be used exclusively on
      boards known to be compatible. Refer to <a href='https://github.com/acidanthera/bugtracker/issues/1222'>acidanthera/bugtracker#1222</a> for some known issues affecting Haswell and
      other boards.
-     </p><!-- l. 3393 --><p class='noindent'><span class='ec-lmri-10'>Note 2</span>: While NVRAM resets executed from OpenCore would not typically erase the boot option created in <span class='ec-lmtt-10'>Bootstrap</span>,
+     </p><!-- l. 3409 --><p class='noindent'><span class='ec-lmri-10'>Note 2</span>: While NVRAM resets executed from OpenCore would not typically erase the boot option created in <span class='ec-lmtt-10'>Bootstrap</span>,
      executing NVRAM resets prior to loading OpenCore will erase the boot option. Therefore, for significant implementation
      updates, such as was the case with OpenCore 0.6.4, an NVRAM reset should be executed with <span class='ec-lmtt-10'>Bootstrap </span>disabled, after
      which it can be re-enabled.
-     </p><!-- l. 3398 --><p class='noindent'><span class='ec-lmri-10'>Note 3</span>: Some versions of Intel Visual BIOS (e.g. on Intel NUC) have an unfortunate bug whereby if any boot option is
+     </p><!-- l. 3414 --><p class='noindent'><span class='ec-lmri-10'>Note 3</span>: Some versions of Intel Visual BIOS (e.g. on Intel NUC) have an unfortunate bug whereby if any boot option is
      added referring to a path on a USB drive, from then on that is the only boot option which will be shown when any USB
      drive is inserted. If OpenCore is started from a USB drive on this firmware with <span class='ec-lmtt-10'>LauncherOption </span>set to <span class='ec-lmtt-10'>Full </span>or
      <span class='ec-lmtt-10'>Short</span>, this applies and only the OpenCore boot entry will be seen afterwards, when any other USB is
@@ -2250,7 +2262,7 @@ until the next manual reconfiguration.
          </li>
          <li class='itemize'>Within OpenShell, use <span class='ec-lmtt-10'>bcfg boot dump </span>to display the NVRAM boot options and then use <span class='ec-lmtt-10'>bcfg boot rm
          </span><span class='ec-lmtt-10'># </span>(where <span class='ec-lmtt-10'># </span>is the number of the OpenCore boot entry) to remove the OpenCore entry</li></ul>
-     <!-- l. 3417 --><p class='noindent'>It is alternatively possible to start OpenShell directly from the OpenCore boot menu, if you have a working configured
+     <!-- l. 3433 --><p class='noindent'>It is alternatively possible to start OpenShell directly from the OpenCore boot menu, if you have a working configured
      OpenCore for the system. In that case, and if OpenCore has <span class='ec-lmtt-10'>RequestBootVarRouting </span>enabled, it will be necessary to run
      the command <span class='ec-lmtt-10'>\EFI\OC\Tools\OpenControl.efi disable </span>before using <span class='ec-lmtt-10'>bcfg</span>. (After <span class='ec-lmtt-10'>OpenControl disable</span>, it is
      necessary to either reboot or run <span class='ec-lmtt-10'>OpenControl restore</span>, before booting an operating system.) It is also possible to use
@@ -2258,26 +2270,26 @@ until the next manual reconfiguration.
      must be started either not via OpenCore, or via OpenCore with <span class='ec-lmtt-10'>RequestBootVarRouting </span>disabled for this to
      work.
      </p></li>
-<li class='enumerate' id='x1-44010x5'>
-                                                                                                  
-                                                                                                  
-     <!-- l. 3427 --><p class='noindent'><span class='ec-lmtt-10'>LauncherPath</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Default</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Launch path for the <span class='ec-lmtt-10'>LauncherOption </span>property.
-     </p><!-- l. 3432 --><p class='noindent'><span class='ec-lmtt-10'>Default </span>points to <span class='ec-lmtt-10'>OpenCore.efi</span>. User specified paths, e.g. <span class='ec-lmtt-10'>\EFI\SomeLauncher.efi</span>, can be used to provide custom
+<li class='enumerate' id='x1-44012x6'>
+     <!-- l. 3443 --><p class='noindent'><span class='ec-lmtt-10'>LauncherPath</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Default</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Launch path for the <span class='ec-lmtt-10'>LauncherOption </span>property.
+     </p><!-- l. 3448 --><p class='noindent'><span class='ec-lmtt-10'>Default </span>points to <span class='ec-lmtt-10'>OpenCore.efi</span>. User specified paths, e.g. <span class='ec-lmtt-10'>\EFI\SomeLauncher.efi</span>, can be used to provide custom
      loaders, which are supposed to load <span class='ec-lmtt-10'>OpenCore.efi </span>themselves.
      </p></li>
-<li class='enumerate' id='x1-44012x6'>
-     <!-- l. 3438 --><p class='noindent'><span class='ec-lmtt-10'>PickerAttributes</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Sets specific attributes for the OpenCore picker.
-     </p><!-- l. 3443 --><p class='noindent'>Different OpenCore pickers may be configured through the attribute mask containing OpenCore-reserved (<span class='ec-lmtt-10'>BIT0</span>~<span class='ec-lmtt-10'>BIT15</span>)
+<li class='enumerate' id='x1-44014x7'>
+     <!-- l. 3454 --><p class='noindent'><span class='ec-lmtt-10'>PickerAttributes</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Sets specific attributes for the OpenCore picker.
+     </p><!-- l. 3459 --><p class='noindent'>Different OpenCore pickers may be configured through the attribute mask containing OpenCore-reserved (<span class='ec-lmtt-10'>BIT0</span>~<span class='ec-lmtt-10'>BIT15</span>)
      and OEM-specific (<span class='ec-lmtt-10'>BIT16</span>~<span class='ec-lmtt-10'>BIT31</span>) values.
-     </p><!-- l. 3447 --><p class='noindent'>Current OpenCore values include:
+     </p><!-- l. 3463 --><p class='noindent'>Current OpenCore values include:
 </p>
          <ul class='itemize1'>
          <li class='itemize'>
-         <!-- l. 3451 --><p class='noindent'><span class='ec-lmtt-10'>0x0001 </span>— <span class='ec-lmtt-10'>OC_ATTR_USE_VOLUME_ICON</span>, provides custom icons for boot entries:
-         </p><!-- l. 3454 --><p class='noindent'>OpenCore will attempt loading a volume icon by searching as follows, and will fallback to the default icon on failure:
+         <!-- l. 3467 --><p class='noindent'><span class='ec-lmtt-10'>0x0001 </span>— <span class='ec-lmtt-10'>OC_ATTR_USE_VOLUME_ICON</span>, provides custom icons for boot entries:
+         </p><!-- l. 3470 --><p class='noindent'>OpenCore will attempt loading a volume icon by searching as follows, and will fallback to the default icon on failure:
          </p>
              <ul class='itemize2'>
              <li class='itemize'><span class='ec-lmtt-10'>.VolumeIcon.icns       </span>file           at           <span class='ec-lmtt-10'>Preboot       </span>volume           in           per-volume
+                                                                                                  
+                                                                                                  
              directory (<span class='ec-lmtt-10'>/System/Volumes/Preboot/{GUID}/ </span>when mounted at the default location within macOS)
              for APFS (if present).
              </li>
@@ -2285,13 +2297,13 @@ until the next manual reconfiguration.
              the default location within macOS) for APFS (otherwise).
              </li>
              <li class='itemize'><span class='ec-lmtt-10'>.VolumeIcon.icns </span>file at the volume root for other filesystems.</li></ul>
-         <!-- l. 3467 --><p class='noindent'><span class='ec-lmri-10'>Note 1</span>: The Apple picker partially supports placing a volume icon file at the operating system’s <span class='ec-lmtt-10'>Data </span>volume root,
+         <!-- l. 3483 --><p class='noindent'><span class='ec-lmri-10'>Note 1</span>: The Apple picker partially supports placing a volume icon file at the operating system’s <span class='ec-lmtt-10'>Data </span>volume root,
          <span class='ec-lmtt-10'>/System/Volumes/Data/</span>, when mounted at the default location within macOS. This approach is flawed: the file is
          neither accessible to OpenCanopy nor to the Apple picker when FileVault 2, which is meant to be the default choice,
          is enabled. Therefore, OpenCanopy does not attempt supporting Apple’s approach. A volume icon file may be
          placed at the root of the <span class='ec-lmtt-10'>Preboot </span>volume for compatibility with both OpenCanopy and the Apple picker, or use the
          <span class='ec-lmtt-10'>Preboot </span>per-volume location as above with OpenCanopy as a preferred alternative to Apple’s approach.
-         </p><!-- l. 3476 --><p class='noindent'><span class='ec-lmri-10'>Note 2</span>: Be aware that using a volume icon on any drive overrides the normal OpenCore picker behaviour for
+         </p><!-- l. 3492 --><p class='noindent'><span class='ec-lmri-10'>Note 2</span>: Be aware that using a volume icon on any drive overrides the normal OpenCore picker behaviour for
          that drive of selecting the appropriate icon depending on whether the drive is internal or external.
          </p></li>
          <li class='itemize'><span class='ec-lmtt-10'>0x0002 </span>— <span class='ec-lmtt-10'>OC_ATTR_USE_DISK_LABEL_FILE</span>, use custom prerendered titles for boot entries from <span class='ec-lmtt-10'>.disk_label</span>
@@ -2299,8 +2311,6 @@ until the next manual reconfiguration.
          utility or the <span class='ec-lmtt-10'>bless --folder {FOLDER_PATH} --label {LABEL_TEXT} </span>command. When prerendered labels are
          disabled or missing, use label text in <span class='ec-lmtt-10'>.contentDetails </span>(or <span class='ec-lmtt-10'>.disk_label.contentDetails</span>) file next to bootloader if
          present instead, otherwise the entry name itself will be rendered.
-                                                                                                  
-                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x0004 </span>— <span class='ec-lmtt-10'>OC_ATTR_USE_GENERIC_LABEL_IMAGE</span>, provides predefined label images for boot entries without custom
          entries. This may however give less detail for the actual boot entry.
@@ -2319,12 +2329,14 @@ until the next manual reconfiguration.
          and builtin picker.
          </li>
          <li class='itemize'>
-         <!-- l. 3502 --><p class='noindent'><span class='ec-lmtt-10'>0x0080 </span>— <span class='ec-lmtt-10'>OC_ATTR_USE_FLAVOUR_ICON</span>, provides flexible boot entry content description, suitable for picking the
+         <!-- l. 3518 --><p class='noindent'><span class='ec-lmtt-10'>0x0080 </span>— <span class='ec-lmtt-10'>OC_ATTR_USE_FLAVOUR_ICON</span>, provides flexible boot entry content description, suitable for picking the
          best media across different content sets:
-         </p><!-- l. 3506 --><p class='noindent'>When enabled, the entry icon in OpenCanopy and the audio assist entry sound in OpenCanopy and builtin boot
+         </p><!-- l. 3522 --><p class='noindent'>When enabled, the entry icon in OpenCanopy and the audio assist entry sound in OpenCanopy and builtin boot
          picker are chosen by something called content flavour. To determine content flavour the following algorithm is
          used:
 </p>
+                                                                                                  
+                                                                                                  
              <ul class='itemize2'>
              <li class='itemize'>For a Tool the value is read from <span class='ec-lmtt-10'>Flavour </span>field.
              </li>
@@ -2337,18 +2349,16 @@ until the next manual reconfiguration.
              </li>
              <li class='itemize'>If read flavour is <span class='ec-lmtt-10'>Auto </span>or there is no <span class='ec-lmtt-10'>.contentFlavour</span>, entry flavour is chosen based on the entry type
              (e.g. Windows automatically gets Windows flavour).</li></ul>
-         <!-- l. 3524 --><p class='noindent'>The Flavour value is a sequence of <span class='ec-lmtt-10'>: </span>separated names limited to 64 characters of printable 7-bit ASCII. This is
+         <!-- l. 3540 --><p class='noindent'>The Flavour value is a sequence of <span class='ec-lmtt-10'>: </span>separated names limited to 64 characters of printable 7-bit ASCII. This is
          designed to support up to approximately five names. Each name refers to a flavour, with the first name having the
          highest priority and the last name having the lowest priority. Such a structure allows describing an entry in a more
          specific way, with icons selected flexibly depending on support by the audio-visual pack. A missing audio or icon file
          means the next flavour should be tried, and if all are missing the choice happens based on the type of the
          entry. Example flavour values: <span class='ec-lmtt-10'>BigSur:Apple</span>, <span class='ec-lmtt-10'>Windows10:Windows</span>. <span class='ec-lmtt-10'>OpenShell:UEFIShell:Shell</span>.
-         </p><!-- l. 3534 --><p class='noindent'>Using flavours means that you can switch between icon sets easily, with the flavour selecting the best available icons
+         </p><!-- l. 3550 --><p class='noindent'>Using flavours means that you can switch between icon sets easily, with the flavour selecting the best available icons
          from each set. E.g. specifying icon flavour <span class='ec-lmtt-10'>Debian:Linux </span>will use the icon <span class='ec-lmtt-10'>Debian.icns </span>if provided,
          then will try <span class='ec-lmtt-10'>Linux.icns</span>, then will fall back to the default for an OS, which is <span class='ec-lmtt-10'>HardDrive.icns</span>.
-                                                                                                  
-                                                                                                  
-         </p><!-- l. 3540 --><p class='noindent'>Things to keep in mind:
+         </p><!-- l. 3556 --><p class='noindent'>Things to keep in mind:
 </p>
              <ul class='itemize2'>
              <li class='itemize'>For  security  reasons  <span class='ec-lmtt-10'>Ext&lt;Flavour&gt;.icns </span>and  <span class='ec-lmtt-10'>&lt;Flavour&gt;.icns </span>are  both  supported,  and  only
@@ -2366,30 +2376,28 @@ until the next manual reconfiguration.
              <li class='itemize'>A list of recommended flavours is provided in <span class='ec-lmtt-10'>Docs/Flavours.md</span>.</li></ul>
          </li></ul>
      </li>
-<li class='enumerate' id='x1-44014x7'>
-     <!-- l. 3560 --><p class='noindent'><span class='ec-lmtt-10'>PickerAudioAssist</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Enable screen reader by default in the OpenCore picker.
-     </p><!-- l. 3565 --><p class='noindent'>For the macOS bootloader, screen reader preference is set in the <span class='ec-lmtt-10'>preferences.efires </span>archive in the
+<li class='enumerate' id='x1-44016x8'>
+     <!-- l. 3576 --><p class='noindent'><span class='ec-lmtt-10'>PickerAudioAssist</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Enable screen reader by default in the OpenCore picker.
+     </p><!-- l. 3581 --><p class='noindent'>For the macOS bootloader, screen reader preference is set in the <span class='ec-lmtt-10'>preferences.efires </span>archive in the
      <span class='ec-lmtt-10'>isVOEnabled.int32 </span>file and is controlled by the operating system. For OpenCore screen reader support,
      this option is an independent equivalent. Toggling screen reader support in both the OpenCore picker
      and the macOS bootloader FileVault 2 login window can also be done by using the <span class='ec-lmtt-10'>Command </span>+ <span class='ec-lmtt-10'>F5 </span>key
      combination.
-     </p><!-- l. 3572 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: The screen reader requires working audio support. Refer to the <a href='#audio-properties'><span class='ec-lmtt-10'>UEFI Audio Properties</span></a> section for
+     </p><!-- l. 3588 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: The screen reader requires working audio support. Refer to the <a href='#audio-properties'><span class='ec-lmtt-10'>UEFI Audio Properties</span></a> section for
      details.
      </p></li>
-<li class='enumerate' id='x1-44016x8'>
-     <!-- l. 3576 --><p class='noindent'><span class='ec-lmtt-10'>PollAppleHotKeys</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Enable <span class='ec-lmtt-10'>modifier hotkey </span>handling in the OpenCore picker.
-     </p><!-- l. 3581 --><p class='noindent'>In addition to <span class='ec-lmtt-10'>action hotkeys</span>, which are partially described in the <span class='ec-lmtt-10'>PickerMode </span>section and are typically handled by
+<li class='enumerate' id='x1-44018x9'>
+     <!-- l. 3592 --><p class='noindent'><span class='ec-lmtt-10'>PollAppleHotKeys</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Enable <span class='ec-lmtt-10'>modifier hotkey </span>handling in the OpenCore picker.
+     </p><!-- l. 3597 --><p class='noindent'>In addition to <span class='ec-lmtt-10'>action hotkeys</span>, which are partially described in the <span class='ec-lmtt-10'>PickerMode </span>section and are typically handled by
      Apple BDS, modifier keys handled by the operating system bootloader (<span class='ec-lmtt-10'>boot.efi</span>) also exist. These keys allow changing
      the behaviour of the operating system by providing different boot modes.
-     </p><!-- l. 3586 --><p class='noindent'>On certain firmware, using modifier keys may be problematic due to driver incompatibilities. To workaround this
+     </p><!-- l. 3602 --><p class='noindent'>On certain firmware, using modifier keys may be problematic due to driver incompatibilities. To workaround this
      problem, this option allows registering certain hotkeys in a more permissive manner from within the OpenCore
      picker. Such extensions include support for tapping on key combinations before selecting the boot item,
      and for reliable detection of the <span class='ec-lmtt-10'>Shift </span>key when selecting the boot item, in order to work around the
      fact that hotkeys which are continuously held during boot cannot be reliably detected on many PS/2
      keyboards.
-     </p><!-- l. 3593 --><p class='noindent'>This list of known <span class='ec-lmtt-10'>modifier hotkeys </span>includes: </p>
-                                                                                                  
-                                                                                                  
+     </p><!-- l. 3609 --><p class='noindent'>This list of known <span class='ec-lmtt-10'>modifier hotkeys </span>includes: </p>
          <ul class='itemize1'>
          <li class='itemize'><span class='ec-lmtt-10'>CMD+C+MINUS </span>— disable board compatibility checking.
          </li>
@@ -2403,29 +2411,11 @@ until the next manual reconfiguration.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>Shift+Enter</span>, <span class='ec-lmtt-10'>Shift+Index </span>— safe mode, may be used in combination with <span class='ec-lmtt-10'>CTRL+Enter</span>, <span class='ec-lmtt-10'>CTRL+Index</span>.</li></ul>
      </li>
-<li class='enumerate' id='x1-44018x9'>
-     <!-- l. 3606 --><p class='noindent'><span class='ec-lmtt-10'>ShowPicker</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Always</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Show a simple picker to allow boot entry selection: </p>
-         <ul class='itemize1'>
-         <li class='itemize'><span class='ec-lmtt-10'>Always </span>— Always show picker.
-         </li>
-         <li class='itemize'><span class='ec-lmtt-10'>Never </span>— Never show picker.
-         </li>
-         <li class='itemize'><span class='ec-lmtt-10'>SkipOnHibernateWake </span>— Like <span class='ec-lmtt-10'>Always</span>, however doesn’t show picker if waking from macOS hibernation.</li></ul>
-     <!-- l. 3617 --><p class='noindent'>Notes for <span class='ec-lmtt-10'>SkipOnHibernateWake</span>: </p>
-         <ul class='itemize1'>
-         <li class='itemize'>Only supports macOS hibernation wake, Windows and Linux are currently out of scope.
-         </li>
-         <li class='itemize'>Should only be used on systems with reliable hibernation wake in macOS, otherwise users may not be able
-         to visually see boot loops that may occur.
-         </li>
-         <li class='itemize'>Highly recommended to pair this option with <span class='ec-lmtt-10'>PollAppleHotKeys</span>, allows to enter picker in case of issues
-         with hibernation wake.
-         </li>
-         <li class='itemize'>Visual indication for hibernation wake is currently out of scope.</li></ul>
+<li class='enumerate' id='x1-44020x10'><span class='ec-lmtt-10'>ShowPicker</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Show a simple picker to allow boot entry selection.
      </li>
                                                                                                   
                                                                                                   
-<li class='enumerate' id='x1-44020x10'>
+<li class='enumerate' id='x1-44022x11'>
      <!-- l. 3628 --><p class='noindent'><span class='ec-lmtt-10'>TakeoffDelay</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span>, 32 bit<br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Delay in microseconds executed before handling the OpenCore picker startup and <span class='ec-lmtt-10'>action
      </span><span class='ec-lmtt-10'>hotkeys</span>.
      </p><!-- l. 3634 --><p class='noindent'>Introducing a delay may give extra time to hold the right <span class='ec-lmtt-10'>action hotkey </span>sequence to, for instance, boot into recovery
@@ -2441,10 +2431,10 @@ until the next manual reconfiguration.
      and/or slow monitor signal synchronisation may cause the boot logo not to be shown at all on some boots or
      reboots.
      </p></li>
-<li class='enumerate' id='x1-44022x11'><span class='ec-lmtt-10'>Timeout</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span>, 32 bit<br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Timeout in seconds in the OpenCore picker before automatic booting of the default boot entry. Set to <span class='ec-lmtt-10'>0 </span>to
+<li class='enumerate' id='x1-44024x12'><span class='ec-lmtt-10'>Timeout</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span>, 32 bit<br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Timeout in seconds in the OpenCore picker before automatic booting of the default boot entry. Set to <span class='ec-lmtt-10'>0 </span>to
      disable.
      </li>
-<li class='enumerate' id='x1-44024x12'>
+<li class='enumerate' id='x1-44026x13'>
      <!-- l. 3658 --><p class='noindent'><span class='ec-lmtt-10'>PickerMode</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Builtin</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Choose picker used for boot management.
      </p><!-- l. 3663 --><p class='noindent'><span class='ec-lmtt-10'>PickerMode </span>describes the underlying boot management with an optional user interface responsible for handling boot
      options.
@@ -2498,7 +2488,7 @@ until the next manual reconfiguration.
      or next and subsequently, i.e. as the blessed entry (with <span class='ec-lmtt-10'>CTRL+Enter</span>), as normal. After the selection is made, the system
      will reboot and the chosen entry will be booted.
      </p></li>
-<li class='enumerate' id='x1-44026x13'>
+<li class='enumerate' id='x1-44028x14'>
      <!-- l. 3729 --><p class='noindent'><span class='ec-lmtt-10'>PickerVariant</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Auto</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Choose specific icon set to be used for boot management.
      </p><!-- l. 3734 --><p class='noindent'>An icon set is a directory path relative to <span class='ec-lmtt-10'>Resources\Image</span>, where the icons and an optional manifest
      are located. It is recommended for the artists to use provide their sets in the <span class='ec-lmtt-10'>Vendor\Set </span>format, e.g.
@@ -3263,7 +3253,7 @@ until the next manual reconfiguration.
      </li>
 <li class='enumerate' id='x1-49008x4'><span class='ec-lmtt-10'>Enabled</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Set to <span class='ec-lmtt-10'>true </span>activate this entry.
      </li>
-<li class='enumerate' id='x1-49010x5'><span class='ec-lmtt-10'>Flavour</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Auto</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Specify the content flavour for this entry. See <a href='#x1-44012x6'><span class='ec-lmtt-10'>OC_ATTR_USE_FLAVOUR_ICON</span></a> flag for documentation.
+<li class='enumerate' id='x1-49010x5'><span class='ec-lmtt-10'>Flavour</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Auto</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Specify the content flavour for this entry. See <a href='#x1-44014x7'><span class='ec-lmtt-10'>OC_ATTR_USE_FLAVOUR_ICON</span></a> flag for documentation.
      </li>
 <li class='enumerate' id='x1-49012x6'>
      <!-- l. 4687 --><p class='noindent'><span class='ec-lmtt-10'>FullNvramAccess</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Disable <span class='ec-lmtt-10'>OpenRuntime </span>NVRAM protection during usage of a tool.
