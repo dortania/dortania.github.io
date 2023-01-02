@@ -24,7 +24,7 @@
 <!-- l. 125 --><p class='noindent'>
 </p><!-- l. 132 --><p class='noindent'> <img alt='PIC' height='160' src='Logos/Logo.png' width='160' />
 </p><!-- l. 136 --><p class='noindent'><span class='ec-lmssbx-10x-x-248'>OpenCore</span>
-</p><!-- l. 140 --><p class='noindent'><span class='ec-lmss-17x-x-143'>Reference Manual (0.8</span><span class='sout'>.7</span><span class='uwave'>.8</span><span class='ec-lmss-17x-x-143'>)</span>
+</p><!-- l. 140 --><p class='noindent'><span class='ec-lmss-17x-x-143'>Reference Manual (0.8</span><span class='sout'>.8</span><span class='uwave'>.9</span><span class='ec-lmss-17x-x-143'>)</span>
 </p><!-- l. 144 --><p class='noindent'><span class='ec-lmss-17x-x-143'>[2023.01.02]</span>
 </p><!-- l. 152 --><p class='noindent'>Copyright <span class='ts1-lmr10-'>©</span>2018-2022 vit9696
 </p>
@@ -1991,14 +1991,13 @@ installed on the media, while alternate options represent recovery options for t
          </li>
          <li class='itemize'>For file device paths, check for presence on the file system directly.
          </li>
-         <li class='itemize'><span class='sout'>On the OpenCore boot partition, exclude all OpenCore bootstrap files by file header checks</span><span class='uwave'>Exclude entries if
-         there is a .contentVisibility </span><span class='uwave'>file near the bootloader or inside the boot directory with Disabled </span><span class='uwave'>contents
-         (ASCII)</span>.
+         <li class='itemize'>Exclude entries if there is a <span class='ec-lmtt-10'>.contentVisibility </span>file near the bootloader or inside the boot directory with
+         <span class='ec-lmtt-10'>Disabled </span>contents (ASCII).
          </li>
          <li class='itemize'>Mark device handle as <span class='ec-lmri-10'>used </span>in the list of partition handles if any.
          </li>
-         <li class='itemize'>Register the resulting entries as primary options and determine their types. <br class='newline' />The option will become auxiliary for some types (e.g. Apple HFS recovery) <span class='uwave'>or if its .contentVisibility
-         </span><span class='uwave'>file contains Auxiliary</span>.</li></ul>
+         <li class='itemize'>Register the resulting entries as primary options and determine their types. <br class='newline' />The option will become auxiliary for some types (e.g. Apple HFS recovery) or if its <span class='ec-lmtt-10'>.contentVisibility</span>
+         file contains <span class='ec-lmtt-10'>Auxiliary</span>.</li></ul>
      </li>
 <li class='enumerate' id='x1-42008x4'>
      <!-- l. 3173 --><p class='noindent'>For each partition handle: </p>
@@ -2039,9 +2038,9 @@ scanning algorithm.
      <li class='itemize'>Look up the first valid primary option in the <span class='ec-lmtt-10'>BootNext </span>UEFI variable.
      </li>
      <li class='itemize'>On failure, look up the first valid primary option in the <span class='ec-lmtt-10'>BootOrder </span>UEFI variable.
-                                                                                                  
-                                                                                                  
      </li>
+                                                                                                  
+                                                                                                  
      <li class='itemize'>Mark the option as the default option to boot.
      </li>
      <li class='itemize'>Boot option through the picker or without it depending on the <span class='ec-lmtt-10'>ShowPicker </span>option.
@@ -2073,9 +2072,9 @@ until the next manual reconfiguration.
      </p></li>
 <li class='enumerate' id='x1-43006x3'><span class='ec-lmtt-10'>Debug</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist dict</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Apply debug configuration described in the <a href='#debug-properties'>Debug Properties</a> section below.
      </li>
-                                                                                                  
-                                                                                                  
 <li class='enumerate' id='x1-43008x4'>
+                                                                                                  
+                                                                                                  
      <!-- l. 3260 --><p class='noindent'><span class='ec-lmtt-10'>Entries</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist array</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Add boot entries to OpenCore picker.
      </p><!-- l. 3265 --><p class='noindent'>To be filled with <span class='ec-lmtt-10'>plist dict </span>values, describing each load entry. Refer to the <a href='#entry-properties'>Entry Properties</a> section below for
      details.
@@ -2107,10 +2106,10 @@ until the next manual reconfiguration.
      </li></ol>
 <!-- l. 3312 --><p class='noindent'>
 </p>
-                                                                                                  
-                                                                                                  
 <h4 class='subsectionHead' id='boot-properties'><span class='titlemark'>8.3   </span> <a id='x1-440008.3'></a>Boot Properties</h4>
 <!-- l. 3314 --><p class='noindent'>
+                                                                                                  
+                                                                                                  
      </p><ol class='enumerate1'>
 <li class='enumerate' id='x1-44002x1'>
      <!-- l. 3317 --><p class='noindent'><span class='ec-lmtt-10'>ConsoleAttributes</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Sets specific attributes for the console.
@@ -2145,10 +2144,10 @@ until the next manual reconfiguration.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x0C </span>— <span class='ec-lmtt-10'>EFI_LIGHTRED</span>
          </li>
-                                                                                                  
-                                                                                                  
          <li class='itemize'><span class='ec-lmtt-10'>0x0D </span>— <span class='ec-lmtt-10'>EFI_LIGHTMAGENTA</span>
          </li>
+                                                                                                  
+                                                                                                  
          <li class='itemize'><span class='ec-lmtt-10'>0x0E </span>— <span class='ec-lmtt-10'>EFI_YELLOW</span>
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x0F </span>— <span class='ec-lmtt-10'>EFI_WHITE</span>
@@ -2182,10 +2181,10 @@ until the next manual reconfiguration.
          <li class='itemize'><span class='ec-lmtt-10'>RTC </span>— Use RTC detection.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>NVRAM </span>— Use NVRAM detection.</li></ul>
-                                                                                                  
-                                                                                                  
      <!-- l. 3373 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: If the firmware can handle hibernation itself (valid for Mac EFI firmware), then <span class='ec-lmtt-10'>None </span>should be specified to
      hand-off hibernation state as is to OpenCore.
+                                                                                                  
+                                                                                                  
      </p></li>
 <li class='enumerate' id='x1-44006x3'>
      <!-- l. 3377 --><p class='noindent'><span class='ec-lmtt-10'>HibernateSkipsPicker</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Do not show picker if waking from macOS hibernation.
@@ -2215,10 +2214,10 @@ until the next manual reconfiguration.
          <li class='itemize'>Entry is system (e.g. <span class='ec-lmtt-10'>Reset NVRAM</span>).</li></ul>
      <!-- l. 3408 --><p class='noindent'>To display all entries, the picker menu can be reloaded into “Extended Mode” by pressing the <span class='ec-lmtt-10'>Spacebar </span>key. Hiding
      auxiliary entries may increase boot performance on multi-disk systems.
-                                                                                                  
-                                                                                                  
      </p></li>
 <li class='enumerate' id='x1-44010x5'>
+                                                                                                  
+                                                                                                  
      <!-- l. 3412 --><p class='noindent'><span class='ec-lmtt-10'>LauncherOption</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Disabled</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Register the launcher option in the firmware preferences for persistence.
      </p><!-- l. 3417 --><p class='noindent'>Valid values:
 </p>
@@ -2261,11 +2260,11 @@ until the next manual reconfiguration.
      <span class='ec-lmtt-10'>Short</span>, this applies and only the OpenCore boot entry will be seen afterwards, when any other USB is
      inserted (this highly non-standard BIOS behaviour affects other software as well). The best way to avoid
      this is to leave <span class='ec-lmtt-10'>LauncherOption </span>set to <span class='ec-lmtt-10'>Disabled </span>or <span class='ec-lmtt-10'>System </span>on any version of OpenCore which will be
-                                                                                                  
-                                                                                                  
      started from a USB drive on this firmware. If the problem has already occurred the quickest reliable fix is:
      </p>
          <ul class='itemize1'>
+                                                                                                  
+                                                                                                  
          <li class='itemize'>Enable the system UEFI Shell in Intel Visual BIOS
          </li>
          <li class='itemize'>With power off, insert an OpenCore USB
@@ -2301,8 +2300,6 @@ until the next manual reconfiguration.
          <li class='itemize'>
          <!-- l. 3512 --><p class='noindent'><span class='ec-lmtt-10'>0x0001 </span>— <span class='ec-lmtt-10'>OC_ATTR_USE_VOLUME_ICON</span>, provides custom icons for boot entries:
          </p><!-- l. 3515 --><p class='noindent'>OpenCore will attempt loading a volume icon by searching as follows, and will fallback to the default icon on failure:
-                                                                                                  
-                                                                                                  
          </p>
              <ul class='itemize2'>
              <li class='itemize'><span class='ec-lmtt-10'>.VolumeIcon.icns       </span>file           at           <span class='ec-lmtt-10'>Preboot       </span>volume           in           per-volume
@@ -2348,11 +2345,11 @@ until the next manual reconfiguration.
          <!-- l. 3563 --><p class='noindent'><span class='ec-lmtt-10'>0x0080 </span>— <span class='ec-lmtt-10'>OC_ATTR_USE_FLAVOUR_ICON</span>, provides flexible boot entry content description, suitable for picking the
          best media across different content sets:
          </p><!-- l. 3567 --><p class='noindent'>When enabled, the entry icon in OpenCanopy and the audio assist entry sound in OpenCanopy and builtin boot
-                                                                                                  
-                                                                                                  
          picker are chosen by something called content flavour. To determine content flavour the following algorithm is
          used:
 </p>
+                                                                                                  
+                                                                                                  
              <ul class='itemize2'>
              <li class='itemize'>For a Tool the value is read from <span class='ec-lmtt-10'>Flavour </span>field.
              </li>
@@ -2392,8 +2389,6 @@ until the next manual reconfiguration.
              <li class='itemize'>A list of recommended flavours is provided in <span class='ec-lmtt-10'>Docs/Flavours.md</span>.</li></ul>
          </li></ul>
      </li>
-                                                                                                  
-                                                                                                  
 <li class='enumerate' id='x1-44016x8'>
      <!-- l. 3621 --><p class='noindent'><span class='ec-lmtt-10'>PickerAudioAssist</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Enable screen reader by default in the OpenCore picker.
      </p><!-- l. 3626 --><p class='noindent'>For the macOS bootloader, screen reader preference is set in the <span class='ec-lmtt-10'>preferences.efires </span>archive in the
@@ -2431,6 +2426,8 @@ until the next manual reconfiguration.
      </li>
 <li class='enumerate' id='x1-44020x10'><span class='ec-lmtt-10'>ShowPicker</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Show a simple picker to allow boot entry selection.
      </li>
+                                                                                                  
+                                                                                                  
 <li class='enumerate' id='x1-44022x11'>
      <!-- l. 3673 --><p class='noindent'><span class='ec-lmtt-10'>TakeoffDelay</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span>, 32 bit<br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Delay in microseconds executed before handling the OpenCore picker startup and <span class='ec-lmtt-10'>action
      </span><span class='ec-lmtt-10'>hotkeys</span>.
@@ -2465,6 +2462,8 @@ until the next manual reconfiguration.
          <li class='itemize'><span class='ec-lmtt-10'>Apple </span>— Apple boot management is used if available. Otherwise, the <span class='ec-lmtt-10'>Builtin </span>mode is used.</li></ul>
      <!-- l. 3723 --><p class='noindent'>Upon success, the <span class='ec-lmtt-10'>External </span>mode may entirely disable all boot management in OpenCore except for policy enforcement.
      In the <span class='ec-lmtt-10'>Apple </span>mode, it may additionally bypass policy enforcement. Refer to the <a href='#opencanopy'>OpenCanopy</a> plugin for an example of a
+                                                                                                  
+                                                                                                  
      custom user interface.
      </p><!-- l. 3728 --><p class='noindent'>The OpenCore built-in picker contains a set of actions chosen during the boot process. The list of supported
      actions is similar to Apple BDS and typically can be accessed by holding <span class='ec-lmtt-10'>action hotkeys </span>during the boot
@@ -2505,11 +2504,11 @@ until the next manual reconfiguration.
 <li class='enumerate' id='x1-44028x14'>
      <!-- l. 3774 --><p class='noindent'><span class='ec-lmtt-10'>PickerVariant</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Auto</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Choose specific icon set to be used for boot management.
      </p><!-- l. 3779 --><p class='noindent'>An icon set is a directory path relative to <span class='ec-lmtt-10'>Resources\Image</span>, where the icons and an optional manifest
-                                                                                                  
-                                                                                                  
      are located. It is recommended for the artists to use provide their sets in the <span class='ec-lmtt-10'>Vendor\Set </span>format, e.g.
      <span class='ec-lmtt-10'>Acidanthera\GoldenGate</span>.
      </p><!-- l. 3784 --><p class='noindent'>Sample resources provided as a part of <a href='https://github.com/acidanthera/OcBinaryData'>OcBinaryData repository</a> provide the following icon set: </p>
+                                                                                                  
+                                                                                                  
          <ul class='itemize1'>
          <li class='itemize'><span class='ec-lmtt-10'>Acidanthera\GoldenGate </span>— macOS 11 styled icon set.
          </li>
@@ -2541,12 +2540,12 @@ until the next manual reconfiguration.
      <span class='ec-lmtt-10'>KernelDebugKit </span>from <a href='https://developer.apple.com'>developer.apple.com</a> when debugging a problem. To activate a development kernel, the
      boot argument <span class='ec-lmtt-10'>kcsuffix=development </span>should be added. Use the <span class='ec-lmtt-10'>uname -a </span>command to ensure that the current
      loaded kernel is a development (or a debug) kernel.
-                                                                                                  
-                                                                                                  
      </p><!-- l. 3835 --><p class='noindent'>In cases where the OpenCore kernel panic saving mechanism is not used, kernel panic logs may still be found in
      the <span class='ec-lmtt-10'>/Library/Logs/DiagnosticReports </span>directory.
      </p><!-- l. 3838 --><p class='noindent'>Starting with macOS Catalina, kernel panics are stored in JSON format and thus need to be preprocessed before
      passing to <span class='ec-lmtt-10'>kpdescribe.sh</span>:
+                                                                                                  
+                                                                                                  
 </p>
      <!-- l. 3841 -->
      <pre class='lstlisting' id='listing-5'><span class='label'><a id='x1-45005r1'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>cat</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>Kernel.panic </span><span class='ec-lmtt-10'>| </span><span class='ec-lmtk-10'>grep </span><span class='ec-lmtt-10'>macOSProcessedStackshotData </span><span class='ec-lmtt-10'>|</span> 
@@ -2574,9 +2573,9 @@ until the next manual reconfiguration.
          <li class='itemize'><span class='ec-lmtt-10'>0x80000000 </span>(bit <span class='ec-lmtt-10'>31</span>) — <span class='ec-lmtt-10'>DEBUG_ERROR </span>in <span class='ec-lmtt-10'>DEBUG</span>, <span class='ec-lmtt-10'>NOOPT</span>, <span class='ec-lmtt-10'>RELEASE</span>.</li></ul>
      </li>
 <li class='enumerate' id='x1-45014x6'>
-                                                                                                  
-                                                                                                  
      <!-- l. 3884 --><p class='noindent'><span class='ec-lmtt-10'>LogModules</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>*</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Filter log entries by module.
+                                                                                                  
+                                                                                                  
      </p><!-- l. 3889 --><p class='noindent'>This option filters logging generated by specific modules, both in the log and onscreen. Two modes are supported:
      </p>
          <ul class='itemize1'>
@@ -2609,8 +2608,6 @@ until the next manual reconfiguration.
          <li class='itemize'><span class='ec-lmtt-10'>0x02 </span>(bit <span class='ec-lmtt-10'>1</span>) — Enable basic console (onscreen) logging.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x04 </span>(bit <span class='ec-lmtt-10'>2</span>) — Enable logging to Data Hub.
-                                                                                                  
-                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x08 </span>(bit <span class='ec-lmtt-10'>3</span>) — Enable serial port logging.
          </li>
@@ -2657,10 +2654,10 @@ until the next manual reconfiguration.
      line allowing better attribution of the line to the functionality.
      </p><!-- l. 3992 --><p class='noindent'>The list of currently used tags is as follows.
      </p><!-- l. 3994 --><p class='noindent'><span class='ec-lmbx-10'>Drivers and tools</span>: </p>
-                                                                                                  
-                                                                                                  
          <ul class='itemize1'>
          <li class='itemize'><span class='ec-lmtt-10'>BMF </span>— OpenCanopy, bitmap font
+                                                                                                  
+                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>BS </span>— Bootstrap
          </li>
@@ -2697,10 +2694,10 @@ until the next manual reconfiguration.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>OCA </span>—- OcAcpiLib
          </li>
-                                                                                                  
-                                                                                                  
          <li class='itemize'><span class='ec-lmtt-10'>OCBP </span>— OcAppleBootPolicyLib
          </li>
+                                                                                                  
+                                                                                                  
          <li class='itemize'><span class='ec-lmtt-10'>OCB </span>— OcBootManagementLib
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>OCLBT </span>— OcBlitLib
@@ -2737,10 +2734,10 @@ until the next manual reconfiguration.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>OCL </span>— OcLogAggregatorLib
          </li>
-                                                                                                  
-                                                                                                  
          <li class='itemize'><span class='ec-lmtt-10'>OCM </span>— OcMiscLib
          </li>
+                                                                                                  
+                                                                                                  
          <li class='itemize'><span class='ec-lmtt-10'>OCMCO </span>— OcMachoLib
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>OCME </span>— OcHeciLib
@@ -2819,10 +2816,10 @@ until the next manual reconfiguration.
      from macOS 10.15 and older will often run out of free memory on the <span class='ec-lmtt-10'>/var/tmp </span>partition when trying to install macOS
      with the personalised Apple Secure Boot. Soon after downloading the macOS installer image, an <span class='ec-lmtt-10'>Unable to verify
      </span><span class='ec-lmtt-10'>macOS </span>error message will appear.
-                                                                                                  
-                                                                                                  
      </p><!-- l. 4130 --><p class='noindent'>To workaround this issue, allocate a dedicated RAM disk of 2 MBs for macOS personalisation by entering the following
      commands in the macOS recovery terminal before starting the installation:
+                                                                                                  
+                                                                                                  
 </p>
      <!-- l. 4133 -->
      <pre class='lstlisting' id='listing-9'><span class='label'><a id='x1-46007r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>disk</span></span><span style='color:#000000'><span class='ec-lmtt-10'>=</span></span><span style='color:#000000'><span class='ec-lmtt-10'>$</span></span><span style='color:#000000'><span class='ec-lmtt-10'>(</span></span><span style='color:#000000'><span class='ec-lmtt-10'>hdiutil</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>attach </span><span class='ec-lmtt-10'>-nomount </span><span class='ec-lmtt-10'>ram://4096)</span> 
@@ -2859,8 +2856,6 @@ until the next manual reconfiguration.
          policy will let any Apple-signed macOS Recovery load regardless of the Apple Secure Boot state, which may
          not always be desired. While using signed DMG images is more desirable, verifying the image signature
          may slightly slow the boot time down (by up to 1 second).
-                                                                                                  
-                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>Any </span>— any DMG images will mount as normal filesystems. The <span class='ec-lmtt-10'>Any </span>policy is strongly discouraged and will
          result in boot failures when Apple Secure Boot is active.</li></ul>
