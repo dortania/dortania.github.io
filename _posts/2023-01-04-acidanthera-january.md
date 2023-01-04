@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Acidanthera Updates: January 2023"
-date: 2022-12-06 17:00:00 +0100
+date: 2023-01-04 17:00:00 +0100
 categories: Hackintosh updates
 ---
 
