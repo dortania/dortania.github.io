@@ -50,6 +50,15 @@ td center { margin-top:0em; margin-bottom:0em; }
 .Canvas { position:relative; }
 img.math{vertical-align:middle;}
 div.par-math-display, div.math-display{text-align:center;}
+body{ margin:1em auto; max-width:80ch; padding:0 .62em; }
+h1,h2,h3,h4,h5 { line-height:1.2; }
+@media print{ body{ max-width:none } }
+.partHead, likepartHead { font-size: 2em; }
+.chapterHead, likechapterHead { font-size: 1.7411em; }
+.sectionHead, likesectionHead { font-size: 1.5157em; }
+.subsectionHead, likesubsectionHead { font-size: 1.3195em; }
+.subsubsectionHead, likesubsubsectionHead { font-size: 1.1487em; }
+ @media (prefers-color-scheme: dark) { img[src^="Errata"]{filter: invert(1); } } 
 li p.indent { text-indent: 0em }
 li p:first-child{ margin-top:0em; }
 li p:last-child, li div:last-child { margin-bottom:0.5em; }
