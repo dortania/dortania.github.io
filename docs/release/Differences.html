@@ -25,7 +25,7 @@
 </p><!-- l. 132 --><p class='noindent'> <img alt='PIC' height='160' src='Logos/Logo.png' width='160' />
 </p><!-- l. 136 --><p class='noindent'><span class='ec-lmssbx-10x-x-248'>OpenCore</span>
 </p><!-- l. 140 --><p class='noindent'><span class='ec-lmss-17x-x-143'>Reference Manual (0.8</span><span class='sout'>.8</span><span class='uwave'>.9</span><span class='ec-lmss-17x-x-143'>)</span>
-</p><!-- l. 144 --><p class='noindent'><span class='ec-lmss-17x-x-143'>[2023.02.25]</span>
+</p><!-- l. 144 --><p class='noindent'><span class='ec-lmss-17x-x-143'>[2023.02.26]</span>
 </p><!-- l. 152 --><p class='noindent'>Copyright <span class='ts1-lmr10-'>©</span>2018-2022 vit9696
 </p>
 </div>
@@ -355,7 +355,7 @@ Available entries include:
      <li class='itemize'><span class='ec-lmtt-10'>Kexts </span><br class='newline' />Directory used for storing supplemental kernel information for the <a href='#kernel'><span class='ec-lmtt-10'>Kernel</span></a> section.
      </li>
      <li class='itemize'><span class='ec-lmtt-10'>Resources </span><br class='newline' />Directory used for storing media resources such as audio files for screen reader support. Refer to the <a href='#audio-properties'><span class='ec-lmtt-10'>UEFI Audio
-     </span><span class='ec-lmtt-10'>Properties</span></a> section for details. This directory also contains image files for graphical user interface. Refer to the
+     Properties</span></a> section for details. This directory also contains image files for graphical user interface. Refer to the
      <a href='#opencanopy'>OpenCanopy</a> section for details.
      </li>
      <li class='itemize'><span class='ec-lmtt-10'>Tools </span><br class='newline' />Directory used for storing supplemental tools.
@@ -435,14 +435,14 @@ for use despite the toolchain name. An example command sequence is as follows:
 <!-- l. 710 -->
 <p id='-compilation-commands'><a id='x1-11001r1'></a>
 <a id='x1-11002'></a>
-</p><pre class='lstlisting' id='listing-1'><span class='label'><a id='x1-11003r1'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>git</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>clone </span><span class='ec-lmtt-10'>--depth=1 </span><span class='ec-lmtt-10'>https://github.com/acidanthera/audk </span><span class='ec-lmtt-10'>UDK</span> 
+</p><pre class='lstlisting' id='listing-1'><span class='label'><a id='x1-11003r1'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>git</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>clone --depth=1 https://github.com/acidanthera/audk UDK</span> 
 </span><span class='label'><a id='x1-11004r2'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>cd</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>UDK</span> 
-</span><span class='label'><a id='x1-11005r3'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>git</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>submodule </span><span class='ec-lmtt-10'>update </span><span class='ec-lmtt-10'>--init </span><span class='ec-lmtt-10'>--recommend-shallow</span> 
+</span><span class='label'><a id='x1-11005r3'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>git</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>submodule update --init --recommend-shallow</span> 
 </span><span class='label'><a id='x1-11006r4'></a></span><span class='uwave'><span style='color:#0000FF'>rm</span></span><span class='uwave'><span style='color:#0000FF'> </span></span><span class='uwave'><span style='color:#0000FF'>-</span></span><span class='uwave'><span style='color:#0000FF'>rf</span></span><span class='uwave'><span style='color:#0000FF'> </span></span><span class='uwave'><span style='color:#0000FF'>OpenCorePkg</span></span> 
-<span class='label'><a id='x1-11007r5'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>git</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>clone </span><span class='ec-lmtt-10'>--depth=1 </span><span class='ec-lmtt-10'>https://github.com/acidanthera/OpenCorePkg</span> 
+<span class='label'><a id='x1-11007r5'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>git</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>clone --depth=1 https://github.com/acidanthera/OpenCorePkg</span> 
 </span><span class='label'><a id='x1-11008r6'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>.</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>./edksetup.sh</span> 
-</span><span class='label'><a id='x1-11009r7'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>make</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>-C </span><span class='ec-lmtt-10'>BaseTools</span> 
-</span><span class='label'><a id='x1-11010r8'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>build</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>-a </span><span class='ec-lmtt-10'>X64 </span><span class='ec-lmtt-10'>-b </span><span class='ec-lmtt-10'>RELEASE </span><span class='ec-lmtt-10'>-t </span><span class='ec-lmtt-10'>XCODE5 </span><span class='ec-lmtt-10'>-p </span><span class='ec-lmtt-10'>OpenCorePkg/OpenCorePkg.dsc</span></span></pre>
+</span><span class='label'><a id='x1-11009r7'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>make</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>-C BaseTools</span> 
+</span><span class='label'><a id='x1-11010r8'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>build</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>-a X64 -b RELEASE -t XCODE5 -p OpenCorePkg/OpenCorePkg.dsc</span></span></pre>
 <figcaption class='caption'><span class='id'>Listing 1: </span><span class='content'>Compilation Commands</span></figcaption><!-- tex4ht:label?: x1-11010r3.3  -->
 <!-- l. 722 --><p class='noindent'>For IDE usage Xcode projects are available in the root of the repositories. Another approach could be using <a href='https://microsoft.github.io/language-server-protocol'>Language Server
 Protocols</a>. For example, <a href='https://www.sublimetext.com'>Sublime Text</a> with <a href='https://lsp.sublimetext.io'>LSP for Sublime Text</a> plugin. Add <span class='ec-lmtt-10'>compile_flags.txt </span>file with similar content to
@@ -727,7 +727,7 @@ errors.
      </p><!-- l. 1065 --><p class='noindent'>Only fully-qualified absolute paths are supported (e.g. <span class='ec-lmtt-10'>\_SB.PCI0.LPCB.HPET</span>). Currently supported object types
      are: <span class='ec-lmtt-10'>Device</span>, <span class='ec-lmtt-10'>Field</span>, <span class='ec-lmtt-10'>Method</span>.
      </p><!-- l. 1068 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: Use with care, not all OEM tables can be parsed. Use <span class='ec-lmtt-10'>ACPIe </span>utility to debug. <span class='ec-lmtt-10'>ACPIe </span>compiled with <span class='ec-lmtt-10'>DEBUG=1
-     </span><span class='ec-lmtt-10'>make </span>command produces helpful ACPI lookup tracing.
+     make </span>command produces helpful ACPI lookup tracing.
      </p></li>
 <li class='enumerate' id='x1-19004x2'><span class='ec-lmtt-10'>BaseSkip</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0 </span>(Do not skip any occurrences)<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Number of found <span class='ec-lmtt-10'>Base </span>occurrences to skip before finds and replacements are applied.
      </li>
@@ -895,9 +895,9 @@ boot loop issues on older platforms) may be temporarily disabled. The specific i
 typically be looked at first.
 </p><!-- l. 1357 --><p class='noindent'>Here is an example of a defect found on some <a href='http://www.insanelymac.com/forum/topic/329624-need-cmos-reset-after-sleep-only-after-login/#entry2534645'>Z68 motherboards</a>. To turn Power Nap and the others off, run the following
 commands in Terminal: </p><!-- l. 1360 -->
-<pre class='lstlisting' id='listing-3'><span class='label'><a id='x1-22001r1'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>sudo</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>pmset </span><span class='ec-lmtt-10'>autopoweroff </span><span class='ec-lmtt-10'>0</span> 
-</span><span class='label'><a id='x1-22002r2'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>sudo</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>pmset </span><span class='ec-lmtt-10'>powernap </span><span class='ec-lmtt-10'>0</span> 
-</span><span class='label'><a id='x1-22003r3'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>sudo</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>pmset </span><span class='ec-lmtt-10'>standby </span><span class='ec-lmtt-10'>0</span></span></pre>
+<pre class='lstlisting' id='listing-3'><span class='label'><a id='x1-22001r1'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>sudo</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>pmset autopoweroff 0</span> 
+</span><span class='label'><a id='x1-22002r2'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>sudo</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>pmset powernap 0</span> 
+</span><span class='label'><a id='x1-22003r3'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>sudo</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>pmset standby 0</span></span></pre>
 <!-- l. 1366 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: These settings may be reset by hardware changes and in certain other circumstances. To view their current state, use the
 <span class='ec-lmtt-10'>pmset -g </span>command in Terminal.
 </p><!-- l. 1369 --><p class='noindent'>
@@ -1216,9 +1216,9 @@ commands in Terminal: </p><!-- l. 1360 -->
 serialised map of DevicePaths to a map of property names and their values.
 </p><!-- l. 1897 --><p class='noindent'>Property data can be debugged with <a href='https://github.com/acidanthera/gfxutil'>gfxutil</a>. To obtain current property data, use the following command in macOS:
 </p><!-- l. 1900 -->
-<pre class='lstlisting' id='listing-4'><span class='label'><a id='x1-28001r1'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>ioreg</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>-lw0 </span><span class='ec-lmtt-10'>-p </span><span class='ec-lmtt-10'>IODeviceTree </span><span class='ec-lmtt-10'>-n </span><span class='ec-lmtt-10'>efi </span><span class='ec-lmtt-10'>-r </span><span class='ec-lmtt-10'>-x </span><span class='ec-lmtt-10'>| </span><span class='ec-lmtk-10'>grep </span><span class='ec-lmtt-10'>device-properties </span><span class='ec-lmtt-10'>|</span> 
-</span><span class='label'><a id='x1-28002r2'></a></span><span style='color:#000000'>  <span class='ec-lmtk-10'>sed </span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'>s/.*&lt;//;s/&gt;.*//</span><span class='ts1-lmtt10-'>' </span><span class='ec-lmtt-10'>&gt; </span><span class='ec-lmtt-10'>/tmp/device-properties.hex </span><span class='ec-lmtt-10'>&amp;&amp;</span> 
-</span><span class='label'><a id='x1-28003r3'></a></span><span style='color:#000000'>  <span class='ec-lmtk-10'>gfxutil </span><span class='ec-lmtt-10'>/tmp/device-properties.hex </span><span class='ec-lmtt-10'>/tmp/device-properties.plist </span><span class='ec-lmtt-10'>&amp;&amp;</span> 
+<pre class='lstlisting' id='listing-4'><span class='label'><a id='x1-28001r1'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>ioreg</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>-lw0 -p IODeviceTree -n efi -r -x | </span><span class='ec-lmtk-10'>grep </span><span class='ec-lmtt-10'>device-properties |</span> 
+</span><span class='label'><a id='x1-28002r2'></a></span><span style='color:#000000'>  <span class='ec-lmtk-10'>sed </span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'>s/.*&lt;//;s/&gt;.*//</span><span class='ts1-lmtt10-'>' </span><span class='ec-lmtt-10'>&gt; /tmp/device-properties.hex &amp;&amp;</span> 
+</span><span class='label'><a id='x1-28003r3'></a></span><span style='color:#000000'>  <span class='ec-lmtk-10'>gfxutil </span><span class='ec-lmtt-10'>/tmp/device-properties.hex /tmp/device-properties.plist &amp;&amp;</span> 
 </span><span class='label'><a id='x1-28004r4'></a></span><span style='color:#000000'>  <span class='ec-lmtk-10'>cat </span><span class='ec-lmtt-10'>/tmp/device-properties.plist</span></span></pre>
 <!-- l. 1907 --><p class='noindent'>Device properties are part of the <span class='ec-lmtt-10'>IODeviceTree </span>(<span class='ec-lmtt-10'>gIODT</span>) plane of the macOS I/O Registry. This plane has several construction
 stages relevant for the platform initialisation. While the early construction stage is performed by the XNU kernel in the
@@ -1235,7 +1235,7 @@ to the devices present in ACPI tables. The second stage applies to all devices m
 repeat the first stage if the device was not present in ACPI.
 </p><!-- l. 1936 --><p class='noindent'>For all kernel extensions that may inspect the <span class='ec-lmtt-10'>IODeviceTree </span>plane without probing, such as <span class='ec-lmtt-10'>Lilu </span>and its plugins (e.g.
 <span class='ec-lmtt-10'>WhateverGreen</span>), it is especially important to ensure device presence in the ACPI tables. A failure to do so may result <span class='ec-lmbx-10'>in
-</span><span class='ec-lmbx-10'>erratic behaviour </span>caused by ignoring the injected device properties as they were not constructed at the first stage. See
+erratic behaviour </span>caused by ignoring the injected device properties as they were not constructed at the first stage. See
 <span class='ec-lmtt-10'>SSDT-IMEI.dsl </span>and <span class='ec-lmtt-10'>SSDT-BRG0.dsl </span>for an example.
                                                                                                   
                                                                                                   
@@ -1368,7 +1368,7 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
      for example <span class='ec-lmtt-10'>18.7.0 </span>is the kernel version for <span class='ec-lmtt-10'>10.14.6</span>. Kernel version interpretation is implemented as
      follows:
      </p><table class='align-star'>
-           <tr><td class='align-odd'><span class='lmmi-10'>ParseDarwinV ersion</span><span class='rm-lmr-10'>(</span><span class='lmmi-10'>κ,λ,μ</span><span class='rm-lmr-10'>) </span><span class='rm-lmr-10'>= </span><span class='lmmi-10'>κ </span><span class='lmsy-10'>⋅ </span><span class='rm-lmr-10'>10000</span>Where <span class='lmmi-10'>κ </span><span class='lmsy-10'>∈ </span><span class='rm-lmr-10'>(0</span><span class='lmmi-10'>,</span><span class='rm-lmr-10'>99)</span> is kernel version major
+           <tr><td class='align-odd'><span class='lmmi-10'>ParseDarwinV ersion</span><span class='rm-lmr-10'>(</span><span class='lmmi-10'>κ,λ,μ</span><span class='rm-lmr-10'>) = </span><span class='lmmi-10'>κ </span><span class='lmsy-10'>⋅ </span><span class='rm-lmr-10'>10000</span>Where <span class='lmmi-10'>κ </span><span class='lmsy-10'>∈ </span><span class='rm-lmr-10'>(0</span><span class='lmmi-10'>,</span><span class='rm-lmr-10'>99)</span> is kernel version major
                                          <span class='rm-lmr-10'>+ </span><span class='lmmi-10'>λ </span><span class='lmsy-10'>⋅ </span><span class='rm-lmr-10'>100</span>   Where <span class='lmmi-10'>λ </span><span class='lmsy-10'>∈ </span><span class='rm-lmr-10'>(0</span><span class='lmmi-10'>,</span><span class='rm-lmr-10'>99)</span> is kernel version minor
                                          <span class='rm-lmr-10'>+ </span><span class='lmmi-10'>μ</span>        Where <span class='lmmi-10'>μ </span><span class='lmsy-10'>∈ </span><span class='rm-lmr-10'>(0</span><span class='lmmi-10'>,</span><span class='rm-lmr-10'>99)</span> is kernel version patch </td><td class='align-even'></td>           <td class='align-label'>       </td></tr></table>
      <!-- l. 2163 --><p class='noindent'>Kernel version comparison is implemented as follows:
@@ -1388,7 +1388,7 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
    </td></tr><tr><td class='align-odd'></td>    <td class='align-even'><span class='lmmi-10'>                                         f</span><span class='rm-lmr-10'>(</span><span class='lmmi-10'>α,β,γ</span><span class='rm-lmr-10'>) = </span><span class='lmmi-10'>α </span><span class='lmsy-10'>≤ </span><span class='lmmi-10'>γ </span><span class='lmsy-10'>≤ </span><span class='lmmi-10'>β</span></td>                                      <td class='align-label'></td>   <td class='align-label'></td></tr></table>
      <!-- l. 2182 --><p class='noindent'>Here <span class='lmmi-10'>ParseDarwinV ersion </span>argument is assumed to be 3 integers obtained by splitting Darwin kernel version string from
      left to right by the <span class='ec-lmtt-10'>. </span>symbol. <span class='lmmi-10'>FindDarwinV ersion </span>function looks up Darwin kernel version by locating <span class='ec-lmtt-10'>"Darwin Kernel
-     </span><span class='ec-lmtt-10'>Version </span><span class='lmmi-10'>κ</span><span class='ec-lmtt-10'>.</span><span class='lmmi-10'>λ</span><span class='ec-lmtt-10'>.</span><span class='lmmi-10'>μ</span><span class='ec-lmtt-10'>" </span>string in the kernel image.
+     Version </span><span class='lmmi-10'>κ</span><span class='ec-lmtt-10'>.</span><span class='lmmi-10'>λ</span><span class='ec-lmtt-10'>.</span><span class='lmmi-10'>μ</span><span class='ec-lmtt-10'>" </span>string in the kernel image.
      </p></li>
 <li class='enumerate' id='x1-34014x7'>
      <!-- l. 2188 --><p class='noindent'><span class='ec-lmtt-10'>MinKernel</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: Empty<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Adds kernel extension on specified macOS version or newer.
@@ -1752,7 +1752,7 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
          topology validation (10.8+).
          </li>
          <li class='itemize'>For KVM and other hypervisors it provides precomputed MSR 35h values solving kernel panic with <span class='ec-lmtt-10'>-cpu
-         </span><span class='ec-lmtt-10'>host</span>.
+         host</span>.
          </li>
          <li class='itemize'>For Intel CPUs it adds support for asymmetrical SMP systems (e.g. Intel Alder Lake) by patching core
          count to thread count along with the supplemental required changes (10.14+). Cache size and cache line size
@@ -2277,7 +2277,7 @@ until the next manual reconfiguration.
          correct for OpenCore and modify the drive number <span class='ec-lmtt-10'>FS#: </span>accordingly)
          </li>
          <li class='itemize'>Within OpenShell, use <span class='ec-lmtt-10'>bcfg boot dump </span>to display the NVRAM boot options and then use <span class='ec-lmtt-10'>bcfg boot rm
-         </span><span class='ec-lmtt-10'># </span>(where <span class='ec-lmtt-10'># </span>is the number of the OpenCore boot entry) to remove the OpenCore entry</li></ul>
+         # </span>(where <span class='ec-lmtt-10'># </span>is the number of the OpenCore boot entry) to remove the OpenCore entry</li></ul>
      <!-- l. 3481 --><p class='noindent'>It is alternatively possible to start OpenShell directly from the OpenCore boot menu, if you have a working configured
      OpenCore for the system. In that case, and if OpenCore has <span class='ec-lmtt-10'>RequestBootVarRouting </span>enabled, it will be necessary to run
      the command <span class='ec-lmtt-10'>\EFI\OC\Tools\OpenControl.efi disable </span>before using <span class='ec-lmtt-10'>bcfg</span>. (After <span class='ec-lmtt-10'>OpenControl disable</span>, it is
@@ -2431,7 +2431,7 @@ until the next manual reconfiguration.
                                                                                                   
 <li class='enumerate' id='x1-44022x11'>
      <!-- l. 3676 --><p class='noindent'><span class='ec-lmtt-10'>TakeoffDelay</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span>, 32 bit<br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Delay in microseconds executed before handling the OpenCore picker startup and <span class='ec-lmtt-10'>action
-     </span><span class='ec-lmtt-10'>hotkeys</span>.
+     hotkeys</span>.
      </p><!-- l. 3682 --><p class='noindent'>Introducing a delay may give extra time to hold the right <span class='ec-lmtt-10'>action hotkey </span>sequence to, for instance, boot into recovery
      mode. On most systems, the appearance of the initial boot logo is a good indication of the time from which hotkeys can
      be held down. Earlier than this, the key press may not be registered. On some platforms, setting this option to a
@@ -2500,10 +2500,10 @@ until the next manual reconfiguration.
      <span class='ec-lmtt-10'>BootKicker </span>utility can be used to work around this problem, if set up as a Tool in OpenCore <span class='sout'>(e.g. on a CDROM) </span>with
      <span class='ec-lmtt-10'>FullNvramAccess </span>enabled. It will launch the Apple picker, which allows selection of an item to boot next (with <span class='ec-lmtt-10'>Enter</span>),
      or next and <span class='sout'>subsequently, i.e. as the blessed entry </span><span class='uwave'>from then on until the next change </span>(with <span class='ec-lmtt-10'>CTRL+Enter</span>)<span class='sout'>, as normal.
-     After </span><span class='uwave'>. Note that after </span>the selection is made, the system <span class='sout'>will reboot and </span><span class='uwave'>will reboot </span><span class='uwave'>before </span>the chosen entry <span class='sout'>will be
+     After </span><span class='uwave'>. Note that after </span>the selection is made, the system <span class='sout'>will reboot and </span><span class='uwave'>will reboot before </span>the chosen entry <span class='sout'>will be
      booted. </span><span class='uwave'>is booted. While this behaviour might seem surprising, it can be used both to switch which OpenCore
      installation is blessed, with CTRL+Enter, e.g. from a recovery OpenCore installation on CD (selected with the C
-     </span><span class='uwave'>key on boot) back to the main installion of OpenCore on the hard drive, if this is lost after an NVRAM
+     key on boot) back to the main installion of OpenCore on the hard drive, if this is lost after an NVRAM
      reset. It can also be used, even when the native picker cannot be shown normally (unsupported GPU), to
      do a one-shot boot without OpenCore, e.g. to another OS or tool, or to an earlier version of macOS.
      </span>
@@ -2553,8 +2553,8 @@ until the next manual reconfiguration.
      passing to <span class='ec-lmtt-10'>kpdescribe.sh</span>:
 </p>
      <!-- l. 3851 -->
-     <pre class='lstlisting' id='listing-5'><span class='label'><a id='x1-45005r1'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>cat</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>Kernel.panic </span><span class='ec-lmtt-10'>| </span><span class='ec-lmtk-10'>grep </span><span class='ec-lmtt-10'>macOSProcessedStackshotData </span><span class='ec-lmtt-10'>|</span> 
-</span><span class='label'><a id='x1-45006r2'></a></span><span style='color:#000000'>  <span class='ec-lmtk-10'>python3 </span><span class='ec-lmtt-10'>-c </span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'>import </span><span class='ec-lmtt-10'>json,sys;print(json.load(sys.stdin)["macOSPanicString"])</span><span class='ts1-lmtt10-'>'</span></span></pre>
+     <pre class='lstlisting' id='listing-5'><span class='label'><a id='x1-45005r1'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>cat</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>Kernel.panic | </span><span class='ec-lmtk-10'>grep </span><span class='ec-lmtt-10'>macOSProcessedStackshotData |</span> 
+</span><span class='label'><a id='x1-45006r2'></a></span><span style='color:#000000'>  <span class='ec-lmtk-10'>python3 </span><span class='ec-lmtt-10'>-c </span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'>import json,sys;print(json.load(sys.stdin)["macOSPanicString"])</span><span class='ts1-lmtt10-'>'</span></span></pre>
      
      </li>
 <li class='enumerate' id='x1-45008x3'><span class='ec-lmtt-10'>DisableWatchDog</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Some types of firmware may not succeed in booting the operating system quickly, especially in
@@ -2629,14 +2629,14 @@ until the next manual reconfiguration.
      amount of logging may be read (from least to most).
      </p><!-- l. 3957 --><p class='noindent'>To obtain Data Hub logs, use the following command in macOS (Note that Data Hub logs do not log kernel and kext
      patches): </p><!-- l. 3959 -->
-     <pre class='lstlisting' id='listing-6'><span class='label'><a id='x1-45019r1'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>ioreg</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>-lw0 </span><span class='ec-lmtt-10'>-p </span><span class='ec-lmtt-10'>IODeviceTree </span><span class='ec-lmtt-10'>| </span><span class='ec-lmtk-10'>grep </span><span class='ec-lmtt-10'>boot-log </span><span class='ec-lmtt-10'>| </span><span class='ec-lmtk-10'>sort </span><span class='ec-lmtt-10'>| </span><span class='ec-lmtk-10'>sed </span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'>s/.*&lt;\(.*\)&gt;.*/\1/</span><span class='ts1-lmtt10-'>' </span><span class='ec-lmtt-10'>| </span><span class='ec-lmtt-10'>xxd </span><span class='ec-lmtt-10'>-r </span><span class='ec-lmtt-10'>-p</span></span></pre>
+     <pre class='lstlisting' id='listing-6'><span class='label'><a id='x1-45019r1'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>ioreg</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>-lw0 -p IODeviceTree | </span><span class='ec-lmtk-10'>grep </span><span class='ec-lmtt-10'>boot-log | </span><span class='ec-lmtk-10'>sort </span><span class='ec-lmtt-10'>| </span><span class='ec-lmtk-10'>sed </span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'>s/.*&lt;\(.*\)&gt;.*/\1/</span><span class='ts1-lmtt10-'>' </span><span class='ec-lmtt-10'>| xxd -r -p</span></span></pre>
      
      <!-- l. 3963 --><p class='noindent'>UEFI variable log does not include some messages and has no performance data. To maintain system integrity, the log
      size is limited to 32 kilobytes. Some types of firmware may truncate it much earlier or drop completely if they have no
      memory. Using the <span class='ec-lmtt-10'>non-volatile </span>flag will cause the log to be written to NVRAM flash after every printed
      line.
      </p><!-- l. 3968 --><p class='noindent'>To obtain UEFI variable logs, use the following command in macOS: </p><!-- l. 3969 -->
-     <pre class='lstlisting' id='listing-7'><span class='label'><a id='x1-45020r1'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>nvram</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:boot-log </span><span class='ec-lmtt-10'>|</span> 
+     <pre class='lstlisting' id='listing-7'><span class='label'><a id='x1-45020r1'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>nvram</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:boot-log |</span> 
 </span><span class='label'><a id='x1-45021r2'></a></span><span style='color:#000000'>  <span class='ec-lmtk-10'>awk </span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'>{gsub(/%0d%0a%00/,"");gsub(/%0d%0a/,"\n")}1</span><span class='ts1-lmtt10-'>'</span></span></pre>
      
      <!-- l. 3974 --><p class='noindent'><span class='ec-lmbx-10'>Warning 1</span>: Certain firmware appear to have defective NVRAM garbage collection. As a result, they may not be able to
@@ -2793,7 +2793,7 @@ until the next manual reconfiguration.
      picker.
      </p><!-- l. 4084 --><p class='noindent'><span class='ec-lmri-10'>Note 1</span>: May be used in combination with <span class='ec-lmtt-10'>Shift+Enter </span>or <span class='ec-lmtt-10'>Shift+Index </span>when <span class='ec-lmtt-10'>PollAppleHotKeys </span>is enabled.
      </p><!-- l. 4088 --><p class='noindent'><span class='ec-lmri-10'>Note 2</span>: In order to support systems with unresponsive modifiers during preboot (which includes <span class='ec-lmtt-10'>V1 </span>and <span class='ec-lmtt-10'>V2
-     </span><span class='ec-lmtt-10'>KeySupport </span>mode on some firmware) OpenCore also allows holding the <span class='ec-lmtt-10'>=/+ </span>key in order to trigger ‘set default’
+     KeySupport </span>mode on some firmware) OpenCore also allows holding the <span class='ec-lmtt-10'>=/+ </span>key in order to trigger ‘set default’
      mode.
      </p></li>
 <li class='enumerate' id='x1-46004x2'>
@@ -2813,8 +2813,8 @@ until the next manual reconfiguration.
      Mount the system volume partition, unless it has already been mounted, and execute the following command:
 </p>
      <!-- l. 4123 -->
-     <pre class='lstlisting' id='listing-8'><span class='label'><a id='x1-46005r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>bless</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>--folder </span><span class='ec-lmtt-10'>"/Volumes/Macintosh </span><span class='ec-lmtt-10'>HD/System/Library/CoreServices" </span><span class='ec-lmtt-10'>\</span> 
-</span><span class='label'><a id='x1-46006r2'></a></span><span style='color:#000000'>  <span class='ec-lmtt-10'>--bootefi </span><span class='ec-lmtt-10'>--personalize</span></span></pre>
+     <pre class='lstlisting' id='listing-8'><span class='label'><a id='x1-46005r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>bless</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>--folder "/Volumes/Macintosh HD/System/Library/CoreServices" \</span> 
+</span><span class='label'><a id='x1-46006r2'></a></span><span style='color:#000000'>  <span class='ec-lmtt-10'>--bootefi --personalize</span></span></pre>
      
      <!-- l. 4128 --><p class='noindent'>On macOS 11 and newer the dedicated <span class='ec-lmtt-10'>x86legacy </span>model always uses <span class='ec-lmtt-10'>ApECID</span>. When this configuration setting is left as <span class='ec-lmtt-10'>0</span>
      first 8 bytes of <span class='ec-lmtt-10'>system-id </span>variable are used instead.
@@ -2824,16 +2824,16 @@ until the next manual reconfiguration.
      personalised Apple Secure Boot may not work as expected. When reinstalling the operating system, the macOS Installer
      from macOS 10.15 and older will often run out of free memory on the <span class='ec-lmtt-10'>/var/tmp </span>partition when trying to install macOS
      with the personalised Apple Secure Boot. Soon after downloading the macOS installer image, an <span class='ec-lmtt-10'>Unable to verify
-     </span><span class='ec-lmtt-10'>macOS </span>error message will appear.
+     macOS </span>error message will appear.
      </p><!-- l. 4140 --><p class='noindent'>To workaround this issue, allocate a dedicated RAM disk of 2 MBs for macOS personalisation by entering the following
      commands in the macOS recovery terminal before starting the installation:
 </p>
      <!-- l. 4143 -->
-     <pre class='lstlisting' id='listing-9'><span class='label'><a id='x1-46007r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>disk</span></span><span style='color:#000000'><span class='ec-lmtt-10'>=</span></span><span style='color:#000000'><span class='ec-lmtt-10'>$</span></span><span style='color:#000000'><span class='ec-lmtt-10'>(</span></span><span style='color:#000000'><span class='ec-lmtt-10'>hdiutil</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>attach </span><span class='ec-lmtt-10'>-nomount </span><span class='ec-lmtt-10'>ram://4096)</span> 
-</span><span class='label'><a id='x1-46008r2'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>diskutil</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>erasevolume </span><span class='ec-lmtt-10'>HFS+ </span><span class='ec-lmtt-10'>SecureBoot </span><span class='ec-lmtt-10'>$disk</span> 
-</span><span class='label'><a id='x1-46009r3'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>diskutil</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>unmount </span><span class='ec-lmtt-10'>$disk</span> 
+     <pre class='lstlisting' id='listing-9'><span class='label'><a id='x1-46007r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>disk</span></span><span style='color:#000000'><span class='ec-lmtt-10'>=</span></span><span style='color:#000000'><span class='ec-lmtt-10'>$</span></span><span style='color:#000000'><span class='ec-lmtt-10'>(</span></span><span style='color:#000000'><span class='ec-lmtt-10'>hdiutil</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>attach -nomount ram://4096)</span> 
+</span><span class='label'><a id='x1-46008r2'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>diskutil</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>erasevolume HFS+ SecureBoot $disk</span> 
+</span><span class='label'><a id='x1-46009r3'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>diskutil</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>unmount $disk</span> 
 </span><span class='label'><a id='x1-46010r4'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>mkdir</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>/var/tmp/OSPersonalizationTemp</span> 
-</span><span class='label'><a id='x1-46011r5'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>diskutil</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>mount </span><span class='ec-lmtt-10'>-mountpoint </span><span class='ec-lmtt-10'>/var/tmp/OSPersonalizationTemp </span><span class='ec-lmtt-10'>$disk</span></span></pre>
+</span><span class='label'><a id='x1-46011r5'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>diskutil</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>mount -mountpoint /var/tmp/OSPersonalizationTemp $disk</span></span></pre>
      
      </li>
 <li class='enumerate' id='x1-46013x3'>
@@ -2893,8 +2893,8 @@ until the next manual reconfiguration.
      <pre class='lstlisting' id='listing-10'><span class='label'><a id='x1-46022r1'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>nvram</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:boot-path</span></span></pre>
      
      <!-- l. 4236 --><p class='noindent'>To use a booter path to mount a booter volume, use the following command in macOS: </p><!-- l. 4237 -->
-     <pre class='lstlisting' id='listing-11'><span class='label'><a id='x1-46023r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>u</span></span><span style='color:#000000'><span class='ec-lmtt-10'>=</span></span><span style='color:#000000'><span class='ec-lmtt-10'>$</span></span><span style='color:#000000'><span class='ec-lmtt-10'>(</span></span><span style='color:#000000'><span class='ec-lmtk-10'>nvram</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:boot-path </span><span class='ec-lmtt-10'>| </span><span class='ec-lmtk-10'>sed </span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'>s/.*GPT,\([^,]*\),.*/\1/</span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'>); </span><span class='ec-lmtt-10'>\</span> 
-</span><span class='label'><a id='x1-46024r2'></a></span><span style='color:#000000'>  <span class='ec-lmtk-10'>if </span><span class='ec-lmtt-10'>[ </span><span class='ec-lmtt-10'>"$u" </span><span class='ec-lmtt-10'>!= </span><span class='ec-lmtt-10'>"" </span><span class='ec-lmtt-10'>]; </span><span class='ec-lmtk-10'>then </span><span class='ec-lmtk-10'>sudo </span><span class='ec-lmtk-10'>diskutil </span><span class='ec-lmtt-10'>mount </span><span class='ec-lmtt-10'>$u </span><span class='ec-lmtt-10'>; </span><span class='ec-lmtt-10'>fi</span></span></pre>
+     <pre class='lstlisting' id='listing-11'><span class='label'><a id='x1-46023r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>u</span></span><span style='color:#000000'><span class='ec-lmtt-10'>=</span></span><span style='color:#000000'><span class='ec-lmtt-10'>$</span></span><span style='color:#000000'><span class='ec-lmtt-10'>(</span></span><span style='color:#000000'><span class='ec-lmtk-10'>nvram</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:boot-path | </span><span class='ec-lmtk-10'>sed </span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'>s/.*GPT,\([^,]*\),.*/\1/</span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'>); \</span> 
+</span><span class='label'><a id='x1-46024r2'></a></span><span style='color:#000000'>  <span class='ec-lmtk-10'>if </span><span class='ec-lmtt-10'>[ "$u" != "" ]; </span><span class='ec-lmtk-10'>then sudo diskutil </span><span class='ec-lmtt-10'>mount $u ; fi</span></span></pre>
      
                                                                                                   
                                                                                                   
@@ -2903,9 +2903,9 @@ until the next manual reconfiguration.
      
      <!-- l. 4246 --><p class='noindent'>If the OpenCore version is not exposed the variable will contain <span class='ec-lmtt-10'>UNK-000-0000-00-00 </span>sequence.
      </p><!-- l. 4249 --><p class='noindent'>To obtain OEM information, use the following commands in macOS: </p><!-- l. 4250 -->
-     <pre class='lstlisting' id='listing-13'><span class='label'><a id='x1-46026r1'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>nvram</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:oem-product </span><span class='ec-lmtti-10'># </span><span class='ec-lmtti-10'>SMBIOS </span><span class='ec-lmtti-10'>Type1 </span><span class='ec-lmtti-10'>ProductName</span> 
-</span><span class='label'><a id='x1-46027r2'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>nvram</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:oem-vendor </span> <span class='ec-lmtti-10'># </span><span class='ec-lmtti-10'>SMBIOS </span><span class='ec-lmtti-10'>Type2 </span><span class='ec-lmtti-10'>Manufacturer</span> 
-</span><span class='label'><a id='x1-46028r3'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>nvram</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:oem-board </span>  <span class='ec-lmtti-10'># </span><span class='ec-lmtti-10'>SMBIOS </span><span class='ec-lmtti-10'>Type2 </span><span class='ec-lmtti-10'>ProductName</span></span></pre>
+     <pre class='lstlisting' id='listing-13'><span class='label'><a id='x1-46026r1'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>nvram</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:oem-product </span><span class='ec-lmtti-10'># SMBIOS Type1 ProductName</span> 
+</span><span class='label'><a id='x1-46027r2'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>nvram</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:oem-vendor  </span><span class='ec-lmtti-10'># SMBIOS Type2 Manufacturer</span> 
+</span><span class='label'><a id='x1-46028r3'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>nvram</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:oem-board   </span><span class='ec-lmtti-10'># SMBIOS Type2 ProductName</span></span></pre>
      
      </li>
 <li class='enumerate' id='x1-46030x8'>
@@ -2947,7 +2947,7 @@ until the next manual reconfiguration.
          <li class='itemize'>Provide public key during the <span class='ec-lmtt-10'>OpenCore.efi </span>compilation in <a href='https://github.com/acidanthera/OpenCorePkg/blob/master/Platform/OpenCore/OpenCoreVault.c'><span class='ec-lmtt-10'>OpenCoreVault.c</span></a> file.
          </li>
          <li class='itemize'>Binary patch <span class='ec-lmtt-10'>OpenCore.efi </span>replacing zeroes with the public key between <span class='ec-lmtt-10'>=BEGIN OC VAULT= </span>and <span class='ec-lmtt-10'>==END
-         </span><span class='ec-lmtt-10'>OC VAULT== </span>ASCII markers.</li></ul>
+         OC VAULT== </span>ASCII markers.</li></ul>
      <!-- l. 4323 --><p class='noindent'>The RSA public key 520 byte format description can be found in Chromium OS documentation. To convert the public
      key from X.509 certificate or from PEM file use <a href='https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/CreateVault'>RsaTool</a>.
      </p><!-- l. 4328 --><p class='noindent'>The complete set of commands to:
@@ -2963,9 +2963,9 @@ until the next manual reconfiguration.
      <!-- l. 4338 --><p class='noindent'>Can look as follows: </p><!-- l. 4339 -->
      <pre class='lstlisting' id='listing-14'><span class='label'><a id='x1-46037r1'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>cd</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>/Volumes/EFI/EFI/OC</span> 
 </span><span class='label'><a id='x1-46038r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>/</span></span><span style='color:#000000'><span class='ec-lmtt-10'>path</span></span><span style='color:#000000'><span class='ec-lmtt-10'>/</span></span><span style='color:#000000'><span class='ec-lmtt-10'>to</span></span><span style='color:#000000'><span class='ec-lmtt-10'>/</span></span><span style='color:#000000'><span class='ec-lmtt-10'>create_vault</span></span><span style='color:#000000'><span class='ec-lmtt-10'>.</span></span><span style='color:#000000'><span class='ec-lmtt-10'>sh</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>.</span> 
-</span><span class='label'><a id='x1-46039r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>/</span></span><span style='color:#000000'><span class='ec-lmtt-10'>path</span></span><span style='color:#000000'><span class='ec-lmtt-10'>/</span></span><span style='color:#000000'><span class='ec-lmtt-10'>to</span></span><span style='color:#000000'><span class='ec-lmtt-10'>/</span></span><span style='color:#000000'><span class='ec-lmtt-10'>RsaTool</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>-sign </span><span class='ec-lmtt-10'>vault.plist </span><span class='ec-lmtt-10'>vault.sig </span><span class='ec-lmtt-10'>vault.pub</span> 
-</span><span class='label'><a id='x1-46040r4'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>off</span></span><span style='color:#000000'><span class='ec-lmtt-10'>=</span></span><span style='color:#000000'><span class='ec-lmtt-10'>$</span></span><span style='color:#000000'><span class='ec-lmtt-10'>((</span></span><span style='color:#000000'><span class='ec-lmtt-10'>$</span></span><span style='color:#000000'><span class='ec-lmtt-10'>(</span></span><span style='color:#000000'><span class='ec-lmtk-10'>strings</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>-a </span><span class='ec-lmtt-10'>-t </span><span class='ec-lmtt-10'>d </span><span class='ec-lmtt-10'>OpenCore.efi </span><span class='ec-lmtt-10'>| </span><span class='ec-lmtk-10'>grep </span><span class='ec-lmtt-10'>"=BEGIN </span><span class='ec-lmtt-10'>OC </span><span class='ec-lmtt-10'>VAULT=" </span><span class='ec-lmtt-10'>| </span><span class='ec-lmtk-10'>cut </span><span class='ec-lmtt-10'>-f1 </span><span class='ec-lmtt-10'>-d</span><span class='ts1-lmtt10-'>' </span><span class='ts1-lmtt10-'>'</span><span class='ec-lmtt-10'>)+16))</span> 
-</span><span class='label'><a id='x1-46041r5'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>dd</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>of=OpenCore.efi </span><span class='ec-lmtk-10'>if</span><span class='ec-lmtt-10'>=vault.pub </span><span class='ec-lmtt-10'>bs=1 </span><span class='ec-lmtt-10'>seek=$off </span><span class='ec-lmtt-10'>count=528 </span><span class='ec-lmtt-10'>conv=notrunc</span> 
+</span><span class='label'><a id='x1-46039r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>/</span></span><span style='color:#000000'><span class='ec-lmtt-10'>path</span></span><span style='color:#000000'><span class='ec-lmtt-10'>/</span></span><span style='color:#000000'><span class='ec-lmtt-10'>to</span></span><span style='color:#000000'><span class='ec-lmtt-10'>/</span></span><span style='color:#000000'><span class='ec-lmtt-10'>RsaTool</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>-sign vault.plist vault.sig vault.pub</span> 
+</span><span class='label'><a id='x1-46040r4'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>off</span></span><span style='color:#000000'><span class='ec-lmtt-10'>=</span></span><span style='color:#000000'><span class='ec-lmtt-10'>$</span></span><span style='color:#000000'><span class='ec-lmtt-10'>((</span></span><span style='color:#000000'><span class='ec-lmtt-10'>$</span></span><span style='color:#000000'><span class='ec-lmtt-10'>(</span></span><span style='color:#000000'><span class='ec-lmtk-10'>strings</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>-a -t d OpenCore.efi | </span><span class='ec-lmtk-10'>grep </span><span class='ec-lmtt-10'>"=BEGIN OC VAULT=" | </span><span class='ec-lmtk-10'>cut </span><span class='ec-lmtt-10'>-f1 -d</span><span class='ts1-lmtt10-'>' '</span><span class='ec-lmtt-10'>)+16))</span> 
+</span><span class='label'><a id='x1-46041r5'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>dd</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>of=OpenCore.efi </span><span class='ec-lmtk-10'>if</span><span class='ec-lmtt-10'>=vault.pub bs=1 seek=$off count=528 conv=notrunc</span> 
 </span><span class='label'><a id='x1-46042r6'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>rm</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>vault.pub</span></span></pre>
      
      <!-- l. 4348 --><p class='noindent'><span class='ec-lmri-10'>Note 1</span>: While it may appear obvious, an external method is required to verify <span class='ec-lmtt-10'>OpenCore.efi </span>and <span class='ec-lmtt-10'>BOOTx64.efi </span>for
@@ -3393,7 +3393,7 @@ variables separated by a <span class='ec-lmtt-10'>: </span>symbol. For example, 
      32-bit <span class='ec-lmtt-10'>FirmwareFeaturesMask</span>. Present on all Macs to avoid extra parsing of SMBIOS tables.
      </li>
      <li class='itemize'><span class='ec-lmtt-10'>4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:MLB
-     </span><span class='ec-lmtt-10'>BoardSerialNumber</span>. Present on newer Macs (2013+ at least) to avoid extra parsing of SMBIOS tables, especially
+     BoardSerialNumber</span>. Present on newer Macs (2013+ at least) to avoid extra parsing of SMBIOS tables, especially
      in <span class='ec-lmtt-10'>boot.efi</span>.
      </li>
      <li class='itemize'><span class='ec-lmtt-10'>4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:ROM</span>
@@ -3407,7 +3407,7 @@ variables separated by a <span class='ec-lmtt-10'>: </span>symbol. For example, 
      <ul class='itemize1'>
      <li class='itemize'><span class='ec-lmtt-10'>4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:BridgeOSHardwareModel</span>
      Bridge OS hardware model variable used to propagate to IODT bridge-model by <span class='ec-lmtt-10'>EfiBoot</span>. Read by <span class='ec-lmtt-10'>hw.target
-     </span><span class='ec-lmtt-10'>sysctl</span>, used by SoftwareUpdateCoreSupport.
+     sysctl</span>, used by SoftwareUpdateCoreSupport.
      </li>
      <li class='itemize'><span class='ec-lmtt-10'>7C436110-AB2A-4BBB-A880-FE41995C9F82:csr-active-config</span>
      32-bit System Integrity Protection bitmask. Declared in XNU source code in <a href='https://opensource.apple.com/source/xnu/xnu-4570.71.2/bsd/sys/csr.h.auto.html'>csr.h</a>.
@@ -3455,7 +3455,7 @@ variables separated by a <span class='ec-lmtt-10'>: </span>symbol. For example, 
      </li>
      <li class='itemize'><span class='ec-lmtt-10'>4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:DefaultBackgroundColor</span>
      Four-byte <span class='ec-lmtt-10'>BGRA </span>data defining <span class='ec-lmtt-10'>boot.efi </span>user interface background colour. Standard colours include <span class='ec-lmbx-10'>BF BF BF
-     </span><span class='ec-lmbx-10'>00 </span>(Light Gray) and <span class='ec-lmbx-10'>00 00 00 00 </span>(Syrah Black). Other colours may be set at user’s preference.</li></ul>
+     00 </span>(Light Gray) and <span class='ec-lmbx-10'>00 00 00 00 </span>(Syrah Black). Other colours may be set at user’s preference.</li></ul>
 <!-- l. 5040 --><p class='noindent'>
 </p>
 <h4 class='subsectionHead' id='other-variables'><span class='titlemark'>9.5   </span> <a id='x1-550009.5'></a>Other Variables</h4>
@@ -3848,10 +3848,10 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
 </p>
          <ul class='itemize1'>
          <li class='itemize'><span class='ec-lmtt-10'>Big Endian </span>— by writing all the bytes as they are without making any order changes (<span class='ec-lmtt-10'>{AA BB CC DD EE FF
-         </span><span class='ec-lmtt-10'>GG HH II JJ KK LL MM NN OO PP}</span>). This method is also known as <a href='https://tools.ietf.org/html/rfc4122'>RFC 4122</a> encoding or <span class='ec-lmtt-10'>Raw </span>encoding.
+         GG HH II JJ KK LL MM NN OO PP}</span>). This method is also known as <a href='https://tools.ietf.org/html/rfc4122'>RFC 4122</a> encoding or <span class='ec-lmtt-10'>Raw </span>encoding.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>Little Endian </span>— by interpreting the bytes as numbers and using Little Endian byte representation (<span class='ec-lmtt-10'>{DD
-         </span><span class='ec-lmtt-10'>CC BB AA FF EE HH GG II JJ KK LL MM NN OO PP}</span>).</li></ul>
+         CC BB AA FF EE HH GG II JJ KK LL MM NN OO PP}</span>).</li></ul>
      <!-- l. 5457 --><p class='noindent'>The SMBIOS specification did not explicitly specify the encoding format for the UUID up to SMBIOS 2.6, where it
      stated that <span class='ec-lmtt-10'>Little Endian </span>encoding shall be used. This led to the confusion in both firmware implementations and
      system software as different vendors used different encodings prior to that.
@@ -3866,7 +3866,7 @@ downloaded from <a href='https://github.com/acidanthera/dmidecode/releases'>Acid
          values.</li></ul>
      <!-- l. 5472 --><p class='noindent'>OpenCore always sets a recent SMBIOS version (currently 3.2) when generating the modified DMI tables. If
      <span class='ec-lmtt-10'>UseRawUuidEncoding </span>is enabled, the <span class='ec-lmtt-10'>Big Endian </span>format is used to store the <span class='ec-lmtt-10'>SystemUUID </span>data. Otherwise, the <span class='ec-lmtt-10'>Little
-     </span><span class='ec-lmtt-10'>Endian </span>format is used.
+     Endian </span>format is used.
      </p><!-- l. 5477 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This preference does not affect UUIDs used in DataHub and NVRAM as they are not standardised and are added
      by Apple. Unlike SMBIOS, they are always stored in the <span class='ec-lmtt-10'>Big Endian </span>format.
      </p></li>
@@ -4462,11 +4462,11 @@ approximately 3 times slower and is yet to undergo a security audit.           
 </tr><tr id='TBL-4-22-' style='vertical-align:baseline;'><td class='td11' id='TBL-4-22-1' style='white-space:normal; text-align:left;'>
 <!-- l. 6478 --><p class='noindent'><a href='https://github.com/acidanthera/OpenCorePkg'><span class='ec-lmtt-10'>ResetNvramEntry</span></a><span class='ec-lmbx-10'>*</span>         </p></td><td class='td11' id='TBL-4-22-2' style='white-space:normal; text-align:left;'>
 <!-- l. 6479 --><p class='noindent'><a href='#resetnvramentry'>OpenCore plugin</a> implementing <span class='ec-lmtt-10'>OC_BOOT_ENTRY_PROTOCOL </span>to add a configurable <span class='ec-lmtt-10'>Reset
-</span><span class='ec-lmtt-10'>NVRAM </span>entry to the boot picker menu.                                                                 </p></td>
+NVRAM </span>entry to the boot picker menu.                                                                 </p></td>
 </tr><tr id='TBL-4-23-' style='vertical-align:baseline;'><td class='td11' id='TBL-4-23-1' style='white-space:normal; text-align:left;'>
 <!-- l. 6481 --><p class='noindent'><a href='https://github.com/acidanthera/OpenCorePkg'><span class='ec-lmtt-10'>ToggleSipEntry</span></a><span class='ec-lmbx-10'>*</span>          </p></td><td class='td11' id='TBL-4-23-2' style='white-space:normal; text-align:left;'>
 <!-- l. 6482 --><p class='noindent'><a href='#togglesipentry'>OpenCore plugin</a> implementing <span class='ec-lmtt-10'>OC_BOOT_ENTRY_PROTOCOL </span>to add a configurable <span class='ec-lmtt-10'>Toggle
-</span><span class='ec-lmtt-10'>SIP </span>entry to the boot picker menu.                                                                    </p></td>
+SIP </span>entry to the boot picker menu.                                                                    </p></td>
 </tr><tr id='TBL-4-24-' style='vertical-align:baseline;'><td class='td11' id='TBL-4-24-1' style='white-space:normal; text-align:left;'>
 <!-- l. 6484 --><p class='noindent'><a href='https://github.com/acidanthera/audk'><span class='ec-lmtt-10'>UsbMouseDxe</span></a><span class='ec-lmbx-10'>*</span>               </p></td><td class='td11' id='TBL-4-24-2' style='white-space:normal; text-align:left;'>
 <!-- l. 6485 --><p class='noindent'>USB mouse driver from <span class='ec-lmtt-10'>MdeModulePkg</span>. Some virtual machine firmware such as OVMF
@@ -4486,12 +4486,12 @@ or legacy systems, it may be used to support external USB 3.0 PCI cards.        
 </table></div>
 <!-- l. 6494 --><p class='noindent'>Driver marked with <span class='ec-lmbx-10'>* </span>are bundled with OpenCore. To compile the drivers from UDK (EDK II) the same command used for
 OpenCore compilation can be taken, but choose a corresponding package: </p><!-- l. 6497 -->
-<pre class='lstlisting' id='listing-15'><span class='label'><a id='x1-66002r1'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>git</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>clone </span><span class='ec-lmtt-10'>https://github.com/acidanthera/audk </span><span class='ec-lmtt-10'>UDK</span> 
+<pre class='lstlisting' id='listing-15'><span class='label'><a id='x1-66002r1'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>git</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>clone https://github.com/acidanthera/audk UDK</span> 
 </span><span class='label'><a id='x1-66003r2'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>cd</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>UDK</span> 
 </span><span class='label'><a id='x1-66004r3'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>source</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>edksetup.sh</span> 
-</span><span class='label'><a id='x1-66005r4'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>make</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>-C </span><span class='ec-lmtt-10'>BaseTools</span> 
-</span><span class='label'><a id='x1-66006r5'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>build</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>-a </span><span class='ec-lmtt-10'>X64 </span><span class='ec-lmtt-10'>-b </span><span class='ec-lmtt-10'>RELEASE </span><span class='ec-lmtt-10'>-t </span><span class='ec-lmtt-10'>XCODE5 </span><span class='ec-lmtt-10'>-p </span><span class='ec-lmtt-10'>FatPkg/FatPkg.dsc</span> 
-</span><span class='label'><a id='x1-66007r6'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>build</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>-a </span><span class='ec-lmtt-10'>X64 </span><span class='ec-lmtt-10'>-b </span><span class='ec-lmtt-10'>RELEASE </span><span class='ec-lmtt-10'>-t </span><span class='ec-lmtt-10'>XCODE5 </span><span class='ec-lmtt-10'>-p </span><span class='ec-lmtt-10'>MdeModulePkg/MdeModulePkg.dsc</span></span></pre>
+</span><span class='label'><a id='x1-66005r4'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>make</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>-C BaseTools</span> 
+</span><span class='label'><a id='x1-66006r5'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>build</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>-a X64 -b RELEASE -t XCODE5 -p FatPkg/FatPkg.dsc</span> 
+</span><span class='label'><a id='x1-66007r6'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>build</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>-a X64 -b RELEASE -t XCODE5 -p MdeModulePkg/MdeModulePkg.dsc</span></span></pre>
 <!-- l. 6506 --><p class='noindent'>
 </p>
                                                                                                   
@@ -4508,8 +4508,8 @@ an HFS+ or APFS volume:
 <!-- l. 6521 -->
 <p id='-blessing-tool'><a id='x1-67001r3'></a>
 <a id='x1-67002'></a>
-</p><pre class='lstlisting' id='listing-16'><span class='label'><a id='x1-67003r1'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>sudo</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>bless </span><span class='ec-lmtt-10'>--verbose </span><span class='ec-lmtt-10'>--file </span><span class='ec-lmtt-10'>/Volumes/VOLNAME/DIR/OpenShell.efi </span><span class='ec-lmtt-10'>\</span> 
-</span><span class='label'><a id='x1-67004r2'></a></span><span style='color:#000000'>  <span class='ec-lmtt-10'>--folder </span><span class='ec-lmtt-10'>/Volumes/VOLNAME/DIR/ </span><span class='ec-lmtt-10'>--setBoot</span></span></pre>
+</p><pre class='lstlisting' id='listing-16'><span class='label'><a id='x1-67003r1'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>sudo</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>bless --verbose --file /Volumes/VOLNAME/DIR/OpenShell.efi \</span> 
+</span><span class='label'><a id='x1-67004r2'></a></span><span style='color:#000000'>  <span class='ec-lmtt-10'>--folder /Volumes/VOLNAME/DIR/ --setBoot</span></span></pre>
 <figcaption class='caption'><span class='id'>Listing 3: </span><span class='content'>Blessing tool</span></figcaption><!-- tex4ht:label?: x1-67004r11.3  -->
 <!-- l. 6526 --><p class='noindent'><span class='ec-lmri-10'>Note 1</span>: <span class='ec-lmtt-10'>/System/Library/CoreServices/BridgeVersion.bin </span>should be copied to <span class='ec-lmtt-10'>/Volumes/VOLNAME/DIR</span>.
 <br class='newline' /><span class='ec-lmri-10'>Note 2</span>: To be able to use the <span class='ec-lmtt-10'>bless </span>command, <a href='https://developer.apple.com/library/archive/documentation/Security/Conceptual/System_Integrity_Protection_Guide/ConfiguringSystemIntegrityProtection/ConfiguringSystemIntegrityProtection.html'>disabling System Integrity Protection</a> is necessary. <br class='newline' /><span class='ec-lmri-10'>Note 3</span>: To be able to boot <a href='https://support.apple.com/HT208330'>Secure Boot</a> might be disabled if present.
@@ -4678,7 +4678,7 @@ black screen) of the Linux kernel, due to a firmware bug of some firmware releas
 by this quirk, this affects booting via OpenCore with or without OpenLinuxBoot.
 </p><!-- l. 6713 --><p class='noindent'>After installing OpenLinuxBoot, it is recommended to compare the options shown in the OpenCore debug log
 when booting (or attempting to boot) a given distro against the options seen using the shell command <span class='ec-lmtt-10'>cat
-</span><span class='ec-lmtt-10'>/proc/cmdline </span>when the same distro has been booted via its native bootloader. In general (for safety and security of the
+/proc/cmdline </span>when the same distro has been booted via its native bootloader. In general (for safety and security of the
 running distro) these options should match, and if they do not it is recommended to use the driver arguments
 below (in particular <span class='ec-lmtt-10'>LINUX_BOOT_ADD_RO</span>, <span class='ec-lmtt-10'>LINUX_BOOT_ADD_RW</span>, <span class='ec-lmtt-10'>autoopts:{PARTUUID} </span>and <span class='ec-lmtt-10'>autoopts</span>) to modify
 the options as required. Note however that the following differences are normal and do not need to be fixed:
@@ -6026,8 +6026,8 @@ options.
      </li>
 <li class='enumerate' id='x1-88024x12'>
      <!-- l. 8730 --><p class='noindent'><span class='uwave'>ResizeUsePciRbIo</span><br class='newline' /><span class='uwave'>Type: plist boolean</span><br class='newline' /><span class='uwave'>Failsafe: false</span><br class='newline' /><span class='uwave'>Description: Use PciRootBridgeIo for </span><span class='ec-lmtt-10'>ResizeGpuBars </span><span class='uwave'>and ResizeAppleGpuBars</span>
-     </p><!-- l. 8735 --><p class='noindent'><span class='uwave'>The quirk makes ResizeGpuBars </span><span class='uwave'>and ResizeAppleGpuBars </span><span class='uwave'>use PciRootBridgeIo </span><span class='uwave'>instead of PciIo. This is
-     needed on systems with a buggy PciIo </span><span class='uwave'>implementation where trying to configure Resizable BAR results in
+     </p><!-- l. 8735 --><p class='noindent'><span class='uwave'>The quirk makes ResizeGpuBars and ResizeAppleGpuBars use PciRootBridgeIo instead of PciIo. This is
+     needed on systems with a buggy PciIo implementation where trying to configure Resizable BAR results in
      Capability I/O Error. Typically this is required on older systems which have been modified with </span><a href='https://github.com/xCuri0/ReBarUEFI'><span class='uwave'>ReBarUEFI</span></a><span class='uwave'>.
      </span>
      </p></li>
@@ -6207,23 +6207,23 @@ as shown below:
 </p>
 <!-- l. 8976 -->
 <pre class='lstlisting' id='listing-17'><span class='label'><a id='x1-94001r1'></a></span><span style='color:#000000'><span class='ec-lmtti-10'>#</span></span><span style='color:#000000'><span class='ec-lmtti-10'>!/</span></span><span style='color:#000000'><span class='ec-lmtti-10'>bin</span></span><span style='color:#000000'><span class='ec-lmtti-10'>/</span></span><span style='color:#000000'><span class='ec-lmtti-10'>bash</span></span> 
-<span class='label'><a id='x1-94002r2'></a></span><span style='color:#000000'><span class='ec-lmtti-10'>#</span></span><span style='color:#000000'> <span class='ec-lmtti-10'>Original.dmg </span><span class='ec-lmtti-10'>is </span><span class='ec-lmtti-10'>original </span><span class='ec-lmtti-10'>image, </span><span class='ec-lmtti-10'>OSInstall.mpkg </span><span class='ec-lmtti-10'>is </span><span class='ec-lmtti-10'>patched </span><span class='ec-lmtti-10'>package</span> 
+<span class='label'><a id='x1-94002r2'></a></span><span style='color:#000000'><span class='ec-lmtti-10'>#</span></span><span style='color:#000000'> <span class='ec-lmtti-10'>Original.dmg is original image, OSInstall.mpkg is patched package</span> 
 </span><span class='label'><a id='x1-94003r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>mkdir</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>RO</span> 
-</span><span class='label'><a id='x1-94004r4'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>hdiutil</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>mount </span><span class='ec-lmtt-10'>Original.dmg </span><span class='ec-lmtt-10'>-noverify </span><span class='ec-lmtt-10'>-noautoopen </span><span class='ec-lmtt-10'>-noautoopenrw </span><span class='ec-lmtt-10'>-noautofsck </span><span class='ec-lmtt-10'>-mountpoint </span><span class='ec-lmtt-10'>RO</span> 
-</span><span class='label'><a id='x1-94005r5'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>cp</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>RO/.DS_Store </span><span class='ec-lmtt-10'>DS_STORE</span> 
-</span><span class='label'><a id='x1-94006r6'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>hdiutil</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>detach </span><span class='ec-lmtt-10'>RO </span><span class='ec-lmtt-10'>-force</span> 
-</span><span class='label'><a id='x1-94007r7'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>rm</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>-rf </span><span class='ec-lmtt-10'>RO</span> 
-</span><span class='label'><a id='x1-94008r8'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>hdiutil</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>convert </span><span class='ec-lmtt-10'>Original.dmg </span><span class='ec-lmtt-10'>-format </span><span class='ec-lmtt-10'>UDRW </span><span class='ec-lmtt-10'>-o </span><span class='ec-lmtt-10'>ReadWrite.dmg</span> 
+</span><span class='label'><a id='x1-94004r4'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>hdiutil</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>mount Original.dmg -noverify -noautoopen -noautoopenrw -noautofsck -mountpoint RO</span> 
+</span><span class='label'><a id='x1-94005r5'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>cp</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>RO/.DS_Store DS_STORE</span> 
+</span><span class='label'><a id='x1-94006r6'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>hdiutil</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>detach RO -force</span> 
+</span><span class='label'><a id='x1-94007r7'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>rm</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>-rf RO</span> 
+</span><span class='label'><a id='x1-94008r8'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>hdiutil</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>convert Original.dmg -format UDRW -o ReadWrite.dmg</span> 
 </span><span class='label'><a id='x1-94009r9'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>mkdir</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>RW</span> 
-</span><span class='label'><a id='x1-94010r10'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>xattr</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>-c </span><span class='ec-lmtt-10'>OSInstall.mpkg</span> 
-</span><span class='label'><a id='x1-94011r11'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>hdiutil</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>mount </span><span class='ec-lmtt-10'>ReadWrite.dmg </span><span class='ec-lmtt-10'>-noverify </span><span class='ec-lmtt-10'>-noautoopen </span><span class='ec-lmtt-10'>-noautoopenrw </span><span class='ec-lmtt-10'>-noautofsck </span><span class='ec-lmtt-10'>-mountpoint </span><span class='ec-lmtt-10'>RW</span> 
-</span><span class='label'><a id='x1-94012r12'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>cp</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>OSInstall.mpkg </span><span class='ec-lmtt-10'>RW/System/Installation/Packages/OSInstall.mpkg</span> 
-</span><span class='label'><a id='x1-94013r13'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>killall</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>Finder </span><span class='ec-lmtt-10'>fseventsd</span> 
-</span><span class='label'><a id='x1-94014r14'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>rm</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>-rf </span><span class='ec-lmtt-10'>RW/.fseventsd</span> 
-</span><span class='label'><a id='x1-94015r15'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>cp</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>DS_STORE </span><span class='ec-lmtt-10'>RW/.DS_Store</span> 
-</span><span class='label'><a id='x1-94016r16'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>hdiutil</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>detach </span><span class='ec-lmtt-10'>RW </span><span class='ec-lmtt-10'>-force</span> 
-</span><span class='label'><a id='x1-94017r17'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>rm</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>-rf </span><span class='ec-lmtt-10'>DS_STORE </span><span class='ec-lmtt-10'>RW</span> 
-</span><span class='label'><a id='x1-94018r18'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>hdiutil</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>convert </span><span class='ec-lmtt-10'>ReadWrite.dmg </span><span class='ec-lmtt-10'>-format </span><span class='ec-lmtt-10'>UDZO </span><span class='ec-lmtt-10'>-o </span><span class='ec-lmtt-10'>ReadOnly.dmg</span></span></pre>
+</span><span class='label'><a id='x1-94010r10'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>xattr</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>-c OSInstall.mpkg</span> 
+</span><span class='label'><a id='x1-94011r11'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>hdiutil</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>mount ReadWrite.dmg -noverify -noautoopen -noautoopenrw -noautofsck -mountpoint RW</span> 
+</span><span class='label'><a id='x1-94012r12'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>cp</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>OSInstall.mpkg RW/System/Installation/Packages/OSInstall.mpkg</span> 
+</span><span class='label'><a id='x1-94013r13'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>killall</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>Finder fseventsd</span> 
+</span><span class='label'><a id='x1-94014r14'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>rm</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>-rf RW/.fseventsd</span> 
+</span><span class='label'><a id='x1-94015r15'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>cp</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>DS_STORE RW/.DS_Store</span> 
+</span><span class='label'><a id='x1-94016r16'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>hdiutil</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>detach RW -force</span> 
+</span><span class='label'><a id='x1-94017r17'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>rm</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>-rf DS_STORE RW</span> 
+</span><span class='label'><a id='x1-94018r18'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>hdiutil</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>convert ReadWrite.dmg -format UDZO -o ReadOnly.dmg</span></span></pre>
 <!-- l. 8997 --><p class='noindent'>
 </p>
 <h5 class='subsubsectionHead' id='macos-2'><span class='titlemark'>12.1.4   </span> <a id='x1-9500012.1.4'></a>macOS 10.5</h5>
@@ -6359,37 +6359,37 @@ utility. Reference example:
 <!-- l. 9163 -->
 <p id='-relabeling-windows-volume'><a id='x1-98001r4'></a>
 <a id='x1-98002'></a>
-</p><pre class='lstlisting' id='listing-18'><span class='label'><a id='x1-98003r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>PS</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>C:\gdisk&gt; </span><span class='ec-lmtt-10'>.\gdisk64.exe </span><span class='ec-lmtt-10'>\\.\physicaldrive0</span> 
-</span><span class='label'><a id='x1-98004r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>GPT</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>fdisk </span><span class='ec-lmtt-10'>(gdisk) </span><span class='ec-lmtt-10'>version </span><span class='ec-lmtt-10'>1.0.4</span> 
+</p><pre class='lstlisting' id='listing-18'><span class='label'><a id='x1-98003r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>PS</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>C:\gdisk&gt; .\gdisk64.exe \\.\physicaldrive0</span> 
+</span><span class='label'><a id='x1-98004r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>GPT</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>fdisk (gdisk) version 1.0.4</span> 
 </span><span class='label'><a id='x1-98005r3'></a></span> 
-<span class='label'><a id='x1-98006r4'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Command</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>(? </span><span class='ec-lmtk-10'>for </span><span class='ec-lmtk-10'>help</span><span class='ec-lmtt-10'>): </span><span class='ec-lmtt-10'>p</span> 
-</span><span class='label'><a id='x1-98007r5'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Disk</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>\\.\physicaldrive0: </span><span class='ec-lmtt-10'>419430400 </span><span class='ec-lmtt-10'>sectors, </span><span class='ec-lmtt-10'>200.0 </span><span class='ec-lmtt-10'>GiB</span> 
-</span><span class='label'><a id='x1-98008r6'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Sector</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>size </span><span class='ec-lmtt-10'>(logical): </span><span class='ec-lmtt-10'>512 </span><span class='ec-lmtt-10'>bytes</span> 
-</span><span class='label'><a id='x1-98009r7'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Disk</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>identifier </span><span class='ec-lmtt-10'>(GUID): </span><span class='ec-lmtt-10'>DEC57EB1-B3B5-49B2-95F5-3B8C4D3E4E12</span> 
-</span><span class='label'><a id='x1-98010r8'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Partition</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>table </span><span class='ec-lmtt-10'>holds </span><span class='ec-lmtt-10'>up </span><span class='ec-lmtt-10'>to </span><span class='ec-lmtt-10'>128 </span><span class='ec-lmtt-10'>entries</span> 
-</span><span class='label'><a id='x1-98011r9'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Main</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>partition </span><span class='ec-lmtt-10'>table </span><span class='ec-lmtt-10'>begins </span><span class='ec-lmtt-10'>at </span><span class='ec-lmtt-10'>sector </span><span class='ec-lmtt-10'>2 </span><span class='ec-lmtt-10'>and </span><span class='ec-lmtt-10'>ends </span><span class='ec-lmtt-10'>at </span><span class='ec-lmtt-10'>sector </span><span class='ec-lmtt-10'>33</span> 
-</span><span class='label'><a id='x1-98012r10'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>First</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>usable </span><span class='ec-lmtt-10'>sector </span><span class='ec-lmtt-10'>is </span><span class='ec-lmtt-10'>34, </span><span class='ec-lmtt-10'>last </span><span class='ec-lmtt-10'>usable </span><span class='ec-lmtt-10'>sector </span><span class='ec-lmtt-10'>is </span><span class='ec-lmtt-10'>419430366</span> 
-</span><span class='label'><a id='x1-98013r11'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Partitions</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>will </span><span class='ec-lmtt-10'>be </span><span class='ec-lmtt-10'>aligned </span><span class='ec-lmtt-10'>on </span><span class='ec-lmtt-10'>2048-sector </span><span class='ec-lmtt-10'>boundaries</span> 
-</span><span class='label'><a id='x1-98014r12'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Total</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>free </span><span class='ec-lmtt-10'>space </span><span class='ec-lmtt-10'>is </span><span class='ec-lmtt-10'>4029 </span><span class='ec-lmtt-10'>sectors </span><span class='ec-lmtt-10'>(2.0 </span><span class='ec-lmtt-10'>MiB)</span> 
+<span class='label'><a id='x1-98006r4'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Command</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>(? </span><span class='ec-lmtk-10'>for help</span><span class='ec-lmtt-10'>): p</span> 
+</span><span class='label'><a id='x1-98007r5'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Disk</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>\\.\physicaldrive0: 419430400 sectors, 200.0 GiB</span> 
+</span><span class='label'><a id='x1-98008r6'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Sector</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>size (logical): 512 bytes</span> 
+</span><span class='label'><a id='x1-98009r7'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Disk</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>identifier (GUID): DEC57EB1-B3B5-49B2-95F5-3B8C4D3E4E12</span> 
+</span><span class='label'><a id='x1-98010r8'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Partition</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>table holds up to 128 entries</span> 
+</span><span class='label'><a id='x1-98011r9'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Main</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>partition table begins at sector 2 and ends at sector 33</span> 
+</span><span class='label'><a id='x1-98012r10'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>First</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>usable sector is 34, last usable sector is 419430366</span> 
+</span><span class='label'><a id='x1-98013r11'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Partitions</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>will be aligned on 2048-sector boundaries</span> 
+</span><span class='label'><a id='x1-98014r12'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Total</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>free space is 4029 sectors (2.0 MiB)</span> 
 </span><span class='label'><a id='x1-98015r13'></a></span> 
-<span class='label'><a id='x1-98016r14'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Number</span></span><span style='color:#000000'>  <span class='ec-lmtt-10'>Start </span><span class='ec-lmtt-10'>(sector) </span>   <span class='ec-lmtt-10'>End </span><span class='ec-lmtt-10'>(sector) </span> <span class='ec-lmtt-10'>Size </span>      <span class='ec-lmtt-10'>Code </span> <span class='ec-lmtt-10'>Name</span> 
-</span><span class='label'><a id='x1-98017r15'></a></span><span style='color:#000000'>   <span class='ec-lmtt-10'>1 </span>           <span class='ec-lmtt-10'>2048 </span>        <span class='ec-lmtt-10'>1023999 </span>  <span class='ec-lmtt-10'>499.0 </span><span class='ec-lmtt-10'>MiB </span>  <span class='ec-lmtt-10'>2700 </span> <span class='ec-lmtt-10'>Basic </span><span class='ec-lmtt-10'>data </span><span class='ec-lmtt-10'>partition</span> 
-</span><span class='label'><a id='x1-98018r16'></a></span><span style='color:#000000'>   <span class='ec-lmtt-10'>2 </span>        <span class='ec-lmtt-10'>1024000 </span>        <span class='ec-lmtt-10'>1226751 </span>  <span class='ec-lmtt-10'>99.0 </span><span class='ec-lmtt-10'>MiB </span>   <span class='ec-lmtt-10'>EF00 </span> <span class='ec-lmtt-10'>EFI </span><span class='ec-lmtt-10'>system </span><span class='ec-lmtt-10'>partition</span> 
-</span><span class='label'><a id='x1-98019r17'></a></span><span style='color:#000000'>   <span class='ec-lmtt-10'>3 </span>        <span class='ec-lmtt-10'>1226752 </span>        <span class='ec-lmtt-10'>1259519 </span>  <span class='ec-lmtt-10'>16.0 </span><span class='ec-lmtt-10'>MiB </span>   <span class='ec-lmtt-10'>0C01 </span> <span class='ec-lmtt-10'>Microsoft </span><span class='ec-lmtt-10'>reserved </span><span class='ec-lmtt-10'>...</span> 
-</span><span class='label'><a id='x1-98020r18'></a></span><span style='color:#000000'>   <span class='ec-lmtt-10'>4 </span>        <span class='ec-lmtt-10'>1259520 </span>      <span class='ec-lmtt-10'>419428351 </span>  <span class='ec-lmtt-10'>199.4 </span><span class='ec-lmtt-10'>GiB </span>  <span class='ec-lmtt-10'>0700 </span> <span class='ec-lmtt-10'>Basic </span><span class='ec-lmtt-10'>data </span><span class='ec-lmtt-10'>partition</span> 
+<span class='label'><a id='x1-98016r14'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Number</span></span><span style='color:#000000'>  <span class='ec-lmtt-10'>Start (sector)    End (sector)  Size       Code  Name</span> 
+</span><span class='label'><a id='x1-98017r15'></a></span><span style='color:#000000'>   <span class='ec-lmtt-10'>1            2048         1023999   499.0 MiB   2700  Basic data partition</span> 
+</span><span class='label'><a id='x1-98018r16'></a></span><span style='color:#000000'>   <span class='ec-lmtt-10'>2         1024000         1226751   99.0 MiB    EF00  EFI system partition</span> 
+</span><span class='label'><a id='x1-98019r17'></a></span><span style='color:#000000'>   <span class='ec-lmtt-10'>3         1226752         1259519   16.0 MiB    0C01  Microsoft reserved ...</span> 
+</span><span class='label'><a id='x1-98020r18'></a></span><span style='color:#000000'>   <span class='ec-lmtt-10'>4         1259520       419428351   199.4 GiB   0700  Basic data partition</span> 
 </span><span class='label'><a id='x1-98021r19'></a></span> 
-<span class='label'><a id='x1-98022r20'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Command</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>(? </span><span class='ec-lmtk-10'>for </span><span class='ec-lmtk-10'>help</span><span class='ec-lmtt-10'>): </span><span class='ec-lmtt-10'>c</span> 
-</span><span class='label'><a id='x1-98023r21'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Partition</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>number </span><span class='ec-lmtt-10'>(1-4): </span><span class='ec-lmtt-10'>4</span> 
-</span><span class='label'><a id='x1-98024r22'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Enter</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>name: </span><span class='ec-lmtt-10'>BOOTCAMP</span> 
+<span class='label'><a id='x1-98022r20'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Command</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>(? </span><span class='ec-lmtk-10'>for help</span><span class='ec-lmtt-10'>): c</span> 
+</span><span class='label'><a id='x1-98023r21'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Partition</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>number (1-4): 4</span> 
+</span><span class='label'><a id='x1-98024r22'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Enter</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>name: BOOTCAMP</span> 
 </span><span class='label'><a id='x1-98025r23'></a></span> 
-<span class='label'><a id='x1-98026r24'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Command</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>(? </span><span class='ec-lmtk-10'>for </span><span class='ec-lmtk-10'>help</span><span class='ec-lmtt-10'>): </span><span class='ec-lmtt-10'>w</span> 
+<span class='label'><a id='x1-98026r24'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Command</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>(? </span><span class='ec-lmtk-10'>for help</span><span class='ec-lmtt-10'>): w</span> 
 </span><span class='label'><a id='x1-98027r25'></a></span> 
-<span class='label'><a id='x1-98028r26'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Final</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>checks </span><span class='ec-lmtk-10'>complete</span><span class='ec-lmtt-10'>. </span><span class='ec-lmtt-10'>About </span><span class='ec-lmtt-10'>to </span><span class='ec-lmtt-10'>write </span><span class='ec-lmtt-10'>GPT </span><span class='ec-lmtt-10'>data. </span><span class='ec-lmtt-10'>THIS </span><span class='ec-lmtt-10'>WILL </span><span class='ec-lmtt-10'>OVERWRITE </span><span class='ec-lmtt-10'>EXISTING </span><span class='ec-lmtt-10'>PARTITIONS!!</span> 
+<span class='label'><a id='x1-98028r26'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Final</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>checks </span><span class='ec-lmtk-10'>complete</span><span class='ec-lmtt-10'>. About to write GPT data. THIS WILL OVERWRITE EXISTING PARTITIONS!!</span> 
 </span><span class='label'><a id='x1-98029r27'></a></span> 
-<span class='label'><a id='x1-98030r28'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Do</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>you </span><span class='ec-lmtt-10'>want </span><span class='ec-lmtt-10'>to </span><span class='ec-lmtt-10'>proceed? </span><span class='ec-lmtt-10'>(Y/N): </span><span class='ec-lmtt-10'>Y</span> 
-</span><span class='label'><a id='x1-98031r29'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>OK</span></span><span style='color:#000000'><span class='ec-lmtt-10'>;</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>writing </span><span class='ec-lmtt-10'>new </span><span class='ec-lmtt-10'>GUID </span><span class='ec-lmtt-10'>partition </span><span class='ec-lmtt-10'>table </span><span class='ec-lmtt-10'>(GPT) </span><span class='ec-lmtt-10'>to </span><span class='ec-lmtt-10'>\\.\physicaldrive0.</span> 
-</span><span class='label'><a id='x1-98032r30'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Disk</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>synchronization </span><span class='ec-lmtt-10'>succeeded! </span><span class='ec-lmtt-10'>The </span><span class='ec-lmtt-10'>computer </span><span class='ec-lmtt-10'>should </span><span class='ec-lmtt-10'>now </span><span class='ec-lmtt-10'>use </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>new </span><span class='ec-lmtt-10'>partition </span><span class='ec-lmtt-10'>table.</span> 
-</span><span class='label'><a id='x1-98033r31'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>The</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>operation </span><span class='ec-lmtt-10'>has </span><span class='ec-lmtt-10'>completed </span><span class='ec-lmtt-10'>successfully.</span></span></pre>
+<span class='label'><a id='x1-98030r28'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Do</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>you want to proceed? (Y/N): Y</span> 
+</span><span class='label'><a id='x1-98031r29'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>OK</span></span><span style='color:#000000'><span class='ec-lmtt-10'>;</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>writing new GUID partition table (GPT) to \\.\physicaldrive0.</span> 
+</span><span class='label'><a id='x1-98032r30'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Disk</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>synchronization succeeded! The computer should now use the new partition table.</span> 
+</span><span class='label'><a id='x1-98033r31'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>The</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>operation has completed successfully.</span></span></pre>
 <figcaption class='caption'><span class='id'>Listing 4: </span><span class='content'>Relabeling Windows volume</span></figcaption><!-- tex4ht:label?: x1-98033r12.3  -->
 <!-- l. 9198 --><p class='noindent'><span class='ec-lmbx-10'>How do I choose Windows BOOTCAMP with custom NTFS drivers?</span>
 </p><!-- l. 9200 --><p class='noindent'>Third-party drivers providing NTFS support, such as <a href='https://www.tuxera.com/community/open-source-ntfs-3g'>NTFS-3G</a>, Paragon NTFS, Tuxera NTFS or <a href='https://www.seagate.com/support/software/paragon'>Seagate Paragon Driver</a>
