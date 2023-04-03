@@ -7,9 +7,6 @@ on:
   schedule:
     - cron: '*/30 * * * *'
   workflow_dispatch:
-defaults:
-  run:
-    shell: bash --login -ieo pipefail {0}
 jobs:
   build:
     name: Build
@@ -40,11 +37,15 @@ jobs:
           repository: acidanthera/OpenCorePkg
           path: release
           ref: ${{ steps.releasetag.outputs.tag }}
-
+      - run: brew update
+        env:
+          HOMEBREW_NO_INSTALL_CLEANUP: 1
       - name: Get Latest MacTeX Version
         id: mactexversion
         run: |
-          echo "::set-output name=version::$(brew info --cask basictex | head -1 | cut -c 11-)"
+          echo "version=$(brew info --cask basictex | head -1 | cut -c 11-)" >> $GITHUB_OUTPUT
+        env:
+          HOMEBREW_NO_INSTALL_CLEANUP: 1
       - name: Cache Brew Downloads
         uses: actions/cache@v2
         with:
@@ -57,6 +58,8 @@ jobs:
       - name: Install Dependencies
         run: |
           brew install --cask basictex
+        env:
+          HOMEBREW_NO_INSTALL_CLEANUP: 1
       - name: Refresh PATH
         run: |
           eval "$(/usr/libexec/path_helper)"
