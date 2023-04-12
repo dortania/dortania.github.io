@@ -5700,9 +5700,9 @@ options.
 <li class='enumerate' id='x1-86002x1'>
      <!-- l. 8159 --><p class='noindent'><span class='ec-lmtt-10'>TextRenderer</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>BuiltinGraphics</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Chooses renderer for text going through standard console output.
      </p><!-- l. 8165 --><p class='noindent'>Currently two renderers are supported: <span class='ec-lmtt-10'>Builtin </span>and <span class='ec-lmtt-10'>System</span>. <span class='ec-lmtt-10'>System </span>renderer uses firmware services for text
-     rendering. <span class='ec-lmtt-10'>Builtin </span>bypassing firmware services and performs text rendering on its own. Different renderers
-     support a different set of options. It is recommended to use <span class='ec-lmtt-10'>Builtin </span>renderer, as it supports HiDPI mode and
-     uses full screen resolution.
+     rendering. <span class='ec-lmtt-10'>Builtin </span><span class='sout'>bypassing </span><span class='uwave'>bypasses </span>firmware services and performs text rendering on its own. Different
+     renderers support a different set of options. It is recommended to use <span class='ec-lmtt-10'>Builtin </span>renderer, as it supports HiDPI
+     mode and uses full screen resolution.
      </p><!-- l. 8172 --><p class='noindent'>UEFI firmware typically supports <span class='ec-lmtt-10'>ConsoleControl </span>with two rendering modes: <span class='ec-lmtt-10'>Graphics </span>and <span class='ec-lmtt-10'>Text</span>. Some types
      of firmware do not support <span class='ec-lmtt-10'>ConsoleControl </span>and rendering modes. OpenCore and macOS expect text to only be
      shown in <span class='ec-lmtt-10'>Graphics </span>mode and graphics to be drawn in any mode. Since this is not required by UEFI specification,
