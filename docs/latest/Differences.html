@@ -1685,11 +1685,10 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
      </p></li>
 <li class='enumerate' id='x1-39030x8'>
      <!-- l. 2713 --><p class='noindent'><span class='uwave'>DisableIoMapperMapping</span><br class='newline' /><span class='uwave'>Type: plist boolean</span><br class='newline' /><span class='uwave'>Failsafe: false</span><br class='newline' /><span class='uwave'>Requirement: 13.3 (not required for older)</span><br class='newline' /><span class='uwave'>Description: Disables mapping PCI bridge device memory in IOMMU (VT-d). </span>
-     </p><!-- l. 2720 --><p class='noindent'><span class='uwave'>Note 1: This option resolves compatibility issues with Wi-Fi, Ethernet and Thunderbolt devices when AppleVTD
-     is enabled on systems where the native DMAR table contains one or more Reserved Memory Regions.
-     </span>
-     </p><!-- l. 2725 --><p class='noindent'><span class='uwave'>Note 2: This option is not needed on AMD systems or any Intel system where the native DMAR table does not contain
-     any Reserved Memory Regions. </span>
+     </p><!-- l. 2720 --><p class='noindent'><span class='uwave'>Note 1: This option resolves compatibility issues with Wi-Fi, Ethernet and Thunderbolt devices when AppleVTD is
+     enabled on systems where the native DMAR table contains one or more Reserved Memory Regions and iGPU is enabled
+     and more than 16 GB memory is installed. </span>
+     </p><!-- l. 2726 --><p class='noindent'><span class='uwave'>Note 2: This option is not needed on AMD systems. </span>
      </p></li>
 <li class='enumerate' id='x1-39032x9'>
      <!-- l. 2730 --><p class='noindent'><span class='ec-lmtt-10'>DisableLinkeditJettison</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Requirement</span>: 11<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Disables <span class='ec-lmtt-10'>__LINKEDIT </span>jettison code.
@@ -1709,8 +1708,6 @@ currently provide driver (kext) injection, kernel and driver patching, and drive
      patching progress.
      </p></li>
 <li class='enumerate' id='x1-39038x12'>
-                                                                                                  
-                                                                                                  
      <!-- l. 2768 --><p class='noindent'><span class='ec-lmtt-10'>ExternalDiskIcons</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Requirement</span>: 10.4<br class='newline' /><span class='ec-lmbx-10'>Description</span>: Apply icon type patches to AppleAHCIPort.kext to force internal disk icons for all AHCI
      disks.
      </p><!-- l. 2775 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This option should be avoided whenever possible. Modern firmware typically have compatible AHCI
