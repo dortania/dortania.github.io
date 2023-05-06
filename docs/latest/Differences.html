@@ -5703,16 +5703,16 @@ options.
      </p><!-- l. 8176 --><p class='noindent'><span class='uwave'>UEFI firmware typically supports ConsoleControl with two rendering modes: Graphics and Text. Some types
      of firmware do not provide a native ConsoleControl and rendering modes. OpenCore and macOS expect text
      to only be shown in Text mode but graphics to be drawn in any mode, and this is how the OpenCore Builtin
-     renderer behaves. Since this is not required by UEFI specification, behaviour of the system ConsoleControl
-     protocol, when it exists, varies. </span>
+     renderer behaves. Since this is not required by the UEFI specification, behaviour of the system ConsoleControl
+     protocol, when it exists, may vary. </span>
      </p></li>
 <li class='enumerate' id='x1-86004x2'>
      <!-- l. 8186 --><p class='noindent'><span class='uwave'>TextRenderer</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>BuiltinGraphics</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Chooses renderer for text going through standard console output.
-     </p><!-- l. 8192 --><p class='noindent'>Currently two renderers are supported: <span class='ec-lmtt-10'>Builtin </span>and <span class='ec-lmtt-10'>System</span>. <span class='ec-lmtt-10'>System </span>renderer uses firmware services for text
-     rendering<span class='uwave'>, however with additional options provided to santize the output</span>. <span class='ec-lmtt-10'>Builtin </span><span class='sout'>bypassing </span><span class='uwave'>renderer bypasses
-     </span>firmware services and performs text rendering on its own. <span class='sout'>Different renderers support </span><span class='uwave'>Each renderer supports </span>a
-     different set of options. It is recommended to use <span class='ec-lmtt-10'>Builtin </span>renderer, as it supports HiDPI mode and uses full
-     screen resolution.
+     </p><!-- l. 8192 --><p class='noindent'>Currently two renderers are supported: <span class='ec-lmtt-10'>Builtin </span>and <span class='ec-lmtt-10'>System</span>. <span class='uwave'>The </span><span class='ec-lmtt-10'>System </span>renderer uses firmware services for text
+     rendering<span class='sout'>. </span><span class='uwave'>, however with additional options provided to sanitize the output. The </span><span class='ec-lmtt-10'>Builtin </span><span class='sout'>bypassing </span><span class='uwave'>renderer
+     bypasses </span>firmware services and performs text rendering on its own. <span class='sout'>Different renderers support </span><span class='uwave'>Each renderer
+     supports </span>a different set of options. It is recommended to use <span class='uwave'>the </span><span class='ec-lmtt-10'>Builtin </span>renderer, as it supports HiDPI mode
+     and uses full screen resolution.
      </p><!-- l. 8202 --><p class='noindent'><span class='sout'>UEFI firmware typically supports </span><span class='uwave'>Each renderer provides its own </span><span class='ec-lmtt-10'>ConsoleControl </span><span class='sout'>with two rendering modes:
      Graphics          and                Text.                Some                types                of                firmware
      do not support </span><span class='uwave'>protocol (in the case of </span><span class='sout'>ConsoleControland rendering modes. OpenCore and macOS expect
@@ -5723,7 +5723,7 @@ options.
                                                                                                   
      </p><!-- l. 8217 --><p class='noindent'>Valid values <span class='uwave'>of this option </span>are combinations of <span class='sout'>text renderer and rendering mode : </span><span class='uwave'>the renderer to use and the
      ConsoleControl mode to set on the underlying system ConsoleControl protocol before starting. To control the
-     initial mode of the provided ConsoleControl protocol once started, use the InitalMode option. </span>
+     initial mode of the provided ConsoleControl protocol once started, use the InitialMode option. </span>
 </p>
          <ul class='itemize1'>
          <li class='itemize'><span class='ec-lmtt-10'>BuiltinGraphics  </span>—   Switch   to   <span class='ec-lmtt-10'>Graphics  </span>mode   <span class='sout'>and   </span><span class='uwave'>then   </span>use   <span class='ec-lmtt-10'>Builtin  </span>renderer   with   custom

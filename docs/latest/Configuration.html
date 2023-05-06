@@ -5696,20 +5696,20 @@ options.
      </p><!-- l. 8121 --><p class='noindent'>UEFI firmware typically supports <span class='ec-lmtt-10'>ConsoleControl </span>with two rendering modes: <span class='ec-lmtt-10'>Graphics </span>and <span class='ec-lmtt-10'>Text</span>. Some types
      of firmware do not provide a native <span class='ec-lmtt-10'>ConsoleControl </span>and rendering modes. OpenCore and macOS expect text
      to only be shown in <span class='ec-lmtt-10'>Text </span>mode but graphics to be drawn in any mode, and this is how the OpenCore <span class='ec-lmtt-10'>Builtin</span>
-     renderer behaves. Since this is not required by UEFI specification, behaviour of the system <span class='ec-lmtt-10'>ConsoleControl</span>
-     protocol, when it exists, varies.
+     renderer behaves. Since this is not required by the UEFI specification, behaviour of the system <span class='ec-lmtt-10'>ConsoleControl</span>
+     protocol, when it exists, may vary.
      </p></li>
 <li class='enumerate' id='x1-86004x2'>
      <!-- l. 8130 --><p class='noindent'><span class='ec-lmtt-10'>TextRenderer</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>BuiltinGraphics</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Chooses renderer for text going through standard console output.
-     </p><!-- l. 8136 --><p class='noindent'>Currently two renderers are supported: <span class='ec-lmtt-10'>Builtin </span>and <span class='ec-lmtt-10'>System</span>. <span class='ec-lmtt-10'>System </span>renderer uses firmware services for text
-     rendering, however with additional options provided to santize the output. <span class='ec-lmtt-10'>Builtin </span>renderer bypasses firmware
-     services  and  performs  text  rendering  on  its  own.  Each  renderer  supports  a  different  set  of  options.  It  is
-     recommended to use <span class='ec-lmtt-10'>Builtin </span>renderer, as it supports HiDPI mode and uses full screen resolution.
+     </p><!-- l. 8136 --><p class='noindent'>Currently two renderers are supported: <span class='ec-lmtt-10'>Builtin </span>and <span class='ec-lmtt-10'>System</span>. The <span class='ec-lmtt-10'>System </span>renderer uses firmware services for
+     text rendering, however with additional options provided to sanitize the output. The <span class='ec-lmtt-10'>Builtin </span>renderer bypasses
+     firmware services and performs text rendering on its own. Each renderer supports a different set of options. It is
+     recommended to use the <span class='ec-lmtt-10'>Builtin </span>renderer, as it supports HiDPI mode and uses full screen resolution.
      </p><!-- l. 8145 --><p class='noindent'>Each renderer provides its own <span class='ec-lmtt-10'>ConsoleControl </span>protocol (in the case of <span class='ec-lmtt-10'>SystemGeneric </span>only, this passes some
      operations through to the system <span class='ec-lmtt-10'>ConsoleControl </span>protocol, if one exists).
      </p><!-- l. 8150 --><p class='noindent'>Valid values of this option are combinations of the renderer to use and the <span class='ec-lmtt-10'>ConsoleControl </span>mode to set on
      the underlying system <span class='ec-lmtt-10'>ConsoleControl </span>protocol before starting. To control the initial mode of the provided
-     <span class='ec-lmtt-10'>ConsoleControl </span>protocol once started, use the <span class='ec-lmtt-10'>InitalMode </span>option.
+     <span class='ec-lmtt-10'>ConsoleControl </span>protocol once started, use the <span class='ec-lmtt-10'>InitialMode </span>option.
 </p>
                                                                                                   
                                                                                                   
