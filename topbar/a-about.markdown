@@ -16,7 +16,7 @@ Before you can get started on your journey, you will need to check *if* you can 
 
 # Installation Guides
 
-Now that you know your hardware is supported, it's time to finally proceed to setting up macOS. Currently we have two main guides available for help with this journey:
+Now that you know your hardware is supported, it's time to finally proceed to setting up macOS. Currently we have one main guides available (for both laptops and desktops) for help with this journey:
 
 * [OpenCore Install Guide](https://dortania.github.io/OpenCore-Install-Guide/)
   * Primary OpenCore guide, supports both laptops and desktops
