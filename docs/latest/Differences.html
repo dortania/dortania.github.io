@@ -2274,12 +2274,13 @@ until the next manual reconfiguration.
          </li>
          <li class='itemize'>Entry is system (e.g. <span class='ec-lmtt-10'>Reset NVRAM</span>).</li></ul>
      <!-- l. 3481 --><p class='noindent'>To display all entries, the picker menu can be reloaded into “Extended Mode” by pressing the <span class='ec-lmtt-10'>Spacebar </span>key. Hiding
-     auxiliary entries may increase boot performance on multi-disk systems<span class='uwave'>. </span>
+     auxiliary entries may increase boot performance on multi-disk systems.
      </p></li>
 <li class='enumerate' id='x1-45010x5'>
-     <!-- l. 3487 --><p class='noindent'><span class='uwave'>InstanceIdentifier</span><br class='newline' /><span class='uwave'>Type: plist string</span><br class='newline' /><span class='uwave'>Failsafe: Empty</span><br class='newline' /><span class='uwave'>Description: An optional identifier for the current instance of OpenCore. </span>
-     </p><!-- l. 3494 --><p class='noindent'><span class='uwave'>This should typically be a short alphanumeric string. The current use of this value is to optionally target
-     .contentVisibility files to specific instances of OpenCore, as explained in the </span><a href='#-blueuwave-boot-algorithm'>Boot Algorithm</a> <span class='uwave'>section</span>.
+     <!-- l. 3486 --><p class='noindent'><span class='uwave'>InstanceIdentifier</span><br class='newline' /><span class='uwave'>Type: plist string</span><br class='newline' /><span class='uwave'>Failsafe: Empty</span><br class='newline' /><span class='uwave'>Description: An optional identifier for the current instance of OpenCore. </span>
+     </p><!-- l. 3493 --><p class='noindent'><span class='uwave'>This should typically be a short alphanumeric string. The current use of this value is to optionally target
+     .contentVisibility files to specific instances of OpenCore, as explained in the </span><a href='#-blueuwave-boot-algorithm'>Boot Algorithm</a> <span class='uwave'>section.
+     </span>
      </p></li>
 <li class='enumerate' id='x1-45012x6'>
      <!-- l. 3498 --><p class='noindent'><span class='ec-lmtt-10'>LauncherOption</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Disabled</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Register the launcher option in the firmware preferences for persistence.
@@ -2304,8 +2305,6 @@ until the next manual reconfiguration.
          <!-- l. 3520 --><p class='noindent'><span class='ec-lmtt-10'>System </span>— create no boot option but assume specified custom option is blessed. </p>
              <ul class='itemize2'>
              <li class='itemize'>This variant is useful when relying on <span class='ec-lmtt-10'>ForceBooterSignature </span>quirk and OpenCore launcher path
-                                                                                                  
-                                                                                                  
              management happens through <span class='ec-lmtt-10'>bless </span>utilities without involving OpenCore.</li></ul>
          </li></ul>
      <!-- l. 3529 --><p class='noindent'>This option allows integration with third-party operating system installation and upgrades (which may overwrite the
@@ -2391,8 +2390,6 @@ until the next manual reconfiguration.
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x0004 </span>— <span class='ec-lmtt-10'>OC_ATTR_USE_GENERIC_LABEL_IMAGE</span>, provides predefined label images for boot entries without custom
          entries. This may however give less detail for the actual boot entry.
-                                                                                                  
-                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x0008 </span>— <span class='ec-lmtt-10'>OC_ATTR_HIDE_THEMED_ICONS</span>, prefers builtin icons for certain icon categories to match
          the theme style. For example, this could force displaying the builtin Time Machine icon. Requires
@@ -2436,9 +2433,9 @@ until the next manual reconfiguration.
          from each set. E.g. specifying icon flavour <span class='ec-lmtt-10'>Debian:Linux </span>will use the icon <span class='ec-lmtt-10'>Debian.icns </span>if provided,
          then will try <span class='ec-lmtt-10'>Linux.icns</span>, then will fall back to the default for an OS, which is <span class='ec-lmtt-10'>HardDrive.icns</span>.
          </p><!-- l. 3687 --><p class='noindent'>Things to keep in mind:
+                                                                                                  
+                                                                                                  
 </p>
-                                                                                                  
-                                                                                                  
              <ul class='itemize2'>
              <li class='itemize'>For  security  reasons  <span class='ec-lmtt-10'>Ext&lt;Flavour&gt;.icns </span>and  <span class='ec-lmtt-10'>&lt;Flavour&gt;.icns </span>are  both  supported,  and  only
              <span class='ec-lmtt-10'>Ext&lt;Flavour&gt;.icns </span>will be used if the entry is on an external drive (followed by default fallback
@@ -2477,6 +2474,8 @@ until the next manual reconfiguration.
      fact that hotkeys which are continuously held during boot cannot be reliably detected on many PS/2
      keyboards.
      </p><!-- l. 3740 --><p class='noindent'>This list of known <span class='ec-lmtt-10'>modifier hotkeys </span>includes: </p>
+                                                                                                  
+                                                                                                  
          <ul class='itemize1'>
          <li class='itemize'><span class='ec-lmtt-10'>CMD+C+MINUS </span>— disable board compatibility checking.
          </li>
@@ -2510,9 +2509,9 @@ until the next manual reconfiguration.
      </p></li>
 <li class='enumerate' id='x1-45026x13'><span class='ec-lmtt-10'>Timeout</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist integer</span>, 32 bit<br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>0</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Timeout in seconds in the OpenCore picker before automatic booting of the default boot entry. Set to <span class='ec-lmtt-10'>0 </span>to
      disable.
+                                                                                                  
+                                                                                                  
      </li>
-                                                                                                  
-                                                                                                  
 <li class='enumerate' id='x1-45028x14'>
      <!-- l. 3789 --><p class='noindent'><span class='ec-lmtt-10'>PickerMode</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist string</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>Builtin</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Choose picker used for boot management.
      </p><!-- l. 3794 --><p class='noindent'><span class='ec-lmtt-10'>PickerMode </span>describes the underlying boot management with an optional user interface responsible for handling boot
@@ -2550,10 +2549,10 @@ until the next manual reconfiguration.
          combination down to choose this option.</li></ul>
      <!-- l. 3837 --><p class='noindent'><span class='ec-lmri-10'>Note 1</span>: On non-Apple firmware <span class='ec-lmtt-10'>KeySupport</span>, <span class='ec-lmtt-10'>OpenUsbKbDxe</span>, or similar drivers are required for key handling. However,
      not all of the key handling functions can be implemented on several types of firmware.
+                                                                                                  
+                                                                                                  
      </p><!-- l. 3841 --><p class='noindent'><span class='ec-lmri-10'>Note 2</span>: In addition to <span class='ec-lmtt-10'>OPT</span>, OpenCore supports using both the <span class='ec-lmtt-10'>Escape </span>and <span class='ec-lmtt-10'>Zero </span>keys to enter the OpenCore picker when
      <span class='ec-lmtt-10'>ShowPicker </span>is disabled. <span class='ec-lmtt-10'>Escape </span>exists to support co-existence with the Apple picker (including OpenCore <span class='ec-lmtt-10'>Apple </span>picker
-                                                                                                  
-                                                                                                  
      mode) and to support firmware that fails to report held <span class='ec-lmtt-10'>OPT </span>key, as on some PS/2 keyboards. In addition, <span class='ec-lmtt-10'>Zero </span>is
      provided to support systems on which <span class='ec-lmtt-10'>Escape </span>is already assigned to some other pre-boot firmware feature. In
      systems which do not require <span class='ec-lmtt-10'>KeySupport</span>, pressing and holding one of these keys from after power on until
@@ -5861,9 +5860,9 @@ options.
      <!-- l. 8403 --><p class='noindent'><span class='ec-lmtt-10'>ForceResolution</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Forces <span class='ec-lmtt-10'>Resolution </span>to be set in cases where the desired resolution is not available by default, such as on
      legacy Intel GMA and first generation Intel HD Graphics (Ironlake/Arrandale). Setting <span class='ec-lmtt-10'>Resolution </span>to <span class='ec-lmtt-10'>Max </span>will try to
      pull the largest available resolution from the connected display’s EDID.
-     </p><!-- l. 8412 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This option depends on the <a href='https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Acidanthera/Protocol/OcForceResolution.h'><span class='ec-lmtt-10'>OC_FORCE_RESOLUTION_PROTOCOL</span></a> protocol being present. This protocol is
-     currently only supported by <span class='ec-lmtt-10'>OpenDuetPkg</span>. The <span class='ec-lmtt-10'>OpenDuetPkg </span>implementation currently only supports Intel
-     iGPUs.
+     </p><!-- l. 8412 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: This option depends on the <a href='https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Acidanthera/Protocol/OcForceResolution.h'><span class='ec-lmtt-10'>OC_FORCE_RESOLUTION_PROTOCOL</span></a> protocol being present. This protocol is currently
+     only supported by <span class='ec-lmtt-10'>OpenDuetPkg</span>. The <span class='ec-lmtt-10'>OpenDuetPkg </span>implementation currently only supports Intel iGPUs <span class='uwave'>and certain ATI
+     GPUs</span>.
      </p></li>
 <li class='enumerate' id='x1-87014x7'>
      <!-- l. 8417 --><p class='noindent'><span class='ec-lmtt-10'>ClearScreenOnModeSwitch</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Some types of firmware only clear part of the screen when switching from graphics to text mode, leaving a
