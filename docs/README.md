@@ -16,13 +16,13 @@ If the commit does not match up with the latest commit in master branch, wait fo
 <br>
 [Errata](latest/Errata.html) ([original PDF](https://github.com/acidanthera/OpenCorePkg/blob/d74d43bb0279e494a75546fad8834d75172eb01e/Docs/Errata/Errata.pdf))
 
-## For release [0.9.3](https://github.com/acidanthera/OpenCorePkg/tree/0.9.3)
+## For release [0.9.2](https://github.com/acidanthera/OpenCorePkg/tree/0.9.2)
 
-[Configuration](release/Configuration.html) ([original PDF](https://github.com/acidanthera/OpenCorePkg/blob/0.9.3/Docs/Configuration.pdf))
+[Configuration](release/Configuration.html) ([original PDF](https://github.com/acidanthera/OpenCorePkg/blob/0.9.2/Docs/Configuration.pdf))
 <br>
-[Differences](release/Differences.html) ([original PDF](https://github.com/acidanthera/OpenCorePkg/blob/0.9.3/Docs/Differences/Differences.pdf))
+[Differences](release/Differences.html) ([original PDF](https://github.com/acidanthera/OpenCorePkg/blob/0.9.2/Docs/Differences/Differences.pdf))
 
-#### Documentation compiled at 2023-08-04 10:41:56 (UTC)
+#### Documentation compiled at 2023-08-04 11:18:21 (UTC)
 
 ## Known Issues
 
