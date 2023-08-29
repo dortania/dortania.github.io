@@ -1,0 +1,14 @@
+.sout {
+    text-decoration: line-through;
+    color: red;
+}
+
+.uwave {
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    color: blue;
+}
+
+.lstlisting {
+    font-family: monospace;
+}
