@@ -1103,7 +1103,7 @@ commands in Terminal: </p><!-- l. 1317 -->
      driver loading and related actions. Consequently, this directly obstructs other quirks that affect memory management,
      such as <span class='ec-lmtt-10'>DevirtualiseMmio</span>, <span class='ec-lmtt-10'>ProtectMemoryRegions</span>, or <span class='ec-lmtt-10'>RebuildAppleMemoryMap</span>, and may also obstruct other quirks
      depending on the scope of such.
-     </p><!-- l. 1687 --><p class='noindent'>GRUB shim makes similar on-the-fly changes to various UEFI image services, which are also protected against by this
+     </p><!-- l. 1687 --><p class='noindent'>GRUB Shim makes similar on-the-fly changes to various UEFI image services, which are also protected against by this
      quirk.
      </p><!-- l. 1690 --><p class='noindent'><span class='ec-lmri-10'>Note 1</span>: On VMware, the need for this quirk may be determined by the appearance of the “Your Mac OS guest might run
      unreliably with more than one virtual core.” message.
@@ -4795,10 +4795,8 @@ the options as required. Note however that the following differences are normal 
      </li>
      <li class='itemize'>Less important graphics handover options (such as discussed in the Ubuntu example given in <span class='ec-lmtt-10'>autoopts </span>below)
      will not match exactly, this is not important as long as distro boots successfully.</li></ul>
-<!-- l. 6817 --><p class='noindent'>If using OpenLinuxBoot with Secure Boot, users may wish to use the <span class='ec-lmtt-10'>shim-to-cert.tool </span>included in OpenCore utilities,
-which can be used to extract the public key needed to boot a distro’s kernels directly, as done when using OpenCore with
-OpenLinuxBoot, rather than via GRUB shim. For non-GRUB distros, the required public key must be found by user
-research.
+<!-- l. 6817 --><p class='noindent'>If using OpenLinuxBoot with Secure Boot, users may wish to install a user built, user signed Shim bootloader giving SBAT
+and MOK integration, as explained in <a href='https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/ShimUtils'>OpenCore ShimUtils</a>.
 </p><!-- l. 6821 --><p class='noindent'>
 </p>
 <h5 class='subsubsectionHead' id='configuration2'><span class='titlemark'>11.7.1   </span> <a id='x1-7400011.7.1'></a>Configuration</h5>
@@ -4814,10 +4812,10 @@ for the driver may be specified in <span class='ec-lmtt-10'>UEFI/Drivers/Argumen
          <li class='itemize'><span class='ec-lmtt-10'>LINUX_BOOT_LOG_VERBOSE </span>and
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>LINUX_BOOT_ADD_DEBUG_INFO</span>.</li></ul>
-                                                                                                  
-                                                                                                  
      <!-- l. 6837 --><p class='noindent'>Available flags are:
 </p>
+                                                                                                  
+                                                                                                  
          <ul class='itemize2'>
          <li class='itemize'><span class='ec-lmtt-10'>0x00000001 </span>(bit <span class='ec-lmtt-10'>0</span>) — <span class='ec-lmtt-10'>LINUX_BOOT_SCAN_ESP</span>, Allows scanning for entries on EFI System Partition.
          </li>
@@ -4864,6 +4862,8 @@ for the driver may be specified in <span class='ec-lmtt-10'>UEFI/Drivers/Argumen
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>0x00000800 </span>(bit <span class='ec-lmtt-10'>11</span>) — <span class='ec-lmtt-10'>LINUX_BOOT_ADD_RW</span>, Like <span class='ec-lmtt-10'>LINUX_BOOT_ADD_RO</span>, this option applies to autodetected
          Linux  only.  It  is  not  required  for  most  distros  (which  usually  require  either  <span class='ec-lmtt-10'>ro </span>or  nothing  to  be
+                                                                                                  
+                                                                                                  
          added  to  detected  boot  options),  but  is  required  on  some  Arch-derived  distros,  e.g.  EndeavourOS.
          When there are multiple distros and it is required to specify this option for specific distros only, use
          <span class='ec-lmtt-10'>autoopts:{PARTUUID}+=rw </span>to manually add the option where required, instead of using this flag. If this
@@ -4909,9 +4909,9 @@ for the driver may be specified in <span class='ec-lmtt-10'>UEFI/Drivers/Argumen
      <span class='ec-lmtt-10'>autoopts+="vt.handoff=3" </span>(check <span class='ec-lmtt-10'>cat /proc/cmdline </span>when booted via the distro’s default bootloader) on Ubuntu
      and related distros, in order to add the <span class='ec-lmtt-10'>vt.handoff </span>option to the auto-detected GRUB defaults, and avoid a flash of text
      showing before the distro splash screen. </p></li></ul>
-                                                                                                  
-                                                                                                  
 <!-- l. 6956 --><p class='noindent'>
+                                                                                                  
+                                                                                                  
 </p>
 <h5 class='subsubsectionHead' id='additional-information'><span class='titlemark'>11.7.2   </span> <a id='x1-7500011.7.2'></a>Additional information</h5>
 <!-- l. 6958 --><p class='noindent'>OpenLinuxBoot can detect the <span class='ec-lmtt-10'>loader/entries/*.conf </span>files created according to the <a href='https://systemd.io/BOOT_LOADER_SPECIFICATION/'>Boot Loader Specification</a> or the closely
@@ -6195,11 +6195,11 @@ options.
      <a href='https://github.com/xCuri0/ReBarUEFI'>ReBarUEFI</a>.
      </p></li>
 <li class='enumerate' id='x1-91026x13'>
-     <!-- l. 8929 --><p class='noindent'><span class='ec-lmtt-10'>ShimRetainProtocol</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Request Linux shim to keep protocol installed for subsequent image loads.
+     <!-- l. 8929 --><p class='noindent'><span class='ec-lmtt-10'>ShimRetainProtocol</span><br class='newline' /><span class='ec-lmbx-10'>Type</span>: <span class='ec-lmtt-10'>plist boolean</span><br class='newline' /><span class='ec-lmbx-10'>Failsafe</span>: <span class='ec-lmtt-10'>false</span><br class='newline' /><span class='ec-lmbx-10'>Description</span>: Request Linux Shim to keep protocol installed for subsequent image loads.
                                                                                                   
                                                                                                   
-     </p><!-- l. 8934 --><p class='noindent'>This option is only required if chaining OpenCore from shim. It must be set in order to allow OpenCore
-     to launch items which are verified by certificates present in shim, but not in the system Secure Boot
+     </p><!-- l. 8934 --><p class='noindent'>This option is only required if chaining OpenCore from Shim. It must be set in order to allow OpenCore
+     to launch items which are verified by certificates present in Shim, but not in the system Secure Boot
      database.
      </p></li>
 <li class='enumerate' id='x1-91028x14'>
@@ -6464,12 +6464,14 @@ settings as explained below:
      with the same private key.
      </li>
 <li class='enumerate' id='x1-100018x9'>Sign all third-party operating system (not made by Microsoft or Apple) bootloaders if needed. For Linux there
-     is an option to install Microsoft-signed Shim bootloader as explained on e.g. <a href='https://wiki.debian.org/SecureBoot'>Debian Wiki</a>.
+     is an option to install a user built, user signed Shim bootloader giving SBAT and MOK integration, as explained
+     in <a href='https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/ShimUtils'>OpenCore ShimUtils</a>.
      </li>
 <li class='enumerate' id='x1-100020x10'>Enable UEFI Secure Boot in firmware preferences and install the certificate with a private key. Details on how to
      generate a certificate can be found in various articles, such as <a href='https://habr.com/en/post/273497'>this one</a>, and are out of the scope of this document.
      If Windows is needed one will also need to add the <a href='http://go.microsoft.com/fwlink/?LinkID=321192'>Microsoft Windows Production CA 2011</a>. To launch option
-     ROMs or to use signed Linux drivers, <a href='http://go.microsoft.com/fwlink/?LinkId=321194'>Microsoft UEFI Driver Signing CA</a> will also be needed.
+     ROMs or to use signed Linux drivers if not using a user build of Shim, <a href='http://go.microsoft.com/fwlink/?LinkId=321194'>Microsoft UEFI Driver Signing CA</a> will
+     also be needed.
      </li>
 <li class='enumerate' id='x1-100022x11'>Password-protect changing firmware settings to ensure that UEFI Secure Boot cannot be disabled without the
      user’s knowledge.</li></ol>
@@ -6493,8 +6495,6 @@ Windows 7, might work with some extra precautions. Things to consider:
      <li class='itemize'>Windows may need to be reactivated. To avoid it consider setting SystemUUID to the original firmware UUID.
      Be aware that it may be invalid on old firmware, i.e., not random. If there still are issues, consider using HWID
      or KMS38 license or making the use <span class='ec-lmtt-10'>Custom UpdateSMBIOSMode</span>. Other nuances of Windows activation are out
-                                                                                                  
-                                                                                                  
      of the scope of this document and can be found online.</li></ul>
 <!-- l. 9316 --><p class='noindent'><span class='ec-lmbx-10'>What additional software do I need?</span>
 </p><!-- l. 9318 --><p class='noindent'>To enable operating system switching and install relevant drivers in the majority of cases Windows support software from <a href='https://support.apple.com/boot-camp'>Boot
@@ -6566,9 +6566,9 @@ utility. Reference example:
 disrupt certain macOS functionality, including the <a href='https://support.apple.com/HT202796'>Startup Disk</a> preference pane normally used for operating system selection.
 While the recommended option remains not to use such drivers as they commonly corrupt the filesystem, and prefer the driver
 bundled with macOS with optional write support ( <a href='http://osxdaily.com/2013/10/02/enable-ntfs-write-support-mac-os-x'>command</a> or <a href='https://mounty.app'>GUI</a>), there still exist vendor-specific workarounds for their
+                                                                                                  
+                                                                                                  
 products: <a href='https://www.tuxera.com/products/tuxera-ntfs-for-mac/faq'>Tuxera</a>, <a href='https://kb.paragon-software.com/article/6604'>Paragon</a>, etc.
-                                                                                                  
-                                                                                                  
 </p><!-- l. 9412 --><p class='noindent'>
 </p>
 <h4 class='subsectionHead' id='debugging1'><span class='titlemark'>12.4   </span> <a id='x1-10200012.4'></a>Debugging</h4>
@@ -6607,11 +6607,11 @@ To additionally enable XNU kernel serial output <span class='ec-lmtt-10'>debug=0
          <li class='itemize'>Watch Dog is disabled to prevent automatic reboot: <span class='ec-lmtt-10'>Misc </span><span class='lmsy-10'>→ </span><span class='ec-lmtt-10'>Debug </span><span class='lmsy-10'>→ </span><span class='ec-lmtt-10'>DisableWatchDog </span><span class='rm-lmr-10'>= </span><span class='ec-lmtt-10'>true</span>.
          </li>
          <li class='itemize'>Boot Picker (entry selector) is enabled: <span class='ec-lmtt-10'>Misc </span><span class='lmsy-10'>→ </span><span class='ec-lmtt-10'>Boot </span><span class='lmsy-10'>→ </span><span class='ec-lmtt-10'>ShowPicker </span><span class='rm-lmr-10'>= </span><span class='ec-lmtt-10'>true</span>.</li></ul>
+                                                                                                  
+                                                                                                  
      <!-- l. 9468 --><p class='noindent'>If there is no obvious error, check the available workarounds in the <span class='ec-lmtt-10'>Quirks </span>sections one by one. For early boot
      troubleshooting, for instance, when OpenCore menu does not appear, using <span class='ec-lmtt-10'>UEFI Shell </span>(bundled with OpenCore) may
      help to see early debug messages.
-                                                                                                  
-                                                                                                  
      </p></li>
 <li class='enumerate' id='x1-103004x2'>
      <!-- l. 9474 --><p class='noindent'><span class='ec-lmbx-10'>How do I debug macOS boot failures?</span>
@@ -6649,11 +6649,11 @@ To additionally enable XNU kernel serial output <span class='ec-lmtt-10'>debug=0
      functioning.
      </p></li>
 <li class='enumerate' id='x1-103010x5'>
+                                                                                                  
+                                                                                                  
      <!-- l. 9512 --><p class='noindent'> <span class='ec-lmbx-10'>What is the simplest way to install macOS?</span>
      </p><!-- l. 9515 --><p class='noindent'>Copy online recovery image (<span class='ec-lmtt-10'>*.dmg </span>and <span class='ec-lmtt-10'>*.chunklist </span>files) to <span class='ec-lmtt-10'>com.apple.recovery.boot </span>directory on a FAT32 partition
      with OpenCore. Load the OpenCore picker and choose the entry, it will have a <span class='ec-lmtt-10'>(dmg) </span>suffix. Custom name may be
-                                                                                                  
-                                                                                                  
      created by providing <span class='ec-lmtt-10'>.contentDetails </span>file.
      </p><!-- l. 9520 --><p class='noindent'>To download recovery online <a href='https://github.com/acidanthera/OpenCorePkg/blob/master/Utilities/macrecovery/macrecovery.py'>macrecovery.py</a> can be used.
      </p><!-- l. 9524 --><p class='noindent'>For offline installation refer to <a href='https://support.apple.com/HT201372'>How to create a bootable installer for macOS</a> article. Apart from App Store and
@@ -6690,6 +6690,8 @@ To additionally enable XNU kernel serial output <span class='ec-lmtt-10'>debug=0
          <li class='itemize'><span class='ec-lmtt-10'>EnableSafeModeSlide</span>
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>EnableWriteUnprotector</span>
+                                                                                                  
+                                                                                                  
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>ForceExitBootServices</span>
          </li>
