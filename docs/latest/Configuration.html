@@ -6465,7 +6465,7 @@ settings as explained below:
      </li>
 <li class='enumerate' id='x1-100018x9'>Sign all third-party operating system (not made by Microsoft or Apple) bootloaders if needed. For Linux there
      is an option to install a user built, user signed Shim bootloader giving SBAT and MOK integration, as explained
-     in <a href='https://github.com/acidanthera/OpenCorePkg/tree/master/Utilities/ShimUtils'>OpenCore ShimUtils</a>.
+     in the <span class='ec-lmtt-10'>/Utilities/ShimUtils </span>directory of OpenCore source or releases.
      </li>
 <li class='enumerate' id='x1-100020x10'>Enable UEFI Secure Boot in firmware preferences and install the certificate with a private key. Details on how to
      generate a certificate can be found in various articles, such as <a href='https://habr.com/en/post/273497'>this one</a>, and are out of the scope of this document.
@@ -6475,11 +6475,11 @@ settings as explained below:
      </li>
 <li class='enumerate' id='x1-100022x11'>Password-protect changing firmware settings to ensure that UEFI Secure Boot cannot be disabled without the
      user’s knowledge.</li></ol>
-<!-- l. 9289 --><p class='noindent'>
+<!-- l. 9290 --><p class='noindent'>
 </p>
 <h4 class='subsectionHead' id='windows-support'><span class='titlemark'>12.3   </span> <a id='x1-10100012.3'></a>Windows support</h4>
-<!-- l. 9291 --><p class='noindent'><span class='ec-lmbx-10'>Can I install Windows?</span>
-</p><!-- l. 9293 --><p class='noindent'>While no official Windows support is provided, 64-bit UEFI Windows installations (Windows 8 and above) prepared with Boot
+<!-- l. 9292 --><p class='noindent'><span class='ec-lmbx-10'>Can I install Windows?</span>
+</p><!-- l. 9294 --><p class='noindent'>While no official Windows support is provided, 64-bit UEFI Windows installations (Windows 8 and above) prepared with Boot
 Camp are supposed to work. Third-party UEFI installations as well as systems partially supporting UEFI boot, such as
 Windows 7, might work with some extra precautions. Things to consider:
 </p>
@@ -6496,19 +6496,19 @@ Windows 7, might work with some extra precautions. Things to consider:
      Be aware that it may be invalid on old firmware, i.e., not random. If there still are issues, consider using HWID
      or KMS38 license or making the use <span class='ec-lmtt-10'>Custom UpdateSMBIOSMode</span>. Other nuances of Windows activation are out
      of the scope of this document and can be found online.</li></ul>
-<!-- l. 9316 --><p class='noindent'><span class='ec-lmbx-10'>What additional software do I need?</span>
-</p><!-- l. 9318 --><p class='noindent'>To enable operating system switching and install relevant drivers in the majority of cases Windows support software from <a href='https://support.apple.com/boot-camp'>Boot
+<!-- l. 9317 --><p class='noindent'><span class='ec-lmbx-10'>What additional software do I need?</span>
+</p><!-- l. 9319 --><p class='noindent'>To enable operating system switching and install relevant drivers in the majority of cases Windows support software from <a href='https://support.apple.com/boot-camp'>Boot
 Camp</a> is required. For simplicity of the download process or when configuring an already installed Windows version a
 third-party utility, <a href='https://github.com/timsutton/brigadier'>Brigadier</a>, can be used successfully. Note, that <a href='https://www.7-zip.org'>7-Zip</a> may be downloaded and installed prior to using
 Brigadier.
-</p><!-- l. 9326 --><p class='noindent'>Remember to always use the latest version of Windows support software from Boot Camp, as versions prior to 6.1 do
+</p><!-- l. 9327 --><p class='noindent'>Remember to always use the latest version of Windows support software from Boot Camp, as versions prior to 6.1 do
 not support APFS, and thus will not function correctly. To download newest software pass most recent Mac
 model to Brigadier, for example <span class='ec-lmtt-10'>./brigadier.exe -m iMac19,1</span>. To install Boot Camp on an unsupported Mac
 model afterwards run PowerShell as Administrator and enter <span class='ec-lmtt-10'>msiexec /i BootCamp.msi</span>. If there is a previous
 version of Boot Camp installed it should be removed first by running <span class='ec-lmtt-10'>msiexec /x BootCamp.msi </span>command.
 <span class='ec-lmtt-10'>BootCamp.msi </span>file is located in <span class='ec-lmtt-10'>BootCamp/Drivers/Apple </span>directory and can be reached through Windows
 Explorer.
-</p><!-- l. 9336 --><p class='noindent'>While Windows support software from Boot Camp solves most of compatibility problems, the rest may still have to be
+</p><!-- l. 9337 --><p class='noindent'>While Windows support software from Boot Camp solves most of compatibility problems, the rest may still have to be
 addressed manually:
 </p>
      <ul class='itemize1'>
@@ -6521,12 +6521,12 @@ addressed manually:
      known utilities are: <a href='https://forums.macrumors.com/threads/apple-hfs-windows-driver-download.1368010/'>Apple HFS+ driver</a> (<a href='https://forums.macrumors.com/threads/apple-hfs-windows-driver-download.1368010/post-24180079'>workaround for Windows 10</a>), <a href='http://www.catacombae.org/hfsexplorer'>HFSExplorer</a>, MacDrive, Paragon APFS,
      Paragon HFS+, TransMac, etc. Remember to never ever attempt to modify Apple file systems from Windows
      as this often leads to irrecoverable data loss.</li></ul>
-<!-- l. 9354 --><p class='noindent'><span class='ec-lmbx-10'>Why do I see </span><span class='ec-lmtk-10'>Basic data partition </span><span class='ec-lmbx-10'>in the Boot Camp Startup Disk control panel?</span>
-</p><!-- l. 9356 --><p class='noindent'>The Boot Camp control panel uses the GPT partition table to obtain each boot option name. After installing Windows
+<!-- l. 9355 --><p class='noindent'><span class='ec-lmbx-10'>Why do I see </span><span class='ec-lmtk-10'>Basic data partition </span><span class='ec-lmbx-10'>in the Boot Camp Startup Disk control panel?</span>
+</p><!-- l. 9357 --><p class='noindent'>The Boot Camp control panel uses the GPT partition table to obtain each boot option name. After installing Windows
 separately, the partition has to be relabelled manually. This can be done with many utilities including the open-source <a href='https://sourceforge.net/projects/gptfdisk'>gdisk</a>
 utility. Reference example:
 </p>
-<!-- l. 9361 -->
+<!-- l. 9362 -->
 <p id='-relabeling-windows-volume'><a id='x1-101001r4'></a>
 <a id='x1-101002'></a>
 </p><pre class='lstlisting' id='listing-18'><span class='label'><a id='x1-101003r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>PS</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>C:\gdisk&gt; .\gdisk64.exe \\.\physicaldrive0</span> 
@@ -6561,39 +6561,39 @@ utility. Reference example:
 </span><span class='label'><a id='x1-101032r30'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Disk</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>synchronization succeeded! The computer should now use the new partition table.</span> 
 </span><span class='label'><a id='x1-101033r31'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>The</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>operation has completed successfully.</span></span></pre>
 <figcaption class='caption'><span class='id'>Listing 4: </span><span class='content'>Relabeling Windows volume</span></figcaption><!-- tex4ht:label?: x1-101033r12.3  -->
-<!-- l. 9396 --><p class='noindent'><span class='ec-lmbx-10'>How do I choose Windows BOOTCAMP with custom NTFS drivers?</span>
-</p><!-- l. 9398 --><p class='noindent'>Third-party drivers providing NTFS support, such as <a href='https://www.tuxera.com/community/open-source-ntfs-3g'>NTFS-3G</a>, Paragon NTFS, Tuxera NTFS or <a href='https://www.seagate.com/support/software/paragon'>Seagate Paragon Driver</a>
+<!-- l. 9397 --><p class='noindent'><span class='ec-lmbx-10'>How do I choose Windows BOOTCAMP with custom NTFS drivers?</span>
+</p><!-- l. 9399 --><p class='noindent'>Third-party drivers providing NTFS support, such as <a href='https://www.tuxera.com/community/open-source-ntfs-3g'>NTFS-3G</a>, Paragon NTFS, Tuxera NTFS or <a href='https://www.seagate.com/support/software/paragon'>Seagate Paragon Driver</a>
 disrupt certain macOS functionality, including the <a href='https://support.apple.com/HT202796'>Startup Disk</a> preference pane normally used for operating system selection.
 While the recommended option remains not to use such drivers as they commonly corrupt the filesystem, and prefer the driver
 bundled with macOS with optional write support ( <a href='http://osxdaily.com/2013/10/02/enable-ntfs-write-support-mac-os-x'>command</a> or <a href='https://mounty.app'>GUI</a>), there still exist vendor-specific workarounds for their
                                                                                                   
                                                                                                   
 products: <a href='https://www.tuxera.com/products/tuxera-ntfs-for-mac/faq'>Tuxera</a>, <a href='https://kb.paragon-software.com/article/6604'>Paragon</a>, etc.
-</p><!-- l. 9412 --><p class='noindent'>
+</p><!-- l. 9413 --><p class='noindent'>
 </p>
 <h4 class='subsectionHead' id='debugging1'><span class='titlemark'>12.4   </span> <a id='x1-10200012.4'></a>Debugging</h4>
-<!-- l. 9414 --><p class='noindent'>Similar to other projects working with hardware OpenCore supports auditing and debugging. The use of <span class='ec-lmtt-10'>NOOPT </span>or <span class='ec-lmtt-10'>DEBUG </span>build
+<!-- l. 9415 --><p class='noindent'>Similar to other projects working with hardware OpenCore supports auditing and debugging. The use of <span class='ec-lmtt-10'>NOOPT </span>or <span class='ec-lmtt-10'>DEBUG </span>build
 modes instead of <span class='ec-lmtt-10'>RELEASE </span>can produce a lot more debug output. With <span class='ec-lmtt-10'>NOOPT </span>source level debugging with GDB or IDA Pro is
 also available. For GDB check <a href='https://github.com/acidanthera/OpenCorePkg/tree/master/Debug'>OpenCore Debug</a> page. For IDA Pro, version 7.3 or newer is needed, and <a href='https://www.hex-rays.com/products/ida/support/tutorials/index.shtml'>Debugging the XNU
 Kernel with IDA Pro</a> may also help.
-</p><!-- l. 9423 --><p class='noindent'>To obtain the log during boot serial port debugging can be used. Serial port debugging is enabled in <span class='ec-lmtt-10'>Target</span>, e.g. <span class='ec-lmtt-10'>0xB </span>for
+</p><!-- l. 9424 --><p class='noindent'>To obtain the log during boot serial port debugging can be used. Serial port debugging is enabled in <span class='ec-lmtt-10'>Target</span>, e.g. <span class='ec-lmtt-10'>0xB </span>for
 onscreen with serial. To initialise serial within OpenCore use <span class='ec-lmtt-10'>Init </span>configuration option under <span class='ec-lmtt-10'>Misc-&gt;Serial </span>with other values
 properly set. For macOS the best choice is CP2102-based UART devices. Connect motherboard <span class='ec-lmtt-10'>TX </span>to USB UART <span class='ec-lmtt-10'>RX</span>, and
 motherboard <span class='ec-lmtt-10'>GND </span>to USB UART <span class='ec-lmtt-10'>GND</span>. Use <span class='ec-lmtt-10'>screen </span>utility to get the output, or download GUI software, such as
 <a href='https://freeware.the-meiers.org'>CoolTerm</a>.
-</p><!-- l. 9431 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: On several motherboards (and possibly USB UART dongles) PIN naming may be incorrect. It is very common to have
+</p><!-- l. 9432 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: On several motherboards (and possibly USB UART dongles) PIN naming may be incorrect. It is very common to have
 <span class='ec-lmtt-10'>GND </span>swapped with <span class='ec-lmtt-10'>RX</span>, thus, motherboard “<span class='ec-lmtt-10'>TX</span>” must be connected to USB UART <span class='ec-lmtt-10'>GND</span>, and motherboard “<span class='ec-lmtt-10'>GND</span>” to USB UART
 <span class='ec-lmtt-10'>RX</span>.
-</p><!-- l. 9436 --><p class='noindent'>Remember to enable <span class='ec-lmtt-10'>COM </span>port in firmware settings, and never use USB cables longer than 1 meter to avoid output corruption.
+</p><!-- l. 9437 --><p class='noindent'>Remember to enable <span class='ec-lmtt-10'>COM </span>port in firmware settings, and never use USB cables longer than 1 meter to avoid output corruption.
 To additionally enable XNU kernel serial output <span class='ec-lmtt-10'>debug=0x8 </span>boot argument is needed.
-</p><!-- l. 9440 --><p class='noindent'>
+</p><!-- l. 9441 --><p class='noindent'>
 </p>
 <h4 class='subsectionHead' id='tips-and-tricks'><span class='titlemark'>12.5   </span> <a id='x1-10300012.5'></a>Tips and Tricks</h4>
-<!-- l. 9442 --><p class='noindent'>
+<!-- l. 9443 --><p class='noindent'>
      </p><ol class='enumerate1'>
 <li class='enumerate' id='x1-103002x1'>
-     <!-- l. 9444 --><p class='noindent'><span class='ec-lmbx-10'>How do I debug boot failures?</span>
-     </p><!-- l. 9446 --><p class='noindent'>Obtaining the actual error message is usually adequate. For this, ensure that: </p>
+     <!-- l. 9445 --><p class='noindent'><span class='ec-lmbx-10'>How do I debug boot failures?</span>
+     </p><!-- l. 9447 --><p class='noindent'>Obtaining the actual error message is usually adequate. For this, ensure that: </p>
          <ul class='itemize1'>
          <li class='itemize'>A <span class='ec-lmtt-10'>DEBUG </span>or <span class='ec-lmtt-10'>NOOPT </span>version of OpenCore is used.
          </li>
@@ -6609,12 +6609,12 @@ To additionally enable XNU kernel serial output <span class='ec-lmtt-10'>debug=0
          <li class='itemize'>Boot Picker (entry selector) is enabled: <span class='ec-lmtt-10'>Misc </span><span class='lmsy-10'>→ </span><span class='ec-lmtt-10'>Boot </span><span class='lmsy-10'>→ </span><span class='ec-lmtt-10'>ShowPicker </span><span class='rm-lmr-10'>= </span><span class='ec-lmtt-10'>true</span>.</li></ul>
                                                                                                   
                                                                                                   
-     <!-- l. 9468 --><p class='noindent'>If there is no obvious error, check the available workarounds in the <span class='ec-lmtt-10'>Quirks </span>sections one by one. For early boot
+     <!-- l. 9469 --><p class='noindent'>If there is no obvious error, check the available workarounds in the <span class='ec-lmtt-10'>Quirks </span>sections one by one. For early boot
      troubleshooting, for instance, when OpenCore menu does not appear, using <span class='ec-lmtt-10'>UEFI Shell </span>(bundled with OpenCore) may
      help to see early debug messages.
      </p></li>
 <li class='enumerate' id='x1-103004x2'>
-     <!-- l. 9474 --><p class='noindent'><span class='ec-lmbx-10'>How do I debug macOS boot failures?</span>
+     <!-- l. 9475 --><p class='noindent'><span class='ec-lmbx-10'>How do I debug macOS boot failures?</span>
 </p>
          <ul class='itemize1'>
          <li class='itemize'>Refer to <span class='ec-lmtt-10'>boot-args </span>values such as <span class='ec-lmtt-10'>debug=0x100</span>, <span class='ec-lmtt-10'>keepsyms=1</span>, <span class='ec-lmtt-10'>-v</span>, and similar.
@@ -6633,14 +6633,14 @@ To additionally enable XNU kernel serial output <span class='ec-lmtt-10'>debug=0
          <li class='itemize'>Always read the logs carefully.</li></ul>
      </li>
 <li class='enumerate' id='x1-103006x3'>
-     <!-- l. 9491 --><p class='noindent'><span class='ec-lmbx-10'>How do I customise boot entries?</span>
-     </p><!-- l. 9493 --><p class='noindent'>OpenCore follows standard Apple Bless model and extracts the entry name from <span class='ec-lmtt-10'>.contentDetails </span>and
+     <!-- l. 9492 --><p class='noindent'><span class='ec-lmbx-10'>How do I customise boot entries?</span>
+     </p><!-- l. 9494 --><p class='noindent'>OpenCore follows standard Apple Bless model and extracts the entry name from <span class='ec-lmtt-10'>.contentDetails </span>and
      <span class='ec-lmtt-10'>.disk_label.contentDetails </span>files in the booter directory if present. These files contain an ASCII string with an entry
      title, which may then be customised by the user.
      </p></li>
 <li class='enumerate' id='x1-103008x4'>
-     <!-- l. 9499 --><p class='noindent'><span class='ec-lmbx-10'>How do I choose the default boot entry?</span>
-     </p><!-- l. 9501 --><p class='noindent'>OpenCore uses the primary UEFI boot option to select the default entry. This choice can be altered from UEFI Setup,
+     <!-- l. 9500 --><p class='noindent'><span class='ec-lmbx-10'>How do I choose the default boot entry?</span>
+     </p><!-- l. 9502 --><p class='noindent'>OpenCore uses the primary UEFI boot option to select the default entry. This choice can be altered from UEFI Setup,
      with the macOS <a href='https://support.apple.com/HT202796'>Startup Disk</a> preference, or the Windows <a href='https://support.apple.com/guide/bootcamp-control-panel/start-up-your-mac-in-windows-or-macos-bcmp29b8ac66/mac'>Boot Camp</a> Control Panel. Since choosing OpenCore’s
      <span class='ec-lmtt-10'>BOOTx64.EFI </span>as a primary boot option limits this functionality in addition to several types of firmware deleting
      incompatible boot options, potentially including those created by macOS, users are strongly encouraged to
@@ -6651,33 +6651,33 @@ To additionally enable XNU kernel serial output <span class='ec-lmtt-10'>debug=0
 <li class='enumerate' id='x1-103010x5'>
                                                                                                   
                                                                                                   
-     <!-- l. 9512 --><p class='noindent'> <span class='ec-lmbx-10'>What is the simplest way to install macOS?</span>
-     </p><!-- l. 9515 --><p class='noindent'>Copy online recovery image (<span class='ec-lmtt-10'>*.dmg </span>and <span class='ec-lmtt-10'>*.chunklist </span>files) to <span class='ec-lmtt-10'>com.apple.recovery.boot </span>directory on a FAT32 partition
+     <!-- l. 9513 --><p class='noindent'> <span class='ec-lmbx-10'>What is the simplest way to install macOS?</span>
+     </p><!-- l. 9516 --><p class='noindent'>Copy online recovery image (<span class='ec-lmtt-10'>*.dmg </span>and <span class='ec-lmtt-10'>*.chunklist </span>files) to <span class='ec-lmtt-10'>com.apple.recovery.boot </span>directory on a FAT32 partition
      with OpenCore. Load the OpenCore picker and choose the entry, it will have a <span class='ec-lmtt-10'>(dmg) </span>suffix. Custom name may be
      created by providing <span class='ec-lmtt-10'>.contentDetails </span>file.
-     </p><!-- l. 9520 --><p class='noindent'>To download recovery online <a href='https://github.com/acidanthera/OpenCorePkg/blob/master/Utilities/macrecovery/macrecovery.py'>macrecovery.py</a> can be used.
-     </p><!-- l. 9524 --><p class='noindent'>For offline installation refer to <a href='https://support.apple.com/HT201372'>How to create a bootable installer for macOS</a> article. Apart from App Store and
+     </p><!-- l. 9521 --><p class='noindent'>To download recovery online <a href='https://github.com/acidanthera/OpenCorePkg/blob/master/Utilities/macrecovery/macrecovery.py'>macrecovery.py</a> can be used.
+     </p><!-- l. 9525 --><p class='noindent'>For offline installation refer to <a href='https://support.apple.com/HT201372'>How to create a bootable installer for macOS</a> article. Apart from App Store and
      <span class='ec-lmtt-10'>softwareupdate </span>utility there also are <a href='https://github.com/corpnewt/gibMacOS'>third-party utilities</a> to download an offline image.
      </p></li>
 <li class='enumerate' id='x1-103012x6'>
-     <!-- l. 9530 --><p class='noindent'><span class='ec-lmbx-10'>Why do online recovery images (</span><span class='ec-lmtk-10'>*.dmg</span><span class='ec-lmbx-10'>) fail to load?</span>
-     </p><!-- l. 9532 --><p class='noindent'>This may be caused by missing HFS+ driver, as all presently known recovery volumes have HFS+ filesystem.
+     <!-- l. 9531 --><p class='noindent'><span class='ec-lmbx-10'>Why do online recovery images (</span><span class='ec-lmtk-10'>*.dmg</span><span class='ec-lmbx-10'>) fail to load?</span>
+     </p><!-- l. 9533 --><p class='noindent'>This may be caused by missing HFS+ driver, as all presently known recovery volumes have HFS+ filesystem.
      </p></li>
 <li class='enumerate' id='x1-103014x7'>
-     <!-- l. 9536 --><p class='noindent'><span class='ec-lmbx-10'>Can I use this on Apple hardware or virtual machines?</span>
-     </p><!-- l. 9538 --><p class='noindent'>Yes. Virtual machines and most relatively modern Mac models, as far back as the <span class='ec-lmtt-10'>MacPro3,1</span>, are fully supported.
+     <!-- l. 9537 --><p class='noindent'><span class='ec-lmbx-10'>Can I use this on Apple hardware or virtual machines?</span>
+     </p><!-- l. 9539 --><p class='noindent'>Yes. Virtual machines and most relatively modern Mac models, as far back as the <span class='ec-lmtt-10'>MacPro3,1</span>, are fully supported.
      While specific detail relevant to Mac hardware is often limited, some ongoing instructions can be found on
      <a href='https://forums.macrumors.com/threads/2207814'>MacRumors.com</a>.
      </p></li>
 <li class='enumerate' id='x1-103016x8'>
-     <!-- l. 9544 --><p class='noindent'><span class='ec-lmbx-10'>Why must Find&amp;Replace patches be equal in size?</span>
-     </p><!-- l. 9546 --><p class='noindent'>For machine code (x86 code) it is not possible to do differently sized replacements due to <a href='https://en.wikipedia.org/w/index.php?title=Relative_addressing'>relative addressing</a>. For ACPI
+     <!-- l. 9545 --><p class='noindent'><span class='ec-lmbx-10'>Why must Find&amp;Replace patches be equal in size?</span>
+     </p><!-- l. 9547 --><p class='noindent'>For machine code (x86 code) it is not possible to do differently sized replacements due to <a href='https://en.wikipedia.org/w/index.php?title=Relative_addressing'>relative addressing</a>. For ACPI
      code this is risky, and is technically equivalent to ACPI table replacement, thus not implemented. More detailed
      explanation can be found on <a href='https://applelife.ru/posts/819790'>AppleLife.ru</a> or in the ACPI section of this document.
      </p></li>
 <li class='enumerate' id='x1-103018x9'>
-     <!-- l. 9553 --><p class='noindent'><span class='ec-lmbx-10'>How can I decide which </span><span class='ec-lmtk-10'>Booter </span><span class='ec-lmbx-10'>quirks to use?</span>
-     </p><!-- l. 9555 --><p class='noindent'>These quirks originate from <span class='ec-lmtt-10'>AptioMemoryFix </span>driver but provide a wider set of changes specific to modern systems. Note,
+     <!-- l. 9554 --><p class='noindent'><span class='ec-lmbx-10'>How can I decide which </span><span class='ec-lmtk-10'>Booter </span><span class='ec-lmbx-10'>quirks to use?</span>
+     </p><!-- l. 9556 --><p class='noindent'>These quirks originate from <span class='ec-lmtt-10'>AptioMemoryFix </span>driver but provide a wider set of changes specific to modern systems. Note,
      that <span class='ec-lmtt-10'>OpenRuntime </span>driver is required for most configurations. To get a configuration similar to <span class='ec-lmtt-10'>AptioMemoryFix </span>the
      following set of quirks should be enabled: </p>
          <ul class='itemize1'>
@@ -6702,10 +6702,10 @@ To additionally enable XNU kernel serial output <span class='ec-lmtt-10'>debug=0
          <li class='itemize'><span class='ec-lmtt-10'>RebuildAppleMemoryMap</span>
          </li>
          <li class='itemize'><span class='ec-lmtt-10'>SetupVirtualMap</span></li></ul>
-     <!-- l. 9573 --><p class='noindent'>However, as of today, such set is strongly discouraged as some of these quirks are not necessary to be enabled or need
+     <!-- l. 9574 --><p class='noindent'>However, as of today, such set is strongly discouraged as some of these quirks are not necessary to be enabled or need
      additional quirks. For example, <span class='ec-lmtt-10'>DevirtualiseMmio </span>and <span class='ec-lmtt-10'>ProtectUefiServices </span>are often required, while
      <span class='ec-lmtt-10'>DiscardHibernateMap </span>and <span class='ec-lmtt-10'>ForceExitBootServices </span>are rarely necessary.
-     </p><!-- l. 9579 --><p class='noindent'>Unfortunately for some quirks such as <span class='ec-lmtt-10'>RebuildAppleMemoryMap</span>, <span class='ec-lmtt-10'>EnableWriteUnprotector</span>, <span class='ec-lmtt-10'>ProtectMemoryRegions</span>,
+     </p><!-- l. 9580 --><p class='noindent'>Unfortunately for some quirks such as <span class='ec-lmtt-10'>RebuildAppleMemoryMap</span>, <span class='ec-lmtt-10'>EnableWriteUnprotector</span>, <span class='ec-lmtt-10'>ProtectMemoryRegions</span>,
      <span class='ec-lmtt-10'>SetupVirtualMap</span>, and <span class='ec-lmtt-10'>SyncRuntimePermissions </span>there is no definite approach even on similar systems, so trying all
      their combinations may be required for optimal setup. Refer to individual quirk descriptions in this document for
      details.
