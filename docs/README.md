@@ -22,7 +22,7 @@ If the commit does not match up with the latest commit in master branch, wait fo
 <br>
 [Differences](release/Differences.html) ([original PDF](https://github.com/acidanthera/OpenCorePkg/blob/0.9.5/Docs/Differences/Differences.pdf))
 
-#### Documentation compiled at 2023-10-30 02:31:25 (UTC)
+#### Documentation compiled at 2023-10-30 02:48:19 (UTC)
 
 ## Known Issues
 
