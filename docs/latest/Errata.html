@@ -146,6 +146,26 @@ including feature requests and development version issues can be found at  <a hr
          <ul class='itemize2'>
          <li class='itemize'>Update OpenDuet to master version
 </li></ul>
+     </li>
+     <li class='itemize'>
+     <!-- l. 338 --><p class='noindent'><span class='ec-lmbx-10'>Identifier</span>: <span class='ec-lmtt-10'>ERR088-2 </span><br class='newline' /><span class='ec-lmbx-10'>Published</span>: 2024-02-06 13:36 GMT <br class='newline' /><span class='ec-lmbx-10'>Updated</span>: 2024-02-06 13:36 GMT <br class='newline' /><span class='ec-lmbx-10'>Affected versions</span>: 0.8.8+ <br class='newline' /><span class='ec-lmbx-10'>Resolved in</span>: Won’t fix <br class='newline' /><span class='ec-lmbx-10'>Description</span>:
+     </p><!-- l. 345 --><p class='noindent'>Some released versions of Linux kernel 6.7 and release candidates of 6.8 may fail to load when using OpenDuet. This has
+     been acccepted as a bug in the Linux kernel, for which a fix will be releasd in 6.8 and backported to 6.7. Reference:
+     <a href='https://github.com/acidanthera/bugtracker/issues/2371#issuecomment-1929638701'>acidanthera/bugtracker#2371</a>.
+     </p><!-- l. 351 --><p class='noindent'><span class='ec-lmbx-10'>Possible workarounds</span>: </p>
+         <ul class='itemize2'>
+         <li class='itemize'>Use OpenDuet to 0.8.7 or earlier, or wait for fixed Linux kernels to be released.
+</li></ul>
+     </li>
+     <li class='itemize'>
+     <!-- l. 361 --><p class='noindent'><span class='ec-lmbx-10'>Identifier</span>: <span class='ec-lmtt-10'>ERR098-1 </span><br class='newline' /><span class='ec-lmbx-10'>Published</span>: 2024-02-08 09:28 GMT <br class='newline' /><span class='ec-lmbx-10'>Updated</span>: 2024-02-08 09:28 GMT <br class='newline' /><span class='ec-lmbx-10'>Affected versions</span>: 0.9.8 <br class='newline' /><span class='ec-lmbx-10'>Resolved in</span>: 0.9.9 ( <a href='https://github.com/acidanthera/OpenCorePkg/commit/4314fb31ecb974c30f99ac17db1f2b67ce1bb765'>4314fb31</a>) <br class='newline' /><span class='ec-lmbx-10'>Description</span>:
+     </p><!-- l. 368 --><p class='noindent'><span class='ec-lmtt-10'>ocvalidate </span>may report that <span class='ec-lmtt-10'>OpenVariableRuntimeDxe.efi </span>is incompatible with <span class='ec-lmtt-10'>FirmwareSettingsEntry.efi </span>even
+     when <span class='ec-lmtt-10'>FirmwareSettingsEntry.efi </span>is not included and active in <span class='ec-lmtt-10'>config.plist Drivers </span>section. Reference:
+     <a href='https://github.com/acidanthera/bugtracker/issues/2379'>acidanthera/bugtracker#2379</a>.
+     </p><!-- l. 374 --><p class='noindent'><span class='ec-lmbx-10'>Possible workarounds</span>: </p>
+         <ul class='itemize2'>
+         <li class='itemize'>For 0.9.8 use version of <span class='ec-lmtt-10'>ocvalidate </span>provided in a  <a href='https://github.com/acidanthera/bugtracker/issues/2379#issuecomment-1933674398'>comment</a> on the above issue.
+</li></ul>
      </li></ul>
  
 </body> 
