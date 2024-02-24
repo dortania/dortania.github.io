@@ -435,7 +435,7 @@ Contributions of clean patches are welcome. Please do follow  <a href='https://g
 recommended for use despite the toolchain name. An example command sequence is as follows:
 </p>
 <!-- l. 709 -->
-<p id='compilation-commands'><a id='x1-11001r1'></a>
+<p id='-compilation-commands'><a id='x1-11001r1'></a>
 <a id='x1-11002'></a>
 </p><pre class='lstlisting' id='listing-1'><span class='label'><a id='x1-11003r1'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>git</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>clone --depth=1 https://github.com/acidanthera/audk UDK</span> 
 </span><span class='label'><a id='x1-11004r2'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>cd</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>UDK</span> 
@@ -451,7 +451,7 @@ Protocols</a>. For example,  <a href='https://www.sublimetext.com'>Sublime Text<
 to the UDK root:
 </p>
 <!-- l. 725 -->
-<p id='ecc-configuration'><a id='x1-11011r2'></a>
+<p id='-ecc-configuration'><a id='x1-11011r2'></a>
 <a id='x1-11012'></a>
 </p><pre class='lstlisting' id='listing-2'><span class='label'><a id='x1-11013r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>-</span></span><span style='color:#000000'><span class='ec-lmtt-10'>I</span></span><span style='color:#000000'><span class='ec-lmtt-10'>/</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Ue</span></span><span style='color:#000000'><span class='ec-lmtt-10'>fi</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Packages</span></span><span style='color:#000000'><span class='ec-lmtt-10'>/</span></span><span style='color:#000000'><span class='ec-lmtt-10'>MdePkg</span></span> 
 <span class='label'><a id='x1-11014r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>-</span></span><span style='color:#000000'><span class='ec-lmtt-10'>I</span></span><span style='color:#000000'><span class='ec-lmtt-10'>/</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Ue</span></span><span style='color:#000000'><span class='ec-lmtt-10'>fi</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Packages</span></span><span style='color:#000000'><span class='ec-lmtt-10'>/</span></span><span style='color:#000000'><span class='ec-lmtt-10'>MdePkg</span></span><span style='color:#000000'><span class='ec-lmtt-10'>/</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Include</span></span> 
@@ -4504,7 +4504,7 @@ used due to the lack of <span class='ec-lmtt-10'>RDRAND </span>instruction suppo
 the file system most commonly used with Linux.                                                  </p></td>
 </tr><tr id='TBL-4-8-' style='vertical-align:baseline;'><td class='td11' id='TBL-4-8-1' style='white-space:normal; text-align:left;'>
 <!-- l. 6560 --><p class='noindent'> <a href='https://github.com/acidanthera/OpenCorePkg'><span class='uwave'>FirmwareSettings</span></a><span class='uwave'>*</span>       </p></td><td class='td11' id='TBL-4-8-2' style='white-space:normal; text-align:left;'>
-<!-- l. 6561 --><p class='noindent'><a href='#blueuwave-firmwaresettings'>OpenCore plugin</a> <span class='uwave'>implementing OC_BOOT_ENTRY_PROTOCOL to add an entry to the boot
+<!-- l. 6561 --><p class='noindent'><a href='#-blueuwave-firmwaresettings'>OpenCore plugin</a> <span class='uwave'>implementing OC_BOOT_ENTRY_PROTOCOL to add an entry to the boot
 picker menu which reboots into UEFI firmware settings, when this is supported by the
 firmware. </span>                                                                                                     </p></td>
 </tr><tr id='TBL-4-9-' style='vertical-align:baseline;'><td class='td11' id='TBL-4-9-1' style='white-space:normal; text-align:left;'>
@@ -4601,6 +4601,10 @@ interfaces such as <span class='ec-lmtt-10'>OpenCanopy</span>.                  
 <!-- l. 6635 --><p class='noindent'>XHCI USB controller support driver from <span class='ec-lmtt-10'>MdeModulePkg</span>. This driver is included in
 most types of firmware starting with the Sandy Bridge generation. For earlier firmware
 or legacy systems, it may be used to support external USB 3.0 PCI cards.                </p></td>
+</tr><tr id='TBL-4-29-' style='vertical-align:baseline;'><td class='td11' id='TBL-4-29-1' style='white-space:normal; text-align:left;'>
+<!-- l. 6638 --><p class='noindent'>                       </p></td>
+</tr><tr id='TBL-4-30-' style='vertical-align:baseline;'><td class='td11' id='TBL-4-30-1' style='white-space:normal; text-align:left;'>
+<!-- l. 6638 --><p class='noindent'>                       </p></td>
 </tr><tr id='TBL-4-31-' style='vertical-align:baseline;'><td class='td11' id='TBL-4-31-1' style='white-space:normal; text-align:left;'>                       </td><td class='td11' id='TBL-4-31-2' style='white-space:normal; text-align:left;'>
 </td></tr>
 </table></div>
@@ -4626,7 +4630,7 @@ partition. It is typically unimportant whether the partition scheme is <span cla
 an HFS+ or APFS volume:
 </p>
 <!-- l. 6667 -->
-<p id='blessing-tool'><a id='x1-68001r3'></a>
+<p id='-blessing-tool'><a id='x1-68001r3'></a>
 <a id='x1-68002'></a>
 </p><pre class='lstlisting' id='listing-16'><span class='label'><a id='x1-68003r1'></a></span><span style='color:#000000'><span class='ec-lmtk-10'>sudo</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>bless --verbose --file /Volumes/VOLNAME/DIR/OpenShell.efi \</span> 
 </span><span class='label'><a id='x1-68004r2'></a></span><span style='color:#000000'>  <span class='ec-lmtt-10'>--folder /Volumes/VOLNAME/DIR/ --setBoot</span></span></pre>
@@ -5070,7 +5074,7 @@ variant of the Big Sur and Monterey value, chosen as follows: </p>
      <span class='ec-lmtt-10'>csrutil status </span>will report that SIP has a non-standard value, however protection will be functionally the same.</li></ul>
 <!-- l. 7198 --><p class='noindent'>
 </p>
-<h5 class='subsubsectionHead' id='blueuwave-firmwaresettings'><span class='titlemark'>11.8.3   </span> <a id='x1-7900011.8.3'></a><span class='uwave'>FirmwareSettings</span></h5>
+<h5 class='subsubsectionHead' id='-blueuwave-firmwaresettings'><span class='titlemark'>11.8.3   </span> <a id='x1-7900011.8.3'></a><span class='uwave'>FirmwareSettings</span></h5>
 <!-- l. 7202 --><p class='noindent'><span class='uwave'>Adds a menu entry which will reboot into UEFI firmware settings, when supported. No menu entry added and logs a warning
 when not supported. </span>
 </p><!-- l. 7204 --><p class='noindent'>
@@ -6582,7 +6586,7 @@ separately, the partition has to be relabelled manually. This can be done with m
 utility. Reference example:
 </p>
 <!-- l. 9472 -->
-<p id='relabeling-windows-volume'><a id='x1-102001r4'></a>
+<p id='-relabeling-windows-volume'><a id='x1-102001r4'></a>
 <a id='x1-102002'></a>
 </p><pre class='lstlisting' id='listing-18'><span class='label'><a id='x1-102003r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>PS</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>C:\gdisk&gt; .\gdisk64.exe \\.\physicaldrive0</span> 
 </span><span class='label'><a id='x1-102004r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>GPT</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>fdisk (gdisk) version 1.0.4</span> 
