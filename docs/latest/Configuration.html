@@ -986,9 +986,9 @@ commands in Terminal: </p><!-- l. 1317 -->
          <li class='itemize'><span class='ec-lmtt-10'>slide=0 </span>is forced (by an argument or safe mode)
          </li>
          <li class='itemize'>KASLR (slide) is unsupported (this is Mac OS X 10.7 or older)</li></ul>
-     <!-- l. 1490 --><p class='noindent'>This quirk requires <span class='ec-lmtt-10'>ProvideCustomSlide </span>to be enabled and typically also requires enabling <span class='ec-lmtt-10'>AvoidRuntimeDefrag </span>to
-     function correctly. Hibernation is not supported when booting with a relocation block, which will only be used if required
-     when the quirk is enabled.
+     <!-- l. 1490 --><p class='noindent'>This quirk typically requires <span class='ec-lmtt-10'>ProvideCustomSlide </span>and <span class='ec-lmtt-10'>AvoidRuntimeDefrag </span>to be enabled to function correctly.
+     Hibernation is not supported when booting with a relocation block, which will only be used if required when the quirk is
+     enabled.
      </p><!-- l. 1495 --><p class='noindent'><span class='ec-lmri-10'>Note</span>: While this quirk is required to run older macOS versions on platforms with used lower memory, it is
      not compatible with some hardware and macOS 11. In such cases, consider using <span class='ec-lmtt-10'>EnableSafeModeSlide</span>
      instead.
