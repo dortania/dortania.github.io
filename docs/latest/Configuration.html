@@ -5268,14 +5268,14 @@ entry is selected during the installer process:
 <!-- l. 7390 --><p class='noindent'>The first reboot should correctly select <span class='ec-lmtt-10'>macOS Installer</span>. For second and subsequent reboots, if a <span class='ec-lmtt-10'>macOS Installer </span>entry is
 still present it should be manually selected (using just Enter, not <span class='ec-lmtt-10'>CTRL+Enter</span>). Once a <span class='ec-lmtt-10'>macOS Installer </span>entry is no longer
 present, the entry for the new OS will still be automatically selected if it was the previous boot default. If not, it should be
-manually selected (at this point, <span class='ec-lmtt-10'>CTRL+Enter </span>is a good idea as any final remaining installion restarts will be to this
+manually selected (at this point, <span class='ec-lmtt-10'>CTRL+Enter </span>is a good idea as any final remaining installation restarts will be to this
 entry).
 </p><!-- l. 7396 --><p class='noindent'><span class='ec-lmri-10'>Note 1</span>: When using emulated NVRAM but not installing from within an existing installed macOS (i.e. when installing from
 within macOS Recovery, or from an installation USB), please refer to this  <a href='https://applelife.ru/posts/916248'>forum post</a> (in Russian) for additional
 options.
-</p><!-- l. 7401 --><p class='noindent'><span class='ec-lmri-10'>Note 2</span>: After upgrading from an ealier macOS version to macOS Sonoma, the <span class='ec-lmtt-10'>Launchd.command </span>script should be reinstalled,
+</p><!-- l. 7401 --><p class='noindent'><span class='ec-lmri-10'>Note 2</span>: After upgrading from an earlier macOS version to macOS Sonoma, the <span class='ec-lmtt-10'>Launchd.command </span>script should be reinstalled,
 as a different strategy is required in order for NVRAM to be saved successfully.
-</p><!-- l. 7404 --><p class='noindent'><span class='ec-lmri-10'>Note 3</span>: In macOS Sonoma the following additional constraints apply to the ESP paritition on which OpenCore is installed, in
+</p><!-- l. 7404 --><p class='noindent'><span class='ec-lmri-10'>Note 3</span>: In macOS Sonoma the following additional constraints apply to the ESP partition on which OpenCore is installed, in
 order for the <span class='ec-lmtt-10'>Launchd.command </span>script to work successfully:
 </p>
      <ul class='itemize1'>
