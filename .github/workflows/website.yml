@@ -151,10 +151,15 @@ jobs:
         with:
           name: html
           path: docs
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
   
   deploy:
     concurrency:
