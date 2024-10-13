@@ -7,20 +7,23 @@ on:
   schedule:
     - cron: '*/30 * * * *'
   workflow_dispatch:
+
+env:
+  HOMEBREW_NO_INSTALL_CLEANUP: 1
+
+
 jobs:
   build:
     name: Build
     runs-on: macos-latest
     steps:
       - name: Checkout Build Files
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
-          persist-credentials: false
           ref: docs
       - name: Checkout OpenCorePkg Master
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
-          persist-credentials: false
           repository: acidanthera/OpenCorePkg
           path: latest
       - name: Get Latest OpenCorePkg Release
@@ -31,23 +34,18 @@ jobs:
         id: releasetag
       - run: echo "Latest release is ${{ steps.releasetag.outputs.tag }}"
       - name: Checkout OpenCorePkg Release
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
-          persist-credentials: false
           repository: acidanthera/OpenCorePkg
           path: release
           ref: ${{ steps.releasetag.outputs.tag }}
       - run: brew update
-        env:
-          HOMEBREW_NO_INSTALL_CLEANUP: 1
       - name: Get Latest MacTeX Version
         id: mactexversion
         run: |
           echo "version=$(brew info --cask basictex | head -1 | cut -c 11-)" >> $GITHUB_OUTPUT
-        env:
-          HOMEBREW_NO_INSTALL_CLEANUP: 1
       - name: Cache Brew Downloads
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: |
             ~/Library/Caches/Homebrew/downloads/*tex*
@@ -58,8 +56,6 @@ jobs:
       - name: Install Dependencies
         run: |
           brew install --cask basictex
-        env:
-          HOMEBREW_NO_INSTALL_CLEANUP: 1
       - name: Refresh PATH
         run: |
           eval "$(/usr/libexec/path_helper)"
@@ -112,24 +108,23 @@ jobs:
         run: python3 postbuild.py ${{ steps.releasetag.outputs.tag }}
 
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        uses: JamesIves/github-pages-deploy-action@v4.6.8
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           branch: master
           folder: Deploy
           target-folder: docs
       - name: Upload Latest Docs
-        uses: actions/upload-artifact@v2.2.2
+        uses: actions/upload-artifact@v4
         with:
           name: latest
           path: latest/Docs
       - name: Upload Release Docs
-        uses: actions/upload-artifact@v2.2.2
+        uses: actions/upload-artifact@v4
         with:
           name: release
           path: release/Docs
       - name: Upload HTML Output
-        uses: actions/upload-artifact@v2.2.2
+        uses: actions/upload-artifact@v4
         with:
           name: html
           path: Deploy
