@@ -43,7 +43,7 @@ jobs:
       - name: Get Latest MacTeX Version
         id: mactexversion
         run: |
-          echo "version=$(brew info --cask basictex | head -1 | cut -c 11-)" >> $GITHUB_OUTPUT
+          echo "version=$(brew info --cask basictex --json=v2 | jq -r '.casks[0].version')" >> "$GITHUB_OUTPUT"
       - name: Cache Brew Downloads
         uses: actions/cache@v4
         with:
