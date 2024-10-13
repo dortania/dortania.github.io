@@ -11,6 +11,12 @@ on:
 concurrency:
   group: ${{ github.workflow }}
 
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   docs:
     name: Build OpenCore HTML Docs
@@ -46,6 +52,7 @@ jobs:
         run: |
           echo "version=$(brew info --cask basictex --json=v2 | jq -r '.casks[0].version')" >> "$GITHUB_OUTPUT"
       - name: Cache Brew Downloads
+        id: cache
         uses: actions/cache@v4
         with:
           path: |
@@ -59,6 +66,7 @@ jobs:
             /usr/local/texlive
           key: ${{ runner.os }}-basictex-${{ steps.mactexversion.outputs.version }}
       - name: Install Dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           brew install --cask basictex
       - name: Refresh PATH
@@ -67,6 +75,7 @@ jobs:
           echo "$PATH" >> $GITHUB_PATH
       - uses: shogo82148/actions-setup-perl@v1
       - name: Install LaTeX Dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           sudo tlmgr update --self
           sudo tlmgr update texlive-scripts
