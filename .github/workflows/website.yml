@@ -50,7 +50,7 @@ jobs:
       - name: Get Latest MacTeX Version
         id: mactexversion
         run: |
-          echo "version=$(brew info --cask basictex --json=v2 | jq -r '.casks[0].version')" >> "$GITHUB_OUTPUT"
+          echo "version=$(brew info --cask mactex-no-gui --json=v2 | jq -r '.casks[0].version')" >> "$GITHUB_OUTPUT"
       - name: Set suid on gtar
         run: sudo chown root:wheel /opt/homebrew/bin/gtar && sudo chmod u+s /opt/homebrew/bin/gtar
       - name: Cache Brew Downloads
@@ -66,11 +66,11 @@ jobs:
             /etc/paths.d/TeX
             /Library/TeX
             /usr/local/texlive
-          key: ${{ runner.os }}-basictex-${{ steps.mactexversion.outputs.version }}
+          key: ${{ runner.os }}-mactex-no-gui-${{ steps.mactexversion.outputs.version }}
       - name: Install Dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
-          brew install --cask basictex
+          brew install --cask mactex-no-gui
       - name: Refresh PATH
         run: |
           eval "$(/usr/libexec/path_helper)"
