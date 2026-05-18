@@ -25,11 +25,11 @@ jobs:
       HOMEBREW_NO_INSTALL_CLEANUP: 1
     steps:
       - name: Checkout Build Files
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: docs
       - name: Checkout OpenCorePkg Master
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: acidanthera/OpenCorePkg
           path: latest
@@ -41,7 +41,7 @@ jobs:
         id: releasetag
       - run: echo "Latest release is ${{ steps.releasetag.outputs.tag }}"
       - name: Checkout OpenCorePkg Release
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: acidanthera/OpenCorePkg
           path: release
@@ -55,7 +55,7 @@ jobs:
         run: sudo chown root:wheel /opt/homebrew/bin/gtar && sudo chmod u+s /opt/homebrew/bin/gtar
       - name: Cache Brew Downloads
         id: cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             ~/Library/Caches/Homebrew/downloads/*tex*
@@ -81,7 +81,7 @@ jobs:
         run: |
           sudo tlmgr update --self
           sudo tlmgr update texlive-scripts
-          sudo tlmgr install titlesec pgf datetime fmtcount zref hyperref zlmtt make4ht luaxml tex4ht context latexdiff
+          sudo tlmgr install titlesec pgf datetime fmtcount zref hyperref zlmtt make4ht luaxml tex4ht context latexdiff dvisvgm
           cpanm Algorithm::Diff
 
       - name: Build Master Configuration
@@ -124,17 +124,17 @@ jobs:
         run: python3 postbuild.py ${{ steps.releasetag.outputs.tag }}
 
       - name: Upload Latest Docs
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: latest
           path: latest/Docs
       - name: Upload Release Docs
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: release
           path: release/Docs
       - name: Upload HTML Output
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: html
           path: Deploy
@@ -145,23 +145,23 @@ jobs:
     needs: docs
     steps:
       - name: Checkout Build Files
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: blog
       - name: Download Latest Docs
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: html
           path: docs
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./
           destination: ./_site
       - name: Upload Artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
   
   deploy:
     concurrency:
@@ -174,4 +174,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
